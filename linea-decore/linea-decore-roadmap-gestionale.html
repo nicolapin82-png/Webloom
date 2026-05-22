@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il tuo piano di avvio — Linea Decore · Webloom</title>
+  <style>
+    :root {
+      --accent: #C9A84C;
+      --accent-light: #DFC278;
+      --accent-rgb: 201,168,76;
+      --hero-bg: #1a1600;
+      --dark-bg: #111827;
+      --light-bg: #f9fafb;
+      --text-dark: #1f2937;
+      --text-light: #f9fafb;
+      --text-muted: #6b7280;
+      --border-light: #e5e7eb;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--text-dark);
+      background: var(--dark-bg);
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(17,24,39,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-brand img {
+      height: 28px;
+      width: auto;
+      display: block;
+    }
+    .nav-brand span {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .nav-zoom {
+      display: flex;
+      gap: 8px;
+    }
+    .nav-zoom button {
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--accent);
+      border-radius: 6px;
+      width: 32px;
+      height: 32px;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .nav-zoom button:hover { background: rgba(201,168,76,0.3); }
+
+    /* SEZIONI */
+    section { padding: 80px 24px; }
+    .inner { max-width: 760px; margin: 0 auto; }
+
+    /* DARK */
+    .s-dark { background: var(--dark-bg); }
+    .s-dark .label { color: var(--accent); }
+    .s-dark h2 { color: var(--text-light); }
+    .s-dark p, .s-dark li { color: #9ca3af; }
+
+    /* HERO */
+    .s-hero {
+      background: var(--hero-bg);
+      padding-top: 120px;
+      padding-bottom: 80px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .badge-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .s-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      color: var(--text-light);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .s-hero h1 span { color: var(--accent); }
+    .s-hero p {
+      font-size: 1.1rem;
+      color: #9ca3af;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* LIGHT */
+    .s-light { background: var(--light-bg); }
+    .s-light .label { color: var(--accent); }
+    .s-light h2 { color: var(--text-dark); }
+    .s-light p, .s-light li { color: #374151; }
+
+    /* Etichetta sezione */
+    .label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .section-intro {
+      font-size: 1rem;
+      margin-bottom: 40px;
+      max-width: 580px;
+    }
+
+    /* SETTIMANE — card */
+    .weeks { display: flex; flex-direction: column; gap: 20px; }
+
+    .week-card {
+      display: flex;
+      gap: 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 14px;
+      padding: 28px;
+      align-items: flex-start;
+    }
+    .s-light .week-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    }
+
+    .week-num {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+      min-width: 48px;
+      opacity: 0.85;
+    }
+
+    .week-body {}
+    .week-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .s-dark .week-title { color: var(--text-light); }
+    .s-light .week-title { color: var(--text-dark); }
+
+    .week-desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* AUTOMAZIONI — PRIMA / ORA */
+    .automation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 12px;
+    }
+    @media (max-width: 580px) {
+      .automation-grid { grid-template-columns: 1fr; }
+    }
+    .auto-col h3 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+    }
+    .auto-col.prima h3 { color: #6b7280; }
+    .auto-col.ora h3 { color: var(--accent); }
+    .auto-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+    }
+    .auto-icon {
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .prima .auto-icon { background: rgba(107,114,128,0.15); }
+    .ora .auto-icon { background: rgba(201,168,76,0.15); }
+    .auto-text { color: #9ca3af; line-height: 1.45; }
+    .ora .auto-text { color: #d1c9b0; }
+
+    /* COMUNICAZIONI — canali */
+    .channels { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 8px; }
+    .channel {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 22px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .channel-icon {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+    .channel-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+    .channel-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* MESE 2+ */
+    .continuity-list { list-style: none; padding: 0; }
+    .continuity-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+      font-size: 0.95rem;
+    }
+    .continuity-list li:last-child { border-bottom: none; }
+    .cont-bullet {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--hero-bg);
+      padding: 48px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
+    footer .footer-brand {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    footer p {
+      font-size: 0.85rem;
+      color: #6b7280;
+      line-height: 1.7;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .week-card { flex-direction: column; gap: 10px; }
+      .week-num { font-size: 2rem; }
+      nav { padding: 12px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <img src="https://assets.cdn.filesafe.space/3fFsxRcRvkat1FpJD7Yw/media/69905feb24813c67ab72773f.webp" alt="WeBloom">
+    <span>Linea Decore</span>
+  </div>
+  <div class="nav-zoom">
+    <button onclick="zoomOut()" title="Riduci testo">A−</button>
+    <button onclick="zoomIn()" title="Ingrandisci testo">A+</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="s-hero">
+  <div class="inner">
+    <div class="badge">
+      <div class="badge-dot"></div>
+      GESTIONALE attivo
+    </div>
+    <h1>Benvenuto Vittorio.<br><span>Il tuo sistema parte adesso.</span></h1>
+    <p>Nelle prossime 4 settimane costruiamo insieme tutto quello che serve perché Linea Decore sia trovata, seguita e gestita in modo professionale.</p>
+  </div>
+</section>
+
+<!-- SETTIMANA 1 — LIGHT -->
+<section class="s-light">
+  <div class="inner">
+    <div class="label">Settimana 1</div>
+    <h2>Ci dai le informazioni, noi partiamo</h2>
+    <p class="section-intro">Compilerai un modulo online. Ci vorranno circa 15 minuti. Più sei dettagliato, migliore sarà il risultato finale — senza bisogno di chiamarci di nuovo.</p>
+
+    <div class="weeks">
+      <div class="week-card">
+        <div class="week-num">1</div>
+        <div class="week-body">
+          <div class="week-title">Compila il modulo di avvio</div>
+          <p class="week-desc">Ti inviamo un link via WhatsApp. Il modulo raccoglie tutto quello che ci serve: informazioni sull'attività, servizi, orari, come gestisci oggi i clienti, come preferisci comunicare con loro.</p>
+        </div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">+</div>
+        <div class="week-body">
+          <div class="week-title">Carica i materiali nella cartella Drive</div>
+          <p class="week-desc">Ti condividiamo una cartella Google Drive con due sottocartelle: <strong>📸 Materiali</strong> (foto della tua attività, showroom, prodotti — almeno 10 foto, più il logo) e <strong>📄 Documenti</strong> (listino prezzi, brochure, qualsiasi documento utile). Niente di speciale da preparare: vanno bene anche foto dal telefono.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SETTIMANE 2-3 — DARK -->
+<section class="s-dark">
+  <div class="inner">
+    <div class="label">Settimane 2 e 3</div>
+    <h2>Costruiamo il tuo sistema</h2>
+    <p class="section-intro">Sulla base delle tue risposte configuriamo tutto. Tu non devi fare nulla: ti teniamo aggiornato via WhatsApp sullo stato avanzamento.</p>
+
+    <div class="automation-grid">
+      <div class="auto-col prima">
+        <h3>Situazione attuale</h3>
+        <div class="auto-item">
+          <div class="auto-icon">📋</div>
+          <div class="auto-text">Clienti gestiti via WhatsApp e email, senza un sistema centralizzato</div>
+        </div>
+        <div class="auto-item">
+          <div class="auto-icon">📍</div>
+          <div class="auto-text">Nessuna scheda Google: Linea Decore non compare su Google Maps</div>
+        </div>
+        <div class="auto-item">
+          <div class="auto-icon">⭐</div>
+          <div class="auto-text">Nessuna recensione attiva — la scheda Google non esiste ancora</div>
+        </div>
+        <div class="auto-item">
+          <div class="auto-icon">📱</div>
+          <div class="auto-text">Profili Instagram esistenti ma senza un'impostazione professionale uniforme</div>
+        </div>
+      </div>
+      <div class="auto-col ora">
+        <h3>Dopo il setup</h3>
+        <div class="auto-item">
+          <div class="auto-icon">✅</div>
+          <div class="auto-text">Sistema di gestione clienti configurato con i tuoi dati reali</div>
+        </div>
+        <div class="auto-item">
+          <div class="auto-icon">📍</div>
+          <div class="auto-text">Scheda Google creata, ottimizzata e in attesa di verifica</div>
+        </div>
+        <div class="auto-item">
+          <div class="auto-icon">⭐</div>
+          <div class="auto-text">Sistema automatico attivo: le prime recensioni partono subito dopo la verifica</div>
+        </div>
+        <div class="auto-item">
+          <div class="auto-icon">📱</div>
+          <div class="auto-text">Pagina Facebook e profilo Instagram rifatti da zero, allineati al brand</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SETTIMANA 4 — LIGHT -->
+<section class="s-light">
+  <div class="inner">
+    <div class="label">Settimana 4</div>
+    <h2>Una call di formazione: un'ora, tutto chiaro</h2>
+    <p class="section-intro">Non ti lasciamo da solo con uno strumento che non conosci. Facciamo una call guidata dove ti mostriamo come funziona tutto.</p>
+
+    <div class="weeks">
+      <div class="week-card">
+        <div class="week-num">4</div>
+        <div class="week-body">
+          <div class="week-title">Formazione sul sistema di gestione clienti</div>
+          <p class="week-desc">Ti mostriamo come vedere i tuoi contatti, come leggere i dati che il sistema raccoglie per te, come interpretare le recensioni e come capire il report mensile. Una call pratica, senza tecnicismi. Al termine ricevi una guida rapida in PDF da tenere come riferimento.</p>
+        </div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">✓</div>
+        <div class="week-body">
+          <div class="week-title">Partecipanti: chiunque usi il sistema</div>
+          <p class="week-desc">Puoi portare collaboratori o dipendenti. Più persone sanno usare il sistema, più funziona. La call dura circa 60 minuti, in videocall o in presenza a seconda di quello che preferisci.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAL MESE 2 — DARK -->
+<section class="s-dark">
+  <div class="inner">
+    <div class="label">Dal mese 2 in poi</div>
+    <h2>Il sistema lavora per te, ogni mese</h2>
+    <p class="section-intro">Una volta attivato, non devi pensarci. Noi monitoriamo, aggiorniamo e ti teniamo informato.</p>
+
+    <ul class="continuity-list">
+      <li>
+        <div class="cont-bullet"></div>
+        <div><strong style="color:#f9fafb;">2 aggiornamenti al mese sulla scheda Google</strong> — contenuti freschi per non perdere visibilità nel tempo.</div>
+      </li>
+      <li>
+        <div class="cont-bullet"></div>
+        <div><strong style="color:#f9fafb;">Automazione recensioni attiva</strong> — il sistema chiede una recensione ai tuoi clienti nel momento giusto. Tu non devi fare nulla.</div>
+      </li>
+      <li>
+        <div class="cont-bullet"></div>
+        <div><strong style="color:#f9fafb;">Risposte automatiche alle recensioni</strong> — ogni recensione riceve una risposta professionale. Nessuna rimane senza risposta.</div>
+      </li>
+      <li>
+        <div class="cont-bullet"></div>
+        <div><strong style="color:#f9fafb;">Report mensile entro il 5 di ogni mese</strong> — chiamate da Google Maps, visualizzazioni, rating. Dati reali che puoi leggere senza un traduttore.</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- COME COMUNICHIAMO — LIGHT -->
+<section class="s-light">
+  <div class="inner">
+    <div class="label">Come lavoriamo insieme</div>
+    <h2>Semplice e diretto</h2>
+    <p class="section-intro">Nessuna burocrazia. Nessun ticket di supporto. Un canale principale e due strumenti di supporto.</p>
+
+    <div class="channels">
+      <div class="channel">
+        <div class="channel-icon">💬</div>
+        <div class="channel-name">WhatsApp</div>
+        <div class="channel-desc">Canale principale. Risposta garantita entro 24 ore nei giorni lavorativi. Nicola Pin — 327 0731397</div>
+      </div>
+      <div class="channel">
+        <div class="channel-icon">📧</div>
+        <div class="channel-name">Email</div>
+        <div class="channel-desc">marketing.webloom1@gmail.com — per comunicazioni scritte, invio materiali e aggiornamenti di progetto.</div>
+      </div>
+      <div class="channel">
+        <div class="channel-icon">📁</div>
+        <div class="channel-name">Google Drive</div>
+        <div class="channel-desc">Per caricare materiali, foto e documenti. Cartella sempre condivisa e accessibile.</div>
+      </div>
+      <div class="channel">
+        <div class="channel-icon">📊</div>
+        <div class="channel-name">Report mensile</div>
+        <div class="channel-desc">Inviato entro il 5 di ogni mese. I dati reali dell'attività, spiegati in modo semplice.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <img src="https://assets.cdn.filesafe.space/3fFsxRcRvkat1FpJD7Yw/media/69905feb24813c67ab72773f.webp" alt="WeBloom" style="height:36px;width:auto;display:block;margin:0 auto 10px;opacity:0.85;">
+  </div>
+  <p>
+    Nicola Pin · <a href="mailto:marketing.webloom1@gmail.com">marketing.webloom1@gmail.com</a> · 327 0731397<br>
+    Via Aquileia 5, 31029 Vittorio Veneto (TV) · P.IVA IT05558050265<br>
+    <span style="color:#4b5563;">© 2026</span>
+  </p>
+</footer>
+
+<script>
+  const zoomSteps = [0.75, 0.82, 0.9, 0.95, 1.0, 1.06, 1.13, 1.22, 1.33];
+  let zoomIdx = zoomSteps.indexOf(1.0);
+
+  function zoomIn() {
+    if (zoomIdx < zoomSteps.length - 1) { zoomIdx++; applyZoom(); }
+  }
+  function zoomOut() {
+    if (zoomIdx > 0) { zoomIdx--; applyZoom(); }
+  }
+  function applyZoom() {
+    document.body.style.zoom = zoomSteps[zoomIdx];
+    localStorage.setItem('lineadecore_ZOOM', zoomIdx);
+  }
+  window.addEventListener('load', () => {
+    const saved = localStorage.getItem('lineadecore_ZOOM');
+    if (saved !== null) { zoomIdx = parseInt(saved); applyZoom(); }
+  });
+</script>
+
+</body>
+</html>
