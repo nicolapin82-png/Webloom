@@ -7,18 +7,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:        #06101E;
-  --bg2:       #0B1828;
-  --card:      rgba(27,42,74,0.45);
-  --horizon:   #1B2A4A;
-  --sapphire:  #3A6B9F;
-  --aqua:      #B8D4E8;
+  --bg:        #0C0B08;
+  --bg2:       #141210;
+  --card:      rgba(26,20,14,0.55);
+  --dark:      #1A1410;
+  --bloom:     #5A8760;
+  --bloom-lt:  #90BA96;
+  --mind:      #C4907E;
+  --mind-lt:   #DDB8AC;
   --gold:      #C9A84C;
   --ivory:     #F8F5EF;
-  --blush:     #E8D5C4;
   --muted:     rgba(248,245,239,0.55);
-  --border:    rgba(58,107,159,0.25);
-  --sep:       rgba(201,168,76,0.15);
+  --border:    rgba(90,135,96,0.25);
+  --sep:       rgba(201,168,76,0.18);
   --radius:    8px;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -33,7 +34,7 @@ body{
 }
 ::-webkit-scrollbar{width:3px;}
 ::-webkit-scrollbar-track{background:var(--bg);}
-::-webkit-scrollbar-thumb{background:var(--sapphire);border-radius:2px;}
+::-webkit-scrollbar-thumb{background:var(--bloom);border-radius:2px;}
 
 /* ── NAV ── */
 nav{
@@ -42,12 +43,12 @@ nav{
   display:flex;align-items:center;justify-content:space-between;
   background:rgba(6,16,30,0.88);
   backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(58,107,159,0.18);
+  border-bottom:1px solid rgba(90,135,96,0.18);
 }
 .nav-logo img{height:30px;width:auto;display:block;}
 .nav-tag{font-size:11px;color:var(--muted);letter-spacing:2.5px;text-transform:uppercase;}
 .nav-badge{
-  background:linear-gradient(135deg,var(--sapphire),var(--aqua));
+  background:linear-gradient(135deg,var(--bloom),var(--mind));
   color:#fff;font-size:10px;font-weight:500;
   padding:5px 14px;border-radius:100px;letter-spacing:0.5px;
 }
@@ -62,11 +63,11 @@ nav{
 .hero-bg{
   position:absolute;inset:0;
   background:
-    radial-gradient(ellipse 70% 50% at 50% 35%,rgba(58,107,159,0.12) 0%,transparent 65%),
-    radial-gradient(ellipse 40% 40% at 75% 75%,rgba(27,42,74,0.2) 0%,transparent 60%);
+    radial-gradient(ellipse 70% 50% at 50% 35%,rgba(90,135,96,0.12) 0%,transparent 65%),
+    radial-gradient(ellipse 40% 40% at 75% 75%,rgba(26,20,14,0.2) 0%,transparent 60%);
 }
 .hero-orb{position:absolute;border-radius:50%;filter:blur(90px);animation:float 9s ease-in-out infinite;}
-.orb1{width:380px;height:380px;background:rgba(58,107,159,0.07);top:8%;left:8%;}
+.orb1{width:380px;height:380px;background:rgba(90,135,96,0.07);top:8%;left:8%;}
 .orb2{width:280px;height:280px;background:rgba(201,168,76,0.04);bottom:12%;right:12%;animation-delay:-5s;}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-28px)}}
 
@@ -83,7 +84,7 @@ nav{
   opacity:0;animation:fadeUp 0.8s ease forwards 0.5s;
 }
 .hero-name span{
-  background:linear-gradient(135deg,var(--aqua),var(--sapphire),var(--gold));
+  background:linear-gradient(135deg,var(--bloom-lt),var(--mind),var(--gold));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
 .hero-sub{
@@ -107,7 +108,7 @@ nav{
   line-height:1.9;
   opacity:0;animation:fadeUp 0.8s ease forwards 1s;
 }
-.hero-claim strong{color:var(--aqua);font-weight:500;}
+.hero-claim strong{color:var(--bloom-lt);font-weight:500;}
 .hero-scroll{
   position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
   display:flex;flex-direction:column;align-items:center;gap:8px;
@@ -156,7 +157,7 @@ nav{
 }
 .arch-card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:var(--grad-h,linear-gradient(90deg,var(--sapphire),var(--aqua)));
+  background:var(--grad-h,linear-gradient(90deg,var(--bloom),var(--bloom-lt)));
 }
 .arch-card:last-child::before{background:linear-gradient(90deg,var(--gold),rgba(201,168,76,0.3));}
 .arch-icon{font-size:2.4rem;margin-bottom:20px;display:block;}
@@ -169,7 +170,7 @@ nav{
 .trait-tag{
   font-size:0.7rem;letter-spacing:1.5px;text-transform:uppercase;
   padding:4px 12px;border:1px solid var(--border);
-  color:var(--aqua);border-radius:100px;
+  color:var(--bloom-lt);border-radius:100px;
 }
 
 /* ── VALUES ── */
@@ -186,13 +187,13 @@ nav{
 }
 .value-card::after{
   content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--sapphire),var(--gold));
+  background:linear-gradient(90deg,var(--bloom),var(--gold));
   opacity:0;transition:opacity 0.3s;
 }
 .value-card:hover::after{opacity:1;}
 .value-num{
   font-family:'Cormorant Garamond',serif;
-  font-size:3rem;color:rgba(58,107,159,0.15);
+  font-size:3rem;color:rgba(90,135,96,0.15);
   position:absolute;top:20px;right:24px;line-height:1;
   font-weight:600;
 }
@@ -206,7 +207,7 @@ nav{
 .positioning-box{
   margin-top:48px;
   padding:52px 56px;
-  background:linear-gradient(135deg,rgba(27,42,74,0.6),rgba(58,107,159,0.15));
+  background:linear-gradient(135deg,rgba(26,20,14,0.6),rgba(90,135,96,0.15));
   border:1px solid var(--border);
   border-radius:var(--radius);
   position:relative;overflow:hidden;
@@ -236,8 +237,8 @@ nav{
   padding:8px 20px;
   border:1px solid var(--border);
   border-radius:100px;
-  font-size:0.85rem;color:var(--aqua);
-  background:rgba(58,107,159,0.08);
+  font-size:0.85rem;color:var(--bloom-lt);
+  background:rgba(90,135,96,0.08);
 }
 .tov-list{list-style:none;display:flex;flex-direction:column;gap:12px;}
 .tov-list li{
@@ -246,7 +247,7 @@ nav{
 }
 .tov-list li::before{
   content:'→';position:absolute;left:0;
-  color:var(--sapphire);font-size:0.75rem;line-height:1.85;
+  color:var(--bloom);font-size:0.75rem;line-height:1.85;
 }
 .tov-list.dont li::before{content:'✗';color:#e07070;}
 .tov-col .tov-sep{
@@ -299,7 +300,7 @@ nav{
 }
 .font-sample-italic{
   font-family:'Cormorant Garamond',serif;
-  font-size:1.5rem;color:var(--blush);font-style:italic;margin-bottom:8px;
+  font-size:1.5rem;color:var(--mind-lt);font-style:italic;margin-bottom:8px;
 }
 .font-name{font-size:0.72rem;color:var(--muted);}
 .font-usage{font-size:0.7rem;color:rgba(248,245,239,0.35);margin-top:6px;}
@@ -311,7 +312,7 @@ nav{
   padding:64px 40px;
   border:1px solid var(--border);
   border-radius:var(--radius);
-  background:linear-gradient(135deg,rgba(27,42,74,0.5),rgba(11,24,40,0.8));
+  background:linear-gradient(135deg,rgba(26,20,14,0.5),rgba(11,24,40,0.8));
   position:relative;overflow:hidden;
 }
 .tagline-main::before{
@@ -351,13 +352,13 @@ nav{
 }
 .comp-table td{
   font-size:0.82rem;color:rgba(248,245,239,0.7);
-  padding:18px 20px;border-bottom:1px solid rgba(58,107,159,0.1);
+  padding:18px 20px;border-bottom:1px solid rgba(90,135,96,0.1);
   vertical-align:top;line-height:1.7;
 }
 .comp-table tr:last-child td{border-bottom:none;}
-.comp-table tr:nth-child(even) td{background:rgba(27,42,74,0.15);}
-.highlight-row td{color:var(--ivory)!important;background:rgba(58,107,159,0.18)!important;}
-.highlight-row td:first-child{color:var(--aqua)!important;font-weight:500;}
+.comp-table tr:nth-child(even) td{background:rgba(26,20,14,0.15);}
+.highlight-row td{color:var(--ivory)!important;background:rgba(90,135,96,0.18)!important;}
+.highlight-row td:first-child{color:var(--bloom-lt)!important;font-weight:500;}
 
 .gap-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:48px;}
 .gap-card{
@@ -367,11 +368,11 @@ nav{
 }
 .gap-card::before{
   content:'';position:absolute;top:0;left:0;bottom:0;width:2px;
-  background:linear-gradient(to bottom,var(--sapphire),var(--gold));
+  background:linear-gradient(to bottom,var(--bloom),var(--gold));
 }
 .gap-num{
   font-family:'Cormorant Garamond',serif;
-  font-size:3.5rem;color:rgba(58,107,159,0.12);
+  font-size:3.5rem;color:rgba(90,135,96,0.12);
   position:absolute;top:16px;right:20px;font-weight:600;line-height:1;
 }
 .gap-title{
@@ -412,11 +413,11 @@ nav{
 .mood-elements{display:flex;flex-direction:column;gap:14px;}
 .mood-el{
   padding:16px 20px;
-  background:rgba(27,42,74,0.4);border:1px solid var(--border);
+  background:rgba(26,20,14,0.4);border:1px solid var(--border);
   border-radius:6px;
   font-size:0.82rem;color:var(--muted);
 }
-.mood-el strong{color:var(--aqua);}
+.mood-el strong{color:var(--bloom-lt);}
 .mood-never{margin-top:16px;}
 .mood-never h4{font-size:0.62rem;letter-spacing:2.5px;text-transform:uppercase;color:#e07070;margin-bottom:10px;}
 .mood-never ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
@@ -563,7 +564,7 @@ footer{
   <div style="margin-top:24px;padding:32px 36px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);" class="reveal d3">
     <p style="font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Versione lunga — uso interno / strategico</p>
     <p style="font-size:0.9rem;color:var(--muted);line-height:1.9;font-style:italic;">
-      "Laura Ruggieri guida imprenditori, professionisti e networker evoluti che cercano un secondo binario di reddito fondato su valori, non su hype — attraverso BlooMind, l'ecosistema dove crescita personale e business si moltiplicano a vicenda, con un sistema proprietario che abbatte le 3 barriere principali del settore in 3-4 settimane."
+      "Laura Ruggieri lavora con due tipi di persone: i <strong style='color:var(--bloom-lt);font-style:normal;'>networker</strong> che hanno già esperienza in altre aziende e cercano un sistema superiore — e i <strong style='color:var(--mind);font-style:normal;'>professionisti</strong>, già presenti in grande numero all'interno di BlooMind, per i quali questo può partire come secondo binario di reddito e, grazie alla scalabilità del sistema, diventare il primo. Un ecosistema fondato su valori, non su hype, con un sistema proprietario che elimina le 3 barriere principali del settore."
     </p>
   </div>
 </section>
@@ -617,32 +618,38 @@ footer{
   <div class="reveal">
     <p class="section-label">05 — Palette Colori</p>
     <h2 class="section-title">L'identità visiva BlooMind</h2>
-    <p class="section-desc">Il sistema cromatico nasce dalla profondità dell'oceano (Blue Mind), dalla competenza femminile autorevole (oro) e dallo spazio mentale (bianco caldo).</p>
+    <p class="section-desc">Il sistema cromatico nasce dal nome stesso: <strong style="color:var(--bloom-lt);">Bloo</strong> = Bloom (fioritura, crescita, natura — verde salvia) + <strong style="color:var(--mind);">Mind</strong> (mente, intuizione, femminilità autorevole — rosa antico). Oro e bianco caldo completano l'identità premium. Il nero caldo è da valutare come background alternativo.</p>
   </div>
   <div class="palette-row reveal d2">
-    <div class="swatch" style="background:rgba(27,42,74,0.5);">
-      <div class="sw-dot" style="background:#1B2A4A;"></div>
-      <span class="sw-name">Deep Horizon</span>
-      <span class="sw-hex">#1B2A4A</span>
-      <span class="sw-role">Background / Header</span>
+    <div class="swatch" style="background:rgba(26,20,14,0.7);">
+      <div class="sw-dot" style="background:#0C0B08;border:1px solid rgba(255,255,255,0.1);"></div>
+      <span class="sw-name">Deep Black</span>
+      <span class="sw-hex">#0C0B08</span>
+      <span class="sw-role">Background / nero caldo</span>
     </div>
-    <div class="swatch" style="background:rgba(58,107,159,0.2);">
-      <div class="sw-dot" style="background:#3A6B9F;"></div>
-      <span class="sw-name">Soft Sapphire</span>
-      <span class="sw-hex">#3A6B9F</span>
-      <span class="sw-role">Accenti / CTA</span>
+    <div class="swatch" style="background:rgba(90,135,96,0.15);">
+      <div class="sw-dot" style="background:#5A8760;"></div>
+      <span class="sw-name">Bloom Green</span>
+      <span class="sw-hex">#5A8760</span>
+      <span class="sw-role">Accenti Bloom / crescita</span>
     </div>
-    <div class="swatch" style="background:rgba(184,212,232,0.1);">
-      <div class="sw-dot" style="background:#B8D4E8;"></div>
-      <span class="sw-name">Aqua Mist</span>
-      <span class="sw-hex">#B8D4E8</span>
-      <span class="sw-role">Sfondi secondari</span>
+    <div class="swatch" style="background:rgba(144,186,150,0.1);">
+      <div class="sw-dot" style="background:#90BA96;"></div>
+      <span class="sw-name">Sage Light</span>
+      <span class="sw-hex">#90BA96</span>
+      <span class="sw-role">Bloom secondario / highlight</span>
+    </div>
+    <div class="swatch" style="background:rgba(196,144,126,0.12);">
+      <div class="sw-dot" style="background:#C4907E;"></div>
+      <span class="sw-name">Mind Rose</span>
+      <span class="sw-hex">#C4907E</span>
+      <span class="sw-role">Accenti Mind / femminilità</span>
     </div>
     <div class="swatch" style="background:rgba(201,168,76,0.08);">
       <div class="sw-dot" style="background:#C9A84C;"></div>
       <span class="sw-name">Warm Gold</span>
       <span class="sw-hex">#C9A84C</span>
-      <span class="sw-role">Accento premium</span>
+      <span class="sw-role">Premium / autorevolezza</span>
     </div>
     <div class="swatch" style="background:rgba(248,245,239,0.04);">
       <div class="sw-dot" style="background:#F8F5EF;border:1px solid rgba(255,255,255,0.15);"></div>
@@ -650,15 +657,9 @@ footer{
       <span class="sw-hex">#F8F5EF</span>
       <span class="sw-role">Testo / Background chiaro</span>
     </div>
-    <div class="swatch" style="background:rgba(232,213,196,0.08);">
-      <div class="sw-dot" style="background:#E8D5C4;"></div>
-      <span class="sw-name">Blush Mist</span>
-      <span class="sw-hex">#E8D5C4</span>
-      <span class="sw-role">Touch femminile</span>
-    </div>
   </div>
   <div class="palette-rule reveal d3">
-    <strong>Regola 60 / 30 / 10:</strong> &nbsp;60% Ivory Breath + Deep Horizon come base · 30% Soft Sapphire + Aqua Mist come struttura · 10% Warm Gold come accento. Il rosa Blush Mist è la nota umana — usare con parsimonia.
+    <strong>Logica cromatica BlooMind:</strong> &nbsp;Nero caldo come base · Bloom Green per elementi di crescita e call-to-action · Mind Rose per elementi di connessione e calore umano · Warm Gold per accenti premium · Ivory per testo e spazio negativo. Verde e rosa non competono: si alternano per sezione.
   </div>
 </section>
 
@@ -736,7 +737,7 @@ footer{
     </div>
     <div>
       <div class="mood-elements reveal d2">
-        <div class="mood-el"><strong>Acqua</strong> — oceano, lago, superficie riflettente. BlooMind vive vicino all'acqua.</div>
+        <div class="mood-el"><strong>Verde naturale</strong> — foglie, erba, texture organiche. Il Bloom di BlooMind.</div>
         <div class="mood-el"><strong>Spazio bianco</strong> — abbondante. Il respiro mentale è visivo.</div>
         <div class="mood-el"><strong>Materiali naturali premium</strong> — marmo, lino, legno chiaro.</div>
         <div class="mood-el"><strong>Luce naturale morbida</strong> — mai flash, mai filtri saturi.</div>
