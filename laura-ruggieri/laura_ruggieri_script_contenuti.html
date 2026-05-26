@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Script & Contenuti — Laura Ruggieri / BlooMind</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0C0B08; --bg2:#141210;
+  --card:rgba(26,20,14,0.6); --dark:#1A1410;
+  --bloom:#5A8760; --bloom-lt:#90BA96;
+  --mind:#C4907E; --mind-lt:#DDB8AC;
+  --gold:#C9A84C; --ivory:#F8F5EF;
+  --muted:rgba(248,245,239,0.5);
+  --border:rgba(90,135,96,0.22);
+  --sep:rgba(201,168,76,0.15); --radius:8px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ivory);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:var(--bloom);border-radius:2px;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;gap:20px;background:rgba(12,11,8,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-logo img{height:30px;width:auto;display:block;}
+.nav-tag{font-size:11px;color:var(--muted);letter-spacing:2.5px;text-transform:uppercase;}
+.nav-badge{background:linear-gradient(135deg,var(--bloom),var(--mind));color:#fff;font-size:10px;font-weight:500;padding:4px 12px;border-radius:20px;letter-spacing:1px;}
+@media(max-width:768px){nav{padding:16px 20px;}.nav-tag{display:none;}}
+
+.hero{padding:140px 48px 80px;max-width:900px;margin:0 auto;}
+.hero-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bloom-lt);margin-bottom:20px;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:600;line-height:1.15;margin-bottom:24px;}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:600px;line-height:1.8;}
+@media(max-width:768px){.hero{padding:120px 20px 60px;}}
+
+.toc{max-width:900px;margin:0 auto;padding:0 48px 80px;}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:24px;}
+.toc-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;text-decoration:none;color:var(--ivory);transition:border-color .2s;}
+.toc-item:hover{border-color:var(--bloom-lt);}
+.toc-num{font-size:0.7rem;color:var(--muted);letter-spacing:1.5px;margin-bottom:6px;}
+.toc-name{font-size:0.85rem;font-weight:500;}
+@media(max-width:768px){.toc{padding:0 20px 60px;}}
+
+.section{max-width:900px;margin:0 auto;padding:60px 48px;}
+.section-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bloom-lt);margin-bottom:12px;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:600;line-height:1.2;margin-bottom:12px;}
+.section-desc{color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:40px;}
+.sep-line{border:none;border-top:1px solid var(--sep);margin:60px 0;}
+@media(max-width:768px){.section{padding:40px 20px;}}
+
+/* CONTENT BLOCK */
+.content-block{margin-bottom:64px;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.cb-header{padding:28px 32px;background:rgba(90,135,96,0.08);border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;}
+.cb-date{min-width:80px;}
+.cb-date-day{font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.cb-date-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--bloom-lt);line-height:1;}
+.cb-meta{flex:1;}
+.cb-format{font-size:0.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.cb-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;line-height:1.3;margin-bottom:8px;}
+.cb-pillars{display:flex;flex-wrap:wrap;gap:8px;}
+.cb-pill{font-size:0.68rem;padding:3px 10px;border-radius:20px;letter-spacing:0.5px;}
+.pill-laura{background:rgba(196,144,126,0.15);color:var(--mind-lt);border:1px solid rgba(196,144,126,0.3);}
+.pill-sistema{background:rgba(90,135,96,0.15);color:var(--bloom-lt);border:1px solid rgba(90,135,96,0.3);}
+.pill-bloom{background:rgba(201,168,76,0.12);color:#d4b86a;border:1px solid rgba(201,168,76,0.25);}
+.pill-mindset{background:rgba(184,212,232,0.1);color:#b8d4e8;border:1px solid rgba(184,212,232,0.2);}
+.cb-body{padding:32px;}
+.cb-section{margin-bottom:28px;}
+.cb-section:last-child{margin-bottom:0;}
+.cb-section-title{font-size:0.68rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--mind-lt);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(196,144,126,0.15);}
+
+/* SCRIPT BOX */
+.script-box{background:rgba(0,0,0,0.3);border-radius:8px;padding:24px 28px;border-left:3px solid var(--bloom);margin-bottom:8px;}
+.script-line{font-size:0.9rem;line-height:1.9;color:var(--ivory);}
+.script-line strong{color:var(--gold);}
+.script-note{font-size:0.78rem;color:var(--muted);font-style:italic;margin-top:6px;}
+
+/* CAROUSEL SLIDE PREVIEW */
+.slide-sequence{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-top:12px;}
+.slide-card{background:rgba(0,0,0,0.25);border:1px solid rgba(90,135,96,0.2);border-radius:8px;padding:16px;min-height:180px;display:flex;flex-direction:column;}
+.slide-num{font-size:0.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.slide-title{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--bloom-lt);margin-bottom:6px;line-height:1.3;}
+.slide-copy{font-size:0.75rem;color:var(--muted);line-height:1.6;}
+.slide-hook{font-size:0.7rem;color:var(--gold);margin-top:auto;padding-top:8px;border-top:1px solid rgba(201,168,76,0.1);font-style:italic;}
+
+/* EDITING TIPS */
+.tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+@media(max-width:640px){.tips-grid{grid-template-columns:1fr;}}
+.tip-card{background:rgba(0,0,0,0.25);border-radius:8px;padding:16px 20px;border-left:2px solid var(--gold);}
+.tip-label{font-size:0.65rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.tip-text{font-size:0.8rem;color:var(--muted);line-height:1.7;}
+
+/* CAPTION BOX */
+.caption-box{background:rgba(0,0,0,0.2);border:1px solid rgba(248,245,239,0.08);border-radius:8px;padding:20px 24px;}
+.caption-text{font-size:0.85rem;line-height:1.9;color:var(--ivory);white-space:pre-line;}
+.caption-hashtags{font-size:0.78rem;color:var(--bloom-lt);margin-top:12px;line-height:1.8;}
+
+/* PHASE HEADER */
+.phase-header{background:linear-gradient(135deg,rgba(90,135,96,0.12),rgba(201,168,76,0.06));border:1px solid var(--border);border-radius:12px;padding:32px 36px;margin-bottom:40px;}
+.ph-num{font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--bloom-lt);margin-bottom:8px;}
+.ph-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--ivory);margin-bottom:8px;}
+.ph-desc{font-size:0.85rem;color:var(--muted);line-height:1.7;}
+
+/* VIDEO TIPS SECTION */
+.video-tips-wrap{background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:36px;}
+.vt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:20px;}
+.vt-card{background:rgba(0,0,0,0.25);border-radius:8px;padding:20px;}
+.vt-icon{font-size:1.4rem;margin-bottom:10px;}
+.vt-title{font-size:0.78rem;font-weight:500;color:var(--gold);margin-bottom:6px;}
+.vt-body{font-size:0.75rem;color:var(--muted);line-height:1.7;}
+
+/* FOOTER */
+footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.footer-logo img{height:34px;opacity:0.8;}
+.footer-info{font-size:0.75rem;color:var(--muted);line-height:1.8;}
+.footer-info a{color:var(--gold);text-decoration:none;}
+@media(max-width:768px){footer{padding:40px 20px;flex-direction:column;align-items:flex-start;}}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;}
+.reveal.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom">
+  </div>
+  <span class="nav-tag">Script & Contenuti</span>
+  <span class="nav-badge">BlooMind · 2026</span>
+</nav>
+
+<div class="hero reveal">
+  <p class="hero-label">Laura Ruggieri / BlooMind</p>
+  <h1 class="hero-title">Script, Copy e Guida<br>al Montaggio</h1>
+  <p class="hero-sub">Tutto il necessario per pubblicare ogni contenuto del calendario 27 maggio → 30 giugno. Script parola per parola per i Reel, slide per slide per i caroselli, caption pronti. Più i consigli pratici di montaggio.</p>
+</div>
+
+<div class="toc reveal">
+  <p class="section-label">Indice</p>
+  <div class="toc-grid">
+    <a href="#consigli-video" class="toc-item"><div class="toc-num">00</div><div class="toc-name">Consigli video e montaggio</div></a>
+    <a href="#fase0" class="toc-item"><div class="toc-num">Fase 0</div><div class="toc-name">27-31 Maggio</div></a>
+    <a href="#fase1a" class="toc-item"><div class="toc-num">Fase 1 · A</div><div class="toc-name">2-6 Giugno</div></a>
+    <a href="#fase1b" class="toc-item"><div class="toc-num">Fase 1 · B</div><div class="toc-name">9-13 Giugno</div></a>
+    <a href="#fase2" class="toc-item"><div class="toc-num">Fase 2</div><div class="toc-name">16-22 Giugno</div></a>
+    <a href="#fase3" class="toc-item"><div class="toc-num">Fase 3-4</div><div class="toc-name">23-30 Giugno</div></a>
+  </div>
+</div>
+
+<hr class="sep-line">
+
+<!-- CONSIGLI VIDEO -->
+<section class="section" id="consigli-video">
+  <div class="reveal">
+    <p class="section-label">00 — Guida pratica</p>
+    <h2 class="section-title">Consigli video e montaggio</h2>
+    <p class="section-desc">Non servono attrezzature professionali. Servono luce, chiarezza e autenticità. Queste regole valgono per tutti i Reel del calendario.</p>
+  </div>
+  <div class="video-tips-wrap reveal">
+    <p style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Riprese</p>
+    <div class="vt-grid">
+      <div class="vt-card">
+        <div class="vt-icon">💡</div>
+        <div class="vt-title">Luce naturale — sempre</div>
+        <div class="vt-body">Finestra di fronte o laterale al viso. Mai dietro (diventi silhouette). Ora ideale: mattina entro le 11 o pomeriggio dopo le 16. Se sei in casa la sera: luce LED calda da 5.500K davanti a te — costa 15€ su Amazon.</div>
+      </div>
+      <div class="vt-card">
+        <div class="vt-icon">📱</div>
+        <div class="vt-title">Smartphone verticale su treppiede</div>
+        <div class="vt-body">Anche un treppiede da 12€ funziona. Il video tenuto in mano fa sembrare tutto amatoriale. Formato: 9:16 (verticale). Risoluzione minima: 1080p. Inquadratura: dal petto in su, lasciar spazio sopra la testa.</div>
+      </div>
+      <div class="vt-card">
+        <div class="vt-icon">🎙️</div>
+        <div class="vt-title">Audio — il vero differenziatore</div>
+        <div class="vt-body">Il microfono lavalier wireless (Hollyland Lark M1 o simile, ~60€) cambia tutto. In alternativa: registra in un posto silenzioso, a max 50cm dal telefono. Non serve la voce perfetta — serve che si senta bene.</div>
+      </div>
+      <div class="vt-card">
+        <div class="vt-icon">👗</div>
+        <div class="vt-title">Look e sfondo</div>
+        <div class="vt-body">Colori neutri o toni della palette BlooMind (blu notte, verde, avorio). Sfondo: parete pulita, libreria, scrivania ordinata. Niente sfondi caotici o cucina in disordine. Il look deve dire "professionale", non "influencer".</div>
+      </div>
+      <div class="vt-card">
+        <div class="vt-icon">🎬</div>
+        <div class="vt-title">Girare più versioni</div>
+        <div class="vt-body">Gira sempre 2-3 versioni della stessa apertura. Le prime 3 secondi sono decisive — Instagram decide in quell'istante se promuovere il video. Se l'hook non viene bene al primo giro, rigiralo finché non suona naturale.</div>
+      </div>
+      <div class="vt-card">
+        <div class="vt-icon">⏱️</div>
+        <div class="vt-title">Durata ottimale</div>
+        <div class="vt-body">Reel parlato: 45-70 secondi. Sotto i 30s suona affrettato; sopra i 90s si perde attenzione. Tagliare tutti i "ehm", le pause lunghe, le ripetizioni. Ogni secondo deve guadagnarsi il diritto di stare nel video.</div>
+      </div>
+    </div>
+  </div>
+  <div class="video-tips-wrap reveal" style="margin-top:24px;border-color:rgba(90,135,96,0.2);">
+    <p style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--bloom-lt);">Montaggio — app consigliate</p>
+    <div class="vt-grid">
+      <div class="vt-card">
+        <div class="vt-icon">📲</div>
+        <div class="vt-title">CapCut (gratis, iOS/Android)</div>
+        <div class="vt-body">Il più semplice. Taglia i silenzi, aggiunge sottotitoli automatici, permette transizioni. Per il 90% dei Reel di Laura è sufficiente. Attenzione: disattiva il watermark CapCut nelle impostazioni.</div>
+      </div>
+      <div class="vt-card">
+        <div class="vt-icon">🖥️</div>
+        <div class="vt-title">DaVinci Resolve (gratis, Mac/PC)</div>
+        <div class="vt-body">Per i video più curati (testimonial Federica, Reel viaggio incentivo). Ha il noise reduction per audio, color grading professionale. Curva di apprendimento: 2-3 ore per il workflow base.</div>
+      </div>
+      <div class="vt-card">
+        <div class="vt-icon">✂️</div>
+        <div class="vt-title">Workflow rapido CapCut</div>
+        <div class="vt-body">1. Importa clip → 2. Taglia silenzi (funzione automatica) → 3. Aggiungi sottotitoli auto → 4. Aggiungi musica (volume 20-30%) → 5. Aggiungi testo hook nei primi 2 secondi → 6. Esporta 1080p 30fps.</div>
+      </div>
+      <div class="vt-card">
+        <div class="vt-icon">🎵</div>
+        <div class="vt-title">Musica di sottofondo</div>
+        <div class="vt-body">Usa musiche già virali su Instagram per aumentare la copertura. Volume: mai sopra il 25% rispetto alla voce. Genere consigliato: piano/ambient per contenuti emozionali, lo-fi strumentale per contenuti educativi. Evita musica con testo in italiano.</div>
+      </div>
+      <div class="vt-card">
+        <div class="vt-icon">💬</div>
+        <div class="vt-title">Sottotitoli — obbligatori</div>
+        <div class="vt-body">Il 70% degli utenti guarda i Reel senza audio. I sottotitoli non sono optional. Font: pulito, Sans-Serif, bianco su sfondo scuro semitrasparente. Posizione: zona centrale-bassa (non coprire il viso). CapCut li genera in automatico — correggere gli errori prima di pubblicare.</div>
+      </div>
+      <div class="vt-card">
+        <div class="vt-icon">📐</div>
+        <div class="vt-title">Hook testuale (primi 2 secondi)</div>
+        <div class="vt-body">Aggiungere nel montaggio un testo sovrapposto che riassume l'hook verbale. Es: "Perché nel tuo team qualcuno si blocca sempre?" — grande, leggibile, nei primissimi frame. Chi scrolla si ferma se vede qualcosa che lo riguarda.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep-line">
+
+<!-- FASE 0 -->
+<section class="section" id="fase0">
+  <div class="phase-header reveal">
+    <div class="ph-num">Fase 0 · 27-31 Maggio</div>
+    <div class="ph-title">Lancio immediato</div>
+    <div class="ph-desc">Tre contenuti in 5 giorni per sfruttare il traffico del compleanno e uscire subito col bonus auto. Il tono è leggero ma autorevole — il compleanno dà il permesso alla leggerezza, il bonus auto porta il messaggio professionale.</div>
+  </div>
+
+  <!-- 27 MAG: STORIES COMPLEANNO -->
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Mer</div><div class="cb-date-num">27 Mag</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Instagram Stories · Giornata</div>
+        <div class="cb-title">Stories di compleanno</div>
+        <div class="cb-pillars"><span class="cb-pill pill-laura">Laura in Prima Persona</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Struttura Stories del giorno</div>
+        <div class="script-box">
+          <div class="script-line"><strong>Stories 1 — mattina:</strong> Foto o video breve "buongiorno" con sticker compleanno. Testo semplice: "Oggi si festeggia 🎂" oppure lasciare solo la foto senza testo — l'autenticità conta più della perfezione.</div>
+          <div class="script-line"><strong>Stories 2 — pomeriggio:</strong> Sticker domanda: "Cosa fate quando compite gli anni? Lavorate o vi prendete una pausa?" — genera engagement divertente e dati sul pubblico.</div>
+          <div class="script-line"><strong>Stories 3 — sera:</strong> Ringraziamento breve, autentico. Risposta ad alcune persone che hanno scritto. Nessun discorso — semplicità.</div>
+          <div class="script-note">Il feed oggi è VUOTO. Nessun post. L'attenzione del compleanno viene preservata per domani/dopodomani.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28-29 MAG: REEL BONUS AUTO -->
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Gio/Ven</div><div class="cb-date-num">28-29 Mag</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Reel · 30-45 secondi · Instagram + Facebook</div>
+        <div class="cb-title">"Compleanno ieri. Macchina nuova oggi. Grazie, DuoLife."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-bloom">BlooMind Ecosystem</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Script del Reel (parola per parola)</div>
+        <div class="script-box">
+          <div class="script-line"><strong>[Inquadratura: accanto alla macchina nuova, tono divertito ma calmo]</strong></div>
+          <div class="script-line">— "Ieri ho spento le candeline. Stamattina ho capito che l'azienda aveva già preparato il suo regalo."</div>
+          <div class="script-line"><em>[breve pausa — sorriso — giro attorno alla macchina o dettaglio del volante]</em></div>
+          <div class="script-line">— "Questo è il bonus auto DuoLife. Non è un regalo a me — è un meccanismo che l'azienda ha costruito per le sue partner quando raggiungono certi obiettivi."</div>
+          <div class="script-line">— "Io ci ho messo del tempo. E ora ce l'ho."</div>
+          <div class="script-line"><em>[sguardo diretto in camera]</em></div>
+          <div class="script-line">— "Se ti incuriosisce come funziona, scrivimi in DM. Non ci sono scorciatoie — ma c'è un sistema."</div>
+          <div class="script-note">Durata target: 30-40 secondi. Tono: sereno, ironico sul timing, mai vanaglorioso. Non enfatizzare il prezzo della macchina né confrontarla con la precedente in modo esplicito — la differenza si vede.</div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Consigli di ripresa</div>
+        <div class="tips-grid">
+          <div class="tip-card"><div class="tip-label">Location</div><div class="tip-text">All'aperto, luce naturale del mattino. Davanti alla macchina o sul lato guidatore. Sfondo pulito — no altri veicoli in modo caotico.</div></div>
+          <div class="tip-card"><div class="tip-label">Montaggio</div><div class="tip-text">Clip 1: Laura che parla (25-30s). Clip 2: dettaglio cruscotto o logo macchina (3-4s). Musica: leggera, ambient, vol 20%. Hook testuale: "Il regalo di compleanno dell'azienda."</div></div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Caption</div>
+        <div class="caption-box">
+          <div class="caption-text">Ieri il compleanno. Oggi questo.
+
+Non era nei piani di questa settimana, ma a volte le cose arrivano quando sei pronta a riceverle.
+
+Il bonus auto DuoLife non è un caso — è parte di un sistema che funziona quando lo applichi con metodo.
+
+Io ci ho creduto. Ho costruito. E adesso guido questo.
+
+Se vuoi capire come funziona davvero (senza promesse esagerate): scrivimi in DM.</div>
+          <div class="caption-hashtags">#duolife #bloomind #bonusauto #networkmarketing #softmarketing #crescitapersonale #BlooMindCommunity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 30-31 MAG: CAROSELLO SISTEMA -->
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Sab/Dom</div><div class="cb-date-num">30-31 Mag</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Carosello · 5 slide · Instagram + Facebook</div>
+        <div class="cb-title">"Se nel tuo team qualcuno non riesce a partire, leggi questo."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-sistema">Il Sistema PRO BlooMind</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Slide per slide</div>
+        <div class="slide-sequence">
+          <div class="slide-card">
+            <div class="slide-num">Slide 1 — Hook</div>
+            <div class="slide-title">Se nel tuo team qualcuno non riesce a partire...</div>
+            <div class="slide-copy">...leggi questo.</div>
+            <div class="slide-hook">Sfondo scuro. Testo centrato. Font Cormorant per il titolo.</div>
+          </div>
+          <div class="slide-card">
+            <div class="slide-num">Slide 2 — Il problema</div>
+            <div class="slide-title">Non è la motivazione che manca.</div>
+            <div class="slide-copy">Sa cosa fare. Conosce i prodotti. È convinta del sistema. Eppure ogni volta che deve fare il passo successivo — si ferma.</div>
+            <div class="slide-hook">Far riconoscere la situazione, non giudicarla.</div>
+          </div>
+          <div class="slide-card">
+            <div class="slide-num">Slide 3 — Il vero blocco</div>
+            <div class="slide-title">Il problema è la sequenza.</div>
+            <div class="slide-copy">Le viene chiesto di esporsi prima di avere risultati da mostrare. E questo — per molte persone — è paralizzante.</div>
+            <div class="slide-hook">Nessun giudizio verso chi fa diversamente. Solo descrizione del fenomeno.</div>
+          </div>
+          <div class="slide-card">
+            <div class="slide-num">Slide 4 — BlooMind</div>
+            <div class="slide-title">BlooMind inverte la sequenza.</div>
+            <div class="slide-copy">Prima costruisci i risultati — con un sistema professionale, senza esporti. Poi, quando hai la sicurezza del metodo, decidi tu se e come esporti.</div>
+            <div class="slide-hook">La soluzione emerge naturalmente dalla descrizione del problema.</div>
+          </div>
+          <div class="slide-card">
+            <div class="slide-num">Slide 5 — CTA</div>
+            <div class="slide-title">Se hai qualcuno così nel tuo team (o se sei tu quella persona)...</div>
+            <div class="slide-copy">...scrivimi in DM. Parliamo di come BlooMind può cambiare la sequenza anche per te.</div>
+            <div class="slide-hook">CTA diretta ma non aggressiva.</div>
+          </div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Caption</div>
+        <div class="caption-box">
+          <div class="caption-text">C'è una cosa che vedo spesso nei team: qualcuno che capisce tutto — e non riesce ad iniziare.
+
+Non è pigrizia. Non è mancanza di voglia. È che le stiamo chiedendo di fare qualcosa nel momento sbagliato.
+
+Nel carosello spiego cosa intendo — e come si risolve.
+
+Salva questo post se ti riconosci. Scrivimi in DM se vuoi parlarne.</div>
+          <div class="caption-hashtags">#bloomind #teambuilding #networkmarketing #leadership #crescitapersonale #softmarketing #BlooMindCommunity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep-line">
+
+<!-- FASE 1A -->
+<section class="section" id="fase1a">
+  <div class="phase-header reveal">
+    <div class="ph-num">Fase 1-A · 2-6 Giugno</div>
+    <div class="ph-title">Costruzione autorevolezza — prima settimana</div>
+    <div class="ph-desc">Il profilo deve essere pronto per il traffico ADS DuoLife (~10 giugno). Tre contenuti che costruiscono il posizionamento di Laura come mentor di leader, con un linguaggio empatico che fa riconoscere — non che vende.</div>
+  </div>
+
+  <!-- 2 GIU: REEL "NON SONO QUELLO" -->
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Lun</div><div class="cb-date-num">2 Giu</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Reel parlato · 60 secondi · Instagram + Facebook</div>
+        <div class="cb-title">"Non sono quello che pensavi fosse una networker."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-laura">Laura in Prima Persona</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Script del Reel</div>
+        <div class="script-box">
+          <div class="script-line"><strong>[Inquadratura fissa, ambiente professionale, sguardo diretto]</strong></div>
+          <div class="script-line">— "Se senti 'network marketing' e ti viene in mente qualcosa di preciso..."</div>
+          <div class="script-line"><em>[pausa di 1 secondo — lasciar respirare la frase]</em></div>
+          <div class="script-line">— "...questo video è per te. Anche se pensi di sapere già come finisce."</div>
+          <div class="script-line"><em>[piccolo cambio di tono — più diretto]</em></div>
+          <div class="script-line">— "Mi chiamo Laura. Non faccio la coach sui social. Non ho foto davanti alle Maldive. Non ti dico 'cambia vita in 3 mesi'."</div>
+          <div class="script-line">— "Ho costruito qualcosa di concreto — con anni di lavoro reale, un sistema che funziona e una community di persone che stimo."</div>
+          <div class="script-line">— "Quello che faccio si chiama BlooMind. Ed è molto diverso da quello che probabilmente immagini."</div>
+          <div class="script-line"><em>[sguardo diretto, tono calmo]</em></div>
+          <div class="script-line">— "Seguimi se vuoi vedere la differenza."</div>
+          <div class="script-note">Tono: calmo, diretto, senza difensività. Non spiegare cosa è il network marketing — chi è nuovo lo scopre guardando. Chi è diffidente si ferma sull'apertura.</div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Consigli di ripresa e montaggio</div>
+        <div class="tips-grid">
+          <div class="tip-card"><div class="tip-label">Setup</div><div class="tip-text">Scrivania o ambiente studio/ufficio. Luce frontale naturale o LED caldo. Look professionale, colori neutri. No gioielli vistosi.</div></div>
+          <div class="tip-card"><div class="tip-label">Hook visivo</div><div class="tip-text">Nei primi 2 secondi: testo sovrapposto in grande "Se senti 'network marketing' e ti viene in mente qualcosa di preciso..." — ferma lo scroll.</div></div>
+          <div class="tip-card"><div class="tip-label">Ritmo</div><div class="tip-text">Pause intenzionali dopo le affermazioni importanti. Non parlare veloce per stare nei 60 secondi — parla bene e ritaglia in post-produzione.</div></div>
+          <div class="tip-card"><div class="tip-label">Fine reel</div><div class="tip-text">Ultimi 3-4 secondi: freeze sull'ultimo sguardo in camera, nessuna musica in crescendo esagerata. La forza è nel silenzio finale.</div></div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Caption</div>
+        <div class="caption-box">
+          <div class="caption-text">C'è uno schema fisso su come viene rappresentato questo settore.
+
+Io non ci rientro in quello schema.
+
+Non perché voglia essere diversa per forza — ma perché ho trovato un modo di lavorare che rispetta le persone, produce risultati concreti e non richiede di fingere qualcosa che non sei.
+
+Si chiama BlooMind.
+
+E se ti è capitato di guardare il network marketing con scetticismo — ti capisco. Guardami per un po'. Poi dimmi se l'immagine che hai in testa cambia.</div>
+          <div class="caption-hashtags">#bloomind #networkmarketing #softmarketing #personalbrand #imprenditoria #BlooMindCommunity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 GIU: CAROSELLO TEAM BLOCCATO -->
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Mer</div><div class="cb-date-num">4 Giu</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Carosello · 5 slide · Instagram + Facebook</div>
+        <div class="cb-title">"Perché qualcuno nel tuo team capisce tutto — e non riesce ad iniziare."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-sistema">Il Sistema PRO BlooMind</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Slide per slide</div>
+        <div class="slide-sequence">
+          <div class="slide-card">
+            <div class="slide-num">Slide 1 — Hook</div>
+            <div class="slide-title">C'è qualcuno nel tuo team che capisce tutto. Eppure si ferma sempre.</div>
+            <div class="slide-copy">Ti è capitato?</div>
+            <div class="slide-hook">Domanda diretta. Chi ha un team risponde "sì" nella testa e scorre.</div>
+          </div>
+          <div class="slide-card">
+            <div class="slide-num">Slide 2 — Il momento</div>
+            <div class="slide-title">È brava. Sa cosa fare. È motivata.</div>
+            <div class="slide-copy">Ma il momento prima di chiamare una persona, o di pubblicare qualcosa... si blocca. E tu non capisci perché.</div>
+            <div class="slide-hook">Descrivere il momento preciso del blocco — riconoscimento totale.</div>
+          </div>
+          <div class="slide-card">
+            <div class="slide-num">Slide 3 — Il perché</div>
+            <div class="slide-title">Non è mancanza di voglia. È che le stai chiedendo di saltare un passaggio.</div>
+            <div class="slide-copy">Le stai chiedendo di esporsi — prima di avere qualcosa da mostrare. Per molte persone, questo è il blocco invisibile.</div>
+            <div class="slide-hook">Nessun giudizio. Solo la descrizione del fenomeno.</div>
+          </div>
+          <div class="slide-card">
+            <div class="slide-num">Slide 4 — La svolta</div>
+            <div class="slide-title">Cosa cambia quando costruisce prima il risultato?</div>
+            <div class="slide-copy">Quando ha qualcosa di concreto tra le mani — un piccolo guadagno, una trasformazione reale — l'esposizione non fa più paura. Viene da sé.</div>
+            <div class="slide-hook">La soluzione emerge come conseguenza logica del problema descritto — non come pitch.</div>
+          </div>
+          <div class="slide-card">
+            <div class="slide-num">Slide 5 — CTA</div>
+            <div class="slide-title">Se hai qualcuno così in team — parliamo.</div>
+            <div class="slide-copy">In DM ti racconto come BlooMind lavora su questo. Senza promesse. Con il metodo.</div>
+            <div class="slide-hook">CTA gentile. Non chiede "unisciti" — chiede "parliamone".</div>
+          </div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Caption</div>
+        <div class="caption-box">
+          <div class="caption-text">È una delle cose che vedo più spesso.
+
+Una persona in team che ha tutto: la volontà, la comprensione del sistema, la voglia di farcela. E poi si ferma ogni volta che deve fare il passo concreto.
+
+Non è pigrizia. È che nessuno ha sistemato la sequenza per lei.
+
+Nel carosello spiego cosa intendo. Salvalo se ti riconosci — nel tuo team o in te stessa.
+
+DM aperto per chi vuole parlarne.</div>
+          <div class="caption-hashtags">#leadership #teambuilding #bloomind #networkmarketing #crescitapersonale #mentoring #BlooMindCommunity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 GIU: REEL "MI ERO BLOCCATA" -->
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Ven</div><div class="cb-date-num">6 Giu</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Reel parlato · 50-60 secondi · Instagram + Facebook</div>
+        <div class="cb-title">"Mi ero bloccata. E non capivo perché."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-laura">Laura in Prima Persona</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Script del Reel</div>
+        <div class="script-box">
+          <div class="script-line"><strong>[Tono personale, più intimo rispetto al Reel del 2 giu. Può essere girato anche in ambiente diverso — cucina, salotto — più "umano".]</strong></div>
+          <div class="script-line">— "C'è stata una fase in cui mi bloccavo. E non capivo perché."</div>
+          <div class="script-line"><em>[pausa — lasciare spazio alla frase]</em></div>
+          <div class="script-line">— "Non era pigrizia. Non era paura nel senso classico del termine."</div>
+          <div class="script-line">— "Era che mi stavano chiedendo di fare qualcosa — nel modo in cui me lo chiedevano — prima che fossi pronta a farlo in quel modo."</div>
+          <div class="script-line"><em>[sguardo leggermente laterale, pensieroso — poi torna in camera]</em></div>
+          <div class="script-line">— "Ho capito solo dopo che non era un mio problema. Era una questione di sequenza."</div>
+          <div class="script-line">— "Quando ho trovato il modo giusto — per me — le cose si sono sbloccate. Non dall'oggi al domani. Ma si sono sbloccate."</div>
+          <div class="script-line"><em>[tono caldo, diretto]</em></div>
+          <div class="script-line">— "Se anche tu ti sei sentita così — in qualsiasi ambito — scrivimi. Non per convincerti di niente. Per ascoltarti."</div>
+          <div class="script-note">Questo è il Reel più vulnerabile del calendario. Non risolvere troppo — lasciare la sensazione aperta. Chi si riconosce vuole scrivere. Non spiegare il sistema — raccontare solo la propria esperienza.</div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Consigli di ripresa</div>
+        <div class="tips-grid">
+          <div class="tip-card"><div class="tip-label">Tono</div><div class="tip-text">Più intimo, meno "presentazione". Può essere girato più casual — non richiede setup perfetto. La luce morbida aiuta.</div></div>
+          <div class="tip-card"><div class="tip-label">Montaggio</div><div class="tip-text">Nessun testo sovrapposto aggressivo. Hook visivo minimo. Musica piano soft a basso volume. Lasciare che la voce faccia il lavoro.</div></div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Caption</div>
+        <div class="caption-box">
+          <div class="caption-text">Mi blocco ancora quando ci penso.
+
+Quella fase in cui capivo tutto — e non riuscivo ad iniziare. Non per mancanza di voglia. Per qualcos'altro che ho impiegato tempo a nominare.
+
+Non ve la racconto tutta qui. Ve la racconto nel Reel.
+
+Quello che posso dirvi è che si sblocca. Con il metodo giusto. Con le persone giuste intorno.</div>
+          <div class="caption-hashtags">#crescitapersonale #mindset #bloomind #autenticita #personaldevelopment #networkmarketing #BlooMindCommunity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep-line">
+
+<!-- FASE 1B -->
+<section class="section" id="fase1b">
+  <div class="phase-header reveal">
+    <div class="ph-num">Fase 1-B · 9-13 Giugno</div>
+    <div class="ph-title">Costruzione autorevolezza — seconda settimana</div>
+    <div class="ph-desc">Tre contenuti che qualificano il lead, mostrano il lato personale e portano la prima prova sociale professionale (Federica). Le ADS DuoLife sono probabilmente già attive — il profilo deve essere a pieno regime.</div>
+  </div>
+
+  <!-- 9 GIU: CAROSELLO 5 SEGNALI -->
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Lun</div><div class="cb-date-num">9 Giu</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Carosello · 6 slide · Instagram + Facebook</div>
+        <div class="cb-title">"5 segnali che il tuo team è pronto per BlooMind."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-mindset">Mindset & Leadership</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Slide per slide</div>
+        <div class="slide-sequence">
+          <div class="slide-card">
+            <div class="slide-num">Slide 1 — Hook</div>
+            <div class="slide-title">5 segnali che il tuo team è pronto per un sistema professionale.</div>
+            <div class="slide-copy">Non si tratta di motivazione. Si tratta di struttura.</div>
+            <div class="slide-hook">Parla al leader, non alla persona bloccata.</div>
+          </div>
+          <div class="slide-card">
+            <div class="slide-num">Slide 2</div>
+            <div class="slide-title">1. Ci crede — ma non parte.</div>
+            <div class="slide-copy">Ha capito il sistema. Ha visto i risultati degli altri. Eppure continua ad aspettare "il momento giusto".</div>
+          </div>
+          <div class="slide-card">
+            <div class="slide-num">Slide 3</div>
+            <div class="slide-title">2. Si espone troppo presto — e perde credibilità.</div>
+            <div class="slide-copy">Posta prima di avere risultati. Il pubblico non la segue. Si demoralizza. Smette.</div>
+          </div>
+          <div class="slide-card">
+            <div class="slide-num">Slide 4</div>
+            <div class="slide-title">3. Ha paura di sembrare "quella che vende".</div>
+            <div class="slide-copy">Non vuole essere percepita come invadente dal suo network. Quindi non fa niente.</div>
+          </div>
+          <div class="slide-card">
+            <div class="slide-num">Slide 5</div>
+            <div class="slide-title">4. Lavora tanto — ma non vede crescita.</div>
+            <div class="slide-copy">Sforzo senza metodo non porta dove vuoi andare. Ha bisogno di un sistema, non di più ore.</div>
+          </div>
+          <div class="slide-card">
+            <div class="slide-num">Slide 6 — CTA</div>
+            <div class="slide-title">5. Tu vedi il potenziale — ma non sai come sbloccarlo.</div>
+            <div class="slide-copy">Questo è il segnale più chiaro. Scrivimi in DM — parliamo di come BlooMind lavora su questo.</div>
+          </div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Caption</div>
+        <div class="caption-box">
+          <div class="caption-text">Quando guido un team, imparo a leggere i segnali.
+
+Non sono segnali di fallimento. Sono segnali che manca la struttura giusta — non le persone giuste.
+
+Nel carosello ne ho raccolti 5. Se ne riconosci anche solo 2, parliamoci.
+
+DM aperto.</div>
+          <div class="caption-hashtags">#leadership #bloomind #teambuilding #networkmarketing #mentoring #imprenditoria #BlooMindCommunity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11 GIU: POST ERRORI -->
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Mer</div><div class="cb-date-num">11 Giu</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Post singolo · copy lungo · Instagram + Facebook</div>
+        <div class="cb-title">"Cosa ho sbagliato prima di trovare il sistema giusto."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-laura">Laura in Prima Persona</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Copy del post (caption lunga)</div>
+        <div class="caption-box">
+          <div class="caption-text">Tre errori concreti. Non "mi mancava la mentalità giusta" — cose specifiche che ho fatto e che non rifarei.
+
+1. Ho puntato subito sulla quantità.
+Più persone chiamate, più risultati. Pensavo fosse così. Non lo è. Ho bruciato energie e qualche relazione — perché non avevo un metodo selettivo.
+
+2. Ho messo le persone in posizioni per cui non erano pronte.
+Credevo che esporle sui social le avrebbe spinte a crescere. In certi casi le ha bloccate. Ho imparato che la sequenza conta quanto la direzione.
+
+3. Ho confuso l'entusiasmo con la preparazione.
+Ero convinta. Ero motivata. Ma la motivazione senza un sistema porta lontano nella direzione sbagliata.
+
+Queste cose le ho capite nel tempo. BlooMind è in parte la risposta a questi errori.
+
+Non ve lo racconto per sembrare umile. Ve lo racconto perché probabilmente state facendo almeno uno di questi tre errori adesso — e si può sistemare.</div>
+          <div class="caption-hashtags">#bloomind #networkmarketing #leadership #errori #crescitapersonale #softmarketing #BlooMindCommunity</div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Note creative</div>
+        <div class="script-box">
+          <div class="script-line">Questo è un post di testo — no foto del viso richiesta. Può avere un'immagine di sfondo neutra (scrivania, taccuino, dettaglio ambiente) o solo lo sfondo colore BlooMind con testo sovrapposto in Canva.</div>
+          <div class="script-line">Alternativa: Reel parlato da 90 secondi con lo stesso contenuto — più engagement potenziale ma richiede più produzione. Valutare in base al tempo disponibile.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13 GIU: REEL FEDERICA -->
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Ven</div><div class="cb-date-num">13 Giu</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Reel testimonial · 45-60 secondi · Instagram + Facebook</div>
+        <div class="cb-title">"Federica gestisce clienti da vent'anni. In 4 mesi il suo commercialista le fa domande diverse."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-bloom">BlooMind Ecosystem</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Opzione A — Reel a due voci (Laura + Federica)</div>
+        <div class="script-box">
+          <div class="script-line"><strong>[Laura, in apertura — 10 secondi]</strong></div>
+          <div class="script-line">— "Vi racconto di Federica. È una consulente fiscale. Lavora con i suoi clienti da vent'anni. Non aveva mai considerato il network marketing."</div>
+          <div class="script-line"><strong>[Federica — 30-35 secondi]</strong></div>
+          <div class="script-line">— "Ero scettica, diciamo così. Ma Laura non mi ha venduto niente — mi ha mostrato un sistema. Ho iniziato a applicarlo nel modo che faceva per me."</div>
+          <div class="script-line">— "In 4 mesi ho avuto risultati che non mi aspettavo così presto. Non vi dico i numeri — vi dico che il mio commercialista ha iniziato a farmi domande che non mi aveva mai fatto prima."</div>
+          <div class="script-line"><strong>[Laura, chiusura — 5 secondi]</strong></div>
+          <div class="script-line">— "Questo è BlooMind. Scrivimi se vuoi conoscerlo."</div>
+          <div class="script-note">I numeri non vengono mai citati esplicitamente. "Domande diverse del commercialista" = reddito diverso. Chi capisce, capisce — ed è esattamente il target giusto.</div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Opzione B — Solo Laura racconta (se Federica non vuole apparire)</div>
+        <div class="script-box">
+          <div class="script-line"><strong>[Laura — 50-60 secondi]</strong></div>
+          <div class="script-line">— "Nel mio team c'è una consulente fiscale. Gestisce clienti da vent'anni. Ha un lavoro solido, una reputazione costruita nel tempo."</div>
+          <div class="script-line">— "Quando le ho presentato BlooMind era scettica — il che mi sembrava onesto. Non volevo persone entusiaste, volevo persone intelligenti."</div>
+          <div class="script-line">— "In quattro mesi ha applicato il sistema nel modo che le era più naturale. Senza stravolgere il suo lavoro. Senza esporsi sui social in modo che non sentiva suo."</div>
+          <div class="script-line">— "Il risultato? Il suo commercialista adesso le fa domande diverse. Ve lo lascio immaginare."</div>
+          <div class="script-line"><em>[piccolo sorriso]</em></div>
+          <div class="script-line">— "Se anche voi avete un lavoro solido e volete sapere come si integra con questo sistema, scrivimi."</div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Caption</div>
+        <div class="caption-box">
+          <div class="caption-text">Non tutti i risultati si misurano in numeri.
+
+Alcuni si misurano nel tipo di domande che il tuo commercialista inizia a farti.
+
+Federica è nel mio team da 4 mesi. Arrivava dal mondo della consulenza fiscale — scettica, precisa, con standard alti. Esattamente il tipo di persona che volevo.
+
+In 4 mesi qualcosa è cambiato. Nel lavoro e nel modo in cui si guarda.
+
+Vi racconto tutto nel Reel.</div>
+          <div class="caption-hashtags">#bloomind #risultati #networkmarketing #testimonial #crescitapersonale #softmarketing #BlooMindCommunity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep-line">
+
+<!-- FASE 2 -->
+<section class="section" id="fase2">
+  <div class="phase-header reveal">
+    <div class="ph-num">Fase 2 · 16-22 Giugno</div>
+    <div class="ph-title">Hype viaggio nel feed</div>
+    <div class="ph-desc">Le Stories stanno già costruendo il viaggio dal 3 giugno. Qui il feed aggiunge 3 post che alzano il livello prima della partenza — per chi non segue le Stories e per chi vuole un segnale visibile nel profilo.</div>
+  </div>
+
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Lun</div><div class="cb-date-num">16 Giu</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Reel teaser · 30 secondi · Instagram + Facebook</div>
+        <div class="cb-title">"A fine giugno succede qualcosa di importante."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-bloom">BlooMind Ecosystem</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Script</div>
+        <div class="script-box">
+          <div class="script-line"><strong>[Tono misterioso, divertito — non drammatico]</strong></div>
+          <div class="script-line">— "A fine giugno io e alcune persone del mio team saremo in un posto molto preciso."</div>
+          <div class="script-line"><em>[pausa]</em></div>
+          <div class="script-line">— "Non vi anticipo tutto. Quello che posso dirvi è che non è una vacanza — anche se probabilmente sembrerà una."</div>
+          <div class="script-line">— "Se volete sapere chi viene e dove andiamo, seguitemi nelle Stories. Il reveal sta già succedendo."</div>
+          <div class="script-note">Questo Reel serve anche come ponte verso le Stories per chi non le segue abitualmente. Non rivelare la Polonia ancora nel feed — riservarla alle Stories e al Reel del 18 giu.</div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Caption</div>
+        <div class="caption-box">
+          <div class="caption-text">Fine giugno. Noi. Un posto che non dimenticheremo.
+
+Non è una vacanza — anche se probabilmente sembrerà una.
+
+Chi viene con me lo sto svelando nelle Stories uno alla volta. Mancano ancora 7 giorni al reveal completo.
+
+Se non stai seguendo le Stories, inizia adesso.</div>
+          <div class="caption-hashtags">#bloomind #viaggioincentivo #duolife #team #BlooMindCommunity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Mer</div><div class="cb-date-num">18 Giu</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Carosello · 4 slide · Instagram + Facebook</div>
+        <div class="cb-title">"Cosa significa lavorare con un'azienda che ti porta dai fondatori."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-sistema">Il Sistema PRO BlooMind</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Slide per slide</div>
+        <div class="slide-sequence">
+          <div class="slide-card">
+            <div class="slide-num">Slide 1</div>
+            <div class="slide-title">Non sto parlando di una call su Zoom.</div>
+            <div class="slide-copy">Sto parlando di stare nella stessa stanza con chi ha costruito l'azienda.</div>
+          </div>
+          <div class="slide-card">
+            <div class="slide-num">Slide 2</div>
+            <div class="slide-title">Il 23 giugno saremo in Polonia.</div>
+            <div class="slide-copy">All'HQ DuoLife. Ceneremo con i fondatori. Faremo strategia. Tutto pagato dall'azienda come incentivo per le top partner.</div>
+          </div>
+          <div class="slide-card">
+            <div class="slide-num">Slide 3</div>
+            <div class="slide-title">Perché vi racconto questo?</div>
+            <div class="slide-copy">Non per vantarmi. Ma perché questo è il tipo di azienda che c'è dietro a BlooMind. E la solidità di un sistema si vede anche da qui.</div>
+          </div>
+          <div class="slide-card">
+            <div class="slide-num">Slide 4 — CTA</div>
+            <div class="slide-title">Seguimi nelle Stories per il live dal viaggio.</div>
+            <div class="slide-copy">Dal 23 giu sarò online con tutto quello che succede. In tempo reale.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep-line">
+
+<!-- FASE 3-4 -->
+<section class="section" id="fase3">
+  <div class="phase-header reveal">
+    <div class="ph-num">Fase 3-4 · 23-30 Giugno</div>
+    <div class="ph-title">Live dal viaggio + Conversione</div>
+    <div class="ph-desc">Lo storytelling live nelle Stories vale più di qualsiasi post. Il Reel del 28 chiude il viaggio con sostanza. Il Reel del 30 converte. Tutto il lavoro del mese culmina qui.</div>
+  </div>
+
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">23-25</div><div class="cb-date-num">Giu</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Stories quotidiane live dal viaggio</div>
+        <div class="cb-title">Guida per le Stories in real time dall'HQ DuoLife</div>
+        <div class="cb-pillars"><span class="cb-pill pill-bloom">BlooMind + DuoLife</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Struttura Stories per i 3 giorni</div>
+        <div class="script-box">
+          <div class="script-line"><strong>Giorno 1 (23 giu) — Arrivo:</strong> Stories all'aeroporto o in viaggio. "Eccoci. Si parte." Giro dell'hotel se di livello. Prima impressione dell'HQ. Reazione autentica — nessuna PR.</div>
+          <div class="script-line"><strong>Giorno 2 (24 giu) — Dentro l'HQ:</strong> Spazi aziendali, facce delle fondatrici se possibile, sessione strategica (anche solo l'ambiente, non i dettagli riservati). "Non posso mostrarvi tutto, ma quello che vedo qui ha senso."</div>
+          <div class="script-line"><strong>Giorno 3 (25 giu) — Cena e wrap up:</strong> Cena con i fondatori. Momento di gruppo con le altre 6 leader. "Quello che ho capito in questi 3 giorni" — 30-60 secondi parlati, senza preparazione, dalla camera o dal ristorante.</div>
+          <div class="script-note">Non pianificare troppo. Le Stories più potenti sono quelle impreparate. Girare quando si sente qualcosa — non quando "è il momento di postare".</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Mer</div><div class="cb-date-num">30 Giu</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Reel parlato · 60 secondi · Instagram + Facebook</div>
+        <div class="cb-title">"Adesso sei pronta? Parliamo."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-laura">Laura in Prima Persona</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Script — CTA finale del mese</div>
+        <div class="script-box">
+          <div class="script-line"><strong>[Setup: ambiente curato, look pulito. Tono diretto e calmo.]</strong></div>
+          <div class="script-line">— "Questo mese vi ho mostrato molte cose."</div>
+          <div class="script-line">— "Il sistema. Il team. Il viaggio. Le persone che ci sono dentro."</div>
+          <div class="script-line"><em>[pausa]</em></div>
+          <div class="script-line">— "Non vi ho mai detto 'iscriviti', 'entra', 'questa è la tua occasione'. Non è il modo in cui lavoro."</div>
+          <div class="script-line">— "Ma adesso vi chiedo una cosa sola: se durante questo mese qualcosa ti ha fatto fermare — un carosello, un Reel, una storia — e hai pensato 'forse c'è qualcosa qui per me'..."</div>
+          <div class="script-line"><em>[sguardo diretto]</em></div>
+          <div class="script-line">— "Scrivimi in DM. Non per convincerti. Per parlarci."</div>
+          <div class="script-line">— "Il momento giusto è quello in cui decidi che lo è."</div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Caption</div>
+        <div class="caption-box">
+          <div class="caption-text">Un mese di contenuti.
+
+Non per convincervi — per mostrarvi.
+
+Se qualcosa ti ha fermata in questo periodo, scrivimi. Non c'è fretta. Non c'è pressione.
+
+C'è solo una conversazione — e la possibilità che cambi qualcosa.</div>
+          <div class="caption-hashtags">#bloomind #networkmarketing #DM #crescitapersonale #BlooMindCommunity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom">
+  </div>
+  <div class="footer-info">
+    Script & Contenuti — Laura Ruggieri / BlooMind<br>
+    Prodotto da WeBloom &nbsp;·&nbsp; <a href="mailto:info@nicolapin.com">info@nicolapin.com</a> &nbsp;·&nbsp; Maggio 2026<br>
+    <a href="https://nicolapin82-png.github.io/Webloom/laura-ruggieri/laura_ruggieri_piano_editoriale.html">Piano Editoriale &rarr;</a>
+    &nbsp;·&nbsp;
+    <a href="https://nicolapin82-png.github.io/Webloom/laura-ruggieri/laura_ruggieri_brand_identity.html">Brand Identity &rarr;</a>
+  </div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
+},{threshold:0.08});
+reveals.forEach(r=>io.observe(r));
+</script>
+</body>
+</html>

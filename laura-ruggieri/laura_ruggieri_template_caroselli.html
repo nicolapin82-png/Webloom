@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Template Caroselli — Laura Ruggieri / BlooMind</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0C0B08; --bg2:#141210;
+  --bloom:#5A8760; --bloom-lt:#90BA96;
+  --mind:#C4907E; --mind-lt:#DDB8AC;
+  --gold:#C9A84C; --ivory:#F8F5EF;
+  --muted:rgba(248,245,239,0.5);
+  --border:rgba(90,135,96,0.22);
+  --sep:rgba(201,168,76,0.15);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ivory);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:var(--bloom);border-radius:2px;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;gap:20px;background:rgba(12,11,8,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-logo img{height:30px;width:auto;display:block;}
+.nav-tag{font-size:11px;color:var(--muted);letter-spacing:2.5px;text-transform:uppercase;}
+.nav-badge{background:linear-gradient(135deg,var(--bloom),var(--mind));color:#fff;font-size:10px;font-weight:500;padding:4px 12px;border-radius:20px;letter-spacing:1px;margin-left:auto;}
+.nav-hint{font-size:11px;color:var(--muted);font-style:italic;}
+@media(max-width:768px){nav{padding:16px 20px;}.nav-tag,.nav-hint{display:none;}}
+
+.hero{padding:140px 48px 60px;max-width:960px;margin:0 auto;}
+.hero-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bloom-lt);margin-bottom:16px;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:600;line-height:1.15;margin-bottom:16px;}
+.hero-sub{font-size:0.9rem;color:var(--muted);max-width:600px;line-height:1.8;}
+.hero-note{display:inline-block;margin-top:20px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);border-radius:6px;padding:10px 18px;font-size:0.8rem;color:var(--gold);}
+@media(max-width:768px){.hero{padding:120px 20px 40px;}}
+
+.sep-line{border:none;border-top:1px solid var(--sep);max-width:960px;margin:0 auto;}
+
+.template-section{max-width:960px;margin:0 auto;padding:60px 48px;}
+.ts-header{margin-bottom:36px;}
+.ts-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bloom-lt);margin-bottom:10px;}
+.ts-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:600;line-height:1.2;margin-bottom:8px;}
+.ts-desc{font-size:0.85rem;color:var(--muted);line-height:1.8;}
+@media(max-width:768px){.template-section{padding:40px 20px;}}
+
+/* CAROUSEL TEMPLATE */
+.carousel-wrap{overflow-x:auto;padding-bottom:16px;cursor:grab;}
+.carousel-wrap:active{cursor:grabbing;}
+.carousel-track{display:flex;gap:16px;padding:4px 2px;}
+
+/* SLIDE CARD — proporzione 1:1 (1080x1080) */
+.slide{
+  flex:0 0 280px;
+  width:280px;
+  height:280px;
+  border-radius:12px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:24px;
+  cursor:text;
+  transition:outline .1s;
+  outline:2px solid transparent;
+}
+.slide:focus-within{outline:2px solid var(--bloom);}
+
+/* Varianti sfondo */
+.slide-dark{background:linear-gradient(145deg,#0E0D0B,#1A1410);}
+.slide-bloom{background:linear-gradient(145deg,#1D2E20,#0E1810);}
+.slide-mind{background:linear-gradient(145deg,#2A1A14,#1A0E0A);}
+.slide-gold{background:linear-gradient(145deg,#1E1800,#0E0B00);}
+.slide-ivory{background:linear-gradient(145deg,#F0EDE5,#E8E4DA);color:#1A1410;}
+
+/* Elementi fissi non editabili */
+.slide-num-badge{
+  position:absolute;top:14px;right:14px;
+  width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.65rem;font-weight:500;letter-spacing:0.5px;
+}
+.badge-bloom{background:rgba(90,135,96,0.3);color:var(--bloom-lt);}
+.badge-mind{background:rgba(196,144,126,0.3);color:var(--mind-lt);}
+.badge-gold{background:rgba(201,168,76,0.2);color:var(--gold);}
+.badge-dark{background:rgba(248,245,239,0.1);color:rgba(248,245,239,0.5);}
+
+.slide-line{width:24px;height:2px;margin-bottom:16px;border-radius:1px;}
+.line-bloom{background:var(--bloom);}
+.line-mind{background:var(--mind);}
+.line-gold{background:var(--gold);}
+.line-dark{background:rgba(248,245,239,0.3);}
+
+/* Testi editabili */
+[contenteditable]{
+  outline:none;
+  border-bottom:1px dashed transparent;
+  transition:border-color .2s,background .2s;
+  border-radius:3px;
+  padding:1px 3px;
+  min-width:20px;
+  display:inline-block;
+}
+[contenteditable]:focus{
+  border-bottom-color:var(--bloom);
+  background:rgba(90,135,96,0.08);
+}
+.slide-ivory [contenteditable]:focus{
+  border-bottom-color:var(--bloom);
+  background:rgba(90,135,96,0.12);
+}
+
+.slide-eyebrow{font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.eyebrow-bloom{color:var(--bloom-lt);}
+.eyebrow-mind{color:var(--mind-lt);}
+.eyebrow-gold{color:var(--gold);}
+.eyebrow-dark{color:rgba(248,245,239,0.4);}
+.eyebrow-ivory{color:var(--bloom);}
+
+.slide-title-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.1rem,3.5vw,1.4rem);
+  font-weight:600;
+  line-height:1.25;
+  margin-bottom:10px;
+}
+
+.slide-body-text{
+  font-size:0.72rem;
+  line-height:1.7;
+  color:rgba(248,245,239,0.65);
+}
+.slide-ivory .slide-body-text{color:rgba(26,20,10,0.65);}
+
+.slide-footer{
+  font-size:0.6rem;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  opacity:0.4;
+  margin-top:auto;
+  padding-top:12px;
+}
+
+.slide-cta-text{
+  font-size:0.75rem;
+  font-weight:500;
+  letter-spacing:0.5px;
+  margin-top:8px;
+}
+
+/* SWIPE HINT */
+.swipe-hint{font-size:0.75rem;color:var(--muted);display:flex;align-items:center;gap:8px;margin-top:12px;}
+.swipe-arrow{font-size:1rem;animation:swipe 1.5s infinite;}
+@keyframes swipe{0%,100%{transform:translateX(0);}50%{transform:translateX(8px);}}
+
+/* INFO BOX */
+.info-box{background:rgba(90,135,96,0.06);border:1px solid var(--border);border-radius:10px;padding:24px 28px;margin:28px 0;font-size:0.82rem;color:var(--muted);line-height:1.8;}
+.info-box strong{color:var(--ivory);}
+.info-box code{background:rgba(90,135,96,0.15);color:var(--bloom-lt);padding:1px 7px;border-radius:4px;font-family:monospace;font-size:0.78rem;}
+
+/* PILLAR LABELS */
+.pillar-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+.pillar-chip{font-size:0.68rem;padding:4px 12px;border-radius:20px;letter-spacing:0.5px;cursor:default;}
+.p-laura{background:rgba(196,144,126,0.15);color:var(--mind-lt);border:1px solid rgba(196,144,126,0.3);}
+.p-sistema{background:rgba(90,135,96,0.15);color:var(--bloom-lt);border:1px solid rgba(90,135,96,0.3);}
+.p-bloom{background:rgba(201,168,76,0.12);color:#d4b86a;border:1px solid rgba(201,168,76,0.25);}
+.p-mindset{background:rgba(184,212,232,0.1);color:#b8d4e8;border:1px solid rgba(184,212,232,0.2);}
+
+/* CANVA GUIDE */
+.canva-steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px;}
+.canva-step{background:rgba(0,0,0,0.25);border-radius:8px;padding:16px 18px;}
+.cs-num{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--gold);line-height:1;margin-bottom:6px;}
+.cs-text{font-size:0.78rem;color:var(--muted);line-height:1.7;}
+
+/* FOOTER */
+footer{padding:64px 48px;border-top:1px solid var(--sep);max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.footer-logo img{height:34px;opacity:0.8;}
+.footer-info{font-size:0.75rem;color:var(--muted);line-height:1.8;}
+.footer-info a{color:var(--gold);text-decoration:none;}
+@media(max-width:768px){footer{padding:40px 20px;flex-direction:column;align-items:flex-start;}}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* RESET BTN */
+.reset-btn{background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:6px 14px;border-radius:20px;font-size:0.75rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;margin-top:12px;display:inline-block;}
+.reset-btn:hover{background:rgba(201,168,76,0.22);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom">
+  </div>
+  <span class="nav-tag">Template Caroselli</span>
+  <span class="nav-hint">Clicca su qualsiasi testo per modificarlo</span>
+  <span class="nav-badge">BlooMind · 2026</span>
+</nav>
+
+<div class="hero reveal">
+  <p class="hero-label">Laura Ruggieri / BlooMind</p>
+  <h1 class="hero-title">Template Caroselli<br>Modificabili</h1>
+  <p class="hero-sub">Ogni slide è editabile direttamente in questa pagina. Clicca su titolo, testo o occhiello per modificarli. Poi screenshottali o esportali per Canva.</p>
+  <div class="hero-note">Clicca su qualsiasi testo nelle slide per modificarlo — le modifiche sono locali, non si salvano automaticamente.</div>
+</div>
+
+<!-- GUIDA CANVA -->
+<div class="template-section">
+  <div class="ts-header reveal">
+    <p class="ts-label">Come usare questi template</p>
+    <h2 class="ts-title">Da qui a Canva in 10 minuti</h2>
+    <p class="ts-desc">Usa questo file per definire testi e struttura, poi ricrea ogni slide in Canva con le specifiche qui sotto.</p>
+  </div>
+  <div class="canva-steps reveal">
+    <div class="canva-step"><div class="cs-num">01</div><div class="cs-text">Apri Canva → Crea design → Formato personalizzato: <strong>1080 × 1080px</strong> (per feed) o <strong>1080 × 1920px</strong> per Stories.</div></div>
+    <div class="canva-step"><div class="cs-num">02</div><div class="cs-text">Sfondo: usa i colori BlooMind. Principale: <code>#0C0B08</code> (quasi nero caldo). Variante verde: <code>#1D2E20</code>. Variante rosa: <code>#2A1A14</code>.</div></div>
+    <div class="canva-step"><div class="cs-num">03</div><div class="cs-text">Font titolo: <strong>Cormorant Garamond SemiBold</strong> — disponibile su Canva Pro. Alternativa free: EB Garamond SemiBold. Dimensione consigliata: 48-64pt.</div></div>
+    <div class="canva-step"><div class="cs-num">04</div><div class="cs-text">Font corpo: <strong>DM Sans Light / Regular</strong>. Disponibile su Canva. Dimensione: 18-22pt per corpo, 12-14pt per occhiello.</div></div>
+    <div class="canva-step"><div class="cs-num">05</div><div class="cs-text">Elemento decorativo fisso: linea orizzontale 24px × 2px nel colore pillar. Numero slide in alto a destra (cerchio 28px). Stesso layout su ogni slide.</div></div>
+    <div class="canva-step"><div class="cs-num">06</div><div class="cs-text">Ultima slide: aggiungere logo BlooMind o watermark "<strong>@laura_ruggieri27</strong>" in basso a sinistra. Colore: bianco al 60% di opacità.</div></div>
+  </div>
+  <div class="info-box reveal">
+    <strong>Colori pillar per la linea decorativa:</strong><br>
+    Laura in Prima Persona: <code>#C4907E</code> (mind/rosa antico) &nbsp;·&nbsp;
+    Il Sistema PRO: <code>#5A8760</code> (bloom/verde) &nbsp;·&nbsp;
+    BlooMind Ecosystem: <code>#C9A84C</code> (gold) &nbsp;·&nbsp;
+    Mindset & Leadership: <code>#B8D4E8</code> (azzurro nebbia)<br><br>
+    <strong>Regola generale:</strong> max 3 colori per slide. Sfondo + colore pillar + testo avorio <code>#F8F5EF</code>. Il gold si usa solo come accento puntuale — mai come colore dominante.
+  </div>
+</div>
+
+<hr class="sep-line">
+
+<!-- TEMPLATE 1: CAROSELLO SISTEMA TEAM -->
+<div class="template-section" id="t1">
+  <div class="ts-header reveal">
+    <p class="ts-label">Template 1 · 4 Giugno</p>
+    <h2 class="ts-title">"Perché qualcuno nel tuo team capisce tutto — e non riesce ad iniziare"</h2>
+    <p class="ts-desc">Carosello 5 slide. Pillar: Il Sistema PRO BlooMind. Sfondo verde scuro.</p>
+    <div class="pillar-row"><span class="pillar-chip p-sistema">Il Sistema PRO BlooMind</span><span class="pillar-chip">5 slide</span><span class="pillar-chip">Alto save rate</span></div>
+  </div>
+
+  <div class="carousel-wrap reveal">
+    <div class="carousel-track">
+
+      <div class="slide slide-bloom">
+        <span class="slide-num-badge badge-bloom">1</span>
+        <div>
+          <div class="slide-line line-bloom"></div>
+          <div class="slide-eyebrow eyebrow-bloom"><span contenteditable spellcheck="false">BlooMind · Sistema</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">C'è qualcuno nel tuo team che capisce tutto. Eppure si ferma sempre.</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">Ti è mai capitato?</span></div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+      <div class="slide slide-bloom">
+        <span class="slide-num-badge badge-bloom">2</span>
+        <div>
+          <div class="slide-line line-bloom"></div>
+          <div class="slide-eyebrow eyebrow-bloom"><span contenteditable spellcheck="false">Il momento</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">È brava. Sa cosa fare. È motivata.</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">Ma il momento prima di chiamare qualcuno, o di pubblicare qualcosa... si blocca. E tu non capisci perché.</span></div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+      <div class="slide slide-bloom">
+        <span class="slide-num-badge badge-bloom">3</span>
+        <div>
+          <div class="slide-line line-bloom"></div>
+          <div class="slide-eyebrow eyebrow-bloom"><span contenteditable spellcheck="false">Il vero blocco</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">Non è mancanza di voglia. Le stai chiedendo di saltare un passaggio.</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">Le stai chiedendo di esporsi prima di avere qualcosa da mostrare. Per molte persone, questo è il blocco invisibile.</span></div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+      <div class="slide slide-bloom">
+        <span class="slide-num-badge badge-bloom">4</span>
+        <div>
+          <div class="slide-line line-bloom"></div>
+          <div class="slide-eyebrow eyebrow-bloom"><span contenteditable spellcheck="false">La svolta</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">Cosa cambia quando costruisce prima il risultato?</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">Quando ha qualcosa di concreto tra le mani, l'esposizione non fa più paura. Viene da sé.</span></div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+      <div class="slide slide-bloom">
+        <span class="slide-num-badge badge-bloom">5</span>
+        <div>
+          <div class="slide-line line-gold"></div>
+          <div class="slide-eyebrow eyebrow-gold"><span contenteditable spellcheck="false">BlooMind · DM aperto</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">Se hai qualcuno così in team — parliamo.</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">In DM ti racconto come BlooMind lavora su questo. Senza promesse. Con il metodo.</span></div>
+          <div class="slide-cta-text" style="color:var(--gold);">→ Scrivimi in DM</div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="swipe-hint reveal"><span class="swipe-arrow">→</span> Scorri per vedere tutte le slide</div>
+  <button class="reset-btn" onclick="resetTemplate('t1')">Ripristina testi originali</button>
+</div>
+
+<hr class="sep-line">
+
+<!-- TEMPLATE 2: CAROSELLO 5 SEGNALI -->
+<div class="template-section" id="t2">
+  <div class="ts-header reveal">
+    <p class="ts-label">Template 2 · 9 Giugno</p>
+    <h2 class="ts-title">"5 segnali che il tuo team è pronto per BlooMind"</h2>
+    <p class="ts-desc">Carosello 6 slide. Pillar: Mindset & Leadership. Sfondo scuro + accento azzurro.</p>
+    <div class="pillar-row"><span class="pillar-chip p-mindset">Mindset & Leadership</span><span class="pillar-chip">6 slide</span><span class="pillar-chip">Qualificazione lead</span></div>
+  </div>
+
+  <div class="carousel-wrap reveal">
+    <div class="carousel-track">
+
+      <div class="slide slide-dark">
+        <span class="slide-num-badge badge-dark">1</span>
+        <div>
+          <div class="slide-line line-dark" style="background:#B8D4E8;"></div>
+          <div class="slide-eyebrow" style="color:#B8D4E8;"><span contenteditable spellcheck="false">Leadership · BlooMind</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">5 segnali che il tuo team è pronto per un sistema professionale.</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">Non si tratta di motivazione. Si tratta di struttura.</span></div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+      <div class="slide slide-dark">
+        <span class="slide-num-badge badge-dark">2</span>
+        <div>
+          <div class="slide-line" style="background:#B8D4E8;width:24px;height:2px;margin-bottom:16px;border-radius:1px;"></div>
+          <div class="slide-eyebrow" style="color:#B8D4E8;"><span contenteditable spellcheck="false">Segnale 1</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">Ci crede — ma non parte.</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">Ha capito il sistema. Ha visto i risultati degli altri. Eppure continua ad aspettare "il momento giusto".</span></div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+      <div class="slide slide-dark">
+        <span class="slide-num-badge badge-dark">3</span>
+        <div>
+          <div class="slide-line" style="background:#B8D4E8;width:24px;height:2px;margin-bottom:16px;border-radius:1px;"></div>
+          <div class="slide-eyebrow" style="color:#B8D4E8;"><span contenteditable spellcheck="false">Segnale 2</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">Si espone troppo presto — e perde credibilità.</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">Posta prima di avere risultati. Il pubblico non la segue. Si demoralizza. Smette.</span></div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+      <div class="slide slide-dark">
+        <span class="slide-num-badge badge-dark">4</span>
+        <div>
+          <div class="slide-line" style="background:#B8D4E8;width:24px;height:2px;margin-bottom:16px;border-radius:1px;"></div>
+          <div class="slide-eyebrow" style="color:#B8D4E8;"><span contenteditable spellcheck="false">Segnale 3</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">Ha paura di sembrare "quella che vende".</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">Non vuole essere percepita come invadente dal suo network. Quindi non fa niente.</span></div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+      <div class="slide slide-dark">
+        <span class="slide-num-badge badge-dark">5</span>
+        <div>
+          <div class="slide-line" style="background:#B8D4E8;width:24px;height:2px;margin-bottom:16px;border-radius:1px;"></div>
+          <div class="slide-eyebrow" style="color:#B8D4E8;"><span contenteditable spellcheck="false">Segnale 4-5</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">Lavora tanto — ma non vede crescita. E tu vedi il potenziale — ma non sai come sbloccarlo.</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">Sforzo senza metodo non porta dove vuoi andare. Questo è il segnale più chiaro di tutti.</span></div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+      <div class="slide slide-dark">
+        <span class="slide-num-badge badge-dark">6</span>
+        <div>
+          <div class="slide-line line-gold"></div>
+          <div class="slide-eyebrow eyebrow-gold"><span contenteditable spellcheck="false">DM aperto</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">Se ne riconosci anche solo 2, parliamo.</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">Scrivimi in DM. Ti racconto come BlooMind lavora su questi blocchi — con un sistema, non con la motivazione.</span></div>
+          <div class="slide-cta-text" style="color:var(--gold);">→ Scrivimi in DM</div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="swipe-hint reveal"><span class="swipe-arrow">→</span> Scorri per vedere tutte le slide</div>
+  <button class="reset-btn" onclick="resetTemplate('t2')">Ripristina testi originali</button>
+</div>
+
+<hr class="sep-line">
+
+<!-- TEMPLATE 3: CAROSELLO VIAGGIO INCENTIVO -->
+<div class="template-section" id="t3">
+  <div class="ts-header reveal">
+    <p class="ts-label">Template 3 · 18 Giugno</p>
+    <h2 class="ts-title">"Cosa significa lavorare con un'azienda che ti porta dai fondatori"</h2>
+    <p class="ts-desc">Carosello 4 slide. Pillar: Il Sistema PRO / DuoLife credenziale. Sfondo scuro premium.</p>
+    <div class="pillar-row"><span class="pillar-chip p-sistema">Il Sistema PRO BlooMind</span><span class="pillar-chip">4 slide</span><span class="pillar-chip">Social proof DuoLife</span></div>
+  </div>
+
+  <div class="carousel-wrap reveal">
+    <div class="carousel-track">
+
+      <div class="slide slide-dark">
+        <span class="slide-num-badge badge-gold">1</span>
+        <div>
+          <div class="slide-line line-gold"></div>
+          <div class="slide-eyebrow eyebrow-gold"><span contenteditable spellcheck="false">Polonia · Giugno 2026</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">Non sto parlando di una call su Zoom.</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">Sto parlando di stare nella stessa stanza con chi ha costruito l'azienda.</span></div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+      <div class="slide slide-dark">
+        <span class="slide-num-badge badge-gold">2</span>
+        <div>
+          <div class="slide-line line-gold"></div>
+          <div class="slide-eyebrow eyebrow-gold"><span contenteditable spellcheck="false">Il viaggio</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">Il 23 giugno saremo in Polonia. All'HQ DuoLife.</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">Cena con i fondatori. Strategia. Tutto pagato dall'azienda come incentivo per le top partner. Siamo in 7.</span></div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+      <div class="slide slide-dark">
+        <span class="slide-num-badge badge-gold">3</span>
+        <div>
+          <div class="slide-line line-gold"></div>
+          <div class="slide-eyebrow eyebrow-gold"><span contenteditable spellcheck="false">Perché ve lo racconto</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">Non per vantarmi. La solidità di un sistema si vede anche da qui.</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">Questo è il tipo di azienda che c'è dietro a BlooMind. E questo è il tipo di partner che l'azienda riconosce.</span></div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+      <div class="slide slide-dark">
+        <span class="slide-num-badge badge-gold">4</span>
+        <div>
+          <div class="slide-line line-bloom"></div>
+          <div class="slide-eyebrow eyebrow-bloom"><span contenteditable spellcheck="false">Seguimi live</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">Dal 23 giugno sarò live nelle Stories dal viaggio.</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">In tempo reale — tutto quello che succede, senza filtri. Seguimi se non vuoi perderti il momento.</span></div>
+          <div class="slide-cta-text" style="color:var(--bloom-lt);">→ Attiva le notifiche</div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="swipe-hint reveal"><span class="swipe-arrow">→</span> Scorri per vedere tutte le slide</div>
+  <button class="reset-btn" onclick="resetTemplate('t3')">Ripristina testi originali</button>
+</div>
+
+<hr class="sep-line">
+
+<!-- TEMPLATE 4: CAROSELLO SISTEMA MAG 30 -->
+<div class="template-section" id="t4">
+  <div class="ts-header reveal">
+    <p class="ts-label">Template 4 · 30-31 Maggio</p>
+    <h2 class="ts-title">"Se nel tuo team qualcuno non riesce a partire, leggi questo"</h2>
+    <p class="ts-desc">Carosello 5 slide. Primo contenuto con angolo "leader con team". Pillar: Il Sistema PRO BlooMind.</p>
+    <div class="pillar-row"><span class="pillar-chip p-sistema">Il Sistema PRO BlooMind</span><span class="pillar-chip">5 slide</span><span class="pillar-chip">Primo carosello calendario</span></div>
+  </div>
+
+  <div class="carousel-wrap reveal">
+    <div class="carousel-track">
+
+      <div class="slide slide-mind">
+        <span class="slide-num-badge badge-mind">1</span>
+        <div>
+          <div class="slide-line line-mind"></div>
+          <div class="slide-eyebrow eyebrow-mind"><span contenteditable spellcheck="false">BlooMind · Per i leader</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">Se nel tuo team qualcuno non riesce a partire...</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">...leggi questo.</span></div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+      <div class="slide slide-mind">
+        <span class="slide-num-badge badge-mind">2</span>
+        <div>
+          <div class="slide-line line-mind"></div>
+          <div class="slide-eyebrow eyebrow-mind"><span contenteditable spellcheck="false">Il problema</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">Non è la motivazione che manca.</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">Sa cosa fare. Conosce i prodotti. È convinta del sistema. Eppure ogni volta che deve fare il passo successivo — si ferma.</span></div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+      <div class="slide slide-mind">
+        <span class="slide-num-badge badge-mind">3</span>
+        <div>
+          <div class="slide-line line-mind"></div>
+          <div class="slide-eyebrow eyebrow-mind"><span contenteditable spellcheck="false">La causa</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">Il problema è la sequenza.</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">Le viene chiesto di esporsi prima di avere risultati da mostrare. E questo — per molte persone — è paralizzante.</span></div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+      <div class="slide slide-mind">
+        <span class="slide-num-badge badge-mind">4</span>
+        <div>
+          <div class="slide-line line-bloom"></div>
+          <div class="slide-eyebrow eyebrow-bloom"><span contenteditable spellcheck="false">BlooMind inverte la sequenza</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">Prima costruisci i risultati. Poi, se vuoi, ti esponi.</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">Quando hai la sicurezza del metodo, decidi tu se e come esporti. Non prima.</span></div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+      <div class="slide slide-mind">
+        <span class="slide-num-badge badge-mind">5</span>
+        <div>
+          <div class="slide-line line-gold"></div>
+          <div class="slide-eyebrow eyebrow-gold"><span contenteditable spellcheck="false">DM aperto</span></div>
+          <div class="slide-title-text"><span contenteditable spellcheck="false">Se hai qualcuno così in team (o sei tu quella persona)...</span></div>
+        </div>
+        <div>
+          <div class="slide-body-text"><span contenteditable spellcheck="false">Scrivimi in DM. Parliamo di come BlooMind può cambiare la sequenza.</span></div>
+          <div class="slide-cta-text" style="color:var(--gold);">→ Scrivimi in DM</div>
+          <div class="slide-footer">@laura_ruggieri27</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="swipe-hint reveal"><span class="swipe-arrow">→</span> Scorri per vedere tutte le slide</div>
+  <button class="reset-btn" onclick="resetTemplate('t4')">Ripristina testi originali</button>
+</div>
+
+<!-- NOTE FINALI -->
+<div class="template-section">
+  <div class="info-box reveal">
+    <strong>Come screenshottare per Canva:</strong><br>
+    1. Modifica i testi direttamente in questa pagina cliccando sulle slide.<br>
+    2. Fai uno screenshot di ogni slide (su Windows: Win+Shift+S → selezione area; su Mac: Cmd+Shift+4 → selezione area).<br>
+    3. Importa lo screenshot in Canva come base visiva e ricrea il design pulito con i font ufficiali.<br><br>
+    <strong>In alternativa:</strong> usa questo file come brief preciso per un grafico — ha già colori, font, struttura e copy definitivi.
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom">
+  </div>
+  <div class="footer-info">
+    Template Caroselli — Laura Ruggieri / BlooMind<br>
+    Prodotto da WeBloom &nbsp;·&nbsp; <a href="mailto:info@nicolapin.com">info@nicolapin.com</a> &nbsp;·&nbsp; Maggio 2026<br>
+    <a href="https://nicolapin82-png.github.io/Webloom/laura-ruggieri/laura_ruggieri_piano_editoriale.html">Piano Editoriale &rarr;</a>
+    &nbsp;·&nbsp;
+    <a href="https://nicolapin82-png.github.io/Webloom/laura-ruggieri/laura_ruggieri_script_contenuti.html">Script &amp; Copy &rarr;</a>
+  </div>
+</footer>
+
+<script>
+// Reveal
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
+},{threshold:0.08});
+reveals.forEach(r=>io.observe(r));
+
+// Drag scroll for carousels
+document.querySelectorAll('.carousel-wrap').forEach(el=>{
+  let isDown=false,startX,scrollLeft;
+  el.addEventListener('mousedown',e=>{isDown=true;startX=e.pageX-el.offsetLeft;scrollLeft=el.scrollLeft;});
+  el.addEventListener('mouseleave',()=>{isDown=false;});
+  el.addEventListener('mouseup',()=>{isDown=false;});
+  el.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();const x=e.pageX-el.offsetLeft;el.scrollLeft=scrollLeft-(x-startX)*1.5;});
+});
+
+// Store original text for reset
+const originals = {};
+document.querySelectorAll('.template-section').forEach(sec=>{
+  const id=sec.id;
+  if(!id)return;
+  originals[id]={};
+  sec.querySelectorAll('[contenteditable]').forEach((el,i)=>{originals[id][i]=el.innerHTML;});
+});
+
+function resetTemplate(id){
+  const sec=document.getElementById(id);
+  if(!sec)return;
+  sec.querySelectorAll('[contenteditable]').forEach((el,i)=>{
+    if(originals[id] && originals[id][i]!==undefined)el.innerHTML=originals[id][i];
+  });
+}
+</script>
+</body>
+</html>
