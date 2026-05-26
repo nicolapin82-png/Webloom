@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analisi Posizionamento | Samuela De Nardi | WEBloom</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080A06;
+    --bg2: #0C0F09;
+    --card: rgba(255,255,255,0.035);
+    --card-hover: rgba(255,255,255,0.065);
+    --gold: #C8A96E;
+    --warm: #6B9B52;
+    --cream: #FFF8EE;
+    --white: #FFFFFF;
+    --muted: rgba(255,255,255,0.78);
+    --border: rgba(200,169,110,0.22);
+    --border-soft: rgba(255,255,255,0.07);
+    --grad: linear-gradient(135deg, #C8A96E 0%, #6B9B52 100%);
+    --grad-text: linear-gradient(135deg, #C8A96E, #E5D4A8, #8CB369);
+    --grad-green: linear-gradient(135deg, #6B9B52 0%, #4A7A38 100%);
+    --radius: 16px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { background: var(--bg); color: var(--white); font-family: 'Inter', sans-serif; font-size: 18px; line-height: 1.85; overflow-x: hidden; }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; background: rgba(8,10,6,0.88); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-soft); }
+  .nav-logo img { height: 30px; width: auto; display: block; }
+  .nav-tag { font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+
+  /* HERO */
+  #hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(200,169,110,0.07) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 80% 80%, rgba(107,155,82,0.05) 0%, transparent 60%); }
+  .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); animation: float 8s ease-in-out infinite; }
+  .orb1 { width: 400px; height: 400px; background: rgba(200,169,110,0.06); top: 10%; left: 10%; }
+  .orb2 { width: 300px; height: 300px; background: rgba(107,155,82,0.05); bottom: 15%; right: 15%; animation-delay: -4s; }
+  @keyframes float { 0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.05)} }
+  .hero-eyebrow { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.3s; }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(38px,6vw,80px); font-weight: 700; line-height: 1.1; margin-bottom: 16px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.5s; }
+  .hero-title .gradient-text { background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-subtitle { font-family: 'Playfair Display', serif; font-size: clamp(16px,2.5vw,22px); color: var(--muted); font-style: italic; margin-bottom: 48px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.7s; }
+  .hero-divider { width: 0; height: 2px; background: var(--grad); margin: 0 auto 48px; animation: expand 1s ease forwards 1s; border-radius: 2px; }
+  @keyframes expand{to{width:120px}}
+  .hero-statement { max-width: 680px; font-size: clamp(15px,1.8vw,18px); color: rgba(255,255,255,0.72); line-height: 1.9; opacity: 0; animation: fadeUp 0.8s ease forwards 0.9s; }
+  .hero-statement strong { color: var(--gold); font-weight: 600; }
+  .hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--muted); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: 0; animation: fadeIn 1s ease forwards 1.5s; }
+  .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+  @keyframes scrollPulse{0%,100%{opacity:1;transform:scaleY(1)}50%{opacity:.4;transform:scaleY(.7)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+  /* STATS BAR */
+  .stats-bar { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 56px 24px; }
+  .stats-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; }
+  .stat-item { text-align: center; }
+  .stat-number { font-family: 'Playfair Display', serif; font-size: clamp(30px,4vw,48px); font-weight: 700; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.1; display: block; margin-bottom: 8px; }
+  .stat-number.red { background: linear-gradient(135deg, #E06060, #B04040); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-label { font-size: 11px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; }
+  .stat-note { font-size: 10px; color: rgba(200,169,110,0.88); margin-top: 4px; }
+
+  /* LAYOUT */
+  section { padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
+  .section-full { max-width: 100%; padding: 100px 0; }
+  .section-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+  .section-label::before { content:''; display:inline-block; width:24px; height:1px; background:var(--gold); }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(26px,4vw,44px); font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+  .section-desc { font-size: 17px; color: rgba(255,255,255,0.82); max-width: 620px; margin-bottom: 56px; line-height: 1.8; }
+
+  /* SCROLL PROGRESS */
+  .scroll-progress { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: var(--grad); z-index: 999; transition: width 0.08s linear; border-radius: 0 2px 2px 0; }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(44px); transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.22,1,0.36,1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left { opacity: 0; transform: translateX(-56px); transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.22,1,0.36,1); }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+  .reveal-right { opacity: 0; transform: translateX(56px); transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.22,1,0.36,1); }
+  .reveal-right.visible { opacity: 1; transform: translateX(0); }
+  .reveal-scale { opacity: 0; transform: scale(0.88) translateY(20px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.34,1.4,0.64,1); }
+  .reveal-scale.visible { opacity: 1; transform: scale(1) translateY(0); }
+  .reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}.reveal-delay-4{transition-delay:.4s}.reveal-delay-5{transition-delay:.5s}
+
+  /* PROFILE CARD */
+  .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .profile-left { }
+  .profile-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(200,169,110,0.1); border: 1px solid var(--border); border-radius: 100px; padding: 8px 18px; font-size: 13px; color: var(--gold); margin-bottom: 24px; }
+  .profile-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .profile-tag { background: rgba(107,155,82,0.12); border: 1px solid rgba(107,155,82,0.25); border-radius: 100px; padding: 6px 16px; font-size: 13px; color: rgba(255,255,255,0.8); }
+  .profile-right { display: flex; flex-direction: column; gap: 16px; }
+  .pcard { background: var(--card); border: 1px solid var(--border-soft); border-radius: var(--radius); padding: 24px 28px; transition: all 0.3s; }
+  .pcard:hover { border-color: var(--border); background: var(--card-hover); transform: translateX(4px); }
+  .pcard-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .pcard-value { font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.6; }
+
+  /* PARADOX — sezione centrale */
+  #paradox { background: var(--bg2); }
+  .paradox-inner { max-width: 1100px; margin: 0 auto; padding: 100px 24px; }
+  .paradox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 56px; }
+  .paradox-card { border-radius: var(--radius); padding: 48px 40px; text-align: center; position: relative; overflow: hidden; }
+  .paradox-card.have { background: linear-gradient(135deg, rgba(107,155,82,0.12), rgba(200,169,110,0.08)); border: 1px solid rgba(107,155,82,0.3); }
+  .paradox-card.miss { background: linear-gradient(135deg, rgba(180,60,60,0.1), rgba(220,80,80,0.06)); border: 1px solid rgba(180,60,60,0.25); }
+  .paradox-icon { font-size: 40px; margin-bottom: 16px; display: block; }
+  .paradox-title { font-family: 'Playfair Display', serif; font-size: clamp(20px,3vw,28px); font-weight: 700; margin-bottom: 12px; }
+  .paradox-title.green { color: #8CB369; }
+  .paradox-title.red { color: #E07070; }
+  .paradox-list { list-style: none; font-size: 15px; color: rgba(255,255,255,0.92); line-height: 2; text-align: left; }
+  .paradox-list li::before { content: ''; margin-right: 8px; }
+  .paradox-list li.yes::before { content: '+ '; color: #8CB369; }
+  .paradox-list li.no::before { content: '- '; color: #E07070; }
+  .paradox-statement { margin-top: 48px; text-align: center; padding: 40px; background: linear-gradient(135deg, rgba(200,169,110,0.08), rgba(107,155,82,0.05)); border: 1px solid rgba(200,169,110,0.2); border-radius: var(--radius); }
+  .paradox-statement .big { font-family: 'Playfair Display', serif; font-size: clamp(18px,2.5vw,24px); font-style: italic; color: var(--cream); line-height: 1.6; }
+  .paradox-statement strong { color: var(--gold); }
+
+  /* MARKET */
+  .market-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap: 16px; margin-bottom: 40px; }
+  .market-card { background: var(--card); border: 1px solid var(--border-soft); border-radius: var(--radius); padding: 28px; position: relative; overflow: hidden; transition: all 0.3s; }
+  .market-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--grad); opacity:0; transition:opacity .3s; }
+  .market-card:hover::before{opacity:1}
+  .market-card:hover { transform: translateY(-3px); background: var(--card-hover); }
+  .market-value { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--gold); margin-bottom: 6px; display: block; }
+  .market-desc { font-size: 14px; color: rgba(255,255,255,0.88); line-height: 1.7; }
+  .market-source { font-size: 10px; color: rgba(200,169,110,0.85); margin-top: 12px; border-top: 1px solid var(--border-soft); padding-top: 10px; }
+  .market-source a { color: var(--gold); text-decoration: none; }
+  .market-source a:hover { text-decoration: underline; }
+
+  /* GAP DIGITALI */
+  #gaps { background: var(--bg2); }
+  .gap-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 20px; }
+  .gap-card { background: var(--card); border: 1px solid rgba(180,60,60,0.2); border-radius: var(--radius); padding: 28px 32px; display: flex; flex-direction: column; gap: 10px; transition: all 0.3s; position: relative; overflow: hidden; }
+  .gap-card::before { content:''; position:absolute; top:0; left:0; bottom:0; width:3px; background: linear-gradient(to bottom, #E07070, #B04040); }
+  .gap-card:hover { border-color: rgba(180,60,60,0.4); background: var(--card-hover); }
+  .gap-number { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: rgba(220,80,80,0.3); line-height: 1; }
+  .gap-title { font-size: 15px; font-weight: 600; color: var(--white); }
+  .gap-desc { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.7; }
+  .gap-impact { font-size: 12px; color: #F09090; margin-top: 4px; font-weight: 500; }
+
+  /* COMPETITOR */
+  .comp-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 20px; }
+  .comp-card { background: var(--card); border: 1px solid var(--border-soft); border-radius: var(--radius); padding: 28px 32px; transition: all 0.3s; }
+  .comp-card.samuela { border-color: rgba(200,169,110,0.4); background: linear-gradient(135deg, rgba(200,169,110,0.06), rgba(107,155,82,0.04)); }
+  .comp-card:hover { background: var(--card-hover); }
+  .comp-name { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+  .comp-tag { font-size: 11px; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; display: block; }
+  .comp-pro { font-size: 13px; color: rgba(107,155,82,0.9); line-height: 1.8; }
+  .comp-con { font-size: 13px; color: rgba(220,80,80,0.8); line-height: 1.8; margin-top: 8px; }
+  .comp-pro::before { content: 'Punti di forza: '; font-weight: 600; color: rgba(107,155,82,0.7); }
+  .comp-con::before { content: 'Debolezze: '; font-weight: 600; color: rgba(220,80,80,0.6); }
+  .samuela-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(200,169,110,0.15); border: 1px solid var(--border); border-radius: 100px; padding: 4px 12px; font-size: 11px; color: var(--gold); margin-bottom: 12px; }
+
+  /* OPPORTUNITY */
+  .opp-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 20px; }
+  .opp-card { background: var(--card); border: 1px solid var(--border-soft); border-radius: var(--radius); padding: 32px; display: flex; flex-direction: column; gap: 12px; transition: all 0.3s; position: relative; overflow: hidden; }
+  .opp-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background: var(--grad); opacity:0.7; }
+  .opp-card:hover { background: var(--card-hover); transform: translateY(-3px); }
+  .opp-step { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: rgba(200,169,110,0.2); line-height: 1; }
+  .opp-title { font-size: 15px; font-weight: 600; color: var(--white); }
+  .opp-desc { font-size: 14px; color: rgba(255,255,255,0.86); line-height: 1.7; }
+  .opp-result { font-size: 13px; color: var(--gold); margin-top: 4px; font-weight: 500; }
+
+  /* CONCLUSION */
+  #conclusion { background: var(--bg2); }
+  .conclusion-inner { max-width: 1100px; margin: 0 auto; padding: 100px 24px; }
+  .conclusion-box { background: linear-gradient(135deg, rgba(200,169,110,0.08), rgba(107,155,82,0.05)); border: 1px solid rgba(200,169,110,0.25); border-radius: 24px; padding: 64px; text-align: center; }
+  .conclusion-box .big-quote { font-family: 'Playfair Display', serif; font-size: clamp(22px,3vw,32px); font-style: italic; line-height: 1.5; color: var(--cream); margin-bottom: 32px; }
+  .conclusion-box .big-quote strong { color: var(--gold); font-style: normal; }
+  .conclusion-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; text-align: left; }
+  .c-step { padding: 28px; background: rgba(255,255,255,0.03); border-radius: var(--radius); border: 1px solid var(--border-soft); }
+  .c-step-num { font-size: 13px; font-weight: 600; color: var(--gold); margin-bottom: 10px; }
+  .c-step-text { font-size: 14px; color: rgba(255,255,255,0.90); line-height: 1.7; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border-soft); padding: 48px 24px; text-align: center; }
+  footer img { height: 36px; opacity: 0.8; display: block; margin: 0 auto 16px; }
+  footer p { font-size: 13px; color: rgba(255,255,255,0.35); }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* TIMELINE MOTO */
+  #storia { background: var(--bg2); }
+  .storia-inner { max-width: 1100px; margin: 0 auto; padding: 100px 24px; }
+  .timeline { position: relative; margin-top: 56px; }
+  .timeline::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:1px; background:linear-gradient(to bottom, transparent, var(--gold), transparent); transform:translateX(-50%); }
+  .timeline-item { display:grid; grid-template-columns:1fr 60px 1fr; gap:0; align-items:center; margin-bottom:32px; }
+  .timeline-item:nth-child(even) .tl-content { order:3; text-align:left; }
+  .timeline-item:nth-child(even) .tl-empty { order:1; }
+  .tl-content { padding:24px 32px; background:var(--card); border:1px solid var(--border-soft); border-radius:var(--radius); transition:all .3s; }
+  .tl-content:hover { border-color:var(--border); background:var(--card-hover); }
+  .tl-content.highlight { background:linear-gradient(135deg,rgba(200,169,110,.1),rgba(107,155,82,.06)); border-color:rgba(200,169,110,.35); }
+  .tl-year { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+  .tl-text { font-size:14px; color:rgba(255,255,255,.92); line-height:1.7; }
+  .tl-text strong { color:var(--white); }
+  .tl-dot { width:14px; height:14px; background:var(--gold); border-radius:50%; margin:0 auto; position:relative; z-index:2; flex-shrink:0; }
+  .tl-dot.big { width:20px; height:20px; background:var(--grad); box-shadow:0 0 16px rgba(200,169,110,.4); }
+  .tl-empty { }
+  .suzuka-box { margin-top:48px; padding:40px 48px; background:linear-gradient(135deg,rgba(200,169,110,.1),rgba(107,155,82,.07)); border:1px solid rgba(200,169,110,.3); border-radius:24px; text-align:center; }
+  .suzuka-box .big-year { font-family:'Playfair Display',serif; font-size:clamp(60px,8vw,100px); font-weight:700; background:var(--grad-text); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; display:block; }
+  .suzuka-box .suzuka-label { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin:12px 0 20px; display:block; }
+  .suzuka-box .suzuka-desc { font-size:16px; color:rgba(255,255,255,.8); max-width:640px; margin:0 auto; line-height:1.9; }
+  .suzuka-box .suzuka-desc strong { color:var(--white); }
+  .tribuna-quote { margin-top:48px; padding:36px 48px; border-left:3px solid var(--gold); background:rgba(200,169,110,.04); border-radius:0 var(--radius) var(--radius) 0; }
+  .tribuna-quote blockquote { font-family:'Playfair Display',serif; font-size:clamp(18px,2.5vw,24px); font-style:italic; color:var(--cream); line-height:1.6; }
+  .tribuna-quote cite { font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(200,169,110,.6); margin-top:12px; display:block; }
+
+  /* HOOK NARRATIVI */
+  .hook-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; margin-top:48px; }
+  .hook-card { background:var(--card); border:1px solid var(--border-soft); border-radius:var(--radius); padding:32px; position:relative; overflow:hidden; transition:all .3s; }
+  .hook-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--grad); opacity:.7; }
+  .hook-card:hover { background:var(--card-hover); transform:translateY(-3px); }
+  .hook-num { font-family:'Playfair Display',serif; font-size:40px; font-weight:700; color:rgba(200,169,110,.15); line-height:1; }
+  .hook-title { font-size:15px; font-weight:600; color:var(--gold); margin:8px 0 10px; }
+  .hook-desc { font-size:14px; color:rgba(255,255,255,.88); line-height:1.8; }
+
+  /* STORYTELLING ASSET */
+  #storytelling { }
+  .story-box { background:linear-gradient(135deg,rgba(200,169,110,.07),rgba(107,155,82,.04)); border:1px solid rgba(200,169,110,.2); border-radius:var(--radius); padding:40px 48px; margin-top:48px; }
+  .story-row { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+  .story-col-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+  .story-col-text { font-size:15px; color:rgba(255,255,255,.90); line-height:1.9; }
+  .story-col-text strong { color:var(--white); }
+  .content-ideas { display:flex; flex-direction:column; gap:10px; margin-top:24px; }
+  .content-idea { display:flex; align-items:flex-start; gap:12px; padding:14px 18px; background:rgba(255,255,255,.03); border-radius:10px; border:1px solid var(--border-soft); }
+  .idea-type { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); white-space:nowrap; padding-top:2px; min-width:60px; }
+  .idea-text { font-size:13px; color:rgba(255,255,255,.90); line-height:1.6; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-tag { display: none; }
+    .stats-grid { grid-template-columns: repeat(2,1fr); gap: 24px; }
+    .profile-grid { grid-template-columns: 1fr; }
+    .paradox-grid { grid-template-columns: 1fr; }
+    .conclusion-steps { grid-template-columns: 1fr; }
+    .paradox-card { padding: 32px 24px; }
+    .conclusion-box { padding: 40px 24px; }
+    section { padding: 64px 20px; }
+    .timeline::before { left:20px; }
+    .timeline-item { grid-template-columns: 40px 1fr; }
+    .timeline-item:nth-child(even) .tl-content { order:2; text-align:left; }
+    .timeline-item:nth-child(even) .tl-empty { display:none; }
+    .timeline-item:nth-child(odd) .tl-empty { display:none; }
+    .tl-dot { margin:0; }
+    .suzuka-box { padding:32px 24px; }
+    .tribuna-quote { padding:24px 28px; }
+    .story-row { grid-template-columns:1fr; }
+    .story-box { padding:28px 24px; }
+  }
+  @media (max-width: 480px) {
+    body { font-size: 16px; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .gap-grid { grid-template-columns: 1fr; }
+    .opp-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom">
+  </div>
+  <span class="nav-tag">WeBloom · maggio 2026</span>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+  <div class="hero-eyebrow">Prima donna a Suzuka · Pilota ufficiale Aprilia · Animal Communicator · Vittorio Veneto</div>
+  <h1 class="hero-title">
+    <span class="gradient-text">Samuela De Nardi</span><br>
+    Da 200 km/h al silenzio.
+  </h1>
+  <p class="hero-subtitle">Una storia che nessun competitor potra' mai copiare</p>
+  <div class="hero-divider"></div>
+  <p class="hero-statement">
+    Prima donna non giapponese alle <strong>8 Ore di Suzuka</strong> davanti a 250.000 spettatori. Prima pilota donna con contratto ufficiale Aprilia.<br>
+    Oggi guidi esperienze immersive con alpaca vicino a Vittorio Veneto. Hai 35.300 follower, la spunta blu, e nessun sistema per convertirli in clienti.<br>
+    <strong>Il vantaggio competitivo non e' solo l'audience. E' la storia.</strong>
+  </p>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scorri</span>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <span class="stat-number" data-count="35.3" data-suffix="K" data-decimals="1">0K</span>
+      <div class="stat-label">Follower Instagram</div>
+      <div class="stat-note">Account verificato (spunta blu)</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <span class="stat-number" data-count="315" data-suffix="">0</span>
+      <div class="stat-label">Post pubblicati</div>
+      <div class="stat-note">Contenuti attivi dal 2022</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <span class="stat-number red">0</span>
+      <div class="stat-label">Sistemi di prenotazione</div>
+      <div class="stat-note">Tutto gestito via DM</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <span class="stat-number red">0</span>
+      <div class="stat-label">Pagine indicizzate su Google</div>
+      <div class="stat-note">Sito Canva non trovabile</div>
+    </div>
+  </div>
+</div>
+
+<!-- LA STORIA CHE POCHI CONOSCONO -->
+<div id="storia" class="section-full">
+  <div class="storia-inner">
+    <div class="section-label">Il contesto nascosto</div>
+    <h2 class="section-title">La storia che i tuoi 35K follower non conoscono</h2>
+    <p class="section-desc">Non sei partita dal wellness. Sei arrivata al wellness dopo aver percorso una delle traiettorie piu' straordinarie del motociclismo italiano femminile.</p>
+
+    <div class="suzuka-box reveal-scale">
+      <span class="big-year">2005</span>
+      <span class="suzuka-label">8 Ore di Suzuka, Giappone</span>
+      <p class="suzuka-desc">
+        <strong>Prima donna non giapponese nella storia della gara.</strong> 250.000 spettatori. Circuito leggendario. Pilota ufficiale Aprilia RSV 1000.<br>
+        La stessa donna che oggi ti accompagna in silenzio tra gli alpaca.
+      </p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-content reveal-left">
+          <div class="tl-year">1984, Vittorio Veneto</div>
+          <div class="tl-text">Sei nata a Savassa, Vittorio Veneto. La stessa citta' in cui operi ancora oggi.</div>
+        </div>
+        <div class="tl-dot" style="display:flex;align-items:center;justify-content:center;"></div>
+        <div class="tl-empty"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-empty"></div>
+        <div class="tl-dot" style="display:flex;align-items:center;justify-content:center;"></div>
+        <div class="tl-content reveal-right">
+          <div class="tl-year">1988, a 4 anni</div>
+          <div class="tl-text">I tuoi genitori ti regalano una <strong>Malaguti 50 minicross</strong>. Inizi la carriera in pista.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-content reveal-left">
+          <div class="tl-year">2002</div>
+          <div class="tl-text"><strong>Prima donna a vincere la Coppa Europea Alpe Adria</strong> a Misano. Il primo confine battuto.</div>
+        </div>
+        <div class="tl-dot" style="display:flex;align-items:center;justify-content:center;"></div>
+        <div class="tl-empty"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-empty"></div>
+        <div class="tl-dot big" style="display:flex;align-items:center;justify-content:center;"></div>
+        <div class="tl-content highlight reveal-right">
+          <div class="tl-year">2005, Suzuka, Giappone</div>
+          <div class="tl-text"><strong>Prima donna non giapponese alle 8 Ore di Suzuka.</strong> Pilota ufficiale Aprilia RSV 1000. Vince la categoria Stockbike davanti a 250.000 spettatori.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-content highlight reveal-left">
+          <div class="tl-year">2006 · 2007</div>
+          <div class="tl-text"><strong>Prima pilota donna in assoluto con contratto ufficiale Aprilia.</strong> Campionati italiani ed europei.</div>
+        </div>
+        <div class="tl-dot big" style="display:flex;align-items:center;justify-content:center;"></div>
+        <div class="tl-empty"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-empty"></div>
+        <div class="tl-dot" style="display:flex;align-items:center;justify-content:center;"></div>
+        <div class="tl-content reveal-right">
+          <div class="tl-year">2010</div>
+          <div class="tl-text">Ancora in gara (Triumph European Series). Gia' lavori con i cani. Hai i <strong>ritratti dei tuoi tre cani dipinti sul serbatoio</strong>. La Tribuna di Treviso ti definisce: "La campionessa che sussurra ai cani".</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-content reveal-left">
+          <div class="tl-year">2014 · 2016</div>
+          <div class="tl-text">Ritiro dalle competizioni. Gli animali avevano gia' vinto.</div>
+        </div>
+        <div class="tl-dot" style="display:flex;align-items:center;justify-content:center;"></div>
+        <div class="tl-empty"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-empty"></div>
+        <div class="tl-dot big" style="display:flex;align-items:center;justify-content:center;"></div>
+        <div class="tl-content highlight reveal-right">
+          <div class="tl-year">2026, Vittorio Veneto</div>
+          <div class="tl-text"><strong>Animal Communicator, NaturalHealing, esperienze con alpaca.</strong> 35.300 follower. Torna dove e' nata. Un cerchio completo.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tribuna-quote reveal-left">
+      <blockquote>"La campionessa che sussurra ai cani"</blockquote>
+      <cite>Tribuna di Treviso, 2010. Il titolo dell'articolo che ti descriveva mentre eri ancora in attivita' come pilota</cite>
+    </div>
+  </div>
+</div>
+
+<!-- CHI E' SAMUELA -->
+<section id="profilo">
+  <div class="section-label">Chi sei</div>
+  <h2 class="section-title">Chi sei e dove sei arrivata</h2>
+  <p class="section-desc">Un personal brand maturo, con una community reale e affezionata, costruita interamente sull'organico. Un caso raro: l'audience c'e' gia'.</p>
+  <div class="profile-grid">
+    <div class="profile-left reveal">
+      <div class="profile-badge">@samueladenardi su Instagram</div>
+      <p style="font-size:17px; color:rgba(255,255,255,0.8); line-height:1.9; margin-bottom:20px;">
+        Ti definisci <strong style="color:var(--gold)">Animal Communicator</strong> e <strong style="color:var(--gold)">NaturalHealing</strong> practitioner.<br>
+        Operi vicino a Vittorio Veneto con animali tra cui alpaca, proponendo esperienze immersive, percorsi di comunicazione animale e pratiche di connessione con la natura.
+      </p>
+      <p style="font-size:17px; color:rgba(255,255,255,0.8); line-height:1.9; margin-bottom:28px;">
+        La tua bio recita: <em style="color:var(--cream)">"Ti accompagno a Ritrovarti attraverso la Natura e gli Animali"</em>. Un messaggio di benessere e trasformazione personale, non una semplice attrazione turistica.
+      </p>
+      <div class="profile-tags">
+        <span class="profile-tag">Animal Communication</span>
+        <span class="profile-tag">NaturalHealing</span>
+        <span class="profile-tag">Esperienze Alpaca</span>
+        <span class="profile-tag">Wellness</span>
+        <span class="profile-tag">Personal Brand</span>
+        <span class="profile-tag">Vittorio Veneto</span>
+      </div>
+    </div>
+    <div class="profile-right reveal reveal-delay-1">
+      <div class="pcard">
+        <div class="pcard-label">Target di riferimento</div>
+        <div class="pcard-value">Adulti in cerca di connessione con la natura, esperienze di benessere alternative, percorsi di crescita personale. Non scolaresche.</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-label">Canale principale</div>
+        <div class="pcard-value">Instagram @samueladenardi: 35.3K follower, spunta blu verificata, 315 post. Unico canale attivo e funzionante.</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-label">Come vende oggi</div>
+        <div class="pcard-value">Esclusivamente via DM su Instagram. Nessuna pagina di prenotazione, nessun modulo, nessun calendario pubblico.</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-label">Elemento differenziante</div>
+        <div class="pcard-value">La combinazione Animal Communication + Alpaca + NaturalHealing e' unica nel territorio di Treviso-Vittorio Veneto. Nessun competitor diretto con questo posizionamento.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IL PARADOSSO -->
+<div id="paradox" class="section-full">
+  <div class="paradox-inner">
+    <div class="section-label">Il nodo centrale</div>
+    <h2 class="section-title">Il paradosso dei 35K</h2>
+    <p class="section-desc">Hai gia' risolto il problema piu' difficile del marketing digitale: costruire un'audience. Ti manca tutto il resto.</p>
+    <div class="paradox-grid">
+      <div class="paradox-card have reveal-left">
+        <span class="paradox-icon">&#10003;</span>
+        <h3 class="paradox-title green">Quello che hai gia'</h3>
+        <ul class="paradox-list">
+          <li class="yes">Prima donna non giapponese alle 8 Ore di Suzuka</li>
+          <li class="yes">Prima pilota con contratto ufficiale Aprilia</li>
+          <li class="yes">35.300 follower organici e fidelizzati</li>
+          <li class="yes">Account verificato Instagram (spunta blu)</li>
+          <li class="yes">Posizionamento wellness/animali unico nel territorio</li>
+          <li class="yes">Storia personale che nessun competitor puo' replicare</li>
+          <li class="yes">Radici locali: nata e operante a Vittorio Veneto</li>
+        </ul>
+      </div>
+      <div class="paradox-card miss reveal-right">
+        <span class="paradox-icon">&#9888;</span>
+        <h3 class="paradox-title red">Quello che ti manca</h3>
+        <ul class="paradox-list">
+          <li class="no">Sito web funzionante e indicizzato su Google</li>
+          <li class="no">Scheda Google My Business</li>
+          <li class="no">Sistema di prenotazione (calendario, form)</li>
+          <li class="no">Pagine servizi con prezzi chiari</li>
+          <li class="no">Lista email (l'audience e' "in affitto" su IG)</li>
+          <li class="no">Presenza su portali turismo/wellness Veneto</li>
+          <li class="no">Tracciabilita' delle conversioni</li>
+        </ul>
+      </div>
+    </div>
+    <div class="paradox-statement reveal">
+      <p class="big">
+        La prima donna italiana a Suzuka, davanti a 250.000 spettatori, oggi ha come unica CTA "Info in DM".<br>
+        Hai gia' tutto: la storia, l'audience, l'autorita'. Ti manca solo <strong>il sistema per trasformarli in un business</strong>.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- MERCATO -->
+<section id="mercato">
+  <div class="section-label">Il contesto</div>
+  <h2 class="section-title">Il mercato delle esperienze natura e wellness</h2>
+  <p class="section-desc">Le esperienze immersive con animali e i percorsi di benessere legati alla natura sono in crescita strutturale, non una moda passeggera.</p>
+  <div class="market-grid">
+    <div class="market-card reveal">
+      <span class="market-value">€20 - €65</span>
+      <p class="market-desc">Prezzo per persona per trekking alpaca in Veneto. Il mercato locale e' gia' consolidato con operatori attivi e prenotazioni online.</p>
+      <div class="market-source"><a href="https://fattoriavenetoalpaca.it/alpaca-trekking" target="_blank">Nel Bosco Incantato</a> e <a href="https://www.babyalpaca.it/attivita-2-2/" target="_blank">Baby Alpaca</a>, 2026</div>
+    </div>
+    <div class="market-card reveal reveal-delay-1">
+      <span class="market-value">€45</span>
+      <p class="market-desc">Yoga Trekking con alpaca, l'esperienza piu' premium offerta da un competitor diretto. Animal Communication e NaturalHealing non sono ancora nel mercato.</p>
+      <div class="market-source"><a href="https://www.babyalpaca.it/attivita-2-2/" target="_blank">Baby Alpaca, Selva di Progno (VR)</a>, 2026</div>
+    </div>
+    <div class="market-card reveal reveal-delay-2">
+      <span class="market-value">€90</span>
+      <p class="market-desc">Prezzo di una consulenza di Animal Communication a livello nazionale. Nessun operatore unisce questo servizio alle esperienze fisiche con alpaca.</p>
+      <div class="market-source"><a href="https://comunicazioneanimale.it/servizi/" target="_blank">comunicazioneanimale.it</a>, 2026</div>
+    </div>
+    <div class="market-card reveal reveal-delay-3">
+      <span class="market-value">35.3K</span>
+      <p class="market-desc">I tuoi follower su Instagram. Il competitor alpaca piu' strutturato (Baby Alpaca) ha una frazione di questa audience sui social.</p>
+      <div class="market-source">Instagram @samueladenardi, verificato maggio 2026</div>
+    </div>
+  </div>
+  <div style="background: linear-gradient(135deg,rgba(107,155,82,.06),rgba(200,169,110,.04)); border:1px solid rgba(107,155,82,.15); border-radius:var(--radius); padding:28px 32px; font-size:15px; color:rgba(255,255,255,.90); line-height:1.9;" class="reveal">
+    <strong style="color:var(--gold)">Spazio libero nel territorio:</strong> nell'area Vittorio Veneto e nella provincia di Treviso non esiste nessun operatore con un posizionamento che unisca animal communication, esperienze con alpaca e NaturalHealing. Chi cerca queste keyword su Google non trova nulla di strutturato in zona. Il territorio e' completamente aperto.
+  </div>
+</section>
+
+<!-- GAP DIGITALI -->
+<div id="gaps" class="section-full">
+  <div class="section-inner">
+    <div class="section-label">La diagnosi</div>
+    <h2 class="section-title">I 7 gap digitali critici</h2>
+    <p class="section-desc">Ogni gap rappresenta un collo di bottiglia che impedisce alla tua audience di diventare clienti paganti.</p>
+    <div class="gap-grid">
+      <div class="gap-card reveal">
+        <div class="gap-number">01</div>
+        <div class="gap-title">Sito web non funzionante</div>
+        <div class="gap-desc">Il sito Canva (samueladenardi.my.canva.site) contiene solo il titolo "SITO SAMU". Non e' indicizzato su Google, non ha contenuti, non ha CTA.</div>
+        <div class="gap-impact">Impatto: zero traffico organico da ricerche Google</div>
+      </div>
+      <div class="gap-card reveal reveal-delay-1">
+        <div class="gap-number">02</div>
+        <div class="gap-title">Google My Business assente</div>
+        <div class="gap-desc">Non risulta nessuna scheda Google My Business. Chi cerca "esperienze alpaca Vittorio Veneto" o "animal communication Treviso" non la trova nel Local Pack.</div>
+        <div class="gap-impact">Impatto: invisibile nelle ricerche locali a intenzione d'acquisto</div>
+      </div>
+      <div class="gap-card reveal reveal-delay-2">
+        <div class="gap-number">03</div>
+        <div class="gap-title">Zero sistema di prenotazione</div>
+        <div class="gap-desc">L'unica CTA e' "Info in DM". Ogni potenziale cliente deve aprire Instagram, trovare il profilo, scrivere un messaggio e aspettare risposta manuale.</div>
+        <div class="gap-impact">Impatto: frizione massima, conversioni minime, scalabilita' zero</div>
+      </div>
+      <div class="gap-card reveal reveal-delay-3">
+        <div class="gap-number">04</div>
+        <div class="gap-title">Nessuna raccolta email</div>
+        <div class="gap-desc">I 35.300 follower sono su Instagram, una piattaforma di proprieta' Meta. Un cambio di algoritmo o una sospensione dell'account azzera anni di lavoro.</div>
+        <div class="gap-impact">Impatto: audience a rischio, nessuna lista propria</div>
+      </div>
+      <div class="gap-card reveal">
+        <div class="gap-number">05</div>
+        <div class="gap-title">Prezzi non comunicati</div>
+        <div class="gap-desc">Nessuna informazione pubblica sui prezzi delle esperienze o dei percorsi. Chi non ha voglia di fare DM non compra.</div>
+        <div class="gap-impact">Impatto: barriera d'ingresso elevata, persi i clienti piu' decisivi</div>
+      </div>
+      <div class="gap-card reveal reveal-delay-1">
+        <div class="gap-number">06</div>
+        <div class="gap-title">Assenza da portali di settore</div>
+        <div class="gap-desc">Non risulta nell'elenco regionale fattorie didattiche Veneto, ne' su portali turismo esperienziale come Visit Veneto, Agriturismo.it o piattaforme wellness locali.</div>
+        <div class="gap-impact">Impatto: traffico referral zero, nessuna credibilita' istituzionale</div>
+      </div>
+      <div class="gap-card reveal reveal-delay-2">
+        <div class="gap-number">07</div>
+        <div class="gap-title">Nessuna tracciabilita'</div>
+        <div class="gap-desc">Senza un sito con analytics, non esiste nessun dato su quante persone cliccano il link in bio, da dove arrivano, cosa cercano prima di contattarla.</div>
+        <div class="gap-impact">Impatto: impossibile ottimizzare, impossibile scalare</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPETITOR -->
+<section id="competitor">
+  <div class="section-label">Il contesto competitivo</div>
+  <h2 class="section-title">Tu vs il mercato</h2>
+  <p class="section-desc">I competitor hanno siti strutturati e prenotazioni online. Nessuno ha la tua storia. Nessuno ha la tua audience. Nessuno offre la combinazione di servizi che offri tu.</p>
+  <div class="comp-grid">
+    <div class="comp-card samuela reveal">
+      <div class="samuela-badge">Tu</div>
+      <div class="comp-name">Samuela De Nardi</div>
+      <span class="comp-tag">Animal Communication · NaturalHealing · Alpaca · Vittorio Veneto</span>
+      <div class="comp-pro">35.3K follower, spunta blu verificata, ex pilota ufficiale Aprilia, prima donna a Suzuka. Unica a combinare alpaca + animal communication + NaturalHealing in Veneto. Storytelling irripetibile.</div>
+      <div class="comp-con">Sito assente, Google My Business assente, nessuna prenotazione online, invisibile su Google.</div>
+    </div>
+    <div class="comp-card reveal reveal-delay-1">
+      <div class="comp-name"><a href="https://fattoriavenetoalpaca.it/alpaca-trekking" target="_blank" style="color:var(--white);text-decoration:none;">Nel Bosco Incantato</a></div>
+      <span class="comp-tag">Trekking alpaca · Montello (TV) · da €20/persona</span>
+      <div class="comp-pro">3 percorsi trekking (€20-30 a persona), workshop famiglie, campi estivi, feste compleanno. Area Montello, ben posizionato localmente.</div>
+      <div class="comp-con">Prenotazioni solo via telefono o WhatsApp. Nessun NaturalHealing, nessuna animal communication. Social minimi. Posizionamento famiglie e bambini.</div>
+    </div>
+    <div class="comp-card reveal reveal-delay-2">
+      <div class="comp-name"><a href="https://www.babyalpaca.it/" target="_blank" style="color:var(--white);text-decoration:none;">Baby Alpaca</a></div>
+      <span class="comp-tag">Trekking · Yoga Trekking · Selva di Progno (VR) · da €20/persona</span>
+      <div class="comp-pro">Il piu' strutturato digitalmente: prenotazione online attiva, social presenti (Instagram, Facebook, YouTube), Yoga Trekking a €45 (unico in Veneto). Fondato nel 2009.</div>
+      <div class="comp-con">Nessuna animal communication, nessun NaturalHealing. Audience social piccola rispetto ai tuoi 35K. Area Verona, non locale per Treviso.</div>
+    </div>
+    <div class="comp-card reveal reveal-delay-3">
+      <div class="comp-name"><a href="https://www.aealpaca.it/" target="_blank" style="color:var(--white);text-decoration:none;">A&amp;A Alpaca</a></div>
+      <span class="comp-tag">Fattoria educativa · Monteviale (VI) · prezzi non online</span>
+      <div class="comp-pro">Fattoria fondata nel 1930, escursioni didattiche, scuole, aziende, eventi. Forte radici locali nel vicentino.</div>
+      <div class="comp-con">Target scolaresche e aziende, non adulti wellness. Prezzi non pubblicati online. Nessun social significativo. Nessun wellness, nessuna animal communication.</div>
+    </div>
+    <div class="comp-card reveal">
+      <div class="comp-name"><a href="https://www.animalcommunicatoritalia.it/" target="_blank" style="color:var(--white);text-decoration:none;">Animal Communicator Italia</a></div>
+      <span class="comp-tag">Animal Communication · nazionale · solo corsi online</span>
+      <div class="comp-pro">Scuola di formazione animal communication, corsi certificati a livello nazionale.</div>
+      <div class="comp-con">Solo corsi teorici, nessuna esperienza fisica con animali. Non locale. Non offre alpaca, NaturalHealing, ne' esperienze immersive. Nessun profilo Instagram paragonabile.</div>
+    </div>
+  </div>
+  <div style="margin-top:32px; padding:32px; background:linear-gradient(135deg,rgba(200,169,110,.07),rgba(107,155,82,.04)); border:1px solid rgba(200,169,110,.2); border-radius:var(--radius);" class="reveal">
+    <p style="font-size:16px; color:rgba(255,255,255,.92); line-height:1.9;">
+      <strong style="color:var(--gold)">Il quadro competitivo:</strong> nessun operatore in Veneto combina animal communication, esperienze fisiche con alpaca e NaturalHealing in un unico brand. Sei sola in questo spazio. I competitor con piu' infrastruttura non hanno la tua storia ne' la tua audience. Chi ha audience simile non opera in questo settore.
+    </p>
+  </div>
+</section>
+
+<!-- OPPORTUNITA' WEBLOOM -->
+<section id="opportunita">
+  <div class="section-label">Il sistema WeBloom</div>
+  <h2 class="section-title">Cosa fa WeBloom per te</h2>
+  <p class="section-desc">Un sistema strutturato dalla A alla Z per trasformare i tuoi 35K follower in un flusso di prenotazioni automatiche e tracciabili. Prima si monetizza, poi si scala.</p>
+  <div class="opp-grid">
+    <div class="opp-card reveal">
+      <div class="opp-step">01</div>
+      <div class="opp-title">Pagina acquisizione ad alta conversione</div>
+      <div class="opp-desc">Una pagina dedicata per ogni servizio (esperienza alpaca, percorso animal communication, NaturalHealing) con offerta chiara, prezzi visibili e pulsante di prenotazione diretto. Si parte dalla pagina acquisizione: il sito completo arriva quando il sistema e' gia' a regime.</div>
+      <div class="opp-result">Risultato: monetizzazione immediata dall'audience Instagram esistente</div>
+    </div>
+    <div class="opp-card reveal reveal-delay-1">
+      <div class="opp-step">02</div>
+      <div class="opp-title">Percorso di acquisizione dalla A alla Z</div>
+      <div class="opp-desc">Ogni contatto che arriva da Instagram, da Google o da WhatsApp percorre un flusso guidato: accesso alla pagina, sequenza automatica di benvenuto, contenuto di fiducia, pulsante di prenotazione. Zero passaggi manuali nel processo.</div>
+      <div class="opp-result">Risultato: sistema che lavora in autonomia, senza gestire ogni DM a mano</div>
+    </div>
+    <div class="opp-card reveal reveal-delay-2">
+      <div class="opp-step">03</div>
+      <div class="opp-title">Prenotazioni automatiche 24/7</div>
+      <div class="opp-desc">Calendario online integrato nel sistema WeBloom: il cliente sceglie il servizio e la data, riceve conferma immediata via email e WhatsApp, e un promemoria automatico prima dell'appuntamento. Funziona anche mentre sei con gli animali.</div>
+      <div class="opp-result">Risultato: zero DM manuali, prenotazioni anche fuori orario</div>
+    </div>
+    <div class="opp-card reveal reveal-delay-3">
+      <div class="opp-step">04</div>
+      <div class="opp-title">Google My Business ottimizzato</div>
+      <div class="opp-desc">Scheda verificata con foto, servizi, orari e categoria corretta. Visibile nel Local Pack per chi cerca "esperienze alpaca Treviso" o "animal communication Vittorio Veneto" direttamente su Google Maps.</div>
+      <div class="opp-result">Risultato: visibilita' nelle ricerche locali a intenzione d'acquisto</div>
+    </div>
+    <div class="opp-card reveal">
+      <div class="opp-step">05</div>
+      <div class="opp-title">La tua audience diventa tua</div>
+      <div class="opp-desc">I 35K follower su Instagram sono in affitto su Meta: un cambio di algoritmo o una sospensione azzera anni di lavoro. Con il sistema di raccolta email e WhatsApp del sistema WeBloom costruisci una lista di contatti che e' tua per sempre.</div>
+      <div class="opp-result">Risultato: audience indipendente dall'algoritmo, asset di lungo termine</div>
+    </div>
+  </div>
+</section>
+
+<!-- STORYTELLING COME ASSET -->
+<section id="storytelling">
+  <div class="section-label">Il vantaggio invisibile</div>
+  <h2 class="section-title">Lo storytelling come asset di business</h2>
+  <p class="section-desc">I tuoi 35K follower probabilmente non sanno quasi nulla della tua carriera in moto. E' un territorio narrativo vergine che nessun competitor potra' mai avere.</p>
+
+  <div class="hook-grid">
+    <div class="hook-card reveal">
+      <div class="hook-num">01</div>
+      <div class="hook-title">"Da 200 km/h al silenzio"</div>
+      <div class="hook-desc">Il contrasto fisico piu' immediato. Dalla velocita' alla quiete. Dalla macchina alla vita. Un arco narrativo che si vende da solo.</div>
+    </div>
+    <div class="hook-card reveal reveal-delay-1">
+      <div class="hook-num">02</div>
+      <div class="hook-title">"Il serbatoio con i cani"</div>
+      <div class="hook-desc">Nel 2010, al culmine della carriera, avevi i ritratti dei tuoi tre cani dipinti sul serbatoio della moto. Non hai abbandonato le corse per trovare te stessa: eri gia' te stessa. Gli animali ti hanno solo aspettata.</div>
+    </div>
+    <div class="hook-card reveal reveal-delay-2">
+      <div class="hook-num">03</div>
+      <div class="hook-title">"Prima donna a Suzuka"</div>
+      <div class="hook-desc">250.000 spettatori. Storia del motociclismo mondiale. L'autorita' di chi sa cosa vuol dire battere confini. Lo stesso coraggio applicato a un mondo completamente diverso.</div>
+    </div>
+    <div class="hook-card reveal reveal-delay-3">
+      <div class="hook-num">04</div>
+      <div class="hook-title">"Nata due volte a Vittorio Veneto"</div>
+      <div class="hook-desc">Prima volta: 1984. Seconda volta: quando hai smesso di correre e hai cominciato ad ascoltare. Il territorio come filo conduttore di una vita intera.</div>
+    </div>
+    <div class="hook-card reveal">
+      <div class="hook-num">05</div>
+      <div class="hook-title">"Gli occhi di ghiaccio che brillano"</div>
+      <div class="hook-desc">La Tribuna di Treviso nel 2010 scrisse che i tuoi occhi brillavano di felicita' solo con i cani. Era gia' tutto scritto, anche in pista.</div>
+    </div>
+  </div>
+
+  <div class="story-box reveal-scale">
+    <div class="story-row">
+      <div>
+        <div class="story-col-label">Perche' questo storytelling vale</div>
+        <p class="story-col-text">
+          Nessun operatore wellness o animal communication in Italia ha un background come questo. Non e' solo una storia personale: e' un <strong>asset di differenziazione assoluta</strong> che costruisce autorita', fiducia e curiosita' istantanea.<br><br>
+          Chi prenota un'esperienza con te non sta solo comprando un'ora con gli alpaca. Sta entrando nell'orbita di una donna che ha fatto storia in uno sport dominato dagli uomini, che ha capito quando smettere, e che ora usa la stessa determinazione per guidare le persone verso se stesse.
+        </p>
+      </div>
+      <div>
+        <div class="story-col-label">Idee contenuto immediate</div>
+        <div class="content-ideas">
+          <div class="content-idea">
+            <span class="idea-type">Reel IG</span>
+            <span class="idea-text">"Cosa ha in comune una pilota MotoGP con un alpaca?" Reveal della storia motociclistica</span>
+          </div>
+          <div class="content-idea">
+            <span class="idea-type">Blog/SEO</span>
+            <span class="idea-text">"Da Suzuka agli alpaca: come sono diventata animal communicator": articolo autobiografico</span>
+          </div>
+          <div class="content-idea">
+            <span class="idea-type">PR</span>
+            <span class="idea-text">Pitch a testate motociclismo e wellness: "Ex pilota ufficiale Aprilia rinasce come animal communicator a Vittorio Veneto"</span>
+          </div>
+          <div class="content-idea">
+            <span class="idea-type">Hero page</span>
+            <span class="idea-text">Sito web con timeline visuale: serbatoio con cani, Suzuka, alpaca. Una storia che si racconta visivamente.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSIONE -->
+<div id="conclusion" class="section-full">
+  <div class="conclusion-inner">
+    <div class="conclusion-box reveal">
+      <p class="big-quote">
+        Non stiamo costruendo il brand di una fattoria didattica.<br>
+        Stiamo costruendo il sistema digitale per <strong>una storia che merita di essere raccontata al mondo</strong>.<br>
+        L'audience c'e'. La storia c'e'. Manca solo l'infrastruttura.
+      </p>
+      <div class="conclusion-steps">
+        <div class="c-step">
+          <div class="c-step-num">La tua storia, raccontata bene</div>
+          <div class="c-step-text">Da Suzuka agli alpaca, ogni tappa della tua vita e' parte di un racconto che nessun competitor puo' avere. Un sito costruito attorno alla tua storia vale piu' di qualsiasi campagna pubblicitaria.</div>
+        </div>
+        <div class="c-step">
+          <div class="c-step-num">Un sistema che lavora per te</div>
+          <div class="c-step-text">Prenotazioni online, calendario pubblico, form di contatto. I tuoi 35K follower potranno prenotare direttamente, senza DM, in qualsiasi momento, anche quando sei con gli animali.</div>
+        </div>
+        <div class="c-step">
+          <div class="c-step-num">Visibilita' che dura</div>
+          <div class="c-step-text">Scheda Google My Business, presenza sui portali turismo Veneto, SEO locale. Chi cerca esperienze nella tua area ti trova. Non solo chi gia' ti segue su Instagram.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom">
+  <p>WeBloom, maggio 2026. <a href="mailto:info@nicolapin.com">info@nicolapin.com</a></p>
+</footer>
+
+<script>
+  // ── Scroll progress bar ──────────────────────────────
+  const progressBar = document.getElementById('scrollProgress');
+  function updateProgress() {
+    const scrollY = window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    if (progressBar) progressBar.style.width = (scrollY / maxScroll * 100) + '%';
+  }
+
+  // ── Parallax hero orbs ───────────────────────────────
+  const orb1 = document.querySelector('.orb1');
+  const orb2 = document.querySelector('.orb2');
+  function updateParallax() {
+    const y = window.scrollY;
+    if (orb1) orb1.style.transform = `translateY(${y * 0.15}px) scale(1)`;
+    if (orb2) orb2.style.transform = `translateY(${y * -0.10}px) scale(1.05)`;
+  }
+
+  window.addEventListener('scroll', () => {
+    updateProgress();
+    updateParallax();
+  }, { passive: true });
+
+  // ── Number counter animation ─────────────────────────
+  function animateCounter(el) {
+    const target = parseFloat(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const decimals = parseInt(el.dataset.decimals || '0');
+    const duration = 1800;
+    const startTime = performance.now();
+    function tick(now) {
+      const t = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const val = target * eased;
+      el.textContent = (decimals > 0 ? val.toFixed(decimals) : Math.floor(val)) + suffix;
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // ── IntersectionObserver ─────────────────────────────
+  const allReveal = '.reveal, .reveal-left, .reveal-right, .reveal-scale';
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('visible');
+      // counter se presente nell'elemento stesso
+      if (e.target.dataset.count) animateCounter(e.target);
+      // counter nei figli
+      e.target.querySelectorAll('[data-count]').forEach(animateCounter);
+      observer.unobserve(e.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll(allReveal).forEach(el => observer.observe(el));
+
+  // ── Auto-stagger per griglia di card ────────────────
+  document.querySelectorAll('.market-grid, .gap-grid, .comp-grid, .opp-grid, .hook-grid').forEach(grid => {
+    Array.from(grid.children).forEach((child, i) => {
+      // Non sovrascrivere delay espliciti via classe
+      if (!child.className.includes('reveal-delay')) {
+        child.style.transitionDelay = (i * 0.09) + 's';
+      }
+    });
+  });
+
+  // ── Stats bar: stagger + counter trigger ────────────
+  document.querySelectorAll('.stats-grid .stat-item').forEach((item, i) => {
+    item.style.transitionDelay = (i * 0.12) + 's';
+  });
+
+  // ── Sezione titoli: sottile linea animata ────────────
+  document.querySelectorAll('.section-title').forEach(title => {
+    const line = document.createElement('div');
+    line.style.cssText = 'height:2px;width:0;background:linear-gradient(90deg,#C8A96E,#6B9B52);border-radius:2px;margin-top:10px;transition:width 0.9s cubic-bezier(0.22,1,0.36,1) 0.35s';
+    title.parentNode.insertBefore(line, title.nextSibling);
+    const titleObs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { line.style.width = '72px'; titleObs.unobserve(title); }
+    }, { threshold: 0.5 });
+    titleObs.observe(title);
+  });
+</script>
+</body>
+</html>
