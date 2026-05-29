@@ -249,9 +249,12 @@
     .conclusion-box { padding: 40px 24px; }
     .timeline::before { left:20px; }
     .timeline-item { grid-template-columns: 40px 1fr; }
-    .timeline-item:nth-child(even) .tl-content { order:2; text-align:left; }
     .timeline-item:nth-child(even) .tl-empty { display:none; }
+    .timeline-item:nth-child(even) .tl-dot { order:1; }
+    .timeline-item:nth-child(even) .tl-content { order:2; text-align:left; }
     .timeline-item:nth-child(odd) .tl-empty { display:none; }
+    .timeline-item:nth-child(odd) .tl-dot { order:1; }
+    .timeline-item:nth-child(odd) .tl-content { order:2; text-align:left; }
     .tl-dot { margin:0; }
     .suzuka-box { padding:32px 24px; }
     .tribuna-quote { padding:24px 24px; }
