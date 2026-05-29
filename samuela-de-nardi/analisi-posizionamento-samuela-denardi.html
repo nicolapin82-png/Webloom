@@ -233,13 +233,20 @@
   @media (max-width: 768px) {
     nav { padding: 16px 20px; }
     .nav-tag { display: none; }
-    .stats-grid { grid-template-columns: repeat(2,1fr); gap: 24px; }
+    .stats-bar { padding: 40px 20px; }
+    .stats-grid { grid-template-columns: repeat(2,1fr); gap: 20px; }
+    section { padding: 64px 20px; }
+    .section-full { padding: 0; }
+    .section-inner { padding: 0 20px; }
+    .paradox-inner, .storia-inner, .conclusion-inner { padding: 56px 20px; }
+    .section-desc { margin-bottom: 36px; font-size: 16px; }
+    #hero { padding: 88px 20px 60px; }
+    .hero-eyebrow { letter-spacing: 2px; }
     .profile-grid { grid-template-columns: 1fr; }
     .paradox-grid { grid-template-columns: 1fr; }
-    .conclusion-steps { grid-template-columns: 1fr; }
     .paradox-card { padding: 32px 24px; }
+    .conclusion-steps { grid-template-columns: 1fr; }
     .conclusion-box { padding: 40px 24px; }
-    section { padding: 64px 20px; }
     .timeline::before { left:20px; }
     .timeline-item { grid-template-columns: 40px 1fr; }
     .timeline-item:nth-child(even) .tl-content { order:2; text-align:left; }
@@ -247,15 +254,41 @@
     .timeline-item:nth-child(odd) .tl-empty { display:none; }
     .tl-dot { margin:0; }
     .suzuka-box { padding:32px 24px; }
-    .tribuna-quote { padding:24px 28px; }
+    .tribuna-quote { padding:24px 24px; }
     .story-row { grid-template-columns:1fr; }
-    .story-box { padding:28px 24px; }
+    .story-box { padding:28px 20px; }
+    .orb1 { width:220px; height:220px; }
+    .orb2 { width:160px; height:160px; }
   }
   @media (max-width: 480px) {
     body { font-size: 16px; }
-    .stats-grid { grid-template-columns: 1fr 1fr; }
+    #hero { padding: 76px 16px 48px; }
+    section { padding: 48px 16px; }
+    .section-full { padding: 0; }
+    .section-inner { padding: 0 16px; }
+    .paradox-inner, .storia-inner, .conclusion-inner { padding: 44px 16px; }
+    .stats-bar { padding: 24px 16px; }
+    .stats-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .section-desc { font-size: 15px; margin-bottom: 24px; }
     .gap-grid { grid-template-columns: 1fr; }
     .opp-grid { grid-template-columns: 1fr; }
+    .hook-grid { grid-template-columns: 1fr; }
+    .comp-grid { grid-template-columns: 1fr; }
+    .market-grid { grid-template-columns: 1fr; }
+    .paradox-card { padding: 24px 16px; }
+    .conclusion-box { padding: 28px 16px; }
+    .conclusion-steps { gap: 12px; margin-top: 28px; }
+    .c-step { padding: 18px 16px; }
+    .suzuka-box { padding: 24px 16px; }
+    .tribuna-quote { padding: 20px 16px; }
+    .story-box { padding: 20px 16px; }
+    .pcard { padding: 18px 20px; }
+    .gap-card { padding: 20px 20px; }
+    .opp-card { padding: 24px 20px; }
+    .hook-card { padding: 24px 20px; }
+    .tl-content { padding: 18px 20px; }
+    .market-card { padding: 22px 20px; }
+    .comp-card { padding: 22px 20px; }
   }
 </style>
 </head>
