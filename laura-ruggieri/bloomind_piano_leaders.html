@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlooMind — Piano d'Attacco 7 Giorni | Top Leaders</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black:   #0C0B08;
+      --green:   #5A8760;
+      --sage:    #90BA96;
+      --rose:    #C4907E;
+      --gold:    #C9A84C;
+      --ivory:   #F8F5EF;
+      --grey:    #2A2926;
+      --grey-lt: #3E3C38;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--ivory);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--black);
+      border-bottom: 1px solid var(--grey-lt);
+      padding: 32px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--ivory);
+    }
+    .header-brand span { color: var(--green); }
+    .header-meta {
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(248,245,239,0.45);
+      text-align: right;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 96px 48px 72px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 5vw, 64px);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--ivory);
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--sage);
+    }
+    .hero p {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(248,245,239,0.75);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 40px auto;
+    }
+
+    /* ── INTRO LETTER ── */
+    .intro-section {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+    .intro-card {
+      background: var(--grey);
+      border-left: 3px solid var(--green);
+      border-radius: 4px;
+      padding: 48px 52px;
+    }
+    .intro-card .label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 20px;
+    }
+    .intro-card p {
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(248,245,239,0.85);
+      margin-bottom: 18px;
+      line-height: 1.8;
+    }
+    .intro-card p:last-child { margin-bottom: 0; }
+    .intro-card strong {
+      color: var(--ivory);
+      font-weight: 500;
+    }
+    .intro-card .signature {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--grey-lt);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--gold);
+    }
+
+    /* ── PILLARS ── */
+    .section-title-wrap {
+      text-align: center;
+      padding: 0 48px 48px;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 600;
+      color: var(--ivory);
+      line-height: 1.15;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2px;
+      max-width: 1100px;
+      margin: 0 auto 96px;
+      padding: 0 48px;
+    }
+    .pillar {
+      background: var(--grey);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pillar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+    }
+    .pillar.p1::before { background: var(--green); }
+    .pillar.p2::before { background: var(--sage); }
+    .pillar.p3::before { background: var(--gold); }
+    .pillar.p4::before { background: var(--rose); }
+
+    .pillar-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 16px;
+      opacity: 0.2;
+    }
+    .pillar.p1 .pillar-num { color: var(--green); }
+    .pillar.p2 .pillar-num { color: var(--sage); }
+    .pillar.p3 .pillar-num { color: var(--gold); }
+    .pillar.p4 .pillar-num { color: var(--rose); }
+
+    .pillar h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--ivory);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .pillar p {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(248,245,239,0.65);
+      line-height: 1.7;
+    }
+    .pillar-badge {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+    .p1 .pillar-badge { background: rgba(90,135,96,0.15); color: var(--green); }
+    .p2 .pillar-badge { background: rgba(144,186,150,0.15); color: var(--sage); }
+    .p3 .pillar-badge { background: rgba(201,168,76,0.15); color: var(--gold); }
+    .p4 .pillar-badge { background: rgba(196,144,126,0.15); color: var(--rose); }
+
+    /* ── 7-DAY PLAN ── */
+    .plan-section {
+      padding: 0 48px 120px;
+    }
+    .plan-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .day-block {
+      max-width: 1100px;
+      margin: 0 auto 4px;
+      background: var(--grey);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .day-header {
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      align-items: center;
+      padding: 32px 40px;
+      cursor: pointer;
+      gap: 32px;
+    }
+    .day-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      font-weight: 300;
+      line-height: 1;
+      color: rgba(248,245,239,0.12);
+    }
+    .day-info .day-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .day-info h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--ivory);
+      line-height: 1.2;
+    }
+    .day-info .day-focus {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(248,245,239,0.55);
+      margin-top: 6px;
+    }
+    .day-pillar-tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+      white-space: nowrap;
+      align-self: flex-start;
+    }
+
+    /* day color themes */
+    .day-1 .day-info .day-label { color: var(--green); }
+    .day-1 .day-header { border-left: 3px solid var(--green); }
+    .day-1 .day-pillar-tag { background: rgba(90,135,96,0.15); color: var(--green); }
+
+    .day-2 .day-info .day-label { color: var(--sage); }
+    .day-2 .day-header { border-left: 3px solid var(--sage); }
+    .day-2 .day-pillar-tag { background: rgba(144,186,150,0.15); color: var(--sage); }
+
+    .day-3 .day-info .day-label { color: var(--gold); }
+    .day-3 .day-header { border-left: 3px solid var(--gold); }
+    .day-3 .day-pillar-tag { background: rgba(201,168,76,0.15); color: var(--gold); }
+
+    .day-4 .day-info .day-label { color: var(--green); }
+    .day-4 .day-header { border-left: 3px solid var(--green); }
+    .day-4 .day-pillar-tag { background: rgba(90,135,96,0.15); color: var(--green); }
+
+    .day-5 .day-info .day-label { color: var(--gold); }
+    .day-5 .day-header { border-left: 3px solid var(--gold); }
+    .day-5 .day-pillar-tag { background: rgba(201,168,76,0.15); color: var(--gold); }
+
+    .day-6 .day-info .day-label { color: var(--sage); }
+    .day-6 .day-header { border-left: 3px solid var(--sage); }
+    .day-6 .day-pillar-tag { background: rgba(144,186,150,0.15); color: var(--sage); }
+
+    .day-7 .day-info .day-label { color: var(--rose); }
+    .day-7 .day-header { border-left: 3px solid var(--rose); }
+    .day-7 .day-pillar-tag { background: rgba(196,144,126,0.15); color: var(--rose); }
+
+    .day-body {
+      padding: 0 40px 48px 40px;
+      border-top: 1px solid var(--grey-lt);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .content-card {
+      background: var(--black);
+      border-radius: 4px;
+      padding: 28px 28px 32px;
+      border: 1px solid var(--grey-lt);
+      position: relative;
+    }
+    .content-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+    }
+    .format-reel::before { background: var(--rose); }
+    .format-carousel::before { background: var(--gold); }
+    .format-stories::before { background: var(--sage); }
+
+    .format-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .format-reel .format-tag { color: var(--rose); }
+    .format-carousel .format-tag { color: var(--gold); }
+    .format-stories .format-tag { color: var(--sage); }
+
+    .format-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+    }
+    .format-reel .format-icon { background: rgba(196,144,126,0.2); }
+    .format-carousel .format-icon { background: rgba(201,168,76,0.2); }
+    .format-stories .format-icon { background: rgba(144,186,150,0.2); }
+
+    .content-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--ivory);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .content-card .hook-box {
+      background: var(--grey);
+      border-radius: 3px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+    }
+    .content-card .hook-box p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--ivory);
+      line-height: 1.6;
+    }
+    .content-card .body-text {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(248,245,239,0.65);
+      line-height: 1.75;
+    }
+    .content-card .cta-note {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--grey-lt);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .format-reel .cta-note { color: var(--rose); }
+    .format-carousel .cta-note { color: var(--gold); }
+    .format-stories .cta-note { color: var(--sage); }
+
+    .slide-list {
+      list-style: none;
+      margin-top: 10px;
+      counter-reset: slide;
+    }
+    .slide-list li {
+      counter-increment: slide;
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(248,245,239,0.65);
+      padding: 6px 0 6px 28px;
+      border-bottom: 1px solid rgba(248,245,239,0.06);
+      position: relative;
+      line-height: 1.6;
+    }
+    .slide-list li:last-child { border-bottom: none; }
+    .slide-list li::before {
+      content: counter(slide);
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 18px;
+      height: 18px;
+      background: var(--grey-lt);
+      border-radius: 50%;
+      font-size: 10px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(248,245,239,0.5);
+    }
+
+    .note-rule {
+      max-width: 1100px;
+      margin: 0 auto 4px;
+      background: rgba(196,144,126,0.07);
+      border: 1px solid rgba(196,144,126,0.25);
+      border-left: 3px solid var(--rose);
+      border-radius: 4px;
+      padding: 20px 32px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .note-rule-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .note-rule-text {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(248,245,239,0.75);
+      line-height: 1.7;
+    }
+    .note-rule-text strong {
+      color: var(--rose);
+      font-weight: 500;
+    }
+
+    /* ── FOOTER NOTE ── */
+    .footer-note {
+      max-width: 1100px;
+      margin: 64px auto 0;
+      padding: 48px 40px;
+      background: var(--grey);
+      border-radius: 4px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .footer-note h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--ivory);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .footer-note h3 em { font-style: italic; color: var(--green); }
+    .footer-note p {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(248,245,239,0.65);
+      line-height: 1.75;
+    }
+    .footer-note .webloom-badge {
+      text-align: right;
+    }
+    .footer-note .webloom-badge .brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--ivory);
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+    .footer-note .webloom-badge p {
+      font-size: 13px;
+      color: rgba(248,245,239,0.4);
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 48px;
+      border-top: 1px solid var(--grey-lt);
+      margin-top: 0;
+    }
+    footer p {
+      font-size: 12px;
+      color: rgba(248,245,239,0.3);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      header { padding: 24px; }
+      .hero { padding: 64px 24px 48px; }
+      .intro-section { padding: 0 24px 56px; }
+      .intro-card { padding: 32px 28px; }
+      .pillars-grid { padding: 0 24px; grid-template-columns: 1fr 1fr; }
+      .plan-section { padding: 0 24px 80px; }
+      .day-header { grid-template-columns: 64px 1fr; padding: 24px 24px; }
+      .day-number { font-size: 40px; }
+      .day-pillar-tag { display: none; }
+      .day-body { padding: 0 24px 36px; }
+      .content-grid { grid-template-columns: 1fr; }
+      .footer-note { grid-template-columns: 1fr; gap: 24px; padding: 32px 24px; }
+      .footer-note .webloom-badge { text-align: left; }
+      .note-rule { padding: 18px 20px; }
+      .section-title-wrap { padding: 0 24px 36px; }
+    }
+    @media (max-width: 480px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+      .header-meta { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-brand">Bloo<span>Mind</span></div>
+  <div class="header-meta">
+    Piano d'Attacco Top Leaders<br>
+    Giugno 2026 &mdash; Uso Interno
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">Documento Strategico Riservato</div>
+  <h1>Il Piano d'Attacco<br><em>Prima del Lavoro Sartoriale</em></h1>
+  <div class="divider"></div>
+  <p>7 giorni di contenuti strategici per iniziare a fare rumore con la voce di BlooMind, prima del piano personalizzato che costruiremo insieme.</p>
+</section>
+
+<!-- INTRO LETTER -->
+<section class="intro-section">
+  <div class="intro-card">
+    <div class="label">Messaggio alle Top Leaders</div>
+    <p>
+      Quello che avete tra le mani non e' un piano editoriale qualsiasi.
+      E' il <strong>punto di partenza strategico</strong> di qualcosa che stiamo costruendo con intenzione,
+      con metodo e con una visione chiara su dove vogliamo arrivare.
+    </p>
+    <p>
+      Nei prossimi 7 giorni, ognuna di voi iniziera' a comunicare <strong>chi e' BlooMind</strong>
+      e perche' il nostro sistema e' diverso da tutto il resto.
+      Non tutte allo stesso modo &mdash; sarebbe un errore.
+      Questo piano vi da' il <strong>perimetro strategico</strong> e i temi chiave,
+      ma la voce, le storie e il modo di raccontarlo rimangono i vostri.
+      E' esattamente cosi' che vogliamo che funzioni.
+    </p>
+    <p>
+      Questo e' il piano d'attacco generico. Lo strumento per iniziare a creare rumore collettivo,
+      ognuna con la propria unicita', tutte con la stessa direzione.
+      <strong>Il lavoro sartoriale &mdash; il piano personalizzato costruito sulla vostra storia,
+      il vostro pubblico e i vostri obiettivi &mdash; verra' dopo.</strong>
+      Lo stiamo costruendo, e sara' qualcosa di unico nel mercato.
+    </p>
+    <p>
+      Per adesso: <strong>iniziate a volare. Noi siamo con voi.</strong>
+    </p>
+    <div class="signature">WeBloom per BlooMind &mdash; Giugno 2026 &#x2708;&#xFE0F;&#x1F525;</div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<div class="section-title-wrap">
+  <span class="section-label">I 4 Pilastri Guida</span>
+  <h2 class="section-title">Le Regole del Gioco</h2>
+</div>
+
+<div class="pillars-grid">
+  <div class="pillar p1">
+    <div class="pillar-num">01</div>
+    <h3>L'Ecosistema BlooMind</h3>
+    <p>Raccontate la forza del gruppo, degli strumenti e del sistema di lavoro. BlooMind non e' una persona sola: e' un sistema vivo.</p>
+    <span class="pillar-badge">Tema Attivo</span>
+  </div>
+  <div class="pillar p2">
+    <div class="pillar-num">02</div>
+    <h3>Formazione e Supporto</h3>
+    <p>Nessuna viene lasciata sola. C'e' una struttura solida, un corporate presente e co-founder accessibili. Questo e' raro: raccontatelo.</p>
+    <span class="pillar-badge">Tema Attivo</span>
+  </div>
+  <div class="pillar p3">
+    <div class="pillar-num">03</div>
+    <h3>Risultati Prima del Lancio</h3>
+    <p>Il metodo che inverte la sequenza: Zoom di startup, affiancamento, risultati concreti &mdash; prima ancora di andare sul mercato.</p>
+    <span class="pillar-badge">Tema Attivo</span>
+  </div>
+  <div class="pillar p4">
+    <div class="pillar-num">04</div>
+    <h3>No Brand Awareness Aziendale</h3>
+    <p>Per ora zero menzione diretta del partner aziendale. Il focus e' sul valore del team e del metodo BlooMind. Solo BlooMind parla.</p>
+    <span class="pillar-badge">Regola Fissa</span>
+  </div>
+</div>
+
+<!-- RULE NOTE -->
+<div class="plan-section" style="padding-top: 48px; padding-bottom: 0;">
+  <div class="note-rule">
+    <div class="note-rule-icon">&#9888;</div>
+    <div class="note-rule-text">
+      <strong>Regola d'oro per i 7 giorni:</strong>
+      Non nominate l'azienda partner, non usate loghi aziendali, non postate screenshot di guadagni.
+      Raccontate BlooMind: il sistema, il metodo, le persone, la vostra storia.
+      L'azienda e' una credenziale istituzionale &mdash; arrivera' nel momento giusto, nelle Stories e nelle conversazioni private.
+    </div>
+  </div>
+</div>
+
+<!-- 7-DAY PLAN -->
+<section class="plan-section" style="padding-top: 48px;">
+  <div class="plan-header">
+    <span class="section-label">Il Calendario</span>
+    <h2 class="section-title">Piano Editoriale Generico &mdash; 7 Giorni</h2>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-block day-1">
+    <div class="day-header">
+      <div class="day-number">01</div>
+      <div class="day-info">
+        <div class="day-label">Pilastro 1 &mdash; Ecosistema</div>
+        <h2>Il Sistema Che Funziona</h2>
+        <div class="day-focus">Obiettivo: Presentarsi come parte di un sistema strutturato, non come individuo isolato. Far capire che dietro BlooMind c'e' metodo, non improvvisazione.</div>
+      </div>
+      <span class="day-pillar-tag">Ecosistema</span>
+    </div>
+    <div class="day-body">
+      <div class="content-grid">
+
+        <div class="content-card format-reel">
+          <div class="format-tag">
+            <span class="format-icon">&#9654;</span>
+            Reel Parlato
+          </div>
+          <h4>"Ho smesso di fare tutto da sola"</h4>
+          <div class="hook-box">
+            <p>"Ho smesso di fare tutto da sola il giorno in cui ho capito cos'era davvero BlooMind."</p>
+          </div>
+          <p class="body-text">
+            Racconta il momento in cui hai realizzato che lavorare con un sistema e' diverso dal lavorare da sola.
+            Strumenti gia' pronti, processi collaudati, persone che sanno cosa fanno.
+            Non inventarsi nulla, applicare cio' che gia' funziona.
+          </p>
+          <div class="cta-note">CTA: "Se sei curiosa di sapere com'e' lavorare con un sistema che funziona, scrivimi in DM."</div>
+        </div>
+
+        <div class="content-card format-carousel">
+          <div class="format-tag">
+            <span class="format-icon">&#9776;</span>
+            Carosello &mdash; 5 Slide
+          </div>
+          <h4>"Il Network Che Non Ti Aspettavi"</h4>
+          <ol class="slide-list">
+            <li><strong>Hook:</strong> "Il network marketing funziona. Solo che quasi nessuno te lo insegna nel modo giusto."</li>
+            <li>"La maggior parte lavora da sola, con strumenti improvvisati, senza metodo."</li>
+            <li>"BlooMind e' un ecosistema: Metodo + Strumenti + Persone che sanno cosa fanno."</li>
+            <li>"Non devi reinventare nulla. Devi applicare cio' che funziona gia'."</li>
+            <li><strong>CTA:</strong> "Vuoi sapere com'e' dall'interno? Scrivimi." + salva il post</li>
+          </ol>
+        </div>
+
+        <div class="content-card format-stories">
+          <div class="format-tag">
+            <span class="format-icon">&#9679;</span>
+            Stories &mdash; Serie di 3
+          </div>
+          <h4>Ecosistema in 3 Tap</h4>
+          <p class="body-text">
+            <strong>Storia 1:</strong> Poll &mdash; "Qual era la tua idea di network prima?" [Caos totale / Ci speravo ma ero scettica]<br><br>
+            <strong>Storia 2:</strong> BTS del tuo sistema: una chat di gruppo, uno screen dei vostri strumenti, un momento reale &mdash; senza filtrare troppo.<br><br>
+            <strong>Storia 3:</strong> Citazione sul valore del sistema con sticker "Mi identifico" &mdash; chi risponde e' un lead caldo.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-block day-2">
+    <div class="day-header">
+      <div class="day-number">02</div>
+      <div class="day-info">
+        <div class="day-label">Pilastro 2 &mdash; Supporto</div>
+        <h2>Qui Nessuna Viene Lasciata Sola</h2>
+        <div class="day-focus">Obiettivo: Mostrare la struttura di supporto, la vicinanza al corporate e ai co-founder. Differenziarsi da tutti i progetti dove "ti buttano e poi ti arrangian".</div>
+      </div>
+      <span class="day-pillar-tag">Formazione</span>
+    </div>
+    <div class="day-body">
+      <div class="content-grid">
+
+        <div class="content-card format-reel">
+          <div class="format-tag">
+            <span class="format-icon">&#9654;</span>
+            Reel Parlato
+          </div>
+          <h4>"Una cosa che non avevo mai trovato prima"</h4>
+          <div class="hook-box">
+            <p>"Ti racconto una cosa che non avevo mai trovato prima in nessun altro progetto."</p>
+          </div>
+          <p class="body-text">
+            Racconta la prima volta che hai avuto bisogno di aiuto e qualcuno c'era davvero &mdash;
+            lo sponsor, un co-founder, il gruppo. Non un messaggio lasciato senza risposta.
+            Non "arrangiatevi". Qualcuno presente, concreto, accessibile.
+          </p>
+          <div class="cta-note">CTA: "Se cerchi qualcosa di strutturato, parliamoci."</div>
+        </div>
+
+        <div class="content-card format-carousel">
+          <div class="format-tag">
+            <span class="format-icon">&#9776;</span>
+            Carosello &mdash; 5 Slide
+          </div>
+          <h4>"Non Sai da Dove Iniziare? E' Per Questo Che Esistiamo"</h4>
+          <ol class="slide-list">
+            <li><strong>Hook:</strong> "Non sai da dove iniziare? E' esattamente per questo che esistiamo."</li>
+            <li>"Molte si buttano nel network senza formazione. Poi si bloccano."</li>
+            <li>"In BlooMind la formazione viene PRIMA dell'azione. Non dopo che hai gia' sbagliato."</li>
+            <li>"Hai uno sponsor che ti affianca. Una struttura che risponde. Un corporate vicino."</li>
+            <li><strong>CTA:</strong> "Sola puoi arrivare lontano. Con un sistema, vai ovunque." + DM</li>
+          </ol>
+        </div>
+
+        <div class="content-card format-stories">
+          <div class="format-tag">
+            <span class="format-icon">&#9679;</span>
+            Stories &mdash; Serie di 3
+          </div>
+          <h4>Supporto Reale, Non Promesse</h4>
+          <p class="body-text">
+            <strong>Storia 1:</strong> Poll &mdash; "Come ti sei sentita la prima settimana in un nuovo progetto?" [Abbandonata / Supportata]<br><br>
+            <strong>Storia 2:</strong> Screen o video di una sessione formativa, una chiamata, un momento di lavoro reale &mdash; senza dati sensibili.<br><br>
+            <strong>Storia 3:</strong> Box domande aperta &mdash; "Come funziona il supporto in BlooMind?" Rispondi a chi scrive, in modo personale.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-block day-3">
+    <div class="day-header">
+      <div class="day-number">03</div>
+      <div class="day-info">
+        <div class="day-label">Pilastro 3 &mdash; Risultati</div>
+        <h2>Prima i Risultati, Poi il Mercato</h2>
+        <div class="day-focus">Obiettivo: Raccontare il paradosso BlooMind &mdash; risultati concreti prima dell'esposizione pubblica. Rompere la logica "esponi e speriamo bene".</div>
+      </div>
+      <span class="day-pillar-tag">Metodo</span>
+    </div>
+    <div class="day-body">
+      <div class="content-grid">
+
+        <div class="content-card format-reel">
+          <div class="format-tag">
+            <span class="format-icon">&#9654;</span>
+            Reel Parlato
+          </div>
+          <h4>"In BlooMind funziona al contrario"</h4>
+          <div class="hook-box">
+            <p>"Nel network ti dicono: posta, esponi, vai sui social. In BlooMind funziona al contrario."</p>
+          </div>
+          <p class="body-text">
+            Racconta il percorso inverso: prima costruisci il tuo caso, ottieni risultati concreti,
+            e poi &mdash; solo se vuoi &mdash; decidi se raccontarlo.
+            Non c'e' pressione di esposizione. C'e' un metodo che produce risultati e
+            <em>da' motivazione naturale</em> a voler condividere.
+          </p>
+          <div class="cta-note">CTA: "Se ti incuriosisce capire com'e' strutturato il percorso, scrivimi."</div>
+        </div>
+
+        <div class="content-card format-carousel">
+          <div class="format-tag">
+            <span class="format-icon">&#9776;</span>
+            Carosello &mdash; 5 Slide
+          </div>
+          <h4>"La Sequenza Che Cambia Tutto"</h4>
+          <ol class="slide-list">
+            <li><strong>Hook:</strong> "Cosa succede se ottieni risultati prima ancora di dover parlare di quello che fai?"</li>
+            <li>"Quasi tutti iniziano esponendosi sui social senza ancora avere nulla da mostrare."</li>
+            <li>"BlooMind inverte la sequenza. Prima costruiamo il tuo caso. Poi, se vuoi, lo racconti."</li>
+            <li>"In 3-4 settimane la maggior parte di chi segue il metodo vede i primi risultati concreti."</li>
+            <li><strong>CTA:</strong> "Il mercato arriva dopo. Prima arriva la tua motivazione reale." + DM</li>
+          </ol>
+        </div>
+
+        <div class="content-card format-stories">
+          <div class="format-tag">
+            <span class="format-icon">&#9679;</span>
+            Stories &mdash; Serie di 3
+          </div>
+          <h4>Il Paradosso in 3 Tap</h4>
+          <p class="body-text">
+            <strong>Storia 1:</strong> Poll &mdash; "Hai mai sentito la pressione di 'esporti' prima di sentirti pronta?" [Si', sempre / No, mai avuto questa sensazione]<br><br>
+            <strong>Storia 2:</strong> Video selfie breve e autentico &mdash; com'era quando hai visto i tuoi primi risultati. Senza filtri, senza perfezione.<br><br>
+            <strong>Storia 3:</strong> Citazione sul metodo + sticker "Salvala se la senti tua". Chi salva e' chi si identifica.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-block day-4">
+    <div class="day-header">
+      <div class="day-number">04</div>
+      <div class="day-info">
+        <div class="day-label">Pilastro 1 &mdash; Ecosistema (Approfondimento)</div>
+        <h2>La Forza del Gruppo</h2>
+        <div class="day-focus">Obiettivo: Andare piu' in profondita' sul valore della community. Non solo "siamo un gruppo" &mdash; ma perche' le persone con cui lavori sono lo strumento piu' potente.</div>
+      </div>
+      <span class="day-pillar-tag">Ecosistema</span>
+    </div>
+    <div class="day-body">
+      <div class="content-grid">
+
+        <div class="content-card format-reel">
+          <div class="format-tag">
+            <span class="format-icon">&#9654;</span>
+            Reel Parlato
+          </div>
+          <h4>"Il gruppo non e' un plus. E' il motivo per cui funziona tutto."</h4>
+          <div class="hook-box">
+            <p>"C'e' un momento in cui capisci che il gruppo non e' un extra. E' il motivo per cui funziona tutto il resto."</p>
+          </div>
+          <p class="body-text">
+            Racconta un giorno di dubbio, un momento in cui hai pensato di rallentare,
+            e il gruppo ti ha ridato energia &mdash; non con frasi motivazionali,
+            ma con azioni concrete, presenza reale, risposte vere.
+          </p>
+          <div class="cta-note">CTA: "Scrivimi se vuoi capire com'e' far parte di una community come questa."</div>
+        </div>
+
+        <div class="content-card format-carousel">
+          <div class="format-tag">
+            <span class="format-icon">&#9776;</span>
+            Carosello &mdash; 5 Slide
+          </div>
+          <h4>"Stai Lavorando da Sola?"</h4>
+          <ol class="slide-list">
+            <li><strong>Hook:</strong> "Se stai lavorando da sola... forse non hai ancora trovato il gruppo giusto."</li>
+            <li>"Le persone con cui lavori determinano quanto velocemente cresci."</li>
+            <li>"In BlooMind non ti circondiamo di motivatori. Ti circondiamo di chi fa."</li>
+            <li>"Il gruppo e' lo strumento piu' potente del sistema &mdash; piu' di qualsiasi tool."</li>
+            <li><strong>CTA:</strong> "Pronta a scoprire com'e' davvero? Scrivimi." + DM</li>
+          </ol>
+        </div>
+
+        <div class="content-card format-stories">
+          <div class="format-tag">
+            <span class="format-icon">&#9679;</span>
+            Stories &mdash; Serie di 3
+          </div>
+          <h4>Community in Azione</h4>
+          <p class="body-text">
+            <strong>Storia 1:</strong> Riposta di un contenuto di una collega del team (con la sua autorizzazione) &mdash; mostrare che il gruppo e' reale e attivo.<br><br>
+            <strong>Storia 2:</strong> BTS di un momento del gruppo: una call, un messaggio di celebrazione, una schermata di conversazione (senza dati privati).<br><br>
+            <strong>Storia 3:</strong> Poll &mdash; "Cosa ti serve di piu' quando stai costruendo qualcosa di nuovo?" [Supporto / Metodo / Entrambi]
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-block day-5">
+    <div class="day-header">
+      <div class="day-number">05</div>
+      <div class="day-info">
+        <div class="day-label">Pilastro 3 &mdash; Metodo Concreto</div>
+        <h2>Come Funziona Davvero il Percorso</h2>
+        <div class="day-focus">Obiettivo: Raccontare il processo pratico &mdash; la Zoom di startup con lo sponsor, l'affiancamento, i passi reali. Niente vaguita', solo concretezza.</div>
+      </div>
+      <span class="day-pillar-tag">Metodo</span>
+    </div>
+    <div class="day-body">
+      <div class="content-grid">
+
+        <div class="content-card format-reel">
+          <div class="format-tag">
+            <span class="format-icon">&#9654;</span>
+            Reel Parlato
+          </div>
+          <h4>"Ti racconto esattamente cosa succede quando entri in BlooMind"</h4>
+          <div class="hook-box">
+            <p>"Ti racconto esattamente cosa succede quando entri in BlooMind. Niente passi vaghi, niente sorprese."</p>
+          </div>
+          <p class="body-text">
+            Dal primo contatto alla prima Zoom di startup con lo sponsor,
+            all'affiancamento nelle prime settimane &mdash; passi concreti, timeline reale.
+            Far capire che non e' "inizia e poi vedi" &mdash; e' un percorso con una struttura definita.
+          </p>
+          <div class="cta-note">CTA: "Se vuoi capire se fa per te, parliamo senza impegno."</div>
+        </div>
+
+        <div class="content-card format-carousel">
+          <div class="format-tag">
+            <span class="format-icon">&#9776;</span>
+            Carosello &mdash; 5 Slide
+          </div>
+          <h4>"Il Percorso Passo per Passo"</h4>
+          <ol class="slide-list">
+            <li><strong>Hook:</strong> "Hai mai sentito 'inizia e poi capisci'? In BlooMind non funziona cosi'."</li>
+            <li>"Step 1: Zoom di startup con il tuo sponsor. Capisci il percorso prima di iniziare."</li>
+            <li>"Step 2: Affiancamento. Non sei mai sola nelle prime settimane critiche."</li>
+            <li>"Step 3: Risultati misurabili. Solo allora, se vuoi, si parla di esposizione."</li>
+            <li><strong>CTA:</strong> "Passi reali, non promesse. Scrivimi per saperne di piu'."</li>
+          </ol>
+        </div>
+
+        <div class="content-card format-stories">
+          <div class="format-tag">
+            <span class="format-icon">&#9679;</span>
+            Stories &mdash; Serie di 3
+          </div>
+          <h4>Il Processo Senza Filtri</h4>
+          <p class="body-text">
+            <strong>Storia 1:</strong> Box domande &mdash; "Cosa vorresti sapere su come funziona il percorso in BlooMind?" Rispondi con video brevi e personali.<br><br>
+            <strong>Storia 2:</strong> Video breve (max 15 secondi) dove spieghi un singolo step del percorso &mdash; es. "La Zoom di startup e' questo..."<br><br>
+            <strong>Storia 3:</strong> Poll &mdash; "Preferiresti iniziare con un percorso strutturato o imparare sul campo?" [Strutturato, grazie / Sul campo, ci adatto]
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="day-block day-6">
+    <div class="day-header">
+      <div class="day-number">06</div>
+      <div class="day-info">
+        <div class="day-label">Pilastro 2 &mdash; Corporate e Co-Founder</div>
+        <h2>Non Sei Sola Neanche Ai Vertici</h2>
+        <div class="day-focus">Obiettivo: Mostrare la differenza di avere un corporate presente e co-founder accessibili. Questa e' una rarith' nel settore: raccontatela senza esagerare.</div>
+      </div>
+      <span class="day-pillar-tag">Formazione</span>
+    </div>
+    <div class="day-body">
+      <div class="content-grid">
+
+        <div class="content-card format-reel">
+          <div class="format-tag">
+            <span class="format-icon">&#9654;</span>
+            Reel Parlato
+          </div>
+          <h4>"La vicinanza di chi sta in cima al progetto"</h4>
+          <div class="hook-box">
+            <p>"Una cosa che mi ha colpito da subito e' la vicinanza di chi sta in cima al progetto."</p>
+          </div>
+          <p class="body-text">
+            Racconta un episodio concreto di contatto con il corporate o i co-founder.
+            Non un'email formale. Un momento reale di connessione, una risposta inaspettata,
+            una decisione presa ascoltando chi lavora sul campo.
+            Cosa ha significato per te sapere che c'era qualcuno davvero presente?
+          </p>
+          <div class="cta-note">CTA: "Non e' comune trovare questo. Scrivimi se vuoi saperne di piu'."</div>
+        </div>
+
+        <div class="content-card format-carousel">
+          <div class="format-tag">
+            <span class="format-icon">&#9776;</span>
+            Carosello &mdash; 5 Slide
+          </div>
+          <h4>"Sai Chi C'e' Davvero Dietro Quello Che Fai?"</h4>
+          <ol class="slide-list">
+            <li><strong>Hook:</strong> "Quante volte hai lavorato su qualcosa senza mai sapere chi c'e' davvero dietro?"</li>
+            <li>"In BlooMind la struttura e' trasparente. I co-fondatori sono presenti, non dei fantasmi."</li>
+            <li>"Il corporate e' vicino. Le decisioni vengono prese con chi lavora sul campo."</li>
+            <li>"Questo cambia tutto. Sai con chi stai costruendo. E loro sanno chi sei."</li>
+            <li><strong>CTA:</strong> "Non e' un claim. E' come funziona davvero. Scrivimi."</li>
+          </ol>
+        </div>
+
+        <div class="content-card format-stories">
+          <div class="format-tag">
+            <span class="format-icon">&#9679;</span>
+            Stories &mdash; Serie di 3
+          </div>
+          <h4>Struttura Vera, Non Solo Parole</h4>
+          <p class="body-text">
+            <strong>Storia 1:</strong> Un momento di connessione reale con la struttura &mdash; un evento, una call, un messaggio (senza dati privati). La prova visiva vale piu' di mille parole.<br><br>
+            <strong>Storia 2:</strong> Domanda aperta &mdash; "Hai mai lavorato in un progetto dove sentivi il supporto dall'alto?" Rispondi a chi risponde, in modo personale.<br><br>
+            <strong>Storia 3:</strong> Citazione o pensiero di uno dei co-founder (se disponibile e pertinente) &mdash; qualcosa che vi ha colpito, con la vostra riflessione sopra.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 7 -->
+  <div class="day-block day-7">
+    <div class="day-header">
+      <div class="day-number">07</div>
+      <div class="day-info">
+        <div class="day-label">Tutti i Pilastri &mdash; Chiamata all'Azione</div>
+        <h2>BlooMind Non e' Per Tutte. E' Per Chi e' Pronta.</h2>
+        <div class="day-focus">Obiettivo: Chiudere la settimana con la logica della selettivita' come rispetto. Non si cerca chiunque &mdash; si cercano le persone giuste. Questo attrae i professionisti di qualita'.</div>
+      </div>
+      <span class="day-pillar-tag">Selettivita'</span>
+    </div>
+    <div class="day-body">
+      <div class="content-grid">
+
+        <div class="content-card format-reel">
+          <div class="format-tag">
+            <span class="format-icon">&#9654;</span>
+            Reel Parlato
+          </div>
+          <h4>"Non sono la risposta per chiunque"</h4>
+          <div class="hook-box">
+            <p>"BlooMind non e' la risposta per chiunque voglia guadagnare di piu'. Ed e' esattamente questo il punto."</p>
+          </div>
+          <p class="body-text">
+            Spiega cosa distingue chi funziona bene in BlooMind &mdash;
+            non requisiti tecnici, ma caratteristiche di mentalita':
+            vuole crescere (non solo guadagnare), preferisce costruire qualcosa di solido,
+            cerca un sistema e non un palcoscenico.
+            La selettivita' non e' arroganza: e' rispetto per te e per chi entra.
+          </p>
+          <div class="cta-note">CTA gentile: "Se mentre ascoltavi hai pensato 'questo sono io' &mdash; scrivimi. Parliamoci."</div>
+        </div>
+
+        <div class="content-card format-carousel">
+          <div class="format-tag">
+            <span class="format-icon">&#9776;</span>
+            Carosello &mdash; 5 Slide
+          </div>
+          <h4>"Non Stiamo Cercando Chiunque"</h4>
+          <ol class="slide-list">
+            <li><strong>Hook:</strong> "Non stiamo cercando chiunque. Stiamo cercando le persone giuste."</li>
+            <li>"Chi funziona in BlooMind: vuole crescere non solo guadagnare / preferisce costruire qualcosa di solido / cerca un sistema, non un palcoscenico"</li>
+            <li>"Chi probabilmente non fa per BlooMind: cerca risultati senza metodo / vuole esposizione prima dei risultati / ha fretta e non vuole formarsi"</li>
+            <li>"La selezione non e' arroganza. E' rispetto &mdash; per te e per noi."</li>
+            <li><strong>CTA:</strong> "Se ti sei riconosciuta nel profilo giusto, scrivimi." + DM</li>
+          </ol>
+        </div>
+
+        <div class="content-card format-stories">
+          <div class="format-tag">
+            <span class="format-icon">&#9679;</span>
+            Stories &mdash; Serie di 3
+          </div>
+          <h4>La CTA della Settimana</h4>
+          <p class="body-text">
+            <strong>Storia 1:</strong> Poll &mdash; "Quale di queste ti descrive meglio?" [Cerco un sistema serio / Cerco liberta' di crescita] &mdash; entrambe sono risposte positive.<br><br>
+            <strong>Storia 2:</strong> Riflessione spontanea, tono caldo &mdash; cosa significa per te "essere nel posto giusto". Senza perfezione, senza regia.<br><br>
+            <strong>Storia 3:</strong> Box domande aperta &mdash; "Cosa vorresti costruire nei prossimi 6 mesi?" Ogni risposta diventa l'inizio di una conversazione reale.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER NOTE -->
+  <div class="footer-note">
+    <div>
+      <h3>Questo e' solo<br><em>il punto di partenza.</em></h3>
+      <p>
+        Questo piano e' il vostro strumento per iniziare a creare rumore collettivo
+        con la voce di BlooMind. Ognuna di voi porta la propria storia, la propria unicita',
+        la propria frequenza.<br><br>
+        Il lavoro sartoriale &mdash; il piano costruito sulla vostra storia personale,
+        il vostro pubblico specifico e i vostri obiettivi &mdash; e' in costruzione.
+        <strong>Stiamo costruendo qualcosa di unico nel mercato.</strong>
+        Presto arriverete a lavorare con uno strumento fatto su misura per voi.
+      </p>
+    </div>
+    <div class="webloom-badge">
+      <div class="brand">WeBloom</div>
+      <p>Strategia & Comunicazione</p>
+      <p style="margin-top: 8px;">Prodotto da WeBloom per BlooMind</p>
+      <p>Giugno 2026 &mdash; Uso Interno Riservato</p>
+      <p style="margin-top: 16px; font-size: 12px; color: rgba(248,245,239,0.3);">info@webloom1.it</p>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <p>BlooMind &mdash; Piano d'Attacco Top Leaders &mdash; Giugno 2026 &mdash; WeBloom &copy; 2026</p>
+</footer>
+
+</body>
+</html>
