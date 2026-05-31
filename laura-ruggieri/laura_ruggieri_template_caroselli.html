@@ -2,539 +2,653 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Template Caroselli — Laura Ruggieri / BlooMind</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/horizon" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --bg:#0C0B08; --bg2:#141210;
-  --bloom:#5A8760; --bloom-lt:#90BA96;
-  --mind:#C4907E; --mind-lt:#DDB8AC;
-  --gold:#C9A84C; --ivory:#F8F5EF;
-  --muted:rgba(248,245,239,0.5);
-  --border:rgba(90,135,96,0.22);
-  --sep:rgba(201,168,76,0.15);
+  --gold:#C9A84C;
+  --gold-dim:rgba(201,168,76,0.65);
+  --gold-faint:rgba(201,168,76,0.25);
+  --white:#FFFFFF;
+  --white-dim:rgba(255,255,255,0.68);
+  --bg:#0A0908;
+  --bg2:#111009;
+  --card:rgba(18,15,12,0.6);
+  --border:rgba(201,168,76,0.16);
+  --sep:rgba(201,168,76,0.12);
+  --muted:rgba(255,255,255,0.45);
+  --r:10px;
 }
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--ivory);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;}
-::-webkit-scrollbar{width:4px;}
-::-webkit-scrollbar-thumb{background:var(--bloom);border-radius:2px;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{background:var(--bg);color:var(--white);font-family:'Montserrat',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-thumb{background:var(--gold-faint);}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;gap:20px;background:rgba(12,11,8,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
-.nav-logo img{height:30px;width:auto;display:block;}
-.nav-tag{font-size:11px;color:var(--muted);letter-spacing:2.5px;text-transform:uppercase;}
-.nav-badge{background:linear-gradient(135deg,var(--bloom),var(--mind));color:#fff;font-size:10px;font-weight:500;padding:4px 12px;border-radius:20px;letter-spacing:1px;margin-left:auto;}
-.nav-hint{font-size:11px;color:var(--muted);font-style:italic;}
-@media(max-width:768px){nav{padding:16px 20px;}.nav-tag,.nav-hint{display:none;}}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 44px;display:flex;align-items:center;gap:20px;background:rgba(10,9,8,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo img{height:28px;width:auto;}
+.nav-tag{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);}
+.nav-badge{margin-left:auto;background:linear-gradient(135deg,#1a1200,#2a2000);border:1px solid var(--gold-faint);color:var(--gold);font-size:10px;font-weight:600;letter-spacing:1.5px;padding:4px 14px;border-radius:100px;text-transform:uppercase;}
+@media(max-width:768px){nav{padding:14px 18px;}.nav-tag{display:none;}}
 
-.hero{padding:140px 48px 60px;max-width:960px;margin:0 auto;}
-.hero-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bloom-lt);margin-bottom:16px;}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:600;line-height:1.15;margin-bottom:16px;}
-.hero-sub{font-size:0.9rem;color:var(--muted);max-width:600px;line-height:1.8;}
-.hero-note{display:inline-block;margin-top:20px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);border-radius:6px;padding:10px 18px;font-size:0.8rem;color:var(--gold);}
-@media(max-width:768px){.hero{padding:120px 20px 40px;}}
+/* HERO */
+.hero{padding:130px 44px 56px;max-width:980px;margin:0 auto;}
+.hero-label{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+.hero-title{font-family:'Horizon','Bebas Neue',sans-serif;font-size:clamp(2.2rem,5vw,4rem);color:var(--white);line-height:1.0;letter-spacing:1px;margin-bottom:14px;text-transform:uppercase;}
+.hero-title span{color:var(--gold);}
+.hero-sub{font-size:0.88rem;color:var(--muted);max-width:580px;line-height:1.85;}
+.hero-note{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:10px 18px;background:rgba(201,168,76,0.07);border:1px solid var(--gold-faint);border-radius:6px;font-size:0.78rem;color:var(--gold-dim);}
+@media(max-width:768px){.hero{padding:110px 18px 40px;}}
 
-.sep-line{border:none;border-top:1px solid var(--sep);max-width:960px;margin:0 auto;}
+/* SEZIONE */
+.section{max-width:980px;margin:0 auto;padding:64px 44px;}
+.section-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;}
+.section-title{font-family:'Horizon','Bebas Neue',sans-serif;font-size:clamp(1.5rem,3vw,2.3rem);color:var(--white);line-height:1.05;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:8px;}
+.section-desc{font-size:0.83rem;color:var(--muted);max-width:560px;line-height:1.85;margin-bottom:0;}
+.sep{border:none;border-top:1px solid var(--sep);max-width:980px;margin:0 auto;}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:none;}
+.d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}.d4{transition-delay:.24s}
+@media(max-width:768px){.section{padding:48px 18px;}}
 
-.template-section{max-width:960px;margin:0 auto;padding:60px 48px;}
-.ts-header{margin-bottom:36px;}
-.ts-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bloom-lt);margin-bottom:10px;}
-.ts-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:600;line-height:1.2;margin-bottom:8px;}
-.ts-desc{font-size:0.85rem;color:var(--muted);line-height:1.8;}
-@media(max-width:768px){.template-section{padding:40px 20px;}}
+/* FONT INFO BOX */
+.font-box{margin-top:28px;padding:22px 26px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);font-size:0.8rem;color:var(--muted);line-height:1.85;}
+.font-box strong{color:var(--white);}
+.font-box code{background:rgba(201,168,76,0.12);color:var(--gold);padding:1px 7px;border-radius:4px;font-family:monospace;font-size:0.76rem;}
 
-/* ── FORMATO SELETTORE ── */
-.format-selector{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center;}
-.format-label{font-size:0.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-right:4px;}
-.fmt-btn{font-size:0.7rem;padding:5px 14px;border-radius:20px;border:1px solid rgba(248,245,239,0.15);background:transparent;color:var(--muted);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;line-height:1.4;}
-.fmt-btn:hover{border-color:rgba(90,135,96,0.4);color:var(--bloom-lt);}
-.fmt-btn.active{background:rgba(90,135,96,0.2);border-color:var(--bloom);color:var(--bloom-lt);}
-.fmt-dims{font-size:0.62rem;color:rgba(248,245,239,0.25);margin-left:4px;letter-spacing:0.5px;}
+/* PHOTO SELECTOR */
+.photo-sel-wrap{margin-top:28px;margin-bottom:20px;}
+.ps-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px;}
+.ph-thumbs{display:flex;gap:10px;flex-wrap:wrap;}
+.ph-thumb{
+  width:52px;height:70px;
+  border-radius:6px;
+  background-size:cover;
+  background-position:center 20%;
+  cursor:pointer;
+  border:2px solid transparent;
+  transition:border-color .2s,transform .15s;
+  opacity:0.65;
+}
+.ph-thumb:hover{opacity:0.88;transform:scale(1.04);}
+.ph-thumb.active{border-color:var(--gold);opacity:1;}
 
-/* ── CAROUSEL ── */
-.carousel-wrap{overflow-x:auto;padding-bottom:16px;cursor:grab;}
+/* FORMAT SELECTOR */
+.fmt-row{display:flex;align-items:center;gap:8px;margin-bottom:18px;flex-wrap:wrap;}
+.fmt-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-right:2px;}
+.fmt-btn{font-size:0.68rem;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:1px;padding:5px 14px;border-radius:100px;border:1px solid rgba(255,255,255,0.12);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;text-transform:uppercase;}
+.fmt-btn:hover{border-color:var(--gold-faint);color:var(--gold-dim);}
+.fmt-btn.active{border-color:var(--gold);background:rgba(201,168,76,0.1);color:var(--gold);}
+.fmt-dims{font-size:0.6rem;opacity:0.6;margin-left:3px;}
+
+/* CAROUSEL SCROLL */
+.carousel-wrap{overflow-x:auto;padding-bottom:14px;cursor:grab;-webkit-overflow-scrolling:touch;}
 .carousel-wrap:active{cursor:grabbing;}
-.carousel-track{display:flex;gap:16px;padding:4px 2px;}
+.carousel-track{display:flex;gap:14px;padding:2px 2px 2px;}
 
-/* ── SLIDE WRAPPER ── */
+/* SLIDE WRAPPER */
 .slide-wrap{flex:0 0 auto;display:flex;flex-direction:column;gap:8px;}
 
-/* ── SLIDE CARD ── */
+/* ——— SLIDE CARD ——— */
 .slide{
-  width:280px;
-  height:280px;
-  border-radius:12px;
-  position:relative;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  padding:24px;
-  cursor:text;
-  transition:outline .1s, height .25s ease;
-  outline:2px solid transparent;
+  width:340px;height:340px;
+  position:relative;overflow:hidden;
+  border-radius:10px;
+  transition:height .3s ease;
+  flex-shrink:0;
 }
-.slide:focus-within{outline:2px solid var(--bloom);}
+.slide.fmt-45{height:425px;}
 
-/* Formati */
-.fmt-45{height:350px;}
-.fmt-45 .slide-title-text{font-size:clamp(1.2rem,4vw,1.55rem);}
-.fmt-45 .slide-line{margin-bottom:20px;}
+/* BACKGROUND IMAGE */
+.slide-bg-img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 18%;
+  filter:brightness(0.52) saturate(0.8);
+  z-index:0;
+  transition:filter .3s;
+}
 
-.fmt-916{height:498px;}
-.fmt-916 .slide-title-text{font-size:clamp(1.3rem,4.5vw,1.75rem);margin-bottom:16px;}
-.fmt-916 .slide-body-text{font-size:0.8rem;line-height:1.9;}
-.fmt-916 .slide-line{margin-bottom:28px;}
-.fmt-916 .slide-eyebrow{margin-bottom:14px;}
-.fmt-916 padding{padding:32px;}
+/* GRADIENT OVERLAY */
+.slide-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.04) 0%,
+    rgba(0,0,0,0.18) 25%,
+    rgba(0,0,0,0.65) 55%,
+    rgba(0,0,0,0.93) 100%
+  );
+}
 
-/* Sfondi */
-.slide-dark{background:linear-gradient(145deg,#0E0D0B,#1A1410);}
-.slide-bloom{background:linear-gradient(145deg,#1D2E20,#0E1810);}
-.slide-mind{background:linear-gradient(145deg,#2A1A14,#1A0E0A);}
-.slide-gold{background:linear-gradient(145deg,#1E1800,#0E0B00);}
-.slide-ivory{background:linear-gradient(145deg,#F0EDE5,#E8E4DA);color:#1A1410;}
+/* CONTENT AREA */
+.slide-content{
+  position:absolute;inset:0;z-index:2;
+  padding:16px 20px 46px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+}
+.s-category{
+  font-family:'Montserrat',sans-serif;
+  font-size:7.5px;font-weight:700;letter-spacing:2.5px;
+  color:rgba(201,168,76,0.55);text-transform:uppercase;margin-bottom:7px;
+}
+.s-gold-bar{width:22px;height:2px;background:var(--gold);border-radius:1px;margin-bottom:11px;opacity:0.8;}
+.s-title{
+  font-family:'Horizon','Bebas Neue','Impact',sans-serif;
+  font-size:30px;line-height:1.02;letter-spacing:0.3px;
+  color:#FFFFFF;text-transform:uppercase;
+  margin-bottom:9px;outline:none;
+}
+.s-sub{
+  font-family:'Montserrat',sans-serif;
+  font-size:11.5px;font-weight:500;letter-spacing:0.2px;line-height:1.5;
+  color:var(--gold);outline:none;
+}
+.s-body{
+  font-family:'Montserrat',sans-serif;
+  font-size:10.5px;font-weight:400;line-height:1.65;
+  color:rgba(255,255,255,0.68);margin-top:7px;outline:none;
+}
 
-/* Badge numero slide */
-.slide-num-badge{position:absolute;top:14px;right:14px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:500;letter-spacing:0.5px;}
-.badge-bloom{background:rgba(90,135,96,0.3);color:var(--bloom-lt);}
-.badge-mind{background:rgba(196,144,126,0.3);color:var(--mind-lt);}
-.badge-gold{background:rgba(201,168,76,0.2);color:var(--gold);}
-.badge-dark{background:rgba(248,245,239,0.1);color:rgba(248,245,239,0.5);}
+/* SLIDE NUMBER TOP-RIGHT */
+.s-num{
+  position:absolute;top:13px;right:13px;z-index:3;
+  font-family:'Montserrat',sans-serif;font-size:8.5px;font-weight:600;letter-spacing:1.5px;
+  color:rgba(201,168,76,0.45);
+}
 
-.slide-line{width:24px;height:2px;margin-bottom:16px;border-radius:1px;}
-.line-bloom{background:var(--bloom);}
-.line-mind{background:var(--mind);}
-.line-gold{background:var(--gold);}
-.line-dark{background:rgba(248,245,239,0.3);}
+/* BLOOMIND MARK BOTTOM-CENTER */
+.bm-mark{
+  position:absolute;bottom:13px;left:50%;transform:translateX(-50%);z-index:3;
+  font-family:'Montserrat',sans-serif;font-size:7.5px;font-weight:700;letter-spacing:4px;
+  color:rgba(201,168,76,0.6);text-transform:uppercase;white-space:nowrap;
+  pointer-events:none;
+}
 
-/* Testi editabili */
-[contenteditable]{outline:none;border-bottom:1px dashed transparent;transition:border-color .2s,background .2s;border-radius:3px;padding:1px 3px;min-width:20px;display:inline-block;}
-[contenteditable]:focus{border-bottom-color:var(--bloom);background:rgba(90,135,96,0.08);}
-.slide-ivory [contenteditable]:focus{border-bottom-color:var(--bloom);background:rgba(90,135,96,0.12);}
+/* CONTENTEDITABLE */
+[contenteditable]{cursor:text;}
+[contenteditable]:focus{background:rgba(255,255,255,0.06);border-radius:3px;outline:none;}
+[contenteditable]:hover:not(:focus){background:rgba(255,255,255,0.03);border-radius:3px;}
 
-.slide-eyebrow{font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
-.eyebrow-bloom{color:var(--bloom-lt);}
-.eyebrow-mind{color:var(--mind-lt);}
-.eyebrow-gold{color:var(--gold);}
-.eyebrow-dark{color:rgba(248,245,239,0.4);}
-.eyebrow-ivory{color:var(--bloom);}
+/* COVER SLIDE variant */
+.slide.is-cover .s-title{font-size:33px;}
+.slide.is-cover .s-sub{color:rgba(255,255,255,0.78);font-style:italic;}
 
-.slide-title-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,3.5vw,1.4rem);font-weight:600;line-height:1.25;margin-bottom:10px;}
-.slide-body-text{font-size:0.72rem;line-height:1.7;color:rgba(248,245,239,0.65);}
-.slide-ivory .slide-body-text{color:rgba(26,20,10,0.65);}
-.slide-footer{font-size:0.6rem;letter-spacing:1.5px;text-transform:uppercase;opacity:0.4;margin-top:auto;padding-top:12px;}
-.slide-cta-text{font-size:0.75rem;font-weight:500;letter-spacing:0.5px;margin-top:8px;}
+/* CTA SLIDE variant */
+.slide.is-cta .s-title{font-size:26px;}
+.slide.is-cta .s-sub{color:var(--gold);font-weight:600;}
 
-/* ── PULSANTI DOWNLOAD SLIDE ── */
+/* DL BUTTONS */
 .slide-dl-btn{
-  width:100%;
-  font-size:0.68rem;padding:5px 0;border-radius:6px;
-  border:1px solid rgba(90,135,96,0.3);
-  background:rgba(90,135,96,0.07);
-  color:var(--bloom-lt);cursor:pointer;
-  font-family:'DM Sans',sans-serif;
-  transition:all .2s;
-  display:flex;align-items:center;justify-content:center;gap:6px;
+  width:100%;padding:5px 0;border-radius:6px;cursor:pointer;
+  font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:1px;
+  text-transform:uppercase;
+  border:1px solid rgba(201,168,76,0.2);background:rgba(201,168,76,0.06);color:var(--gold-dim);
+  transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;
 }
-.slide-dl-btn:hover{background:rgba(90,135,96,0.2);border-color:var(--bloom);}
-.slide-dl-btn.loading{opacity:0.45;pointer-events:none;}
+.slide-dl-btn:hover{border-color:var(--gold);background:rgba(201,168,76,0.14);}
+.slide-dl-btn.loading{opacity:0.4;pointer-events:none;}
 
-/* ── RIGA AZIONI SOTTO CAROUSEL ── */
-.carousel-actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;align-items:center;}
-.swipe-hint{font-size:0.75rem;color:var(--muted);display:flex;align-items:center;gap:8px;}
-.swipe-arrow{font-size:1rem;animation:swipe 1.5s infinite;}
-@keyframes swipe{0%,100%{transform:translateX(0);}50%{transform:translateX(8px);}}
+/* CAROUSEL ACTIONS */
+.c-actions{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap;}
+.swipe-hint{font-size:0.73rem;color:var(--muted);display:flex;align-items:center;gap:6px;}
+.swipe-arr{animation:sw 1.6s ease-in-out infinite;}
+@keyframes sw{0%,100%{transform:translateX(0);}50%{transform:translateX(7px);}}
 
-.reset-btn{background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.28);color:var(--gold);padding:5px 14px;border-radius:20px;font-size:0.7rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;}
-.reset-btn:hover{background:rgba(201,168,76,0.2);}
+.zip-btn{
+  display:flex;align-items:center;gap:6px;padding:6px 18px;border-radius:100px;cursor:pointer;
+  font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  border:1px solid var(--gold-faint);background:rgba(201,168,76,0.08);color:var(--gold);
+  transition:all .2s;margin-left:auto;
+}
+.zip-btn:hover{background:rgba(201,168,76,0.18);}
+.zip-btn.loading{opacity:0.4;pointer-events:none;}
 
-.dl-zip-btn{background:rgba(90,135,96,0.12);border:1px solid rgba(90,135,96,0.4);color:var(--bloom-lt);padding:5px 16px;border-radius:20px;font-size:0.7rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;display:flex;align-items:center;gap:6px;}
-.dl-zip-btn:hover{background:rgba(90,135,96,0.25);}
-.dl-zip-btn.loading{opacity:0.45;pointer-events:none;}
-
-/* ── INFO / CANVA ── */
-.info-box{background:rgba(90,135,96,0.06);border:1px solid var(--border);border-radius:10px;padding:24px 28px;margin:28px 0;font-size:0.82rem;color:var(--muted);line-height:1.8;}
-.info-box strong{color:var(--ivory);}
-.info-box code{background:rgba(90,135,96,0.15);color:var(--bloom-lt);padding:1px 7px;border-radius:4px;font-family:monospace;font-size:0.78rem;}
-
-.pillar-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
-.pillar-chip{font-size:0.68rem;padding:4px 12px;border-radius:20px;letter-spacing:0.5px;cursor:default;}
-.p-laura{background:rgba(196,144,126,0.15);color:var(--mind-lt);border:1px solid rgba(196,144,126,0.3);}
-.p-sistema{background:rgba(90,135,96,0.15);color:var(--bloom-lt);border:1px solid rgba(90,135,96,0.3);}
-.p-bloom{background:rgba(201,168,76,0.12);color:#d4b86a;border:1px solid rgba(201,168,76,0.25);}
-.p-mindset{background:rgba(184,212,232,0.1);color:#b8d4e8;border:1px solid rgba(184,212,232,0.2);}
-
-.canva-steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px;}
-.canva-step{background:rgba(0,0,0,0.25);border-radius:8px;padding:16px 18px;}
-.cs-num{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--gold);line-height:1;margin-bottom:6px;}
-.cs-text{font-size:0.78rem;color:var(--muted);line-height:1.7;}
-
-footer{padding:64px 48px;border-top:1px solid var(--sep);max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
-.footer-logo img{height:34px;opacity:0.8;}
-.footer-info{font-size:0.75rem;color:var(--muted);line-height:1.8;}
+/* FOOTER */
+footer{padding:60px 44px;border-top:1px solid var(--sep);max-width:980px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.footer-logo img{height:30px;opacity:0.7;}
+.footer-info{font-size:0.73rem;color:var(--muted);line-height:1.85;}
 .footer-info a{color:var(--gold);text-decoration:none;}
-@media(max-width:768px){footer{padding:40px 20px;flex-direction:column;align-items:flex-start;}}
-
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;}
-.reveal.visible{opacity:1;transform:none;}
+@media(max-width:768px){footer{padding:40px 18px;flex-direction:column;align-items:flex-start;}}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="nav-logo">
     <img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom">
   </div>
   <span class="nav-tag">Template Caroselli</span>
-  <span class="nav-hint">Clicca su qualsiasi testo per modificarlo · Scegli formato e scarica PNG</span>
   <span class="nav-badge">BlooMind · 2026</span>
 </nav>
 
+<!-- HERO -->
 <div class="hero reveal">
   <p class="hero-label">Laura Ruggieri / BlooMind</p>
-  <h1 class="hero-title">Template Caroselli<br>Modificabili</h1>
-  <p class="hero-sub">Modifica i testi cliccando sulle slide. Scegli il formato social (Feed 1:1, Feed 4:5 o Stories 9:16) e scarica ogni slide come PNG — oppure scarica tutto il carosello in un unico ZIP.</p>
-  <div class="hero-note">I file PNG vengono esportati alla risoluzione corretta per ogni piattaforma: 1080×1080, 1080×1350 o 1080×1920 px.</div>
+  <h1 class="hero-title">Template<br><span>Caroselli</span></h1>
+  <p class="hero-sub">Caroselli in stile coerente con il feed: foto di Laura in trasparenza, titoli Horizon, sottotitoli Montserrat, colori bianco e dorato. Clicca su qualsiasi testo per modificarlo, seleziona la foto e scarica PNG o ZIP.</p>
+  <div class="hero-note">Esportazione PNG a 1080 × 1080 px (scala 3×) · Formato 4:5 disponibile</div>
 </div>
 
-<!-- GUIDA CANVA -->
-<div class="template-section">
-  <div class="ts-header reveal">
-    <p class="ts-label">Formati di esportazione</p>
-    <h2 class="ts-title">Risoluzione corretta per ogni social</h2>
-    <p class="ts-desc">Seleziona il formato prima di scaricare. Le slide cambiano proporzione in anteprima e il PNG viene esportato alla risoluzione nativa.</p>
-  </div>
-  <div class="canva-steps reveal">
-    <div class="canva-step">
-      <div class="cs-num" style="color:var(--bloom-lt);">1:1</div>
-      <div class="cs-text"><strong style="color:var(--ivory);">Feed Quadrato</strong><br>1080 × 1080 px<br>Instagram Feed · Facebook Feed · LinkedIn</div>
-    </div>
-    <div class="canva-step">
-      <div class="cs-num" style="color:var(--mind-lt);">4:5</div>
-      <div class="cs-text"><strong style="color:var(--ivory);">Feed Portrait</strong><br>1080 × 1350 px<br>Instagram Feed (formato consigliato — occupa più spazio nello scroll)</div>
-    </div>
-    <div class="canva-step">
-      <div class="cs-num" style="color:var(--gold);">9:16</div>
-      <div class="cs-text"><strong style="color:var(--ivory);">Stories & Reels</strong><br>1080 × 1920 px<br>Instagram Stories · Reels verticali · Facebook Stories</div>
-    </div>
-    <div class="canva-step">
-      <div class="cs-num">ZIP</div>
-      <div class="cs-text"><strong style="color:var(--ivory);">Download tutto</strong><br>Scarica tutte le slide del carosello in un unico archivio ZIP, pronte da caricare in sequenza.</div>
-    </div>
-  </div>
-  <div class="info-box reveal">
-    <strong>Font e colori:</strong>&nbsp;
-    Titoli: <code>Cormorant Garamond SemiBold</code> &nbsp;·&nbsp;
-    Corpo: <code>DM Sans Light/Regular</code><br>
-    Pillar verde: <code>#5A8760</code> &nbsp;·&nbsp;
-    Pillar rosa: <code>#C4907E</code> &nbsp;·&nbsp;
-    Gold: <code>#C9A84C</code> &nbsp;·&nbsp;
-    Avorio: <code>#F8F5EF</code>
+<!-- INFO FONT -->
+<div class="section" style="padding-top:0;">
+  <div class="font-box reveal">
+    <strong>Font titoli:</strong> <code>Horizon</code> (Bold) — stesso carattere del feed di Laura &nbsp;·&nbsp; fallback: <code>Bebas Neue</code><br>
+    <strong>Sottotitoli:</strong> <code>Montserrat</code> 500/600 &nbsp;·&nbsp;
+    <strong>Colori:</strong> <code>#FFFFFF</code> titoli &nbsp;·&nbsp; <code>#C9A84C</code> oro sottotitoli + mark<br>
+    <strong>Logo:</strong> Per aggiungere il logo PNG BlooMind definitivo (con sfondo trasparente), importa la PNG esportata in Canva o Photoshop e sovrapponi <code>Artboard 2@300x-8.png</code> in basso al centro.
   </div>
 </div>
 
-<hr class="sep-line">
+<hr class="sep">
 
-<!-- ═══ TEMPLATE 1 ═══ -->
-<div class="template-section" id="t1">
-  <div class="ts-header reveal">
-    <p class="ts-label">Template 1 · 4 Giugno</p>
-    <h2 class="ts-title">"Perché qualcuno nel tuo team capisce tutto — e non riesce ad iniziare"</h2>
-    <p class="ts-desc">Carosello 5 slide. Pillar: Il Sistema PRO BlooMind. Sfondo verde scuro.</p>
-    <div class="pillar-row"><span class="pillar-chip p-sistema">Il Sistema PRO BlooMind</span><span class="pillar-chip">5 slide</span><span class="pillar-chip">Alto save rate</span></div>
+<!-- ════════════════════════════════════════
+  CAROSELLO 1 · 30-31 MAGGIO
+  Pillar: Mindset & Frequenza
+════════════════════════════════════════ -->
+<div class="section" id="c1">
+  <div class="reveal">
+    <span class="section-label">Carosello 1 · 30-31 Maggio</span>
+    <h2 class="section-title">La tua frequenza decide prima di te.</h2>
+    <p class="section-desc">Pillar: Mindset &amp; Frequenza · 5 slide · Carosello riflessivo ad alto save rate</p>
   </div>
 
-  <div class="format-selector reveal">
-    <span class="format-label">Formato:</span>
-    <button class="fmt-btn active" onclick="setFormat('t1','11',this)">Feed 1:1 <span class="fmt-dims">1080×1080</span></button>
-    <button class="fmt-btn" onclick="setFormat('t1','45',this)">Feed 4:5 <span class="fmt-dims">1080×1350</span></button>
-    <button class="fmt-btn" onclick="setFormat('t1','916',this)">Stories 9:16 <span class="fmt-dims">1080×1920</span></button>
-  </div>
-
-  <div class="carousel-wrap reveal">
-    <div class="carousel-track">
-
-      <div class="slide-wrap">
-        <div class="slide slide-bloom" data-name="t1-slide-01">
-          <span class="slide-num-badge badge-bloom">1</span>
-          <div><div class="slide-line line-bloom"></div><div class="slide-eyebrow eyebrow-bloom"><span contenteditable spellcheck="false">BlooMind · Sistema</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">C'è qualcuno nel tuo team che capisce tutto. Eppure si ferma sempre.</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">Ti è mai capitato?</span></div><div class="slide-footer">@laura_ruggieri27</div></div>
-        </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
-      </div>
-
-      <div class="slide-wrap">
-        <div class="slide slide-bloom" data-name="t1-slide-02">
-          <span class="slide-num-badge badge-bloom">2</span>
-          <div><div class="slide-line line-bloom"></div><div class="slide-eyebrow eyebrow-bloom"><span contenteditable spellcheck="false">Il momento</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">È brava. Sa cosa fare. È motivata.</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">Ma il momento prima di chiamare qualcuno, o di pubblicare qualcosa... si blocca. E tu non capisci perché.</span></div><div class="slide-footer">@laura_ruggieri27</div></div>
-        </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
-      </div>
-
-      <div class="slide-wrap">
-        <div class="slide slide-bloom" data-name="t1-slide-03">
-          <span class="slide-num-badge badge-bloom">3</span>
-          <div><div class="slide-line line-bloom"></div><div class="slide-eyebrow eyebrow-bloom"><span contenteditable spellcheck="false">Il vero blocco</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">Non è mancanza di voglia. Le stai chiedendo di saltare un passaggio.</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">Le stai chiedendo di esporsi prima di avere qualcosa da mostrare. Per molte persone, questo è il blocco invisibile.</span></div><div class="slide-footer">@laura_ruggieri27</div></div>
-        </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
-      </div>
-
-      <div class="slide-wrap">
-        <div class="slide slide-bloom" data-name="t1-slide-04">
-          <span class="slide-num-badge badge-bloom">4</span>
-          <div><div class="slide-line line-bloom"></div><div class="slide-eyebrow eyebrow-bloom"><span contenteditable spellcheck="false">La svolta</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">Cosa cambia quando costruisce prima il risultato?</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">Quando ha qualcosa di concreto tra le mani, l'esposizione non fa più paura. Viene da sé.</span></div><div class="slide-footer">@laura_ruggieri27</div></div>
-        </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
-      </div>
-
-      <div class="slide-wrap">
-        <div class="slide slide-bloom" data-name="t1-slide-05">
-          <span class="slide-num-badge badge-bloom">5</span>
-          <div><div class="slide-line line-gold"></div><div class="slide-eyebrow eyebrow-gold"><span contenteditable spellcheck="false">BlooMind · DM aperto</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">Se hai qualcuno così in team — parliamo.</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">In DM ti racconto come BlooMind lavora su questo. Senza promesse. Con il metodo.</span></div><div class="slide-cta-text" style="color:var(--gold);">→ Scrivimi in DM</div><div class="slide-footer">@laura_ruggieri27</div></div>
-        </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
-      </div>
-
+  <!-- PHOTO SELECTOR -->
+  <div class="photo-sel-wrap reveal d2">
+    <span class="ps-label">Foto per questo carosello — clicca per cambiare</span>
+    <div class="ph-thumbs" id="ps1">
+      <div class="ph-thumb active" style="background-image:url('WhatsApp Image 2026-05-31 at 11.49.46.jpeg')" onclick="setPhoto(1,'WhatsApp Image 2026-05-31 at 11.49.46.jpeg',this)" title="Palco · blu"></div>
+      <div class="ph-thumb" style="background-image:url('WhatsApp Image 2026-05-31 at 11.48.22 (1).jpeg')" onclick="setPhoto(1,'WhatsApp Image 2026-05-31 at 11.48.22 (1).jpeg',this)" title="Barca · bianca"></div>
+      <div class="ph-thumb" style="background-image:url('WhatsApp Image 2026-05-31 at 11.48.22 (2).jpeg')" onclick="setPhoto(1,'WhatsApp Image 2026-05-31 at 11.48.22 (2).jpeg',this)" title="Palco · gesto"></div>
+      <div class="ph-thumb" style="background-image:url('WhatsApp Image 2026-05-31 at 11.48.51.jpeg')" onclick="setPhoto(1,'WhatsApp Image 2026-05-31 at 11.48.51.jpeg',this)" title="Duomo Milano"></div>
+      <div class="ph-thumb" style="background-image:url('WhatsApp Image 2026-05-31 at 11.48.22.jpeg')" onclick="setPhoto(1,'WhatsApp Image 2026-05-31 at 11.48.22.jpeg',this)" title="Scala dubai"></div>
+      <div class="ph-thumb" style="background-image:url('WhatsApp Image 2026-05-31 at 11.50.07.jpeg')" onclick="setPhoto(1,'WhatsApp Image 2026-05-31 at 11.50.07.jpeg',this)" title="Laptop outdoor"></div>
     </div>
   </div>
-  <div class="carousel-actions">
-    <div class="swipe-hint"><span class="swipe-arrow">→</span> Scorri le slide</div>
-    <button class="dl-zip-btn" onclick="downloadAll('t1')">⬇ Scarica tutto ZIP</button>
-    <button class="reset-btn" onclick="resetTemplate('t1')">Ripristina testi</button>
+
+  <!-- FORMAT SELECTOR -->
+  <div class="fmt-row reveal d3" data-fc="1">
+    <span class="fmt-lbl">Formato:</span>
+    <button class="fmt-btn active" onclick="setFormat(1,'11',this)">Feed 1:1 <span class="fmt-dims">1080×1080</span></button>
+    <button class="fmt-btn" onclick="setFormat(1,'45',this)">Feed 4:5 <span class="fmt-dims">1080×1350</span></button>
+  </div>
+
+  <!-- SLIDES -->
+  <div class="carousel-wrap reveal d4">
+    <div class="carousel-track" id="track1">
+
+      <!-- SLIDE 1 - COVER -->
+      <div class="slide-wrap">
+        <div class="slide c1-slide is-cover" id="c1-s1">
+          <img class="slide-bg-img" src="WhatsApp Image 2026-05-31 at 11.49.46.jpeg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · MINDSET &amp; FREQUENZA</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">LA TUA FREQUENZA DECIDE PRIMA DI TE.</div>
+            <div class="s-sub" contenteditable spellcheck="false">Non è la motivazione che ti manca.</div>
+          </div>
+          <div class="s-num">1 / 5</div>
+          <div class="bm-mark">BLOOMIND</div>
+        </div>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="slide-wrap">
+        <div class="slide c1-slide" id="c1-s2">
+          <img class="slide-bg-img" src="WhatsApp Image 2026-05-31 at 11.49.46.jpeg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · MINDSET &amp; FREQUENZA</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">CON CHI PARLI OGNI GIORNO È IL TUO SOFFITTO INVISIBILE.</div>
+            <div class="s-sub" contenteditable spellcheck="false">Non è filosofia. È matematica sociale.</div>
+          </div>
+          <div class="s-num">2 / 5</div>
+          <div class="bm-mark">BLOOMIND</div>
+        </div>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="slide-wrap">
+        <div class="slide c1-slide" id="c1-s3">
+          <img class="slide-bg-img" src="WhatsApp Image 2026-05-31 at 11.49.46.jpeg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · MINDSET &amp; FREQUENZA</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">SE IL TUO AMBIENTE NON È ANCORA LÌ DOVE VUOI ARRIVARE...</div>
+            <div class="s-sub" contenteditable spellcheck="false">...come può aiutarti ad arrivarci?</div>
+          </div>
+          <div class="s-num">3 / 5</div>
+          <div class="bm-mark">BLOOMIND</div>
+        </div>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
+      </div>
+
+      <!-- SLIDE 4 -->
+      <div class="slide-wrap">
+        <div class="slide c1-slide" id="c1-s4">
+          <img class="slide-bg-img" src="WhatsApp Image 2026-05-31 at 11.49.46.jpeg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · MINDSET &amp; FREQUENZA</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">BLOOMIND CAMBIA L'AMBIENTE. E I RISULTATI SEGUONO.</div>
+            <div class="s-sub" contenteditable spellcheck="false">Un ecosistema ad alta frequenza dove crescere è la norma.</div>
+          </div>
+          <div class="s-num">4 / 5</div>
+          <div class="bm-mark">BLOOMIND</div>
+        </div>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
+      </div>
+
+      <!-- SLIDE 5 - CTA -->
+      <div class="slide-wrap">
+        <div class="slide c1-slide is-cta" id="c1-s5">
+          <img class="slide-bg-img" src="WhatsApp Image 2026-05-31 at 11.49.46.jpeg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · MINDSET &amp; FREQUENZA</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">SENTI CHE LA TUA CERCHIA NON TI BASTA PIÙ?</div>
+            <div class="s-sub" contenteditable spellcheck="false">Scrivimi in DM. Parliamo di dove vuoi arrivare.</div>
+          </div>
+          <div class="s-num">5 / 5</div>
+          <div class="bm-mark">BLOOMIND</div>
+        </div>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
+      </div>
+
+    </div><!-- /carousel-track -->
+  </div><!-- /carousel-wrap -->
+
+  <div class="c-actions reveal">
+    <div class="swipe-hint"><span class="swipe-arr">→</span> Scorri per vedere tutte le slide · Clicca sui testi per modificarli</div>
+    <button class="zip-btn" onclick="dlZip(1,this)">⬇ Scarica ZIP carosello 1</button>
   </div>
 </div>
 
-<hr class="sep-line">
+<hr class="sep">
 
-<!-- ═══ TEMPLATE 2 ═══ -->
-<div class="template-section" id="t2">
-  <div class="ts-header reveal">
-    <p class="ts-label">Template 2 · 9 Giugno</p>
-    <h2 class="ts-title">"5 segnali che il tuo team è pronto per BlooMind"</h2>
-    <p class="ts-desc">Carosello 6 slide. Pillar: Mindset & Leadership. Sfondo scuro + accento azzurro.</p>
-    <div class="pillar-row"><span class="pillar-chip p-mindset">Mindset & Leadership</span><span class="pillar-chip">6 slide</span><span class="pillar-chip">Qualificazione lead</span></div>
+<!-- ════════════════════════════════════════
+  CAROSELLO 2 · 9 GIUGNO
+  Pillar: Mindset & Leadership / Sistema PRO
+════════════════════════════════════════ -->
+<div class="section" id="c2">
+  <div class="reveal">
+    <span class="section-label">Carosello 2 · 9 Giugno</span>
+    <h2 class="section-title">5 segnali che il tuo team è pronto.</h2>
+    <p class="section-desc">Pillar: Mindset &amp; Leadership · 6 slide · Qualificazione lead, alto save rate</p>
   </div>
 
-  <div class="format-selector reveal">
-    <span class="format-label">Formato:</span>
-    <button class="fmt-btn active" onclick="setFormat('t2','11',this)">Feed 1:1 <span class="fmt-dims">1080×1080</span></button>
-    <button class="fmt-btn" onclick="setFormat('t2','45',this)">Feed 4:5 <span class="fmt-dims">1080×1350</span></button>
-    <button class="fmt-btn" onclick="setFormat('t2','916',this)">Stories 9:16 <span class="fmt-dims">1080×1920</span></button>
+  <div class="photo-sel-wrap reveal d2">
+    <span class="ps-label">Foto per questo carosello</span>
+    <div class="ph-thumbs" id="ps2">
+      <div class="ph-thumb active" style="background-image:url('WhatsApp Image 2026-05-31 at 11.48.22 (2).jpeg')" onclick="setPhoto(2,'WhatsApp Image 2026-05-31 at 11.48.22 (2).jpeg',this)" title="Palco · gesto"></div>
+      <div class="ph-thumb" style="background-image:url('WhatsApp Image 2026-05-31 at 11.49.46.jpeg')" onclick="setPhoto(2,'WhatsApp Image 2026-05-31 at 11.49.46.jpeg',this)" title="Palco · blu"></div>
+      <div class="ph-thumb" style="background-image:url('WhatsApp Image 2026-05-31 at 11.48.22 (1).jpeg')" onclick="setPhoto(2,'WhatsApp Image 2026-05-31 at 11.48.22 (1).jpeg',this)" title="Barca"></div>
+      <div class="ph-thumb" style="background-image:url('WhatsApp Image 2026-05-31 at 11.48.51.jpeg')" onclick="setPhoto(2,'WhatsApp Image 2026-05-31 at 11.48.51.jpeg',this)" title="Duomo"></div>
+      <div class="ph-thumb" style="background-image:url('WhatsApp Image 2026-05-31 at 11.48.22.jpeg')" onclick="setPhoto(2,'WhatsApp Image 2026-05-31 at 11.48.22.jpeg',this)" title="Dubai"></div>
+      <div class="ph-thumb" style="background-image:url('WhatsApp Image 2026-05-31 at 11.50.07.jpeg')" onclick="setPhoto(2,'WhatsApp Image 2026-05-31 at 11.50.07.jpeg',this)" title="Laptop"></div>
+    </div>
   </div>
 
-  <div class="carousel-wrap reveal">
-    <div class="carousel-track">
+  <div class="fmt-row reveal d3" data-fc="2">
+    <span class="fmt-lbl">Formato:</span>
+    <button class="fmt-btn active" onclick="setFormat(2,'11',this)">Feed 1:1 <span class="fmt-dims">1080×1080</span></button>
+    <button class="fmt-btn" onclick="setFormat(2,'45',this)">Feed 4:5 <span class="fmt-dims">1080×1350</span></button>
+  </div>
 
+  <div class="carousel-wrap reveal d4">
+    <div class="carousel-track" id="track2">
+
+      <!-- SLIDE 1 - COVER -->
       <div class="slide-wrap">
-        <div class="slide slide-dark" data-name="t2-slide-01">
-          <span class="slide-num-badge badge-dark">1</span>
-          <div><div class="slide-line line-dark" style="background:#B8D4E8;"></div><div class="slide-eyebrow" style="color:#B8D4E8;"><span contenteditable spellcheck="false">Leadership · BlooMind</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">5 segnali che il tuo team è pronto per un sistema professionale.</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">Non si tratta di motivazione. Si tratta di struttura.</span></div><div class="slide-footer">@laura_ruggieri27</div></div>
+        <div class="slide c2-slide is-cover" id="c2-s1">
+          <img class="slide-bg-img" src="WhatsApp Image 2026-05-31 at 11.48.22 (2).jpeg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · SISTEMA PRO</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">5 SEGNALI CHE IL TUO TEAM È PRONTO PER IL PASSO SUCCESSIVO.</div>
+            <div class="s-sub" contenteditable spellcheck="false">Non si tratta di motivazione. Si tratta di struttura.</div>
+          </div>
+          <div class="s-num">1 / 6</div>
+          <div class="bm-mark">BLOOMIND</div>
         </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
       </div>
 
+      <!-- SLIDE 2 -->
       <div class="slide-wrap">
-        <div class="slide slide-dark" data-name="t2-slide-02">
-          <span class="slide-num-badge badge-dark">2</span>
-          <div><div class="slide-line" style="background:#B8D4E8;width:24px;height:2px;margin-bottom:16px;border-radius:1px;"></div><div class="slide-eyebrow" style="color:#B8D4E8;"><span contenteditable spellcheck="false">Segnale 1</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">Ci crede — ma non parte.</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">Ha capito il sistema. Ha visto i risultati degli altri. Eppure continua ad aspettare "il momento giusto".</span></div><div class="slide-footer">@laura_ruggieri27</div></div>
+        <div class="slide c2-slide" id="c2-s2">
+          <img class="slide-bg-img" src="WhatsApp Image 2026-05-31 at 11.48.22 (2).jpeg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · SISTEMA PRO</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">1. SA COSA FARE. MA OGNI VOLTA SI FERMA PRIMA.</div>
+            <div class="s-sub" contenteditable spellcheck="false">Non è pigrizia. È sequenza sbagliata.</div>
+          </div>
+          <div class="s-num">2 / 6</div>
+          <div class="bm-mark">BLOOMIND</div>
         </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
       </div>
 
+      <!-- SLIDE 3 -->
       <div class="slide-wrap">
-        <div class="slide slide-dark" data-name="t2-slide-03">
-          <span class="slide-num-badge badge-dark">3</span>
-          <div><div class="slide-line" style="background:#B8D4E8;width:24px;height:2px;margin-bottom:16px;border-radius:1px;"></div><div class="slide-eyebrow" style="color:#B8D4E8;"><span contenteditable spellcheck="false">Segnale 2</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">Si espone troppo presto — e perde credibilità.</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">Posta prima di avere risultati. Il pubblico non la segue. Si demoralizza. Smette.</span></div><div class="slide-footer">@laura_ruggieri27</div></div>
+        <div class="slide c2-slide" id="c2-s3">
+          <img class="slide-bg-img" src="WhatsApp Image 2026-05-31 at 11.48.22 (2).jpeg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · SISTEMA PRO</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">2. HA BISOGNO CHE TU LA SPRONI OGNI SETTIMANA.</div>
+            <div class="s-sub" contenteditable spellcheck="false">Il sistema giusto non ha bisogno di spinta costante.</div>
+          </div>
+          <div class="s-num">3 / 6</div>
+          <div class="bm-mark">BLOOMIND</div>
         </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
       </div>
 
+      <!-- SLIDE 4 -->
       <div class="slide-wrap">
-        <div class="slide slide-dark" data-name="t2-slide-04">
-          <span class="slide-num-badge badge-dark">4</span>
-          <div><div class="slide-line" style="background:#B8D4E8;width:24px;height:2px;margin-bottom:16px;border-radius:1px;"></div><div class="slide-eyebrow" style="color:#B8D4E8;"><span contenteditable spellcheck="false">Segnale 3</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">Ha paura di sembrare "quella che vende".</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">Non vuole essere percepita come invadente dal suo network. Quindi non fa niente.</span></div><div class="slide-footer">@laura_ruggieri27</div></div>
+        <div class="slide c2-slide" id="c2-s4">
+          <img class="slide-bg-img" src="WhatsApp Image 2026-05-31 at 11.48.22 (2).jpeg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · SISTEMA PRO</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">3. HA I RISULTATI. MA NON SA COME DIRLO.</div>
+            <div class="s-sub" contenteditable spellcheck="false">BlooMind costruisce la comunicazione dall'interno.</div>
+          </div>
+          <div class="s-num">4 / 6</div>
+          <div class="bm-mark">BLOOMIND</div>
         </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
       </div>
 
+      <!-- SLIDE 5 -->
       <div class="slide-wrap">
-        <div class="slide slide-dark" data-name="t2-slide-05">
-          <span class="slide-num-badge badge-dark">5</span>
-          <div><div class="slide-line" style="background:#B8D4E8;width:24px;height:2px;margin-bottom:16px;border-radius:1px;"></div><div class="slide-eyebrow" style="color:#B8D4E8;"><span contenteditable spellcheck="false">Segnale 4-5</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">Lavora tanto — ma non vede crescita. E tu vedi il potenziale — ma non sai come sbloccarlo.</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">Sforzo senza metodo non porta dove vuoi andare. Questo è il segnale più chiaro di tutti.</span></div><div class="slide-footer">@laura_ruggieri27</div></div>
+        <div class="slide c2-slide" id="c2-s5">
+          <img class="slide-bg-img" src="WhatsApp Image 2026-05-31 at 11.48.22 (2).jpeg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · SISTEMA PRO</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">4-5. CREDE NEL PROGETTO. MA RIMANDA LA CALL DA TRE SETTIMANE.</div>
+            <div class="s-sub" contenteditable spellcheck="false">Ogni giorno che passa, i dubbi aumentano.</div>
+          </div>
+          <div class="s-num">5 / 6</div>
+          <div class="bm-mark">BLOOMIND</div>
         </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
       </div>
 
+      <!-- SLIDE 6 - CTA -->
       <div class="slide-wrap">
-        <div class="slide slide-dark" data-name="t2-slide-06">
-          <span class="slide-num-badge badge-dark">6</span>
-          <div><div class="slide-line line-gold"></div><div class="slide-eyebrow eyebrow-gold"><span contenteditable spellcheck="false">DM aperto</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">Se ne riconosci anche solo 2, parliamo.</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">Scrivimi in DM. Ti racconto come BlooMind lavora su questi blocchi — con un sistema, non con la motivazione.</span></div><div class="slide-cta-text" style="color:var(--gold);">→ Scrivimi in DM</div><div class="slide-footer">@laura_ruggieri27</div></div>
+        <div class="slide c2-slide is-cta" id="c2-s6">
+          <img class="slide-bg-img" src="WhatsApp Image 2026-05-31 at 11.48.22 (2).jpeg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · SISTEMA PRO</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">HAI RICONOSCIUTO QUALCUNO DEL TUO TEAM?</div>
+            <div class="s-sub" contenteditable spellcheck="false">Scrivimi in DM. Ti racconto com'è cambiata la situazione nel mio.</div>
+          </div>
+          <div class="s-num">6 / 6</div>
+          <div class="bm-mark">BLOOMIND</div>
         </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
       </div>
 
     </div>
   </div>
-  <div class="carousel-actions">
-    <div class="swipe-hint"><span class="swipe-arrow">→</span> Scorri le slide</div>
-    <button class="dl-zip-btn" onclick="downloadAll('t2')">⬇ Scarica tutto ZIP</button>
-    <button class="reset-btn" onclick="resetTemplate('t2')">Ripristina testi</button>
+
+  <div class="c-actions reveal">
+    <div class="swipe-hint"><span class="swipe-arr">→</span> Scorri · Clicca per modificare</div>
+    <button class="zip-btn" onclick="dlZip(2,this)">⬇ Scarica ZIP carosello 2</button>
   </div>
 </div>
 
-<hr class="sep-line">
+<hr class="sep">
 
-<!-- ═══ TEMPLATE 3 ═══ -->
-<div class="template-section" id="t3">
-  <div class="ts-header reveal">
-    <p class="ts-label">Template 3 · 18 Giugno</p>
-    <h2 class="ts-title">"Cosa significa lavorare con un'azienda che ti porta dai fondatori"</h2>
-    <p class="ts-desc">Carosello 4 slide. Pillar: Il Sistema PRO / DuoLife credenziale. Sfondo scuro premium.</p>
-    <div class="pillar-row"><span class="pillar-chip p-sistema">Il Sistema PRO BlooMind</span><span class="pillar-chip">4 slide</span><span class="pillar-chip">Social proof DuoLife</span></div>
+<!-- ════════════════════════════════════════
+  CAROSELLO 3 · 18 GIUGNO
+  Pillar: BlooMind Ecosystem / DuoLife
+════════════════════════════════════════ -->
+<div class="section" id="c3">
+  <div class="reveal">
+    <span class="section-label">Carosello 3 · 18 Giugno</span>
+    <h2 class="section-title">Non una call su Zoom. La stessa stanza dei fondatori.</h2>
+    <p class="section-desc">Pillar: BlooMind Ecosystem · 5 slide · Social proof DuoLife come credenziale di sistema</p>
   </div>
 
-  <div class="format-selector reveal">
-    <span class="format-label">Formato:</span>
-    <button class="fmt-btn active" onclick="setFormat('t3','11',this)">Feed 1:1 <span class="fmt-dims">1080×1080</span></button>
-    <button class="fmt-btn" onclick="setFormat('t3','45',this)">Feed 4:5 <span class="fmt-dims">1080×1350</span></button>
-    <button class="fmt-btn" onclick="setFormat('t3','916',this)">Stories 9:16 <span class="fmt-dims">1080×1920</span></button>
+  <div class="photo-sel-wrap reveal d2">
+    <span class="ps-label">Foto per questo carosello</span>
+    <div class="ph-thumbs" id="ps3">
+      <div class="ph-thumb active" style="background-image:url('WhatsApp Image 2026-05-31 at 11.48.22.jpeg')" onclick="setPhoto(3,'WhatsApp Image 2026-05-31 at 11.48.22.jpeg',this)" title="Dubai · scala"></div>
+      <div class="ph-thumb" style="background-image:url('WhatsApp Image 2026-05-31 at 11.48.51.jpeg')" onclick="setPhoto(3,'WhatsApp Image 2026-05-31 at 11.48.51.jpeg',this)" title="Duomo Milano"></div>
+      <div class="ph-thumb" style="background-image:url('WhatsApp Image 2026-05-31 at 11.48.22 (1).jpeg')" onclick="setPhoto(3,'WhatsApp Image 2026-05-31 at 11.48.22 (1).jpeg',this)" title="Barca"></div>
+      <div class="ph-thumb" style="background-image:url('WhatsApp Image 2026-05-31 at 11.48.22 (2).jpeg')" onclick="setPhoto(3,'WhatsApp Image 2026-05-31 at 11.48.22 (2).jpeg',this)" title="Palco gesto"></div>
+      <div class="ph-thumb" style="background-image:url('WhatsApp Image 2026-05-31 at 11.49.46.jpeg')" onclick="setPhoto(3,'WhatsApp Image 2026-05-31 at 11.49.46.jpeg',this)" title="Palco blu"></div>
+      <div class="ph-thumb" style="background-image:url('WhatsApp Image 2026-05-31 at 11.50.07.jpeg')" onclick="setPhoto(3,'WhatsApp Image 2026-05-31 at 11.50.07.jpeg',this)" title="Laptop"></div>
+    </div>
   </div>
 
-  <div class="carousel-wrap reveal">
-    <div class="carousel-track">
+  <div class="fmt-row reveal d3" data-fc="3">
+    <span class="fmt-lbl">Formato:</span>
+    <button class="fmt-btn active" onclick="setFormat(3,'11',this)">Feed 1:1 <span class="fmt-dims">1080×1080</span></button>
+    <button class="fmt-btn" onclick="setFormat(3,'45',this)">Feed 4:5 <span class="fmt-dims">1080×1350</span></button>
+  </div>
 
+  <div class="carousel-wrap reveal d4">
+    <div class="carousel-track" id="track3">
+
+      <!-- SLIDE 1 - COVER -->
       <div class="slide-wrap">
-        <div class="slide slide-dark" data-name="t3-slide-01">
-          <span class="slide-num-badge badge-gold">1</span>
-          <div><div class="slide-line line-gold"></div><div class="slide-eyebrow eyebrow-gold"><span contenteditable spellcheck="false">Polonia · Giugno 2026</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">Non sto parlando di una call su Zoom.</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">Sto parlando di stare nella stessa stanza con chi ha costruito l'azienda.</span></div><div class="slide-footer">@laura_ruggieri27</div></div>
+        <div class="slide c3-slide is-cover" id="c3-s1">
+          <img class="slide-bg-img" src="WhatsApp Image 2026-05-31 at 11.48.22.jpeg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · ECOSYSTEM</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">NON UNA CALL SU ZOOM. LA STESSA STANZA DEI FONDATORI.</div>
+            <div class="s-sub" contenteditable spellcheck="false">Cosa significa davvero lavorare con DuoLife.</div>
+          </div>
+          <div class="s-num">1 / 5</div>
+          <div class="bm-mark">BLOOMIND</div>
         </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
       </div>
 
+      <!-- SLIDE 2 -->
       <div class="slide-wrap">
-        <div class="slide slide-dark" data-name="t3-slide-02">
-          <span class="slide-num-badge badge-gold">2</span>
-          <div><div class="slide-line line-gold"></div><div class="slide-eyebrow eyebrow-gold"><span contenteditable spellcheck="false">Il viaggio</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">Il 23 giugno saremo in Polonia. All'HQ DuoLife.</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">Cena con i fondatori. Strategia. Tutto pagato dall'azienda come incentivo per le top partner. Siamo in 7.</span></div><div class="slide-footer">@laura_ruggieri27</div></div>
+        <div class="slide c3-slide" id="c3-s2">
+          <img class="slide-bg-img" src="WhatsApp Image 2026-05-31 at 11.48.22.jpeg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · ECOSYSTEM</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">LA MAGGIOR PARTE TI DÀ UN PRODOTTO E UNA PRESENTAZIONE.</div>
+            <div class="s-sub" contenteditable spellcheck="false">DuoLife ti mette nella stanza dove si decide la strategia.</div>
+          </div>
+          <div class="s-num">2 / 5</div>
+          <div class="bm-mark">BLOOMIND</div>
         </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
       </div>
 
+      <!-- SLIDE 3 -->
       <div class="slide-wrap">
-        <div class="slide slide-dark" data-name="t3-slide-03">
-          <span class="slide-num-badge badge-gold">3</span>
-          <div><div class="slide-line line-gold"></div><div class="slide-eyebrow eyebrow-gold"><span contenteditable spellcheck="false">Perché ve lo racconto</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">Non per vantarmi. La solidità di un sistema si vede anche da qui.</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">Questo è il tipo di azienda che c'è dietro a BlooMind. E questo è il tipo di partner che l'azienda riconosce.</span></div><div class="slide-footer">@laura_ruggieri27</div></div>
+        <div class="slide c3-slide" id="c3-s3">
+          <img class="slide-bg-img" src="WhatsApp Image 2026-05-31 at 11.48.22.jpeg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · ECOSYSTEM</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">RATING AAA+ — IL MASSIMO NEL NETWORK MARKETING MONDIALE.</div>
+            <div class="s-sub" contenteditable spellcheck="false">Business for Home. Non un'opinione: una certificazione.</div>
+          </div>
+          <div class="s-num">3 / 5</div>
+          <div class="bm-mark">BLOOMIND</div>
         </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
       </div>
 
+      <!-- SLIDE 4 -->
       <div class="slide-wrap">
-        <div class="slide slide-dark" data-name="t3-slide-04">
-          <span class="slide-num-badge badge-gold">4</span>
-          <div><div class="slide-line line-bloom"></div><div class="slide-eyebrow eyebrow-bloom"><span contenteditable spellcheck="false">Seguimi live</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">Dal 23 giugno sarò live nelle Stories dal viaggio.</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">In tempo reale — tutto quello che succede, senza filtri. Seguimi se non vuoi perderti il momento.</span></div><div class="slide-cta-text" style="color:var(--bloom-lt);">→ Attiva le notifiche</div><div class="slide-footer">@laura_ruggieri27</div></div>
+        <div class="slide c3-slide" id="c3-s4">
+          <img class="slide-bg-img" src="WhatsApp Image 2026-05-31 at 11.48.22.jpeg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · ECOSYSTEM</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">A FINE GIUGNO SARÒ ALL'HQ IN POLONIA CON IL MIO TEAM.</div>
+            <div class="s-sub" contenteditable spellcheck="false">Non come ospite. Come top leader che porta risultati concreti.</div>
+          </div>
+          <div class="s-num">4 / 5</div>
+          <div class="bm-mark">BLOOMIND</div>
         </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
+      </div>
+
+      <!-- SLIDE 5 - CTA -->
+      <div class="slide-wrap">
+        <div class="slide c3-slide is-cta" id="c3-s5">
+          <img class="slide-bg-img" src="WhatsApp Image 2026-05-31 at 11.48.22.jpeg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · ECOSYSTEM</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">VUOI CAPIRE COM'È POSSIBILE?</div>
+            <div class="s-sub" contenteditable spellcheck="false">Scrivimi in DM. Ti racconto da dove ho iniziato.</div>
+          </div>
+          <div class="s-num">5 / 5</div>
+          <div class="bm-mark">BLOOMIND</div>
+        </div>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
       </div>
 
     </div>
   </div>
-  <div class="carousel-actions">
-    <div class="swipe-hint"><span class="swipe-arrow">→</span> Scorri le slide</div>
-    <button class="dl-zip-btn" onclick="downloadAll('t3')">⬇ Scarica tutto ZIP</button>
-    <button class="reset-btn" onclick="resetTemplate('t3')">Ripristina testi</button>
-  </div>
-</div>
 
-<hr class="sep-line">
-
-<!-- ═══ TEMPLATE 4 ═══ -->
-<div class="template-section" id="t4">
-  <div class="ts-header reveal">
-    <p class="ts-label">Template 4 · 30-31 Maggio</p>
-    <h2 class="ts-title">"Se nel tuo team qualcuno non riesce a partire, leggi questo"</h2>
-    <p class="ts-desc">Carosello 5 slide. Primo contenuto con angolo "leader con team". Pillar: Il Sistema PRO BlooMind.</p>
-    <div class="pillar-row"><span class="pillar-chip p-sistema">Il Sistema PRO BlooMind</span><span class="pillar-chip">5 slide</span><span class="pillar-chip">Primo carosello calendario</span></div>
-  </div>
-
-  <div class="format-selector reveal">
-    <span class="format-label">Formato:</span>
-    <button class="fmt-btn active" onclick="setFormat('t4','11',this)">Feed 1:1 <span class="fmt-dims">1080×1080</span></button>
-    <button class="fmt-btn" onclick="setFormat('t4','45',this)">Feed 4:5 <span class="fmt-dims">1080×1350</span></button>
-    <button class="fmt-btn" onclick="setFormat('t4','916',this)">Stories 9:16 <span class="fmt-dims">1080×1920</span></button>
-  </div>
-
-  <div class="carousel-wrap reveal">
-    <div class="carousel-track">
-
-      <div class="slide-wrap">
-        <div class="slide slide-mind" data-name="t4-slide-01">
-          <span class="slide-num-badge badge-mind">1</span>
-          <div><div class="slide-line line-mind"></div><div class="slide-eyebrow eyebrow-mind"><span contenteditable spellcheck="false">BlooMind · Per i leader</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">Se nel tuo team qualcuno non riesce a partire...</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">...leggi questo.</span></div><div class="slide-footer">@laura_ruggieri27</div></div>
-        </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
-      </div>
-
-      <div class="slide-wrap">
-        <div class="slide slide-mind" data-name="t4-slide-02">
-          <span class="slide-num-badge badge-mind">2</span>
-          <div><div class="slide-line line-mind"></div><div class="slide-eyebrow eyebrow-mind"><span contenteditable spellcheck="false">Il problema</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">Non è la motivazione che manca.</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">Sa cosa fare. Conosce i prodotti. È convinta del sistema. Eppure ogni volta che deve fare il passo successivo — si ferma.</span></div><div class="slide-footer">@laura_ruggieri27</div></div>
-        </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
-      </div>
-
-      <div class="slide-wrap">
-        <div class="slide slide-mind" data-name="t4-slide-03">
-          <span class="slide-num-badge badge-mind">3</span>
-          <div><div class="slide-line line-mind"></div><div class="slide-eyebrow eyebrow-mind"><span contenteditable spellcheck="false">La causa</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">Il problema è la sequenza.</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">Le viene chiesto di esporsi prima di avere risultati da mostrare. E questo — per molte persone — è paralizzante.</span></div><div class="slide-footer">@laura_ruggieri27</div></div>
-        </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
-      </div>
-
-      <div class="slide-wrap">
-        <div class="slide slide-mind" data-name="t4-slide-04">
-          <span class="slide-num-badge badge-mind">4</span>
-          <div><div class="slide-line line-bloom"></div><div class="slide-eyebrow eyebrow-bloom"><span contenteditable spellcheck="false">BlooMind inverte la sequenza</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">Prima costruisci i risultati. Poi, se vuoi, ti esponi.</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">Quando hai la sicurezza del metodo, decidi tu se e come esporti. Non prima.</span></div><div class="slide-footer">@laura_ruggieri27</div></div>
-        </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
-      </div>
-
-      <div class="slide-wrap">
-        <div class="slide slide-mind" data-name="t4-slide-05">
-          <span class="slide-num-badge badge-mind">5</span>
-          <div><div class="slide-line line-gold"></div><div class="slide-eyebrow eyebrow-gold"><span contenteditable spellcheck="false">DM aperto</span></div><div class="slide-title-text"><span contenteditable spellcheck="false">Se hai qualcuno così in team (o sei tu quella persona)...</span></div></div>
-          <div><div class="slide-body-text"><span contenteditable spellcheck="false">Scrivimi in DM. Parliamo di come BlooMind può cambiare la sequenza.</span></div><div class="slide-cta-text" style="color:var(--gold);">→ Scrivimi in DM</div><div class="slide-footer">@laura_ruggieri27</div></div>
-        </div>
-        <button class="slide-dl-btn" onclick="downloadSlide(this)">↓ PNG</button>
-      </div>
-
-    </div>
-  </div>
-  <div class="carousel-actions">
-    <div class="swipe-hint"><span class="swipe-arrow">→</span> Scorri le slide</div>
-    <button class="dl-zip-btn" onclick="downloadAll('t4')">⬇ Scarica tutto ZIP</button>
-    <button class="reset-btn" onclick="resetTemplate('t4')">Ripristina testi</button>
+  <div class="c-actions reveal">
+    <div class="swipe-hint"><span class="swipe-arr">→</span> Scorri · Clicca per modificare</div>
+    <button class="zip-btn" onclick="dlZip(3,this)">⬇ Scarica ZIP carosello 3</button>
   </div>
 </div>
 
@@ -545,120 +659,109 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);max-width:960px;margin:
   </div>
   <div class="footer-info">
     Template Caroselli — Laura Ruggieri / BlooMind<br>
-    Prodotto da WeBloom &nbsp;·&nbsp; <a href="mailto:info@nicolapin.com">info@nicolapin.com</a> &nbsp;·&nbsp; Maggio 2026<br>
-    <a href="https://nicolapin82-png.github.io/Webloom/laura-ruggieri/laura_ruggieri_brand_identity.html">Brand Identity &rarr;</a>
+    Prodotto da WeBloom &nbsp;·&nbsp; <a href="mailto:marketing.webloom1@gmail.com">marketing.webloom1@gmail.com</a> &nbsp;·&nbsp; Maggio 2026<br>
+    <a href="https://nicolapin82-png.github.io/Webloom/laura-ruggieri/laura_ruggieri_piano_editoriale.html">Piano Editoriale →</a>
     &nbsp;·&nbsp;
-    <a href="https://nicolapin82-png.github.io/Webloom/laura-ruggieri/laura_ruggieri_piano_editoriale.html">Piano Editoriale &rarr;</a>
+    <a href="https://nicolapin82-png.github.io/Webloom/laura-ruggieri/laura_ruggieri_brand_identity.html">Brand Identity →</a>
     &nbsp;·&nbsp;
-    <a href="https://nicolapin82-png.github.io/Webloom/laura-ruggieri/laura_ruggieri_script_contenuti.html">Script &amp; Copy &rarr;</a>
+    <a href="https://nicolapin82-png.github.io/Webloom/laura-ruggieri/laura_ruggieri_script_contenuti.html">Script &amp; Copy →</a>
   </div>
 </footer>
 
 <script>
-/* ── Dimensioni export per formato ── */
-const FMT = {
-  '11':  { w:1080, h:1080, cls:'' },
-  '45':  { w:1080, h:1350, cls:'fmt-45' },
-  '916': { w:1080, h:1920, cls:'fmt-916' }
-};
-const activeFmt = { t1:'11', t2:'11', t3:'11', t4:'11' };
-
-/* ── Reveal scroll ── */
-const reveals = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
-},{threshold:0.06});
-reveals.forEach(r=>io.observe(r));
-
-/* ── Drag scroll carousels ── */
-document.querySelectorAll('.carousel-wrap').forEach(el=>{
-  let isDown=false,startX,scrollLeft;
-  el.addEventListener('mousedown',e=>{isDown=true;startX=e.pageX-el.offsetLeft;scrollLeft=el.scrollLeft;});
-  el.addEventListener('mouseleave',()=>{isDown=false;});
-  el.addEventListener('mouseup',()=>{isDown=false;});
-  el.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();const x=e.pageX-el.offsetLeft;el.scrollLeft=scrollLeft-(x-startX)*1.5;});
-});
-
-/* ── Reset testi originali ── */
-const originals = {};
-document.querySelectorAll('.template-section[id]').forEach(sec=>{
-  originals[sec.id]={};
-  sec.querySelectorAll('[contenteditable]').forEach((el,i)=>{originals[sec.id][i]=el.innerHTML;});
-});
-function resetTemplate(id){
-  const sec=document.getElementById(id);
-  if(!sec)return;
-  sec.querySelectorAll('[contenteditable]').forEach((el,i)=>{
-    if(originals[id]&&originals[id][i]!==undefined)el.innerHTML=originals[id][i];
+/* ── PHOTO SELECTOR ── */
+function setPhoto(cId, photoSrc, thumb) {
+  document.querySelectorAll(`.c${cId}-slide .slide-bg-img`).forEach(img => {
+    img.src = photoSrc;
   });
+  document.querySelectorAll(`#ps${cId} .ph-thumb`).forEach(t => t.classList.remove('active'));
+  thumb.classList.add('active');
 }
 
-/* ── Cambio formato ── */
-function setFormat(id, fmt, btn){
-  activeFmt[id]=fmt;
-  btn.closest('.format-selector').querySelectorAll('.fmt-btn').forEach(b=>b.classList.remove('active'));
+/* ── FORMAT SELECTOR ── */
+function setFormat(cId, fmt, btn) {
+  document.querySelectorAll(`.c${cId}-slide`).forEach(s => {
+    s.classList.remove('fmt-45');
+    if (fmt === '45') s.classList.add('fmt-45');
+  });
+  document.querySelectorAll(`[data-fc="${cId}"] .fmt-btn`).forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  const {cls}=FMT[fmt];
-  document.querySelectorAll(`#${id} .slide`).forEach(s=>{
-    s.classList.remove('fmt-45','fmt-916');
-    if(cls)s.classList.add(cls);
-  });
 }
 
-/* ── Cattura slide come canvas ── */
-async function captureSlide(slideEl){
-  await document.fonts.ready;
-  const fmt=activeFmt[slideEl.closest('.template-section').id]||'11';
-  const {w}=FMT[fmt];
-  const scale=w/slideEl.offsetWidth;
-  return html2canvas(slideEl,{
-    scale, useCORS:true, allowTaint:false,
-    backgroundColor:null, logging:false,
-    width:slideEl.offsetWidth, height:slideEl.offsetHeight
-  });
-}
-
-/* ── Download singola slide ── */
-async function downloadSlide(btn){
-  const slideEl=btn.previousElementSibling;
-  const name=slideEl.dataset.name||'slide';
-  const fmt=activeFmt[slideEl.closest('.template-section').id]||'11';
+/* ── DOWNLOAD SINGOLA SLIDE ── */
+async function dlSlide(btn) {
+  const slide = btn.closest('.slide-wrap').querySelector('.slide');
+  const name = slide.id || 'slide';
+  btn.textContent = '...';
   btn.classList.add('loading');
-  const origText=btn.textContent;
-  btn.textContent='...';
-  try{
-    const canvas=await captureSlide(slideEl);
-    canvas.toBlob(blob=>saveAs(blob,`${name}-${fmt}.png`),'image/png');
-  }catch(e){alert('Errore durante l\'esportazione. Riprova.');}
-  btn.classList.remove('loading');
-  btn.textContent=origText;
+  try {
+    const canvas = await html2canvas(slide, {
+      scale: 3,
+      useCORS: true,
+      allowTaint: true,
+      logging: false,
+      backgroundColor: '#000000'
+    });
+    canvas.toBlob(blob => {
+      saveAs(blob, `${name}.png`);
+      btn.textContent = '↓ PNG';
+      btn.classList.remove('loading');
+    }, 'image/png');
+  } catch(e) {
+    btn.textContent = '↓ PNG';
+    btn.classList.remove('loading');
+    alert('Errore export: ' + e.message);
+  }
 }
 
-/* ── Download tutto il carosello come ZIP ── */
-async function downloadAll(id){
-  const btn=document.querySelector(`#${id} .dl-zip-btn`);
-  const origText=btn.textContent;
+/* ── DOWNLOAD ZIP CAROSELLO ── */
+async function dlZip(cId, btn) {
+  const slides = document.querySelectorAll(`.c${cId}-slide`);
+  const label = btn.textContent;
+  btn.textContent = '...';
   btn.classList.add('loading');
-  btn.textContent='Elaborazione...';
-  const fmt=activeFmt[id]||'11';
-  const slides=document.querySelectorAll(`#${id} .slide`);
-  const zip=new JSZip();
-  let i=1;
-  try{
-    for(const slide of slides){
-      btn.textContent=`Slide ${i}/${slides.length}...`;
-      const canvas=await captureSlide(slide);
-      const blob=await new Promise(res=>canvas.toBlob(res,'image/png'));
-      const name=slide.dataset.name||`slide-${String(i).padStart(2,'0')}`;
-      zip.file(`${name}-${fmt}.png`,blob);
-      i++;
-    }
-    const zipBlob=await zip.generateAsync({type:'blob'});
-    saveAs(zipBlob,`bloomind-carosello-${id}-${fmt}.zip`);
-  }catch(e){alert('Errore durante la creazione dello ZIP. Riprova.');}
+  const zip = new JSZip();
+  const tasks = Array.from(slides).map((slide, i) =>
+    html2canvas(slide, { scale: 3, useCORS: true, allowTaint: true, logging: false, backgroundColor: '#000000' })
+      .then(canvas => new Promise(res => canvas.toBlob(blob => {
+        zip.file(`slide-0${i+1}.png`, blob);
+        res();
+      }, 'image/png')))
+  );
+  try {
+    await Promise.all(tasks);
+    const blob = await zip.generateAsync({ type: 'blob' });
+    saveAs(blob, `bloomind-carosello-${cId}.zip`);
+  } catch(e) {
+    alert('Errore ZIP: ' + e.message);
+  }
+  btn.textContent = label;
   btn.classList.remove('loading');
-  btn.textContent=origText;
 }
+
+/* ── DRAG-SCROLL CAROUSEL ── */
+document.querySelectorAll('.carousel-wrap').forEach(wrap => {
+  let isDown = false, startX, scrollLeft;
+  wrap.addEventListener('mousedown', e => {
+    isDown = true;
+    startX = e.pageX - wrap.offsetLeft;
+    scrollLeft = wrap.scrollLeft;
+  });
+  wrap.addEventListener('mouseleave', () => isDown = false);
+  wrap.addEventListener('mouseup', () => isDown = false);
+  wrap.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - wrap.offsetLeft;
+    wrap.scrollLeft = scrollLeft - (x - startX) * 1.2;
+  });
+});
+
+/* ── SCROLL REVEAL ── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
