@@ -10,13 +10,19 @@
   <style>
     :root {
       --black:   #0C0B08;
+      --bg:      #0C0B08;
       --green:   #5A8760;
+      --bloom:   #5A8760;
       --sage:    #90BA96;
       --rose:    #C4907E;
+      --mind:    #C4907E;
       --gold:    #C9A84C;
       --ivory:   #F8F5EF;
       --grey:    #2A2926;
       --grey-lt: #3E3C38;
+      --muted:   rgba(248,245,239,0.75);
+      --border:  rgba(201,168,76,0.16);
+      --sep:     rgba(201,168,76,0.18);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,35 +38,30 @@
       font-size: 16px;
     }
 
-    /* ── HEADER ── */
-    header {
-      background: var(--black);
-      border-bottom: 1px solid var(--grey-lt);
-      padding: 32px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 48px;
+      display: flex; align-items: center; gap: 20px;
+      background: rgba(10,9,8,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201,168,76,0.16);
     }
-    .header-brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: var(--ivory);
+    .nav-logo img { height: 28px; width: auto; display: block; }
+    .nav-tag { font-size: 10px; color: var(--muted); letter-spacing: 2.5px; text-transform: uppercase; }
+    .nav-badge {
+      margin-left: auto;
+      background: linear-gradient(135deg,#1a1200,#2a2000);
+      border: 1px solid rgba(201,168,76,0.25);
+      color: var(--gold); font-size: 10px; font-weight: 600;
+      padding: 4px 14px; border-radius: 100px;
+      letter-spacing: 1.5px; text-transform: uppercase;
     }
-    .header-brand span { color: var(--green); }
-    .header-meta {
-      font-size: 12px;
-      font-weight: 400;
-      color: rgba(248,245,239,0.45);
-      text-align: right;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
+    @media(max-width:768px){nav{padding:14px 18px;}.nav-tag{display:none;}}
 
     /* ── HERO ── */
     .hero {
-      padding: 96px 48px 72px;
+      padding: 120px 48px 72px;
       max-width: 900px;
       margin: 0 auto;
       text-align: center;
@@ -566,14 +567,14 @@
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="header-brand">Bloo<span>Mind</span></div>
-  <div class="header-meta">
-    Piano d'Attacco Top Leaders<br>
-    Giugno 2026 &mdash; Uso Interno
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom">
   </div>
-</header>
+  <span class="nav-tag">Piano Top Leaders</span>
+  <span class="nav-badge">BlooMind · 2026</span>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
