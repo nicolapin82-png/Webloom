@@ -1,0 +1,684 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Script & Contenuti - Orietta Pinetti / BlooMind</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#120A06;--bg2:#1C0E08;
+  --card:rgba(32,18,8,0.65);--dark:#221208;
+  --warm:#D4956A;--warm-lt:#E8C4A8;
+  --rose:#C4907E;--rose-lt:#DDB8AC;
+  --gold:#C9A84C;--ivory:#F8F5EF;
+  --muted:rgba(248,245,239,0.75);
+  --border:rgba(212,149,106,0.22);
+  --sep:rgba(201,168,76,0.15);--radius:8px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ivory);font-family:'Open Sans',sans-serif;font-weight:300;line-height:1.7;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:var(--warm);border-radius:2px;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;padding:0 24px;display:flex;align-items:center;gap:20px;background:rgba(16,8,4,0.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,149,106,0.18);}
+.nav-logo img{height:180px;width:auto;display:block;}
+.nav-wbl{margin-left:auto;}
+.nav-wbl img{height:40px;width:auto;opacity:1;display:block;}
+.nav-tag{font-size:11px;color:var(--muted);letter-spacing:2.5px;text-transform:uppercase;}
+.nav-badge{background:linear-gradient(135deg,#1a0e06,#2a1800);border:1px solid rgba(212,149,106,0.3);color:var(--warm);font-size:10px;font-weight:600;padding:4px 14px;border-radius:100px;letter-spacing:1.5px;text-transform:uppercase;}
+@media(max-width:768px){nav{padding:16px 20px;}.nav-tag{display:none;}}
+
+.hero{padding:140px 48px 80px;max-width:900px;margin:0 auto;}
+.hero-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--warm-lt);margin-bottom:20px;}
+.hero-title{font-family:'Libre Baskerville',serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:600;line-height:1.15;margin-bottom:24px;}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:600px;line-height:1.8;}
+@media(max-width:768px){.hero{padding:120px 20px 60px;}}
+
+.toc{max-width:900px;margin:0 auto;padding:0 48px 80px;}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:24px;}
+.toc-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;text-decoration:none;color:var(--ivory);transition:border-color .2s;}
+.toc-item:hover{border-color:var(--warm-lt);}
+.toc-num{font-size:0.7rem;color:var(--muted);letter-spacing:1.5px;margin-bottom:6px;}
+.toc-name{font-size:0.85rem;font-weight:500;}
+@media(max-width:768px){.toc{padding:0 20px 60px;}}
+
+.section{max-width:900px;margin:0 auto;padding:60px 48px;}
+.section-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--warm-lt);margin-bottom:12px;}
+.section-title{font-family:'Libre Baskerville',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:600;line-height:1.2;margin-bottom:12px;}
+.section-desc{color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:40px;}
+.sep-line{border:none;border-top:1px solid var(--sep);margin:60px 0;}
+@media(max-width:768px){.section{padding:40px 20px;}}
+
+.content-block{margin-bottom:64px;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.cb-header{padding:28px 32px;background:rgba(212,149,106,0.07);border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;}
+.cb-date{min-width:80px;}
+.cb-date-day{font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.cb-date-num{font-family:'Libre Baskerville',serif;font-size:1.8rem;color:var(--warm-lt);line-height:1;}
+.cb-meta{flex:1;}
+.cb-format{font-size:0.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--warm);margin-bottom:6px;}
+.cb-title{font-family:'Libre Baskerville',serif;font-size:1.4rem;font-weight:600;line-height:1.3;margin-bottom:8px;}
+.cb-pillars{display:flex;flex-wrap:wrap;gap:8px;}
+.cb-pill{font-size:0.68rem;padding:3px 10px;border-radius:20px;letter-spacing:0.5px;}
+.pill-storia{background:rgba(212,149,106,0.15);color:var(--warm-lt);border:1px solid rgba(212,149,106,0.3);}
+.pill-tardi{background:rgba(196,144,126,0.15);color:var(--rose-lt);border:1px solid rgba(196,144,126,0.3);}
+.pill-bloom{background:rgba(144,186,150,0.12);color:#90BA96;border:1px solid rgba(144,186,150,0.25);}
+.pill-leader{background:rgba(201,168,76,0.12);color:#d4b86a;border:1px solid rgba(201,168,76,0.25);}
+.cb-body{padding:32px;}
+.cb-section{margin-bottom:28px;}
+.cb-section:last-child{margin-bottom:0;}
+.cb-section-title{font-size:0.68rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--rose-lt);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(196,144,126,0.15);}
+
+.script-box{background:rgba(0,0,0,0.3);border-radius:8px;padding:24px 28px;border-left:3px solid var(--warm);margin-bottom:8px;}
+.script-line{font-size:0.9rem;line-height:1.9;color:var(--ivory);}
+.script-line strong{color:var(--warm);}
+.script-line em{color:var(--muted);font-style:italic;}
+.script-note{font-size:0.78rem;color:var(--muted);font-style:italic;margin-top:6px;}
+
+.caption-box{background:rgba(0,0,0,0.2);border:1px solid rgba(248,245,239,0.08);border-radius:8px;padding:20px 24px;}
+.caption-text{font-size:0.85rem;line-height:1.9;color:var(--ivory);white-space:pre-line;}
+.caption-hashtags{font-size:0.78rem;color:var(--warm-lt);margin-top:12px;line-height:1.8;}
+
+.tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+@media(max-width:640px){.tips-grid{grid-template-columns:1fr;}}
+.tip-card{background:rgba(0,0,0,0.25);border-radius:8px;padding:16px 20px;border-left:2px solid var(--warm);}
+.tip-label{font-size:0.65rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--warm);margin-bottom:6px;}
+.tip-text{font-size:0.8rem;color:var(--muted);line-height:1.7;}
+
+.phase-header{background:linear-gradient(135deg,rgba(212,149,106,0.10),rgba(32,18,8,0.5));border:1px solid var(--border);border-radius:12px;padding:32px 36px;margin-bottom:40px;}
+.ph-num{font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--warm-lt);margin-bottom:8px;}
+.ph-title{font-family:'Libre Baskerville',serif;font-size:1.8rem;font-weight:600;color:var(--ivory);margin-bottom:8px;}
+.ph-desc{font-size:0.85rem;color:var(--muted);line-height:1.7;}
+
+.video-tips-wrap{background:rgba(212,149,106,0.05);border:1px solid rgba(212,149,106,0.2);border-radius:12px;padding:36px;}
+.vt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:20px;}
+.vt-card{background:rgba(0,0,0,0.25);border-radius:8px;padding:20px;}
+.vt-icon{font-size:1.4rem;margin-bottom:10px;}
+.vt-title{font-size:0.78rem;font-weight:500;color:var(--warm);margin-bottom:6px;}
+.vt-body{font-size:0.75rem;color:var(--muted);line-height:1.7;}
+
+footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.footer-logo img{height:34px;opacity:1;}
+.footer-info{font-size:0.75rem;color:var(--muted);line-height:1.8;}
+.footer-info a{color:var(--warm);text-decoration:none;}
+@media(max-width:768px){footer{padding:40px 20px;flex-direction:column;align-items:flex-start;}}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;}
+.reveal.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind" style="height:180px;width:auto;display:block;"></div>
+
+  <div class="nav-wbl"><img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom" style="height:40px;width:auto;opacity:1;display:block;"></div>
+</nav>
+
+<div class="hero reveal">
+  <p class="hero-label">Orietta Pinetti / BlooMind</p>
+  <h1 class="hero-title">Script, Copy e Guida<br>al Montaggio</h1>
+  <p class="hero-sub">Tutto il necessario per pubblicare ogni contenuto del calendario Giugno - Luglio 2026. Script parola per parola per ogni Reel, caption completi pronti da copiare e consigli pratici per girare dal telefono con zero produzione.</p>
+</div>
+
+<div class="toc reveal">
+  <p class="section-label">Indice</p>
+  <div class="toc-grid">
+    <a href="#consigli-video" class="toc-item"><div class="toc-num">00</div><div class="toc-name">Consigli video e montaggio</div></a>
+    <a href="#sett1" class="toc-item"><div class="toc-num">Settimana 1</div><div class="toc-name">Chi sono davvero</div></a>
+    <a href="#sett2" class="toc-item"><div class="toc-num">Settimana 2</div><div class="toc-name">Da dove vengo</div></a>
+    <a href="#sett3" class="toc-item"><div class="toc-num">Settimana 3</div><div class="toc-name">La svolta</div></a>
+    <a href="#sett4" class="toc-item"><div class="toc-num">Settimana 4</div><div class="toc-name">Vieni con me</div></a>
+  </div>
+</div>
+
+<hr class="sep-line">
+
+<!-- 00 CONSIGLI VIDEO -->
+<section class="section" id="consigli-video">
+  <div class="reveal">
+    <p class="section-label">00 - Guida pratica</p>
+    <h2 class="section-title">Consigli video e montaggio</h2>
+    <p class="section-desc">Il formato di Orietta e' il reel parlato dallo smartphone. Nessuna produzione necessaria. Queste regole valgono per ogni contenuto del calendario.</p>
+  </div>
+  <div class="video-tips-wrap reveal">
+    <p style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--warm);">Riprese</p>
+    <div class="vt-grid">
+      <div class="vt-card"><div class="vt-icon">💡</div><div class="vt-title">Luce naturale - sempre</div><div class="vt-body">Finestra di fronte o laterale. Mai dietro (diventi silhouette). Mattina entro le 11 o pomeriggio dopo le 16. La luce calda valorizza il colorito e i capelli argento di Orietta - usarla a favore, non nasconderla.</div></div>
+      <div class="vt-card"><div class="vt-icon">📱</div><div class="vt-title">Smartphone su treppiede</div><div class="vt-body">Anche da 12€. Il video in mano fa sembrare tutto amatoriale. Formato: 9:16 verticale. Inquadratura: dal petto in su, spazio sopra la testa. I capelli argento lunghi devono essere visibili - sono un asset visivo potente.</div></div>
+      <div class="vt-card"><div class="vt-icon">🎙️</div><div class="vt-title">Audio - il vero differenziatore</div><div class="vt-body">Microfono lavalier wireless (Hollyland Lark M1, ~60€) o registrare in posto silenzioso a max 50cm dal telefono. La voce calda e diretta di Orietta e' il contenuto - deve sentirsi bene.</div></div>
+      <div class="vt-card"><div class="vt-icon">👗</div><div class="vt-title">Look e sfondo</div><div class="vt-body">Colori caldi: terracotta, avorio, rosato, nero. Sfondo: parete pulita, scrivania ordinata, angolo di casa luminoso. I capelli argento risaltano su sfondi neutri - scegliere colori che li valorizzino, non che li nascondano.</div></div>
+      <div class="vt-card"><div class="vt-icon">⏱️</div><div class="vt-title">Durata ideale</div><div class="vt-body">45-70 secondi. Tagliare tutti gli "ehm" e le pause lunghe. Ogni secondo deve guadagnarsi il diritto di stare nel video. Le prime 3 secondi decidono se l'algoritmo promuove il reel.</div></div>
+      <div class="vt-card"><div class="vt-icon">🎬</div><div class="vt-title">Non servono riprese perfette</div><div class="vt-body">L'autenticita' si vede negli occhi e nella voce - non nella perfezione tecnica. Se una ripresa e' leggermente mossa ma l'emozione e' vera, usarla. La perfezione costruita e' l'opposto del brand di Orietta.</div></div>
+    </div>
+  </div>
+  <div class="video-tips-wrap reveal" style="margin-top:24px;">
+    <p style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--warm);">Montaggio - app consigliate</p>
+    <div class="vt-grid">
+      <div class="vt-card"><div class="vt-icon">📲</div><div class="vt-title">CapCut (gratuita)</div><div class="vt-body">La piu' completa per reel. Sottotitoli automatici, tagli precisi, musica libera. Usare i sottotitoli sempre: il 70% degli utenti guarda senza audio. Font: sans-serif, bianco, al centro.</div></div>
+      <div class="vt-card"><div class="vt-icon">🎵</div><div class="vt-title">Musica di sottofondo</div><div class="vt-body">Opzionale ma consigliata: musica strumentale calda e lenta, volume al 15-20%. Non coprire la voce. Cerca "calm piano" o "soft acoustic" nella libreria IG. Se la storia e' intensa, niente musica - la voce basta.</div></div>
+      <div class="vt-card"><div class="vt-icon">✂️</div><div class="vt-title">Tagliare i silenzi</div><div class="vt-body">Ogni pausa sopra 0.5 secondi va tagliata (tranne quelle intenzionali per effetto emotivo). Il ritmo del montaggio crea l'energia del video anche se il contenuto e' riflessivo e calmo.</div></div>
+      <div class="vt-card"><div class="vt-icon">📝</div><div class="vt-title">Testo in sovrimpressione</div><div class="vt-body">Solo per le prime 3 secondi: il concetto chiave del video. Es: "Non era mai troppo tardi." o "Quello che mi ha insegnato Alessandro." Non riempire lo schermo di testo - una frase, grande, leggibile.</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep-line">
+
+<!-- SETTIMANA 1 -->
+<section class="section" id="sett1">
+  <div class="phase-header reveal">
+    <div class="ph-num">Settimana 1 · 9-13 Giugno</div>
+    <div class="ph-title">Chi sono davvero</div>
+    <div class="ph-desc">Prima impressione forte. Orietta si presenta non con i risultati - con la storia. Chi la vede per la prima volta deve capire immediatamente di avere davanti una persona vera.</div>
+  </div>
+
+  <!-- REEL 1 -->
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Lunedi</div><div class="cb-date-num">9 Giu</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Reel parlato · 60 secondi · Instagram + Facebook</div>
+        <div class="cb-title">"Permettetemi di presentarmi davvero."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-storia">La Mia Storia</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Script parola per parola</div>
+        <div class="script-box">
+          <div class="script-line"><strong>[Guardare in camera, tono diretto e caldo]</strong></div>
+          <div class="script-line">Mi chiamo Orietta. Ho quasi sessant'anni. I capelli bianchi che vedete - <em>[pausa breve, piccolo sorriso]</em> - non li nascondo.</div>
+          <div class="script-line">Ho due figli, una storia che non assomiglia a nessuna presentazione di business che avete mai letto, e un percorso che mi ha portata qui.</div>
+          <div class="script-line"><em>[pausa]</em></div>
+          <div class="script-line">Ho lavorato dall'eta' di 14 anni. Ho diretto reparti, negozi, team. Ho scelto i miei figli quando era il momento di sceglierli. Ho affrontato sfide che non avevo scelto - e che mi hanno insegnato piu' di qualsiasi corso.</div>
+          <div class="script-line"><em>[pausa breve]</em></div>
+          <div class="script-line">Oggi sono qui per un motivo solo: <strong>dimostrare che non e' mai troppo tardi per ricominciare.</strong></div>
+          <div class="script-line"><em>[pausa, guardare in camera]</em></div>
+          <div class="script-line">Se ti riconosci in quello che vedi - seguimi. Ho molto da raccontarti.</div>
+          <div class="script-note">Tono: caldo, diretto, senza enfasi artificiale. No musica di sottofondo. Luce naturale davanti. Testo sovrimpresso prime 3s: "Permettetemi di presentarmi davvero."</div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Caption completo</div>
+        <div class="caption-box">
+          <div class="caption-text">Mi presento. Non come si fa di solito.
+
+Mi chiamo Orietta. Ho quasi sessant'anni, i capelli bianchi che non nascondo, due figli e un percorso che non assomiglia a nessuna storia di successo che avete mai letto.
+
+Ho iniziato a lavorare a 14 anni. Ho scelto i miei figli quando era il momento di sceglierli. Ho affrontato sfide che non avevo scelto - e che mi hanno cambiata piu' di qualsiasi libro di crescita personale.
+
+Sono qui per un motivo: dimostrare che non e' mai troppo tardi per ricominciare a costruire qualcosa di bello.
+
+Se ti riconosci in quello che vedi, seguimi. Ho molto da raccontarti.
+
+Scrivimi in DM se vuoi parlare.</div>
+          <div class="caption-hashtags">#nonemaistroppotatrdi #resilienza #donneover50 #ricominciare #bloomind #crescitapersonale #donneforti #BlooMindCommunity</div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Note tecniche</div>
+        <div class="tips-grid">
+          <div class="tip-card"><div class="tip-label">Dove girare</div><div class="tip-text">Angolo di casa con luce naturale. Sfondo pulito. I capelli argento devono emergere - scegliere sfondo scuro o neutro che li valorizzi.</div></div>
+          <div class="tip-card"><div class="tip-label">Cosa non fare</div><div class="tip-text">Non leggere dal foglio. Non cercare la perfezione nelle parole - l'autenticita' conta piu' della precisione. Se va fuori dal copione ma suona vero, lasciare.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REEL 2 -->
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Venerdi</div><div class="cb-date-num">13 Giu</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Reel parlato · 60 secondi · Instagram + Facebook</div>
+        <div class="cb-title">"A 14 anni ho iniziato a lavorare. A quasi 60 ho ricominciato."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-storia">La Mia Storia</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Script parola per parola</div>
+        <div class="script-box">
+          <div class="script-line"><strong>[Tono riflessivo, non veloce]</strong></div>
+          <div class="script-line">A 14 anni ho iniziato a lavorare. A 16 ero gia' responsabile di tre reparti.</div>
+          <div class="script-line">Ho diretto negozi. Ho costruito qualcosa che sembrava impensabile per una ragazzina che partiva da zero.</div>
+          <div class="script-line"><em>[pausa]</em></div>
+          <div class="script-line">Poi e' arrivata la mia prima figlia - e ho capito quanto stessi sacrificando il tempo alla famiglia.</div>
+          <div class="script-line">Poi il secondo figlio. Poi la diagnosi di autismo per Alessandro. La mia vita e' cambiata completamente.</div>
+          <div class="script-line">Poi la fibromialgia. Il lavoro perso. La necessita' di reinventarmi da capo.</div>
+          <div class="script-line"><em>[pausa, guardare in camera]</em></div>
+          <div class="script-line">Non ve lo racconto per farvi dispiacere. Ve lo racconto perche' <strong>ogni cosa che mi e' capitata mi ha dato qualcosa che non avrei trovato in nessun altro modo.</strong></div>
+          <div class="script-line"><em>[pausa breve]</em></div>
+          <div class="script-line">Inclusa la persona che sono oggi.</div>
+          <div class="script-note">Tono: calmo, senza pietismo. Le sfide vengono elencate in modo diretto - non drammatico. La forza e' nel modo in cui vengono tenute, non nell'enfasi con cui vengono raccontate.</div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Caption completo</div>
+        <div class="caption-box">
+          <div class="caption-text">Non vi racconto la storia del successo.
+
+Vi racconto la storia di quando ho dovuto scegliere tra il lavoro e mio figlio - e ho scelto mio figlio.
+
+E poi la fibromialgia ha scelto per me.
+
+Quello che non sapevo allora e' che dentro ogni cosa che ci toglie, si nasconde qualcosa che ci da'. Non subito. Non in modo ovvio. Ma c'e'.
+
+Ci ho messo anni a capirlo. E altri anni a trasformarlo in qualcosa di concreto.
+
+Oggi ne sono grata - anche per le cose che all'epoca non capivo.
+
+Se stai attraversando qualcosa di difficile adesso: tienici. Non sai ancora cosa c'e' dall'altra parte.
+
+Scrivimi in DM se vuoi parlarne.</div>
+          <div class="caption-hashtags">#resilienza #donneover50 #fibromialgia #ricominciare #nonemaistroppotatrdi #donneforti #crescitapersonale #BlooMindCommunity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep-line">
+
+<!-- SETTIMANA 2 -->
+<section class="section" id="sett2">
+  <div class="phase-header reveal">
+    <div class="ph-num">Settimana 2 · 16-20 Giugno</div>
+    <div class="ph-title">Da dove vengo</div>
+    <div class="ph-desc">Andare in profondita' sulle sfide specifiche. Alessandro e la fibromialgia - non come racconto di sofferenza, ma come documentazione di resilienza e come fonte del metodo di Orietta.</div>
+  </div>
+
+  <!-- REEL 3 -->
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Lunedi</div><div class="cb-date-num">16 Giu</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Reel parlato · 60-75 secondi · Instagram + Facebook</div>
+        <div class="cb-title">"Mio figlio Alessandro mi ha insegnato piu' di qualsiasi corso di leadership."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-storia">La Mia Storia</span><span class="cb-pill pill-leader">La Leader che Ascolta</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Script parola per parola</div>
+        <div class="script-box">
+          <div class="script-line"><strong>[Voce calda, tono intimo]</strong></div>
+          <div class="script-line">Mio figlio Alessandro ha 19 anni e convive con l'autismo ad alto funzionamento.</div>
+          <div class="script-line"><em>[pausa]</em></div>
+          <div class="script-line">Per anni ho imparato ad adattarmi. A capire i suoi tempi - che non erano i miei. A non forzare quando lui aveva bisogno di tempo. A non smettere di esserci anche quando sembrava che non servisse.</div>
+          <div class="script-line"><em>[pausa]</em></div>
+          <div class="script-line">Quella cosa che ho imparato con Alessandro - quella capacita' di adattare il mio approccio alla persona che ho davanti, invece di usare sempre lo stesso metodo - <strong>e' la stessa cosa che uso ogni giorno con le persone del mio team.</strong></div>
+          <div class="script-line"><em>[pausa breve]</em></div>
+          <div class="script-line">Non esiste un unico modo per aiutare qualcuno. Esiste la persona davanti a te.</div>
+          <div class="script-line"><em>[pausa, guardare in camera]</em></div>
+          <div class="script-line">Alessandro mi ha insegnato questo. Ed e' la cosa piu' preziosa che porto con me ogni giorno.</div>
+          <div class="script-note">Questo e' il reel piu' emotivo del calendario. Non deve essere strappalacrime - deve essere vero. Se Orietta si commuove mentre lo dice, non tagliare: e' autenticita'. Tono calmo e intimo per tutto il video.</div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Caption completo</div>
+        <div class="caption-box">
+          <div class="caption-text">Non l'ho imparato in un corso.
+
+Mio figlio Alessandro convive con l'autismo. Per anni ho imparato cosa significa adattarsi davvero - non ai tuoi tempi, ma a quelli di chi hai davanti.
+
+Ho imparato che insistere non funziona. Che esserci conta piu' di spiegare. Che ogni persona ha bisogno di un approccio diverso, non di uno uguale per tutti.
+
+Quella cosa che Alessandro mi ha insegnato e' la stessa che porto con me ogni settimana nelle Zoom con le persone del mio team.
+
+Non parto dal copione. Parto dalla persona.
+
+Se sei una donna che si sente "troppo diversa" per trovare il proprio spazio - questo messaggio e' per te. Il tuo modo di essere non e' un problema da risolvere. E' una risorsa da valorizzare.
+
+Scrivimi in DM se vuoi parlarne.</div>
+          <div class="caption-hashtags">#autismo #resilienza #leadership #donneover50 #nonemaistroppotatrdi #bloomind #crescitapersonale #BlooMindCommunity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REEL 4 -->
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Venerdi</div><div class="cb-date-num">20 Giu</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Reel parlato · 60 secondi · Instagram + Facebook</div>
+        <div class="cb-title">"La fibromialgia mi ha tolto il lavoro. Non potevo immaginare cosa mi avrebbe dato in cambio."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-tardi">Non e' Mai Troppo Tardi</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Script parola per parola</div>
+        <div class="script-box">
+          <div class="script-line"><strong>[Tono diretto, senza dramatizzazione]</strong></div>
+          <div class="script-line">Qualche anno fa ho ricevuto la diagnosi di fibromialgia.</div>
+          <div class="script-line">Dolore cronico. Cure pesanti. Giorni in cui alzarsi era gia' un traguardo.</div>
+          <div class="script-line"><em>[pausa]</em></div>
+          <div class="script-line">Ho dovuto lasciare il lavoro. Ho dovuto reinventarmi. E in quel momento in cui cercavo una soluzione per il mio benessere fisico - ho trovato qualcosa di inaspettato.</div>
+          <div class="script-line"><em>[pausa]</em></div>
+          <div class="script-line">Non ve lo racconto come se fosse un miracolo. <strong>Ve lo racconto come e' andata davvero.</strong></div>
+          <div class="script-line">Cercavo benessere. Ho trovato anche un percorso di crescita personale, un team di persone straordinarie, e - lentamente - una nuova professione.</div>
+          <div class="script-line"><em>[pausa breve, guardare in camera]</em></div>
+          <div class="script-line">Dentro ogni cosa che ci toglie, si nasconde qualcosa che non avremmo trovato in nessun altro modo. Io ci ho creduto. E ancora ci credo.</div>
+          <div class="script-note">Il ponte narrativo tra il dolore e BlooMind. Non nominare esplicitamente BlooMind - lasciare che emerga naturalmente. La CTA in questo reel e' implicita - chi e' curioso scrivera' in DM senza che venga chiesto.</div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Caption completo</div>
+        <div class="caption-box">
+          <div class="caption-text">Ho perso il lavoro per via della fibromialgia.
+
+Non e' stato un momento drammatico - e' stata una serie di piccoli cedimenti fino a quando non era piu' possibile andare avanti com'era prima.
+
+Cercavo una soluzione per il mio benessere. Non cercavo una nuova carriera. Non cercavo un team, un sistema, un percorso.
+
+Ma la vita spesso ti porta dove hai bisogno di andare, non dove avevi pianificato.
+
+Oggi non ho la fibromialgia risolta. Ho imparato a viverci. E ho trovato qualcosa che non avrei trovato senza di lei.
+
+Non sto promuovendo la malattia come strumento di crescita. Sto dicendo che dentro le cose che ti tolgono, a volte si nasconde qualcosa di prezioso.
+
+Se stai attraversando un momento in cui ti sembra che stia crollando tutto - non smettere di cercare quello che si nasconde dentro.
+
+Scrivimi in DM se vuoi parlarne.</div>
+          <div class="caption-hashtags">#fibromialgia #resilienza #donneforti #ricominciare #benessere #nonemaistroppotatrdi #bloomind #BlooMindCommunity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep-line">
+
+<!-- SETTIMANA 3 -->
+<section class="section" id="sett3">
+  <div class="phase-header reveal">
+    <div class="ph-num">Settimana 3 · 23-27 Giugno</div>
+    <div class="ph-title">La svolta</div>
+    <div class="ph-desc">Raccontare BlooMind come conseguenza naturale della storia - non come proposta commerciale. E mostrare il metodo di Orietta con il team in concreto.</div>
+  </div>
+
+  <!-- REEL 5 -->
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Lunedi</div><div class="cb-date-num">23 Giu</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Reel parlato · 60-90 secondi · Instagram + Facebook</div>
+        <div class="cb-title">"Come ho scoperto che non era mai troppo tardi. La storia del reel da 15.000 views."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-tardi">Non e' Mai Troppo Tardi</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Script parola per parola</div>
+        <div class="script-box">
+          <div class="script-line"><strong>[Tono caldo, quasi confidenziale]</strong></div>
+          <div class="script-line">Qualche mese fa ho girato un reel che non pensavo avrebbe toccato nessuno.</div>
+          <div class="script-line">Parlava di ricostruire la vita quasi a sessant'anni. Di come ci avessero fatto credere che a una certa eta' bisogna accontentarsi. E che invece non e' proprio cosi'.</div>
+          <div class="script-line"><em>[pausa]</em></div>
+          <div class="script-line">Quando ho visto i numeri non ci credevo. Quindici mila visualizzazioni.</div>
+          <div class="script-line"><em>[pausa breve]</em></div>
+          <div class="script-line">Poi ho letto i commenti. E ho capito che non stavo parlando solo di me. Stavo parlando di migliaia di donne che si erano convinte che il loro momento fosse gia' passato.</div>
+          <div class="script-line"><em>[pausa, guardare in camera con intensita']</em></div>
+          <div class="script-line"><strong>Non era passato. Non passa mai. Non finche' sei viva e hai ancora qualcosa che vuoi costruire.</strong></div>
+          <div class="script-line"><em>[pausa]</em></div>
+          <div class="script-line">Quello che mi ha permesso di essere in quel posto, di poter dire quelle parole con la certezza di chi le ha vissute davvero - e' stato un percorso. Un sistema. Le persone giuste intorno a me.</div>
+          <div class="script-line">Oggi posso raccontarvelo. Se vuoi saperne di piu' - scrivimi in DM.</div>
+          <div class="script-note">Questo e' il momento in cui BlooMind entra naturalmente - non come nome, ma come "percorso" e "persone giuste". Chi e' curioso chiedera'. Chi e' pronto scrivera'.</div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Caption completo</div>
+        <div class="caption-box">
+          <div class="caption-text">Qualche mese fa ho girato un reel su cosa significa ricominciare quasi a sessant'anni.
+
+Non pensavo che interessasse a nessuno. Quindici mila visualizzazioni dopo ho capito che avevo toccato qualcosa che molte donne portano in silenzio.
+
+La convinzione che sia troppo tardi. Che la loro eta', la loro storia, le loro cicatrici le escludano da qualsiasi possibilita'.
+
+Non e' cosi'.
+
+Non lo e' mai.
+
+Ho impiegato anni a crederci davvero - non solo a dirlo. Ho avuto bisogno di persone che me lo dimostrassero in concreto, di un sistema che funzionasse anche partendo da zero, di un ambiente in cui la crescita fosse davvero possibile.
+
+Oggi sono qui. E so che non sono l'unica ad aver aspettato troppo a lungo.
+
+Se sei arrivata fin qui - e dentro di te qualcosa ha riconosciuto quello che dico - scrivimi in DM. Parliamo.</div>
+          <div class="caption-hashtags">#nonemaistroppotatrdi #donneover50 #ricominciare #resilienza #bloomind #crescitapersonale #networker #BlooMindCommunity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REEL 6 -->
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Venerdi</div><div class="cb-date-num">27 Giu</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Reel parlato · 45 secondi · Instagram + Facebook</div>
+        <div class="cb-title">"Cosa faccio ogni settimana con le donne del mio team. E perche' non e' quello che immaginate."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-leader">La Leader che Ascolta</span><span class="cb-pill pill-bloom">Dentro BlooMind</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Script parola per parola</div>
+        <div class="script-box">
+          <div class="script-line"><strong>[Tono pratico e diretto, meno riflessivo degli altri]</strong></div>
+          <div class="script-line">Piu' volte a settimana apro una Zoom con le persone del mio team.</div>
+          <div class="script-line">Ma non parto mai dallo stesso punto. Non ho un copione standard. Non uso lo stesso approccio con tutte.</div>
+          <div class="script-line"><em>[pausa]</em></div>
+          <div class="script-line">Perche' ogni persona che si collega porta con se' la sua storia, la sua paura del momento, il suo passo da fare.</div>
+          <div class="script-line">C'e' chi ha paura di vendersi. Chi ha paura del giudizio. Chi sa tutto ma si blocca nel fare.</div>
+          <div class="script-line"><em>[pausa breve]</em></div>
+          <div class="script-line"><strong>Il mio lavoro non e' dare un metodo uguale per tutti. E' capire di cosa ha bisogno la persona che ho davanti - adesso.</strong></div>
+          <div class="script-line"><em>[pausa, guardare in camera]</em></div>
+          <div class="script-line">E' quello che ho imparato con Alessandro. E' quello che porto in ogni chiamata.</div>
+          <div class="script-note">Reel piu' corto e diretto - non narrativo, operativo. Mostra il metodo concreto senza spiegarlo teoricamente. La menzione di Alessandro alla fine crea il collegamento con il reel precedente.</div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Caption completo</div>
+        <div class="caption-box">
+          <div class="caption-text">Non uso lo stesso approccio con tutte le persone del mio team.
+
+Alcune hanno paura di esporsi. Altre non sanno come parlare di quello che fanno. Altre ancora sanno tutto ma si bloccano nel fare il passo.
+
+Ogni persona e' diversa. Ogni paura e' diversa. Ogni Zoom parte da dove si trova quella persona - non da dove vorrei che fosse.
+
+L'ho imparato con mio figlio Alessandro. E lo porto con me ogni giorno.
+
+Se stai cercando qualcuno che lavori al tuo ritmo, non al suo - scrivimi in DM.</div>
+          <div class="caption-hashtags">#leadership #teamwork #bloomind #networkmarketing #crescitapersonale #donneover50 #BlooMindCommunity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep-line">
+
+<!-- SETTIMANA 4 -->
+<section class="section" id="sett4">
+  <div class="phase-header reveal">
+    <div class="ph-num">Settimana 4 · 30 Giugno - 11 Luglio</div>
+    <div class="ph-title">Vieni con me</div>
+    <div class="ph-desc">Closing gentile. Non un pitch - un invito. Chi ha seguito le prime tre settimane e' pronta. La CTA finale non deve convincere: deve solo aprire la porta.</div>
+  </div>
+
+  <!-- REEL 7 -->
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Lunedi</div><div class="cb-date-num">30 Giu</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Reel parlato · 60 secondi · Instagram + Facebook</div>
+        <div class="cb-title">"Ho raggiunto la qualifica di Junior Executive Leader. Ecco cosa significa davvero."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-bloom">Dentro BlooMind</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Script parola per parola</div>
+        <div class="script-box">
+          <div class="script-line"><strong>[Tono di chi sta condividendo qualcosa di personale, non di chi sta annunciando un risultato]</strong></div>
+          <div class="script-line">Recentemente ho raggiunto la qualifica di Junior Executive Leader.</div>
+          <div class="script-line"><em>[pausa]</em></div>
+          <div class="script-line">Ve lo racconto come quello che e' stato davvero - non un comunicato di business. E' stato come scalare l'Everest. Con la fibromialgia. Con Alessandro. Con tutto quello che sapete di me.</div>
+          <div class="script-line"><em>[pausa breve]</em></div>
+          <div class="script-line">Non partivo avvantaggiata. Non avevo esperienza nel settore. Non ero in perfetta forma fisica. Non avevo il profilo ideale per nessuno.</div>
+          <div class="script-line"><em>[pausa, guardare in camera]</em></div>
+          <div class="script-line"><strong>Ma avevo una cosa che nessun corso ti insegna: sapevo cosa significa ricominciare da capo. E non avevo paura di farlo ancora.</strong></div>
+          <div class="script-line"><em>[pausa]</em></div>
+          <div class="script-line">Se stai guardando questo video e dentro di te pensi "ma io non potrei mai" - questo reel e' per te. Scrivimi in DM.</div>
+          <div class="script-note">Non enfatizzare il numero della qualifica o i dettagli del sistema. Il focus e' sul viaggio, non sul traguardo. Chi guarda deve sentire "se ce l'ha fatta lei, posso farcela anch'io".</div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Caption completo</div>
+        <div class="caption-box">
+          <div class="caption-text">Ho raggiunto la qualifica di Junior Executive Leader.
+
+Non ve lo dico per vantarmi. Ve lo dico perche' so che qualcuno che mi segue sta pensando "ma per me sarebbe impossibile."
+
+Anche io l'ho pensato.
+
+Avevo la fibromialgia. Avevo Alessandro da accompagnare ogni giorno. Avevo lasciato il lavoro che conoscevo. Partivo da zero in un settore che non conoscevo.
+
+Eppure eccomi qui.
+
+Non perche' sono straordinaria. Perche' avevo un sistema solido, persone che credevano in me, e la certezza - guadagnata duramente nel tempo - che non e' mai troppo tardi.
+
+Se stai aspettando di essere "pronta" per cominciare: la pronta non arriva prima di cominciare. Arriva dopo.
+
+Scrivimi in DM se vuoi sapere da dove iniziare.</div>
+          <div class="caption-hashtags">#juniorexecutiveleader #bloomind #nonemaistroppotatrdi #resilienza #donneover50 #networkmarketing #ricominciare #BlooMindCommunity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REEL 8 -->
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Lun/Ven</div><div class="cb-date-num">7 Lug</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Reel parlato · 45-60 secondi · Instagram + Facebook</div>
+        <div class="cb-title">"Non sto cercando persone perfette. Sto cercando te."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-storia">La Mia Storia</span><span class="cb-pill pill-bloom">Dentro BlooMind</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Script parola per parola</div>
+        <div class="script-box">
+          <div class="script-line"><strong>[Guardare in camera dall'inizio. Tono diretto, caldo, senza pressione]</strong></div>
+          <div class="script-line">Non so quale sia la tua storia. Non so quante volte hai dovuto stringere i denti, mettere tutti davanti a te, o quante volte ti sei sentita dire che non eri abbastanza.</div>
+          <div class="script-line"><em>[pausa]</em></div>
+          <div class="script-line">Quello che so e' che spesso le donne piu' forti sono quelle che hanno imparato a sorridere mentre combattevano battaglie che nessuno vedeva.</div>
+          <div class="script-line"><em>[pausa breve]</em></div>
+          <div class="script-line">Non sto cercando persone perfette. Non cerco chi sa gia' tutto, chi ha esperienza, chi non ha paura.</div>
+          <div class="script-line"><strong>Cerco donne vere. Con ancora un sogno nel cassetto. Con la voglia di costruire qualcosa di loro - senza rinunciare a essere madri, compagne, figlie o semplicemente se stesse.</strong></div>
+          <div class="script-line"><em>[pausa, piccolo sorriso]</em></div>
+          <div class="script-line">Se ti riconosci in quello che ho detto - scrivimi. Parliamo senza impegno.</div>
+          <div class="script-note">Questo e' il reel di chiusura del mese. Usare le parole della lettera che Orietta ha scritto nel form - sono sue, vengono naturali. La CTA finale deve suonare come un invito, non come una proposta di vendita.</div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Caption completo</div>
+        <div class="caption-box">
+          <div class="caption-text">Non cerco persone perfette.
+
+Non cerco chi sa gia' tutto. Non cerco chi non ha paura. Non cerco chi ha gia' esperienza.
+
+Cerco donne vere. Donne che hanno ancora un sogno nel cassetto. Donne che desiderano stare meglio. Donne che vogliono costruire qualcosa di loro senza rinunciare a essere madri, compagne, figlie o semplicemente se stesse.
+
+Ho imparato che la crescita piu' bella non e' quella economica. E' quella che ti porta a guardarti allo specchio e riconoscere finalmente il tuo valore.
+
+Se deciderai di camminare con me, non troverai una leader perfetta. Troverai una donna che continua a imparare ogni giorno, che cade e si rialza, e che crede profondamente che ogni persona meriti una possibilita' di riscrivere la propria storia.
+
+Non e' mai troppo tardi.
+
+Scrivimi in DM. Parliamo senza impegno, senza fretta.</div>
+          <div class="caption-hashtags">#nonemaistroppotatrdi #donneforti #bloomind #networkmarketing #donneover50 #crescitapersonale #resilienza #ricominciare #BlooMindCommunity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REEL 9 (BONUS) -->
+  <div class="content-block reveal">
+    <div class="cb-header">
+      <div class="cb-date"><div class="cb-date-day">Stories/Reel</div><div class="cb-date-num">Bonus</div></div>
+      <div class="cb-meta">
+        <div class="cb-format">Reel parlato · 45-60 secondi · Instagram + Facebook</div>
+        <div class="cb-title">"Il posto dove finalmente esisto."</div>
+        <div class="cb-pillars"><span class="cb-pill pill-storia">La Mia Storia</span><span class="cb-pill pill-bloom">Dentro BlooMind</span></div>
+      </div>
+    </div>
+    <div class="cb-body">
+      <div class="cb-section">
+        <div class="cb-section-title">Script parola per parola</div>
+        <div class="script-box">
+          <div class="script-line"><strong>[Tono intimo, quasi sottovoce. Guardare in camera.]</strong></div>
+          <div class="script-line">A volte mi fermo e mi sembra quasi surreale.</div>
+          <div class="script-line"><em>[pausa breve]</em></div>
+          <div class="script-line">Sono cresciuta con il tipo di educazione che ti mette nell'angolo. Che ti dice che non devi disturbare. Che in pratica non devi esistere.</div>
+          <div class="script-line"><em>[pausa, respiro visibile]</em></div>
+          <div class="script-line">Per anni ho imparato a farmi piccola. A non chiedere. A non occupare spazio.</div>
+          <div class="script-line"><em>[pausa]</em></div>
+          <div class="script-line"><strong>Qui mi sento vista. Sentita. Ascoltata. Preziosa.</strong></div>
+          <div class="script-line"><em>[pausa lunga - lasciare che la frase rimanga nell'aria]</em></div>
+          <div class="script-line">Non so se capisci cosa significa arrivare a una certa eta' e scoprire che esiste un posto in cui sei davvero benvenuta - non per quello che produci, ma per quello che sei.</div>
+          <div class="script-line"><em>[piccolo sorriso]</em></div>
+          <div class="script-line">Se anche tu stai cercando quel posto - scrivimi. Lo trovi qui.</div>
+          <div class="script-note">Questo reel nasce da una risposta autentica di Orietta. Usare queste parole esatte - vengono dal profondo e si sente. Tono di voce basso, calmo. Nessuna musica di sottofondo: la voce basta. Girare in un momento di tranquillita', non con fretta.</div>
+        </div>
+      </div>
+      <div class="cb-section">
+        <div class="cb-section-title">Caption completo</div>
+        <div class="caption-box">
+          <div class="caption-text">A volte mi fermo e mi sembra surreale.
+
+Sono cresciuta con il tipo di educazione che ti insegna a non disturbare. A non chiedere. A non occupare troppo spazio.
+
+Per anni ho interiorizzato quella voce. Ho imparato a farmi piccola anche quando avevo tutto il diritto di stare grande.
+
+Poi ho trovato un posto in cui quella voce ha smesso di avere ragione.
+
+Un posto in cui mi sento vista. Sentita. Ascoltata. Preziosa.
+
+Non per quello che produco. Non per i numeri. Per quello che sono.
+
+Se anche tu stai cercando quel posto - non so se ce la faro' a descriverlo in un messaggio. Ma posso dirti che esiste.
+
+Scrivimi in DM. Parliamo.</div>
+          <div class="caption-hashtags">#bloomind #nonemaistroppotatrdi #donneforti #crescitapersonale #resilienza #autostima #donnevere #networkmarketing #BlooMindCommunity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom"></div>
+  <div class="footer-info">
+    Script & Contenuti - Orietta Pinetti / BlooMind · Giugno-Luglio 2026<br>
+    Prodotto da WeBloom &nbsp;·&nbsp; <a href="mailto:info@nicolapin.com">info@nicolapin.com</a> &nbsp;·&nbsp; Giugno 2026<br>
+    <a href="orietta_pinetti_brand_identity.html">Brand Identity &rarr;</a>
+    &nbsp;·&nbsp;
+    <a href="orietta_pinetti_piano_editoriale.html">Piano Editoriale &rarr;</a>
+    &nbsp;·&nbsp;
+    <a href="orietta_pinetti_template_caroselli.html">Template Caroselli &rarr;</a>
+  </div>
+</footer>
+
+<script>
+const reveals=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
+reveals.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

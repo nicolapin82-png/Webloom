@@ -1,0 +1,893 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Identity - Orietta Pinetti / BlooMind</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #120A06;
+  --bg2:       #1C0E08;
+  --card:      rgba(32,18,8,0.65);
+  --dark:      #221208;
+  --warm:      #D4956A;
+  --warm-lt:   #E8C4A8;
+  --rose:      #C4907E;
+  --rose-lt:   #DDB8AC;
+  --gold:      #C9A84C;
+  --ivory:     #F8F5EF;
+  --muted:     rgba(248,245,239,0.75);
+  --border:    rgba(212,149,106,0.25);
+  --sep:       rgba(201,168,76,0.18);
+  --radius:    8px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{
+  background:var(--bg);
+  color:var(--ivory);
+  font-family:'Open Sans',sans-serif;
+  font-size:16px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--warm);border-radius:2px;opacity:0.5;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:80px;overflow:hidden;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(16,8,4,0.94);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(212,149,106,0.18);
+}
+.nav-logo img{height:180px;width:auto;display:block;}
+.nav-wbl img{height:40px;width:auto;opacity:1;display:block;}
+.nav-tag{font-size:11px;color:var(--muted);letter-spacing:2.5px;text-transform:uppercase;}
+.nav-badge{
+  background:linear-gradient(135deg,#1a0e06,#2a1800);
+  border:1px solid rgba(212,149,106,0.3);
+  color:var(--warm);font-size:10px;font-weight:600;
+  padding:4px 14px;border-radius:100px;letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+/* HERO */
+#hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:100px 24px 80px;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 35%,rgba(212,149,106,0.10) 0%,transparent 65%),
+    radial-gradient(ellipse 40% 40% at 75% 75%,rgba(32,18,8,0.2) 0%,transparent 60%);
+}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(90px);animation:float 9s ease-in-out infinite;}
+.orb1{width:380px;height:380px;background:rgba(196,144,126,0.07);top:8%;left:8%;}
+.orb2{width:280px;height:280px;background:rgba(212,149,106,0.05);bottom:12%;right:12%;animation-delay:-5s;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-28px)}}
+
+.hero-eyebrow{
+  font-size:11px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--warm);margin-bottom:24px;
+  opacity:0;animation:fadeUp 0.8s ease forwards 0.3s;
+}
+.hero-name{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(3rem,8vw,6.5rem);
+  font-weight:500;line-height:1.05;
+  color:var(--ivory);letter-spacing:0.03em;
+  opacity:0;animation:fadeUp 0.8s ease forwards 0.5s;
+}
+.hero-name span{
+  background:linear-gradient(135deg,var(--rose-lt),var(--warm),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(1.1rem,2.5vw,1.6rem);
+  color:var(--muted);font-style:italic;
+  margin-bottom:48px;
+  opacity:0;animation:fadeUp 0.8s ease forwards 0.7s;
+}
+.hero-divider{
+  width:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--warm),transparent);
+  margin:0 auto 40px;
+  animation:expand 1s ease forwards 0.9s;
+}
+@keyframes expand{to{width:100px}}
+.hero-claim{
+  max-width:640px;
+  font-size:clamp(0.9rem,1.5vw,1.05rem);
+  color:rgba(248,245,239,0.65);
+  line-height:1.9;
+  opacity:0;animation:fadeUp 0.8s ease forwards 1s;
+}
+.hero-claim strong{color:var(--warm-lt);font-weight:500;}
+.hero-scroll{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:var(--muted);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
+  opacity:0;animation:fadeIn 1s ease forwards 1.5s;
+}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--warm),transparent);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* LAYOUT */
+.section{padding:100px 24px;max-width:1100px;margin:0 auto;}
+.section-full{max-width:100%;padding:100px 0;}
+.section-inner{max-width:1100px;margin:0 auto;padding:0 24px;}
+.section-label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:10px;letter-spacing:3.5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;
+}
+.section-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--gold);}
+.section-title{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(1.8rem,3.5vw,3rem);
+  font-weight:500;line-height:1.15;margin-bottom:14px;
+}
+.section-desc{
+  font-size:1rem;color:var(--muted);
+  max-width:580px;margin-bottom:52px;line-height:1.85;
+}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* ARCHETYPE */
+.archetype-wrap{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+  border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;
+  margin-top:48px;
+}
+.arch-card{
+  padding:48px 40px;
+  background:var(--card);
+  position:relative;
+}
+.arch-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--rose),var(--warm));
+}
+.arch-card:last-child::before{background:linear-gradient(90deg,var(--warm),var(--gold));}
+.arch-icon{font-size:2.4rem;margin-bottom:20px;display:block;}
+.arch-name{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.6rem;color:var(--ivory);margin-bottom:10px;font-weight:500;
+}
+.arch-desc{font-size:0.88rem;color:var(--muted);line-height:1.85;}
+.arch-traits{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;}
+.trait-tag{
+  font-size:0.7rem;letter-spacing:1.5px;text-transform:uppercase;
+  padding:4px 12px;border:1px solid var(--border);
+  color:var(--warm-lt);border-radius:100px;
+}
+
+/* VALUES */
+.values-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;
+  margin-top:48px;
+}
+.value-card{
+  padding:36px 28px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  position:relative;overflow:hidden;
+}
+.value-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--rose),var(--gold));
+  opacity:0;transition:opacity 0.3s;
+}
+.value-card:hover::after{opacity:1;}
+.value-num{
+  font-family:'Libre Baskerville',serif;
+  font-size:3rem;color:rgba(212,149,106,0.12);
+  position:absolute;top:20px;right:24px;line-height:1;
+  font-weight:600;
+}
+.value-name{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.4rem;color:var(--ivory);margin-bottom:12px;font-weight:500;
+}
+.value-desc{font-size:0.82rem;color:var(--muted);line-height:1.8;}
+
+/* STORIA */
+.storia-box{
+  margin-top:48px;
+  padding:52px 56px;
+  background:linear-gradient(135deg,rgba(32,18,8,0.7),rgba(212,149,106,0.08));
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  position:relative;overflow:hidden;
+}
+.storia-box::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--warm),transparent);
+}
+.storia-box::after{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(to bottom,var(--rose),var(--gold));
+}
+.storia-text{
+  font-size:0.92rem;color:rgba(248,245,239,0.80);
+  line-height:2;font-style:italic;
+  font-family:'Libre Baskerville',serif;
+  font-size:1.1rem;
+}
+.storia-milestones{
+  display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;
+}
+.milestone{
+  padding:8px 18px;
+  border:1px solid var(--border);
+  border-radius:100px;
+  font-size:0.72rem;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--warm-lt);
+}
+
+/* POSITIONING */
+.positioning-box{
+  margin-top:48px;
+  padding:52px 56px;
+  background:linear-gradient(135deg,rgba(32,18,8,0.6),rgba(212,149,106,0.12));
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  position:relative;overflow:hidden;
+}
+.positioning-box::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--warm),transparent);
+}
+.pos-quote{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(1.4rem,3vw,2.2rem);
+  color:var(--ivory);font-style:italic;
+  line-height:1.5;font-weight:400;
+}
+.pos-quote span{color:var(--warm);}
+.pos-sub{margin-top:28px;font-size:0.82rem;color:var(--muted);letter-spacing:0.05em;}
+
+/* TOV */
+.tov-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:48px;}
+.tov-col h3{
+  font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:24px;
+}
+.adj-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px;}
+.adj-tag{
+  padding:8px 20px;
+  border:1px solid var(--border);
+  border-radius:100px;
+  font-size:0.85rem;color:var(--warm-lt);
+  background:rgba(212,149,106,0.08);
+}
+.tov-list{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.tov-list li{
+  font-size:0.85rem;color:rgba(248,245,239,0.65);
+  padding-left:20px;position:relative;line-height:1.7;
+}
+.tov-list li::before{
+  content:'→';position:absolute;left:0;
+  color:var(--warm);font-size:0.75rem;line-height:1.85;
+}
+.tov-list.dont li::before{content:'✗';color:#e07070;}
+.tov-col .tov-sep{
+  height:1px;
+  background:linear-gradient(90deg,var(--border),transparent);
+  margin:16px 0;
+}
+
+/* PALETTE */
+.palette-row{
+  display:flex;gap:0;
+  border:1px solid var(--border);border-radius:var(--radius);
+  overflow:hidden;margin-top:48px;
+}
+.swatch{
+  flex:1;padding:36px 20px 24px;
+  display:flex;flex-direction:column;gap:10px;
+  border-right:1px solid rgba(255,255,255,0.05);
+}
+.swatch:last-child{border-right:none;}
+.sw-dot{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.08);}
+.sw-name{font-size:0.78rem;color:var(--ivory);}
+.sw-hex{font-size:0.68rem;color:var(--gold);font-family:'Courier New',monospace;letter-spacing:0.05em;}
+.sw-role{font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:2px;}
+.palette-rule{
+  margin-top:24px;
+  padding:20px 28px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:6px;
+  font-size:0.82rem;color:var(--muted);
+}
+.palette-rule strong{color:var(--warm);}
+
+/* FONT */
+.font-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:48px;}
+.font-card{
+  padding:36px 28px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+}
+.font-role{font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.font-sample-serif{
+  font-family:'Libre Baskerville',serif;
+  font-size:2rem;color:var(--ivory);margin-bottom:8px;font-weight:400;line-height:1.2;
+}
+.font-sample-sans{
+  font-family:'Open Sans',sans-serif;
+  font-size:1.1rem;color:var(--ivory);margin-bottom:8px;font-weight:400;
+}
+.font-sample-italic{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.5rem;color:var(--warm-lt);font-style:italic;margin-bottom:8px;
+}
+.font-name{font-size:0.72rem;color:var(--muted);}
+.font-usage{font-size:0.7rem;color:rgba(248,245,239,0.35);margin-top:6px;}
+
+/* TAGLINE */
+.tagline-main{
+  margin-top:48px;
+  text-align:center;
+  padding:64px 40px;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background:linear-gradient(135deg,rgba(32,18,8,0.5),rgba(212,149,106,0.10));
+  position:relative;overflow:hidden;
+}
+.tagline-main::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--warm),transparent);
+}
+.tagline-text{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(1.8rem,4vw,3rem);
+  color:var(--ivory);font-style:italic;
+  font-weight:400;line-height:1.35;
+}
+.tagline-text span{color:var(--warm);}
+.tagline-variants{
+  margin-top:48px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;
+}
+.tv-card{
+  padding:24px 28px;
+  background:var(--card);border:1px solid var(--border);border-radius:6px;
+}
+.tv-context{font-size:0.62rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.tv-text{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.05rem;color:var(--ivory);font-style:italic;line-height:1.55;
+}
+
+/* MOOD BOARD */
+.mood-wrap{
+  display:grid;grid-template-columns:1fr 1fr;gap:40px;
+  margin-top:48px;align-items:start;
+}
+.mood-text p{font-size:0.88rem;color:var(--muted);line-height:1.9;margin-bottom:14px;}
+.mood-text strong{color:var(--ivory);}
+.mood-elements{display:flex;flex-direction:column;gap:14px;}
+.mood-el{
+  padding:16px 20px;
+  background:rgba(32,18,8,0.4);border:1px solid var(--border);
+  border-radius:6px;
+  font-size:0.82rem;color:var(--muted);
+}
+.mood-el strong{color:var(--warm-lt);}
+.mood-never{margin-top:16px;}
+.mood-never h4{font-size:0.62rem;letter-spacing:2.5px;text-transform:uppercase;color:#e07070;margin-bottom:10px;}
+.mood-never ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.mood-never ul li{font-size:0.8rem;color:rgba(224,112,112,0.7);padding-left:16px;position:relative;}
+.mood-never ul li::before{content:'✗';position:absolute;left:0;color:#e07070;}
+
+/* COMPETITOR */
+.comp-table{
+  width:100%;border-collapse:collapse;
+  margin-top:48px;
+}
+.comp-table th{
+  font-size:0.65rem;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);padding:14px 20px;text-align:left;
+  border-bottom:1px solid var(--sep);
+}
+.comp-table td{
+  font-size:0.82rem;color:rgba(248,245,239,0.7);
+  padding:18px 20px;border-bottom:1px solid rgba(212,149,106,0.1);
+  vertical-align:top;line-height:1.7;
+}
+.comp-table tr:last-child td{border-bottom:none;}
+.comp-table tr:nth-child(even) td{background:rgba(32,18,8,0.15);}
+.highlight-row td{color:var(--ivory)!important;background:rgba(212,149,106,0.14)!important;}
+.highlight-row td:first-child{color:var(--warm-lt)!important;font-weight:500;}
+
+.gap-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:48px;}
+.gap-card{
+  padding:36px 28px;
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  position:relative;
+}
+.gap-card::before{
+  content:'';position:absolute;top:0;left:0;bottom:0;width:2px;
+  background:linear-gradient(to bottom,var(--rose),var(--gold));
+}
+.gap-num{
+  font-family:'Libre Baskerville',serif;
+  font-size:3.5rem;color:rgba(212,149,106,0.10);
+  position:absolute;top:16px;right:20px;font-weight:600;line-height:1;
+}
+.gap-title{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.2rem;color:var(--ivory);margin-bottom:12px;font-weight:500;
+}
+.gap-desc{font-size:0.82rem;color:var(--muted);line-height:1.8;}
+
+/* ANGOLI */
+.angoli-grid{display:flex;flex-direction:column;gap:20px;margin-top:48px;}
+.angolo-item{
+  padding:32px 36px 32px 52px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);
+  position:relative;
+}
+.angolo-item::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(to bottom,var(--warm),rgba(212,149,106,0.2));
+}
+.angolo-label{
+  font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--warm);margin-bottom:8px;
+}
+.angolo-title{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.3rem;color:var(--ivory);margin-bottom:8px;font-weight:500;
+}
+.angolo-desc{font-size:0.85rem;color:var(--muted);line-height:1.8;}
+
+/* FOOTER */
+footer{
+  padding:64px 48px;
+  border-top:1px solid var(--sep);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:24px;
+}
+.footer-logo img{height:34px;opacity:1;}
+.footer-info{font-size:0.75rem;color:var(--muted);line-height:1.8;}
+.footer-info a{color:var(--warm);text-decoration:none;}
+
+@media(max-width:768px){
+  nav{padding:16px 20px;}
+  .nav-tag{display:none;}
+  .archetype-wrap,.tov-grid,.mood-wrap{grid-template-columns:1fr;}
+  .palette-row{flex-wrap:wrap;}
+  .swatch{flex:1 0 45%;}
+  .font-grid{grid-template-columns:1fr;}
+  .gap-grid{grid-template-columns:1fr;}
+  .section{padding:60px 20px;}
+  footer{padding:40px 20px;flex-direction:column;align-items:flex-start;}
+  .comp-table{display:block;overflow-x:auto;}
+  .tagline-text{font-size:1.6rem;}
+  .storia-box,.positioning-box{padding:36px 28px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind" style="height:180px;width:auto;">
+  </div>
+
+  <div class="nav-wbl">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom" style="height:40px;width:auto;opacity:1;">
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+  <p class="hero-eyebrow">Brand Identity Document</p>
+  <h1 class="hero-name">Orietta <span>Pinetti</span></h1>
+  <p class="hero-sub">Junior Executive Leader BlooMind &nbsp;·&nbsp; Networker &nbsp;·&nbsp; Team @Orietta_pinetti_</p>
+  <div class="hero-divider"></div>
+  <p class="hero-claim">
+    Documento strategico di <strong>brand identity</strong> per il posizionamento digitale di Orietta Pinetti: valori, tone of voice, identita visiva, angoli differenzianti e strategia di comunicazione all'interno dell'ecosistema <strong>BlooMind</strong>.
+  </p>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scorri</span>
+  </div>
+</section>
+
+<!-- 1. ARCHETIPO -->
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">01 - Archetipo</p>
+    <h2 class="section-title">Chi e Orietta Pinetti</h2>
+    <p class="section-desc">L'archetipo definisce la personalita profonda del brand - come parla, come viene percepita, cosa promette a chi la segue.</p>
+  </div>
+  <div class="archetype-wrap reveal d2">
+    <div class="arch-card">
+      <span class="arch-icon">🔥</span>
+      <div class="arch-name">L'Eroina</div>
+      <p class="arch-desc">Ha attraversato il fuoco e si e rialzata. Fibromialgia, figlio con autismo, lavoro perso, diagnosi che avrebbero potuto fermarla per sempre. Invece ha trasformato ogni sfida in una risorsa. La sua credibilita non viene da un diploma: viene da cio che ha vissuto davvero. Chi la segue sa che lei conosce il peso di ricominciare.</p>
+      <div class="arch-traits">
+        <span class="trait-tag">Resilienza</span>
+        <span class="trait-tag">Coraggio</span>
+        <span class="trait-tag">Autenticita</span>
+        <span class="trait-tag">Trasformazione</span>
+      </div>
+    </div>
+    <div class="arch-card">
+      <span class="arch-icon">🤍</span>
+      <div class="arch-name">La Custode</div>
+      <p class="arch-desc">Prima ascolta, poi guida. Non usa lo stesso approccio con tutti: adatta il suo sostegno alla personalita di ciascuna. Crea ambienti in cui le persone si sentono viste, sentite e accettate - senza giudizio. La crescita della persona viene prima del risultato. Sempre.</p>
+      <div class="arch-traits">
+        <span class="trait-tag">Empatia</span>
+        <span class="trait-tag">Cura</span>
+        <span class="trait-tag">Ascolto</span>
+        <span class="trait-tag">Accoglienza</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. VALORI CORE -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">02 - Valori Core</p>
+    <h2 class="section-title">Le fondamenta di Orietta</h2>
+    <p class="section-desc">Cinque valori emersi direttamente dalla sua storia e dal suo modo di guidare il team. Non principi astratti: esperienze vissute diventate bussola.</p>
+  </div>
+  <div class="values-grid">
+    <div class="value-card reveal d1">
+      <span class="value-num">01</span>
+      <div class="value-name">Resilienza</div>
+      <p class="value-desc">Ogni caduta porta una lezione. La vita di Orietta e la prova vivente che si puo ricominciare anche quando sembra impossibile. Non predicazione: testimonianza diretta.</p>
+    </div>
+    <div class="value-card reveal d2">
+      <span class="value-num">02</span>
+      <div class="value-name">Autenticita</div>
+      <p class="value-desc">Non cerca donne perfette perche lei non si presenta come tale. La forza del suo brand e nel non filtrare. Chi la segue sa che cio che vede e reale.</p>
+    </div>
+    <div class="value-card reveal d3">
+      <span class="value-num">03</span>
+      <div class="value-name">Rinascita</div>
+      <p class="value-desc">"Non e mai troppo tardi per ricominciare." Non e uno slogan: e il suo manifesto personale. A quasi sessant'anni ha scelto di riscrivere la propria storia. Questo e il messaggio piu potente che puo dare.</p>
+    </div>
+    <div class="value-card reveal d4">
+      <span class="value-num">04</span>
+      <div class="value-name">Cura</div>
+      <p class="value-desc">La crescita della persona viene prima del numero. Ogni Zoom, ogni messaggio, ogni sessione di formazione parte dalla domanda: "Di cosa ha bisogno questa persona, adesso?" Non esiste un unico metodo: esiste la persona davanti a lei.</p>
+    </div>
+    <div class="value-card reveal d5">
+      <span class="value-num">05</span>
+      <div class="value-name">Liberta</div>
+      <p class="value-desc">Essere madre, compagna, figlia e professionista senza rinunciare a niente. BlooMind per Orietta non e un'alternativa alla vita: e la struttura che permette finalmente di viverla tutta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. LA STORIA -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">03 - La Storia</p>
+    <h2 class="section-title">Il percorso che la rende unica</h2>
+    <p class="section-desc">La storia di Orietta non e un dettaglio biografico: e il cuore della sua comunicazione. Ogni contenuto che produce trova le sue radici qui.</p>
+  </div>
+  <div class="storia-box reveal d2">
+    <p class="storia-text">
+      "Ho iniziato a lavorare a 14 anni. A 16 ero gia responsabile di tre reparti. Ho diretto negozi, raggiunto traguardi che sembravano impossibili per una ragazzina. Poi e arrivata la mia prima figlia e ho capito quanto stessi sacrificando il tempo alla famiglia. Quando e arrivato il secondo figlio ho scelto il part-time. Poco dopo e arrivata la diagnosi di autismo ad alto funzionamento per Alessandro. La mia vita e cambiata completamente - tra terapie, appuntamenti, scuola, gestione familiare. Ho dovuto lasciare il lavoro e reinventarmi. E poi la fibromialgia: dolore cronico, cure pesanti, momenti durissimi. Ma ho sempre creduto che dentro ogni difficolta si nasconda una lezione. Oggi Alessandro ha 19 anni e ha sviluppato una capacita straordinaria di adattamento e autonomia. E lui, ogni giorno, mi dimostra che la costanza e l'amore fanno la differenza. Proprio cercando soluzioni per il mio benessere ho trovato il network marketing. Quello che era una ricerca personale e diventato un percorso di trasformazione. Oggi condivido la mia storia con un solo obiettivo: dimostrare che - anche quando la vita ti mette continuamente alla prova - e possibile rialzarsi, ricominciare e costruire qualcosa di bello."
+    </p>
+    <div class="storia-milestones">
+      <span class="milestone">14 anni - primo lavoro</span>
+      <span class="milestone">16 anni - responsabile 3 reparti</span>
+      <span class="milestone">Madre di 2 figli</span>
+      <span class="milestone">Alessandro - autismo alto funzionamento</span>
+      <span class="milestone">Fibromialgia</span>
+      <span class="milestone">Reinvenzione totale</span>
+      <span class="milestone">Junior Executive Leader BlooMind</span>
+    </div>
+  </div>
+</section>
+
+<!-- 4. POSITIONING -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">04 - Positioning Statement</p>
+    <h2 class="section-title">Come si presenta Orietta</h2>
+    <p class="section-desc">Il claim interno (strategico) e la versione pubblica per bio, presentazioni e contenuti.</p>
+  </div>
+  <div class="positioning-box reveal d2">
+    <p class="pos-quote">
+      "Accompagno donne vere a riscrivere la loro storia -<br>
+      <span>un passo alla volta, al loro ritmo.</span>"
+    </p>
+    <p class="pos-sub">Positioning statement pubblico - bio Instagram, apertura reel, presentazioni team</p>
+  </div>
+  <div style="margin-top:24px;padding:32px 36px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);" class="reveal d3">
+    <p style="font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Versione lunga - uso interno / strategico</p>
+    <p style="font-size:0.9rem;color:var(--muted);line-height:1.9;font-style:italic;">
+      "Orietta Pinetti lavora con donne che hanno ancora un sogno nel cassetto ma si sono convinte che sia troppo tardi. Donne che hanno affrontato sfide enormi - familiari, di salute, lavorative - e che hanno imparato a sorrider mentre combattevano battaglie che nessuno vedeva. Il suo approccio e radicato nella sua storia personale: non parte dal metodo, parte dalla persona. Prima l'ascolto, poi la formazione - sulla vendita, sui prodotti, sul mindset. Dentro l'ecosistema BlooMind, Orietta porta il dono piu raro: la capacita di far sentire le persone davvero accolte, senza giudizio, qualunque sia il punto in cui si trovano."
+    </p>
+  </div>
+</section>
+
+<!-- 5. TONE OF VOICE -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">05 - Tone of Voice</p>
+    <h2 class="section-title">Come parla Orietta</h2>
+    <p class="section-desc">La voce di Orietta e calda, diretta e profondamente umana. Non usa mai scorciatoie emotive - parla da chi ha vissuto davvero quello di cui parla.</p>
+  </div>
+  <div class="tov-grid">
+    <div class="tov-col reveal d1">
+      <h3>5 aggettivi della voce</h3>
+      <div class="adj-row">
+        <span class="adj-tag">Calda</span>
+        <span class="adj-tag">Autentica</span>
+        <span class="adj-tag">Diretta</span>
+        <span class="adj-tag">Incoraggiante</span>
+        <span class="adj-tag">Empatica</span>
+      </div>
+      <p style="font-size:10px;color:var(--muted);margin:16px 0 6px;letter-spacing:2px;text-transform:uppercase;">Come vuole essere percepita</p>
+      <div class="adj-row">
+        <span class="adj-tag" style="border-color:rgba(212,149,106,0.5);color:var(--warm);">Ispirazionale</span>
+        <span class="adj-tag" style="border-color:rgba(212,149,106,0.5);color:var(--warm);">Accessibile</span>
+      </div>
+      <h3>Fa</h3>
+      <ul class="tov-list">
+        <li>Prima persona autentica: "Quando ho avuto la diagnosi...", "Quello che ho imparato e..."</li>
+        <li>Validare la fatica delle altre: "So che stanca. So che fa paura."</li>
+        <li>Parlare di resilienza con esempi concreti - mai come concetto astratto</li>
+        <li>Reel parlati dal vivo, senza filtri, senza copione rigido</li>
+        <li>Stories quotidiane autentiche: dietro le quinte reali, non curati</li>
+        <li>La lettera - la sua voce nelle CTA ("Scrivimi, qualunque sia il tuo punto di partenza")</li>
+        <li>Condividere anche le giornate difficili - non solo i successi</li>
+      </ul>
+    </div>
+    <div class="tov-col reveal d2">
+      <h3 style="color:#e07070;">Non fa</h3>
+      <ul class="tov-list dont">
+        <li>Linguaggio aggressivo o da venditore pressante</li>
+        <li>Ossessione per i numeri, i guadagni, le classifiche senza contesto</li>
+        <li>Perfezione costruita: vita sempre positiva, risultati sempre alti</li>
+        <li>Tono predicatorio o moralizzante</li>
+        <li>Contenuti generici di motivazione senza ancoraggio alla sua storia</li>
+        <li>Post promozionali diretti sui prodotti senza contesto valoriale</li>
+        <li>Urgenza artificiale o countdown pressanti</li>
+        <li>Contenuti o riferimenti politici di qualsiasi tipo</li>
+      </ul>
+    </div>
+  </div>
+  <div class="positioning-box reveal d3" style="margin-top:40px;">
+    <p class="pos-quote">
+      "Sono cresciuta con il tipo di educazione che ti mette nell'angolo. Che ti dice che non devi disturbare. Che in pratica non devi esistere.<br>
+      <span>Qui mi sento vista, sentita, ascoltata e preziosa.</span>"
+    </p>
+    <p class="pos-sub">— Orietta Pinetti, su cosa significa far parte di BlooMind · Materiale autentico per Reel e Stories</p>
+  </div>
+</section>
+
+<!-- 6. PALETTE -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">06 - Palette Colori</p>
+    <h2 class="section-title">L'identita visiva di Orietta</h2>
+    <p class="section-desc">Dentro l'ecosistema BlooMind, Orietta porta la sua tonalita personale: <strong style="color:var(--warm-lt);">calda, luminosa, accogliente</strong>. Colori che trasmettono calore umano e positivita - coerenti col brand madre ma distintamente suoi.</p>
+  </div>
+  <div class="palette-row reveal d2">
+    <div class="swatch" style="background:rgba(32,18,8,0.7);">
+      <div class="sw-dot" style="background:#0C0B08;border:1px solid rgba(255,255,255,0.1);"></div>
+      <span class="sw-name">Deep Black</span>
+      <span class="sw-hex">#0C0B08</span>
+      <span class="sw-role">Background base BlooMind</span>
+    </div>
+    <div class="swatch" style="background:rgba(212,149,106,0.15);">
+      <div class="sw-dot" style="background:#D4956A;"></div>
+      <span class="sw-name">Warm Amber</span>
+      <span class="sw-hex">#D4956A</span>
+      <span class="sw-role">Colore principale Orietta</span>
+    </div>
+    <div class="swatch" style="background:rgba(232,196,168,0.10);">
+      <div class="sw-dot" style="background:#E8C4A8;"></div>
+      <span class="sw-name">Soft Peach</span>
+      <span class="sw-hex">#E8C4A8</span>
+      <span class="sw-role">Accento luminoso / calore</span>
+    </div>
+    <div class="swatch" style="background:rgba(196,144,126,0.12);">
+      <div class="sw-dot" style="background:#C4907E;"></div>
+      <span class="sw-name">Mind Rose</span>
+      <span class="sw-hex">#C4907E</span>
+      <span class="sw-role">Connessione BlooMind</span>
+    </div>
+    <div class="swatch" style="background:rgba(201,168,76,0.08);">
+      <div class="sw-dot" style="background:#C9A84C;"></div>
+      <span class="sw-name">Warm Gold</span>
+      <span class="sw-hex">#C9A84C</span>
+      <span class="sw-role">Premium / qualifica</span>
+    </div>
+    <div class="swatch" style="background:rgba(248,245,239,0.04);">
+      <div class="sw-dot" style="background:#F8F5EF;border:1px solid rgba(255,255,255,0.15);"></div>
+      <span class="sw-name">Ivory Breath</span>
+      <span class="sw-hex">#F8F5EF</span>
+      <span class="sw-role">Testo / spazio respiro</span>
+    </div>
+  </div>
+  <div class="palette-rule reveal d3">
+    <strong>Logica cromatica Orietta:</strong> &nbsp;Nero caldo come base ecosistema BlooMind · Warm Amber come colore personale primario (caldo, accessibile, luminoso) · Soft Peach per elementi di posititivita e accoglienza · Mind Rose per il legame con BlooMind · Warm Gold per i traguardi e l'autorevolezza · Ivory per testo. I toni caldi di Orietta la distinguono visivamente all'interno del team.
+  </div>
+</section>
+
+<!-- 7. FONT -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">07 - Font Pairing</p>
+    <h2 class="section-title">Tipografia</h2>
+    <p class="section-desc">Tipografia di Orietta: solidita e credibilita per i titoli, chiarezza accessibile per il corpo. Un'identita visiva matura e diretta.</p>
+  </div>
+  <div class="font-grid">
+    <div class="font-card reveal d1">
+      <p class="font-role">Titoli / Display</p>
+      <div class="font-sample-serif">Libre<br>Baskerville</div>
+      <p class="font-name">Libre Baskerville</p>
+      <p class="font-usage">Bold · Regular · Italic · 32-88px · Header, claim, tagline, quote</p>
+    </div>
+    <div class="font-card reveal d2">
+      <p class="font-role">Corpo / Subtitle</p>
+      <div class="font-sample-sans">Open Sans - diretto,<br>caldo, leggibile.</div>
+      <p class="font-name">Open Sans</p>
+      <p class="font-usage">Light · Regular · Medium · 14-22px · Corpo testo, caption, UI</p>
+    </div>
+    <div class="font-card reveal d3">
+      <p class="font-role">Citazioni / Accento</p>
+      <div class="font-sample-italic">"Non e mai troppo<br>tardi."</div>
+      <p class="font-name">Libre Baskerville Italic</p>
+      <p class="font-usage">Italic · 20-32px · Quote, frasi chiave, momenti visivi distinti</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8. TAGLINE -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">08 - Claim & Tagline</p>
+    <h2 class="section-title">Le parole che rimangono</h2>
+    <p class="section-desc">La tagline principale e le varianti per contesti diversi. Il fil rouge: non e mai troppo tardi per ricominciare.</p>
+  </div>
+  <div class="tagline-main reveal d2">
+    <p class="tagline-text">"<span>Non e mai troppo tardi</span><br>per riscrivere la tua storia."</p>
+  </div>
+  <div class="tagline-variants reveal d3">
+    <div class="tv-card">
+      <p class="tv-context">Bio Instagram</p>
+      <p class="tv-text">"Donne vere. Storie vere. Un passo alla volta."</p>
+    </div>
+    <div class="tv-card">
+      <p class="tv-context">Apertura Reel / Stories</p>
+      <p class="tv-text">"Voglio parlarti di qualcosa che so per certo."</p>
+    </div>
+    <div class="tv-card">
+      <p class="tv-context">CTA recruiting BlooMind</p>
+      <p class="tv-text">"Non cerco la perfezione. Cerco la tua voglia di ricominciare."</p>
+    </div>
+    <div class="tv-card">
+      <p class="tv-context">Firma / chiusura contenuti</p>
+      <p class="tv-text">"Prima la persona. Poi tutto il resto."</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9. MOOD BOARD -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">09 - Mood Board Visivo</p>
+    <h2 class="section-title">L'atmosfera del brand</h2>
+    <p class="section-desc">Cosa si vede e cosa si sente quando si guarda Orietta Pinetti. Luminoso, caldo, umano - mai costruito.</p>
+  </div>
+  <div class="mood-wrap">
+    <div class="mood-text reveal d1">
+      <p><strong>Lo scenario reale di Orietta:</strong> Una Zoom aperta piu volte a settimana, dove accoglie le persone del suo team - ognuna con la sua storia, i suoi tempi, le sue paure. Un reel girato dallo smartphone, parlando direttamente in camera, senza filtri, raccontando qualcosa di vero. Una storia quotidiana che mostra come sta davvero.</p>
+      <p>Non e una scena da influencer di lusso. E una scena da <strong>donna vera che ha costruito qualcosa di reale partendo da zero</strong> - piu di una volta.</p>
+      <p><strong>Fotografia:</strong> luce naturale e calda, ambienti domestici o semplici, espressioni genuine - non pose. Tonalita calde: peach, avorio, ambra. Mai studio fotografico. Mai filtri forti. La spontaneita e un valore, non un limite.</p>
+    </div>
+    <div>
+      <div class="mood-elements reveal d2">
+        <div class="mood-el"><strong>Zoom di team aperti</strong> - volti reali, conversazioni vere, supporto basato sulla personalita di ciascuna. La community si vede, non si descrive.</div>
+        <div class="mood-el"><strong>Reel parlati dallo smartphone</strong> - nessuna produzione. La voce di Orietta e il contenuto. 15.000 views su un video girato in camera: questo e il suo superpotere.</div>
+        <div class="mood-el"><strong>Traguardi personali documentati</strong> - la qualifica Junior Executive, un momento di gioia, un risultato del team. Successo reale, non aspirazionale.</div>
+        <div class="mood-el"><strong>Luce calda e naturale</strong> - finestra di casa, mattina o pomeriggio. Tonalita peach e ambra. Mai flash. Mai sfondi neutri da studio.</div>
+        <div class="mood-el"><strong>Alessandro e la famiglia</strong> - quando sente che puo condividerlo, il racconto del figlio e potentissimo. Non per impietosire: per dimostrare cosa significa davvero resilienza.</div>
+      </div>
+      <div class="mood-never reveal d3">
+        <h4>Non appare mai</h4>
+        <ul>
+          <li>Linguaggio o visual da "venditrice aggressiva"</li>
+          <li>Screenshot di classifiche o guadagni senza contesto</li>
+          <li>Vita sempre perfetta, sempre positiva - la vulnerabilita e una risorsa</li>
+          <li>Filtri forti o estetica da influencer aspirazionale</li>
+          <li>Prodotti in primo piano senza storia che li motivi</li>
+          <li>Urgenza forzata o scadenze artificiali</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. ANGOLI DIFFERENZIANTI -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">10 - Angoli Differenzianti</p>
+    <h2 class="section-title">Cosa rende unica Orietta Pinetti</h2>
+    <p class="section-desc">Quattro angoli da presidiare sistematicamente: cio che solo Orietta puo dire, perche solo lei l'ha vissuto.</p>
+  </div>
+  <div class="angoli-grid">
+    <div class="angolo-item reveal d1">
+      <p class="angolo-label">Angolo 1</p>
+      <div class="angolo-title">"La Forza delle Cicatrici"</div>
+      <p class="angolo-desc">Orietta non ha nascosto le sue battaglie: fibromialgia, figlio con autismo, lavoro perso, diagnosi che avrebbero potuto fermarla per sempre. La sua credibilita viene esattamente da li. Chi la segue non si sente giudicata perche lei conosce davvero cosa significa "sopravvivere al quotidiano". Non ha bisogno di costruire autorevolezza: la porta nella voce, ogni volta che parla.</p>
+    </div>
+    <div class="angolo-item reveal d2">
+      <p class="angolo-label">Angolo 2</p>
+      <div class="angolo-title">"Non e Mai Troppo Tardi"</div>
+      <p class="angolo-desc">Il suo contenuto piu visto (15.000 views) parlava di "ricostruire la vita quasi a sessant'anni". Non e un tema casuale: e il gap che Orietta colma meglio di chiunque altro. Esiste un universo di donne che si sono convinte che il treno sia gia passato, che la loro eta o la loro storia le escluda da qualsiasi opportunita. Orietta e la prova vivente del contrario. Questo angolo va comunicato con regolarita, non come eccezione.</p>
+    </div>
+    <div class="angolo-item reveal d3">
+      <p class="angolo-label">Angolo 3</p>
+      <div class="angolo-title">"La Leader che Ascolta Prima"</div>
+      <p class="angolo-desc">Il suo approccio nelle Zoom di team e basato sulla personalita di ciascuna, non su uno script unico. Questo e raro nel network marketing dove il metodo viene prima della persona. Orietta inverte la sequenza: prima capisce chi hai davanti, poi costruisce il percorso. Questo crea team piu stabili, meno abbandoni, relazioni piu lunghe. E un differenziante operativo - non solo emotivo.</p>
+    </div>
+    <div class="angolo-item reveal d4">
+      <p class="angolo-label">Angolo 4</p>
+      <div class="angolo-title">"Dall'Altro Lato di Tutte e Tre le Paure"</div>
+      <p class="angolo-desc">BlooMind abbatte le tre paure principali del settore: giudizio, vendita, esposizione. Orietta le ha attraversate tutte e tre - con il peso aggiunto della fibromialgia e della gestione familiare. Puo parlarne con un'autorevolezza che nessun corso di formazione puo dare. Quando dice "ce l'ho fatta", non e motivazione: e documentazione. Questo angolo va usato soprattutto nella fase di recruiting: parla direttamente alle paure che bloccano le candidate.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom">
+  </div>
+  <div class="footer-info">
+    Documento riservato - Brand Identity Orietta Pinetti / BlooMind<br>
+    Prodotto da WeBloom &nbsp;·&nbsp; <a href="mailto:info@nicolapin.com">info@nicolapin.com</a> &nbsp;·&nbsp; Giugno 2026<br>
+    <a href="orietta_pinetti_piano_editoriale.html">Piano Editoriale &rarr;</a>
+    &nbsp;·&nbsp;
+    <a href="orietta_pinetti_script_contenuti.html">Script &amp; Copy &rarr;</a>
+    &nbsp;·&nbsp;
+    <a href="orietta_pinetti_template_caroselli.html">Template Caroselli &rarr;</a>
+  </div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');}
+  });
+},{threshold:0.12});
+reveals.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
