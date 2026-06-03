@@ -4,34 +4,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Script & Contenuti - Orietta Pinetti / BlooMind</title>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --bg:#120A06;--bg2:#1C0E08;
-  --card:rgba(32,18,8,0.65);--dark:#221208;
-  --warm:#D4956A;--warm-lt:#E8C4A8;
-  --rose:#C4907E;--rose-lt:#DDB8AC;
+  --bg:#130B1F;--bg2:#1E1030;
+  --card:rgba(28,10,45,0.65);--dark:#1A0F28;
+  --warm:#9B6DB5;--warm-lt:#C89FD8;
+  --rose:#D4789C;--rose-lt:#E4B8D4;
   --gold:#C9A84C;--ivory:#F8F5EF;
   --muted:rgba(248,245,239,0.75);
-  --border:rgba(212,149,106,0.22);
+  --border:rgba(155,109,181,0.22);
   --sep:rgba(201,168,76,0.15);--radius:8px;
 }
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ivory);font-family:'Open Sans',sans-serif;font-weight:300;line-height:1.7;}
 ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:var(--warm);border-radius:2px;}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;padding:0 24px;display:flex;align-items:center;gap:20px;background:rgba(16,8,4,0.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,149,106,0.18);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;padding:0 24px;display:flex;align-items:center;gap:20px;background:rgba(10,5,25,0.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(155,109,181,0.18);}
 .nav-logo img{height:180px;width:auto;display:block;}
 .nav-wbl{margin-left:auto;}
 .nav-wbl img{height:40px;width:auto;opacity:1;display:block;}
 .nav-tag{font-size:11px;color:var(--muted);letter-spacing:2.5px;text-transform:uppercase;}
-.nav-badge{background:linear-gradient(135deg,#1a0e06,#2a1800);border:1px solid rgba(212,149,106,0.3);color:var(--warm);font-size:10px;font-weight:600;padding:4px 14px;border-radius:100px;letter-spacing:1.5px;text-transform:uppercase;}
+.nav-badge{background:linear-gradient(135deg,#0e0820,#1a1040);border:1px solid rgba(155,109,181,0.3);color:var(--warm);font-size:10px;font-weight:600;padding:4px 14px;border-radius:100px;letter-spacing:1.5px;text-transform:uppercase;}
 @media(max-width:768px){nav{padding:16px 20px;}.nav-tag{display:none;}}
 
 .hero{padding:140px 48px 80px;max-width:900px;margin:0 auto;}
 .hero-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--warm-lt);margin-bottom:20px;}
-.hero-title{font-family:'Libre Baskerville',serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:600;line-height:1.15;margin-bottom:24px;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(2.2rem,5vw,4rem);font-weight:600;line-height:1.15;margin-bottom:24px;}
 .hero-sub{font-size:1rem;color:var(--muted);max-width:600px;line-height:1.8;}
 @media(max-width:768px){.hero{padding:120px 20px 60px;}}
 
@@ -51,7 +51,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 @media(max-width:768px){.section{padding:40px 20px;}}
 
 .content-block{margin-bottom:64px;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
-.cb-header{padding:28px 32px;background:rgba(212,149,106,0.07);border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;}
+.cb-header{padding:28px 32px;background:rgba(155,109,181,0.07);border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;}
 .cb-date{min-width:80px;}
 .cb-date-day{font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
 .cb-date-num{font-family:'Libre Baskerville',serif;font-size:1.8rem;color:var(--warm-lt);line-height:1;}
@@ -60,14 +60,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .cb-title{font-family:'Libre Baskerville',serif;font-size:1.4rem;font-weight:600;line-height:1.3;margin-bottom:8px;}
 .cb-pillars{display:flex;flex-wrap:wrap;gap:8px;}
 .cb-pill{font-size:0.68rem;padding:3px 10px;border-radius:20px;letter-spacing:0.5px;}
-.pill-storia{background:rgba(212,149,106,0.15);color:var(--warm-lt);border:1px solid rgba(212,149,106,0.3);}
-.pill-tardi{background:rgba(196,144,126,0.15);color:var(--rose-lt);border:1px solid rgba(196,144,126,0.3);}
+.pill-storia{background:rgba(155,109,181,0.15);color:var(--warm-lt);border:1px solid rgba(155,109,181,0.3);}
+.pill-tardi{background:rgba(180,100,150,0.15);color:var(--rose-lt);border:1px solid rgba(180,100,150,0.3);}
 .pill-bloom{background:rgba(144,186,150,0.12);color:#90BA96;border:1px solid rgba(144,186,150,0.25);}
 .pill-leader{background:rgba(201,168,76,0.12);color:#d4b86a;border:1px solid rgba(201,168,76,0.25);}
 .cb-body{padding:32px;}
 .cb-section{margin-bottom:28px;}
 .cb-section:last-child{margin-bottom:0;}
-.cb-section-title{font-size:0.68rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--rose-lt);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(196,144,126,0.15);}
+.cb-section-title{font-size:0.68rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--rose-lt);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(180,100,150,0.15);}
 
 .script-box{background:rgba(0,0,0,0.3);border-radius:8px;padding:24px 28px;border-left:3px solid var(--warm);margin-bottom:8px;}
 .script-line{font-size:0.9rem;line-height:1.9;color:var(--ivory);}
@@ -85,12 +85,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .tip-label{font-size:0.65rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--warm);margin-bottom:6px;}
 .tip-text{font-size:0.8rem;color:var(--muted);line-height:1.7;}
 
-.phase-header{background:linear-gradient(135deg,rgba(212,149,106,0.10),rgba(32,18,8,0.5));border:1px solid var(--border);border-radius:12px;padding:32px 36px;margin-bottom:40px;}
+.phase-header{background:linear-gradient(135deg,rgba(155,109,181,0.10),rgba(28,10,45,0.5));border:1px solid var(--border);border-radius:12px;padding:32px 36px;margin-bottom:40px;}
 .ph-num{font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--warm-lt);margin-bottom:8px;}
 .ph-title{font-family:'Libre Baskerville',serif;font-size:1.8rem;font-weight:600;color:var(--ivory);margin-bottom:8px;}
 .ph-desc{font-size:0.85rem;color:var(--muted);line-height:1.7;}
 
-.video-tips-wrap{background:rgba(212,149,106,0.05);border:1px solid rgba(212,149,106,0.2);border-radius:12px;padding:36px;}
+.video-tips-wrap{background:rgba(155,109,181,0.05);border:1px solid rgba(155,109,181,0.2);border-radius:12px;padding:36px;}
 .vt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:20px;}
 .vt-card{background:rgba(0,0,0,0.25);border-radius:8px;padding:20px;}
 .vt-icon{font-size:1.4rem;margin-bottom:10px;}
@@ -515,7 +515,7 @@ Se stai cercando qualcuno che lavori al tuo ritmo, non al suo - scrivimi in DM.<
       <div class="cb-date"><div class="cb-date-day">Lunedi</div><div class="cb-date-num">30 Giu</div></div>
       <div class="cb-meta">
         <div class="cb-format">Reel parlato · 60 secondi · Instagram + Facebook</div>
-        <div class="cb-title">"Ho raggiunto la qualifica di Junior Executive Leader. Ecco cosa significa davvero."</div>
+        <div class="cb-title">"Ho raggiunto un traguardo importante in BlooMind. Ecco cosa significa davvero."</div>
         <div class="cb-pillars"><span class="cb-pill pill-bloom">Dentro BlooMind</span></div>
       </div>
     </div>
@@ -524,7 +524,7 @@ Se stai cercando qualcuno che lavori al tuo ritmo, non al suo - scrivimi in DM.<
         <div class="cb-section-title">Script parola per parola</div>
         <div class="script-box">
           <div class="script-line"><strong>[Tono di chi sta condividendo qualcosa di personale, non di chi sta annunciando un risultato]</strong></div>
-          <div class="script-line">Recentemente ho raggiunto la qualifica di Junior Executive Leader.</div>
+          <div class="script-line">Recentemente ho raggiunto un traguardo importante nel mio percorso in BlooMind.</div>
           <div class="script-line"><em>[pausa]</em></div>
           <div class="script-line">Ve lo racconto come quello che e' stato davvero - non un comunicato di business. E' stato come scalare l'Everest. Con la fibromialgia. Con Alessandro. Con tutto quello che sapete di me.</div>
           <div class="script-line"><em>[pausa breve]</em></div>
@@ -539,7 +539,7 @@ Se stai cercando qualcuno che lavori al tuo ritmo, non al suo - scrivimi in DM.<
       <div class="cb-section">
         <div class="cb-section-title">Caption completo</div>
         <div class="caption-box">
-          <div class="caption-text">Ho raggiunto la qualifica di Junior Executive Leader.
+          <div class="caption-text">Ho raggiunto un traguardo importante in BlooMind.
 
 Non ve lo dico per vantarmi. Ve lo dico perche' so che qualcuno che mi segue sta pensando "ma per me sarebbe impossibile."
 
@@ -667,11 +667,11 @@ Scrivimi in DM. Parliamo.</div>
   <div class="footer-info">
     Script & Contenuti - Orietta Pinetti / BlooMind · Giugno-Luglio 2026<br>
     Prodotto da WeBloom &nbsp;·&nbsp; <a href="mailto:info@nicolapin.com">info@nicolapin.com</a> &nbsp;·&nbsp; Giugno 2026<br>
-    <a href="orietta_pinetti_brand_identity.html">Brand Identity &rarr;</a>
+    <a href="https://nicolapin82-png.github.io/Webloom/orietta-pinetti/orietta_pinetti_brand_identity.html">Brand Identity &rarr;</a>
     &nbsp;·&nbsp;
-    <a href="orietta_pinetti_piano_editoriale.html">Piano Editoriale &rarr;</a>
+    <a href="https://nicolapin82-png.github.io/Webloom/orietta-pinetti/orietta_pinetti_piano_editoriale.html">Piano Editoriale &rarr;</a>
     &nbsp;·&nbsp;
-    <a href="orietta_pinetti_template_caroselli.html">Template Caroselli &rarr;</a>
+    <a href="https://nicolapin82-png.github.io/Webloom/orietta-pinetti/orietta_pinetti_template_caroselli.html">Template Caroselli &rarr;</a>
   </div>
 </footer>
 
