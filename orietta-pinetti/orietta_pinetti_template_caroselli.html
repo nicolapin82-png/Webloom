@@ -4,17 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Template Caroselli - Orietta Pinetti / BlooMind</title>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --warm:#D4956A;--warm-dim:rgba(212,149,106,0.65);--warm-faint:rgba(212,149,106,0.25);
+  --warm:#9B6DB5;--warm-dim:rgba(155,109,181,0.65);--warm-faint:rgba(155,109,181,0.22);
   --white:#FFFFFF;--white-dim:rgba(255,255,255,0.68);
-  --bg:#120A06;--bg2:#1C0E08;--card:rgba(32,18,8,0.65);
-  --border:rgba(212,149,106,0.16);--sep:rgba(212,149,106,0.12);
+  --bg:#130B1F;--bg2:#1E1030;--card:rgba(28,10,45,0.65);
+  --border:rgba(155,109,181,0.18);--sep:rgba(155,109,181,0.12);
   --muted:rgba(255,255,255,0.72);--r:10px;
+  --gold:#C9A84C;--lavender:#C89FD8;--rose:#D4789C;
 }
 html{scroll-behavior:smooth;overflow-x:hidden;}
 body{background:var(--bg);color:var(--white);font-family:'Open Sans',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden;}
@@ -71,7 +72,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .slide-content{position:absolute;inset:0;z-index:2;padding:16px 20px 120px;display:flex;flex-direction:column;justify-content:flex-end;}
 .s-category{font-size:7.5px;font-weight:700;letter-spacing:2.5px;color:rgba(212,149,106,0.85);text-transform:uppercase;margin-bottom:7px;}
 .s-gold-bar{width:22px;height:2px;background:var(--warm);border-radius:1px;margin-bottom:11px;opacity:0.8;}
-.s-title{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;font-size:26px;line-height:1.1;letter-spacing:0;color:#FFF;text-transform:uppercase;margin-bottom:9px;outline:none;min-height:26px;}
+.s-title{font-family:'Cormorant Garamond','Libre Baskerville',Georgia,serif;font-style:italic;font-weight:600;font-size:27px;line-height:1.1;letter-spacing:0.2px;color:#FFF;margin-bottom:9px;outline:none;min-height:26px;}
 .s-sub{font-size:11.5px;font-weight:500;letter-spacing:0.2px;line-height:1.5;color:var(--warm);outline:none;min-height:12px;}
 .s-body{font-size:9px;font-weight:400;line-height:1.55;color:rgba(255,255,255,0.78);outline:none;margin-top:6px;min-height:9px;}
 .s-cta{display:inline-block;margin-top:10px;padding:5px 14px;background:var(--warm);color:#0C0B08;font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-radius:100px;}
@@ -79,9 +80,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .slide-footer-num{font-size:7.5px;color:rgba(212,149,106,0.6);letter-spacing:0.5px;}
 .bm-mark{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:3;white-space:nowrap;pointer-events:none;line-height:0;}
 .bm-mark img{height:90px;width:auto;opacity:0.92;}
-.slide-num-badge{position:absolute;top:12px;right:12px;z-index:4;font-size:7px;letter-spacing:1.5px;color:rgba(212,149,106,0.7);font-weight:600;}
-.slide-dl-btn{position:absolute;top:8px;right:8px;z-index:5;font-size:7px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:4px 10px;border-radius:4px;border:1px solid rgba(212,149,106,0.3);background:rgba(10,9,8,0.7);color:var(--warm);cursor:pointer;backdrop-filter:blur(4px);transition:all .15s;font-family:'Open Sans',sans-serif;}
-.slide-dl-btn:hover{background:rgba(212,149,106,0.2);}
+
+.slide-num-badge{position:absolute;top:12px;right:12px;z-index:4;font-size:7px;letter-spacing:1.5px;color:rgba(155,109,181,0.7);font-weight:600;}
+.slide-dl-btn{position:absolute;top:8px;right:8px;z-index:5;font-size:7px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:4px 10px;border-radius:4px;border:1px solid rgba(155,109,181,0.25);background:rgba(18,8,30,0.8);color:var(--warm);cursor:pointer;backdrop-filter:blur(4px);transition:all .15s;font-family:'Open Sans',sans-serif;}
+.slide-dl-btn:hover{background:rgba(155,109,181,0.2);}
+.c1-slide .slide-overlay{background:linear-gradient(to bottom,rgba(110,55,140,0.40) 0%,rgba(90,40,120,0.70) 55%,rgba(50,10,80,0.93) 100%);}
+.c1-slide .s-category{color:var(--lavender);}
+.c1-slide .s-gold-bar{background:var(--lavender);}
+.c1-slide .s-cta{background:var(--lavender);color:#18102A;}
+.c2-slide .slide-overlay{background:linear-gradient(to bottom,rgba(65,15,85,0.50) 0%,rgba(50,10,70,0.78) 55%,rgba(25,3,40,0.96) 100%);}
+.c2-slide .s-category{color:#D48FBF;}
+.c2-slide .s-gold-bar{background:#D48FBF;}
+.c2-slide .s-cta{background:#9B3D7A;border:1px solid rgba(212,143,191,0.4);}
+.c3-slide .slide-overlay{background:linear-gradient(to bottom,rgba(130,55,105,0.42) 0%,rgba(100,35,85,0.72) 55%,rgba(65,12,60,0.93) 100%);}
+.c3-slide .s-category{color:var(--rose);}
+.c3-slide .s-gold-bar{background:var(--rose);}
+.c3-slide .s-cta{background:#8B3570;color:#FFF;}
 @media(max-width:768px){
   .ph-thumb{width:44px;height:58px;}
   .slide{width:280px;height:280px;}
@@ -417,7 +431,7 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
         <div class="s-category">La svolta familiare</div>
         <div class="s-gold-bar"></div>
         <div class="s-title" contenteditable="true">Ho scelto i miei figli.</div>
-        <div class="s-body" contenteditable="true">La diagnosi di autismo per Alessandro ha cambiato tutto. Ho lasciato il lavoro. Ho scelto la mia famiglia senza rimpianti.</div>
+        <div class="s-body" contenteditable="true">Tre figli, ogni scelta fatta per loro. La diagnosi di autismo per Alessandro ha cambiato tutto. Ho lasciato il lavoro. Ho scelto la mia famiglia, senza rimpianti.</div>
       </div>
       <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind" crossorigin="anonymous" /></div>
       <div class="slide-footer"><span class="slide-footer-num">2 / 5</span></div>
@@ -461,8 +475,8 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
       <div class="slide-content">
         <div class="s-category">Oggi</div>
         <div class="s-gold-bar"></div>
-        <div class="s-title" contenteditable="true">Oggi sono Junior Executive Leader.</div>
-        <div class="s-body" contenteditable="true">Come scalare l'Everest. Con tutto quello che sapete di me. Ma eccomi qui - perche' non e' mai troppo tardi.</div>
+        <div class="s-title" contenteditable="true">Oggi guido donne vere verso la loro rinascita.</div>
+        <div class="s-body" contenteditable="true">Con tutto quello che ho attraversato. E sono qui - a insegnare alle altre che non e' mai troppo tardi.</div>
         <div class="s-cta">Scrivimi in DM</div>
       </div>
       <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind" crossorigin="anonymous" /></div>
