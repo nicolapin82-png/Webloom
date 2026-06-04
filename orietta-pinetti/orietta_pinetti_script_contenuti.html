@@ -105,14 +105,21 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
 
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;}
 .reveal.visible{opacity:1;transform:none;}
+.nav-bloomind-img{height:180px;width:auto;display:block;}
+.nav-webloom-img{height:40px;width:auto;opacity:1;display:block;}
+@media(max-width:480px){
+  nav{padding:0 14px;}
+  .nav-bloomind-img{height:120px;}
+  .nav-webloom-img{height:28px;}
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-logo"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind" style="height:180px;width:auto;display:block;"></div>
+  <div class="nav-logo"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind" class="nav-bloomind-img"></div>
 
-  <div class="nav-wbl"><img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom" style="height:40px;width:auto;opacity:1;display:block;"></div>
+  <div class="nav-wbl"><img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom" class="nav-webloom-img"></div>
 </nav>
 
 <div class="hero reveal">
