@@ -494,9 +494,9 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
   <div class="footer-info">
     Template Caroselli - Orietta Pinetti / BlooMind &middot; Giugno 2026<br>
     Prodotto da WeBloom &nbsp;&middot;&nbsp; <a href="mailto:info@nicolapin.com">info@nicolapin.com</a> &nbsp;&middot;&nbsp; Giugno 2026<br>
-    <a href="orietta_pinetti_brand_identity.html">Brand Identity &rarr;</a> &nbsp;&middot;&nbsp;
-    <a href="orietta_pinetti_piano_editoriale.html">Piano Editoriale &rarr;</a> &nbsp;&middot;&nbsp;
-    <a href="orietta_pinetti_script_contenuti.html">Script &amp; Copy &rarr;</a>
+    <a href="https://nicolapin82-png.github.io/Webloom/orietta-pinetti/orietta_pinetti_brand_identity.html">Brand Identity &rarr;</a> &nbsp;&middot;&nbsp;
+    <a href="https://nicolapin82-png.github.io/Webloom/orietta-pinetti/orietta_pinetti_piano_editoriale.html">Piano Editoriale &rarr;</a> &nbsp;&middot;&nbsp;
+    <a href="https://nicolapin82-png.github.io/Webloom/orietta-pinetti/orietta_pinetti_script_contenuti.html">Script &amp; Copy &rarr;</a>
   </div>
 </footer>
 
@@ -612,6 +612,45 @@ document.querySelectorAll('.carousel-wrap').forEach(function(wrap){
 });
 var io=new IntersectionObserver(function(e){e.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.08});
 document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+</script>
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+(function(){
+  window.renderSlide = async function(slide){
+    var is45=slide.classList.contains('fmt-45');
+    var W=1080,H=is45?1350:1080;
+    var scale=W/slide.offsetWidth;
+    // Nasconde elementi UI prima della cattura
+    var hidden=slide.querySelectorAll('.slide-dl-btn,.slide-num-badge,.slide-footer');
+    hidden.forEach(function(el){el.style.visibility='hidden';});
+    var cv=await html2canvas(slide,{scale:scale,useCORS:true,allowTaint:false,backgroundColor:null,logging:false,imageTimeout:0});
+    // Ripristina elementi UI
+    hidden.forEach(function(el){el.style.visibility='';});
+    if(cv.width!==W||cv.height!==H){var f=document.createElement('canvas');f.width=W;f.height=H;f.getContext('2d').drawImage(cv,0,0,W,H);return f;}
+    return cv;
+  };
+  document.querySelectorAll('.ph-thumbs').forEach(function(wrap){
+    var cId=wrap.id.replace('ps','');
+    wrap.querySelectorAll('.ph-thumb').forEach(function(thumb){
+      var bg=thumb.style.backgroundImage||'';
+      var src=bg.replace(/^url\(["']?/,'').replace(/["']?\)$/,'');
+      if(!src)return;
+      thumb.onclick=null;
+      thumb.addEventListener('click',(function(cId,src){
+        return function(){
+          document.querySelectorAll('.c'+cId+'-slide .slide-bg-img').forEach(function(img){img.src=src;});
+          document.querySelectorAll('#ps'+cId+' .ph-thumb').forEach(function(t){t.classList.remove('active');});
+          this.classList.add('active');
+        };
+      })(cId,src));
+    });
+  });
+})();
 </script>
 </body>
 </html>
