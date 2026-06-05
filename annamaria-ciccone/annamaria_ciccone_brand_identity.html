@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brand Identity - Annamaria Ciccone / BlooMind</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#060F0F;--bg2:#0C1A1A;--card:rgba(6,16,16,0.65);--dark:#102020;
   --warm:#2E9090;--warm-lt:#60BABA;--rose:#C9A84C;--rose-lt:#DFBC70;
   --gold:#C9A84C;--ivory:#F4F8F7;--muted:rgba(244,248,247,0.75);
-  --border:rgba(46,144,144,0.25);--sep:rgba(201,168,76,0.18);--radius:8px;
+  --warm-faint:rgba(46,144,144,0.20);--border:rgba(46,144,144,0.25);--sep:rgba(201,168,76,0.18);--radius:8px;
 }
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;overflow-x:hidden;}
 body{background:var(--bg);color:var(--ivory);font-family:'Open Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
@@ -27,7 +27,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .hero-eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--warm);margin-bottom:24px;opacity:0;animation:fadeUp 0.8s ease forwards 0.3s;}
 .hero-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(3rem,8vw,6.5rem);font-weight:600;line-height:1.05;color:var(--ivory);letter-spacing:0.03em;opacity:0;animation:fadeUp 0.8s ease forwards 0.5s;}
 .hero-name span{background:linear-gradient(135deg,var(--rose-lt),var(--warm),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-sub{font-family:'Libre Baskerville',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--muted);font-style:italic;margin-bottom:48px;opacity:0;animation:fadeUp 0.8s ease forwards 0.7s;}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--muted);font-style:italic;margin-bottom:48px;opacity:0;animation:fadeUp 0.8s ease forwards 0.7s;}
 .hero-divider{width:0;height:1px;background:linear-gradient(90deg,transparent,var(--warm),transparent);margin:0 auto 40px;animation:expand 1s ease forwards 0.9s;}
 @keyframes expand{to{width:100px}}
 .hero-claim{max-width:640px;font-size:clamp(0.9rem,1.5vw,1.05rem);color:rgba(244,248,247,0.65);line-height:1.9;opacity:0;animation:fadeUp 0.8s ease forwards 1s;}
@@ -39,7 +39,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .section{padding:100px 24px;max-width:1100px;margin:0 auto;}
 .section-label{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
 .section-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--gold);}
-.section-title{font-family:'Libre Baskerville',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:500;line-height:1.15;margin-bottom:14px;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:500;line-height:1.15;margin-bottom:14px;}
 .section-desc{font-size:1rem;color:var(--muted);max-width:580px;margin-bottom:52px;line-height:1.85;}
 .reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease,transform 0.7s ease;}.reveal.visible{opacity:1;transform:translateY(0);}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
@@ -49,7 +49,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .arch-card:first-child::before{background:linear-gradient(90deg,var(--warm),var(--gold));}
 .arch-card:last-child::before{background:linear-gradient(90deg,var(--gold),var(--rose-lt));}
 .arch-icon{font-size:2.4rem;margin-bottom:20px;display:block;}
-.arch-name{font-family:'Libre Baskerville',serif;font-size:1.6rem;color:var(--ivory);margin-bottom:10px;font-weight:500;}
+.arch-name{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--ivory);margin-bottom:10px;font-weight:500;}
 .arch-desc{font-size:0.88rem;color:var(--muted);line-height:1.85;}
 .arch-traits{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;}
 .trait-tag{font-size:0.7rem;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border:1px solid var(--border);color:var(--warm-lt);border-radius:100px;}
@@ -57,19 +57,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .value-card{padding:36px 28px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);position:relative;overflow:hidden;}
 .value-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--warm),var(--gold));opacity:0;transition:opacity 0.3s;}
 .value-card:hover::after{opacity:1;}
-.value-num{font-family:'Libre Baskerville',serif;font-size:3rem;color:rgba(46,144,144,0.10);position:absolute;top:20px;right:24px;line-height:1;font-weight:600;}
-.value-name{font-family:'Libre Baskerville',serif;font-size:1.4rem;color:var(--ivory);margin-bottom:12px;font-weight:500;}
+.value-num{font-family:'Cormorant Garamond',serif;font-size:3rem;color:rgba(46,144,144,0.10);position:absolute;top:20px;right:24px;line-height:1;font-weight:600;}
+.value-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--ivory);margin-bottom:12px;font-weight:500;}
 .value-desc{font-size:0.82rem;color:var(--muted);line-height:1.8;}
 .storia-box{margin-top:48px;padding:52px 56px;background:linear-gradient(135deg,rgba(6,16,16,0.7),rgba(46,144,144,0.08));border:1px solid var(--border);border-radius:var(--radius);position:relative;overflow:hidden;}
 .storia-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--warm),transparent);}
 .storia-box::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--warm),var(--gold));}
-.storia-text{font-family:'Libre Baskerville',serif;font-size:1.05rem;color:rgba(244,248,247,0.82);line-height:2;font-style:italic;}
+.storia-text{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:rgba(244,248,247,0.82);line-height:2;font-style:italic;}
 .storia-text p{margin-bottom:1.4em;}.storia-text p:last-child{margin-bottom:0;}
 .storia-milestones{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;}
 .milestone{padding:8px 18px;border:1px solid var(--border);border-radius:100px;font-size:0.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--warm-lt);}
 .positioning-box{margin-top:48px;padding:52px 56px;background:linear-gradient(135deg,rgba(6,16,16,0.6),rgba(46,144,144,0.12));border:1px solid var(--border);border-radius:var(--radius);position:relative;overflow:hidden;}
 .positioning-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--warm),transparent);}
-.pos-quote{font-family:'Libre Baskerville',serif;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--ivory);font-style:italic;line-height:1.5;font-weight:400;}
+.pos-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--ivory);font-style:italic;line-height:1.5;font-weight:400;}
 .pos-quote span{color:var(--warm);}
 .pos-sub{margin-top:28px;font-size:0.82rem;color:var(--muted);letter-spacing:0.05em;}
 .pos-extended{margin-top:36px;padding-top:36px;border-top:1px solid var(--sep);font-size:0.9rem;color:rgba(244,248,247,0.7);line-height:1.9;}
@@ -87,7 +87,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .tov-speech-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
 .tov-speech-card{padding:24px 28px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);}
 .tov-speech-card .tc-label{font-size:0.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
-.tov-speech-card .tc-text{font-family:'Libre Baskerville',serif;font-size:0.95rem;color:var(--ivory);font-style:italic;line-height:1.6;}
+.tov-speech-card .tc-text{font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:var(--ivory);font-style:italic;line-height:1.6;}
 .palette-row{display:flex;gap:0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-top:48px;}
 .swatch{flex:1;padding:36px 20px 24px;display:flex;flex-direction:column;gap:10px;border-right:1px solid rgba(255,255,255,0.05);}
 .swatch:last-child{border-right:none;}
@@ -100,19 +100,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .font-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:48px;}
 .font-card{padding:36px 28px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);}
 .font-role{font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
-.font-sample-serif{font-family:'Libre Baskerville',serif;font-size:2rem;color:var(--ivory);margin-bottom:8px;font-weight:400;line-height:1.2;}
+.font-sample-serif{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--ivory);margin-bottom:8px;font-weight:400;line-height:1.2;}
 .font-sample-sans{font-family:'Open Sans',sans-serif;font-size:1.1rem;color:var(--ivory);margin-bottom:8px;}
 .font-sample-display{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--warm-lt);font-style:italic;margin-bottom:8px;line-height:1.2;}
 .font-name{font-size:0.72rem;color:var(--muted);}
 .font-usage{font-size:0.7rem;color:rgba(244,248,247,0.35);margin-top:6px;}
 .tagline-main{margin-top:48px;text-align:center;padding:64px 40px;border:1px solid var(--border);border-radius:var(--radius);background:linear-gradient(135deg,rgba(6,16,16,0.5),rgba(46,144,144,0.10));position:relative;overflow:hidden;}
 .tagline-main::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--warm),transparent);}
-.tagline-text{font-family:'Libre Baskerville',serif;font-size:clamp(1.8rem,4vw,3rem);color:var(--ivory);font-style:italic;font-weight:400;line-height:1.35;}
+.tagline-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3rem);color:var(--ivory);font-style:italic;font-weight:400;line-height:1.35;}
 .tagline-text span{color:var(--warm);}
 .tagline-variants{margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
 .tv-card{padding:24px 28px;background:var(--card);border:1px solid var(--border);border-radius:6px;}
 .tv-context{font-size:0.62rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
-.tv-text{font-family:'Libre Baskerville',serif;font-size:1.05rem;color:var(--ivory);font-style:italic;line-height:1.55;}
+.tv-text{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--ivory);font-style:italic;line-height:1.55;}
 .mood-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:48px;align-items:start;}
 .mood-text p{font-size:0.88rem;color:var(--muted);line-height:1.9;margin-bottom:14px;}
 .mood-text strong{color:var(--ivory);}
@@ -265,7 +265,7 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
   <div class="font-grid">
     <div class="font-card reveal d1"><p class="font-role">Titoli / Display</p><div class="font-sample-display">Cormorant<br>Garamond</div><p class="font-name">Cormorant Garamond</p><p class="font-usage">Italic · SemiBold · 40-88px · Hero, titoli sezione</p></div>
     <div class="font-card reveal d2"><p class="font-role">Corpo / Subtitle</p><div class="font-sample-sans">Open Sans - diretto,<br>essenziale, chiaro.</div><p class="font-name">Open Sans</p><p class="font-usage">Light · Regular · Medium · 14-22px · Corpo testo, UI</p></div>
-    <div class="font-card reveal d3"><p class="font-role">Citazioni / Accento</p><div class="font-sample-serif">"I sogni diventano<br>obiettivi."</div><p class="font-name">Libre Baskerville</p><p class="font-usage">Italic · Regular · 18-32px · Quote, frasi chiave</p></div>
+    <div class="font-card reveal d3"><p class="font-role">Display / Citazioni</p><div class="font-sample-serif">"I sogni diventano<br>obiettivi."</div><p class="font-name">Cormorant Garamond</p><p class="font-usage">Italic · Regular · 18-48px · Titoli, quote, frasi chiave</p></div>
   </div>
 </section>
 
