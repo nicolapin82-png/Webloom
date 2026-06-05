@@ -80,8 +80,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
    4. Numero decorativo + curva SVG in basso (NO barra orizzontale)
    5. Layout: cover = titolo basso-sinistra / body = testo centrato
 ═══════════════════════════════════════════════════════ */
-.slide{width:340px;height:340px;position:relative;overflow:hidden;border-radius:10px;transition:height .3s ease;}
-.slide.fmt-45{height:425px;}
+.slide{width:380px;height:380px;position:relative;overflow:hidden;border-radius:10px;transition:height .3s ease;}
+.slide.fmt-45{height:475px;}
 
 /* Foto fortemente desaturata - quasi b/n */
 .slide-bg-img{
@@ -103,8 +103,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 
 /* Barra in cima: handle + indice */
 .slide-top{position:absolute;top:0;left:0;right:0;z-index:4;padding:13px 16px 0;display:flex;align-items:center;justify-content:space-between;}
-.s-handle{font-size:7.5px;font-weight:600;letter-spacing:3px;text-transform:uppercase;font-family:'Open Sans',sans-serif;color:rgba(255,255,255,0.45);}
-.s-idx{font-size:8px;letter-spacing:2.5px;color:#60BABA;font-family:'Open Sans',sans-serif;font-weight:700;}
+.s-handle{font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;font-family:'Open Sans',sans-serif;color:rgba(255,255,255,0.45);}
+.s-idx{font-size:10px;letter-spacing:2.5px;color:#60BABA;font-family:'Open Sans',sans-serif;font-weight:700;}
 
 /* ── SLIDE COVER: titolo in basso-sinistra ── */
 .slide-cover{
@@ -117,7 +117,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .s-cover-title{
   font-family:'Cormorant Garamond',serif;
   font-weight:600;
-  font-size:30px;
+  font-size:36px;
   line-height:1.12;
   color:#fff;
   text-transform:uppercase;
@@ -128,7 +128,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
   display:block;
   font-style:italic;
   font-weight:400;
-  font-size:18px;
+  font-size:22px;
   text-transform:none;
   letter-spacing:0.02em;
   color:rgba(255,255,255,0.75);
@@ -150,7 +150,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
   font-family:'Cormorant Garamond',serif;
   font-style:italic;
   font-weight:500;
-  font-size:17px;
+  font-size:20px;
   line-height:1.60;
   color:rgba(255,255,255,0.88);
   text-shadow:0 1px 8px rgba(0,0,0,0.60);
@@ -168,7 +168,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .s-cta-main{
   font-family:'Cormorant Garamond',serif;
   font-weight:600;
-  font-size:26px;
+  font-size:30px;
   line-height:1.15;
   color:#fff;
   text-transform:uppercase;
@@ -179,7 +179,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
   display:block;
   font-style:italic;
   font-weight:400;
-  font-size:17px;
+  font-size:20px;
   text-transform:none;
   letter-spacing:0.02em;
   margin-top:4px;
@@ -189,7 +189,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .c2-slide .s-cta-main em{color:rgba(223,188,112,0.90);}
 .c3-slide .s-cta-main em{color:rgba(201,168,76,0.90);}
 .s-cta-sub{
-  font-size:10px;
+  font-size:12px;
   letter-spacing:3px;
   text-transform:uppercase;
   font-weight:600;
@@ -217,6 +217,26 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
 .footer-info{font-size:0.74rem;color:var(--muted);line-height:1.9;}
 .footer-info a{color:var(--warm);text-decoration:none;}
 @media(max-width:768px){footer{padding:40px 18px;flex-direction:column;align-items:flex-start;}}
+@media(max-width:768px){
+  .slide{width:300px;height:300px;}
+  .slide.fmt-45{height:375px;}
+  .s-cover-title{font-size:28px;}
+  .s-cover-title em{font-size:17px;}
+  .s-body-text{font-size:16px;}
+  .s-cta-main{font-size:23px;}
+  .s-cta-main em{font-size:16px;}
+  .s-cta-sub{font-size:10px;}
+  .ph-thumb{width:44px;height:58px;}
+  .ph-thumbs{gap:7px;}
+}
+@media(max-width:480px){
+  .slide{width:270px;height:270px;}
+  .slide.fmt-45{height:338px;}
+  .s-cover-title{font-size:24px;}
+  .s-cover-title em{font-size:15px;}
+  .s-body-text{font-size:14px;}
+  .s-cta-main{font-size:20px;}
+}
 
 [contenteditable]{cursor:text;outline:none;}
 [contenteditable]:focus{background:rgba(255,255,255,0.08);border-radius:4px;}
@@ -424,7 +444,7 @@ function setCarPhoto(carId,idx){
   document.querySelectorAll('#'+carId+' .slide-bg-img').forEach(function(img){img.src=PHOTOS[idx];});
 }
 
-document.addEventListener('DOMContentLoaded',function(){
+window.addEventListener('load',function(){
   initThumbs('car1');initThumbs('car2');initThumbs('car3');
   setCarPhoto('car1',0);setCarPhoto('car2',0);setCarPhoto('car3',0);
 });
