@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Piano Editoriale 30 Giorni - Annamaria Ciccone / BlooMind</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060F0F;--bg2:#0C1A1A;--card:rgba(6,16,16,0.65);--warm:#2E9090;--warm-lt:#60BABA;--rose:#C9A84C;--rose-lt:#DFBC70;--gold:#C9A84C;--ivory:#F4F8F7;--muted:rgba(244,248,247,0.75);--border:rgba(46,144,144,0.25);--sep:rgba(201,168,76,0.18);--radius:8px;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;overflow-x:hidden;}
+body{background:var(--bg);color:var(--ivory);font-family:'Open Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--warm);border-radius:2px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;padding:0 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,12,12,0.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(46,144,144,0.18);}
+.nav-bloomind-img{height:180px;width:auto;display:block;}.nav-webloom-img{height:40px;width:auto;opacity:1;display:block;}
+@media(max-width:768px){.nav-logo{max-width:50%;overflow:hidden;}.nav-logo img{height:110px !important;width:100% !important;object-fit:contain !important;object-position:center bottom !important;}.nav-wbl{flex-shrink:0;}.nav-wbl img{height:26px !important;width:auto !important;}}
+#hero{min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 40%,rgba(46,144,144,0.10) 0%,transparent 65%);}
+.hero-eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--warm);margin-bottom:20px;opacity:0;animation:fadeUp 0.8s ease forwards 0.3s;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(2.2rem,6vw,5rem);font-weight:600;line-height:1.1;color:var(--ivory);opacity:0;animation:fadeUp 0.8s ease forwards 0.5s;}
+.hero-title span{background:linear-gradient(135deg,var(--rose-lt),var(--warm),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-family:'Libre Baskerville',serif;font-size:1.1rem;color:var(--muted);font-style:italic;margin-top:14px;opacity:0;animation:fadeUp 0.8s ease forwards 0.7s;}
+.hero-divider{width:0;height:1px;background:linear-gradient(90deg,transparent,var(--warm),transparent);margin:28px auto 0;animation:expand 1s ease forwards 0.9s;}
+@keyframes expand{to{width:80px}}@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.section{padding:80px 24px;max-width:1100px;margin:0 auto;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.section-label::before{content:'';display:inline-block;width:18px;height:1px;background:var(--gold);}
+.section-title{font-family:'Libre Baskerville',serif;font-size:clamp(1.6rem,3vw,2.6rem);font-weight:500;line-height:1.2;margin-bottom:12px;}
+.section-desc{font-size:0.9rem;color:var(--muted);max-width:580px;margin-bottom:40px;line-height:1.85;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease;}.reveal.visible{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.4s}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:36px;}
+.stat-card{padding:28px 20px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);text-align:center;}
+.stat-value{font-family:'Libre Baskerville',serif;font-size:1.9rem;color:var(--warm);font-weight:500;line-height:1;margin-bottom:8px;}
+.stat-label{font-size:0.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+.pillars-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:36px;}
+.pillar-card{padding:32px 28px;border:1px solid var(--border);border-radius:var(--radius);position:relative;overflow:hidden;}
+.pillar-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.pillar-card.p1::before{background:linear-gradient(90deg,var(--warm),var(--gold));}
+.pillar-card.p2::before{background:linear-gradient(90deg,var(--gold),var(--rose-lt));}
+.pillar-card.p3::before{background:linear-gradient(90deg,var(--rose-lt),var(--warm));}
+.pillar-num{font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.pillar-name{font-family:'Libre Baskerville',serif;font-size:1.3rem;color:var(--ivory);margin-bottom:10px;font-weight:500;}
+.pillar-desc{font-size:0.82rem;color:var(--muted);line-height:1.8;margin-bottom:16px;}
+.fmt-tag{font-size:0.62rem;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border:1px solid var(--border);border-radius:100px;color:var(--muted);}
+.pillar-formats{display:flex;flex-wrap:wrap;gap:6px;}
+.week-header{margin:56px 0 28px;padding:24px 32px;background:linear-gradient(135deg,rgba(6,16,16,0.7),rgba(46,144,144,0.12));border:1px solid var(--border);border-radius:var(--radius);position:relative;overflow:hidden;}
+.week-header::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--warm),rgba(46,144,144,0.2));}
+.week-num{font-size:0.6rem;letter-spacing:3.5px;text-transform:uppercase;color:var(--warm);margin-bottom:6px;}
+.week-theme{font-family:'Libre Baskerville',serif;font-size:1.5rem;color:var(--ivory);font-weight:500;}
+.week-dates{font-size:0.8rem;color:var(--muted);margin-top:6px;font-style:italic;}
+.cards-col{display:flex;flex-direction:column;gap:16px;}
+.content-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:grid;grid-template-columns:72px 1fr;}
+.card-day{display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(6,16,16,0.6);border-right:1px solid var(--border);padding:16px 8px;text-align:center;}
+.card-day-name{font-size:0.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.card-day-num{font-family:'Libre Baskerville',serif;font-size:1.8rem;color:var(--warm);font-weight:500;line-height:1;}
+.card-day-month{font-size:0.6rem;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-top:2px;}
+.card-body{padding:20px 24px;}
+.card-platform{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.platform-tag{font-size:0.6rem;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:100px;border:1px solid var(--border);color:var(--muted);}
+.card-title{font-family:'Libre Baskerville',serif;font-size:1.05rem;color:var(--ivory);margin-bottom:8px;font-weight:500;line-height:1.35;}
+.card-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+.pillar-badge{font-size:0.6rem;letter-spacing:1px;padding:3px 10px;border-radius:100px;border:1px solid;}
+.badge-p1{color:var(--warm-lt);border-color:rgba(46,144,144,0.4);background:rgba(46,144,144,0.08);}
+.badge-p2{color:var(--gold);border-color:rgba(201,168,76,0.4);background:rgba(201,168,76,0.08);}
+.badge-p3{color:var(--rose-lt);border-color:rgba(223,188,112,0.4);background:rgba(223,188,112,0.06);}
+.format-badge{font-size:0.6rem;letter-spacing:1px;padding:3px 10px;border-radius:100px;border:1px solid rgba(255,255,255,0.1);color:rgba(244,248,247,0.5);}
+.card-hook{font-size:0.8rem;color:rgba(244,248,247,0.55);font-style:italic;line-height:1.7;border-left:2px solid rgba(46,144,144,0.3);padding-left:12px;}
+.card-obj{margin-top:10px;font-size:0.72rem;color:rgba(244,248,247,0.38);}
+.card-obj span{color:var(--warm-lt);}
+footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.footer-logo img{height:34px;opacity:1;}.footer-info{font-size:0.75rem;color:var(--muted);line-height:1.9;}.footer-info a{color:var(--warm);text-decoration:none;}
+@media(max-width:768px){.section{padding:60px 20px;}.content-card{grid-template-columns:56px 1fr;}.card-body{padding:16px 18px;}footer{padding:40px 20px;flex-direction:column;align-items:flex-start;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind" class="nav-bloomind-img"></div>
+  <div class="nav-wbl"><img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom" class="nav-webloom-img"></div>
+</nav>
+<section id="hero">
+  <div class="hero-bg"></div>
+  <p class="hero-eyebrow">Piano Editoriale · 30 Giorni</p>
+  <h1 class="hero-title">Annamaria <span>Ciccone</span></h1>
+  <p class="hero-sub">@annamariaciccone1 &nbsp;·&nbsp; BlooMind &nbsp;·&nbsp; Giugno - Luglio 2026</p>
+  <div class="hero-divider"></div>
+</section>
+
+<section class="section">
+  <div class="reveal"><p class="section-label">Struttura del piano</p><h2 class="section-title">Come e' organizzato il mese</h2><p class="section-desc">3 post feed a settimana + stories quotidiane. 2-4 ore settimanali ottimizzate su 3 pillar: mindset e performance (sport-business), empowerment femminile, BlooMind e professionalita'.</p></div>
+  <div class="stats-grid">
+    <div class="stat-card reveal d1"><div class="stat-value">3</div><div class="stat-label">Post/settimana<br>Lun · Mer · Ven</div></div>
+    <div class="stat-card reveal d2"><div class="stat-value">Daily</div><div class="stat-label">Stories<br>quotidiane</div></div>
+    <div class="stat-card reveal d3"><div class="stat-value">3</div><div class="stat-label">Pillar<br>tematici</div></div>
+    <div class="stat-card reveal d4"><div class="stat-value">12</div><div class="stat-label">Post feed<br>in 30 giorni</div></div>
+    <div class="stat-card reveal d5"><div class="stat-value">2-4h</div><div class="stat-label">Ore/settimana<br>ottimizzate</div></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="reveal"><p class="section-label">I 3 pillar</p><h2 class="section-title">Le tre linee tematiche</h2></div>
+  <div class="pillars-grid">
+    <div class="pillar-card p1 reveal d1"><p class="pillar-num">Pillar 01</p><div class="pillar-name">Mindset &amp; Performance</div><p class="pillar-desc">L'analogia sport-business: disciplina, obiettivi chiari, qualifiche, costanza quando i frutti non si vedono. Il differenziante unico di Annamaria - una ex atleta di vertice che porta questo linguaggio nel network.</p><div class="pillar-formats"><span class="fmt-tag">Reel parlato</span><span class="fmt-tag">Foto + caption</span></div></div>
+    <div class="pillar-card p2 reveal d2"><p class="pillar-num">Pillar 02</p><div class="pillar-name">Empowerment Femminile</div><p class="pillar-desc">Solidarieta' tra donne come valore strutturale, cura di se' come fondamento, identita' propria come prima forma di indipendenza. Non slogan: pratica quotidiana nel team BlooMind.</p><div class="pillar-formats"><span class="fmt-tag">Reel parlato</span><span class="fmt-tag">Foto + caption</span></div></div>
+    <div class="pillar-card p3 reveal d3"><p class="pillar-num">Pillar 03</p><div class="pillar-name">BlooMind &amp; Professionalita'</div><p class="pillar-desc">Il network come lavoro serio, etico, fatto con eleganza. BlooMind come ecosistema dove il benessere incontra il digitale e i valori sono condivisi. Mostrare la professionalita' in azione.</p><div class="pillar-formats"><span class="fmt-tag">Carosello</span><span class="fmt-tag">Reel</span></div></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="week-header reveal"><p class="week-num">Settimana 01</p><div class="week-theme">Chi sono e cosa porto</div><p class="week-dates">8 - 12 giugno 2026 &nbsp;·&nbsp; Obiettivo: presentazione con il differenziante sportivo, costruire autorita' unica</p></div>
+  <div class="cards-col">
+    <div class="content-card reveal"><div class="card-day"><span class="card-day-name">Lun</span><span class="card-day-num">8</span><span class="card-day-month">Giu</span></div><div class="card-body"><div class="card-platform"><span class="platform-tag">Instagram Feed</span></div><div class="card-meta"><span class="pillar-badge badge-p1">Pillar 01</span><span class="format-badge">Reel parlato</span></div><div class="card-title">Cosa ho imparato dall'agonismo che nessun corso di business mi avrebbe insegnato</div><div class="card-hook">"Ho gareggiato tra le prime al mondo in danza sportiva. Ti racconto la lezione piu' importante - e come si applica al business."</div><p class="card-obj"><span>Obiettivo:</span> differenziante unico, curiosita', posizionamento immediato</p></div></div>
+    <div class="content-card reveal d1"><div class="card-day"><span class="card-day-name">Mer</span><span class="card-day-num">10</span><span class="card-day-month">Giu</span></div><div class="card-body"><div class="card-platform"><span class="platform-tag">Instagram Feed</span></div><div class="card-meta"><span class="pillar-badge badge-p2">Pillar 02</span><span class="format-badge">Foto + caption</span></div><div class="card-title">La tua luce non si offusca accendendo quella di un'altra donna</div><div class="card-hook">"Al contrario: la amplifica. Questo e' quello in cui credo davvero - e come guido il mio team."</div><p class="card-obj"><span>Obiettivo:</span> connessione emotiva, valori chiari, engagement qualitativo</p></div></div>
+    <div class="content-card reveal d2"><div class="card-day"><span class="card-day-name">Ven</span><span class="card-day-num">12</span><span class="card-day-month">Giu</span></div><div class="card-body"><div class="card-platform"><span class="platform-tag">Instagram Feed</span></div><div class="card-meta"><span class="pillar-badge badge-p3">Pillar 03</span><span class="format-badge">Reel parlato</span></div><div class="card-title">Perche' il network marketing puo' essere fatto con eleganza ed etica</div><div class="card-hook">"BlooMind e' la dimostrazione che si puo'. Non serve vendere in modo aggressivo. Non serve esporsi piu' di quanto si voglia."</div><p class="card-obj"><span>Obiettivo:</span> posizionamento BlooMind, fiducia, DM da prospect</p></div></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="week-header reveal"><p class="week-num">Settimana 02</p><div class="week-theme">Mindset atletico applicato al business</div><p class="week-dates">15 - 19 giugno 2026 &nbsp;·&nbsp; Obiettivo: approfondire il differenziante sport-business, attrarre target ambizioso</p></div>
+  <div class="cards-col">
+    <div class="content-card reveal"><div class="card-day"><span class="card-day-name">Lun</span><span class="card-day-num">15</span><span class="card-day-month">Giu</span></div><div class="card-body"><div class="card-platform"><span class="platform-tag">Instagram Feed</span></div><div class="card-meta"><span class="pillar-badge badge-p1">Pillar 01</span><span class="format-badge">Carosello 5 slide</span></div><div class="card-title">5 cose che uno sportivo di vertice sa sul business che la maggior parte ignora</div><div class="card-hook">"Non te le insegna nessun corso. Le impari solo in gara - e poi le applichi ovunque."</div><p class="card-obj"><span>Obiettivo:</span> salvataggi, condivisioni, autorita' unica</p></div></div>
+    <div class="content-card reveal d1"><div class="card-day"><span class="card-day-name">Mer</span><span class="card-day-num">17</span><span class="card-day-month">Giu</span></div><div class="card-body"><div class="card-platform"><span class="platform-tag">Instagram Feed</span></div><div class="card-meta"><span class="pillar-badge badge-p2">Pillar 02</span><span class="format-badge">Reel parlato</span></div><div class="card-title">La cura di se' non e' un lusso: e' il fondamento di tutto il resto</div><div class="card-hook">"Prima curi te stessa - fisicamente, emotivamente, esteticamente. Poi le cose intorno a te si sistemano. Lo so per certo."</div><p class="card-obj"><span>Obiettivo:</span> connessione con target wellness/cura, DM, engagement</p></div></div>
+    <div class="content-card reveal d2"><div class="card-day"><span class="card-day-name">Ven</span><span class="card-day-num">19</span><span class="card-day-month">Giu</span></div><div class="card-body"><div class="card-platform"><span class="platform-tag">Instagram Feed</span></div><div class="card-meta"><span class="pillar-badge badge-p3">Pillar 03</span><span class="format-badge">Foto + caption</span></div><div class="card-title">Cosa significa fare network con professionalita' ed etica nel 2026</div><div class="card-hook">"Ho lasciato una carriera nello sport federale perche' il sistema era corrotto. Non faccio lo stesso errore qui."</div><p class="card-obj"><span>Obiettivo:</span> valori chiari, differenziazione, rispetto del target</p></div></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="week-header reveal"><p class="week-num">Settimana 03</p><div class="week-theme">Empowerment &amp; Community</div><p class="week-dates">22 - 26 giugno 2026 &nbsp;·&nbsp; Obiettivo: mostrare il team in azione, solidarieta' femminile concreta</p></div>
+  <div class="cards-col">
+    <div class="content-card reveal"><div class="card-day"><span class="card-day-name">Lun</span><span class="card-day-num">22</span><span class="card-day-month">Giu</span></div><div class="card-body"><div class="card-platform"><span class="platform-tag">Instagram Feed</span></div><div class="card-meta"><span class="pillar-badge badge-p1">Pillar 01</span><span class="format-badge">Reel parlato</span></div><div class="card-title">Il momento in cui ho capito che il network e' uguale allo sport agonistico</div><div class="card-hook">"L'adrenalina, le qualifiche, il lavoro quotidiano quando i frutti non si vedono. Identici. Te lo racconto."</div><p class="card-obj"><span>Obiettivo:</span> narrazione unica, engagement, salvataggi</p></div></div>
+    <div class="content-card reveal d1"><div class="card-day"><span class="card-day-name">Mer</span><span class="card-day-num">24</span><span class="card-day-month">Giu</span></div><div class="card-body"><div class="card-platform"><span class="platform-tag">Instagram Feed</span></div><div class="card-meta"><span class="pillar-badge badge-p2">Pillar 02</span><span class="format-badge">Foto + caption</span></div><div class="card-title">Una donna ambiziosa non e' una minaccia: e' una risorsa</div><div class="card-hook">"Nel mio team cerco donne che credono nell'empowerment femminile davvero. Non a parole: nei fatti."</div><p class="card-obj"><span>Obiettivo:</span> filtrare target ideale, engagement, commenti</p></div></div>
+    <div class="content-card reveal d2"><div class="card-day"><span class="card-day-name">Ven</span><span class="card-day-num">26</span><span class="card-day-month">Giu</span></div><div class="card-body"><div class="card-platform"><span class="platform-tag">Instagram Feed</span></div><div class="card-meta"><span class="pillar-badge badge-p3">Pillar 03</span><span class="format-badge">Carosello 5 slide</span></div><div class="card-title">BlooMind: dove il benessere incontra il digitale</div><div class="card-hook">"Un ecosistema costruito su valori condivisi. Non e' solo business: e' un modo di stare al mondo."</div><p class="card-obj"><span>Obiettivo:</span> positioning BlooMind, salvataggi, DM da prospect</p></div></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="week-header reveal"><p class="week-num">Settimana 04</p><div class="week-theme">Obiettivi &amp; Futuro</div><p class="week-dates">29 giugno - 3 luglio 2026 &nbsp;·&nbsp; Obiettivo: chiudere il ciclo, aprire il recruiting diretto</p></div>
+  <div class="cards-col">
+    <div class="content-card reveal"><div class="card-day"><span class="card-day-name">Lun</span><span class="card-day-num">29</span><span class="card-day-month">Giu</span></div><div class="card-body"><div class="card-platform"><span class="platform-tag">Instagram Feed</span></div><div class="card-meta"><span class="pillar-badge badge-p1">Pillar 01</span><span class="format-badge">Reel parlato</span></div><div class="card-title">Come mi alleno per raggiungere un obiettivo di business (come facevo in gara)</div><div class="card-hook">"Non si improvvisa. Non si aspetta l'ispirazione. Si ha un piano - e si esegue ogni giorno."</div><p class="card-obj"><span>Obiettivo:</span> autorita', metodo concreto, engagement qualitativo</p></div></div>
+    <div class="content-card reveal d1"><div class="card-day"><span class="card-day-name">Mer</span><span class="card-day-num">1</span><span class="card-day-month">Lug</span></div><div class="card-body"><div class="card-platform"><span class="platform-tag">Instagram Feed</span></div><div class="card-meta"><span class="pillar-badge badge-p2">Pillar 02</span><span class="format-badge">Foto + caption</span></div><div class="card-title">Cerco donne che vogliono costruire qualcosa di loro - con identita' e valori propri</div><div class="card-hook">"Non cerco chi vuole copiare qualcuno. Cerco chi vuole sviluppare la propria unicita', con il supporto giusto."</div><p class="card-obj"><span>Obiettivo:</span> recruiting diretto, DM da target ideale, filtraggio</p></div></div>
+    <div class="content-card reveal d2"><div class="card-day"><span class="card-day-name">Ven</span><span class="card-day-num">3</span><span class="card-day-month">Lug</span></div><div class="card-body"><div class="card-platform"><span class="platform-tag">Instagram Feed</span></div><div class="card-meta"><span class="pillar-badge badge-p3">Pillar 03</span><span class="format-badge">Carosello 5 slide</span></div><div class="card-title">Il mio piano per i prossimi 6 mesi con BlooMind in Italia</div><div class="card-hook">"Una voce continua. Un team di donne con gli stessi valori. Grandi azioni di squadra. Ecco la mia visione."</div><p class="card-obj"><span>Obiettivo:</span> visione ispirazionale, chiusura ciclo, momentum prossimo mese</p></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom"></div>
+  <div class="footer-info">
+    Documento riservato &nbsp;·&nbsp; Annamaria Ciccone / BlooMind &nbsp;·&nbsp; Prodotto da WeBloom &nbsp;·&nbsp; <a href="mailto:info@webloom.it">info@webloom.it</a> &nbsp;·&nbsp; Giugno 2026<br>
+    <a href="https://nicolapin82-png.github.io/Webloom/annamaria-ciccone/annamaria_ciccone_brand_identity.html">Brand Identity</a> &nbsp;·&nbsp;
+    <a href="https://nicolapin82-png.github.io/Webloom/annamaria-ciccone/annamaria_ciccone_piano_editoriale.html">Piano Editoriale</a> &nbsp;·&nbsp;
+    <a href="https://nicolapin82-png.github.io/Webloom/annamaria-ciccone/annamaria_ciccone_script_contenuti.html">Script &amp; Copy &rarr;</a> &nbsp;·&nbsp;
+    <a href="https://nicolapin82-png.github.io/Webloom/annamaria-ciccone/annamaria_ciccone_template_caroselli.html">Template Caroselli &rarr;</a>
+  </div>
+</footer>
+<script>const reveals=document.querySelectorAll('.reveal');const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});reveals.forEach(el=>io.observe(el));</script>
+</body>
+</html>
