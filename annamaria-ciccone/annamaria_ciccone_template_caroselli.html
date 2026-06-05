@@ -469,14 +469,18 @@ function applyFilterToImage(src,filterStr,w,h){
   return new Promise(function(resolve){
     var img=new Image();
     img.onload=function(){
-      var c=document.createElement('canvas');c.width=w;c.height=h;
-      var ctx=c.getContext('2d');ctx.filter=filterStr;
-      var ir=img.naturalWidth/img.naturalHeight,cr=w/h,dw,dh,dx,dy;
-      if(ir>cr){dh=h;dw=h*ir;dy=0;dx=(w-dw)*0.5;}
-      else{dw=w;dh=w/ir;dx=0;dy=(h-dh)*0.18;}
-      ctx.drawImage(img,dx,dy,dw,dh);
-      resolve(c.toDataURL('image/jpeg',0.92));
+      try{
+        var c=document.createElement('canvas');c.width=w;c.height=h;
+        var ctx=c.getContext('2d');ctx.filter=filterStr;
+        var ir=img.naturalWidth/img.naturalHeight,cr=w/h,dw,dh,dx,dy;
+        if(ir>cr){dh=h;dw=h*ir;dy=0;dx=(w-dw)*0.5;}
+        else{dw=w;dh=w/ir;dx=0;dy=(h-dh)*0.18;}
+        ctx.drawImage(img,dx,dy,dw,dh);
+        var result=c.toDataURL('image/jpeg',0.92);
+        resolve((result&&result.length>1000)?result:src);
+      }catch(e){resolve(src);}
     };
+    img.onerror=function(){resolve(src);};
     img.src=src;
   });
 }
