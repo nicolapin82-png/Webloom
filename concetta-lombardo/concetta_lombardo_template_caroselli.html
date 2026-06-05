@@ -30,7 +30,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .hero-note{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:10px 18px;background:rgba(224,120,48,0.07);border:1px solid var(--warm-faint);border-radius:6px;font-size:0.76rem;color:var(--warm-dim);}
 @media(max-width:768px){.hero{padding:110px 18px 36px;}}
 .section{max-width:1000px;margin:0 auto;padding:56px 44px;}
-.section-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--warm);margin-bottom:8px;display:block;}
+.section-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--warm);font-weight:700;margin-bottom:8px;display:block;}
 .section-title{font-family:'Lora',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:500;color:var(--ivory);line-height:1.1;margin-bottom:6px;}
 .section-desc{font-size:0.82rem;color:var(--muted);max-width:560px;line-height:1.85;}
 .sep-line{border:none;border-top:1px solid var(--sep);max-width:1000px;margin:0 auto;}
@@ -41,7 +41,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 
 /* SELETTORE FOTO */
 .photo-sel-wrap{margin-top:24px;margin-bottom:8px;}
-.ps-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px;}
+.ps-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px;font-weight:700;}
 .ph-thumbs{display:flex;gap:10px;flex-wrap:wrap;}
 .ph-thumb{width:52px;height:70px;border-radius:6px;background-size:cover;background-position:center 20%;cursor:pointer;border:2.5px solid transparent;transition:border-color .2s,transform .15s,opacity .2s;opacity:0.6;}
 .ph-thumb:hover{opacity:0.85;transform:scale(1.05);}
@@ -74,20 +74,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .slide-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:brightness(0.50) saturate(0.85);z-index:0;transition:filter .3s;}
 .slide-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(22,8,0,0.05) 0%,rgba(22,8,0,0.15) 25%,rgba(22,8,0,0.62) 55%,rgba(22,8,0,0.94) 100%);}
 .slide-content{position:absolute;inset:0;z-index:2;padding:16px 20px 110px;display:flex;flex-direction:column;justify-content:flex-end;}
-.s-handle{font-size:9.5px;font-weight:700;letter-spacing:2.5px;color:rgba(224,120,48,0.85);text-transform:uppercase;margin-bottom:7px;}
+.s-handle{font-size:11px;font-weight:700;letter-spacing:2.5px;color:rgba(224,120,48,0.85);text-transform:uppercase;margin-bottom:7px;}
 .s-gold-bar{width:22px;height:2px;background:var(--warm);border-radius:1px;margin-bottom:10px;opacity:0.8;}
-.s-title{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:32px;line-height:1.1;color:#FFF;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,0.6);}
-.s-sub{font-size:14px;font-weight:500;letter-spacing:0.2px;line-height:1.5;color:var(--warm);text-shadow:0 1px 4px rgba(0,0,0,0.4);}
-.s-body{font-size:12.5px;font-weight:400;line-height:1.55;color:rgba(255,255,255,0.80);margin-top:6px;text-shadow:0 1px 4px rgba(0,0,0,0.4);}
+.s-title{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:38px;line-height:1.1;color:#FFF;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,0.6);}
+.s-sub{font-size:17px;font-weight:700;letter-spacing:0.2px;line-height:1.5;color:var(--warm);text-shadow:0 1px 4px rgba(0,0,0,0.4);}
+.s-body{font-size:14.5px;font-weight:400;line-height:1.55;color:rgba(255,255,255,0.80);margin-top:6px;text-shadow:0 1px 4px rgba(0,0,0,0.4);}
 .bm-mark{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:3;}
 .bm-mark img{height:72px;width:auto;opacity:0.88;}
-.slide-num-label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);text-align:center;}
+.slide-num-label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);text-align:center;font-weight:700;}
 
 /* BLOQUES SEZIONI CAROSELLO */
 .car-section{max-width:1000px;margin:0 auto;padding:48px 44px;}
 .car-section+.car-section{padding-top:0;}
 .car-section-header{margin-bottom:20px;}
-.car-lbl{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:6px;}
+.car-lbl{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;display:block;margin-bottom:6px;}
 .car-title{font-family:'Lora',serif;font-size:1.4rem;font-weight:500;color:var(--ivory);margin-bottom:4px;}
 .car-desc{font-size:0.8rem;color:var(--muted);}
 @media(max-width:768px){.car-section{padding:36px 14px;}}
@@ -116,18 +116,6 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
   <p class="hero-note">Ogni carosello ha il suo selettore foto indipendente &nbsp;·&nbsp; Clicca ↓ PNG per la singola slide o ZIP per il carosello completo</p>
 </div>
 
-<section class="section reveal">
-  <span class="section-label">Impostazioni globali</span>
-  <h2 class="section-title">Formato</h2>
-  <p class="section-desc">Il formato si applica a tutti i caroselli. La foto si sceglie separatamente per ciascun carosello qui sotto.</p>
-
-  <div class="fmt-row">
-    <span class="fmt-lbl">Formato:</span>
-    <button class="fmt-btn active" id="btn-11" onclick="setFormat('11')">1:1 Feed</button>
-    <button class="fmt-btn" id="btn-45" onclick="setFormat('45')">4:5 Verticale</button>
-  </div>
-</section>
-
 <hr class="sep-line">
 
 <!-- CAROSELLO 1 -->
@@ -135,10 +123,15 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
   <div class="car-section-header reveal">
     <span class="car-lbl">Carosello 01 &nbsp;·&nbsp; Educational / Autorita'</span>
     <div class="car-title">5 cose che 11 anni di network mi hanno insegnato</div>
-    <p class="car-desc">6 slide &nbsp;·&nbsp; Pillar 01 Liberta' &amp; Visione</p>
+    <p class="car-desc">6 slide &nbsp;·&nbsp; Tema 01 Liberta' &amp; Visione</p>
     <div class="photo-sel-wrap" style="margin-top:18px;">
       <span class="ps-label">Foto per questo carosello</span>
       <div class="ph-thumbs" id="ph-thumbs-car1"></div>
+    </div>
+    <div class="fmt-row" id="fmt-row-car1" style="margin-top:14px;">
+      <span class="fmt-lbl">Formato:</span>
+      <button class="fmt-btn active" data-fmt="11" onclick="setFormat('car1','11')">1:1 Feed</button>
+      <button class="fmt-btn" data-fmt="45" onclick="setFormat('car1','45')">4:5 Verticale</button>
     </div>
   </div>
   <div class="carousel-wrap" id="wrap-car1">
@@ -187,10 +180,15 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
   <div class="car-section-header reveal">
     <span class="car-lbl">Carosello 02 &nbsp;·&nbsp; Visione / BlooMind</span>
     <div class="car-title">Perche' BlooMind e' diverso</div>
-    <p class="car-desc">5 slide &nbsp;·&nbsp; Pillar 03 BlooMind &amp; Futuro</p>
+    <p class="car-desc">5 slide &nbsp;·&nbsp; Tema 03 BlooMind &amp; Futuro</p>
     <div class="photo-sel-wrap" style="margin-top:18px;">
       <span class="ps-label">Foto per questo carosello</span>
       <div class="ph-thumbs" id="ph-thumbs-car2"></div>
+    </div>
+    <div class="fmt-row" id="fmt-row-car2" style="margin-top:14px;">
+      <span class="fmt-lbl">Formato:</span>
+      <button class="fmt-btn active" data-fmt="11" onclick="setFormat('car2','11')">1:1 Feed</button>
+      <button class="fmt-btn" data-fmt="45" onclick="setFormat('car2','45')">4:5 Verticale</button>
     </div>
   </div>
   <div class="carousel-wrap" id="wrap-car2">
@@ -234,10 +232,15 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
   <div class="car-section-header reveal">
     <span class="car-lbl">Carosello 03 &nbsp;·&nbsp; Recruiting</span>
     <div class="car-title">Come si entra nel mio team</div>
-    <p class="car-desc">5 slide &nbsp;·&nbsp; Pillar 02 Connessioni Genuine</p>
+    <p class="car-desc">5 slide &nbsp;·&nbsp; Tema 02 Connessioni Genuine</p>
     <div class="photo-sel-wrap" style="margin-top:18px;">
       <span class="ps-label">Foto per questo carosello</span>
       <div class="ph-thumbs" id="ph-thumbs-car3"></div>
+    </div>
+    <div class="fmt-row" id="fmt-row-car3" style="margin-top:14px;">
+      <span class="fmt-lbl">Formato:</span>
+      <button class="fmt-btn active" data-fmt="11" onclick="setFormat('car3','11')">1:1 Feed</button>
+      <button class="fmt-btn" data-fmt="45" onclick="setFormat('car3','45')">4:5 Verticale</button>
     </div>
   </div>
   <div class="carousel-wrap" id="wrap-car3">
@@ -301,7 +304,7 @@ const PHOTOS = [
 ];
 
 const currentPhotos = {car1:0, car2:0, car3:0};
-let currentFmt = '11';
+const currentFormats = {car1:'11', car2:'11', car3:'11'};
 const SCALE = 3;
 
 function initThumbs(carId) {
@@ -323,20 +326,20 @@ function setCarPhoto(carId, idx) {
   document.querySelectorAll('#' + carId + ' .slide-bg-img').forEach(img => img.src = PHOTOS[idx]);
 }
 
-function setFormat(fmt) {
-  currentFmt = fmt;
-  document.getElementById('btn-11').classList.toggle('active', fmt === '11');
-  document.getElementById('btn-45').classList.toggle('active', fmt === '45');
-  document.querySelectorAll('.slide').forEach(s => s.classList.toggle('fmt-45', fmt === '45'));
+function setFormat(carId, fmt) {
+  currentFormats[carId] = fmt;
+  document.querySelectorAll('#' + carId + ' .slide').forEach(s => s.classList.toggle('fmt-45', fmt === '45'));
+  const row = document.getElementById('fmt-row-' + carId);
+  if (row) row.querySelectorAll('.fmt-btn').forEach(b => b.classList.toggle('active', b.dataset.fmt === fmt));
 }
 
-function getSlideSize() {
-  return currentFmt === '45' ? { w: 1080, h: 1350 } : { w: 1080, h: 1080 };
+function getSlideSize(carId) {
+  return (currentFormats[carId] || '11') === '45' ? { w: 1080, h: 1350 } : { w: 1080, h: 1080 };
 }
 
 async function renderSlide(carId, slideIdx) {
   const slide = document.getElementById(carId + '-s' + slideIdx);
-  const { w, h } = getSlideSize();
+  const { w, h } = getSlideSize(carId);
   const canvas = document.createElement('canvas');
   canvas.width = w * SCALE / SCALE; // 1080
   canvas.height = h * SCALE / SCALE;
@@ -375,7 +378,7 @@ async function renderSlide(carId, slideIdx) {
   // Handle (@concettalombardo)
   const handle = slide.querySelector('.s-handle');
   if (handle && handle.textContent.trim()) {
-    ctx.font = '700 9.5px "Nunito", sans-serif';
+    ctx.font = '700 12px "Nunito", sans-serif';
     ctx.fillStyle = 'rgba(224,120,48,0.85)';
     ctx.letterSpacing = '4px';
     ctx.fillText(handle.textContent.trim(), Math.round(w*0.055), y);
@@ -391,7 +394,7 @@ async function renderSlide(carId, slideIdx) {
   const titleEl = slide.querySelector('.s-title');
   if (titleEl) {
     const lines = titleEl.innerText.split('\n').filter(l => l.trim());
-    ctx.font = 'italic 600 84px "Playfair Display", Georgia, serif';
+    ctx.font = 'italic 600 102px "Playfair Display", Georgia, serif';
     ctx.fillStyle = '#FFFFFF';
     lines.forEach(line => {
       ctx.fillText(line.trim(), Math.round(w*0.055), y);
@@ -402,7 +405,7 @@ async function renderSlide(carId, slideIdx) {
   // Sub
   const subEl = slide.querySelector('.s-sub');
   if (subEl && subEl.textContent.trim()) {
-    ctx.font = '500 15px "Nunito", sans-serif';
+    ctx.font = '500 19px "Nunito", sans-serif';
     ctx.fillStyle = '#E07830';
     ctx.fillText(subEl.textContent.trim(), Math.round(w*0.055), y);
     y += Math.round(w*0.044);
@@ -411,7 +414,7 @@ async function renderSlide(carId, slideIdx) {
   // Body
   const bodyEl = slide.querySelector('.s-body');
   if (bodyEl && bodyEl.textContent.trim()) {
-    ctx.font = '400 13px "Nunito", sans-serif';
+    ctx.font = '400 16px "Nunito", sans-serif';
     ctx.fillStyle = 'rgba(255,255,255,0.80)';
     const words = bodyEl.textContent.trim().split(' ');
     let line = '';
@@ -509,7 +512,7 @@ async function renderSlide(carId, slideIdx) {
   const id = carId + "-s" + slideIdx;
   const slide = document.getElementById(id);
   if (!slide) return document.createElement("canvas");
-  const { w, h } = getSlideSize();
+  const { w, h } = getSlideSize(carId);
   const scale = w / slide.offsetWidth;
   const cv = await html2canvas(slide, { scale: scale, useCORS: true, allowTaint: false, backgroundColor: null, logging: false, imageTimeout: 0 });
   if (cv.width !== w || cv.height !== h) {
