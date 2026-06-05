@@ -444,7 +444,7 @@ function setCarPhoto(carId,idx){
   document.querySelectorAll('#'+carId+' .slide-bg-img').forEach(function(img){img.src=PHOTOS[idx];});
 }
 
-window.addEventListener('load',function(){
+document.addEventListener('DOMContentLoaded',function(){
   initThumbs('car1');initThumbs('car2');initThumbs('car3');
   setCarPhoto('car1',0);setCarPhoto('car2',0);setCarPhoto('car3',0);
 });
