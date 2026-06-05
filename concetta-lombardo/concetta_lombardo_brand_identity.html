@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Identity - Concetta Lombardo / BlooMind</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#160C00;--bg2:#261600;--card:rgba(36,12,0,0.65);--dark:#301A00;
+  --warm:#E07830;--warm-lt:#F0A860;--rose:#C9A84C;--rose-lt:#DFBC70;
+  --gold:#C9A84C;--ivory:#F8F4EE;--muted:rgba(248,244,238,0.75);
+  --border:rgba(224,120,48,0.25);--sep:rgba(201,168,76,0.18);--radius:8px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{background:var(--bg);color:var(--ivory);font-family:'Nunito',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--warm);border-radius:2px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;padding:0 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(22,8,0,0.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(224,120,48,0.18);}
+.nav-bloomind-img{height:180px;width:auto;display:block;}
+.nav-webloom-img{height:40px;width:auto;opacity:1;display:block;}
+@media(max-width:768px){
+  .nav-logo{max-width:50%;overflow:hidden;}
+  .nav-logo img{height:110px !important;width:100% !important;object-fit:contain !important;object-position:center bottom !important;}
+  .nav-wbl{flex-shrink:0;}
+  .nav-wbl img{height:26px !important;width:auto !important;}
+}
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 80px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 35%,rgba(224,120,48,0.10) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 75% 75%,rgba(201,168,76,0.06) 0%,transparent 60%);}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(90px);animation:float 9s ease-in-out infinite;}
+.orb1{width:380px;height:380px;background:rgba(224,120,48,0.07);top:8%;left:8%;}
+.orb2{width:280px;height:280px;background:rgba(201,168,76,0.05);bottom:12%;right:12%;animation-delay:-5s;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-28px)}}
+.hero-eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--warm);margin-bottom:24px;opacity:0;animation:fadeUp 0.8s ease forwards 0.3s;}
+.hero-name{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(3rem,8vw,6.5rem);font-weight:600;line-height:1.05;color:var(--ivory);letter-spacing:0.03em;opacity:0;animation:fadeUp 0.8s ease forwards 0.5s;}
+.hero-name span{background:linear-gradient(135deg,var(--rose-lt),var(--warm),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-family:'Lora',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--muted);font-style:italic;margin-bottom:48px;opacity:0;animation:fadeUp 0.8s ease forwards 0.7s;}
+.hero-divider{width:0;height:1px;background:linear-gradient(90deg,transparent,var(--warm),transparent);margin:0 auto 40px;animation:expand 1s ease forwards 0.9s;}
+@keyframes expand{to{width:100px}}
+.hero-claim{max-width:640px;font-size:clamp(0.9rem,1.5vw,1.05rem);color:rgba(248,244,238,0.65);line-height:1.9;opacity:0;animation:fadeUp 0.8s ease forwards 1s;}
+.hero-claim strong{color:var(--warm-lt);font-weight:500;}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;opacity:0;animation:fadeIn 1s ease forwards 1.5s;}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--warm),transparent);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.section{padding:100px 24px;max-width:1100px;margin:0 auto;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.section-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--gold);}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:500;line-height:1.15;margin-bottom:14px;}
+.section-desc{font-size:1rem;color:var(--muted);max-width:580px;margin-bottom:52px;line-height:1.85;}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+.archetype-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2px;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-top:48px;}
+.arch-card{padding:48px 40px;background:var(--card);position:relative;}
+.arch-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.arch-card:first-child::before{background:linear-gradient(90deg,var(--warm),var(--gold));}
+.arch-card:last-child::before{background:linear-gradient(90deg,var(--gold),var(--rose-lt));}
+.arch-icon{font-size:2.4rem;margin-bottom:20px;display:block;}
+.arch-name{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--ivory);margin-bottom:10px;font-weight:500;}
+.arch-desc{font-size:0.88rem;color:var(--muted);line-height:1.85;}
+.arch-traits{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;}
+.trait-tag{font-size:0.7rem;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border:1px solid var(--border);color:var(--warm-lt);border-radius:100px;}
+.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:48px;}
+.value-card{padding:36px 28px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);position:relative;overflow:hidden;}
+.value-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--warm),var(--gold));opacity:0;transition:opacity 0.3s;}
+.value-card:hover::after{opacity:1;}
+.value-num{font-family:'Libre Baskerville',serif;font-size:3rem;color:rgba(224,120,48,0.10);position:absolute;top:20px;right:24px;line-height:1;font-weight:600;}
+.value-name{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--ivory);margin-bottom:12px;font-weight:500;}
+.value-desc{font-size:0.82rem;color:var(--muted);line-height:1.8;}
+.storia-box{margin-top:48px;padding:52px 56px;background:linear-gradient(135deg,rgba(36,12,0,0.7),rgba(224,120,48,0.08));border:1px solid var(--border);border-radius:var(--radius);position:relative;overflow:hidden;}
+.storia-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--warm),transparent);}
+.storia-box::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--warm),var(--gold));}
+.storia-text{font-family:'Lora',serif;font-size:1.05rem;color:rgba(248,244,238,0.82);line-height:2;font-style:italic;}
+.storia-text p{margin-bottom:1.4em;}
+.storia-text p:last-child{margin-bottom:0;}
+.storia-milestones{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;}
+.milestone{padding:8px 18px;border:1px solid var(--border);border-radius:100px;font-size:0.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--warm-lt);}
+.positioning-box{margin-top:48px;padding:52px 56px;background:linear-gradient(135deg,rgba(36,12,0,0.6),rgba(224,120,48,0.12));border:1px solid var(--border);border-radius:var(--radius);position:relative;overflow:hidden;}
+.positioning-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--warm),transparent);}
+.pos-quote{font-family:'Lora',serif;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--ivory);font-style:italic;line-height:1.5;font-weight:400;}
+.pos-quote span{color:var(--warm);}
+.pos-sub{margin-top:28px;font-size:0.82rem;color:var(--muted);letter-spacing:0.05em;}
+.pos-extended{margin-top:36px;padding-top:36px;border-top:1px solid var(--sep);font-size:0.9rem;color:rgba(248,244,238,0.7);line-height:1.9;}
+.pos-extended strong{color:var(--warm-lt);}
+.tov-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:48px;}
+.tov-col h3{font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;}
+.adj-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px;}
+.adj-tag{padding:8px 20px;border:1px solid var(--border);border-radius:100px;font-size:0.85rem;color:var(--warm-lt);background:rgba(224,120,48,0.08);}
+.tov-list{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.tov-list li{font-size:0.85rem;color:rgba(248,244,238,0.65);padding-left:20px;position:relative;line-height:1.7;}
+.tov-list li::before{content:'\2192';position:absolute;left:0;color:var(--warm);font-size:0.75rem;line-height:1.85;}
+.tov-list.dont li::before{content:'\2717';color:#e07070;}
+.tov-sep{height:1px;background:linear-gradient(90deg,var(--border),transparent);margin:16px 0;}
+.tov-col-full{grid-column:1/-1;}
+.tov-speech-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.tov-speech-card{padding:24px 28px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);}
+.tov-speech-card .tc-label{font-size:0.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.tov-speech-card .tc-text{font-family:'Lora',serif;font-size:0.95rem;color:var(--ivory);font-style:italic;line-height:1.6;}
+.palette-row{display:flex;gap:0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-top:48px;}
+.swatch{flex:1;padding:36px 20px 24px;display:flex;flex-direction:column;gap:10px;border-right:1px solid rgba(255,255,255,0.05);}
+.swatch:last-child{border-right:none;}
+.sw-dot{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.08);}
+.sw-name{font-size:0.78rem;color:var(--ivory);}
+.sw-hex{font-size:0.68rem;color:var(--gold);font-family:'Courier New',monospace;letter-spacing:0.05em;}
+.sw-role{font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:2px;}
+.palette-rule{margin-top:24px;padding:20px 28px;background:var(--card);border:1px solid var(--border);border-radius:6px;font-size:0.82rem;color:var(--muted);}
+.palette-rule strong{color:var(--warm);}
+.font-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:48px;}
+.font-card{padding:36px 28px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);}
+.font-role{font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.font-sample-serif{font-family:'Lora',serif;font-size:2rem;color:var(--ivory);margin-bottom:8px;font-weight:400;line-height:1.2;}
+.font-sample-sans{font-family:'Nunito',sans-serif;font-size:1.1rem;color:var(--ivory);margin-bottom:8px;font-weight:400;}
+.font-sample-display{font-family:'Playfair Display',serif;font-size:2rem;color:var(--warm-lt);font-style:italic;margin-bottom:8px;line-height:1.2;}
+.font-name{font-size:0.72rem;color:var(--muted);}
+.font-usage{font-size:0.7rem;color:rgba(248,244,238,0.35);margin-top:6px;}
+.tagline-main{margin-top:48px;text-align:center;padding:64px 40px;border:1px solid var(--border);border-radius:var(--radius);background:linear-gradient(135deg,rgba(36,12,0,0.5),rgba(224,120,48,0.10));position:relative;overflow:hidden;}
+.tagline-main::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--warm),transparent);}
+.tagline-text{font-family:'Lora',serif;font-size:clamp(1.8rem,4vw,3rem);color:var(--ivory);font-style:italic;font-weight:400;line-height:1.35;}
+.tagline-text span{color:var(--warm);}
+.tagline-variants{margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+.tv-card{padding:24px 28px;background:var(--card);border:1px solid var(--border);border-radius:6px;}
+.tv-context{font-size:0.62rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.tv-text{font-family:'Lora',serif;font-size:1.05rem;color:var(--ivory);font-style:italic;line-height:1.55;}
+.mood-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:48px;align-items:start;}
+.mood-text p{font-size:0.88rem;color:var(--muted);line-height:1.9;margin-bottom:14px;}
+.mood-text strong{color:var(--ivory);}
+.mood-elements{display:flex;flex-direction:column;gap:14px;}
+.mood-el{padding:16px 20px;background:rgba(36,12,0,0.4);border:1px solid var(--border);border-radius:6px;font-size:0.82rem;color:var(--muted);}
+.mood-el strong{color:var(--warm-lt);}
+.mood-never{margin-top:16px;}
+.mood-never h4{font-size:0.62rem;letter-spacing:2.5px;text-transform:uppercase;color:#e07070;margin-bottom:10px;}
+.mood-never ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.mood-never ul li{font-size:0.8rem;color:rgba(224,112,112,0.7);padding-left:16px;position:relative;}
+.mood-never ul li::before{content:'\2717';position:absolute;left:0;color:#e07070;}
+footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.footer-logo img{height:34px;opacity:1;}
+.footer-info{font-size:0.75rem;color:var(--muted);line-height:1.8;}
+.footer-info a{color:var(--warm);text-decoration:none;}
+@media(max-width:768px){
+  .archetype-wrap,.tov-grid,.mood-wrap{grid-template-columns:1fr;}
+  .palette-row{flex-wrap:wrap;}
+  .swatch{flex:1 0 45%;}
+  .font-grid{grid-template-columns:1fr;}
+  .section{padding:60px 20px;}
+  .tov-speech-grid{grid-template-columns:1fr;}
+  footer{padding:40px 20px;flex-direction:column;align-items:flex-start;}
+  .storia-box,.positioning-box{padding:36px 28px;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind" class="nav-bloomind-img">
+  </div>
+  <div class="nav-wbl">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom" class="nav-webloom-img">
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+  <p class="hero-eyebrow">Brand Identity Document</p>
+  <h1 class="hero-name">Concetta <span>Lombardo</span></h1>
+  <p class="hero-sub">Leader BlooMind &nbsp;·&nbsp; @concettalombardo &nbsp;·&nbsp; 11 anni di esperienza</p>
+  <div class="hero-divider"></div>
+  <p class="hero-claim">
+    Documento strategico di <strong>brand identity</strong> per il posizionamento digitale di Concetta Lombardo: valori, archetipo, storia e strategia di comunicazione all'interno dell'ecosistema <strong>BlooMind</strong>.
+  </p>
+  <div class="hero-scroll"><div class="scroll-line"></div><span>Scorri</span></div>
+</section>
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">01 - Archetipo</p>
+    <h2 class="section-title">Chi e' Concetta Lombardo</h2>
+    <p class="section-desc">Undici anni nel network marketing. Due piani scalati. Team di centinaia di persone guidate. Concetta porta con se' una profondita' di esperienza rara - e la chiarezza di chi ha scelto consapevolmente qualcosa di diverso.</p>
+  </div>
+  <div class="archetype-wrap reveal d2">
+    <div class="arch-card">
+      <span class="arch-icon">&#128202;</span>
+      <div class="arch-name">La Visionaria</div>
+      <p class="arch-desc">Dopo undici anni nel network marketing, Concetta ha smesso di seguire sistemi che non le appartengono. Ha scelto di tagliare, ricostruire e rimettere se stessa al centro. Non segue tendenze: crea spazi nuovi dove le persone crescono davvero. La sua credibilita' viene da qui: ha visto il network da dentro, ne conosce le ombre, e ha scelto consapevolmente qualcosa di diverso. BlooMind per lei non e' un'azienda: e' un atto di visione deliberata.</p>
+      <div class="arch-traits">
+        <span class="trait-tag">Visione</span><span class="trait-tag">Determinazione</span><span class="trait-tag">Lucidita'</span><span class="trait-tag">Coraggio</span>
+      </div>
+    </div>
+    <div class="arch-card">
+      <span class="arch-icon">&#128142;</span>
+      <div class="arch-name">L'Accogliente</div>
+      <p class="arch-desc">Concetta sa creare ambienti dove nessuno si sente inferiore. Nel suo team non si entra per seguire la sponsor: si entra per costruire qualcosa di proprio, con il supporto di qualcuno che crede in te davvero. La sua leadership non e' verticale: e' circolare. Tutti crescono insieme. La sua presenza e' quella di qualcuno che c'e' davvero - non solo nei momenti belli, ma soprattutto in quelli difficili.</p>
+      <div class="arch-traits">
+        <span class="trait-tag">Empatia</span><span class="trait-tag">Cura</span><span class="trait-tag">Presenza</span><span class="trait-tag">Equita'</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">02 - Valori Core</p>
+    <h2 class="section-title">Le fondamenta di Concetta</h2>
+    <p class="section-desc">Cinque valori emersi da undici anni di esperienza e da una scelta di vita consapevole. Non principi astratti: orientamenti concreti che guidano ogni sua azione.</p>
+  </div>
+  <div class="values-grid">
+    <div class="value-card reveal d1"><span class="value-num">01</span><div class="value-name">Selezione come rispetto</div><p class="value-desc">Non invita chiunque perche' non vuole investire il suo tempo in chi non e' pronto. Selezionare non e' escludere: e' rispettare sia se stessa che le persone. Una delle lezioni piu' dure - e piu' liberatorie - di undici anni.</p></div>
+    <div class="value-card reveal d2"><span class="value-num">02</span><div class="value-name">Liberta' strutturata</div><p class="value-desc">Ha scelto il network undici anni fa per essere una mamma presente. La liberta' non e' un sogno vago: e' una struttura che si costruisce scelta dopo scelta, giorno dopo giorno, senza scorciatoie.</p></div>
+    <div class="value-card reveal d3"><span class="value-num">03</span><div class="value-name">Crescita come processo</div><p class="value-desc">Non corre verso i numeri. Costruisce persone. Il risultato economico arriva come conseguenza di una crescita genuina - non come obiettivo in se'. Questa distinzione cambia tutto il modo di lavorare.</p></div>
+    <div class="value-card reveal d4"><span class="value-num">04</span><div class="value-name">Autenticita' radicale</div><p class="value-desc">Ha lasciato sistemi in cui le persone venivano ridotte a venditori di un singolo prodotto. Qui si porta il proprio volto, la propria storia, i propri valori. Senza maschere di ruolo.</p></div>
+    <div class="value-card reveal d5"><span class="value-num">05</span><div class="value-name">Vision a lungo termine</div><p class="value-desc">BlooMind non e' l'ennesima azienda: e' l'ecosistema definitivo. Concetta ci crede con la chiarezza di chi ha confrontato abbastanza contesti da riconoscere qualcosa di davvero diverso.</p></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">03 - La Storia</p>
+    <h2 class="section-title">Da dove viene Concetta</h2>
+    <p class="section-desc">Non una presentazione professionale. Una storia vera, con la complessita' e la luce che si porta dietro - raccontata come deve essere comunicata sui social.</p>
+  </div>
+  <div class="storia-box reveal d2">
+    <div class="storia-text">
+      <p>Ho scelto il network marketing undici anni fa con un sogno semplice: essere una mamma presente. Non cercavo una carriera - cercavo liberta'. E per anni ho costruito quella liberta' mattone dopo mattone, scalando piani marketing, guidando centinaia di persone, raggiungendo traguardi che sembravano impensabili all'inizio.</p>
+      <p>Nel tempo, pero', ho capito qualcosa di difficile da ammettere: non tutti i sistemi rispettano chi sei davvero. Ho visto persone nel mio team sentirsi inferiori rispetto alle loro sponsor. Ho visto donne lavorare duramente in ambienti che le consumavano invece di farle crescere. Ho deciso di tagliare. Di lasciare un sistema che si era fatto statico, che puntava sulla vendita di un singolo bisogno, che non lasciava spazio a una visione piu' ampia.</p>
+      <p>Ho scelto di rimettermi al centro. Di ricostruire il mio modo di fare network partendo da quello che conta davvero per me: connessioni genuine, crescita personale come fondamento, selezione come forma di rispetto reciproco.</p>
+      <p>Poi e' arrivato BlooMind. E per la prima volta ho trovato un ecosistema che rispecchia quello che ho sempre creduto possibile: un posto dove il successo di una non diminuisce quello delle altre, dove le persone crescono come individui - non come numeri. In un mese ho raggiunto un traguardo significativo - non per magia, ma perche' finalmente il metodo e il contesto si allineano con chi sono.</p>
+    </div>
+    <div class="storia-milestones">
+      <span class="milestone">11 anni NM</span><span class="milestone">2 piani scalati</span><span class="milestone">Team di centinaia</span><span class="milestone">Scelta consapevole</span><span class="milestone">Ricostruzione da zero</span><span class="milestone">Junior Executive 1 mese</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">04 - Positioning Statement</p>
+    <h2 class="section-title">Il suo spazio nel mondo</h2>
+    <p class="section-desc">Il claim pubblico che definisce chi e' Concetta, per chi esiste e quale trasformazione offre. La bussola di ogni contenuto e ogni conversazione.</p>
+  </div>
+  <div class="positioning-box reveal d2">
+    <p class="pos-quote">"Qui non si sopravvive: si <span>costruisce</span>. Con intenzione, con selezione, con visione."</p>
+    <p class="pos-sub">Positioning Statement principale - Concetta Lombardo / BlooMind</p>
+    <div class="pos-extended">
+      <p><strong>Per chi e':</strong> Donne affamate di crescita vera. Non cercano il percorso facile: cercano quello giusto. Hanno fame di imparare, accettano le critiche costruttive, non hanno paura dei no. Sono pronte a lottare per i propri obiettivi ogni giorno - non per le promesse di qualcun altro.</p>
+      <p><strong>Cosa risolve:</strong> La frustrazione di chi ha provato sistemi che non rispettano chi sei. La sensazione di dover sempre dimostrare qualcosa a qualcuno. Il bisogno di trovare un ambiente dove la tua crescita non minaccia nessuno - anzi, la rafforza.</p>
+      <p><strong>La differenza:</strong> Concetta porta <strong>undici anni di esperienza reale</strong> - con le luci e le ombre. Non vende illusioni: costruisce percorsi. Non cerca numeri: cerca persone pronte. La sua autorita' viene dall'aver vissuto tutto - e dall'aver scelto deliberatamente qualcosa di diverso.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">05 - Tone of Voice</p>
+    <h2 class="section-title">Come parla Concetta</h2>
+    <p class="section-desc">Il tono di voce di Concetta nasce dall'esperienza: diretta ma non aggressiva, autorevole ma non distante, visionaria ma concreta.</p>
+  </div>
+  <div class="tov-grid reveal d2">
+    <div class="tov-col">
+      <h3>Le tre parole del brand</h3>
+      <div class="adj-row"><span class="adj-tag">Visionaria</span><span class="adj-tag">Accogliente</span><span class="adj-tag">Presente</span></div>
+      <div class="tov-sep"></div>
+      <h3>Come parla</h3>
+      <ul class="tov-list">
+        <li>Parla dall'esperienza, non dall'entusiasmo</li>
+        <li>Usa il "noi" quando parla del team - include sempre</li>
+        <li>Porta visione concreta: dove sta andando, non dove vorrebbe andare</li>
+        <li>Non usa urgenza artificiale o pressione implicita</li>
+        <li>Mostra i processi, non solo i risultati</li>
+        <li>E' onesta sui limiti e sulle difficolta' del percorso</li>
+        <li>Fa domande che aprono riflessioni, non che chiudono</li>
+      </ul>
+    </div>
+    <div class="tov-col">
+      <h3>Energia del contenuto</h3>
+      <div class="adj-row"><span class="adj-tag">Autorevole</span><span class="adj-tag">Autentica</span><span class="adj-tag">Calda</span><span class="adj-tag">Lucida</span></div>
+      <div class="tov-sep"></div>
+      <h3>Cosa non fa mai</h3>
+      <ul class="tov-list dont">
+        <li>Non parla mai male di sistemi o aziende precedenti</li>
+        <li>Non usa gerarchie visibili o toni predicatori</li>
+        <li>Non promette guadagni rapidi o scorciatoie</li>
+        <li>Non fa confronti con altre leader</li>
+        <li>Non usa l'entusiasmo come sostituto della sostanza</li>
+        <li>Non mette pressione - nemmeno implicita</li>
+      </ul>
+    </div>
+    <div class="tov-col tov-col-full reveal d3">
+      <h3>Come suona in pratica - esempi di voce</h3>
+      <div class="tov-speech-grid">
+        <div class="tov-speech-card"><p class="tc-label">Apertura Reel - tema selezione</p><p class="tc-text">"Ci sono posti dove entri e nessuno ti fa sentire abbastanza. Io ho scelto di costruire un posto diverso. Te lo racconto."</p></div>
+        <div class="tov-speech-card"><p class="tc-label">Caption Instagram - esperienza</p><p class="tc-text">"Undici anni di network mi hanno insegnato una cosa sola: le persone crescono quando si sentono al sicuro. Non quando vengono pressate."</p></div>
+        <div class="tov-speech-card"><p class="tc-label">CTA recruiting</p><p class="tc-text">"Non cerco chi puo' sembrare pronta. Cerco chi lo e' davvero. La differenza si vede subito."</p></div>
+        <div class="tov-speech-card"><p class="tc-label">Stories - visione BlooMind</p><p class="tc-text">"BlooMind non e' una novita'. E' una necessita'. E finalmente esiste."</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">06 - Palette Colori</p>
+    <h2 class="section-title">Identita' visiva</h2>
+    <p class="section-desc">Una palette luminosa e calda, costruita sull'amber e il gold. Energica ma non aggressiva, accogliente ma non banale. Rispecchia il carattere di Concetta: visione, calore e presenza.</p>
+  </div>
+  <div class="palette-row reveal d2">
+    <div class="swatch" style="background:rgba(224,120,48,0.12);"><div class="sw-dot" style="background:#E07830;"></div><span class="sw-name">Amber Glow</span><span class="sw-hex">#E07830</span><span class="sw-role">Colore dominante</span></div>
+    <div class="swatch" style="background:rgba(240,168,96,0.10);"><div class="sw-dot" style="background:#F0A860;"></div><span class="sw-name">Soft Peach</span><span class="sw-hex">#F0A860</span><span class="sw-role">Accento caldo</span></div>
+    <div class="swatch" style="background:rgba(201,168,76,0.10);"><div class="sw-dot" style="background:#C9A84C;"></div><span class="sw-name">Warm Gold</span><span class="sw-hex">#C9A84C</span><span class="sw-role">Label e dettagli</span></div>
+    <div class="swatch" style="background:rgba(223,188,112,0.08);"><div class="sw-dot" style="background:#DFBC70;"></div><span class="sw-name">Golden Wheat</span><span class="sw-hex">#DFBC70</span><span class="sw-role">Accento secondario</span></div>
+    <div class="swatch" style="background:rgba(248,244,238,0.06);"><div class="sw-dot" style="background:#F8F4EE;border-color:rgba(255,255,255,0.3);"></div><span class="sw-name">Ivory Warm</span><span class="sw-hex">#F8F4EE</span><span class="sw-role">Testo principale</span></div>
+    <div class="swatch" style="background:rgba(255,255,255,0.02);"><div class="sw-dot" style="background:#160C00;border-color:rgba(224,120,48,0.3);"></div><span class="sw-name">Deep Amber Dark</span><span class="sw-hex">#160C00</span><span class="sw-role">Background base</span></div>
+  </div>
+  <div class="palette-rule reveal d3"><strong>Regola d'uso:</strong> Amber Glow e' il colore guida - appare nei titoli in evidenza, nei tag interattivi, nelle linee decorative. Warm Gold e' riservato ai label, alle date, agli elementi di navigazione. Soft Peach entra come tocco di calore nei gradienti secondari. L'estetica complessiva e' <strong>luminosa e positiva</strong> - come ha descritto Concetta stessa la sua comunicazione ideale.</div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">07 - Font Pairing</p>
+    <h2 class="section-title">Tipografia</h2>
+  </div>
+  <div class="font-grid">
+    <div class="font-card reveal d1"><p class="font-role">Titoli / Display</p><div class="font-sample-display">Playfair<br>Display</div><p class="font-name">Playfair Display</p><p class="font-usage">Italic · SemiBold · 40-88px · Hero, titoli sezione, claim principale</p></div>
+    <div class="font-card reveal d2"><p class="font-role">Corpo / Subtitle</p><div class="font-sample-sans">Nunito - caldo,<br>diretto, accessibile.</div><p class="font-name">Nunito</p><p class="font-usage">Light · Regular · Medium · 14-22px · Corpo testo, caption, UI</p></div>
+    <div class="font-card reveal d3"><p class="font-role">Citazioni / Accento</p><div class="font-sample-serif">"Costruiamo.<br>Con intenzione."</div><p class="font-name">Lora</p><p class="font-usage">Italic · Regular · 18-32px · Quote, frasi chiave, intestazioni</p></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">08 - Claim &amp; Tagline</p>
+    <h2 class="section-title">Le parole che rimangono</h2>
+  </div>
+  <div class="tagline-main reveal d2">
+    <p class="tagline-text">"Costruiamo. <span>Con intenzione.</span>"</p>
+  </div>
+  <div class="tagline-variants reveal d3">
+    <div class="tv-card"><p class="tv-context">Bio Instagram</p><p class="tv-text">"11 anni nel network. Finalmente nel posto giusto."</p></div>
+    <div class="tv-card"><p class="tv-context">Apertura Reel</p><p class="tv-text">"Ti racconto perche' ho lasciato tutto dopo undici anni per ricostruire qualcosa di piu' grande."</p></div>
+    <div class="tv-card"><p class="tv-context">CTA recruiting</p><p class="tv-text">"Non cerco persone a caso. Cerco te - se sei quella giusta."</p></div>
+    <div class="tv-card"><p class="tv-context">Firma contenuti</p><p class="tv-text">"Visionaria. Accogliente. Presente."</p></div>
+    <div class="tv-card"><p class="tv-context">Tema selezione</p><p class="tv-text">"Non tutti sono pronti. E questo e' un rispetto reciproco, non un rifiuto."</p></div>
+    <div class="tv-card"><p class="tv-context">Tema BlooMind</p><p class="tv-text">"BlooMind e' diverso perche' le persone che lo costruiscono hanno scelto di essere diverse."</p></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">09 - Mood Board Visivo</p>
+    <h2 class="section-title">L'atmosfera del brand</h2>
+  </div>
+  <div class="mood-wrap">
+    <div class="mood-text reveal d1">
+      <p><strong>L'atmosfera di Concetta:</strong> luminosa, calda, professionale ma umana. Non algida ne' frivola. La luce calda delle ore d'oro, ambienti ordinati e accoglienti, espressioni serene e determinate.</p>
+      <p>Non e' una scena da influencer. E' una donna che ha scelto consapevolmente dove stare - e che mostra quella scelta con chiarezza e senza sovraccarico emotivo.</p>
+      <p><strong>Feed Instagram:</strong> contenuti alternati tra riflessioni sulla leadership, risultati del team (mai numeri gonfiati), momenti di vita reale filtrati attraverso la sua prospettiva. Tono costantemente equilibrato: ne' eccessivamente entusiasta ne' freddo.</p>
+    </div>
+    <div>
+      <div class="mood-elements reveal d2">
+        <div class="mood-el"><strong>Luce calda e naturale</strong> - finestre, ore diurne. Tonalita' amber e oro. L'ambiente dice chi sei prima che tu apra bocca.</div>
+        <div class="mood-el"><strong>Contenuti di pensiero</strong> - riflessioni sul network, sulla leadership, sulla selezione. Non tutorial: prospettive.</div>
+        <div class="mood-el"><strong>Community visibile</strong> - momenti del team, risultati condivisi. Il "noi" come valore centrale, non accessorio.</div>
+        <div class="mood-el"><strong>Il percorso mostrato</strong> - non solo i traguardi. Anche i processi, le scelte, le difficolta' superate con lucidita'.</div>
+      </div>
+      <div class="mood-never reveal d3">
+        <h4>Non appare mai</h4>
+        <ul>
+          <li>Estetica da influencer aspirazionale</li>
+          <li>Gerarchie visibili o tono predicatorio</li>
+          <li>Promesse economiche esplicite nel feed</li>
+          <li>Confronti con altre aziende o leader</li>
+          <li>Urgenza artificiale o pressione implicita</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom">
+  </div>
+  <div class="footer-info">
+    Documento riservato &nbsp;·&nbsp; Concetta Lombardo / BlooMind &nbsp;·&nbsp; Prodotto da WeBloom &nbsp;·&nbsp; <a href="mailto:info@nicolapin.com">info@nicolapin.com</a> &nbsp;·&nbsp; Giugno 2026<br>
+    <a href="https://nicolapin82-png.github.io/Webloom/concetta-lombardo/concetta_lombardo_brand_identity.html">Brand Identity</a>
+    &nbsp;·&nbsp;
+    <a href="https://nicolapin82-png.github.io/Webloom/concetta-lombardo/concetta_lombardo_piano_editoriale.html">Piano Editoriale &rarr;</a>
+    &nbsp;·&nbsp;
+    <a href="https://nicolapin82-png.github.io/Webloom/concetta-lombardo/concetta_lombardo_script_contenuti.html">Script &amp; Copy &rarr;</a>
+    &nbsp;·&nbsp;
+    <a href="https://nicolapin82-png.github.io/Webloom/concetta-lombardo/concetta_lombardo_template_caroselli.html">Template Caroselli &rarr;</a>
+  </div>
+</footer>
+<script>
+const reveals=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.12});
+reveals.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
