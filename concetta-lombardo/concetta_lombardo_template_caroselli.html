@@ -113,7 +113,7 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
   <p class="hero-label">Template Caroselli &nbsp;·&nbsp; BlooMind</p>
   <h1 class="hero-title">Concetta <span>Lombardo</span></h1>
   <p class="hero-sub">3 caroselli pronti all'uso. Scegli la foto, naviga le slide, scarica in PNG o ZIP.</p>
-  <p class="hero-note">Clicca una thumbnail per cambiare la foto in tutti i caroselli &nbsp;·&nbsp; Scarica PNG singola slide o ZIP intero carosello</p>
+  <p class="hero-note">Ogni carosello ha il suo selettore foto indipendente &nbsp;·&nbsp; Clicca ↓ PNG per la singola slide o ZIP per il carosello completo</p>
 </div>
 
 <section class="section reveal">
@@ -308,7 +308,9 @@ function initThumbs(carId) {
   const wrap = document.getElementById('ph-thumbs-' + carId);
   if (!wrap) return;
   PHOTOS.forEach((src, i) => {
+    const d = document.createElement('div');
     d.className = 'ph-thumb' + (i === 0 ? ' active' : '');
+    d.style.backgroundImage = 'url(' + src + ')';
     d.onclick = () => setCarPhoto(carId, i);
     wrap.appendChild(d);
   });
