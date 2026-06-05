@@ -294,7 +294,7 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
         <div class="slide c1-slide" id="car1-s4"><img class="slide-bg-img" src=""" alt=""><div class="slide-overlay"></div><div class="slide-top"><span class="s-handle">@annamariaciccone1</span><span class="s-idx">05&thinsp;/&thinsp;05</span></div><div class="slide-content slide-cta"><p class="s-cta-main" contenteditable="true">Hai la mentalità<br><em>dell'atleta.</em></p><p class="s-cta-sub" contenteditable="true">Scrivimi in DM.</p></div><div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div></div>
         <button class="dl-single" onclick="downloadPNGFromWrap(this)">&#8595; PNG</button>
       </div></div></div>
-  <div class="dl-zip-row"><button class="dl-zip-btn" onclick="downloadZIP('car1',5,'carosello-1')">&#8595; Scarica ZIP - Carosello completo</button></div>
+  <div class="dl-zip-row"><button class="dl-zip-btn" onclick="downloadZIP('car1',5,'carosello-1',this)">&#8595; Scarica ZIP - Carosello completo</button></div>
 </div>
 <hr class="sep-line">
 
@@ -335,7 +335,7 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
         <div class="slide c2-slide" id="car2-s4"><img class="slide-bg-img" src=""" alt=""><div class="slide-overlay"></div><div class="slide-top"><span class="s-handle">@annamariaciccone1</span><span class="s-idx">05&thinsp;/&thinsp;05</span></div><div class="slide-content slide-cta"><p class="s-cta-main" contenteditable="true">Cerco donne<br><em>che credono in questo.</em></p><p class="s-cta-sub" contenteditable="true">Scrivimi in DM.</p></div><div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div></div>
         <button class="dl-single" onclick="downloadPNGFromWrap(this)">&#8595; PNG</button>
       </div></div></div>
-  <div class="dl-zip-row"><button class="dl-zip-btn" onclick="downloadZIP('car2',5,'carosello-2')">&#8595; Scarica ZIP - Carosello completo</button></div>
+  <div class="dl-zip-row"><button class="dl-zip-btn" onclick="downloadZIP('car2',5,'carosello-2',this)">&#8595; Scarica ZIP - Carosello completo</button></div>
 </div>
 <hr class="sep-line">
 
@@ -376,7 +376,7 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
         <div class="slide c3-slide" id="car3-s4"><img class="slide-bg-img" src=""" alt=""><div class="slide-overlay"></div><div class="slide-top"><span class="s-handle">@annamariaciccone1</span><span class="s-idx">05&thinsp;/&thinsp;05</span></div><div class="slide-content slide-cta"><p class="s-cta-main" contenteditable="true">Cerco donne ambiziose<br><em>che costruiscono con eleganza.</em></p><p class="s-cta-sub" contenteditable="true">Scrivimi in DM.</p></div><div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div></div>
         <button class="dl-single" onclick="downloadPNGFromWrap(this)">&#8595; PNG</button>
       </div></div></div>
-  <div class="dl-zip-row"><button class="dl-zip-btn" onclick="downloadZIP('car3',5,'carosello-3')">&#8595; Scarica ZIP - Carosello completo</button></div>
+  <div class="dl-zip-row"><button class="dl-zip-btn" onclick="downloadZIP('car3',5,'carosello-3',this)">&#8595; Scarica ZIP - Carosello completo</button></div>
 </div>
 
 <footer>
@@ -503,15 +503,15 @@ async function downloadPNGFromWrap(btn){
   var slide=wrap.querySelector('.slide');
   var carId=slide.id.replace(/-s\d+$/,'');
   var slideIdx=parseInt(slide.id.replace(carId+'-s',''));
-  try{var cv=await renderSlide(carId,slideIdx);cv.toBlob(function(blob){saveAs(blob,carId+'-slide'+(slideIdx+1)+'.png');});}
+  try{var cv=await renderSlide(carId,slideIdx);cv.toBlob(function(blob){saveAs(blob,carId+'-slide'+(slideIdx+1)+'.png');},'image/png');}
   catch(e){console.error(e);}
   btn.disabled=false;btn.textContent='\u2193 PNG';
 }
-async function downloadZIP(carId,count,label){
-  var btn=event.target;btn.disabled=true;btn.textContent='Generando ZIP...';
+async function downloadZIP(carId,count,label,btn){
+  btn.disabled=true;btn.textContent='Generando ZIP...';
   var zip=new JSZip();
   for(var i=0;i<count;i++){
-    try{var cv=await renderSlide(carId,i);var blob=await new Promise(function(r){cv.toBlob(r);});zip.file('slide-'+(i+1)+'.png',blob);}
+    try{var cv=await renderSlide(carId,i);var blob=await new Promise(function(r){cv.toBlob(r,'image/png');});zip.file('slide-'+(i+1)+'.png',blob);btn.textContent='Slide '+(i+1)+'/'+count+'...';}
     catch(e){console.error(e);}
   }
   var zipBlob=await zip.generateAsync({type:'blob'});
