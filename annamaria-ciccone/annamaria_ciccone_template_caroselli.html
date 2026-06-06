@@ -465,37 +465,14 @@ function setFormat(carId,fmt){
   btns.forEach(function(b){b.classList.toggle('active',b.getAttribute('onclick').includes("'"+fmt+"'"));});
   document.querySelectorAll('#'+carId+' .slide').forEach(function(s){s.classList.toggle('fmt-45',fmt==='45');});
 }
-function applyFilterToImage(src,filterStr,w,h){
-  return new Promise(function(resolve){
-    var img=new Image();
-    img.onload=function(){
-      try{
-        var c=document.createElement('canvas');c.width=w;c.height=h;
-        var ctx=c.getContext('2d');ctx.filter=filterStr;
-        var ir=img.naturalWidth/img.naturalHeight,cr=w/h,dw,dh,dx,dy;
-        if(ir>cr){dh=h;dw=h*ir;dy=0;dx=(w-dw)*0.5;}
-        else{dw=w;dh=w/ir;dx=0;dy=(h-dh)*0.18;}
-        ctx.drawImage(img,dx,dy,dw,dh);
-        var result=c.toDataURL('image/jpeg',0.92);
-        resolve((result&&result.length>1000)?result:src);
-      }catch(e){resolve(src);}
-    };
-    img.onerror=function(){resolve(src);};
-    img.src=src;
-  });
-}
 async function renderSlide(carId,slideIdx){
   var slide=document.querySelector('#'+carId+'-s'+slideIdx);
-  var currentBgSrc=PHOTOS[currentPhotos[carId]||0]||'';
-  var filterStr='brightness(0.54) saturate(0.12) contrast(1.08)';
-  if(slide.classList.contains('c1-slide'))filterStr='brightness(0.52) saturate(0.18) hue-rotate(168deg) contrast(1.06)';
-  else if(slide.classList.contains('c2-slide'))filterStr='brightness(0.55) saturate(0.20) sepia(0.18) contrast(1.04)';
-  else if(slide.classList.contains('c3-slide'))filterStr='brightness(0.46) saturate(0.08) contrast(1.10)';
-  var filteredSrc=await applyFilterToImage(currentBgSrc,filterStr,slide.offsetWidth*3,slide.offsetHeight*3);
+  var bgImg=slide.querySelector('.slide-bg-img');
+  var currentBgSrc=(bgImg&&bgImg.src)?bgImg.src:(PHOTOS[currentPhotos[carId]||0]||'');
   var cv=await html2canvas(slide,{scale:3,useCORS:true,allowTaint:false,backgroundColor:null,logging:false,imageTimeout:15000,
     onclone:function(clonedDoc,clonedEl){
       var cloneBg=clonedEl.querySelector('.slide-bg-img');
-      if(cloneBg){cloneBg.src=filteredSrc;cloneBg.style.filter='none';cloneBg.style.objectFit='cover';cloneBg.style.objectPosition='center 18%';cloneBg.style.width='100%';cloneBg.style.height='100%';}
+      if(cloneBg&&currentBgSrc){cloneBg.src=currentBgSrc;cloneBg.style.objectFit='cover';cloneBg.style.objectPosition='center 18%';cloneBg.style.width='100%';cloneBg.style.height='100%';}
       if(_bmLogo){clonedEl.querySelectorAll('.bm-mark img').forEach(function(img){img.src=_bmLogo;});}
     }
   });
