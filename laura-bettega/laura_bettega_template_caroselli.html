@@ -103,42 +103,36 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .slide-split .slide-overlay{background:linear-gradient(to right,rgba(248,244,239,0.97) 0%,rgba(248,244,239,0.90) 42%,rgba(248,244,239,0.38) 62%,transparent 100%) !important;}
 .slide-split .slide-bg-img{filter:brightness(0.75) saturate(0.90) contrast(1.05) !important;}
 
-/* Info strip: BASSO - diverso da Annamaria */
-.slide-top{position:absolute;bottom:0;left:0;right:0;z-index:4;padding:0 16px 10px;display:flex;align-items:center;justify-content:center;gap:6px;}
-.s-handle{font-size:7px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;font-family:'Raleway',sans-serif;color:rgba(248,244,239,0.42);}
-.s-handle::after{content:' \00B7';margin-left:5px;color:inherit;}
-.slide-split .slide-top{justify-content:flex-start;padding-left:20px;}
-.slide-split .s-handle{color:rgba(42,20,16,0.42) !important;}
-.s-idx{font-size:7px;letter-spacing:2px;font-family:'Raleway',sans-serif;font-weight:700;}
-.c1-slide .s-idx{color:rgba(232,138,174,0.60);}
-.c2-slide .s-idx{color:rgba(232,133,74,0.60);}
-.c3-slide .s-idx{color:rgba(201,168,76,0.60);}
-.c1-slide.slide-split .s-idx{color:#D44478;}
-.c2-slide.slide-split .s-idx{color:#E8854A;}
-.c3-slide.slide-split .s-idx{color:#C9A84C;}
+/* Barra top: handle + indice */
+.slide-top{position:absolute;top:0;left:0;right:0;z-index:4;padding:12px 16px 0;display:flex;align-items:center;justify-content:space-between;}
+.s-handle{font-size:7.5px;font-weight:600;letter-spacing:3px;text-transform:uppercase;font-family:'Raleway',sans-serif;color:rgba(255,255,255,0.42);}
+.slide-split .s-handle{color:rgba(42,20,16,0.48) !important;}
+.s-idx{font-size:8px;letter-spacing:2.5px;font-family:'Raleway',sans-serif;font-weight:700;}
+.c1-slide .s-idx{color:#E88AAE;}
+.c2-slide .s-idx{color:#E8854A;}
+.c3-slide .s-idx{color:#C9A84C;}
+.slide-split .s-idx{opacity:0.70;}
 
-/* COVER: titolo basso-sinistra con accento rosa */
-.slide-cover{position:absolute;inset:0;z-index:2;padding:20px 22px 40px 22px;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;}
+/* COVER: titolo basso-sinistra */
+.slide-cover{position:absolute;inset:0;z-index:2;padding:44px 22px 108px 22px;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;}
 .s-cover-title{font-family:'Bodoni Moda',serif;font-weight:700;font-size:29px;line-height:1.08;color:#fff;text-transform:uppercase;letter-spacing:0.04em;text-shadow:0 2px 14px rgba(0,0,0,0.70);}
-.s-cover-title::before{content:'';display:block;width:28px;height:2px;background:#D44478;border-radius:2px;margin-bottom:10px;}
-.s-cover-title em{display:inline-block;font-style:normal;font-family:'Raleway',sans-serif;font-weight:600;font-size:8px;text-transform:uppercase;letter-spacing:3px;border:1px solid currentColor;padding:3px 10px;border-radius:100px;margin:7px 0 10px;opacity:0.90;}
+.s-cover-title em{display:block;font-style:italic;font-weight:400;font-size:16px;text-transform:none;letter-spacing:0.01em;color:rgba(255,255,255,0.78);margin:3px 0;}
 .c1-slide .s-cover-title em{color:rgba(232,138,174,0.92);}
 .c2-slide .s-cover-title em{color:rgba(232,133,74,0.90);}
 .c3-slide .s-cover-title em{color:rgba(201,168,76,0.92);}
 
 /* BODY centrato: slide dark */
-.slide-body{position:absolute;inset:0;z-index:2;padding:20px 26px 40px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
-.s-body-text{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:500;font-size:17px;line-height:1.60;color:rgba(255,255,255,0.88);text-shadow:0 1px 8px rgba(0,0,0,0.60);max-width:280px;border-top:1px solid rgba(212,68,120,0.42);border-bottom:1px solid rgba(212,68,120,0.42);padding:14px 0;}
+.slide-body{position:absolute;inset:0;z-index:2;padding:44px 26px 114px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
+.s-body-text{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:500;font-size:17px;line-height:1.60;color:rgba(255,255,255,0.88);text-shadow:0 1px 8px rgba(0,0,0,0.60);max-width:280px;}
 
-/* SPLIT: contenuto ivory a sinistra con divisore rosa */
-.slide-body-split{position:absolute;inset:0;z-index:2;padding:20px 22px 40px 20px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;width:58%;}
-.slide-body-split::after{content:'';position:absolute;right:-1px;top:18%;bottom:18%;width:1.5px;background:rgba(212,68,120,0.30);z-index:3;}
+/* SPLIT: contenuto ivory a sinistra */
+.slide-body-split{position:absolute;inset:0;z-index:2;padding:44px 22px 108px 20px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;width:58%;}
 .s-split-num{display:none;}
 .s-split-title{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:700;font-size:24px;line-height:1.08;color:var(--brown);text-transform:uppercase;letter-spacing:0.03em;margin-bottom:8px;text-shadow:none;}
 .s-split-body{font-family:'Raleway',sans-serif;font-size:10.5px;font-weight:400;line-height:1.65;color:#5A3430;max-width:170px;}
 
 /* CTA */
-.slide-cta{position:absolute;inset:0;z-index:2;padding:20px 26px 40px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:10px;}
+.slide-cta{position:absolute;inset:0;z-index:2;padding:44px 26px 114px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:10px;}
 .s-cta-main{font-family:'Bodoni Moda',serif;font-weight:700;font-size:26px;line-height:1.12;color:#fff;text-transform:uppercase;letter-spacing:0.04em;text-shadow:0 2px 12px rgba(0,0,0,0.65);}
 .s-cta-main em{display:block;font-style:italic;font-weight:400;font-size:17px;text-transform:none;letter-spacing:0.02em;margin-top:4px;color:rgba(255,255,255,0.78);}
 .c1-slide .s-cta-main em{color:rgba(232,138,174,0.92);}
@@ -146,9 +140,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .c3-slide .s-cta-main em{color:rgba(201,168,76,0.92);}
 .s-cta-sub{font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;font-family:'Raleway',sans-serif;color:rgba(255,255,255,0.50);}
 
-/* BlooMind logo */
-.bm-mark{position:absolute;top:12px;right:14px;z-index:5;bottom:auto;left:auto;transform:none;}
-.bm-mark img{height:82px;width:auto;opacity:0.95;}
+/* BlooMind logo: bottom center, grande */
+.bm-mark{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:5;}
+.bm-mark img{height:82px;width:auto;opacity:0.92;}
 
 /* SEZIONI */
 .car-section{max-width:1000px;margin:0 auto;padding:48px 44px;}
