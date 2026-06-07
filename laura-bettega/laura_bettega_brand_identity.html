@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Identity - Laura Bettega / BlooMind</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #1A0A0E;
+  --bg2:       #2A1014;
+  --card:      rgba(40,8,16,0.65);
+  --dark:      #3A1418;
+  --warm:      #D44478;
+  --warm-lt:   #E88AAE;
+  --rose:      #E8854A;
+  --rose-lt:   #F0A87A;
+  --gold:      #C9A84C;
+  --ivory:     #F8F4EF;
+  --muted:     rgba(248,244,239,0.75);
+  --border:    rgba(212,68,120,0.25);
+  --sep:       rgba(201,168,76,0.18);
+  --radius:    8px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{
+  background:var(--bg);
+  color:var(--ivory);
+  font-family:'Open Sans',sans-serif;
+  font-size:16px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--warm);border-radius:2px;opacity:0.5;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:80px;overflow:hidden;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(26,5,10,0.94);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(212,68,120,0.18);
+}
+.nav-logo img{height:180px;width:auto;display:block;}
+.nav-wbl img{height:40px;width:auto;opacity:1;display:block;}
+.nav-tag{font-size:11px;color:var(--muted);letter-spacing:2.5px;text-transform:uppercase;}
+.nav-badge{
+  background:linear-gradient(135deg,#200812,#3a1020);
+  border:1px solid rgba(212,68,120,0.3);
+  color:var(--warm);font-size:10px;font-weight:600;
+  padding:4px 14px;border-radius:100px;letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+/* HERO */
+#hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:100px 24px 80px;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 35%,rgba(212,68,120,0.10) 0%,transparent 65%),
+    radial-gradient(ellipse 40% 40% at 75% 75%,rgba(40,8,16,0.2) 0%,transparent 60%);
+}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(90px);animation:float 9s ease-in-out infinite;}
+.orb1{width:380px;height:380px;background:rgba(212,68,120,0.08);top:8%;left:8%;}
+.orb2{width:280px;height:280px;background:rgba(232,133,74,0.06);bottom:12%;right:12%;animation-delay:-5s;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-28px)}}
+
+.hero-eyebrow{
+  font-size:11px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--warm);margin-bottom:24px;
+  opacity:0;animation:fadeUp 0.8s ease forwards 0.3s;
+}
+.hero-name{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:clamp(3rem,8vw,6.5rem);
+  font-weight:600;line-height:1.05;
+  color:var(--ivory);letter-spacing:0.03em;
+  opacity:0;animation:fadeUp 0.8s ease forwards 0.5s;
+}
+.hero-name span{
+  background:linear-gradient(135deg,var(--rose-lt),var(--warm),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(1.1rem,2.5vw,1.6rem);
+  color:var(--muted);font-style:italic;
+  margin-bottom:48px;
+  opacity:0;animation:fadeUp 0.8s ease forwards 0.7s;
+}
+.hero-divider{
+  width:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--warm),transparent);
+  margin:0 auto 40px;
+  animation:expand 1s ease forwards 0.9s;
+}
+@keyframes expand{to{width:100px}}
+.hero-claim{
+  max-width:640px;
+  font-size:clamp(0.9rem,1.5vw,1.05rem);
+  color:rgba(248,244,239,0.65);
+  line-height:1.9;
+  opacity:0;animation:fadeUp 0.8s ease forwards 1s;
+}
+.hero-claim strong{color:var(--warm-lt);font-weight:500;}
+.hero-scroll{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:var(--muted);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
+  opacity:0;animation:fadeIn 1s ease forwards 1.5s;
+}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--warm),transparent);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* LAYOUT */
+.section{padding:100px 24px;max-width:1100px;margin:0 auto;}
+.section-full{max-width:100%;padding:100px 0;}
+.section-inner{max-width:1100px;margin:0 auto;padding:0 24px;}
+.section-label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:10px;letter-spacing:3.5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;
+}
+.section-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--gold);}
+.section-title{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(1.8rem,3.5vw,3rem);
+  font-weight:500;line-height:1.15;margin-bottom:14px;
+}
+.section-desc{
+  font-size:1rem;color:var(--muted);
+  max-width:580px;margin-bottom:52px;line-height:1.85;
+}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* ARCHETYPE */
+.archetype-wrap{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+  border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;
+  margin-top:48px;
+}
+.arch-card{
+  padding:48px 40px;
+  background:var(--card);
+  position:relative;
+}
+.arch-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--rose),var(--warm));
+}
+.arch-card:last-child::before{background:linear-gradient(90deg,var(--warm),var(--gold));}
+.arch-icon{font-size:2.4rem;margin-bottom:20px;display:block;}
+.arch-name{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.6rem;color:var(--ivory);margin-bottom:10px;font-weight:500;
+}
+.arch-desc{font-size:0.88rem;color:var(--muted);line-height:1.85;}
+.arch-traits{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;}
+.trait-tag{
+  font-size:0.7rem;letter-spacing:1.5px;text-transform:uppercase;
+  padding:4px 12px;border:1px solid var(--border);
+  color:var(--warm-lt);border-radius:100px;
+}
+
+/* VALUES */
+.values-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;
+  margin-top:48px;
+}
+.value-card{
+  padding:36px 28px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  position:relative;overflow:hidden;
+}
+.value-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--rose),var(--gold));
+  opacity:0;transition:opacity 0.3s;
+}
+.value-card:hover::after{opacity:1;}
+.value-num{
+  font-family:'Libre Baskerville',serif;
+  font-size:3rem;color:rgba(212,68,120,0.10);
+  position:absolute;top:20px;right:24px;line-height:1;
+  font-weight:600;
+}
+.value-name{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.4rem;color:var(--ivory);margin-bottom:12px;font-weight:500;
+}
+.value-desc{font-size:0.82rem;color:var(--muted);line-height:1.8;}
+
+/* STORIA */
+.storia-box{
+  margin-top:48px;
+  padding:52px 56px;
+  background:linear-gradient(135deg,rgba(40,8,16,0.7),rgba(212,68,120,0.08));
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  position:relative;overflow:hidden;
+}
+.storia-box::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--warm),transparent);
+}
+.storia-box::after{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(to bottom,var(--rose),var(--gold));
+}
+.storia-text{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.1rem;
+  color:rgba(248,244,239,0.82);
+  line-height:2;font-style:italic;
+}
+.storia-text p{margin-bottom:1.4em;}
+.storia-text p:last-child{margin-bottom:0;}
+.storia-milestones{
+  display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;
+}
+.milestone{
+  padding:8px 18px;
+  border:1px solid var(--border);
+  border-radius:100px;
+  font-size:0.72rem;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--warm-lt);
+}
+
+/* POSITIONING */
+.positioning-box{
+  margin-top:48px;
+  padding:52px 56px;
+  background:linear-gradient(135deg,rgba(40,8,16,0.6),rgba(212,68,120,0.12));
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  position:relative;overflow:hidden;
+}
+.positioning-box::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--warm),transparent);
+}
+.pos-quote{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(1.4rem,3vw,2.2rem);
+  color:var(--ivory);font-style:italic;
+  line-height:1.5;font-weight:400;
+}
+.pos-quote span{color:var(--warm);}
+.pos-sub{margin-top:28px;font-size:0.82rem;color:var(--muted);letter-spacing:0.05em;}
+.pos-extended{
+  margin-top:36px;padding-top:36px;
+  border-top:1px solid var(--sep);
+  font-size:0.9rem;color:rgba(248,244,239,0.7);line-height:1.9;
+}
+.pos-extended strong{color:var(--warm-lt);}
+
+/* TOV */
+.tov-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:48px;}
+.tov-col h3{
+  font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:24px;
+}
+.adj-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px;}
+.adj-tag{
+  padding:8px 20px;
+  border:1px solid var(--border);
+  border-radius:100px;
+  font-size:0.85rem;color:var(--warm-lt);
+  background:rgba(212,68,120,0.08);
+}
+.tov-list{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.tov-list li{
+  font-size:0.85rem;color:rgba(248,244,239,0.65);
+  padding-left:20px;position:relative;line-height:1.7;
+}
+.tov-list li::before{
+  content:'→';position:absolute;left:0;
+  color:var(--warm);font-size:0.75rem;line-height:1.85;
+}
+.tov-list.dont li::before{content:'✗';color:#e07070;}
+.tov-col .tov-sep{
+  height:1px;
+  background:linear-gradient(90deg,var(--border),transparent);
+  margin:16px 0;
+}
+.tov-col-full{
+  grid-column:1/-1;
+}
+.tov-col-full h3{
+  font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;
+}
+.tov-speech-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;
+}
+.tov-speech-card{
+  padding:24px 28px;
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+}
+.tov-speech-card .tc-label{
+  font-size:0.6rem;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:10px;
+}
+.tov-speech-card .tc-text{
+  font-family:'Libre Baskerville',serif;
+  font-size:0.95rem;color:var(--ivory);font-style:italic;line-height:1.6;
+}
+
+/* PALETTE */
+.palette-row{
+  display:flex;gap:0;
+  border:1px solid var(--border);border-radius:var(--radius);
+  overflow:hidden;margin-top:48px;
+}
+.swatch{
+  flex:1;padding:36px 20px 24px;
+  display:flex;flex-direction:column;gap:10px;
+  border-right:1px solid rgba(255,255,255,0.05);
+}
+.swatch:last-child{border-right:none;}
+.sw-dot{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.08);}
+.sw-name{font-size:0.78rem;color:var(--ivory);}
+.sw-hex{font-size:0.68rem;color:var(--gold);font-family:'Courier New',monospace;letter-spacing:0.05em;}
+.sw-role{font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:2px;}
+.palette-rule{
+  margin-top:24px;
+  padding:20px 28px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:6px;
+  font-size:0.82rem;color:var(--muted);
+}
+.palette-rule strong{color:var(--warm);}
+
+/* FONT */
+.font-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:48px;}
+.font-card{
+  padding:36px 28px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+}
+.font-role{font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.font-sample-serif{
+  font-family:'Libre Baskerville',serif;
+  font-size:2rem;color:var(--ivory);margin-bottom:8px;font-weight:400;line-height:1.2;
+}
+.font-sample-sans{
+  font-family:'Open Sans',sans-serif;
+  font-size:1.1rem;color:var(--ivory);margin-bottom:8px;font-weight:400;
+}
+.font-sample-display{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem;color:var(--warm-lt);font-style:italic;margin-bottom:8px;line-height:1.2;
+}
+.font-name{font-size:0.72rem;color:var(--muted);}
+.font-usage{font-size:0.7rem;color:rgba(248,244,239,0.35);margin-top:6px;}
+
+/* TAGLINE */
+.tagline-main{
+  margin-top:48px;
+  text-align:center;
+  padding:64px 40px;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background:linear-gradient(135deg,rgba(40,8,16,0.5),rgba(212,68,120,0.10));
+  position:relative;overflow:hidden;
+}
+.tagline-main::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--warm),transparent);
+}
+.tagline-text{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(1.8rem,4vw,3rem);
+  color:var(--ivory);font-style:italic;
+  font-weight:400;line-height:1.35;
+}
+.tagline-text span{color:var(--warm);}
+.tagline-variants{
+  margin-top:48px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;
+}
+.tv-card{
+  padding:24px 28px;
+  background:var(--card);border:1px solid var(--border);border-radius:6px;
+}
+.tv-context{font-size:0.62rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.tv-text{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.05rem;color:var(--ivory);font-style:italic;line-height:1.55;
+}
+
+/* MOOD BOARD */
+.mood-wrap{
+  display:grid;grid-template-columns:1fr 1fr;gap:40px;
+  margin-top:48px;align-items:start;
+}
+.mood-text p{font-size:0.88rem;color:var(--muted);line-height:1.9;margin-bottom:14px;}
+.mood-text strong{color:var(--ivory);}
+.mood-elements{display:flex;flex-direction:column;gap:14px;}
+.mood-el{
+  padding:16px 20px;
+  background:rgba(40,8,16,0.4);border:1px solid var(--border);
+  border-radius:6px;
+  font-size:0.82rem;color:var(--muted);
+}
+.mood-el strong{color:var(--warm-lt);}
+.mood-never{margin-top:16px;}
+.mood-never h4{font-size:0.62rem;letter-spacing:2.5px;text-transform:uppercase;color:#e07070;margin-bottom:10px;}
+.mood-never ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.mood-never ul li{font-size:0.8rem;color:rgba(224,112,112,0.7);padding-left:16px;position:relative;}
+.mood-never ul li::before{content:'✗';position:absolute;left:0;color:#e07070;}
+
+/* FOOTER */
+footer{
+  padding:64px 48px;
+  border-top:1px solid var(--sep);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:24px;
+}
+.footer-logo img{height:34px;opacity:1;}
+.footer-info{font-size:0.75rem;color:var(--muted);line-height:1.8;}
+.footer-info a{color:var(--warm);text-decoration:none;}
+
+@media(max-width:768px){
+  nav{padding:16px 20px;}
+  .nav-tag{display:none;}
+  .archetype-wrap,.tov-grid,.mood-wrap{grid-template-columns:1fr;}
+  .palette-row{flex-wrap:wrap;}
+  .swatch{flex:1 0 45%;}
+  .font-grid{grid-template-columns:1fr;}
+  .section{padding:60px 20px;}
+  footer{padding:40px 20px;flex-direction:column;align-items:flex-start;}
+  .tagline-text{font-size:1.6rem;}
+  .storia-box,.positioning-box{padding:36px 28px;}
+  .tov-speech-grid{grid-template-columns:1fr;}
+}
+.nav-bloomind-img{height:180px;width:auto;display:block;}
+.nav-webloom-img{height:40px;width:auto;opacity:1;display:block;}
+@media(max-width:768px){
+  .nav-logo{max-width:50%;overflow:hidden;}
+  .nav-logo img{height:110px !important;width:100% !important;object-fit:contain !important;object-position:center bottom !important;}
+  .nav-wbl{flex-shrink:0;}
+  .nav-wbl img{height:26px !important;width:auto !important;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind" class="nav-bloomind-img">
+  </div>
+  <div class="nav-wbl">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom" class="nav-webloom-img">
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+  <p class="hero-eyebrow">Brand Identity Document</p>
+  <h1 class="hero-name">Laura <span>Bettega</span></h1>
+  <p class="hero-sub">Leader BlooMind &nbsp;·&nbsp; Mamma &nbsp;·&nbsp; @laura.bettega</p>
+  <div class="hero-divider"></div>
+  <p class="hero-claim">
+    Documento strategico di <strong>brand identity</strong> per il posizionamento digitale di Laura Bettega: valori, tone of voice, identita visiva, storia e strategia di comunicazione all'interno dell'ecosistema <strong>BlooMind</strong>.
+  </p>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scorri</span>
+  </div>
+</section>
+
+<!-- 01 - ARCHETIPO -->
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">01 - Archetipo</p>
+    <h2 class="section-title">Chi e Laura Bettega</h2>
+    <p class="section-desc">L'archetipo definisce la personalita profonda del brand - come parla, come viene percepita, cosa promette a chi la segue. Laura esprime due anime che si completano a vicenda.</p>
+  </div>
+  <div class="archetype-wrap reveal d2">
+    <div class="arch-card">
+      <span class="arch-icon">⚔️</span>
+      <div class="arch-name">La Guerriera</div>
+      <p class="arch-desc">Ha perso il padre a 15 anni e ha dovuto diventare grande in fretta, occupandosi di una sorella di 9 anni. Ha gestito negozi di abbigliamento, un bar, ha venduto tutto durante la pandemia e si e rialzata. Ha cresciuto due bambine da sola, senza nonni ne aiuti. Ogni risultato che ha ottenuto lo ha conquistato con le proprie mani. Non conosce la parola "impossibile" perche la vita gliene ha date di sfide ben piu dure. La sua credibilita viene esattamente da qui: non parla dall'alto di una scrivania comoda, ma dal basso di una storia che conosce il peso vero delle cose.</p>
+      <div class="arch-traits">
+        <span class="trait-tag">Coraggio</span>
+        <span class="trait-tag">Determinazione</span>
+        <span class="trait-tag">Resilienza</span>
+        <span class="trait-tag">Concretezza</span>
+      </div>
+    </div>
+    <div class="arch-card">
+      <span class="arch-icon">🌿</span>
+      <div class="arch-name">La Guida</div>
+      <p class="arch-desc">Non guida dall'alto: guida camminando accanto. Il suo superpotere e l'ascolto attivo - riesce a capire le persone prima ancora che finiscano di parlare. Sa leggere le dinamiche relazionali, riconosce i blocchi emotivi e trova le parole giuste per sbloccarli. Il suo sogno non e personale: e collettivo. Vuole costruire un team di mamme che abbiano la loro indipendenza economica, che non debbano chiedere il permesso per comprare qualcosa. Porta con se le persone perche ci crede davvero, non per strategia. Chi entra nel suo team lo sente immediatamente: questa persona e dalla tua parte.</p>
+      <div class="arch-traits">
+        <span class="trait-tag">Empatia</span>
+        <span class="trait-tag">Ascolto</span>
+        <span class="trait-tag">Cura</span>
+        <span class="trait-tag">Visione</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 - VALORI CORE -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">02 - Valori Core</p>
+    <h2 class="section-title">Le fondamenta di Laura</h2>
+    <p class="section-desc">Cinque valori emersi dalla sua storia e dal suo modo di muoversi nel mondo. Non principi astratti: scelte di vita che ha fatto ogni giorno, spesso senza rete di sicurezza.</p>
+  </div>
+  <div class="values-grid">
+    <div class="value-card reveal d1">
+      <span class="value-num">01</span>
+      <div class="value-name">Coraggio</div>
+      <p class="value-desc">Laura ha fatto il passo piu importante della sua vita "ad occhi chiusi", ascoltando il cuore invece della testa. Ha lasciato la sicurezza apparente per costruire qualcosa di vero. Il coraggio per lei non e l'assenza di paura: e farlo lo stesso, anche quando tremi. E questa autenticita che le permette di parlarne senza essere retorica.</p>
+    </div>
+    <div class="value-card reveal d2">
+      <span class="value-num">02</span>
+      <div class="value-name">Indipendenza</div>
+      <p class="value-desc">Ha cresciuto due figlie da sola. Sa cosa significa dipendere da qualcuno e cosa significa non doverlo fare. Il suo obiettivo per le donne del suo team e preciso: guadagnare un vero stipendio, gestire i propri soldi, non dover chiedere il permesso per spenderli. L'indipendenza non e un ideale: e una condizione pratica, quotidiana, concreta.</p>
+    </div>
+    <div class="value-card reveal d3">
+      <span class="value-num">03</span>
+      <div class="value-name">Autenticita</div>
+      <p class="value-desc">Non mostra piu di quello che ha. Non promette cio che non puo mantenere. Non usa il linguaggio della ricchezza facile o del lifestyle aspirazionale. La sua comunicazione e cosi: reale, diretta, a volte imperfetta - e proprio per questo credibile. Nell'era dei contenuti costruiti, l'autenticita e il differenziante piu potente che ha.</p>
+    </div>
+    <div class="value-card reveal d4">
+      <span class="value-num">04</span>
+      <div class="value-name">Ambizione</div>
+      <p class="value-desc">Laura e ambiziosa - e non si scusa per questo. La ambizione non e avidita: e rispetto per il proprio potenziale. Ha imparato a fare i social da zero, ha costruito una community di 3.040 follower in meno di 6 mesi, e ha portato con se altre donne. La sua ambizione non esclude nessuno: traina. Chi sta vicino a lei cresce.</p>
+    </div>
+    <div class="value-card reveal d5">
+      <span class="value-num">05</span>
+      <div class="value-name">Cuore</div>
+      <p class="value-desc">E nell'ultimo terzo del suo positioning statement e non e casuale. Tutto quello che fa Laura lo fa "con il cuore". La cura per le persone del suo team, l'attenzione alle mamme sole, il sogno collettivo che porta avanti ogni giorno. Non e marketing: e chi e davvero. Il cuore e la sua firma - su ogni contenuto, ogni conversazione, ogni traguardo condiviso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 - LA STORIA -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">03 - La Storia</p>
+    <h2 class="section-title">Da dove viene Laura</h2>
+    <p class="section-desc">Non una biografia. Una storia vera, con il peso e la luce che si porta dietro. Raccontata in prima persona, come dovra essere comunicata sui social.</p>
+  </div>
+  <div class="storia-box reveal d2">
+    <div class="storia-text">
+      <p>Ho perso mio padre quando avevo 15 anni. Mia sorella ne aveva 9. Non c'era tempo per capire cosa significasse: c'era lei da guardare, c'era una famiglia da tenere insieme, c'era la vita che continuava anche se non te ne fregava nulla. Ho imparato presto che il mondo non si ferma per il tuo dolore. E che se aspetti che qualcuno ti venga a salvare, aspetti a lungo.</p>
+      <p>Ho gestito negozi di abbigliamento per anni. Poi un bar. Poi e arrivata la pandemia - e il bar l'ho venduto. Forse la scelta giusta al momento giusto, forse solo fortuna, forse entrambe. Le mie due bambine piccole erano con me, senza nonni vicini, senza aiuti. Solo io e loro. Non mi sono mai fermata a fare la lista di quello che mancava: mi sono chiesta cosa potevo fare con quello che avevo.</p>
+      <p>Ho iniziato il network marketing partendo da zero assoluto. Non sapevo fare i social. Non sapevo cos'era un reel, non avevo mai ragionato in termini di personal brand. Ho imparato mentre lo facevo, ho sbagliato in pubblico, mi sono rialzata ancora. In meno di 6 mesi ho costruito una community di 3.040 persone. Non numeri: donne vere, che si fidano di me.</p>
+      <p>Il momento della svolta non e stato un corso, non e stato un mentor, non e stato un weekend di formazione. E stato un momento in cui ho smesso di ragionare e ho ascoltato il cuore. Ho fatto un passo "ad occhi chiusi". E ho portato con me altre donne, perche sapevo che quello che trovavo dall'altra parte valeva anche per loro.</p>
+      <p>Il mio sogno e semplice e preciso: voglio che le donne del mio team non debbano elemosinare soldi al marito per un rossetto. Voglio che abbiano un vero stipendio, gestito da loro. Voglio che possano essere madri senza rinunciare a essere donne con una vita propria. Non lo dico come slogan: lo so perche l'ho vissuto. E lo so perche ho visto quante donne si sono fidate di me. Quello e stato il risultato piu importante che ho ottenuto finora.</p>
+    </div>
+    <div class="storia-milestones">
+      <span class="milestone">Padre a 15 anni</span>
+      <span class="milestone">Sorella cresciuta</span>
+      <span class="milestone">Negozi di abbigliamento</span>
+      <span class="milestone">Bar venduto in pandemia</span>
+      <span class="milestone">Due figlie da sola</span>
+      <span class="milestone">Social imparati da zero</span>
+      <span class="milestone">3.040 follower in 6 mesi</span>
+      <span class="milestone">Passo ad occhi chiusi</span>
+    </div>
+  </div>
+</section>
+
+<!-- 04 - POSITIONING STATEMENT -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">04 - Positioning Statement</p>
+    <h2 class="section-title">Il suo spazio nel mondo</h2>
+    <p class="section-desc">Il claim pubblico che definisce chi e Laura, per chi esiste e quale trasformazione offre. La bussola di ogni contenuto e ogni conversazione.</p>
+  </div>
+  <div class="positioning-box reveal d2">
+    <p class="pos-quote">"Aiuto le donne ambiziose a <span>smettere di chiedere il permesso</span> e a costruire il loro spazio, con il cuore."</p>
+    <p class="pos-sub">Positioning Statement principale - Laura Bettega / BlooMind</p>
+    <div class="pos-extended">
+      <p><strong>Per chi e:</strong> Donne ambiziose che si sono convinte che per fare qualcosa di importante servano condizioni perfette - il momento giusto, il supporto giusto, i soldi giusti. Mamme sole che gestiscono tutto da sole e che non si sono ancora concesse il permesso di avere anche qualcosa per se. Donne che vogliono indipendenza economica senza dover scegliere tra il lavoro e i figli.</p>
+      <p><strong>Cosa risolve:</strong> Il blocco del permesso. Quella voce interna che dice "non e il momento", "non so farcela", "aspetto ancora un po'". Laura non dice "ce la fai". Dice: "io ero come te, e ti mostro cosa ho fatto". Non vende un sogno: mostra una strada reale, percorsa da lei, percorribile anche da chi la segue.</p>
+      <p><strong>La differenza:</strong> Laura porta <strong>cuore</strong> dove altri portano numeri. Porta storia reale dove altri portano lifestyle costruito. Porta presenza autentica dove altri portano marketing. Non e la piu famosa, non e la piu ricca, non e la piu esperta - ma e la piu vera. E in un settore dove la falsita si sente a distanza, la verita e il posizionamento piu potente che esiste.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 - TONE OF VOICE -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">05 - Tone of Voice</p>
+    <h2 class="section-title">Come parla Laura</h2>
+    <p class="section-desc">Il tono di voce e la personalita sonora del brand. Definisce come Laura scrive, come parla nei reel, come risponde nei commenti. Coerente in ogni formato, in ogni contesto.</p>
+  </div>
+  <div class="tov-grid reveal d2">
+    <div class="tov-col">
+      <h3>Le tre parole del brand</h3>
+      <div class="adj-row">
+        <span class="adj-tag">Empatica</span>
+        <span class="adj-tag">Socievole</span>
+        <span class="adj-tag">Diretta</span>
+      </div>
+      <div class="tov-sep"></div>
+      <h3>Come parla</h3>
+      <ul class="tov-list">
+        <li>Parla in prima persona singolare, racconta da dentro la sua esperienza</li>
+        <li>Usa frasi corte, ritmo veloce, pochi fronzoli</li>
+        <li>Chiama le cose con il loro nome, senza eufemismi</li>
+        <li>Si avvicina all'interlocutrice, non la guarda dall'alto</li>
+        <li>Mostra la vulnerabilita quando serve, senza autocommiserarsi</li>
+        <li>Usa il "tu" diretto, non il "voi" generico</li>
+        <li>Fa domande che aprono, non che chiudono</li>
+        <li>Porta esempi concreti dalla sua vita quotidiana</li>
+      </ul>
+    </div>
+    <div class="tov-col">
+      <h3>Energia del contenuto</h3>
+      <div class="adj-row">
+        <span class="adj-tag">Energica</span>
+        <span class="adj-tag">Autentica</span>
+        <span class="adj-tag">Calda</span>
+        <span class="adj-tag">Motivante</span>
+      </div>
+      <div class="tov-sep"></div>
+      <h3>Cosa non fa mai</h3>
+      <ul class="tov-list dont">
+        <li>Non usa promesse facili o numeri gonfiati</li>
+        <li>Non mostra piu di quello che ha realmente</li>
+        <li>Non usa il linguaggio da "guru della crescita personale"</li>
+        <li>Non parla mai male di chi non ce la fa o non sceglie</li>
+        <li>Non usa urgenza artificiale o pressione di vendita</li>
+        <li>Non si fa piu grande di quello che e</li>
+        <li>Non scompare nei momenti difficili - li racconta</li>
+        <li>Non fa confronti con le altre leader o con il settore</li>
+      </ul>
+    </div>
+    <div class="tov-col tov-col-full reveal d3">
+      <h3>Come suona in pratica - esempi di voce</h3>
+      <div class="tov-speech-grid">
+        <div class="tov-speech-card">
+          <p class="tc-label">Apertura Reel - tema coraggio</p>
+          <p class="tc-text">"Ti dico una cosa che non ti aspetti: il giorno piu importante della mia vita e stato il giorno in cui ho avuto paura e ho fatto lo stesso."</p>
+        </div>
+        <div class="tov-speech-card">
+          <p class="tc-label">Storia Instagram - vita reale</p>
+          <p class="tc-text">"Stamattina le mie figlie dovevano andare a scuola, io avevo una call, la lavatrice era in vasca. Indovina come e andata. Ti racconto tutto stasera."</p>
+        </div>
+        <div class="tov-speech-card">
+          <p class="tc-label">CTA recruiting - tono diretto</p>
+          <p class="tc-text">"Non ti sto chiedendo di crederci. Ti sto chiedendo 15 minuti per ascoltare. Poi decidi tu."</p>
+        </div>
+        <div class="tov-speech-card">
+          <p class="tc-label">Risposta a commento positivo</p>
+          <p class="tc-text">"Grazie - ma la vera forza e tua. Io ti ho solo mostrato che si puo. Tu hai fatto il passo."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 - PALETTE COLORI -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">06 - Palette Colori</p>
+    <h2 class="section-title">Identita visiva</h2>
+    <p class="section-desc">Una palette luminosa e positiva, con il rosa caldo come colore dominante. Energica ma non aggressiva, femminile ma non frivola. Rispecchia il carattere di Laura: calore, slancio e autenticita.</p>
+  </div>
+  <div class="palette-row reveal d2">
+    <div class="swatch" style="background:rgba(212,68,120,0.12);">
+      <div class="sw-dot" style="background:#D44478;"></div>
+      <span class="sw-name">Hot Pink</span>
+      <span class="sw-hex">#D44478</span>
+      <span class="sw-role">Colore dominante</span>
+    </div>
+    <div class="swatch" style="background:rgba(232,138,174,0.10);">
+      <div class="sw-dot" style="background:#E88AAE;"></div>
+      <span class="sw-name">Soft Mauve</span>
+      <span class="sw-hex">#E88AAE</span>
+      <span class="sw-role">Accento caldo</span>
+    </div>
+    <div class="swatch" style="background:rgba(232,133,74,0.10);">
+      <div class="sw-dot" style="background:#E8854A;"></div>
+      <span class="sw-name">Coral Glow</span>
+      <span class="sw-hex">#E8854A</span>
+      <span class="sw-role">Accento energico</span>
+    </div>
+    <div class="swatch" style="background:rgba(201,168,76,0.10);">
+      <div class="sw-dot" style="background:#C9A84C;"></div>
+      <span class="sw-name">Warm Gold</span>
+      <span class="sw-hex">#C9A84C</span>
+      <span class="sw-role">Label e dettagli</span>
+    </div>
+    <div class="swatch" style="background:rgba(248,244,239,0.06);">
+      <div class="sw-dot" style="background:#F8F4EF;border-color:rgba(255,255,255,0.3);"></div>
+      <span class="sw-name">Ivory Breath</span>
+      <span class="sw-hex">#F8F4EF</span>
+      <span class="sw-role">Testo principale</span>
+    </div>
+    <div class="swatch" style="background:rgba(255,255,255,0.02);">
+      <div class="sw-dot" style="background:#1A0A0E;border-color:rgba(212,68,120,0.3);"></div>
+      <span class="sw-name">Deep Rose Dark</span>
+      <span class="sw-hex">#1A0A0E</span>
+      <span class="sw-role">Background base</span>
+    </div>
+  </div>
+  <div class="palette-rule reveal d3">
+    <strong>Regola d'uso:</strong> Hot Pink e il colore guida - appare nei titoli in evidenza, nei tag, negli elementi interattivi. Coral Glow entra come tocco di energia nei gradienti e negli accenti secondari. Warm Gold e riservato ai label, alle date, agli elementi di navigazione minuti. Ivory Breath e il bianco del brand: mai bianco puro, sempre con il calore dell'avorio. L'estetica complessiva e <strong>luminosa e positiva</strong>, mai buia o fredda, nonostante il background scuro.
+  </div>
+</section>
+
+<!-- 07 - FONT PAIRING -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">07 - Font Pairing</p>
+    <h2 class="section-title">Tipografia</h2>
+    <p class="section-desc">Tre font che lavorano insieme per creare un'identita coerente: elegante nei titoli, leggibile nel corpo, emozionale nelle citazioni. Chiarezza e calore, in ogni formato.</p>
+  </div>
+  <div class="font-grid">
+    <div class="font-card reveal d1">
+      <p class="font-role">Titoli / Display</p>
+      <div class="font-sample-display">Cormorant<br>Garamond</div>
+      <p class="font-name">Cormorant Garamond</p>
+      <p class="font-usage">Italic · SemiBold · Bold · 40-88px · Hero, titoli sezione, claim principale</p>
+    </div>
+    <div class="font-card reveal d2">
+      <p class="font-role">Corpo / Subtitle</p>
+      <div class="font-sample-sans">Open Sans - caldo,<br>diretto, accessibile.</div>
+      <p class="font-name">Open Sans</p>
+      <p class="font-usage">Light · Regular · Medium · SemiBold · 14-22px · Corpo testo, caption, UI, descrizioni</p>
+    </div>
+    <div class="font-card reveal d3">
+      <p class="font-role">Citazioni / Accento</p>
+      <div class="font-sample-serif">"Scegli te stessa,<br>ogni giorno."</div>
+      <p class="font-name">Libre Baskerville</p>
+      <p class="font-usage">Italic · Regular · 18-32px · Quote, frasi chiave nei caroselli, intestazioni sezione</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 - CLAIM E TAGLINE -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">08 - Claim & Tagline</p>
+    <h2 class="section-title">Le parole che rimangono</h2>
+    <p class="section-desc">La tagline principale e le varianti per ogni contesto di comunicazione. Il filo rosso: il permesso. Non aspettarlo - darselo. Non chiederlo - conquistarselo.</p>
+  </div>
+  <div class="tagline-main reveal d2">
+    <p class="tagline-text">"<span>Non aspettare</span><br>che qualcuno ti dia il permesso."</p>
+  </div>
+  <div class="tagline-variants reveal d3">
+    <div class="tv-card">
+      <p class="tv-context">Bio Instagram</p>
+      <p class="tv-text">"Mamma. Leader. La prova che si puo fare tutto - anche da sola."</p>
+    </div>
+    <div class="tv-card">
+      <p class="tv-context">Apertura Reel / Stories</p>
+      <p class="tv-text">"Ti dico come sono arrivata qui - partendo da zero, con due figlie e nessuna rete."</p>
+    </div>
+    <div class="tv-card">
+      <p class="tv-context">CTA recruiting BlooMind</p>
+      <p class="tv-text">"Non cerco chi e gia pronta. Cerco chi ha voglia di diventarlo - con il supporto giusto accanto."</p>
+    </div>
+    <div class="tv-card">
+      <p class="tv-context">Firma / chiusura contenuti</p>
+      <p class="tv-text">"Prima il cuore. Poi tutto il resto."</p>
+    </div>
+    <div class="tv-card">
+      <p class="tv-context">Tema indipendenza economica</p>
+      <p class="tv-text">"Guadagnare i tuoi soldi non e una scelta egoista. E il rispetto che devi a te stessa."</p>
+    </div>
+    <div class="tv-card">
+      <p class="tv-context">Tema coraggio</p>
+      <p class="tv-text">"Ho fatto il passo piu importante della mia vita ad occhi chiusi. Qualche volta il cuore sa prima della testa."</p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 - MOOD BOARD -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">09 - Mood Board Visivo</p>
+    <h2 class="section-title">L'atmosfera del brand</h2>
+    <p class="section-desc">Cosa si vede e cosa si sente quando si guarda Laura Bettega. Luminoso, positivo, reale. Non un'influencer: una donna vera che ha costruito qualcosa con le sue mani.</p>
+  </div>
+  <div class="mood-wrap">
+    <div class="mood-text reveal d1">
+      <p><strong>Lo scenario reale di Laura:</strong> Una storia mattutina girata in cucina prima che le figlie si sveglino, con la luce che entra dalla finestra. Un reel parlato, diretto alla camera, senza scaletta scritta - solo la sua voce e quello che sente quel giorno. Una foto con le sue bambine in un momento normale, non un set fotografico.</p>
+      <p>Non e una scena da influencer con la villa e i miei. E una scena da <strong>donna che ha costruito la sua indipendenza partendo da zero</strong> - e lo mostra senza vergogna e senza finzione.</p>
+      <p><strong>Fotografia:</strong> luce naturale, calda, mattina o sera. Ambienti domestici, autentici, non ritoccati. Espressioni vere - sorriso spontaneo, non posa. Tonalita calde: rosa, pesca, avorio, corallo. Mai studio fotografico, mai scenografie costruite. La spontaneita e un vantaggio competitivo, non un limite da superare.</p>
+      <p><strong>Feed Instagram:</strong> contenuti alternati tra momenti di vita reale (figlie, routine quotidiana, piccole conquiste) e contenuti motivazionali brevi, diretti, con il suo volto in primo piano. Niente prodotti in primo piano senza storia che li motivi. Niente DuoLife nel feed - solo nelle Stories quando racconta la sua routine personale.</p>
+    </div>
+    <div>
+      <div class="mood-elements reveal d2">
+        <div class="mood-el"><strong>Reel parlati dallo smartphone</strong> - la sua voce e il contenuto. Diretto alla camera, senza filtri forti. La verita si sente e fa la differenza in un feed pieno di contenuti costruiti.</div>
+        <div class="mood-el"><strong>Storie di vita quotidiana</strong> - la mattina con le figlie, il caffè prima della call, un momento di stanchezza raccontato con ironia. La normalita e cio che la avvicina alla sua audience.</div>
+        <div class="mood-el"><strong>Traguardi condivisi, non solitari</strong> - quando raggiunge un risultato lo celebra insieme al team. Non "ce l'ho fatta io": "ce l'abbiamo fatta noi". Questo rafforza il senso di community.</div>
+        <div class="mood-el"><strong>Luce calda e naturale</strong> - finestra di casa, ore diurne. Tonalita rosa e peach. Mai flash frontali. Mai sfondi neutri da studio. L'ambiente rivela la persona.</div>
+        <div class="mood-el"><strong>Momenti con le figlie</strong> - non come strumento di impietosimento ma come prova vivente: si puo essere madri presenti e costruire qualcosa di importante allo stesso tempo. Questo e il cuore del suo messaggio.</div>
+        <div class="mood-el"><strong>Il percorso, non solo l'arrivo</strong> - mostra la strada, gli errori, le difficolta superate. Non aspetta di avere tutto perfetto per parlarne. La crescita si racconta mentre accade.</div>
+      </div>
+      <div class="mood-never reveal d3">
+        <h4>Non appare mai</h4>
+        <ul>
+          <li>Promesse facili o numeri senza contesto reale</li>
+          <li>Lifestyle aspirazionale che non corrisponde alla sua vita reale</li>
+          <li>Linguaggio da venditrice aggressiva o urgenza forzata</li>
+          <li>Prodotti in primo piano nel feed senza una storia che li motivi</li>
+          <li>Confronti con altre leader o con il settore</li>
+          <li>Filtri forti o estetica da influencer costruita</li>
+          <li>La parola "facile" - perche non lo e mai stata</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom">
+  </div>
+  <div class="footer-info">
+    Documento riservato - Brand Identity Laura Bettega / BlooMind<br>
+    Prodotto da WeBloom &nbsp;·&nbsp; <a href="mailto:info@webloom.it">info@webloom.it</a> &nbsp;·&nbsp; Giugno 2026<br>
+    <a href="https://nicolapin82-png.github.io/Webloom/laura-bettega/laura_bettega_brand_identity.html">Brand Identity</a>
+    &nbsp;·&nbsp;
+    <a href="https://nicolapin82-png.github.io/Webloom/laura-bettega/laura_bettega_piano_editoriale.html">Piano Editoriale &rarr;</a>
+    &nbsp;·&nbsp;
+    <a href="https://nicolapin82-png.github.io/Webloom/laura-bettega/laura_bettega_script_contenuti.html">Script &amp; Copy &rarr;</a>
+    &nbsp;·&nbsp;
+    <a href="https://nicolapin82-png.github.io/Webloom/laura-bettega/laura_bettega_template_caroselli.html">Template Caroselli &rarr;</a>
+  </div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');}
+  });
+},{threshold:0.12});
+reveals.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
