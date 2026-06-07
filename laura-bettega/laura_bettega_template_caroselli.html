@@ -6,7 +6,7 @@
 <meta http-equiv="Expires" content="0">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Template Caroselli - Laura Bettega / BlooMind</title>
+<title>LB - Caroselli BlooMind</title>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,500;1,6..96,600;1,6..96,700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -147,9 +147,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .c3-slide .s-cta-main em{color:rgba(201,168,76,0.92);}
 .s-cta-sub{font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;font-family:'Raleway',sans-serif;color:rgba(255,255,255,0.50);}
 
-/* BlooMind logo: top-right */
-.bm-mark{position:absolute;top:4px;left:5px;z-index:5;bottom:auto;right:auto;transform:none;}
-.bm-mark img{height:92px;width:auto;opacity:0.93;filter:drop-shadow(0 1px 5px rgba(0,0,0,0.40));}
+/* BlooMind logo: angolo top-left */
+.bm-mark{position:absolute !important;top:0 !important;left:0 !important;z-index:10 !important;bottom:auto !important;right:auto !important;transform:none !important;}
+.bm-mark img{height:80px;width:auto;opacity:0.90;filter:drop-shadow(0 1px 6px rgba(0,0,0,0.50));}
 
 /* SEZIONI */
 .car-section{max-width:1000px;margin:0 auto;padding:48px 44px;}
@@ -161,10 +161,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 @media(max-width:768px){.car-section{padding:36px 14px;}}
 
 /* FOOTER */
-footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
-.footer-logo img{height:34px;}
-.footer-info{font-size:0.74rem;color:var(--muted);line-height:1.9;}
+footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:32px;}
+.footer-logo{display:flex;flex-direction:column;gap:16px;}
+.footer-logo .fl-bm img{height:72px;width:auto;display:block;}
+.footer-logo .fl-wbl img{height:26px;width:auto;opacity:0.45;display:block;}
+.footer-info{font-size:0.74rem;color:var(--muted);line-height:2.0;}
+.footer-info strong{display:block;color:var(--ivory);font-size:0.84rem;margin-bottom:8px;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:500;}
 .footer-info a{color:var(--warm);text-decoration:none;}
+.footer-info a:hover{text-decoration:underline;}
+.footer-nav{margin-top:6px;padding-top:10px;border-top:1px solid var(--sep);}
 @media(max-width:768px){footer{padding:40px 18px;flex-direction:column;align-items:flex-start;}}
 
 /* RESPONSIVE */
@@ -334,12 +339,21 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
 </div>
 
 <footer>
-  <div class="footer-logo"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
+  <div class="footer-logo">
+    <div class="fl-bm"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
+    <div class="fl-wbl"><img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom"></div>
+  </div>
   <div class="footer-info">
-    <a href="https://nicolapin82-png.github.io/Webloom/laura-bettega/laura_bettega_brand_identity.html">Brand Identity</a> &nbsp;&middot;&nbsp;
-    <a href="https://nicolapin82-png.github.io/Webloom/laura-bettega/laura_bettega_piano_editoriale.html">Piano Editoriale</a> &nbsp;&middot;&nbsp;
-    <a href="https://nicolapin82-png.github.io/Webloom/laura-bettega/laura_bettega_script_contenuti.html">Script &amp; Copy</a> &nbsp;&middot;&nbsp;
-    <a href="https://nicolapin82-png.github.io/Webloom/laura-bettega/laura_bettega_template_caroselli.html">Caroselli</a>
+    <strong>Laura Bettega</strong>
+    Instagram: <a href="https://instagram.com/laura.bettega" target="_blank">@laura.bettega</a><br>
+    Progetto realizzato da <a href="https://webloom1.it" target="_blank">WeBloom</a> per <a href="https://bloomind.it" target="_blank">BlooMind</a><br>
+    &copy; 2026 BlooMind - Tutti i diritti riservati
+    <div class="footer-nav">
+      <a href="https://nicolapin82-png.github.io/Webloom/laura-bettega/laura_bettega_brand_identity.html">Brand Identity</a> &nbsp;&middot;&nbsp;
+      <a href="https://nicolapin82-png.github.io/Webloom/laura-bettega/laura_bettega_piano_editoriale.html">Piano Editoriale</a> &nbsp;&middot;&nbsp;
+      <a href="https://nicolapin82-png.github.io/Webloom/laura-bettega/laura_bettega_script_contenuti.html">Script &amp; Copy</a> &nbsp;&middot;&nbsp;
+      <a href="https://nicolapin82-png.github.io/Webloom/laura-bettega/laura_bettega_template_caroselli.html">Caroselli</a>
+    </div>
   </div>
 </footer>
 
