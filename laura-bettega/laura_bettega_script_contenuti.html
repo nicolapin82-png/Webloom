@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Script & Contenuti - Laura Bettega / BlooMind</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1A0A0E;--bg2:#2A1014;--card:rgba(40,8,16,0.65);--dark:#3A1418;
+  --warm:#D44478;--warm-lt:#E88AAE;--rose:#E8854A;--rose-lt:#F0A87A;
+  --gold:#C9A84C;--ivory:#F8F4EF;--muted:rgba(248,244,239,0.75);
+  --border:rgba(212,68,120,0.25);--sep:rgba(201,168,76,0.18);--radius:8px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{background:var(--bg);color:var(--ivory);font-family:'Open Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--warm);border-radius:2px;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;padding:0 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(26,5,10,0.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,68,120,0.18);}
+.nav-logo img{height:180px;width:auto;display:block;}
+.nav-wbl img{height:40px;width:auto;opacity:1;display:block;}
+.nav-bloomind-img{height:180px;width:auto;display:block;}
+.nav-webloom-img{height:40px;width:auto;opacity:1;display:block;}
+@media(max-width:768px){
+  .nav-logo{max-width:50%;overflow:hidden;}
+  .nav-logo img{height:110px !important;width:100% !important;object-fit:contain !important;object-position:center bottom !important;}
+  .nav-wbl{flex-shrink:0;}
+  .nav-wbl img{height:26px !important;width:auto !important;}
+}
+
+#hero{min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 40%,rgba(212,68,120,0.10) 0%,transparent 65%);}
+.hero-eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--warm);margin-bottom:20px;opacity:0;animation:fadeUp 0.8s ease forwards 0.3s;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(2.2rem,6vw,5rem);font-weight:600;line-height:1.1;color:var(--ivory);opacity:0;animation:fadeUp 0.8s ease forwards 0.5s;}
+.hero-title span{background:linear-gradient(135deg,var(--rose-lt),var(--warm),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-family:'Libre Baskerville',serif;font-size:1.1rem;color:var(--muted);font-style:italic;margin-top:14px;opacity:0;animation:fadeUp 0.8s ease forwards 0.7s;}
+.hero-divider{width:0;height:1px;background:linear-gradient(90deg,transparent,var(--warm),transparent);margin:28px auto 0;animation:expand 1s ease forwards 0.9s;}
+@keyframes expand{to{width:80px}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.section{padding:80px 24px;max-width:1100px;margin:0 auto;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.section-label::before{content:'';display:inline-block;width:18px;height:1px;background:var(--gold);}
+.section-title{font-family:'Libre Baskerville',serif;font-size:clamp(1.6rem,3vw,2.6rem);font-weight:500;line-height:1.2;margin-bottom:12px;}
+.section-desc{font-size:0.9rem;color:var(--muted);max-width:580px;margin-bottom:40px;line-height:1.85;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+/* HOOK GRIDS */
+.hooks-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;margin-top:36px;}
+.hook-block{padding:28px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);position:relative;overflow:hidden;}
+.hook-block::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.hook-block.p1::before{background:linear-gradient(90deg,var(--rose),var(--warm));}
+.hook-block.p2::before{background:linear-gradient(90deg,var(--warm),var(--gold));}
+.hook-block.p3::before{background:linear-gradient(90deg,var(--gold),var(--rose-lt));}
+.hook-pillar{font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.hook-list{list-style:none;display:flex;flex-direction:column;gap:16px;}
+.hook-list li{font-family:'Libre Baskerville',serif;font-size:0.95rem;color:var(--ivory);font-style:italic;line-height:1.65;padding-left:18px;position:relative;}
+.hook-list li::before{content:'"';position:absolute;left:0;color:var(--warm);font-size:1.2rem;line-height:1.3;}
+
+/* CAPTION TEMPLATES */
+.caption-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;margin-top:36px;}
+.caption-card{padding:32px 28px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);}
+.caption-pillar{font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--warm);margin-bottom:14px;}
+.caption-title{font-family:'Libre Baskerville',serif;font-size:1.1rem;color:var(--ivory);margin-bottom:16px;font-weight:500;}
+.caption-template{font-size:0.84rem;color:var(--muted);line-height:1.9;}
+.caption-template .placeholder{color:var(--warm-lt);font-weight:600;}
+.caption-note{margin-top:14px;font-size:0.72rem;color:rgba(248,244,239,0.38);border-top:1px solid var(--sep);padding-top:12px;}
+
+/* STORIES */
+.stories-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:36px;}
+.story-card{padding:28px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);}
+.story-num{font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.story-theme{font-family:'Libre Baskerville',serif;font-size:1.1rem;color:var(--ivory);margin-bottom:18px;font-weight:500;}
+.story-taps{display:flex;flex-direction:column;gap:10px;}
+.tap{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;}
+.tap-num{font-size:0.62rem;letter-spacing:2px;font-weight:700;color:var(--warm);padding-top:2px;}
+.tap-text{font-size:0.82rem;color:var(--muted);line-height:1.7;}
+
+/* CTA */
+.cta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:36px;}
+.cta-card{padding:24px 24px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);position:relative;}
+.cta-context{font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.cta-text{font-family:'Libre Baskerville',serif;font-size:1rem;color:var(--ivory);font-style:italic;line-height:1.55;}
+.cta-copy-btn{position:absolute;top:12px;right:12px;background:rgba(212,68,120,0.15);border:1px solid rgba(212,68,120,0.3);color:var(--warm);font-size:0.65rem;letter-spacing:1px;padding:4px 10px;border-radius:100px;cursor:pointer;transition:background 0.2s;}
+.cta-copy-btn:hover{background:rgba(212,68,120,0.28);}
+
+/* DM */
+.dm-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px;}
+.dm-card{padding:32px 28px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);}
+.dm-context{font-size:0.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--warm);margin-bottom:12px;}
+.dm-title{font-family:'Libre Baskerville',serif;font-size:1rem;color:var(--ivory);margin-bottom:14px;font-weight:500;}
+.dm-text{font-size:0.84rem;color:var(--muted);line-height:1.9;}
+.dm-text .highlight{color:var(--warm-lt);}
+
+/* VOCAB */
+.vocab-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px;}
+.vocab-col h3{font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;}
+.vocab-col.usa h3{color:var(--warm);}
+.vocab-col.evita h3{color:#e07070;}
+.vocab-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.vocab-tag{font-size:0.75rem;padding:6px 14px;border-radius:100px;border:1px solid;}
+.vocab-tag.usa-tag{color:var(--warm-lt);border-color:rgba(212,68,120,0.35);background:rgba(212,68,120,0.08);}
+.vocab-tag.evita-tag{color:#e07070;border-color:rgba(224,112,112,0.3);background:rgba(224,112,112,0.06);}
+
+footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.footer-logo img{height:34px;opacity:1;}
+.footer-info{font-size:0.75rem;color:var(--muted);line-height:1.9;}
+.footer-info a{color:var(--warm);text-decoration:none;}
+
+@media(max-width:768px){
+  .section{padding:60px 20px;}
+  .dm-grid,.vocab-grid{grid-template-columns:1fr;}
+  footer{padding:40px 20px;flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind" class="nav-bloomind-img">
+  </div>
+  <div class="nav-wbl">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom" class="nav-webloom-img">
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <p class="hero-eyebrow">Script &amp; Copy Guide</p>
+  <h1 class="hero-title">Laura <span>Bettega</span></h1>
+  <p class="hero-sub">Voce, tono, aperture e CTA &nbsp;·&nbsp; BlooMind 2026</p>
+  <div class="hero-divider"></div>
+</section>
+
+<!-- OPENING HOOKS REEL -->
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">01 - Aperture reel</p>
+    <h2 class="section-title">Opening hooks per ogni pillar</h2>
+    <p class="section-desc">Le prime 3-5 secondi di un reel decidono tutto. Questi hook sono scritti sulla voce di Laura: diretta, personale, senza filtri. Usare letteralmente o adattare al momento.</p>
+  </div>
+  <div class="hooks-grid">
+    <div class="hook-block p1 reveal d1">
+      <p class="hook-pillar">Pillar 01 - Coraggio &amp; Permesso</p>
+      <ul class="hook-list">
+        <li>Ti dico una cosa che non ti aspetti: il giorno piu' importante della mia vita e' stato il giorno in cui ho avuto paura e ho fatto lo stesso.</li>
+        <li>Ho perso mio padre a 15 anni. Mia sorella ne aveva 9. Ti racconto come questo ha a che fare con quello che faccio oggi.</li>
+        <li>In pandemia, con due figlie piccole, ho venduto il bar. La gente mi diceva che ero pazza. Guarda come e' andata.</li>
+        <li>Il mio zio mi ha insegnato una cosa sola prima di morire: se lavori col cuore, non sarai mai povera. Ci ho messo anni a capirlo davvero.</li>
+      </ul>
+    </div>
+    <div class="hook-block p2 reveal d2">
+      <p class="hook-pillar">Pillar 02 - Indipendenza Economica</p>
+      <ul class="hook-list">
+        <li>Quanto devi guadagnare per smettere di chiedere il permesso di spendere i tuoi soldi? Te lo chiedo perche' e' la domanda giusta.</li>
+        <li>Una del mio team stamattina ha comprato qualcosa. Senza chiedere niente a nessuno. Sembra banale. Non lo e'.</li>
+        <li>Non parlo di soldi per vantarmi. Parlo di soldi perche' l'indipendenza economica e' l'indipendenza vera - quella che nessuno puo' toglierti.</li>
+        <li>Ti faccio una domanda scomoda: l'ultimo acquisto che hai fatto, l'hai deciso tu? Solo tu?</li>
+      </ul>
+    </div>
+    <div class="hook-block p3 reveal d3">
+      <p class="hook-pillar">Pillar 03 - BlooMind &amp; Community</p>
+      <ul class="hook-list">
+        <li>Non cerco chi e' gia' pronta. Cerco chi ha voglia di diventarlo. C'e' una differenza enorme tra le due cose.</li>
+        <li>Guarda cosa succede nel mio team questa settimana. Non te lo sto raccontando: te lo sto mostrando.</li>
+        <li>Ho portato con me donne che non si conoscevano. Oggi si supportano ogni giorno. Ti racconto come.</li>
+        <li>Non ti sto chiedendo di credere subito. Ti sto chiedendo 15 minuti. Poi decidi tu.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CAPTION TEMPLATES -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">02 - Caption templates</p>
+    <h2 class="section-title">Struttura delle didascalie</h2>
+    <p class="section-desc">Tre template, uno per pillar. La struttura e': hook di apertura + sviluppo personale + chiusura con CTA. I segnaposto in evidenza vanno sostituiti con il contenuto specifico.</p>
+  </div>
+  <div class="caption-grid">
+    <div class="caption-card reveal d1">
+      <p class="caption-pillar">Pillar 01</p>
+      <div class="caption-title">Template Coraggio &amp; Storia personale</div>
+      <div class="caption-template">
+        <span class="placeholder">[APERTURA CON DETTAGLIO SPECIFICO - es. "A 15 anni ho perso mio padre."]</span><br><br>
+        Non te lo dico per impietosirmi. Te lo dico perche' <span class="placeholder">[come questo ha cambiato il tuo modo di vedere il lavoro / la vita / le scelte]</span>.<br><br>
+        Ogni cosa che ho costruito dopo - il bar, il network, questo team - viene da li'. Viene dal capire presto che <span class="placeholder">[la lezione estratta]</span>.<br><br>
+        Se hai una storia simile: scrivimi in DM. Voglio conoscerti.
+      </div>
+      <p class="caption-note">Lunghezza ideale: 5-7 righe. Niente hashtag nel corpo - al massimo 3 in fondo.</p>
+    </div>
+    <div class="caption-card reveal d2">
+      <p class="caption-pillar">Pillar 02</p>
+      <div class="caption-title">Template Indipendenza Economica</div>
+      <div class="caption-template">
+        <span class="placeholder">[DOMANDA DIRETTA o OSSERVAZIONE CONCRETA - es. "L'ultimo acquisto che hai fatto, l'hai deciso tu?"]</span><br><br>
+        <span class="placeholder">[Esempio dal team o dalla tua vita - specifico, reale, senza gonfiare i numeri]</span>.<br><br>
+        Non e' un sogno lontano. E' una scelta che si puo' fare - con il metodo giusto e il supporto giusto.<br><br>
+        Se sei curiosa di sapere come: scrivimi in DM.
+      </div>
+      <p class="caption-note">Evitare cifre specifiche senza contesto. Puntare su trasformazione, non su guadagno.</p>
+    </div>
+    <div class="caption-card reveal d3">
+      <p class="caption-pillar">Pillar 03</p>
+      <div class="caption-title">Template BlooMind &amp; Social Proof</div>
+      <div class="caption-template">
+        <span class="placeholder">[NOME o "Una del mio team"]</span> questo mese ha <span class="placeholder">[traguardo raggiunto - senza qualifiche specifiche]</span>.<br><br>
+        Non lo racconto per vantarmi. Lo racconto perche' <span class="placeholder">[nome]</span> era come te quando ha iniziato: <span class="placeholder">[dettaglio che la rende identificabile]</span>. E ha fatto lo stesso.<br><br>
+        Se vuoi essere la prossima: scrivimi in DM.
+      </div>
+      <p class="caption-note">Non nominare DuoLife nel feed. Il traguardo puo' essere un comportamento, non solo un risultato economico.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STORIES SCRIPTS -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">03 - Stories scripts</p>
+    <h2 class="section-title">Script storie quotidiane (3-tap)</h2>
+    <p class="section-desc">Ogni sequenza stories e' su 3 tap: apertura che aggancia, sviluppo che da' valore, chiusura con azione. Testi pronti all'uso - adattare il dettaglio al giorno specifico.</p>
+  </div>
+  <div class="stories-grid">
+    <div class="story-card reveal d1">
+      <p class="story-num">Script 01</p>
+      <div class="story-theme">Storytelling personale</div>
+      <div class="story-taps">
+        <div class="tap"><span class="tap-num">1/3</span><span class="tap-text">Stamattina ho ricevuto un messaggio che mi ha fermata. [Mostra la notifica o racconta di cosa si tratta - un risultato di una delle tue ragazze, una risposta inaspettata]</span></div>
+        <div class="tap"><span class="tap-num">2/3</span><span class="tap-text">[Sviluppa: cosa ha scritto, cosa significa per te, perche' ti ha colpita]. Questo e' il motivo per cui faccio quello che faccio ogni giorno. Non per i numeri: per questi momenti.</span></div>
+        <div class="tap"><span class="tap-num">3/3</span><span class="tap-text">Se vuoi fare parte di questo: scrivimi. Sto cercando [numero] donne questo mese. Riscrivo personalmente entro 24 ore.</span></div>
+      </div>
+    </div>
+    <div class="story-card reveal d2">
+      <p class="story-num">Script 02</p>
+      <div class="story-theme">Educazionale / Valore rapido</div>
+      <div class="story-taps">
+        <div class="tap"><span class="tap-num">1/3</span><span class="tap-text">3 cose che nessuno ti dice prima di iniziare il network marketing. [1/3]: Non tutti i network sono uguali. Il prodotto conta meno di quanto pensi - il sistema e' tutto.</span></div>
+        <div class="tap"><span class="tap-num">2/3</span><span class="tap-text">[2/3]: I soldi veri non arrivano subito. E chi ti dice il contrario ti sta mentendo. Il network e' un lavoro - con i suoi tempi e la sua curva di apprendimento.</span></div>
+        <div class="tap"><span class="tap-num">3/3</span><span class="tap-text">[3/3]: Il supporto fa la differenza tra chi molla e chi resta. Vuoi sapere come funziona il supporto nel mio team? Scrivimi "TEAM" in DM.</span></div>
+      </div>
+    </div>
+    <div class="story-card reveal d3">
+      <p class="story-num">Script 03</p>
+      <div class="story-theme">Recruiting diretto</div>
+      <div class="story-taps">
+        <div class="tap"><span class="tap-num">1/3</span><span class="tap-text">Sto cercando 3 donne. Non cerco chi sa gia' fare tutto. Cerco chi ha voglia di imparare mentre costruisce qualcosa di suo.</span></div>
+        <div class="tap"><span class="tap-num">2/3</span><span class="tap-text">Caratteristiche che cerco: ambiziose (anche se non lo dicono ad alta voce), disponibili a imparare cose nuove, che non si accontentano di dove sono. Mamma, lavoratrice, libera professionista: non importa il punto di partenza.</span></div>
+        <div class="tap"><span class="tap-num">3/3</span><span class="tap-text">Sei tu? Scrivimi "TEAM" in DM. Ti rispondo io personalmente entro 24 ore.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA TEMPLATES -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">04 - CTA templates</p>
+    <h2 class="section-title">Chiamate all'azione</h2>
+    <p class="section-desc">Sei varianti di CTA, da usare nei reel, nelle caption e nelle stories. Non usare sempre la stessa - ruotarle per non sembrare ripetitiva.</p>
+  </div>
+  <div class="cta-grid">
+    <div class="cta-card reveal d1">
+      <p class="cta-context">Reel - Tono neutro</p>
+      <div class="cta-text">"Non ti chiedo di credere subito. Ti chiedo 15 minuti per ascoltare. Poi decidi tu."</div>
+      <button class="cta-copy-btn" onclick="copyText(this,'Non ti chiedo di credere subito. Ti chiedo 15 minuti per ascoltare. Poi decidi tu.')">Copia</button>
+    </div>
+    <div class="cta-card reveal d2">
+      <p class="cta-context">Caption - Tono empatico</p>
+      <div class="cta-text">"Se ti sei riconosciuta in qualcosa di quello che ho detto: scrivimi in DM. Sono curiosa di sentirti."</div>
+      <button class="cta-copy-btn" onclick="copyText(this,'Se ti sei riconosciuta in qualcosa di quello che ho detto: scrivimi in DM. Sono curiosa di sentirti.')">Copia</button>
+    </div>
+    <div class="cta-card reveal d3">
+      <p class="cta-context">Stories - Urgenza soft</p>
+      <div class="cta-text">"Faccio spazio per 3 nuove persone questo mese. Se sei curiosa, scrivimi prima di venerdi'."</div>
+      <button class="cta-copy-btn" onclick="copyText(this,'Faccio spazio per 3 nuove persone questo mese. Se sei curiosa, scrivimi prima di venerdì.')">Copia</button>
+    </div>
+    <div class="cta-card reveal d1">
+      <p class="cta-context">Reel - Tono diretto</p>
+      <div class="cta-text">"Non sono qui per convincerti di niente. Sono qui per mostrarti cosa e' possibile. Scrivimi se vuoi."</div>
+      <button class="cta-copy-btn" onclick="copyText(this,'Non sono qui per convincerti di niente. Sono qui per mostrarti cosa è possibile. Scrivimi se vuoi.')">Copia</button>
+    </div>
+    <div class="cta-card reveal d2">
+      <p class="cta-context">Caption - Parola chiave</p>
+      <div class="cta-text">"Scrivi 'INFO' in DM e ti mando tutto quello che devi sapere."</div>
+      <button class="cta-copy-btn" onclick="copyText(this,'Scrivi INFO in DM e ti mando tutto quello che devi sapere.')">Copia</button>
+    </div>
+    <div class="cta-card reveal d3">
+      <p class="cta-context">Stories - Offerta tempo</p>
+      <div class="cta-text">"Ho 15 minuti da dedicarti questa settimana. Basta quello per capire se ha senso parlarne."</div>
+      <button class="cta-copy-btn" onclick="copyText(this,'Ho 15 minuti da dedicarti questa settimana. Basta quello per capire se ha senso parlarne.')">Copia</button>
+    </div>
+  </div>
+</section>
+
+<!-- DM TEMPLATES -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">05 - DM templates</p>
+    <h2 class="section-title">Prima risposta in Direct Message</h2>
+    <p class="section-desc">Due versioni della prima risposta DM, a seconda di come si apre la conversazione. Scrivere sempre in prima persona, senza script rigidi - usare questi come punto di partenza.</p>
+  </div>
+  <div class="dm-grid">
+    <div class="dm-card reveal d1">
+      <p class="dm-context">Chi chiede informazioni dirette</p>
+      <div class="dm-title">Risposta apertura conversazione</div>
+      <div class="dm-text">
+        Ciao <span class="highlight">[nome]</span>! Sono contenta che tu abbia scritto.<br><br>
+        Per capire se posso davvero esserti utile, ti faccio una domanda: qual e' la tua situazione attuale? Lavori, sei mamma a tempo pieno, cerchi qualcosa da affiancare?<br><br>
+        Dimmi pure tutto, senza filtri. Non ho fretta e non ti vendo niente prima di aver capito di cosa hai bisogno davvero.
+      </div>
+    </div>
+    <div class="dm-card reveal d2">
+      <p class="dm-context">Chi e' curiosa ma non sa bene cosa vuole</p>
+      <div class="dm-title">Risposta approccio gentile</div>
+      <div class="dm-text">
+        Ciao <span class="highlight">[nome]</span>! Grazie per aver scritto - ci vuole coraggio, lo so.<br><br>
+        Ti dico come funziona: ho 15 minuti da dedicarti per raccontarti cosa faccio e capire se puo' avere senso anche per te.<br><br>
+        Nessuna pressione, nessuna fretta. Se poi non fa per te, va benissimo lo stesso. Sei libera questa settimana per una chiamata veloce?
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOCAB -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">06 - Vocabolario del brand</p>
+    <h2 class="section-title">Parole da usare e da evitare</h2>
+    <p class="section-desc">La coerenza linguistica costruisce il brand nel tempo. Queste parole definiscono la voce di Laura in ogni formato - dai reel alle stories, dalle caption ai DM.</p>
+  </div>
+  <div class="vocab-grid">
+    <div class="vocab-col usa reveal d1">
+      <h3>Usa sempre</h3>
+      <div class="vocab-tags">
+        <span class="vocab-tag usa-tag">cuore</span>
+        <span class="vocab-tag usa-tag">permesso</span>
+        <span class="vocab-tag usa-tag">costruire</span>
+        <span class="vocab-tag usa-tag">donne vere</span>
+        <span class="vocab-tag usa-tag">passo concreto</span>
+        <span class="vocab-tag usa-tag">supporto</span>
+        <span class="vocab-tag usa-tag">team</span>
+        <span class="vocab-tag usa-tag">insieme</span>
+        <span class="vocab-tag usa-tag">risultato reale</span>
+        <span class="vocab-tag usa-tag">indipendenza</span>
+        <span class="vocab-tag usa-tag">ascolto</span>
+        <span class="vocab-tag usa-tag">ad occhi chiusi</span>
+      </div>
+    </div>
+    <div class="vocab-col evita reveal d2">
+      <h3>Non usare mai</h3>
+      <div class="vocab-tags">
+        <span class="vocab-tag evita-tag">guadagna subito</span>
+        <span class="vocab-tag evita-tag">facile</span>
+        <span class="vocab-tag evita-tag">rivoluzionario</span>
+        <span class="vocab-tag evita-tag">sistema</span>
+        <span class="vocab-tag evita-tag">funnel</span>
+        <span class="vocab-tag evita-tag">guru</span>
+        <span class="vocab-tag evita-tag">lifestyle</span>
+        <span class="vocab-tag evita-tag">successo garantito</span>
+        <span class="vocab-tag evita-tag">tutti possono</span>
+        <span class="vocab-tag evita-tag">DuoLife nel feed</span>
+        <span class="vocab-tag evita-tag">brucia grassi</span>
+        <span class="vocab-tag evita-tag">mercenaria</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom">
+  </div>
+  <div class="footer-info">
+    Documento riservato &nbsp;·&nbsp; Laura Bettega / BlooMind &nbsp;·&nbsp; Prodotto da WeBloom &nbsp;·&nbsp; <a href="mailto:info@webloom.it">info@webloom.it</a> &nbsp;·&nbsp; Giugno 2026<br>
+    <a href="https://nicolapin82-png.github.io/Webloom/laura-bettega/laura_bettega_brand_identity.html">Brand Identity</a>
+    &nbsp;·&nbsp;
+    <a href="https://nicolapin82-png.github.io/Webloom/laura-bettega/laura_bettega_piano_editoriale.html">Piano Editoriale</a>
+    &nbsp;·&nbsp;
+    <a href="https://nicolapin82-png.github.io/Webloom/laura-bettega/laura_bettega_script_contenuti.html">Script &amp; Copy</a>
+    &nbsp;·&nbsp;
+    <a href="https://nicolapin82-png.github.io/Webloom/laura-bettega/laura_bettega_template_caroselli.html">Template Caroselli &rarr;</a>
+  </div>
+</footer>
+
+<script>
+function copyText(btn,text){
+  navigator.clipboard.writeText(text).then(()=>{
+    const orig=btn.textContent;
+    btn.textContent='Copiato!';
+    setTimeout(()=>btn.textContent=orig,2000);
+  });
+}
+const reveals=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
+reveals.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
