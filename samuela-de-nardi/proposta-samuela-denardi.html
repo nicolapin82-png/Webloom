@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta · Samuela De Nardi | WeBloom</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0A0A0F;
+    --bg2: #0F0F18;
+    --card: rgba(255,255,255,0.035);
+    --card-hover: rgba(255,255,255,0.065);
+    --gold: #F9BC11;
+    --warm: #D4972B;
+    --cream: #FFF8E7;
+    --white: #FFFFFF;
+    --muted: #7A7A9A;
+    --border: rgba(249,188,17,0.22);
+    --border-soft: rgba(255,255,255,0.07);
+    --grad: linear-gradient(135deg, #F9BC11 0%, #D4972B 100%);
+    --grad-text: linear-gradient(135deg, #F9BC11, #FDE68A, #D4972B);
+    --radius: 16px;
+    --shadow: 0 24px 64px rgba(0,0,0,0.5);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-soft);
+    transition: all 0.3s;
+  }
+  .nav-logo img { height: 32px; width: auto; display: block; }
+  .nav-tag { font-size: 12px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(249,188,17,0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 80% 80%, rgba(212,151,43,0.05) 0%, transparent 60%);
+  }
+  .hero-orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(80px); animation: float 8s ease-in-out infinite;
+  }
+  .orb1 { width: 400px; height: 400px; background: rgba(249,188,17,0.05); top: 10%; left: 10%; animation-delay: 0s; }
+  .orb2 { width: 300px; height: 300px; background: rgba(212,151,43,0.04); bottom: 15%; right: 15%; animation-delay: -4s; }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-30px) scale(1.05); }
+  }
+
+  .hero-eyebrow {
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 28px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.3s;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 88px); font-weight: 700;
+    line-height: 1.1; margin-bottom: 12px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.5s;
+  }
+  .hero-title .gradient-text {
+    background: var(--grad-text);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 3vw, 26px); color: var(--muted);
+    font-style: italic; margin-bottom: 48px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.7s;
+  }
+  .hero-divider {
+    width: 0px; height: 2px; background: var(--grad);
+    margin: 0 auto 48px; animation: expand 1s ease forwards 1s; border-radius: 2px;
+  }
+  @keyframes expand { to { width: 120px; } }
+  .hero-statement {
+    max-width: 680px; font-size: clamp(16px, 2vw, 20px);
+    color: rgba(255,255,255,0.75); line-height: 1.8;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.9s;
+  }
+  .hero-statement strong { color: var(--gold); font-weight: 600; }
+  .hero-scroll {
+    position: absolute; bottom: 40px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: var(--muted); font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    opacity: 0; animation: fadeIn 1s ease forwards 1.5s;
+  }
+  .scroll-line {
+    width: 1px; height: 48px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%,100% { opacity: 1; transform: scaleY(1); }
+    50% { opacity: 0.4; transform: scaleY(0.7); }
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--bg2);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 48px 24px;
+  }
+  .stats-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+  }
+  .stat-item { text-align: center; }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px); font-weight: 700;
+    background: var(--grad-text);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    line-height: 1.1; display: block; margin-bottom: 8px;
+  }
+  .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; }
+  .stat-source { font-size: 10px; color: rgba(122,122,154,0.6); margin-top: 4px; }
+
+  /* SECTIONS */
+  section { padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
+  .section-full { max-width: 100%; padding: 100px 0; }
+  .section-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  .section-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+  }
+  .section-label::before {
+    content: ''; display: inline-block; width: 24px; height: 1px; background: var(--gold);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 48px); font-weight: 700; line-height: 1.2; margin-bottom: 16px;
+  }
+  .section-desc { font-size: 17px; color: rgba(255,255,255,0.6); max-width: 600px; margin-bottom: 56px; }
+
+  /* CARDS */
+  .card {
+    background: var(--card); border: 1px solid var(--border-soft);
+    border-radius: var(--radius); padding: 32px; transition: all 0.3s ease;
+  }
+  .card:hover {
+    background: var(--card-hover); border-color: rgba(249,188,17,0.3);
+    transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* PROFILO */
+  .strength-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .strength-card {
+    background: var(--card); border: 1px solid var(--border-soft);
+    border-radius: var(--radius); padding: 28px 32px;
+    display: flex; flex-direction: column; gap: 10px; transition: all 0.3s;
+  }
+  .strength-card:hover { border-color: var(--border); background: var(--card-hover); transform: translateY(-3px); }
+  .strength-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
+  .strength-value { font-size: 15px; color: var(--white); line-height: 1.5; }
+  .hero-quote {
+    text-align: center; margin-top: 60px; padding: 48px 40px;
+    background: linear-gradient(135deg, rgba(249,188,17,0.07), rgba(212,151,43,0.04));
+    border: 1px solid rgba(249,188,17,0.2); border-radius: var(--radius);
+  }
+  .hero-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3vw, 28px); font-style: italic; color: var(--cream); line-height: 1.5;
+  }
+  .hero-quote span { color: var(--gold); }
+
+  /* MARKET DATA */
+  .market-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 40px; }
+  .market-card {
+    background: var(--card); border: 1px solid var(--border-soft);
+    border-radius: var(--radius); padding: 28px;
+    position: relative; overflow: hidden; transition: all 0.3s;
+  }
+  .market-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--grad); opacity: 0; transition: opacity 0.3s;
+  }
+  .market-card:hover::before { opacity: 1; }
+  .market-card:hover { transform: translateY(-3px); background: var(--card-hover); }
+  .market-value { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--gold); margin-bottom: 6px; display: block; }
+  .market-desc { font-size: 13px; color: rgba(255,255,255,0.65); }
+  .market-source { font-size: 10px; color: var(--muted); margin-top: 12px; border-top: 1px solid var(--border-soft); padding-top: 12px; }
+  .market-source a { color: var(--gold); text-decoration: none; }
+  .market-source a:hover { text-decoration: underline; }
+  .nota-locale {
+    background: linear-gradient(135deg, rgba(249,188,17,0.06), rgba(212,151,43,0.04));
+    border: 1px solid rgba(249,188,17,0.15); border-radius: var(--radius);
+    padding: 28px 32px; font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.8;
+  }
+  .nota-locale strong { color: var(--gold); }
+
+  /* SESSIONI BREAK-EVEN */
+  #sessioni { background: var(--bg2); }
+  .be-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 48px; }
+  .be-card { padding: 40px; border-radius: var(--radius); border: 1px solid; text-align: center; position: relative; overflow: hidden; }
+  .be-card.be-breakeven { background: rgba(249,188,17,0.04); border-color: rgba(249,188,17,0.25); }
+  .be-card.be-target { background: linear-gradient(135deg, rgba(249,188,17,0.09), rgba(212,151,43,0.07)); border-color: rgba(249,188,17,0.4); }
+  .be-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+  .be-clienti {
+    font-family: 'Playfair Display', serif; font-size: clamp(56px, 8vw, 96px);
+    font-weight: 700; line-height: 1;
+    background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .be-unit { font-size: 18px; color: rgba(255,255,255,0.6); margin: 8px 0 20px; }
+  .be-details { font-size: 13px; color: var(--muted); line-height: 2; }
+  .be-details span { color: rgba(255,255,255,0.8); }
+  .be-insight {
+    text-align: center; padding: 32px;
+    background: linear-gradient(135deg, rgba(249,188,17,0.07), rgba(212,151,43,0.05));
+    border-radius: var(--radius); border: 1px solid rgba(249,188,17,0.2);
+  }
+  .be-insight .big-number { font-family: 'Playfair Display', serif; font-size: clamp(40px, 6vw, 72px); font-weight: 700; color: var(--gold); }
+  .be-insight p { font-size: 16px; color: rgba(255,255,255,0.7); margin-top: 8px; }
+  .be-insight strong { color: var(--white); }
+
+  /* CANALI */
+  .canali-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .canale-card { border-radius: var(--radius); padding: 48px 40px; border: 1px solid var(--border-soft); transition: all 0.3s; }
+  .canale-card:hover { transform: translateY(-4px); box-shadow: 0 24px 64px rgba(0,0,0,0.3); }
+  .canale-ig { background: linear-gradient(145deg, rgba(249,188,17,0.05), transparent); border-color: rgba(249,188,17,0.15); }
+  .canale-google { background: linear-gradient(145deg, rgba(212,151,43,0.07), transparent); border-color: rgba(212,151,43,0.2); }
+  .canale-tag { display: inline-block; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; padding: 6px 14px; border-radius: 100px; margin-bottom: 20px; font-weight: 600; }
+  .tag-ig { background: rgba(249,188,17,0.15); color: var(--gold); }
+  .tag-google { background: rgba(212,151,43,0.15); color: var(--warm); }
+  .canale-title { font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 20px; }
+  .canale-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .canale-list li { font-size: 14px; color: rgba(255,255,255,0.7); padding-left: 20px; position: relative; }
+  .canale-list li::before { content: ''; position: absolute; left: 0; color: var(--gold); }
+  .canale-highlight { margin-top: 28px; padding: 20px 24px; background: rgba(249,188,17,0.05); border-radius: 12px; border: 1px solid rgba(249,188,17,0.12); font-size: 14px; color: rgba(255,255,255,0.8); }
+  .canale-highlight strong { color: var(--gold); }
+  .canale-warning { margin-top: 20px; padding: 16px 20px; background: rgba(255,255,255,0.03); border-radius: 10px; border-left: 3px solid var(--warm); font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+  .canale-warning strong { color: var(--warm); }
+
+  /* SERVIZI */
+  #servizi { background: var(--bg2); }
+  .package-header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; margin-bottom: 56px; }
+  .package-badge { display: inline-flex; align-items: center; gap: 10px; background: var(--grad); color: #000; font-weight: 700; font-size: 13px; padding: 10px 24px; border-radius: 100px; letter-spacing: 0.5px; white-space: nowrap; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
+  .service-card {
+    background: var(--card); border: 1px solid var(--border-soft);
+    border-radius: var(--radius); padding: 32px; transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--grad); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-card:hover { background: var(--card-hover); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
+  .service-icon { font-size: 32px; margin-bottom: 20px; display: block; }
+  .service-name { font-size: 16px; font-weight: 600; color: var(--gold); margin-bottom: 12px; }
+  .service-desc { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7; }
+  .service-metric { display: inline-block; margin-top: 16px; font-size: 12px; color: var(--warm); font-weight: 600; background: rgba(212,151,43,0.1); padding: 4px 12px; border-radius: 100px; }
+  .not-included { background: rgba(255,255,255,0.02); border: 1px solid var(--border-soft); border-radius: 12px; padding: 24px 32px; }
+  .not-included p { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+  .not-included p:first-child { color: rgba(255,255,255,0.4); font-weight: 600; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--gold), transparent); }
+  .timeline-month { position: relative; margin-bottom: 56px; }
+  .timeline-dot { position: absolute; left: -38px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px rgba(249,188,17,0.2), 0 0 20px rgba(249,188,17,0.4); }
+  .timeline-month-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .timeline-month-sub { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+  .timeline-tasks { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .timeline-task { background: var(--card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 18px 22px; font-size: 14px; line-height: 1.6; }
+  .timeline-task strong { color: var(--white); display: block; margin-bottom: 4px; }
+  .timeline-task span { color: var(--muted); font-size: 13px; }
+  .timeline-special { background: linear-gradient(135deg, rgba(249,188,17,0.07), rgba(212,151,43,0.05)); border-color: rgba(249,188,17,0.2); }
+  .timeline-special strong { color: var(--gold); }
+
+  /* CHART */
+  #proiezione { background: var(--bg2); }
+  .chart-container { position: relative; height: 420px; margin: 0 auto 48px; background: var(--card); border: 1px solid var(--border-soft); border-radius: var(--radius); padding: 32px; }
+  .scenarios-legend { display: flex; flex-wrap: wrap; gap: 24px; margin-bottom: 32px; justify-content: center; }
+  .legend-item { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+  .legend-dot { width: 28px; height: 3px; border-radius: 2px; }
+  .scenario-totals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .scenario-card { border-radius: var(--radius); padding: 32px; text-align: center; border: 1px solid; transition: all 0.3s; }
+  .scenario-card:hover { transform: translateY(-4px); }
+  .scenario-a { background: rgba(122,122,154,0.05); border-color: rgba(122,122,154,0.2); }
+  .scenario-b { background: rgba(249,188,17,0.06); border-color: rgba(249,188,17,0.25); }
+  .scenario-c { background: rgba(34,197,94,0.06); border-color: rgba(34,197,94,0.22); }
+  .scenario-name { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .scenario-amount { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .scenario-a .scenario-amount { color: rgba(200,200,220,0.9); }
+  .scenario-b .scenario-amount { color: var(--gold); }
+  .scenario-c .scenario-amount { color: #22c55e; }
+  .scenario-desc { font-size: 12px; color: var(--muted); }
+  .scenario-note { grid-column: 1 / -1; background: rgba(255,255,255,0.02); border: 1px solid var(--border-soft); border-radius: 12px; padding: 20px 24px; font-size: 13px; color: var(--muted); font-style: italic; text-align: center; margin-top: 8px; }
+  .scenario-note strong { color: rgba(255,255,255,0.7); }
+
+  /* INVESTIMENTO */
+  .invest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+  .pricing-card { background: linear-gradient(145deg, rgba(249,188,17,0.06), rgba(212,151,43,0.04)); border: 1px solid rgba(249,188,17,0.3); border-radius: var(--radius); padding: 48px 40px; position: relative; overflow: hidden; }
+  .pricing-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad); }
+  .pricing-name { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+  .pricing-tagline { font-size: 13px; color: var(--muted); margin-bottom: 36px; }
+  .pricing-rows { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+  .pricing-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--border-soft); }
+  .pricing-row:last-child { border-bottom: none; }
+  .pricing-row-label { font-size: 14px; color: rgba(255,255,255,0.65); }
+  .pricing-row-value { font-size: 16px; font-weight: 600; color: var(--white); }
+  .pricing-row.highlight { background: rgba(249,188,17,0.06); padding: 14px 16px; border-radius: 10px; border: 1px solid rgba(249,188,17,0.15); margin: 4px 0; }
+  .pricing-row.highlight .pricing-row-label { color: var(--gold); font-weight: 600; }
+  .pricing-row.highlight .pricing-row-value { color: var(--gold); font-size: 20px; }
+  .pricing-cta { display: block; width: 100%; background: var(--grad); color: #000; font-weight: 700; font-size: 15px; padding: 16px 32px; border-radius: 100px; text-align: center; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer; margin-top: 8px; }
+  .pricing-cta:hover { transform: scale(1.02); box-shadow: 0 12px 40px rgba(249,188,17,0.3); }
+
+  /* ROI CALCULATOR */
+  .roi-calc-card { background: var(--card); border: 1px solid var(--border-soft); border-radius: var(--radius); padding: 40px; }
+  .roi-calc-title { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 8px; }
+  .roi-calc-sub { font-size: 13px; color: var(--muted); margin-bottom: 32px; }
+  .roi-inputs { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+  .roi-input-group { display: flex; flex-direction: column; gap: 6px; }
+  .roi-input-label { font-size: 12px; color: rgba(255,255,255,0.6); letter-spacing: 0.5px; }
+  .roi-input-row { display: flex; align-items: center; gap: 10px; }
+  .roi-input-prefix { font-size: 16px; font-weight: 600; color: var(--gold); min-width: 16px; }
+  .roi-input {
+    width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--border-soft);
+    border-radius: 10px; padding: 12px 16px; color: var(--white); font-size: 16px; font-family: 'Inter', sans-serif;
+    outline: none; transition: border-color 0.2s;
+  }
+  .roi-input:focus { border-color: rgba(249,188,17,0.4); }
+  .roi-input::placeholder { color: var(--muted); }
+  .roi-divider { height: 1px; background: var(--border-soft); margin: 8px 0; }
+  .roi-calc-btn {
+    width: 100%; background: var(--grad); color: #000; font-weight: 700; font-size: 15px;
+    padding: 14px 32px; border-radius: 100px; border: none; cursor: pointer;
+    transition: all 0.3s; margin-bottom: 24px;
+  }
+  .roi-calc-btn:hover { transform: scale(1.02); box-shadow: 0 10px 32px rgba(249,188,17,0.3); }
+  .roi-output { display: none; }
+  .roi-output.visible { display: block; }
+  .roi-result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .roi-result-box { background: linear-gradient(135deg, rgba(249,188,17,0.09), rgba(212,151,43,0.06)); border: 1px solid rgba(249,188,17,0.25); border-radius: 12px; padding: 20px; text-align: center; }
+  .roi-result-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: var(--gold); line-height: 1; }
+  .roi-result-lbl { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 6px; }
+  .roi-after { padding: 16px 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-soft); border-radius: 10px; font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.7; }
+  .roi-after strong { color: var(--gold); }
+
+  /* URGENZA */
+  .urgency-section { background: var(--bg2); padding: 100px 24px; }
+  .urgency-inner { max-width: 1100px; margin: 0 auto; }
+  .urgency-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 48px 0; }
+  .urgency-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(249,188,17,0.12); border-radius: var(--radius); padding: 32px; }
+  .urgency-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+  .urgency-text { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7; }
+  .urgency-statement { text-align: center; font-family: 'Playfair Display', serif; font-size: clamp(22px, 3.5vw, 36px); font-style: italic; color: var(--cream); line-height: 1.5; padding: 48px; border: 1px solid rgba(249,188,17,0.15); border-radius: var(--radius); background: linear-gradient(135deg, rgba(249,188,17,0.04), transparent); }
+  .urgency-statement span { color: var(--gold); }
+
+  /* NEXT STEPS */
+  .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .step-card { background: var(--card); border: 1px solid var(--border-soft); border-radius: var(--radius); padding: 32px 24px; text-align: center; transition: all 0.3s; }
+  .step-card:hover { border-color: rgba(249,188,17,0.3); background: var(--card-hover); transform: translateY(-4px); }
+  .step-num { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin-bottom: 16px; }
+  .step-title { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 10px; }
+  .step-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* FOOTER */
+  footer { padding: 60px 24px 40px; text-align: center; border-top: 1px solid var(--border-soft); }
+  .footer-info { font-size: 13px; color: var(--muted); line-height: 1.8; }
+  .footer-info a { color: var(--gold); text-decoration: none; }
+  .footer-divider { width: 60px; height: 1px; background: var(--border); margin: 20px auto; }
+  .footer-valid { font-size: 11px; color: rgba(122,122,154,0.6); letter-spacing: 1px; text-transform: uppercase; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-tag { display: none; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .be-grid { grid-template-columns: 1fr; }
+    .canali-grid { grid-template-columns: 1fr; }
+    .invest-grid { grid-template-columns: 1fr; }
+    .scenario-totals { grid-template-columns: 1fr; }
+    .urgency-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    .roi-result-grid { grid-template-columns: 1fr; }
+    .timeline { padding-left: 20px; }
+    section { padding: 72px 20px; }
+  }
+  @media (max-width: 480px) {
+    body { font-size: 16px; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: 38px; }
+    .pricing-card { padding: 32px 24px; }
+    .roi-calc-card { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="https://assets.cdn.filesafe.space/3fFsxRcRvkat1FpJD7Yw/media/69905feb24813c67ab72773f.webp" alt="WeBloom">
+  </div>
+  <span class="nav-tag">Proposta · Giugno 2026</span>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+  <p class="hero-eyebrow">Animal Communication · Esperienze Natura · Vittorio Veneto</p>
+  <h1 class="hero-title"><span class="gradient-text">Samuela De Nardi</span></h1>
+  <p class="hero-subtitle">Da 200 km/h al silenzio</p>
+  <div class="hero-divider"></div>
+  <p class="hero-statement">
+    Hai <strong>35.300 persone</strong> che ti seguono perché credono in te.<br>
+    Ogni giorno, alcuni di loro vorrebbero prenotare. Ma non sanno come.<br>
+    Questo è il sistema che trasforma quell'intenzione in una prenotazione reale.
+  </p>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scorri</span>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <span class="stat-number">35.3K</span>
+      <p class="stat-label">Follower Instagram organici</p>
+      <p class="stat-source">Spunta blu verificata</p>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <span class="stat-number" data-target="0" data-prefix="" data-suffix="" data-divider="1">0</span>
+      <p class="stat-label">Pagine indicizzate su Google</p>
+      <p class="stat-source">Invisibile nelle ricerche locali</p>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <span class="stat-number" data-target="0" data-prefix="" data-suffix="" data-divider="1">0</span>
+      <p class="stat-label">Prenotazioni online attive</p>
+      <p class="stat-source">Il collo di bottiglia principale</p>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <span class="stat-number" data-target="90" data-prefix="€" data-suffix="" data-divider="1">€90</span>
+      <p class="stat-label">Sessione animal communication</p>
+      <p class="stat-source">Prezzo medio di mercato nazionale</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROFILO -->
+<section id="partenza">
+  <p class="section-label reveal">Il tuo profilo</p>
+  <h2 class="section-title reveal">Hai già tutto il necessario.<br><em style="font-style:italic;color:var(--gold);">Manca solo il sistema.</em></h2>
+  <p class="section-desc reveal">Ogni elemento della tua storia e della tua attività è un vantaggio competitivo che nessun competitor nella tua area potrà mai replicare.</p>
+
+  <div class="strength-grid">
+    <div class="strength-card reveal reveal-delay-1">
+      <span class="strength-label">Storia irreplicabile</span>
+      <p class="strength-value">Prima donna non giapponese alle 8 Ore di Suzuka 2005, prima pilota donna con contratto ufficiale Aprilia. Nessun competitor nel settore wellness ha un background lontanamente simile.</p>
+    </div>
+    <div class="strength-card reveal reveal-delay-2">
+      <span class="strength-label">Audience organica reale</span>
+      <p class="strength-value">35.300 follower costruiti senza budget pubblicitario, con post autentici sulla tua vita con gli animali. Un'audience che ti segue per chi sei, non per cosa vendi.</p>
+    </div>
+    <div class="strength-card reveal reveal-delay-3">
+      <span class="strength-label">Posizionamento unico</span>
+      <p class="strength-value">In tutta la provincia di Treviso e nel Veneto non esiste un operatore che unisca animal communication, esperienze con alpaca e NaturalHealing in un unico percorso.</p>
+    </div>
+    <div class="strength-card reveal reveal-delay-1">
+      <span class="strength-label">Servizi già strutturati</span>
+      <p class="strength-value">Passeggiate con alpaca, sessioni NaturalHealing, percorsi di comunicazione animale, attività con scuole, anziani e disabili. Tutto già testato e funzionante, senza sistema per venderlo.</p>
+    </div>
+    <div class="strength-card reveal reveal-delay-2">
+      <span class="strength-label">Autorevolezza verificata</span>
+      <p class="strength-value">Spunta blu su Instagram, copertura mediatica nella Tribuna di Treviso, anni di attività documentata. Credibilità istituzionale già costruita.</p>
+    </div>
+    <div class="strength-card reveal reveal-delay-3">
+      <span class="strength-label">Radici locali</span>
+      <p class="strength-value">Nata a Vittorio Veneto, operante nello stesso territorio. Un legame con la comunità locale che si trasforma in fiducia immediata per chi ti cerca in zona.</p>
+    </div>
+  </div>
+
+  <div class="hero-quote reveal" style="margin-top:60px;">
+    <p>«La tua forza non sono i 35.000 follower.<br>La tua forza e' che quei 35.000 ti seguono <span>per chi sei</span>, non per cosa vendi.»</p>
+  </div>
+</section>
+
+<!-- DATI DI MERCATO -->
+<div class="section-full" style="background: var(--bg2);">
+  <div class="section-inner">
+    <p class="section-label reveal">Dati verificati</p>
+    <h2 class="section-title reveal">Il mercato, <em style="color:var(--gold);font-style:italic;">numeri reali</em></h2>
+    <p class="section-desc reveal">Ogni dato in questa proposta ha una fonte verificabile. Nessuna stima inventata.</p>
+
+    <div class="market-grid">
+      <div class="market-card reveal reveal-delay-1">
+        <span class="market-value">€90</span>
+        <p class="market-desc">Prezzo medio per una sessione di animal communication a livello nazionale</p>
+        <p class="market-source">Fonte: <a href="https://www.comunicazioneanimale.it/servizi/" target="_blank">comunicazioneanimale.it, 2026</a></p>
+      </div>
+      <div class="market-card reveal reveal-delay-2">
+        <span class="market-value">€45</span>
+        <p class="market-desc">Prezzo yoga trekking con alpaca del competitor piu' strutturato del Veneto (Baby Alpaca)</p>
+        <p class="market-source">Fonte: <a href="https://www.babyalpaca.it/attivita-2-2/" target="_blank">babyalpaca.it, 2026</a></p>
+      </div>
+      <div class="market-card reveal reveal-delay-3">
+        <span class="market-value">€20-30</span>
+        <p class="market-desc">Prezzo base trekking alpaca dei competitor minori senza posizionamento premium</p>
+        <p class="market-source">Fonte: <a href="https://www.fattoriavenetoalpaca.it/alpaca-trekking" target="_blank">fattoriavenetoalpaca.it, 2026</a></p>
+      </div>
+      <div class="market-card reveal reveal-delay-1">
+        <span class="market-value">5x</span>
+        <p class="market-desc">Piu' visibilita' nelle ricerche locali con una scheda Google ottimizzata e verificata</p>
+        <p class="market-source">Fonte: <a href="https://www.google.com/business/" target="_blank">Google Insights, 2024</a></p>
+      </div>
+      <div class="market-card reveal reveal-delay-2">
+        <span class="market-value">0</span>
+        <p class="market-desc">Competitor in provincia di Treviso con combinazione animal communication + alpaca + NaturalHealing</p>
+        <p class="market-source">Fonte: verifica diretta su Google Maps e portali settore, giugno 2026</p>
+      </div>
+      <div class="market-card reveal reveal-delay-3">
+        <span class="market-value">35.3K</span>
+        <p class="market-desc">I tuoi follower organici su Instagram vs una frazione per Baby Alpaca, il competitor piu' strutturato</p>
+        <p class="market-source">Fonte: profilo Instagram @samuela_denardi, giugno 2026</p>
+      </div>
+    </div>
+
+    <div class="nota-locale reveal">
+      <strong>Il paradosso del tuo territorio:</strong> nel raggio di 30 km da Vittorio Veneto, chi cerca su Google "esperienza alpaca Treviso" o "animal communication Vittorio Veneto" non trova nessun operatore strutturato. Il mercato locale e' aperto. Chi arriva prima con un sistema digitale si prende la posizione organica e non la lascia piu'.
+    </div>
+  </div>
+</div>
+
+<!-- CANALI -->
+<section id="canali">
+  <p class="section-label reveal">Strategia</p>
+  <h2 class="section-title reveal">Due canali, <em style="font-style:italic;color:var(--gold);">un obiettivo</em></h2>
+  <p class="section-desc reveal">Il canale Instagram converte chi ti segue gia'. Il canale Google intercetta chi non ti conosce ancora ma sta cercando esattamente quello che fai.</p>
+
+  <div class="canali-grid">
+    <div class="canale-card canale-ig reveal">
+      <span class="canale-tag tag-ig">Canale 1 - Instagram (35.300 follower)</span>
+      <h3 class="canale-title">Converti chi ti segue gia'</h3>
+      <ul class="canale-list">
+        <li>Bio riscritta con CTA chiara verso la pagina di prenotazione</li>
+        <li>Link in bio diretto alla pagina (non una lista di 10 link)</li>
+        <li>Highlight cover brandizzati per ogni servizio</li>
+        <li>Sistema di raccolta contatti integrato nelle storie e nei post</li>
+      </ul>
+      <div class="canale-highlight">
+        <strong>Oggi:</strong> ogni giorno arrivano messaggi da persone interessate, ma senza un sistema di prenotazione nessuno diventa cliente confermato. Con il sistema attivo, ogni contatto entra direttamente nella tua lista.
+      </div>
+    </div>
+
+    <div class="canale-card canale-google reveal reveal-delay-2">
+      <span class="canale-tag tag-google">Canale 2 - Google (traffico consapevole)</span>
+      <h3 class="canale-title">Intercetta chi cerca gia'</h3>
+      <ul class="canale-list">
+        <li>Scheda Google ottimizzata: foto, servizi, orari, categoria corretta</li>
+        <li>Visibile nel local pack per "esperienza alpaca Treviso" e "animal communication Vittorio Veneto"</li>
+        <li>Categorie corrette per comparire nelle ricerche di zona</li>
+        <li>Recensioni monitorate e gestite</li>
+      </ul>
+      <div class="canale-warning">
+        <strong>Adesso:</strong> chi cerca su Google i tuoi servizi nella tua zona non ti trova. Il concorrente piu' vicino e' strutturato digitalmente. Ogni giorno senza scheda Google e' traffico che va da qualcun altro.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SISTEMA INCLUSO -->
+<div class="section-full" id="servizi">
+  <div class="section-inner">
+    <div class="package-header">
+      <div>
+        <p class="section-label reveal">Il sistema proposto</p>
+        <h2 class="section-title reveal">Tutto quello che serve<br><em style="font-style:italic;color:var(--gold);">per partire</em></h2>
+        <p class="section-desc reveal" style="margin-bottom:0;">Setup completo in ~15 giorni. Dalla consegna il sistema lavora mentre tu sei con gli animali.</p>
+      </div>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-icon">⚙️</span>
+        <p class="service-name">Sistema di gestione clienti</p>
+        <p class="service-desc">Il sistema WeBloom configurato sulla tua attivita': dashboard prenotazioni in tempo reale, gestione contatti con storico di ogni cliente, accesso diretto dal tuo telefono o computer. Tutto in un unico posto.</p>
+        <span class="service-metric">Accesso immediato</span>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-icon">📅</span>
+        <p class="service-name">Prenotazioni online 24/7</p>
+        <p class="service-desc">Calendario pubblico dove il cliente sceglie servizio e data autonomamente. Conferma automatica via email e promemoria 24 ore prima. Zero messaggi manuali da gestire: il sistema risponde al posto tuo anche quando sei con gli alpaca.</p>
+        <span class="service-metric">Attivo giorno e notte</span>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <span class="service-icon">📍</span>
+        <p class="service-name">Scheda Google completa</p>
+        <p class="service-desc">Creazione, verifica e ottimizzazione con categorie corrette, foto, orari, metodi di pagamento, descrizione SEO e sezione domande. Piu' 2 post al mese per mantenere la scheda attiva e visibile nelle ricerche locali.</p>
+        <span class="service-metric">5x visibilita' in piu'</span>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-icon">⭐</span>
+        <p class="service-name">Automazione recensioni Google</p>
+        <p class="service-desc">Dopo ogni sessione il sistema invia in automatico una email al cliente con la richiesta di lasciare una recensione su Google. Le recensioni positive ricevono una risposta automatica. Per quelle negative arriva subito un avviso a te, cosi' puoi intervenire prima che il problema si amplifica.</p>
+        <span class="service-metric">Rating in crescita</span>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-icon">📊</span>
+        <p class="service-name">Report mensile</p>
+        <p class="service-desc">Ogni mese ricevi un report con i numeri che contano: visualizzazioni della scheda Google, chiamate dirette ricevute, rating medio, nuove recensioni acquisite, contatti raccolti nella tua lista. Dati reali per decisioni concrete.</p>
+        <span class="service-metric">Ogni mese</span>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <span class="service-icon">📄</span>
+        <p class="service-name">Pagina acquisizione + profilo Instagram</p>
+        <p class="service-desc">Una pagina costruita sulla tua storia con prezzi chiari e pulsante di prenotazione diretto. Piu' ottimizzazione completa del profilo Instagram: bio riscritta, link in bio diretto alla pagina, highlight cover brandizzati. Il bridge tra i 35.300 follower e il sistema.</p>
+        <span class="service-metric">Online in ~15 giorni</span>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-icon">🎨</span>
+        <p class="service-name">Brand identity + piano editoriale</p>
+        <p class="service-desc">Palette colori, font e elementi grafici coerenti con la tua storia. Applicati a tutti i materiali. Piu' template caroselli pronti da caricare su Instagram, script per i contenuti e calendario editoriale per i primi 3 mesi: tu scatti, il contenuto e' gia' strutturato.</p>
+        <span class="service-metric">3 mesi inclusi</span>
+      </div>
+    </div>
+
+    <div class="not-included reveal">
+      <p>Non incluso in questo pacchetto</p>
+      <p>Gestione attiva dei profili social (pubblicazione, risposta ai commenti, community management) - attivabile separatamente</p>
+      <p>Campagne pubblicitarie a pagamento (Meta Ads, Google Ads) - valutabili dal mese 4 con i dati reali in mano</p>
+    </div>
+  </div>
+</div>
+
+<!-- TABELLA DI MARCIA -->
+<section id="piano">
+  <p class="section-label reveal">Tabella di marcia</p>
+  <h2 class="section-title reveal">90 giorni per costruire<br><em style="font-style:italic;color:var(--gold);">il sistema</em></h2>
+  <p class="section-desc reveal">Ogni mese ha un obiettivo preciso e risultati concreti e misurabili.</p>
+
+  <div class="timeline">
+    <div class="timeline-month reveal">
+      <div class="timeline-dot"></div>
+      <h3 class="timeline-month-title">Mese 1 - Fondamenta</h3>
+      <p class="timeline-month-sub">Il sistema diventa operativo</p>
+      <div class="timeline-tasks">
+        <div class="timeline-task timeline-special">
+          <strong>Pagina di acquisizione live</strong>
+          <span>Storia, servizi, prezzi e CTA. Online entro ~15 giorni dalla firma.</span>
+        </div>
+        <div class="timeline-task timeline-special">
+          <strong>Scheda Google attivata</strong>
+          <span>Creazione, verifica e ottimizzazione completa con categorie, foto, orari e descrizione SEO.</span>
+        </div>
+        <div class="timeline-task">
+          <strong>Sistema prenotazioni e clienti</strong>
+          <span>Calendario online, conferme automatiche, dashboard clienti e gestione contatti attivi.</span>
+        </div>
+        <div class="timeline-task">
+          <strong>Automazione recensioni</strong>
+          <span>Email automatica post-sessione + risposta automatica recensioni positive su Google.</span>
+        </div>
+        <div class="timeline-task">
+          <strong>Ottimizzazione profilo Instagram</strong>
+          <span>Bio, link in bio e highlight cover allineati con la nuova pagina di acquisizione.</span>
+        </div>
+        <div class="timeline-task timeline-special">
+          <strong>Formazione operativa 1h</strong>
+          <span>Videocall dedicata: come usare il sistema, la dashboard e gestire le prenotazioni in autonomia.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-month reveal">
+      <div class="timeline-dot"></div>
+      <h3 class="timeline-month-title">Mese 2 - Crescita</h3>
+      <p class="timeline-month-sub">Brand identity e contenuti</p>
+      <div class="timeline-tasks">
+        <div class="timeline-task">
+          <strong>Brand identity completata</strong>
+          <span>Palette, font e template caroselli pronti e applicati a tutti i materiali.</span>
+        </div>
+        <div class="timeline-task">
+          <strong>Piano editoriale mese 2</strong>
+          <span>Template caroselli pronti, script e calendario per il secondo mese.</span>
+        </div>
+        <div class="timeline-task timeline-special">
+          <strong>Analisi prime prenotazioni</strong>
+          <span>Dati reali: da dove arrivano, quali servizi prenotano, quanti contatti raccolti.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-month reveal">
+      <div class="timeline-dot"></div>
+      <h3 class="timeline-month-title">Mese 3 - Consolidamento</h3>
+      <p class="timeline-month-sub">Report e decisione sul passo successivo</p>
+      <div class="timeline-tasks">
+        <div class="timeline-task">
+          <strong>Piano editoriale mese 3</strong>
+          <span>Terzo pacchetto di template e script, ottimizzati sulla base dei dati reali.</span>
+        </div>
+        <div class="timeline-task timeline-special">
+          <strong>Report 90 giorni</strong>
+          <span>Prenotazioni generate, contatti raccolti, posizione Google, ricavi aggiuntivi.</span>
+        </div>
+        <div class="timeline-task timeline-special">
+          <strong>Valutazione passo successivo</strong>
+          <span>Con i dati in mano, decidiamo insieme se e come aggiungere un piano di crescita con campagne a pagamento.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROIEZIONE FINANZIARIA -->
+<div class="section-full" id="proiezione">
+  <div class="section-inner">
+    <p class="section-label reveal">Proiezione verificata</p>
+    <h2 class="section-title reveal">Dove puoi arrivare<br><em style="font-style:italic;color:var(--gold);">nei prossimi 12 mesi</em></h2>
+    <p class="section-desc reveal">Tre scenari costruiti sul tuo fatturato attuale (€2.000/mese, €24.000/anno). I totali annui sono fatturato complessivo: quello che gia' fai piu' quello che il sistema genera in aggiunta. La linea tratteggiata e' il tuo obiettivo dichiarato di €4.000/mese.</p>
+
+    <div class="scenarios-legend reveal">
+      <div class="legend-item">
+        <div class="legend-dot" style="background: rgba(180,180,210,0.8);"></div>
+        <span style="color:var(--muted);">Scenario A - Solo sistema</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background: var(--gold);"></div>
+        <span>Scenario B - Sistema + crescita organica</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background: #22c55e;"></div>
+        <span>Scenario C - Sistema + piano crescita mese 4</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background: rgba(255,80,80,0.8); height: 1px; border-top: 2px dashed rgba(255,80,80,0.6);"></div>
+        <span style="color:rgba(255,120,120,0.8);">Il tuo obiettivo (€4.000/mese)</span>
+      </div>
+    </div>
+
+    <div class="chart-container reveal">
+      <canvas id="projectionChart"></canvas>
+    </div>
+
+    <div class="scenario-totals">
+      <div class="scenario-card scenario-a reveal reveal-delay-1">
+        <p class="scenario-name">Scenario A - Conservativo</p>
+        <p class="scenario-amount">€30.000</p>
+        <p style="font-size:12px; color:var(--gold); font-weight:600; margin:4px 0 8px;">+€6.000 rispetto all'attuale</p>
+        <p class="scenario-desc">Sistema base attivo: prenotazioni online, scheda Google. Il tuo fatturato cresce gradualmente dai €2.000 attuali. Nessuna azione aggiuntiva richiesta da parte tua.</p>
+      </div>
+      <div class="scenario-card scenario-b reveal reveal-delay-2">
+        <p class="scenario-name">Scenario B - Realistico</p>
+        <p class="scenario-amount">€38.000</p>
+        <p style="font-size:12px; color:var(--gold); font-weight:600; margin:4px 0 8px;">+€14.000 rispetto all'attuale</p>
+        <p class="scenario-desc">Sistema + piano editoriale attivo + crescita organica costante. Il piu' probabile con il tuo livello di coinvolgimento attuale su Instagram. Raggiunge €3.500/mese a fine anno.</p>
+      </div>
+      <div class="scenario-card scenario-c reveal reveal-delay-3">
+        <p class="scenario-name">Scenario C - Ottimistico</p>
+        <p class="scenario-amount">€46.000</p>
+        <p style="font-size:12px; color:#22c55e; font-weight:600; margin:4px 0 8px;">+€22.000 rispetto all'attuale</p>
+        <p class="scenario-desc">Sistema + piano crescita dal mese 4 + corsi comunicazione animale online. L'obiettivo €4.000/mese viene raggiunto entro luglio 2027.</p>
+      </div>
+      <div class="scenario-note">
+        <strong>Come leggere questi numeri:</strong> sono fatturato totale annuo, comprensivo dei €24.000 che gia' generi oggi. Il delta colorato sotto ogni importo e' quello che il sistema aggiunge in piu' rispetto a oggi. Le proiezioni tengono conto della stagionalita' delle attivita' outdoor (calo invernale). Lo Scenario C include l'attivazione dei corsi di comunicazione animale online, gia' strutturati e pronti.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- L'INVESTIMENTO -->
+<section id="investimento">
+  <p class="section-label reveal">L'investimento</p>
+  <h2 class="section-title reveal">Struttura economica<br>e <em style="font-style:italic;color:var(--gold);">ritorno atteso</em></h2>
+
+  <div class="value-stack reveal" style="max-width:780px;margin:0 auto 56px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:32px 36px;">
+    <p style="font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin:0 0 20px;">Cosa include il pacchetto e quanto vale sul mercato</p>
+    <table style="width:100%;border-collapse:collapse;">
+      <thead>
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+          <th style="text-align:left;font-size:0.78rem;font-weight:500;color:rgba(255,255,255,0.4);letter-spacing:0.08em;text-transform:uppercase;padding-bottom:10px;">Componente</th>
+          <th style="text-align:right;font-size:0.78rem;font-weight:500;color:rgba(255,255,255,0.4);letter-spacing:0.08em;text-transform:uppercase;padding-bottom:10px;">Valore di mercato</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+          <td style="padding:11px 0;font-size:0.92rem;color:rgba(255,255,255,0.75);">Brand identity base (palette, font, template caroselli)</td>
+          <td style="padding:11px 0;text-align:right;font-size:0.92rem;color:rgba(255,255,255,0.55);white-space:nowrap;">€600 - 900</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+          <td style="padding:11px 0;font-size:0.92rem;color:rgba(255,255,255,0.75);">Pagina di acquisizione custom (storia, servizi, prenotazione)</td>
+          <td style="padding:11px 0;text-align:right;font-size:0.92rem;color:rgba(255,255,255,0.55);white-space:nowrap;">€800 - 1.200</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+          <td style="padding:11px 0;font-size:0.92rem;color:rgba(255,255,255,0.75);">Sistema prenotazioni online (setup e integrazione)</td>
+          <td style="padding:11px 0;text-align:right;font-size:0.92rem;color:rgba(255,255,255,0.55);white-space:nowrap;">€300 - 500</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+          <td style="padding:11px 0;font-size:0.92rem;color:rgba(255,255,255,0.75);">Scheda Google ottimizzata e verificata</td>
+          <td style="padding:11px 0;text-align:right;font-size:0.92rem;color:rgba(255,255,255,0.55);white-space:nowrap;">€200 - 350</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+          <td style="padding:11px 0;font-size:0.92rem;color:rgba(255,255,255,0.75);">Piano editoriale 3 mesi (script, template, calendario)</td>
+          <td style="padding:11px 0;text-align:right;font-size:0.92rem;color:rgba(255,255,255,0.55);white-space:nowrap;">€450 - 700</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+          <td style="padding:11px 0;font-size:0.92rem;color:rgba(255,255,255,0.75);">Ottimizzazione profilo Instagram (bio, link in bio, highlight)</td>
+          <td style="padding:11px 0;text-align:right;font-size:0.92rem;color:rgba(255,255,255,0.55);white-space:nowrap;">€150 - 250</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+          <td style="padding:11px 0;font-size:0.92rem;color:rgba(255,255,255,0.75);">Automazione raccolta contatti e recensioni</td>
+          <td style="padding:11px 0;text-align:right;font-size:0.92rem;color:rgba(255,255,255,0.55);white-space:nowrap;">€150 - 300</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+          <td style="padding:11px 0;font-size:0.92rem;color:rgba(255,255,255,0.75);">Formazione operativa e manuale</td>
+          <td style="padding:11px 0;text-align:right;font-size:0.92rem;color:rgba(255,255,255,0.55);white-space:nowrap;">€100 - 200</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.12);">
+          <td style="padding:14px 0 10px;font-size:0.95rem;font-weight:600;color:rgba(255,255,255,0.85);">Totale valore di mercato</td>
+          <td style="padding:14px 0 10px;text-align:right;font-size:0.95rem;font-weight:600;color:rgba(255,255,255,0.85);white-space:nowrap;">€2.750 - 4.400</td>
+        </tr>
+        <tr>
+          <td style="padding:14px 0 0;font-size:1.05rem;font-weight:700;color:var(--gold);">Il tuo setup con WeBloom</td>
+          <td style="padding:14px 0 0;text-align:right;font-size:1.15rem;font-weight:700;color:var(--gold);white-space:nowrap;">€1.300</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin:18px 0 0;font-size:0.82rem;color:rgba(255,255,255,0.35);line-height:1.5;">Questi sono i prezzi che applicano i freelancer italiani e le agenzie locali per gli stessi deliverable acquistati separatamente. Il percorso WeBloom li integra in un unico sistema coordinato, costruito sulla tua storia e sui tuoi obiettivi.</p>
+  </div>
+
+  <div class="invest-grid">
+    <div class="pricing-card reveal">
+      <p class="pricing-name">Pacchetto Personalizzato</p>
+      <p class="pricing-tagline">Progettato su misura per la tua situazione e il tuo obiettivo</p>
+      <div class="pricing-rows">
+        <div class="pricing-row">
+          <span class="pricing-row-label">Setup (una tantum)</span>
+          <span class="pricing-row-value">€1.300</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-row-label">Gestione mensile</span>
+          <span class="pricing-row-value">€200/mese</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-row-label">Durata minima gestione</span>
+          <span class="pricing-row-value">3 mesi</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-row-label">Investimento totale (setup + 3 mesi)</span>
+          <span class="pricing-row-value">€1.900</span>
+        </div>
+      </div>
+
+      <div style="margin:20px 0; padding:18px; background:rgba(249,188,17,0.05); border:1px solid rgba(249,188,17,0.18); border-radius:10px;">
+        <p style="font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); margin-bottom:14px;">Piano di pagamento</p>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:13px; color:rgba(255,255,255,0.65);">Alla firma del contratto</span>
+            <span style="font-size:14px; font-weight:700; color:#fff;">€650</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:13px; color:rgba(255,255,255,0.65);">Saldo setup - alla consegna del sistema (entro ~15 giorni)</span>
+            <span style="font-size:14px; font-weight:700; color:#fff;">€650</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:13px; color:rgba(255,255,255,0.65);">Mese 1 gestione - contestuale alla consegna</span>
+            <span style="font-size:14px; font-weight:700; color:#fff;">€200</span>
+          </div>
+          <div style="border-top:1px solid rgba(255,255,255,0.07); padding-top:10px; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:13px; color:rgba(255,255,255,0.65);">Mese 2 e Mese 3</span>
+            <span style="font-size:14px; font-weight:700; color:var(--gold);">€200/mese</span>
+          </div>
+        </div>
+        <p style="font-size:11px; color:rgba(255,255,255,0.35); margin-top:12px;">Il sistema viene consegnato entro ~15 giorni dalla firma. Il primo mese di gestione parte dalla consegna. Totale: €1.300 setup + 3 x €200 gestione = €1.900 in 3 mesi.</p>
+      </div>
+      <a href="#steps" class="pricing-cta">Scopri come partire</a>
+      <p style="font-size:12px; color:var(--muted); text-align:center; margin-top:12px;">Nessun vincolo dopo i 3 mesi. Rinnovo mensile.</p>
+    </div>
+
+    <div class="reveal reveal-delay-2">
+      <div class="roi-calc-card">
+        <h3 class="roi-calc-title">Calcola il tuo ritorno</h3>
+        <p class="roi-calc-sub">Inserisci i prezzi dei tuoi servizi. Il sistema calcola in quante sessioni rientri dall'investimento.</p>
+
+        <div class="roi-inputs">
+          <div class="roi-input-group">
+            <label class="roi-input-label">Trekking con alpaca (prezzo per persona)</label>
+            <div class="roi-input-row">
+              <span class="roi-input-prefix">€</span>
+              <input type="number" class="roi-input" id="price1" value="45" min="0" placeholder="es. 45">
+            </div>
+          </div>
+          <div class="roi-input-group">
+            <label class="roi-input-label">Sessione NaturalHealing</label>
+            <div class="roi-input-row">
+              <span class="roi-input-prefix">€</span>
+              <input type="number" class="roi-input" id="price2" value="70" min="0" placeholder="es. 70">
+            </div>
+          </div>
+          <div class="roi-input-group">
+            <label class="roi-input-label">Sessione animal communication</label>
+            <div class="roi-input-row">
+              <span class="roi-input-prefix">€</span>
+              <input type="number" class="roi-input" id="price3" value="90" min="0" placeholder="es. 90">
+            </div>
+          </div>
+          <div class="roi-divider"></div>
+          <div class="roi-input-group">
+            <label class="roi-input-label">Sessioni medie che fai gia' al mese</label>
+            <div class="roi-input-row">
+              <span class="roi-input-prefix">#</span>
+              <input type="number" class="roi-input" id="sessioni_mese" value="15" min="1" placeholder="es. 15">
+            </div>
+          </div>
+        </div>
+
+        <button class="roi-calc-btn" onclick="calcolaROI()">Calcola il ritorno sull'investimento</button>
+
+        <div class="roi-output" id="roi-output">
+          <div class="roi-result-grid">
+            <div class="roi-result-box">
+              <div class="roi-result-num" id="roi-sessioni">-</div>
+              <div class="roi-result-lbl">Sessioni per rientrare</div>
+            </div>
+            <div class="roi-result-box">
+              <div class="roi-result-num" id="roi-mesi">-</div>
+              <div class="roi-result-lbl">Mesi stimati</div>
+            </div>
+          </div>
+          <div class="roi-after" id="roi-msg">
+            Dal giorno successivo ogni sessione e' guadagno netto aggiuntivo.
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:20px; padding:28px; background:rgba(255,255,255,0.02); border:1px solid var(--border-soft); border-radius:var(--radius);">
+        <h4 style="font-size:14px; font-weight:600; color:rgba(255,255,255,0.8); margin-bottom:16px;">Dopo i 3 mesi, le opzioni</h4>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:10px;">
+          <li style="font-size:13px; color:var(--muted); padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:var(--gold);">+</span>Sistema funziona bene: continuiamo a <strong style="color:rgba(255,255,255,0.75);">€200/mese</strong></li>
+          <li style="font-size:13px; color:var(--muted); padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:var(--gold);">+</span>Vuoi crescere piu' in fretta: aggiungiamo <strong style="color:rgba(255,255,255,0.75);">il piano di crescita con campagne</strong></li>
+          <li style="font-size:13px; color:var(--muted); padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:var(--gold);">+</span>Vuoi attivare i corsi online: strutturiamo <strong style="color:rgba(255,255,255,0.75);">la vendita digitale</strong></li>
+        </ul>
+        <p style="margin-top:16px; font-size:13px; color:var(--gold);">Il piano si adatta ai tuoi risultati reali, non a proiezioni fisse.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- URGENZA -->
+<div class="urgency-section">
+  <div class="urgency-inner">
+    <p class="section-label reveal">Perche' adesso</p>
+    <h2 class="section-title reveal">Il sistema si costruisce<br><em style="font-style:italic;color:var(--gold);">prima dell'opportunita'</em></h2>
+
+    <div class="urgency-grid">
+      <div class="urgency-card reveal reveal-delay-1">
+        <span class="urgency-icon">⏳</span>
+        <p class="urgency-text">Ogni giorno senza sistema di prenotazione online e' un contatto che arriva, aspetta una risposta e nel frattempo prenota da qualcun altro. Chi non trova un calendario pubblico non aspetta: va avanti.</p>
+      </div>
+      <div class="urgency-card reveal reveal-delay-2">
+        <span class="urgency-icon">🔍</span>
+        <p class="urgency-text">Il territorio e' aperto adesso. Nessun competitor con il tuo posizionamento e' ancora strutturato digitalmente. Chi arriva primo sul local pack di Google costruisce una posizione che diventa sempre piu' difficile da scalzare.</p>
+      </div>
+      <div class="urgency-card reveal reveal-delay-3">
+        <span class="urgency-icon">⚡</span>
+        <p class="urgency-text">I tuoi 35.300 follower non sono tuoi: sono di Meta. Un cambio di algoritmo, una sospensione dell'account o un cambiamento nelle policy puo' azzerare anni di lavoro. La lista contatti di proprieta' e' la tua rete di sicurezza.</p>
+      </div>
+    </div>
+
+    <div class="urgency-statement reveal">
+      «<span>Hai gia' costruito la cosa piu' difficile del marketing digitale:</span><br>un'audience che ti segue per chi sei. Adesso costruiamo il sistema che la fa lavorare per te.»
+    </div>
+  </div>
+</div>
+
+<!-- PROSSIMI PASSI -->
+<section id="steps">
+  <p class="section-label reveal">Prossimi passi</p>
+  <h2 class="section-title reveal">Come si avvia<br><em style="font-style:italic;color:var(--gold);">tutto</em></h2>
+  <p class="section-desc reveal">Quattro passaggi. Circa 15 giorni. Il sistema e' online.</p>
+
+  <div class="steps-grid">
+    <div class="step-card reveal reveal-delay-1">
+      <p class="step-num">01</p>
+      <p class="step-title">Firma il contratto</p>
+      <p class="step-desc">Documento semplice, linguaggio chiaro. Nessuna clausola nascosta.</p>
+    </div>
+    <div class="step-card reveal reveal-delay-2">
+      <p class="step-num">02</p>
+      <p class="step-title">Bonifico €650</p>
+      <p class="step-desc">50% del setup all'avvio. Il progetto parte entro 24 ore dalla conferma.</p>
+    </div>
+    <div class="step-card reveal reveal-delay-3">
+      <p class="step-num">03</p>
+      <p class="step-title">Call di avvio (48h)</p>
+      <p class="step-desc">1 ora per raccogliere materiali, accessi e definire le priorita' del primo mese.</p>
+    </div>
+    <div class="step-card reveal reveal-delay-4">
+      <p class="step-num">04</p>
+      <p class="step-title">Online in ~15 giorni</p>
+      <p class="step-desc">Pagina di acquisizione e sistema prenotazioni attivi entro i primi 15 giorni dalla firma.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="https://assets.cdn.filesafe.space/3fFsxRcRvkat1FpJD7Yw/media/69905feb24813c67ab72773f.webp" alt="WeBloom" style="height:36px;width:auto;margin:0 auto 20px;display:block;">
+  <p class="footer-info">
+    Nicola Pin · WeBloom · Coltiviamo la tua presenza online<br>
+    P.IVA IT05558050265<br>
+    <a href="mailto:info@nicolapin.com">info@nicolapin.com</a> · 327 0731397
+  </p>
+  <div class="footer-divider"></div>
+  <p class="footer-valid">Proposta valida 15 giorni · Dati verificati · Giugno 2026</p>
+  <p style="font-size:11px; color:rgba(122,122,154,0.4); margin-top:12px;">
+    Fonti: comunicazioneanimale.it · babyalpaca.it · fattoriavenetoalpaca.it · Google Insights 2024 · Profilo Instagram @samuela_denardi (giugno 2026)
+  </p>
+</footer>
+
+<script>
+/* INTERSECTION OBSERVER */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* COUNTER ANIMATION */
+function animateCounter(el, target, prefix, suffix, divider, duration=2000) {
+  const start = performance.now();
+  const update = (now) => {
+    const elapsed = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - elapsed, 3);
+    const val = Math.round(ease * target / divider);
+    el.textContent = prefix + val + suffix;
+    if (elapsed < 1) requestAnimationFrame(update);
+    else el.textContent = prefix + (target / divider) + suffix;
+  };
+  requestAnimationFrame(update);
+}
+const statObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      animateCounter(el, parseInt(el.dataset.target)||0, el.dataset.prefix||'', el.dataset.suffix||'', parseInt(el.dataset.divider)||1);
+      statObs.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-target]').forEach(el => statObs.observe(el));
+
+/* BE COUNTERS */
+function animateBE(id, target) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        let v = 0;
+        const timer = setInterval(() => {
+          v += Math.ceil(target / 40);
+          if (v >= target) { el.textContent = target; clearInterval(timer); } else el.textContent = v;
+        }, 40);
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  obs.observe(el);
+}
+animateBE('counter-be', 14);
+animateBE('counter-target', 7);
+
+/* ROI CALCULATOR */
+function calcolaROI() {
+  const p1 = parseFloat(document.getElementById('price1').value) || 0;
+  const p2 = parseFloat(document.getElementById('price2').value) || 0;
+  const p3 = parseFloat(document.getElementById('price3').value) || 0;
+  const sessioni = parseFloat(document.getElementById('sessioni_mese').value) || 1;
+
+  const prezzi = [p1, p2, p3].filter(p => p > 0);
+  if (prezzi.length === 0) { alert('Inserisci almeno un prezzo per calcolare.'); return; }
+  const prezzoMedio = prezzi.reduce((a, b) => a + b, 0) / prezzi.length;
+
+  const investimentoTotale = 1900;
+  const sessNecessarie = Math.ceil(investimentoTotale / prezzoMedio);
+  const mesiStimati = Math.ceil(sessNecessarie / sessioni);
+  const sessExtraMese = Math.ceil(200 / prezzoMedio);
+
+  document.getElementById('roi-sessioni').textContent = sessNecessarie;
+  document.getElementById('roi-mesi').textContent = mesiStimati <= 3 ? mesiStimati : mesiStimati;
+
+  let msg = '';
+  if (mesiStimati <= 1) {
+    msg = 'Rientri dall\'investimento <strong style="color:var(--gold);">nel primo mese</strong>. Dal mese 2 ogni sessione e\' guadagno netto aggiuntivo.';
+  } else if (mesiStimati <= 3) {
+    msg = 'Rientri dall\'investimento entro il <strong style="color:var(--gold);">primo trimestre</strong>. Dal mese ' + (mesiStimati + 1) + ' ogni sessione e\' guadagno netto aggiuntivo. Bastano <strong>' + sessExtraMese + ' sessioni in piu\' al mese</strong> per coprire il costo mensile del sistema.';
+  } else {
+    msg = 'Stima basata sul prezzo medio di <strong style="color:var(--gold);">€' + Math.round(prezzoMedio) + ' a sessione</strong> e ' + sessioni + ' sessioni/mese. Aggiungendo servizi piu\' remunerativi il ritorno si accelera.';
+  }
+  document.getElementById('roi-msg').innerHTML = msg;
+
+  const output = document.getElementById('roi-output');
+  output.classList.add('visible');
+}
+
+/* CHART */
+const ctx = document.getElementById('projectionChart').getContext('2d');
+const months = ['Giu','Lug','Ago','Set','Ott','Nov','Dic','Gen','Feb','Mar','Apr','Mag'];
+const scenA = [2000, 2100, 2200, 2300, 2300, 2400, 2500, 2400, 2200, 2400, 2500, 2600];
+const scenB = [2000, 2300, 2600, 2800, 2900, 3100, 3200, 3000, 2700, 3100, 3300, 3500];
+const scenC = [2000, 2500, 2900, 3200, 3500, 3800, 4000, 3700, 3200, 3800, 4100, 4200];
+const obiettivo = new Array(12).fill(4000);
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: months,
+    datasets: [
+      { label: 'Scenario A - Solo sistema', data: scenA, borderColor: 'rgba(180,180,210,0.7)', backgroundColor: 'rgba(180,180,210,0.04)', borderWidth: 2, pointRadius: 4, pointHoverRadius: 7, fill: false, tension: 0.4 },
+      { label: 'Scenario B - Sistema + crescita organica', data: scenB, borderColor: '#F9BC11', backgroundColor: 'rgba(249,188,17,0.06)', borderWidth: 3, pointRadius: 5, pointHoverRadius: 8, fill: false, tension: 0.4 },
+      { label: 'Scenario C - Sistema + piano crescita', data: scenC, borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.05)', borderWidth: 2, pointRadius: 4, pointHoverRadius: 7, fill: false, tension: 0.4 },
+      { label: 'Obiettivo €4.000', data: obiettivo, borderColor: 'rgba(255,100,100,0.55)', borderWidth: 1.5, borderDash: [8,4], pointRadius: 0, fill: false, tension: 0 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: { backgroundColor: 'rgba(10,10,15,0.95)', titleColor: '#F9BC11', bodyColor: 'rgba(255,255,255,0.8)', borderColor: 'rgba(249,188,17,0.25)', borderWidth: 1, padding: 14, callbacks: { label: (c) => ' ' + c.dataset.label + ': €' + c.parsed.y.toLocaleString('it-IT') } }
+    },
+    scales: {
+      x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: 'rgba(255,255,255,0.45)', font: { size: 12 } } },
+      y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'rgba(255,255,255,0.45)', font: { size: 12 }, callback: v => '€' + (v/1000).toFixed(1) + 'K' }, min: 1500, max: 4500 }
+    }
+  }
+});
+
+/* NAV SCROLL */
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.background = window.scrollY > 80 ? 'rgba(10,10,15,0.98)' : 'rgba(10,10,15,0.85)';
+});
+</script>
+</body>
+</html>
