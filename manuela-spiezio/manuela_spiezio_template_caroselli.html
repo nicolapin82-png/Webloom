@@ -11,7 +11,6 @@
   --ivory:#F5F6FA;--muted:rgba(245,246,250,0.70);
   --border:rgba(112,136,200,0.22);--sep:rgba(201,168,76,0.15);
   --box-bg:rgba(6,8,22,0.84);
-  --vp-w:380;--vp-h:380;
 }
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;overflow-x:hidden;}
 body{background:var(--bg);color:var(--ivory);font-family:'Open Sans',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden;}
@@ -70,7 +69,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .car-desc{font-size:0.82rem;color:var(--muted);}
 
 /* ═══ LAYOUT viewer sx + pannello dx ═══ */
-.car-layout{display:grid;grid-template-columns:420px 1fr;gap:32px;align-items:start;}
+.car-layout{display:grid;grid-template-columns:400px 1fr;gap:32px;align-items:start;}
 @media(max-width:768px){.car-layout{grid-template-columns:1fr;}}
 
 /* ═══ SLIDE VIEWPORT ═══ */
@@ -91,12 +90,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .slide-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:0;}
 .slide-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(0,0,0,0.06) 0%,rgba(0,0,0,0.22) 50%,rgba(0,0,0,0.58) 100%);}
 
-.slide-box{position:absolute;bottom:0;left:0;width:78%;padding:22px 20px 20px 18px;background:var(--box-bg);z-index:3;border-top-right-radius:2px;}
+.slide-box{position:absolute;bottom:8%;left:0;width:78%;padding:22px 20px 20px 18px;background:var(--box-bg);z-index:3;border-top-right-radius:2px;}
+.slide::after{content:'';position:absolute;bottom:0;right:0;width:24%;height:10%;background:linear-gradient(135deg,transparent 0%,rgba(6,8,22,0.92) 55%);z-index:2;pointer-events:none;}
 .slide-box-num{position:absolute;top:-14px;left:16px;width:28px;height:28px;border-radius:50%;background:var(--warm);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;}
 .slide-box-arrows{font-size:18px;color:rgba(112,136,200,0.55);margin-bottom:6px;letter-spacing:-2px;line-height:1;}
-.slide-box-title{font-family:'Open Sans',sans-serif;font-size:13px;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:0.06em;line-height:1.3;}
-.slide-box-body{font-size:11px;color:rgba(255,255,255,0.72);line-height:1.65;margin-top:7px;font-weight:400;text-transform:none;letter-spacing:0;}
-.slide-box-cta{display:inline-block;margin-top:10px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold-lt);border-bottom:1px solid rgba(201,168,76,0.4);padding-bottom:1px;}
+.slide-box-title{font-family:'Open Sans',sans-serif;font-size:16px;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:0.06em;line-height:1.25;}
+.slide-box-body{font-size:12.5px;color:rgba(255,255,255,0.72);line-height:1.6;margin-top:7px;font-weight:400;text-transform:none;letter-spacing:0;}
+.slide-box-cta{display:inline-block;margin-top:10px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold-lt);border-bottom:1px solid rgba(201,168,76,0.4);padding-bottom:1px;}
 
 .dot-grid{position:absolute;bottom:10px;right:10px;z-index:2;display:grid;grid-template-columns:repeat(4,5px);gap:4px;}
 .dot-grid span{width:3px;height:3px;border-radius:50%;background:rgba(112,136,200,0.35);}
@@ -109,7 +109,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .slide.cta-slide .slide-photo{display:none;}
 .slide.cta-slide .slide-overlay{background:radial-gradient(ellipse 70% 60% at 40% 50%,rgba(112,136,200,0.12) 0%,transparent 65%);}
 .slide.cta-slide .slide-box{width:88%;bottom:50%;transform:translateY(50%);border-top-right-radius:6px;}
-.slide.cta-slide .slide-box-title{font-size:16px;}
 
 /* ═══ CONTENTEDITABLE ═══ */
 [contenteditable]{outline:none;cursor:text;border-radius:3px;transition:background .15s;}
@@ -222,6 +221,7 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
             <div class="slide-box-num">1</div>
             <div class="slide-box-arrows">&raquo;</div>
             <div class="slide-box-title" contenteditable="true">Il network non è atto di fede.<br>È strategia.</div>
+            <div class="slide-box-body" contenteditable="true">Swipe per scoprire il metodo.</div>
           </div>
           <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
           <div class="slide-handle">@manuelaspiezio</div>
@@ -336,7 +336,7 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
 
 Usa questa slide per catturare l'attenzione. La freccia » e il box indigo creano un'estetica corporate riconoscibile.</div>
       <div class="copy-strip">
-        <button class="copy-btn" onclick="copySlideText('c1')">Copia testo slide</button>
+        <button class="copy-btn" onclick="copySlideText('c1',this)">Copia testo slide</button>
       </div>
       <div class="panel-nav-list" id="c1-pnav">
         <div class="pnl-item active" onclick="goSlide('c1',1,6)"><span class="pnl-num">01</span> Cover - "Il network non è atto di fede"</div>
@@ -483,7 +483,7 @@ Usa questa slide per catturare l'attenzione. La freccia » e il box indigo crean
       <div class="panel-slide-title" id="c2-ptitle">"[NON CE LA FARAI MAI]"</div>
       <div class="panel-slide-body" id="c2-pbody">Slide di copertina - Hook forte, lettere cubitali. Questo è il formato già testato che ha generato il maggiore impatto nella community di Manuela.</div>
       <div class="copy-strip">
-        <button class="copy-btn" onclick="copySlideText('c2')">Copia testo slide</button>
+        <button class="copy-btn" onclick="copySlideText('c2',this)">Copia testo slide</button>
       </div>
       <div class="panel-nav-list" id="c2-pnav">
         <div class="pnl-item active" onclick="goSlide('c2',1,6)"><span class="pnl-num">01</span> Cover - "[NON CE LA FARAI MAI]"</div>
@@ -630,7 +630,7 @@ Usa questa slide per catturare l'attenzione. La freccia » e il box indigo crean
       <div class="panel-slide-title" id="c3-ptitle">"3 errori che distruggono il tuo profilo Instagram"</div>
       <div class="panel-slide-body" id="c3-pbody">Slide di copertina - Hook tecnico, richiede il salvataggio. Questo tipo di contenuto è altamente condivisibile da chi lavora nel network marketing.</div>
       <div class="copy-strip">
-        <button class="copy-btn" onclick="copySlideText('c3')">Copia testo slide</button>
+        <button class="copy-btn" onclick="copySlideText('c3',this)">Copia testo slide</button>
       </div>
       <div class="panel-nav-list" id="c3-pnav">
         <div class="pnl-item active" onclick="goSlide('c3',1,6)"><span class="pnl-num">01</span> Cover - "3 errori che distruggono il profilo"</div>
@@ -705,6 +705,7 @@ function setFormat(ratio) {
   document.querySelectorAll('.slide-viewport').forEach(vp => { vp.style.height = h+'px'; });
   document.querySelectorAll('.fmt-btn').forEach(b => b.classList.toggle('active', b.dataset.ratio===ratio));
   window._format = ratio;
+  ['c1','c2','c3'].forEach(c => refreshPickerForSlide(c, window['_'+c+'cur']||1));
 }
 
 /* ─── Navigazione carosello ─── */
@@ -726,7 +727,7 @@ function nextSlide(car,total){const c=window['_'+car+'cur']||1;goSlide(car,c>=to
 function prevSlide(car,total){const c=window['_'+car+'cur']||1;goSlide(car,c<=1?total:c-1,total);}
 
 /* ─── Copia testo dalla slide reale (include modifiche) ─── */
-function copySlideText(car) {
+function copySlideText(car, btn) {
   const cur=window['_'+car+'cur']||1;
   const slide=document.getElementById(car+'s'+cur);
   const parts=[];
@@ -736,7 +737,9 @@ function copySlideText(car) {
   if(title) parts.push(title.innerText.trim());
   if(body) parts.push(body.innerText.trim());
   if(cta) parts.push(cta.innerText.trim());
-  navigator.clipboard.writeText(parts.join('\n\n')).then(()=>{}).catch(()=>{});
+  navigator.clipboard.writeText(parts.join('\n\n')).then(()=>{
+    if(btn){const orig=btn.textContent;btn.textContent='Copiato!';setTimeout(()=>{btn.textContent=orig;},1500);}
+  }).catch(()=>{});
 }
 
 /* ─── Selettore foto ─── */
@@ -804,6 +807,9 @@ async function downloadAllSlides(car, total, btn) {
       await new Promise(r=>setTimeout(r,250));
     } catch(e){console.error(e);}
   }
+  goSlide(car,1,total);
+  btn.textContent='Ok - '+total+' slide scaricate';
+  await new Promise(r=>setTimeout(r,2200));
   btn.textContent=orig;btn.disabled=false;
 }
 
