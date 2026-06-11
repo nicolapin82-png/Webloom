@@ -206,6 +206,32 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .pnl-item.active{background:rgba(112,136,200,0.10);border-color:var(--border);color:var(--ivory);}
 .pnl-num{font-size:0.58rem;letter-spacing:1.5px;color:var(--gold);min-width:24px;}
 
+/* ═══ PHOTO PICKER ═══ */
+.photo-picker{margin-top:14px;max-width:380px;}
+@media(max-width:768px){.photo-picker{max-width:340px;}}
+.photo-picker-label{font-size:0.55rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(112,136,200,0.50);margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.photo-picker-label::after{content:'';flex:1;height:1px;background:rgba(112,136,200,0.12);}
+.photo-thumb-strip{display:flex;gap:5px;flex-wrap:wrap;}
+.photo-thumb{
+  width:46px;height:46px;border-radius:6px;overflow:hidden;
+  cursor:pointer;border:2px solid transparent;
+  transition:border-color .18s,transform .18s;
+  flex-shrink:0;position:relative;
+}
+.photo-thumb:hover{transform:scale(1.07);}
+.photo-thumb.selected{border-color:var(--warm);box-shadow:0 0 0 2px rgba(112,136,200,0.28);}
+.photo-thumb img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+.photo-thumb-num{
+  position:absolute;bottom:2px;right:3px;
+  font-size:7.5px;font-weight:700;color:#fff;
+  text-shadow:0 1px 3px rgba(0,0,0,0.9);
+  line-height:1;pointer-events:none;
+}
+.photo-picker-cta-note{
+  font-size:0.65rem;color:rgba(112,136,200,0.40);
+  font-style:italic;margin-top:8px;
+}
+
 footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-top:80px;}
 .footer-logo img{height:34px;opacity:1;}
 .footer-info{font-size:0.75rem;color:var(--muted);line-height:1.8;}
@@ -244,7 +270,7 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
 
         <!-- SLIDE 1 - COVER -->
         <div class="slide active" id="c1s1">
-          <img class="slide-photo" src="../04 - Assets/manuela_01.jpg" alt="">
+          <img class="slide-photo" src="assets/manuela_01.jpg" alt="">
           <div class="slide-overlay"></div>
           <div class="slide-box">
             <div class="slide-box-num">1</div>
@@ -262,7 +288,7 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
 
         <!-- SLIDE 2 -->
         <div class="slide" id="c1s2">
-          <img class="slide-photo" src="../04 - Assets/manuela_02.jpg" alt="">
+          <img class="slide-photo" src="assets/manuela_02.jpg" alt="">
           <div class="slide-overlay"></div>
           <div class="slide-box">
             <div class="slide-box-num">2</div>
@@ -277,7 +303,7 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
 
         <!-- SLIDE 3 -->
         <div class="slide" id="c1s3">
-          <img class="slide-photo" src="../04 - Assets/manuela_03.jpg" alt="">
+          <img class="slide-photo" src="assets/manuela_03.jpg" alt="">
           <div class="slide-overlay"></div>
           <div class="slide-box">
             <div class="slide-box-num">3</div>
@@ -292,7 +318,7 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
 
         <!-- SLIDE 4 -->
         <div class="slide" id="c1s4">
-          <img class="slide-photo" src="../04 - Assets/manuela_04.jpg" alt="">
+          <img class="slide-photo" src="assets/manuela_04.jpg" alt="">
           <div class="slide-overlay"></div>
           <div class="slide-box">
             <div class="slide-box-num">4</div>
@@ -307,7 +333,7 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
 
         <!-- SLIDE 5 -->
         <div class="slide" id="c1s5">
-          <img class="slide-photo" src="../04 - Assets/manuela_05.jpg" alt="">
+          <img class="slide-photo" src="assets/manuela_05.jpg" alt="">
           <div class="slide-overlay"></div>
           <div class="slide-box">
             <div class="slide-box-num">5</div>
@@ -349,6 +375,19 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
         </div>
         <button class="nav-btn" onclick="nextSlide('c1',6)">&#8594;</button>
       </div>
+      <!-- Photo Picker c1 -->
+      <div class="photo-picker" id="picker-c1">
+        <div class="photo-picker-label">Foto per questa slide</div>
+        <div class="photo-thumb-strip">
+          <div class="photo-thumb selected" data-src="assets/manuela_01.jpg" onclick="setSlidePhoto('c1','assets/manuela_01.jpg')"><img src="assets/manuela_01.jpg" alt=""><span class="photo-thumb-num">1</span></div>
+          <div class="photo-thumb" data-src="assets/manuela_02.jpg" onclick="setSlidePhoto('c1','assets/manuela_02.jpg')"><img src="assets/manuela_02.jpg" alt=""><span class="photo-thumb-num">2</span></div>
+          <div class="photo-thumb" data-src="assets/manuela_03.jpg" onclick="setSlidePhoto('c1','assets/manuela_03.jpg')"><img src="assets/manuela_03.jpg" alt=""><span class="photo-thumb-num">3</span></div>
+          <div class="photo-thumb" data-src="assets/manuela_04.jpg" onclick="setSlidePhoto('c1','assets/manuela_04.jpg')"><img src="assets/manuela_04.jpg" alt=""><span class="photo-thumb-num">4</span></div>
+          <div class="photo-thumb" data-src="assets/manuela_05.jpg" onclick="setSlidePhoto('c1','assets/manuela_05.jpg')"><img src="assets/manuela_05.jpg" alt=""><span class="photo-thumb-num">5</span></div>
+          <div class="photo-thumb" data-src="assets/manuela_06.jpg" onclick="setSlidePhoto('c1','assets/manuela_06.jpg')"><img src="assets/manuela_06.jpg" alt=""><span class="photo-thumb-num">6</span></div>
+          <div class="photo-thumb" data-src="assets/manuela_07.jpg" onclick="setSlidePhoto('c1','assets/manuela_07.jpg')"><img src="assets/manuela_07.jpg" alt=""><span class="photo-thumb-num">7</span></div>
+        </div>
+      </div>
     </div>
 
     <!-- PANNELLO -->
@@ -389,7 +428,7 @@ Usa questa slide per catturare l'attenzione. La freccia » e il box indigo crean
 
         <!-- SLIDE 1 - COVER -->
         <div class="slide active" id="c2s1">
-          <img class="slide-photo" src="../04 - Assets/manuela_02.jpg" alt="">
+          <img class="slide-photo" src="assets/manuela_02.jpg" alt="">
           <div class="slide-overlay"></div>
           <div class="slide-box">
             <div class="slide-box-num">1</div>
@@ -404,7 +443,7 @@ Usa questa slide per catturare l'attenzione. La freccia » e il box indigo crean
 
         <!-- SLIDE 2 -->
         <div class="slide" id="c2s2">
-          <img class="slide-photo" src="../04 - Assets/manuela_03.jpg" alt="">
+          <img class="slide-photo" src="assets/manuela_03.jpg" alt="">
           <div class="slide-overlay"></div>
           <div class="slide-box">
             <div class="slide-box-num">2</div>
@@ -419,7 +458,7 @@ Usa questa slide per catturare l'attenzione. La freccia » e il box indigo crean
 
         <!-- SLIDE 3 -->
         <div class="slide" id="c2s3">
-          <img class="slide-photo" src="../04 - Assets/manuela_04.jpg" alt="">
+          <img class="slide-photo" src="assets/manuela_04.jpg" alt="">
           <div class="slide-overlay"></div>
           <div class="slide-box">
             <div class="slide-box-num">3</div>
@@ -434,7 +473,7 @@ Usa questa slide per catturare l'attenzione. La freccia » e il box indigo crean
 
         <!-- SLIDE 4 -->
         <div class="slide" id="c2s4">
-          <img class="slide-photo" src="../04 - Assets/manuela_05.jpg" alt="">
+          <img class="slide-photo" src="assets/manuela_05.jpg" alt="">
           <div class="slide-overlay"></div>
           <div class="slide-box">
             <div class="slide-box-num">4</div>
@@ -449,7 +488,7 @@ Usa questa slide per catturare l'attenzione. La freccia » e il box indigo crean
 
         <!-- SLIDE 5 -->
         <div class="slide" id="c2s5">
-          <img class="slide-photo" src="../04 - Assets/manuela_06.jpg" alt="">
+          <img class="slide-photo" src="assets/manuela_06.jpg" alt="">
           <div class="slide-overlay"></div>
           <div class="slide-box">
             <div class="slide-box-num">5</div>
@@ -490,6 +529,19 @@ Usa questa slide per catturare l'attenzione. La freccia » e il box indigo crean
         </div>
         <button class="nav-btn" onclick="nextSlide('c2',6)">&#8594;</button>
       </div>
+      <!-- Photo Picker c2 -->
+      <div class="photo-picker" id="picker-c2">
+        <div class="photo-picker-label">Foto per questa slide</div>
+        <div class="photo-thumb-strip">
+          <div class="photo-thumb" data-src="assets/manuela_01.jpg" onclick="setSlidePhoto('c2','assets/manuela_01.jpg')"><img src="assets/manuela_01.jpg" alt=""><span class="photo-thumb-num">1</span></div>
+          <div class="photo-thumb selected" data-src="assets/manuela_02.jpg" onclick="setSlidePhoto('c2','assets/manuela_02.jpg')"><img src="assets/manuela_02.jpg" alt=""><span class="photo-thumb-num">2</span></div>
+          <div class="photo-thumb" data-src="assets/manuela_03.jpg" onclick="setSlidePhoto('c2','assets/manuela_03.jpg')"><img src="assets/manuela_03.jpg" alt=""><span class="photo-thumb-num">3</span></div>
+          <div class="photo-thumb" data-src="assets/manuela_04.jpg" onclick="setSlidePhoto('c2','assets/manuela_04.jpg')"><img src="assets/manuela_04.jpg" alt=""><span class="photo-thumb-num">4</span></div>
+          <div class="photo-thumb" data-src="assets/manuela_05.jpg" onclick="setSlidePhoto('c2','assets/manuela_05.jpg')"><img src="assets/manuela_05.jpg" alt=""><span class="photo-thumb-num">5</span></div>
+          <div class="photo-thumb" data-src="assets/manuela_06.jpg" onclick="setSlidePhoto('c2','assets/manuela_06.jpg')"><img src="assets/manuela_06.jpg" alt=""><span class="photo-thumb-num">6</span></div>
+          <div class="photo-thumb" data-src="assets/manuela_07.jpg" onclick="setSlidePhoto('c2','assets/manuela_07.jpg')"><img src="assets/manuela_07.jpg" alt=""><span class="photo-thumb-num">7</span></div>
+        </div>
+      </div>
     </div>
     <div class="car-panel">
       <div class="panel-slide-num" id="c2-pnum">Slide 1 di 6</div>
@@ -526,7 +578,7 @@ Usa questa slide per catturare l'attenzione. La freccia » e il box indigo crean
 
         <!-- SLIDE 1 - COVER -->
         <div class="slide active" id="c3s1">
-          <img class="slide-photo" src="../04 - Assets/manuela_07.jpg" alt="">
+          <img class="slide-photo" src="assets/manuela_07.jpg" alt="">
           <div class="slide-overlay"></div>
           <div class="slide-box">
             <div class="slide-box-num">1</div>
@@ -541,7 +593,7 @@ Usa questa slide per catturare l'attenzione. La freccia » e il box indigo crean
 
         <!-- SLIDE 2 -->
         <div class="slide" id="c3s2">
-          <img class="slide-photo" src="../04 - Assets/manuela_01.jpg" alt="">
+          <img class="slide-photo" src="assets/manuela_01.jpg" alt="">
           <div class="slide-overlay"></div>
           <div class="slide-box">
             <div class="slide-box-num">2</div>
@@ -556,7 +608,7 @@ Usa questa slide per catturare l'attenzione. La freccia » e il box indigo crean
 
         <!-- SLIDE 3 -->
         <div class="slide" id="c3s3">
-          <img class="slide-photo" src="../04 - Assets/manuela_02.jpg" alt="">
+          <img class="slide-photo" src="assets/manuela_02.jpg" alt="">
           <div class="slide-overlay"></div>
           <div class="slide-box">
             <div class="slide-box-num">3</div>
@@ -571,7 +623,7 @@ Usa questa slide per catturare l'attenzione. La freccia » e il box indigo crean
 
         <!-- SLIDE 4 -->
         <div class="slide" id="c3s4">
-          <img class="slide-photo" src="../04 - Assets/manuela_03.jpg" alt="">
+          <img class="slide-photo" src="assets/manuela_03.jpg" alt="">
           <div class="slide-overlay"></div>
           <div class="slide-box">
             <div class="slide-box-num">4</div>
@@ -586,7 +638,7 @@ Usa questa slide per catturare l'attenzione. La freccia » e il box indigo crean
 
         <!-- SLIDE 5 -->
         <div class="slide" id="c3s5">
-          <img class="slide-photo" src="../04 - Assets/manuela_04.jpg" alt="">
+          <img class="slide-photo" src="assets/manuela_04.jpg" alt="">
           <div class="slide-overlay"></div>
           <div class="slide-box">
             <div class="slide-box-num">5</div>
@@ -627,6 +679,19 @@ Usa questa slide per catturare l'attenzione. La freccia » e il box indigo crean
         </div>
         <button class="nav-btn" onclick="nextSlide('c3',6)">&#8594;</button>
       </div>
+      <!-- Photo Picker c3 -->
+      <div class="photo-picker" id="picker-c3">
+        <div class="photo-picker-label">Foto per questa slide</div>
+        <div class="photo-thumb-strip">
+          <div class="photo-thumb" data-src="assets/manuela_01.jpg" onclick="setSlidePhoto('c3','assets/manuela_01.jpg')"><img src="assets/manuela_01.jpg" alt=""><span class="photo-thumb-num">1</span></div>
+          <div class="photo-thumb" data-src="assets/manuela_02.jpg" onclick="setSlidePhoto('c3','assets/manuela_02.jpg')"><img src="assets/manuela_02.jpg" alt=""><span class="photo-thumb-num">2</span></div>
+          <div class="photo-thumb" data-src="assets/manuela_03.jpg" onclick="setSlidePhoto('c3','assets/manuela_03.jpg')"><img src="assets/manuela_03.jpg" alt=""><span class="photo-thumb-num">3</span></div>
+          <div class="photo-thumb" data-src="assets/manuela_04.jpg" onclick="setSlidePhoto('c3','assets/manuela_04.jpg')"><img src="assets/manuela_04.jpg" alt=""><span class="photo-thumb-num">4</span></div>
+          <div class="photo-thumb" data-src="assets/manuela_05.jpg" onclick="setSlidePhoto('c3','assets/manuela_05.jpg')"><img src="assets/manuela_05.jpg" alt=""><span class="photo-thumb-num">5</span></div>
+          <div class="photo-thumb" data-src="assets/manuela_06.jpg" onclick="setSlidePhoto('c3','assets/manuela_06.jpg')"><img src="assets/manuela_06.jpg" alt=""><span class="photo-thumb-num">6</span></div>
+          <div class="photo-thumb selected" data-src="assets/manuela_07.jpg" onclick="setSlidePhoto('c3','assets/manuela_07.jpg')"><img src="assets/manuela_07.jpg" alt=""><span class="photo-thumb-num">7</span></div>
+        </div>
+      </div>
     </div>
     <div class="car-panel">
       <div class="panel-slide-num" id="c3-pnum">Slide 1 di 6</div>
@@ -663,7 +728,50 @@ Usa questa slide per catturare l'attenzione. La freccia » e il box indigo crean
 </footer>
 
 <script>
-/* Dati pannelli per i 3 caroselli */
+/* ─── Foto disponibili ─── */
+const PHOTOS = [
+  'assets/manuela_01.jpg','assets/manuela_02.jpg','assets/manuela_03.jpg',
+  'assets/manuela_04.jpg','assets/manuela_05.jpg','assets/manuela_06.jpg',
+  'assets/manuela_07.jpg'
+];
+
+/* Foto assegnata per slide (specchiata dai default HTML) */
+const slidePhotoMap = {
+  c1: {1:'assets/manuela_01.jpg',2:'assets/manuela_02.jpg',3:'assets/manuela_03.jpg',4:'assets/manuela_04.jpg',5:'assets/manuela_05.jpg'},
+  c2: {1:'assets/manuela_02.jpg',2:'assets/manuela_03.jpg',3:'assets/manuela_04.jpg',4:'assets/manuela_05.jpg',5:'assets/manuela_06.jpg'},
+  c3: {1:'assets/manuela_07.jpg',2:'assets/manuela_01.jpg',3:'assets/manuela_02.jpg',4:'assets/manuela_03.jpg',5:'assets/manuela_04.jpg'}
+};
+
+/* Assegna una foto alla slide corrente */
+function setSlidePhoto(car, photoSrc) {
+  const cur = window['_'+car+'cur'] || 1;
+  slidePhotoMap[car][cur] = photoSrc;
+  const slide = document.getElementById(car+'s'+cur);
+  if(slide) {
+    const img = slide.querySelector('.slide-photo');
+    if(img) img.src = photoSrc;
+  }
+  refreshPickerActive(car, photoSrc);
+}
+
+/* Aggiorna evidenziazione nel picker */
+function refreshPickerActive(car, activeSrc) {
+  document.querySelectorAll('#picker-'+car+' .photo-thumb').forEach(t => {
+    t.classList.toggle('selected', t.dataset.src === activeSrc);
+  });
+}
+
+/* Mostra/nasconde picker e aggiorna evidenziazione in base alla slide */
+function refreshPickerForSlide(car, slideNum) {
+  const picker = document.getElementById('picker-'+car);
+  const isCta = (slideNum === 6);
+  picker.style.display = isCta ? 'none' : 'block';
+  if(!isCta) {
+    refreshPickerActive(car, slidePhotoMap[car][slideNum] || '');
+  }
+}
+
+/* ─── Dati pannelli per i 3 caroselli ─── */
 const panelData = {
   c1: [
     {num:'Slide 1 di 6', title:'"Il network non è atto di fede. È strategia."', body:'Slide di copertina - titolo del carosello.\n\nUsa questa slide per catturare l\'attenzione. La freccia » e il box indigo creano un\'estetica corporate riconoscibile.'},
@@ -691,7 +799,7 @@ const panelData = {
   ]
 };
 
-/* Navigazione */
+/* ─── Navigazione ─── */
 function goSlide(car, n, total) {
   for (let i=1; i<=total; i++) {
     const sl = document.getElementById(car+'s'+i);
@@ -706,13 +814,17 @@ function goSlide(car, n, total) {
   document.getElementById(car+'-ptitle').textContent = d.title;
   document.getElementById(car+'-pbody').textContent = d.body;
   window['_'+car+'cur'] = n;
+  refreshPickerForSlide(car, n);
 }
 function nextSlide(car, total) { const cur = window['_'+car+'cur']||1; goSlide(car, cur>=total?1:cur+1, total); }
 function prevSlide(car, total) { const cur = window['_'+car+'cur']||1; goSlide(car, cur<=1?total:cur-1, total); }
 function copyPanelText(car) { const t=document.getElementById(car+'-ptitle').textContent+'\n\n'+document.getElementById(car+'-pbody').textContent; navigator.clipboard.writeText(t).then(()=>{}).catch(()=>{}); }
 
 window.onload = function() {
-  ['c1','c2','c3'].forEach(c => window['_'+c+'cur']=1);
+  ['c1','c2','c3'].forEach(c => {
+    window['_'+c+'cur'] = 1;
+    refreshPickerForSlide(c, 1);
+  });
   const reveals = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
   reveals.forEach(el => io.observe(el));
