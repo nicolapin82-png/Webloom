@@ -90,7 +90,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .slide-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:0;}
 
 /* Overlay base (copertina) */
-.slide-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(8,11,24,0.92) 0%,rgba(8,11,24,0.55) 40%,rgba(8,11,24,0.08) 100%);}
+.slide-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(8,11,24,0.88) 0%,rgba(8,11,24,0.46) 42%,rgba(8,11,24,0.02) 100%);}
 
 /* ── COPERTINA: zona testo bottom con linea gold ── */
 .slide-caption{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:18px 22px 22px;border-top:1px solid var(--gold);}
@@ -99,23 +99,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 
 /* ── CORPO: foto top 58% + zona testo bottom ── */
 .slide.body-slide .slide-photo{height:58%;bottom:auto;}
-.slide.body-slide .slide-overlay{background:linear-gradient(to bottom,transparent 38%,rgba(8,11,24,0.70) 58%,rgba(8,11,24,0.95) 100%);}
-.slide-body-zone{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:12px 20px 18px;background:rgba(8,11,24,0.90);border-top:1px solid var(--gold);}
+.slide.body-slide .slide-overlay{background:linear-gradient(to bottom,transparent 35%,rgba(8,11,24,0.55) 56%,rgba(8,11,24,0.88) 100%);}
+.slide-body-zone{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:12px 20px 18px;background:rgba(8,11,24,0.76);border-top:1px solid var(--gold);}
 .slide-body-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:var(--gold);display:block;margin-bottom:3px;}
 .slide-body-title{font-family:'Open Sans',sans-serif;font-size:13.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#fff;line-height:1.25;}
 .slide-body-text{font-size:11px;color:rgba(245,246,250,0.72);line-height:1.65;margin-top:5px;}
 
 /* ── SPLIT: pannello indigo sx + foto dx, divisore gold ── */
-.slide.split-slide .slide-photo{position:absolute;inset:0 0 0 auto;width:48%;height:100%;}
+.slide.split-slide .slide-photo{position:absolute;inset:0 0 0 auto;width:50%;height:100%;}
 .slide.split-slide .slide-overlay{background:linear-gradient(to left,rgba(8,11,24,0.10) 0%,rgba(8,11,24,0.88) 46%,transparent 100%);}
-.slide-split-panel{position:absolute;top:0;left:0;bottom:0;width:52%;z-index:3;padding:22px 16px 22px 22px;display:flex;flex-direction:column;justify-content:center;border-right:2px solid var(--gold);}
+.slide-split-panel{position:absolute;top:0;left:0;bottom:0;width:50%;z-index:3;padding:22px 16px 22px 22px;display:flex;flex-direction:column;justify-content:center;background:rgba(8,11,24,0.78);border-right:2px solid var(--gold);}
 .slide-split-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:var(--gold-lt);display:block;margin-bottom:7px;}
 .slide-split-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:19px;line-height:1.18;color:var(--ivory);}
 .slide-split-body{font-family:'Open Sans',sans-serif;font-size:10px;color:rgba(245,246,250,0.68);line-height:1.65;margin-top:9px;}
 
 /* ── CTA: nessuna foto, tutto centrato ── */
 .slide.cta-slide .slide-photo{display:none;}
-.slide.cta-slide .slide-overlay{background:radial-gradient(ellipse 65% 55% at 50% 50%,rgba(112,136,200,0.10) 0%,transparent 70%);}
+.slide.cta-slide .slide-overlay{background:radial-gradient(ellipse 65% 55% at 50% 50%,rgba(112,136,200,0.16) 0%,transparent 70%);}
 .slide-cta-zone{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px 28px;text-align:center;gap:10px;}
 .slide-cta-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:28px;line-height:1.14;color:var(--ivory);}
 .slide-cta-rule{width:48px;height:1px;background:var(--gold);flex-shrink:0;}
@@ -123,11 +123,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .slide-cta-sub{font-size:10.5px;color:rgba(245,246,250,0.60);line-height:1.65;max-width:260px;}
 
 /* ── Contatore slide ── */
-.slide-counter{position:absolute;bottom:5px;left:20px;z-index:6;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:9px;color:rgba(201,168,76,0.45);letter-spacing:1px;pointer-events:none;}
+.slide-counter{position:absolute;bottom:auto;top:72px;right:12px;left:auto;z-index:6;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:9px;color:rgba(201,168,76,0.45);letter-spacing:1px;pointer-events:none;}
 
 /* ── BlooMind mark (obbligatorio) ── */
 .bm-mark{position:absolute;top:8px;left:50%;transform:translateX(-50%);z-index:10;}
-.bm-mark img{width:190px;height:auto;opacity:0.88;filter:drop-shadow(0 1px 6px rgba(0,0,0,0.55));}
+.bm-mark img{width:190px;height:auto;opacity:0.88;filter:drop-shadow(0 1px 6px rgba(0,0,0,0.55));margin-left:-10px;}
 
 /* ═══ CONTENTEDITABLE ═══ */
 [contenteditable]{outline:none;cursor:text;border-radius:3px;transition:background .15s;}
@@ -154,6 +154,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .photo-thumb.selected{border-color:var(--warm);box-shadow:0 0 0 2px rgba(112,136,200,0.28);}
 .photo-thumb img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
 .photo-thumb-num{position:absolute;bottom:2px;right:3px;font-size:7.5px;font-weight:700;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.9);line-height:1;pointer-events:none;}
+.photo-apply-all-btn{font-size:0.57rem;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.30);color:var(--gold);border-radius:4px;cursor:pointer;transition:background .2s;margin-left:auto;white-space:nowrap;font-family:'Open Sans',sans-serif;font-weight:600;}
+.photo-apply-all-btn:hover{background:rgba(201,168,76,0.22);}
 
 /* ═══ DOWNLOAD STRIP ═══ */
 .dl-strip{display:flex;gap:8px;margin-top:10px;max-width:380px;flex-wrap:wrap;}
@@ -197,6 +199,17 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
   .format-bar{padding:10px 14px;}
   .dl-btn{font-size:0.54rem;padding:7px 8px;}
   footer{padding:28px 16px;}
+  .slide-split-title{font-size:16px;line-height:1.15;}
+  .slide-split-body{font-size:9px;}
+  .slide-split-panel{padding:18px 14px 18px 18px;}
+  .slide-caption-title{font-size:21px;}
+  .slide-caption-sub{font-size:8.5px;letter-spacing:2px;}
+  .slide-body-zone{padding:10px 16px 14px;}
+  .slide-body-title{font-size:12px;}
+  .slide-body-text{font-size:10px;}
+  .slide-cta-title{font-size:22px;}
+  .slide-cta-sub{font-size:9.5px;max-width:95%;}
+  .slide-counter{font-size:8px;top:62px;right:10px;}
 }
 </style>
 </head>
@@ -325,7 +338,7 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
         <button class="nav-btn" onclick="nextSlide('c1',6)">&#8594;</button>
       </div>
       <div class="photo-picker" id="picker-c1">
-        <div class="photo-picker-label">Foto per questa slide</div>
+        <div class="photo-picker-label">Foto per questa slide<button class="photo-apply-all-btn" onclick="setAllSlidesPhoto('c1',6,this)">&#9889; Tutte le slide</button></div>
         <div class="photo-thumb-strip">
           <div class="photo-thumb selected" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" onclick="setSlidePhoto('c1',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt=""><span class="photo-thumb-num">1</span></div>
           <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" onclick="setSlidePhoto('c1',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt=""><span class="photo-thumb-num">2</span></div>
@@ -461,7 +474,7 @@ Usa questa slide per catturare l'attenzione. Titolo in Cormorant Garamond italic
         <button class="nav-btn" onclick="nextSlide('c2',6)">&#8594;</button>
       </div>
       <div class="photo-picker" id="picker-c2">
-        <div class="photo-picker-label">Foto per questa slide</div>
+        <div class="photo-picker-label">Foto per questa slide<button class="photo-apply-all-btn" onclick="setAllSlidesPhoto('c2',6,this)">&#9889; Tutte le slide</button></div>
         <div class="photo-thumb-strip">
           <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" onclick="setSlidePhoto('c2',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt=""><span class="photo-thumb-num">1</span></div>
           <div class="photo-thumb selected" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" onclick="setSlidePhoto('c2',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt=""><span class="photo-thumb-num">2</span></div>
@@ -595,7 +608,7 @@ Usa questa slide per catturare l'attenzione. Titolo in Cormorant Garamond italic
         <button class="nav-btn" onclick="nextSlide('c3',6)">&#8594;</button>
       </div>
       <div class="photo-picker" id="picker-c3">
-        <div class="photo-picker-label">Foto per questa slide</div>
+        <div class="photo-picker-label">Foto per questa slide<button class="photo-apply-all-btn" onclick="setAllSlidesPhoto('c3',6,this)">&#9889; Tutte le slide</button></div>
         <div class="photo-thumb-strip">
           <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" onclick="setSlidePhoto('c3',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt=""><span class="photo-thumb-num">1</span></div>
           <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" onclick="setSlidePhoto('c3',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt=""><span class="photo-thumb-num">2</span></div>
@@ -733,7 +746,21 @@ function setSlidePhoto(car, photoSrc) {
   slidePhotoMap[car][cur]=photoSrc;
   const slide=document.getElementById(car+'s'+cur);
   if(slide){const img=slide.querySelector('.slide-photo');if(img) img.src=photoSrc;}
+  window['_'+car+'lastPhoto']=photoSrc;
   refreshPickerActive(car,photoSrc);
+}
+function setAllSlidesPhoto(car, total, btn) {
+  const photoSrc=window['_'+car+'lastPhoto'];
+  if(!photoSrc){return;}
+  for(let i=1;i<=total-1;i++){
+    slidePhotoMap[car][i]=photoSrc;
+    const slide=document.getElementById(car+'s'+i);
+    if(slide){const img=slide.querySelector('.slide-photo');if(img) img.src=photoSrc;}
+  }
+  refreshPickerActive(car,photoSrc);
+  const orig=btn.textContent;
+  btn.textContent='Applicata!';
+  setTimeout(()=>{btn.textContent=orig;},1400);
 }
 function refreshPickerActive(car, activeSrc) {
   document.querySelectorAll('#picker-'+car+' .photo-thumb').forEach(t=>{
@@ -757,7 +784,7 @@ async function downloadSlide(car, btn) {
     const vp=document.querySelector('#vp'+car.replace('c',''));
     const canvas=await html2canvas(slide,{
       useCORS:true,allowTaint:false,
-      scale:Math.round(1080/vp.offsetWidth),
+      scale:3,
       logging:false,backgroundColor:'#080B18',
       width:vp.offsetWidth,height:vp.offsetHeight
     });
@@ -781,7 +808,7 @@ async function downloadAllSlides(car, total, btn) {
     try {
       const canvas=await html2canvas(slide,{
         useCORS:true,allowTaint:false,
-        scale:Math.round(1080/vp.offsetWidth),
+        scale:3,
         logging:false,backgroundColor:'#080B18',
         width:vp.offsetWidth,height:vp.offsetHeight
       });
@@ -802,6 +829,7 @@ async function downloadAllSlides(car, total, btn) {
 window.onload=function(){
   ['c1','c2','c3'].forEach(c=>{
     window['_'+c+'cur']=1;
+    window['_'+c+'lastPhoto']=slidePhotoMap[c][1];
     refreshPickerForSlide(c,1);
   });
   window._format='1:1';
