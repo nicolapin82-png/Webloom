@@ -8,8 +8,8 @@
 <style>
 :root{
   --bg:#080B18;--warm:#7088C8;--warm-lt:#9AAED8;--gold:#C9A84C;--gold-lt:#DFBC70;
-  --ivory:#F5F6FA;--muted:rgba(245,246,250,0.70);
-  --border:rgba(112,136,200,0.22);--sep:rgba(201,168,76,0.15);
+  --ivory:#F5F6FA;--muted:rgba(245,246,250,0.75);
+  --border:rgba(112,136,200,0.25);--sep:rgba(201,168,76,0.18);
   --box-bg:rgba(6,8,22,0.84);
 }
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;overflow-x:hidden;}
@@ -172,6 +172,13 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
 .footer-info{font-size:0.75rem;color:var(--muted);line-height:1.8;}
 .footer-info a{color:var(--warm);text-decoration:none;}
 @media(max-width:768px){.car-section{padding:48px 18px 0;}.hero{padding:110px 18px 36px;}footer{padding:40px 20px;flex-direction:column;align-items:flex-start;}}
+@media(max-width:480px){
+  .hero{padding:100px 16px 24px;}
+  .car-section{padding:36px 16px 0;}
+  .format-bar{padding:10px 14px;}
+  .dl-btn{font-size:0.54rem;padding:7px 8px;}
+  footer{padding:28px 16px;}
+}
 </style>
 </head>
 <body>

@@ -9,8 +9,8 @@
 :root{
   --bg:#080B18;--bg2:#101525;--card:rgba(8,10,30,0.65);
   --warm:#7088C8;--warm-lt:#9AAED8;--gold:#C9A84C;--gold-lt:#DFBC70;
-  --ivory:#F5F6FA;--muted:rgba(245,246,250,0.72);
-  --border:rgba(112,136,200,0.22);--sep:rgba(201,168,76,0.15);--radius:8px;
+  --ivory:#F5F6FA;--muted:rgba(245,246,250,0.75);
+  --border:rgba(112,136,200,0.25);--sep:rgba(201,168,76,0.18);--radius:8px;
   --p1:#7088C8;--p2:#C9A84C;--p3:#9AAED8;
 }
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;overflow-x:hidden;}
@@ -78,6 +78,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
 .footer-logo img{height:34px;opacity:1;}.footer-info{font-size:0.75rem;color:var(--muted);line-height:1.8;}.footer-info a{color:var(--warm);text-decoration:none;}
 @media(max-width:768px){.pillar-grid,.struttura-row,.posts-grid{grid-template-columns:1fr;}.struttura-col{border-right:none;border-bottom:1px solid var(--border);}.struttura-col:last-child{border-bottom:none;}.section,.week-section{padding:50px 20px;}footer{padding:40px 20px;flex-direction:column;align-items:flex-start;}}
+@media(max-width:480px){
+  .section,.week-section{padding:36px 16px;}
+  .struttura-col{padding:14px 12px;}
+  .post-card{padding:18px 16px;}
+  .pillar-card{padding:24px 20px;}
+  .week-badge{font-size:0.55rem;}
+  footer{padding:28px 16px;}
+}
 </style>
 </head>
 <body>
