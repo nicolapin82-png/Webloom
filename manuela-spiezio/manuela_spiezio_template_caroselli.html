@@ -10,7 +10,6 @@
   --bg:#080B18;--warm:#7088C8;--warm-lt:#9AAED8;--gold:#C9A84C;--gold-lt:#DFBC70;
   --ivory:#F5F6FA;--muted:rgba(245,246,250,0.75);
   --border:rgba(112,136,200,0.25);--sep:rgba(201,168,76,0.18);
-  --box-bg:rgba(6,8,22,0.84);
 }
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;overflow-x:hidden;}
 body{background:var(--bg);color:var(--ivory);font-family:'Open Sans',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden;}
@@ -83,32 +82,52 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 }
 @media(max-width:768px){.slide-viewport{width:100%;max-width:300px;height:300px;}}
 
-/* ═══ STILE C - CORPORATE GEOMETRICO ═══ */
+/* ═══ STILE E - STRATEGA MINIMALISTA ═══ */
 .slide{display:none;width:100%;height:100%;position:relative;overflow:hidden;}
 .slide.active{display:block;}
 
+/* Foto base */
 .slide-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:0;}
-.slide-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(0,0,0,0.06) 0%,rgba(0,0,0,0.22) 50%,rgba(0,0,0,0.58) 100%);}
 
-.slide-box{position:absolute;bottom:8%;left:0;width:78%;padding:22px 20px 20px 18px;background:var(--box-bg);z-index:3;border-top-right-radius:2px;}
-.wm-shield{position:absolute;bottom:0;right:0;width:28%;height:16%;background:radial-gradient(ellipse 100% 100% at 100% 100%,rgba(6,8,22,0.98) 18%,transparent 72%);z-index:2;pointer-events:none;}
-.slide-box-num{position:absolute;top:-14px;left:16px;width:28px;height:28px;border-radius:50%;background:var(--warm);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;}
-.slide-box-arrows{font-size:18px;color:rgba(112,136,200,0.55);margin-bottom:6px;letter-spacing:-2px;line-height:1;}
-.slide-box-title{font-family:'Open Sans',sans-serif;font-size:16px;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:0.06em;line-height:1.25;}
-.slide-box-body{font-size:12.5px;color:rgba(255,255,255,0.72);line-height:1.6;margin-top:7px;font-weight:400;text-transform:none;letter-spacing:0;}
-.slide-box-cta{display:inline-block;margin-top:10px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold-lt);border-bottom:1px solid rgba(201,168,76,0.4);padding-bottom:1px;}
+/* Overlay base (copertina) */
+.slide-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(8,11,24,0.92) 0%,rgba(8,11,24,0.55) 40%,rgba(8,11,24,0.08) 100%);}
 
-.dot-grid{position:absolute;bottom:10px;right:10px;z-index:2;display:grid;grid-template-columns:repeat(4,5px);gap:4px;}
-.dot-grid span{width:3px;height:3px;border-radius:50%;background:rgba(112,136,200,0.35);}
+/* ── COPERTINA: zona testo bottom con linea gold ── */
+.slide-caption{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:18px 22px 22px;border-top:1px solid var(--gold);}
+.slide-caption-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:26px;line-height:1.12;color:var(--ivory);letter-spacing:0.01em;text-shadow:0 1px 10px rgba(0,0,0,0.65);}
+.slide-caption-sub{font-family:'Open Sans',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(245,246,250,0.50);margin-top:9px;}
 
-.slide-handle{position:absolute;right:6px;top:50%;transform:translateY(-50%) rotate(90deg);font-size:6.5px;letter-spacing:2.5px;color:rgba(255,255,255,0.30);text-transform:uppercase;z-index:4;white-space:nowrap;}
+/* ── CORPO: foto top 58% + zona testo bottom ── */
+.slide.body-slide .slide-photo{height:58%;bottom:auto;}
+.slide.body-slide .slide-overlay{background:linear-gradient(to bottom,transparent 38%,rgba(8,11,24,0.70) 58%,rgba(8,11,24,0.95) 100%);}
+.slide-body-zone{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:12px 20px 18px;background:rgba(8,11,24,0.90);border-top:1px solid var(--gold);}
+.slide-body-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:var(--gold);display:block;margin-bottom:3px;}
+.slide-body-title{font-family:'Open Sans',sans-serif;font-size:13.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#fff;line-height:1.25;}
+.slide-body-text{font-size:11px;color:rgba(245,246,250,0.72);line-height:1.65;margin-top:5px;}
 
-.bm-mark{position:absolute;bottom:10px;right:22px;z-index:5;}
-.bm-mark img{height:72px;width:auto;opacity:1;}
+/* ── SPLIT: pannello indigo sx + foto dx, divisore gold ── */
+.slide.split-slide .slide-photo{position:absolute;inset:0 0 0 auto;width:48%;height:100%;}
+.slide.split-slide .slide-overlay{background:linear-gradient(to left,rgba(8,11,24,0.10) 0%,rgba(8,11,24,0.88) 46%,transparent 100%);}
+.slide-split-panel{position:absolute;top:0;left:0;bottom:0;width:52%;z-index:3;padding:22px 16px 22px 22px;display:flex;flex-direction:column;justify-content:center;border-right:2px solid var(--gold);}
+.slide-split-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:var(--gold-lt);display:block;margin-bottom:7px;}
+.slide-split-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:19px;line-height:1.18;color:var(--ivory);}
+.slide-split-body{font-family:'Open Sans',sans-serif;font-size:10px;color:rgba(245,246,250,0.68);line-height:1.65;margin-top:9px;}
 
+/* ── CTA: nessuna foto, tutto centrato ── */
 .slide.cta-slide .slide-photo{display:none;}
-.slide.cta-slide .slide-overlay{background:radial-gradient(ellipse 70% 60% at 40% 50%,rgba(112,136,200,0.12) 0%,transparent 65%);}
-.slide.cta-slide .slide-box{width:88%;bottom:50%;transform:translateY(50%);border-top-right-radius:6px;}
+.slide.cta-slide .slide-overlay{background:radial-gradient(ellipse 65% 55% at 50% 50%,rgba(112,136,200,0.10) 0%,transparent 70%);}
+.slide-cta-zone{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px 28px;text-align:center;gap:10px;}
+.slide-cta-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:28px;line-height:1.14;color:var(--ivory);}
+.slide-cta-rule{width:48px;height:1px;background:var(--gold);flex-shrink:0;}
+.slide-cta-text{font-family:'Open Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-lt);}
+.slide-cta-sub{font-size:10.5px;color:rgba(245,246,250,0.60);line-height:1.65;max-width:260px;}
+
+/* ── Contatore slide ── */
+.slide-counter{position:absolute;bottom:5px;left:20px;z-index:6;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:9px;color:rgba(201,168,76,0.45);letter-spacing:1px;pointer-events:none;}
+
+/* ── BlooMind mark (obbligatorio) ── */
+.bm-mark{position:absolute;top:8px;left:50%;transform:translateX(-50%);z-index:10;}
+.bm-mark img{width:190px;height:auto;opacity:0.88;filter:drop-shadow(0 1px 6px rgba(0,0,0,0.55));}
 
 /* ═══ CONTENTEDITABLE ═══ */
 [contenteditable]{outline:none;cursor:text;border-radius:3px;transition:background .15s;}
@@ -189,10 +208,10 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
 </nav>
 
 <div class="hero reveal">
-  <div class="hero-label">Template Caroselli - Stile C Corporate Geometrico</div>
+  <div class="hero-label">Template Caroselli - Stile E Stratega Minimalista</div>
   <h1 class="hero-title">Manuela <span>Spiezio</span></h1>
   <p class="hero-sub">3 caroselli pronti per Instagram. Seleziona il formato, scegli le foto, modifica i testi direttamente sulla slide, poi scarica.</p>
-  <div class="style-note">&#187; Box indigo &nbsp;·&nbsp; Foto selezionabile &nbsp;·&nbsp; Testi modificabili &nbsp;·&nbsp; Download PNG</div>
+  <div class="style-note">&#187; Linea gold &nbsp;·&nbsp; Foto selezionabile &nbsp;·&nbsp; Testi modificabili &nbsp;·&nbsp; Download PNG</div>
 </div>
 
 <!-- ═══ FORMAT BAR GLOBALE ═══ -->
@@ -224,90 +243,71 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
         <div class="slide active" id="c1s1">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt="">
           <div class="slide-overlay"></div>
-          <div class="slide-box">
-            <div class="slide-box-num">1</div>
-            <div class="slide-box-arrows">&raquo;</div>
-            <div class="slide-box-title" contenteditable="true">Il network non è atto di fede.<br>È strategia.</div>
-            <div class="slide-box-body" contenteditable="true">Scorri per scoprire il metodo.</div>
+          <div class="slide-caption">
+            <div class="slide-caption-title" contenteditable="true">Il network non è atto di fede.<br>È strategia.</div>
+            <div class="slide-caption-sub" contenteditable="true">Scorri per scoprire il metodo</div>
           </div>
-          <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="slide-handle">@manuelaspiezio</div>
-          <div class="wm-shield"></div>
+          <div class="slide-counter">01 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
-        <div class="slide" id="c1s2">
+        <div class="slide body-slide" id="c1s2">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt="">
           <div class="slide-overlay"></div>
-          <div class="slide-box">
-            <div class="slide-box-num">2</div>
-            <div class="slide-box-arrows">&raquo;</div>
-            <div class="slide-box-title" contenteditable="true">Se stai fallendo,<br>non è colpa tua.</div>
-            <div class="slide-box-body" contenteditable="true">Ti hanno dato un prodotto. Non un metodo. Ti hanno iscritto. Poi spariti. Non è il tuo fallimento: è il fallimento di un sistema.</div>
+          <div class="slide-body-zone">
+            <span class="slide-body-num">02 ·</span>
+            <div class="slide-body-title" contenteditable="true">Se stai fallendo,<br>non è colpa tua.</div>
+            <div class="slide-body-text" contenteditable="true">Ti hanno dato un prodotto. Non un metodo. Ti hanno iscritto. Poi spariti. Non è il tuo fallimento: è il fallimento di un sistema.</div>
           </div>
-          <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="slide-handle">@manuelaspiezio</div>
-          <div class="wm-shield"></div>
+          <div class="slide-counter">02 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
-        <div class="slide" id="c1s3">
+        <div class="slide body-slide" id="c1s3">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt="">
           <div class="slide-overlay"></div>
-          <div class="slide-box">
-            <div class="slide-box-num">3</div>
-            <div class="slide-box-arrows">&raquo;</div>
-            <div class="slide-box-title" contenteditable="true">Il metodo esiste.<br>È replicabile.</div>
-            <div class="slide-box-body" contenteditable="true">Ho insegnato questo metodo alle donne del mio team. Il risultato? 60.000 euro di fatturato insieme. Non fortuna. Tecnica replicabile.</div>
+          <div class="slide-body-zone">
+            <span class="slide-body-num">03 ·</span>
+            <div class="slide-body-title" contenteditable="true">Il metodo esiste.<br>È replicabile.</div>
+            <div class="slide-body-text" contenteditable="true">Ho insegnato questo metodo alle donne del mio team. Il risultato? 60.000 euro di fatturato insieme. Non fortuna. Tecnica replicabile.</div>
           </div>
-          <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="slide-handle">@manuelaspiezio</div>
-          <div class="wm-shield"></div>
+          <div class="slide-counter">03 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
-        <div class="slide" id="c1s4">
+        <div class="slide body-slide" id="c1s4">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" alt="">
           <div class="slide-overlay"></div>
-          <div class="slide-box">
-            <div class="slide-box-num">4</div>
-            <div class="slide-box-arrows">&raquo;</div>
-            <div class="slide-box-title" contenteditable="true">60.000 euro<br>di fatturato di team.</div>
-            <div class="slide-box-body" contenteditable="true">Non fortuna. Non magia. 8 anni di lavoro, metodo, ricostruzioni da zero. E una guida che ci ha creduto quando io non mi credevo ancora.</div>
+          <div class="slide-body-zone">
+            <span class="slide-body-num">04 ·</span>
+            <div class="slide-body-title" contenteditable="true">60.000 euro<br>di fatturato di team.</div>
+            <div class="slide-body-text" contenteditable="true">Non fortuna. Non magia. 8 anni di lavoro, metodo, ricostruzioni da zero. E una guida che ci ha creduto quando io non mi credevo ancora.</div>
           </div>
-          <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="slide-handle">@manuelaspiezio</div>
-          <div class="wm-shield"></div>
+          <div class="slide-counter">04 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
-        <div class="slide" id="c1s5">
+        <div class="slide body-slide" id="c1s5">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" alt="">
           <div class="slide-overlay"></div>
-          <div class="slide-box">
-            <div class="slide-box-num">5</div>
-            <div class="slide-box-arrows">&raquo;</div>
-            <div class="slide-box-title" contenteditable="true">Il supporto vero<br>non sparisce dopo la firma.</div>
-            <div class="slide-box-body" contenteditable="true">Nel mio team trovi: Instagram insegnato con metodo, challenge e contest strutturati, fiducia e libertà di espressione. Non un numero: una guida reale.</div>
+          <div class="slide-body-zone">
+            <span class="slide-body-num">05 ·</span>
+            <div class="slide-body-title" contenteditable="true">Il supporto vero<br>non sparisce dopo la firma.</div>
+            <div class="slide-body-text" contenteditable="true">Nel mio team trovi: Instagram insegnato con metodo, challenge e contest strutturati, fiducia e libertà di espressione. Non un numero: una guida reale.</div>
           </div>
-          <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="slide-handle">@manuelaspiezio</div>
-          <div class="wm-shield"></div>
+          <div class="slide-counter">05 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
         <div class="slide cta-slide" id="c1s6">
           <div class="slide-overlay"></div>
-          <div class="slide-box">
-            <div class="slide-box-num">6</div>
-            <div class="slide-box-arrows">&raquo;</div>
-            <div class="slide-box-title" contenteditable="true">Cerco donne con<br>motivazione d'acciaio.</div>
-            <div class="slide-box-body" contenteditable="true">Non esperienza. Non perfezione. Solo determinazione e voglia di mettere in pratica. Se sei tu, scrivimi in DM la parola ACCIAIO.</div>
-            <div class="slide-box-cta" contenteditable="true">&#8594; @manuelaspiezio</div>
+          <div class="slide-cta-zone">
+            <div class="slide-cta-title" contenteditable="true">Cerco donne con<br>motivazione d'acciaio.</div>
+            <div class="slide-cta-rule"></div>
+            <div class="slide-cta-text" contenteditable="true">DM: ACCIAIO</div>
+            <div class="slide-cta-sub" contenteditable="true">Non esperienza. Non perfezione. Solo determinazione e voglia di mettere in pratica. Se sei tu, scrivimi in DM la parola ACCIAIO.</div>
           </div>
-          <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="slide-handle">@manuelaspiezio</div>
-          <div class="wm-shield"></div>
+          <div class="slide-counter">06 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
@@ -347,7 +347,7 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
       <div class="panel-slide-title" id="c1-ptitle">"Il network non è atto di fede. È strategia."</div>
       <div class="panel-slide-body" id="c1-pbody">Slide di copertina - titolo del carosello.
 
-Usa questa slide per catturare l'attenzione. La freccia » e il box indigo creano un'estetica corporate riconoscibile.</div>
+Usa questa slide per catturare l'attenzione. Titolo in Cormorant Garamond italic con linea gold di separazione.</div>
       <div class="copy-strip">
         <button class="copy-btn" onclick="copySlideText('c1',this)">Copia testo slide</button>
       </div>
@@ -379,90 +379,71 @@ Usa questa slide per catturare l'attenzione. La freccia » e il box indigo crean
         <div class="slide active" id="c2s1">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt="">
           <div class="slide-overlay"></div>
-          <div class="slide-box">
-            <div class="slide-box-num">1</div>
-            <div class="slide-box-arrows">&raquo;</div>
-            <div class="slide-box-title" contenteditable="true">NON CE LA FARAI MAI</div>
-            <div class="slide-box-body" contenteditable="true">Come ho smesso di crederci.</div>
+          <div class="slide-caption">
+            <div class="slide-caption-title" contenteditable="true">NON CE LA FARAI MAI</div>
+            <div class="slide-caption-sub" contenteditable="true">Come ho smesso di crederci</div>
           </div>
-          <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="slide-handle">@manuelaspiezio</div>
-          <div class="wm-shield"></div>
+          <div class="slide-counter">01 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
-        <div class="slide" id="c2s2">
+        <div class="slide body-slide" id="c2s2">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt="">
           <div class="slide-overlay"></div>
-          <div class="slide-box">
-            <div class="slide-box-num">2</div>
-            <div class="slide-box-arrows">&raquo;</div>
-            <div class="slide-box-title" contenteditable="true">La voce nella testa<br>che ti frena.</div>
-            <div class="slide-box-body" contenteditable="true">Le credenze limitanti arrivano dall'ambiente, dalla società, dalle esperienze passate. "Sei così e non puoi cambiare." "Non sei abbastanza qualificata." "Non è per te."</div>
+          <div class="slide-body-zone">
+            <span class="slide-body-num">02 ·</span>
+            <div class="slide-body-title" contenteditable="true">La voce nella testa<br>che ti frena.</div>
+            <div class="slide-body-text" contenteditable="true">Le credenze limitanti arrivano dall'ambiente, dalla società, dalle esperienze passate. "Sei così e non puoi cambiare." "Non sei abbastanza qualificata." "Non è per te."</div>
           </div>
-          <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="slide-handle">@manuelaspiezio</div>
-          <div class="wm-shield"></div>
+          <div class="slide-counter">02 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
-        <div class="slide" id="c2s3">
+        <div class="slide body-slide" id="c2s3">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" alt="">
           <div class="slide-overlay"></div>
-          <div class="slide-box">
-            <div class="slide-box-num">3</div>
-            <div class="slide-box-arrows">&raquo;</div>
-            <div class="slide-box-title" contenteditable="true">Io ero la mamma<br>"comune" di 43 anni.</div>
-            <div class="slide-box-body" contenteditable="true">Ex dipendente. Senza laurea. Moglie e mamma. Se qualche anno fa mi avessero detto che sarei salita su un palco prestigioso, avrei risposto: "Ma sei folle? Io??? Ma vaaaaa!"</div>
+          <div class="slide-body-zone">
+            <span class="slide-body-num">03 ·</span>
+            <div class="slide-body-title" contenteditable="true">Io ero la mamma<br>"comune" di 43 anni.</div>
+            <div class="slide-body-text" contenteditable="true">Ex dipendente. Senza laurea. Moglie e mamma. Se qualche anno fa mi avessero detto che sarei salita su un palco prestigioso, avrei risposto: "Ma sei folle? Io??? Ma vaaaaa!"</div>
           </div>
-          <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="slide-handle">@manuelaspiezio</div>
-          <div class="wm-shield"></div>
+          <div class="slide-counter">03 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
-        <div class="slide" id="c2s4">
+        <div class="slide body-slide" id="c2s4">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" alt="">
           <div class="slide-overlay"></div>
-          <div class="slide-box">
-            <div class="slide-box-num">4</div>
-            <div class="slide-box-arrows">&raquo;</div>
-            <div class="slide-box-title" contenteditable="true">La svolta non è<br>stata la sicurezza.</div>
-            <div class="slide-box-body" contenteditable="true">È stata decidere di farlo lo stesso, nonostante la paura. Nonostante la voce che diceva "non ce la farai". L'unica persona che può decidere chi diventare siamo noi stesse.</div>
+          <div class="slide-body-zone">
+            <span class="slide-body-num">04 ·</span>
+            <div class="slide-body-title" contenteditable="true">La svolta non è<br>stata la sicurezza.</div>
+            <div class="slide-body-text" contenteditable="true">È stata decidere di farlo lo stesso, nonostante la paura. Nonostante la voce che diceva "non ce la farai". L'unica persona che può decidere chi diventare siamo noi stesse.</div>
           </div>
-          <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="slide-handle">@manuelaspiezio</div>
-          <div class="wm-shield"></div>
+          <div class="slide-counter">04 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
-        <div class="slide" id="c2s5">
+        <div class="slide body-slide" id="c2s5">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" alt="">
           <div class="slide-overlay"></div>
-          <div class="slide-box">
-            <div class="slide-box-num">5</div>
-            <div class="slide-box-arrows">&raquo;</div>
-            <div class="slide-box-title" contenteditable="true">Abbassa il volume<br>delle voci limitanti.</div>
-            <div class="slide-box-body" contenteditable="true">Alza quello della crescita personale e della strategia. Non ti sto chiedendo di smettere di avere paura. Ti sto chiedendo di farlo lo stesso.</div>
+          <div class="slide-body-zone">
+            <span class="slide-body-num">05 ·</span>
+            <div class="slide-body-title" contenteditable="true">Abbassa il volume<br>delle voci limitanti.</div>
+            <div class="slide-body-text" contenteditable="true">Alza quello della crescita personale e della strategia. Non ti sto chiedendo di smettere di avere paura. Ti sto chiedendo di farlo lo stesso.</div>
           </div>
-          <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="slide-handle">@manuelaspiezio</div>
-          <div class="wm-shield"></div>
+          <div class="slide-counter">05 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
         <div class="slide cta-slide" id="c2s6">
           <div class="slide-overlay"></div>
-          <div class="slide-box">
-            <div class="slide-box-num">6</div>
-            <div class="slide-box-arrows">&raquo;</div>
-            <div class="slide-box-title" contenteditable="true">Hai una voce<br>nella testa che ti frena?</div>
-            <div class="slide-box-body" contenteditable="true">Scrivimi nei commenti la tua credenza limitante. Se invece vuoi capire come uscire da quella voce, scrivi LIBERTA in DM. Ti rispondo io.</div>
-            <div class="slide-box-cta" contenteditable="true">&#8594; Commento o DM: LIBERTA</div>
+          <div class="slide-cta-zone">
+            <div class="slide-cta-title" contenteditable="true">Hai una voce nella testa<br>che ti frena?</div>
+            <div class="slide-cta-rule"></div>
+            <div class="slide-cta-text" contenteditable="true">Commento o DM: LIBERTA</div>
+            <div class="slide-cta-sub" contenteditable="true">Scrivimi nei commenti la tua credenza limitante. Se invece vuoi capire come uscire da quella voce, scrivi LIBERTA in DM. Ti rispondo io.</div>
           </div>
-          <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="slide-handle">@manuelaspiezio</div>
-          <div class="wm-shield"></div>
+          <div class="slide-counter">06 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
@@ -532,90 +513,71 @@ Usa questa slide per catturare l'attenzione. La freccia » e il box indigo crean
         <div class="slide active" id="c3s1">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" alt="">
           <div class="slide-overlay"></div>
-          <div class="slide-box">
-            <div class="slide-box-num">1</div>
-            <div class="slide-box-arrows">&raquo;</div>
-            <div class="slide-box-title" contenteditable="true">3 errori che distruggono<br>il tuo profilo Instagram.</div>
-            <div class="slide-box-body" contenteditable="true">E come evitarli. Salvalo - ti servirà.</div>
+          <div class="slide-caption">
+            <div class="slide-caption-title" contenteditable="true">3 errori che distruggono<br>il tuo profilo Instagram.</div>
+            <div class="slide-caption-sub" contenteditable="true">E come evitarli. Salvalo - ti servirà</div>
           </div>
-          <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="slide-handle">@manuelaspiezio</div>
-          <div class="wm-shield"></div>
+          <div class="slide-counter">01 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
-        <div class="slide" id="c3s2">
+        <div class="slide split-slide" id="c3s2">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt="">
           <div class="slide-overlay"></div>
-          <div class="slide-box">
-            <div class="slide-box-num">2</div>
-            <div class="slide-box-arrows">&raquo;</div>
-            <div class="slide-box-title" contenteditable="true">Errore 01<br>Il profilo-vetrina di prodotti.</div>
-            <div class="slide-box-body" contenteditable="true">Instagram non è un catalogo. Se ogni post è una foto di prodotto, l'algoritmo ti ignora e le persone ti tolgono il follow. Le persone seguono persone, non prodotti.</div>
+          <div class="slide-split-panel">
+            <span class="slide-split-num">Errore 01</span>
+            <div class="slide-split-title" contenteditable="true">Il profilo-vetrina di prodotti.</div>
+            <div class="slide-split-body" contenteditable="true">Instagram non è un catalogo. Se ogni post è una foto di prodotto, l'algoritmo ti ignora. Le persone seguono persone, non prodotti.</div>
           </div>
-          <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="slide-handle">@manuelaspiezio</div>
-          <div class="wm-shield"></div>
+          <div class="slide-counter">02 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
-        <div class="slide" id="c3s3">
+        <div class="slide split-slide" id="c3s3">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt="">
           <div class="slide-overlay"></div>
-          <div class="slide-box">
-            <div class="slide-box-num">3</div>
-            <div class="slide-box-arrows">&raquo;</div>
-            <div class="slide-box-title" contenteditable="true">Errore 02<br>Sparire dopo la pubblicazione.</div>
-            <div class="slide-box-body" contenteditable="true">Le prime 2 ore dopo aver pubblicato sono le più importanti. Se non rispondi ai commenti, l'algoritmo smette di spingere il tuo contenuto. Stai letteralmente sprecando ogni post.</div>
+          <div class="slide-split-panel">
+            <span class="slide-split-num">Errore 02</span>
+            <div class="slide-split-title" contenteditable="true">Sparire dopo la pubblicazione.</div>
+            <div class="slide-split-body" contenteditable="true">Le prime 2 ore dopo aver pubblicato sono cruciali. Se non rispondi, l'algoritmo smette di spingere il tuo contenuto. Ogni post è sprecato.</div>
           </div>
-          <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="slide-handle">@manuelaspiezio</div>
-          <div class="wm-shield"></div>
+          <div class="slide-counter">03 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
-        <div class="slide" id="c3s4">
+        <div class="slide split-slide" id="c3s4">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt="">
           <div class="slide-overlay"></div>
-          <div class="slide-box">
-            <div class="slide-box-num">4</div>
-            <div class="slide-box-arrows">&raquo;</div>
-            <div class="slide-box-title" contenteditable="true">Errore 03<br>Non dici mai cosa fare dopo.</div>
-            <div class="slide-box-body" contenteditable="true">Se non dici alle persone cosa fare dopo aver visto il tuo contenuto, non faranno niente. Ogni post, ogni reel, ogni story deve avere un'azione chiara da compiere.</div>
+          <div class="slide-split-panel">
+            <span class="slide-split-num">Errore 03</span>
+            <div class="slide-split-title" contenteditable="true">Non dici mai cosa fare dopo.</div>
+            <div class="slide-split-body" contenteditable="true">Se non dici cosa fare dopo aver visto il tuo contenuto, non faranno niente. Ogni post deve avere un'azione chiara.</div>
           </div>
-          <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="slide-handle">@manuelaspiezio</div>
-          <div class="wm-shield"></div>
+          <div class="slide-counter">04 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
-        <div class="slide" id="c3s5">
+        <div class="slide body-slide" id="c3s5">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" alt="">
           <div class="slide-overlay"></div>
-          <div class="slide-box">
-            <div class="slide-box-num">5</div>
-            <div class="slide-box-arrows">&raquo;</div>
-            <div class="slide-box-title" contenteditable="true">La soluzione?<br>È più semplice di quanto pensi.</div>
-            <div class="slide-box-body" contenteditable="true">Condividi valore. Racconta la tua storia. Rispondi ai commenti. Chiedi qualcosa al tuo pubblico. Instagram non è difficile: manca il metodo, non la buona volontà.</div>
+          <div class="slide-body-zone">
+            <span class="slide-body-num">05 ·</span>
+            <div class="slide-body-title" contenteditable="true">La soluzione?<br>È più semplice di quanto pensi.</div>
+            <div class="slide-body-text" contenteditable="true">Condividi valore. Racconta la tua storia. Rispondi ai commenti. Chiedi qualcosa al tuo pubblico. Instagram non è difficile: manca il metodo, non la buona volontà.</div>
           </div>
-          <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="slide-handle">@manuelaspiezio</div>
-          <div class="wm-shield"></div>
+          <div class="slide-counter">05 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
         <div class="slide cta-slide" id="c3s6">
           <div class="slide-overlay"></div>
-          <div class="slide-box">
-            <div class="slide-box-num">6</div>
-            <div class="slide-box-arrows">&raquo;</div>
-            <div class="slide-box-title" contenteditable="true">Vuoi il metodo<br>completo per Instagram?</div>
-            <div class="slide-box-body" contenteditable="true">Scrivi in DM la parola STRATEGIA. Ti racconto come lavoro e come insegno Instagram nel mio team - senza spam, senza pressione.</div>
-            <div class="slide-box-cta" contenteditable="true">&#8594; DM: STRATEGIA</div>
+          <div class="slide-cta-zone">
+            <div class="slide-cta-title" contenteditable="true">Vuoi il metodo completo<br>per Instagram?</div>
+            <div class="slide-cta-rule"></div>
+            <div class="slide-cta-text" contenteditable="true">DM: STRATEGIA</div>
+            <div class="slide-cta-sub" contenteditable="true">Scrivi in DM la parola STRATEGIA. Ti racconto come lavoro e come insegno Instagram nel mio team - senza spam, senza pressione.</div>
           </div>
-          <div class="dot-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="slide-handle">@manuelaspiezio</div>
-          <div class="wm-shield"></div>
+          <div class="slide-counter">06 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
@@ -756,12 +718,10 @@ function copySlideText(car, btn) {
   const cur=window['_'+car+'cur']||1;
   const slide=document.getElementById(car+'s'+cur);
   const parts=[];
-  const title=slide.querySelector('.slide-box-title');
-  const body=slide.querySelector('.slide-box-body');
-  const cta=slide.querySelector('.slide-box-cta');
-  if(title) parts.push(title.innerText.trim());
-  if(body) parts.push(body.innerText.trim());
-  if(cta) parts.push(cta.innerText.trim());
+  slide.querySelectorAll('[contenteditable]').forEach(el=>{
+    const t=el.innerText.trim();
+    if(t) parts.push(t);
+  });
   navigator.clipboard.writeText(parts.join('\n\n')).then(()=>{
     if(btn){const orig=btn.textContent;btn.textContent='Copiato!';setTimeout(()=>{btn.textContent=orig;},1500);}
   }).catch(()=>{});
