@@ -504,9 +504,10 @@ async function renderSlide(carId, slideIdx) {
   if (!slide) return document.createElement('canvas');
 
   var W = 1080;
-  var isF45 = slide.classList.contains('fmt-45');
-  var H = isF45 ? 1350 : 1080;
-  var F = W / slide.offsetWidth;
+  var slideW = slide.offsetWidth;
+  var slideH = slide.offsetHeight;
+  var F = W / slideW;
+  var H = Math.round(slideH * F);
 
   var canvas = document.createElement('canvas');
   canvas.width = W; canvas.height = H;
@@ -532,7 +533,6 @@ async function renderSlide(carId, slideIdx) {
         resolve();
       };
       img.onerror = resolve;
-      img.crossOrigin = 'anonymous';
       img.src = bgEl.src;
     });
   }
@@ -636,7 +636,6 @@ async function renderSlide(carId, slideIdx) {
         resolve();
       };
       logo.onerror = resolve;
-      logo.crossOrigin = 'anonymous';
       logo.src = logoEl.src;
     });
   }
