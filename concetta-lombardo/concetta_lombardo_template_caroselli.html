@@ -135,8 +135,8 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
     </div>
     <div class="fmt-row" id="fmt-row-car1" style="margin-top:14px;">
       <span class="fmt-lbl">Formato:</span>
-      <button class="fmt-btn active" data-fmt="11" onclick="setFormat('car1','11')">1:1 Feed</button>
-      <button class="fmt-btn" data-fmt="45" onclick="setFormat('car1','45')">4:5 Verticale</button>
+      <button class="fmt-btn" data-fmt="11" onclick="setFormat('car1','11')">1:1 Feed</button>
+      <button class="fmt-btn active" data-fmt="45" onclick="setFormat('car1','45')">4:5 Verticale</button>
     </div>
   </div>
   <div class="carousel-wrap" id="wrap-car1">
@@ -186,8 +186,8 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
     </div>
     <div class="fmt-row" id="fmt-row-car2" style="margin-top:14px;">
       <span class="fmt-lbl">Formato:</span>
-      <button class="fmt-btn active" data-fmt="11" onclick="setFormat('car2','11')">1:1 Feed</button>
-      <button class="fmt-btn" data-fmt="45" onclick="setFormat('car2','45')">4:5 Verticale</button>
+      <button class="fmt-btn" data-fmt="11" onclick="setFormat('car2','11')">1:1 Feed</button>
+      <button class="fmt-btn active" data-fmt="45" onclick="setFormat('car2','45')">4:5 Verticale</button>
     </div>
   </div>
   <div class="carousel-wrap" id="wrap-car2">
@@ -233,8 +233,8 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
     </div>
     <div class="fmt-row" id="fmt-row-car3" style="margin-top:14px;">
       <span class="fmt-lbl">Formato:</span>
-      <button class="fmt-btn active" data-fmt="11" onclick="setFormat('car3','11')">1:1 Feed</button>
-      <button class="fmt-btn" data-fmt="45" onclick="setFormat('car3','45')">4:5 Verticale</button>
+      <button class="fmt-btn" data-fmt="11" onclick="setFormat('car3','11')">1:1 Feed</button>
+      <button class="fmt-btn active" data-fmt="45" onclick="setFormat('car3','45')">4:5 Verticale</button>
     </div>
   </div>
   <div class="carousel-wrap" id="wrap-car3">
@@ -293,7 +293,7 @@ const PHOTOS = [
 ];
 
 const currentPhotos = {car1:0, car2:0, car3:0};
-const currentFormats = {car1:'11', car2:'11', car3:'11'};
+const currentFormats = {car1:'45', car2:'45', car3:'45'};
 const SCALE = 3;
 
 function initThumbs(carId) {
@@ -489,7 +489,7 @@ reveals.forEach(el => io.observe(el));
 
 // Init
 window.addEventListener('load', () => {
-  ['car1','car2','car3'].forEach(id => { initThumbs(id); setCarPhoto(id, 0); });
+  ['car1','car2','car3'].forEach(id => { initThumbs(id); setCarPhoto(id, 0); setFormat(id, '45'); });
 });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
