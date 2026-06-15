@@ -501,14 +501,27 @@ async function renderSlide(carId, slideIdx) {
   const id = carId + "-s" + slideIdx;
   const slide = document.getElementById(id);
   if (!slide) return document.createElement("canvas");
-  const { w, h } = getSlideSize(carId);
-  const scale = w / slide.offsetWidth;
-  const cv = await html2canvas(slide, { scale: scale, useCORS: true, allowTaint: false, backgroundColor: null, logging: false, imageTimeout: 0 });
-  if (cv.width !== w || cv.height !== h) {
-    const f = document.createElement("canvas"); f.width = w; f.height = h;
-    f.getContext("2d").drawImage(cv, 0, 0, w, h); return f;
-  }
-  return cv;
+  const slideW = slide.offsetWidth;
+  const slideH = slide.offsetHeight;
+  const EXPORT_W = 1080;
+  const scale = EXPORT_W / slideW;
+  const exportH = Math.round(slideH * scale);
+  const cv = await html2canvas(slide, {
+    scale: scale,
+    useCORS: true,
+    allowTaint: false,
+    backgroundColor: null,
+    logging: false,
+    imageTimeout: 0,
+    width: slideW,
+    height: slideH
+  });
+  if (cv.width === EXPORT_W && cv.height === exportH) return cv;
+  const f = document.createElement("canvas");
+  f.width = EXPORT_W;
+  f.height = exportH;
+  f.getContext("2d").drawImage(cv, 0, 0, cv.width, cv.height, 0, 0, EXPORT_W, exportH);
+  return f;
 }
 async function downloadPNG(carId, slideIdx) {
   const btns = document.querySelectorAll(".dl-single,.dl-zip-btn");
