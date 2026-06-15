@@ -782,15 +782,18 @@ async function downloadSlide(car, btn) {
   btn.textContent='Generando...';btn.disabled=true;
   try {
     const vp=document.querySelector('#vp'+car.replace('c',''));
-    const canvas=await html2canvas(slide,{
+    const vpW=vp.offsetWidth,vpH=vp.offsetHeight;
+    const scale=1080/vpW,exportH=Math.round(vpH*scale);
+    const cv=await html2canvas(slide,{
       useCORS:true,allowTaint:false,
-      scale:3,
+      scale:scale,
       logging:false,backgroundColor:'#080B18',
-      width:vp.offsetWidth,height:vp.offsetHeight
+      width:vpW,height:vpH
     });
+    const out=(cv.width===1080&&cv.height===exportH)?cv:(()=>{const f=document.createElement('canvas');f.width=1080;f.height=exportH;f.getContext('2d').drawImage(cv,0,0,cv.width,cv.height,0,0,1080,exportH);return f;})();
     const link=document.createElement('a');
     link.download='manuela_'+car+'_slide'+cur+'.png';
-    link.href=canvas.toDataURL('image/png');
+    link.href=out.toDataURL('image/png');
     link.click();
   } catch(e){console.error(e);}
   btn.textContent=orig;btn.disabled=false;
@@ -806,15 +809,18 @@ async function downloadAllSlides(car, total, btn) {
     const slide=document.getElementById(car+'s'+i);
     const vp=document.querySelector('#vp'+car.replace('c',''));
     try {
-      const canvas=await html2canvas(slide,{
+      const vpW=vp.offsetWidth,vpH=vp.offsetHeight;
+      const scale=1080/vpW,exportH=Math.round(vpH*scale);
+      const cv2=await html2canvas(slide,{
         useCORS:true,allowTaint:false,
-        scale:3,
+        scale:scale,
         logging:false,backgroundColor:'#080B18',
-        width:vp.offsetWidth,height:vp.offsetHeight
+        width:vpW,height:vpH
       });
+      const out2=(cv2.width===1080&&cv2.height===exportH)?cv2:(()=>{const f=document.createElement('canvas');f.width=1080;f.height=exportH;f.getContext('2d').drawImage(cv2,0,0,cv2.width,cv2.height,0,0,1080,exportH);return f;})();
       const link=document.createElement('a');
       link.download='manuela_'+car+'_slide'+i+'.png';
-      link.href=canvas.toDataURL('image/png');
+      link.href=out2.toDataURL('image/png');
       link.click();
       await new Promise(r=>setTimeout(r,250));
     } catch(e){console.error(e);}
@@ -832,7 +838,7 @@ window.onload=function(){
     window['_'+c+'lastPhoto']=slidePhotoMap[c][1];
     refreshPickerForSlide(c,1);
   });
-  window._format='1:1';
+  setFormat('4:5');
   const reveals=document.querySelectorAll('.reveal');
   const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
   reveals.forEach(el=>io.observe(el));

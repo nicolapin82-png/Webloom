@@ -435,17 +435,22 @@ function setFormat(carId,fmt){
 }
 async function renderSlide(carId,slideIdx){
   var slide=document.querySelector('#'+carId+'-s'+slideIdx);
-  if(!slide)return null;
+  if(!slide)return document.createElement('canvas');
+  var slideW=slide.offsetWidth,slideH=slide.offsetHeight;
+  var scale=1080/slideW,exportH=Math.round(slideH*scale);
   var img=slide.querySelector('.slide-bg-img');
   var currentSrc=img?img.src:'';
-  var cv=await html2canvas(slide,{scale:3,useCORS:true,allowTaint:false,backgroundColor:null,logging:false,imageTimeout:15000,
+  var cv=await html2canvas(slide,{scale:scale,useCORS:true,allowTaint:false,backgroundColor:null,logging:false,imageTimeout:0,width:slideW,height:slideH,
     onclone:function(clonedDoc,clonedEl){
       var cloneImg=clonedEl.querySelector('.slide-bg-img');
       if(cloneImg&&currentSrc){cloneImg.src=currentSrc;cloneImg.style.objectFit='cover';cloneImg.style.objectPosition='center 18%';}
       if(_bmLogo){clonedEl.querySelectorAll('.bm-mark img').forEach(function(img){img.src=_bmLogo;});}
     }
   });
-  return cv;
+  if(cv.width===1080&&cv.height===exportH)return cv;
+  var f=document.createElement('canvas');f.width=1080;f.height=exportH;
+  f.getContext('2d').drawImage(cv,0,0,cv.width,cv.height,0,0,1080,exportH);
+  return f;
 }
 async function downloadPNGFromWrap(btn){
   btn.disabled=true;btn.textContent='...';
@@ -470,6 +475,7 @@ async function downloadZIP(carId,count,label,btn){
 var reveals=document.querySelectorAll('.reveal');
 var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
 reveals.forEach(function(el){io.observe(el);});
+window.addEventListener('load',function(){setFormat('car1','45');setFormat('car2','45');setFormat('car3','45');setFormat('car4','45');});
 </script>
 </body>
 </html>
