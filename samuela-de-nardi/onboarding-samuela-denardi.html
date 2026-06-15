@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modulo di avvio — Samuela De Nardi · WeBloom</title>
+  <title>Modulo di avvio - Samuela De Nardi · WeBloom</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -36,7 +36,7 @@
       padding: 0 20px 80px;
     }
 
-    /* ── HEADER ── */
+    /* HEADER */
     .header {
       background: var(--header-bg);
       border-radius: 16px;
@@ -103,7 +103,7 @@
       margin: 0 auto;
     }
 
-    /* ── INTRO BOX ── */
+    /* INTRO BOX */
     .intro-box {
       background: #f0f7f0;
       border-left: 4px solid var(--accent);
@@ -115,7 +115,7 @@
     }
     .intro-box strong { color: #1a3d1b; }
 
-    /* ── NOTE BOX ── */
+    /* NOTE BOX */
     .note-box {
       background: #fffbf0;
       border-left: 4px solid var(--warm);
@@ -126,7 +126,7 @@
       color: #7a5a1a;
     }
 
-    /* ── SEZIONE CARD ── */
+    /* SEZIONE CARD */
     .section-card {
       background: var(--card-bg);
       border-radius: 14px;
@@ -166,7 +166,7 @@
       margin-top: 2px;
     }
 
-    /* ── CAMPO FORM ── */
+    /* CAMPO FORM */
     .field {
       margin-bottom: 20px;
     }
@@ -223,7 +223,7 @@
       margin-top: 5px;
     }
 
-    /* ── CHECKBOX E RADIO ── */
+    /* CHECKBOX E RADIO */
     .check-group, .radio-group {
       display: flex;
       flex-direction: column;
@@ -254,7 +254,7 @@
     }
     .check-item input, .radio-item input { width: 16px; height: 16px; cursor: pointer; accent-color: var(--accent); flex-shrink: 0; }
 
-    /* ── PALETTE VISIVA ── */
+    /* PALETTE VISIVA */
     .palette-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -302,7 +302,7 @@
       background: #fff;
     }
 
-    /* ── GIORNI GRID ── */
+    /* GIORNI GRID */
     .days-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
@@ -337,14 +337,14 @@
     }
     .day-label:hover { border-color: var(--accent); background: rgba(var(--accent-rgb), 0.06); }
 
-    /* ── SEPARATORE ── */
+    /* SEPARATORE */
     .divider {
       height: 1px;
       background: var(--border);
       margin: 20px 0;
     }
 
-    /* ── SUBMIT ── */
+    /* SUBMIT */
     .submit-card {
       background: var(--header-bg);
       border-radius: 16px;
@@ -358,7 +358,7 @@
       color: #f7f9f5;
       margin-bottom: 10px;
     }
-    .submit-card p {
+    .submit-card > p {
       font-size: 0.92rem;
       color: #b0c4b1;
       margin-bottom: 24px;
@@ -386,13 +386,18 @@
       transform: translateY(-1px);
       box-shadow: 0 8px 24px rgba(107,158,110,0.35);
     }
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
     .submit-note {
       font-size: 0.8rem;
       color: #6b8f6c;
       margin-top: 14px;
     }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     .footer {
       margin-top: 40px;
       text-align: center;
@@ -404,7 +409,7 @@
     .footer img { height: 24px; width: auto; display: block; margin: 0 auto 10px; opacity: 0.55; }
     .footer a { color: var(--accent); text-decoration: none; }
 
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 600px) {
       .wrapper { margin: 24px auto; }
       .header { padding: 32px 24px; }
@@ -426,19 +431,21 @@
     </div>
     <div class="header-tag">Pacchetto Personalizzato</div>
     <h1>Modulo di avvio<br><em>Benvenuta nel sistema</em></h1>
-    <p>Queste informazioni ci permettono di configurare tutto in modo preciso, su misura per te. Compila con calma — ci vorranno circa 15 minuti.</p>
+    <p>Queste informazioni ci permettono di configurare tutto in modo preciso, su misura per te. Compila con calma: ci vorranno circa 15 minuti.</p>
   </div>
 
   <div class="intro-box">
     <strong>Come funziona.</strong> Una volta compilato questo modulo, WeBloom configura il tuo sistema di prenotazioni, la scheda Google, la pagina di acquisizione e tutto il resto. Entro ~15 giorni dalla firma il sistema è live e operativo. La sessione di formazione la pianifichiamo insieme nella settimana della consegna.
     <div class="note-box" style="margin-top:12px;">
-      <strong>Email marketing dedicata.</strong> WeBloom creerà per te un indirizzo Gmail dedicato (es. <em>marketing.samuela@gmail.com</em>) usato per tutte le comunicazioni automatiche: conferme prenotazione, richieste recensioni, report mensili. Non devi fare nulla — te lo comunichiamo non appena è pronto.
+      <strong>Email marketing dedicata.</strong> WeBloom creerà per te un indirizzo Gmail dedicato (es. <em>marketing.samuela@gmail.com</em>) usato per tutte le comunicazioni automatiche: conferme prenotazione, richieste recensioni, report mensili. Non devi fare nulla: te lo comunichiamo non appena è pronto.
     </div>
   </div>
 
-  <form action="mailto:marketing.webloom1@gmail.com" method="post" enctype="text/plain">
+  <form action="https://formspree.io/f/PLACEHOLDER_ID" method="POST" id="onboarding-form">
+    <input type="hidden" name="_subject" value="Modulo di avvio - Samuela De Nardi">
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-    <!-- ── SEZIONE 1 ── -->
+    <!-- SEZIONE 1 -->
     <div class="section-card">
       <div class="section-header">
         <div class="section-icon">🌿</div>
@@ -472,7 +479,7 @@
       <div class="field">
         <label>Email personale (quella che controlli ogni giorno) <span class="req">*</span></label>
         <input type="email" name="email_personale" placeholder="es. samuela@email.com" required>
-        <p class="input-hint">Diversa dall'email marketing che creiamo noi — serve per le comunicazioni dirette con WeBloom.</p>
+        <p class="input-hint">Diversa dall'email marketing che creiamo noi, serve per le comunicazioni dirette con WeBloom.</p>
       </div>
 
       <div class="field">
@@ -486,7 +493,7 @@
       </div>
     </div>
 
-    <!-- ── SEZIONE 2 ── -->
+    <!-- SEZIONE 2 -->
     <div class="section-card">
       <div class="section-header">
         <div class="section-icon">📅</div>
@@ -498,7 +505,7 @@
 
       <div class="field">
         <label>Elenca i tuoi servizi con durata e prezzo <span class="req">*</span></label>
-        <textarea name="servizi_lista" rows="6" placeholder="Scrivi uno per riga, es:&#10;Trekking con alpaca — 1h — €45 a persona (max 6)&#10;Sessione NaturalHealing — 1h — €70&#10;Sessione animal communication — 1h — €90&#10;Percorso con scuole / anziani — su preventivo" required></textarea>
+        <textarea name="servizi_lista" rows="6" placeholder="Scrivi uno per riga, es:&#10;Trekking con alpaca, 1h, €45 a persona (max 6)&#10;Sessione NaturalHealing, 1h, €70&#10;Sessione animal communication, 1h, €90&#10;Percorso con scuole / anziani, su preventivo" required></textarea>
         <p class="input-hint">Includi tutti i servizi che vuoi rendere prenotabili online, anche quelli futuri.</p>
       </div>
 
@@ -563,7 +570,7 @@
       </div>
     </div>
 
-    <!-- ── SEZIONE 3 ── -->
+    <!-- SEZIONE 3 -->
     <div class="section-card">
       <div class="section-header">
         <div class="section-icon">📍</div>
@@ -589,8 +596,8 @@
 
       <div class="field">
         <label>Come vorresti descrivere la tua attività su Google? <span class="req">*</span></label>
-        <textarea name="gbp_descrizione" rows="4" placeholder="Scrivi con parole tue — ci pensiamo noi a ottimizzarla. Es.: 'Offro sessioni di animal communication, esperienze con alpaca e percorsi di NaturalHealing a Vittorio Veneto. Da oltre X anni lavoro con animali e persone per...'" required></textarea>
-        <p class="input-hint">2-3 frasi sono sufficienti. Non serve essere perfetta — è un punto di partenza.</p>
+        <textarea name="gbp_descrizione" rows="4" placeholder="Scrivi con parole tue: ci pensiamo noi a ottimizzarla. Es.: 'Offro sessioni di animal communication, esperienze con alpaca e percorsi di NaturalHealing a Vittorio Veneto. Da oltre X anni lavoro con animali e persone per...'" required></textarea>
+        <p class="input-hint">2-3 frasi sono sufficienti. Non serve essere perfetta: è un punto di partenza.</p>
       </div>
 
       <div class="field">
@@ -603,13 +610,13 @@
         <div class="radio-group">
           <label class="radio-item"><input type="radio" name="gbp_foto" value="Molte"> Sì, ho tante foto</label>
           <label class="radio-item"><input type="radio" name="gbp_foto" value="Alcune"> Sì, qualcuna</label>
-          <label class="radio-item"><input type="radio" name="gbp_foto" value="Poche"> Ho poche foto — organizziamoci</label>
+          <label class="radio-item"><input type="radio" name="gbp_foto" value="Poche"> Ho poche foto, organizziamoci</label>
         </div>
-        <p class="input-hint">Le foto le raccogliamo via WhatsApp o Google Drive — non caricare nulla qui.</p>
+        <p class="input-hint">Le foto le raccogliamo via WhatsApp o Google Drive: non caricare nulla qui.</p>
       </div>
     </div>
 
-    <!-- ── SEZIONE 4 ── -->
+    <!-- SEZIONE 4 -->
     <div class="section-card">
       <div class="section-header">
         <div class="section-icon">🖥️</div>
@@ -621,7 +628,7 @@
 
       <div class="field">
         <label>Come vorresti raccontare la tua storia sulla pagina? <span class="req">*</span></label>
-        <textarea name="storia" rows="5" placeholder="Scrivi liberamente: chi sei, cosa fai, cosa ti ha portato qui. Anche bullet point vanno bene. Es.: 'Prima pilota donna Aprilia, poi la vita mi ha portato verso gli animali...' — useremo le tue parole come base." required></textarea>
+        <textarea name="storia" rows="5" placeholder="Scrivi liberamente: chi sei, cosa fai, cosa ti ha portato qui. Anche bullet point vanno bene. Es.: 'Prima pilota donna Aprilia, poi la vita mi ha portato verso gli animali...' - useremo le tue parole come base." required></textarea>
       </div>
 
       <div class="field">
@@ -631,15 +638,15 @@
 
       <div class="field">
         <label>Qual è la tua bio Instagram attuale? <span class="opt">(opzionale)</span></label>
-        <textarea name="bio_instagram_attuale" rows="3" placeholder="Copia qui il testo della tua bio attuale (quella che si vede nel profilo). Se non la trovi, lascia vuoto — andiamo a vederla noi."></textarea>
+        <textarea name="bio_instagram_attuale" rows="3" placeholder="Copia qui il testo della tua bio attuale (quella che si vede nel profilo). Se non la trovi, lascia vuoto, andiamo a vederla noi."></textarea>
         <p class="input-hint">Serve per capire il tuo tono di voce attuale e riscriverla migliorandola, non cancellandola.</p>
       </div>
 
       <div class="field">
         <label>Hai un logo o un'immagine profilo ufficiale? <span class="req">*</span></label>
         <div class="radio-group">
-          <label class="radio-item"><input type="radio" name="logo"> Sì, ce l'ho — te lo mando via WhatsApp</label>
-          <label class="radio-item"><input type="radio" name="logo"> No, non ho ancora un logo — lo creiamo noi</label>
+          <label class="radio-item"><input type="radio" name="logo" value="Si, ho logo"> Sì, ce l'ho: te lo mando via WhatsApp</label>
+          <label class="radio-item"><input type="radio" name="logo" value="No, creare logo"> No, non ho ancora un logo: lo creiamo noi</label>
         </div>
       </div>
 
@@ -648,7 +655,7 @@
         <div class="radio-group">
           <label class="radio-item"><input type="radio" name="foto_pagina" value="Molte"> Sì, ho tante foto</label>
           <label class="radio-item"><input type="radio" name="foto_pagina" value="Alcune"> Sì, qualcuna</label>
-          <label class="radio-item"><input type="radio" name="foto_pagina" value="Poche"> Ho poche foto — ne abbiamo bisogno</label>
+          <label class="radio-item"><input type="radio" name="foto_pagina" value="Poche"> Ho poche foto, ne abbiamo bisogno</label>
         </div>
       </div>
 
@@ -658,7 +665,7 @@
       </div>
     </div>
 
-    <!-- ── SEZIONE 5 ── -->
+    <!-- SEZIONE 5 -->
     <div class="section-card">
       <div class="section-header">
         <div class="section-icon">🎨</div>
@@ -697,7 +704,7 @@
                 <div class="swatch" style="background:#C4965A;"></div>
                 <div class="swatch" style="background:#F5F0E8;"></div>
               </div>
-              <div class="palette-name">A — Naturale</div>
+              <div class="palette-name">A - Naturale</div>
               <div class="palette-colors">Verde foresta · Verde salvia · Ambra · Crema</div>
             </label>
           </div>
@@ -711,7 +718,7 @@
                 <div class="swatch" style="background:#E8D5B7;"></div>
                 <div class="swatch" style="background:#FAF5EF;"></div>
               </div>
-              <div class="palette-name">B — Caldo &amp; Rustico</div>
+              <div class="palette-name">B - Caldo &amp; Rustico</div>
               <div class="palette-colors">Terracotta · Sabbia · Avorio · Panna</div>
             </label>
           </div>
@@ -725,7 +732,7 @@
                 <div class="swatch" style="background:#D9C9B2;"></div>
                 <div class="swatch" style="background:#FAFAF8;"></div>
               </div>
-              <div class="palette-name">C — Soft &amp; Minimal</div>
+              <div class="palette-name">C - Soft &amp; Minimal</div>
               <div class="palette-colors">Salvia · Verde pastello · Beige · Off-white</div>
             </label>
           </div>
@@ -739,7 +746,7 @@
                 <div class="swatch" style="background:#C9A84C;"></div>
                 <div class="swatch" style="background:#FFFFFF;"></div>
               </div>
-              <div class="palette-name">D — Verde &amp; Oro</div>
+              <div class="palette-name">D - Verde &amp; Oro</div>
               <div class="palette-colors">Verde scuro · Verde · Oro · Bianco</div>
             </label>
           </div>
@@ -749,11 +756,11 @@
 
       <div class="field">
         <label>Ci sono profili Instagram o brand che ti ispirano visivamente? <span class="opt">(opzionale)</span></label>
-        <textarea name="ispirazione" rows="3" placeholder="Inserisci username (@nomeprofilo) o nomi di brand. Anche settori diversi vanno bene — es. 'Mi piace lo stile di @nomeprofilo per come usa le foto' o 'Il brand XY mi piace per i colori'"></textarea>
+        <textarea name="ispirazione" rows="3" placeholder="Inserisci username (@nomeprofilo) o nomi di brand. Anche settori diversi vanno bene, es. 'Mi piace lo stile di @nomeprofilo per come usa le foto' o 'Il brand XY mi piace per i colori'"></textarea>
       </div>
     </div>
 
-    <!-- ── SEZIONE 6 ── -->
+    <!-- SEZIONE 6 -->
     <div class="section-card">
       <div class="section-header">
         <div class="section-icon">📱</div>
@@ -802,45 +809,47 @@
       </div>
     </div>
 
-    <!-- ── SEZIONE 7 ── -->
+    <!-- SEZIONE 7 -->
     <div class="section-card">
       <div class="section-header">
         <div class="section-icon">🔐</div>
         <div>
           <div class="section-title">Accessi e formazione</div>
-          <div class="section-sub">Ultima sezione — ci mettiamo d'accordo su come lavorare insieme</div>
+          <div class="section-sub">Ultima sezione: ci mettiamo d'accordo su come lavorare insieme</div>
         </div>
       </div>
 
       <div class="field">
         <label>Per ottimizzare il profilo Instagram, come preferisci procedere? <span class="req">*</span></label>
         <div class="radio-group">
-          <label class="radio-item"><input type="radio" name="accesso_ig" value="Accesso temporaneo"> Vi do accesso temporaneo all'account — fate voi</label>
+          <label class="radio-item"><input type="radio" name="accesso_ig" value="Accesso temporaneo"> Vi do accesso temporaneo all'account: fate voi</label>
           <label class="radio-item"><input type="radio" name="accesso_ig" value="Guida passo-passo"> Preferisco farlo da sola con una vostra guida passo-passo</label>
-          <label class="radio-item"><input type="radio" name="accesso_ig" value="Durante formazione"> Ne parliamo e lo facciamo insieme durante la formazione</label>
         </div>
       </div>
 
       <div class="field">
-        <label>Come preferisci fare la sessione di formazione (1h inclusa nel pacchetto)? <span class="req">*</span></label>
+        <label>La sessione di formazione (1h) ti insegna a usare il sistema di prenotazioni e gestione clienti che WeBloom configura per te. Come preferisci svolgerla? <span class="req">*</span></label>
         <div class="radio-group inline">
           <label class="radio-item"><input type="radio" name="formazione" value="Zoom"> Videocall Zoom</label>
           <label class="radio-item"><input type="radio" name="formazione" value="Meet"> Google Meet</label>
           <label class="radio-item"><input type="radio" name="formazione" value="Presenza"> In presenza</label>
         </div>
+        <p class="input-hint">Cosa copre: sistema prenotazioni, scheda clienti, lettura report mensile, risposta recensioni.</p>
       </div>
 
       <div class="field">
         <label>Hai altre informazioni, domande o cose da dirmi prima di iniziare? <span class="opt">(opzionale)</span></label>
-        <textarea name="note_finali" rows="4" placeholder="Scrivimi tutto quello che ritieni utile sapere — aspettative, dubbi, cose a cui tieni particolarmente, tempistiche che hai in mente..."></textarea>
+        <textarea name="note_finali" rows="4" placeholder="Scrivimi tutto quello che ritieni utile sapere: aspettative, dubbi, cose a cui tieni particolarmente, tempistiche che hai in mente..."></textarea>
       </div>
     </div>
 
-    <!-- ── SUBMIT ── -->
+    <!-- SUBMIT -->
     <div class="submit-card">
       <h2>Tutto pronto?</h2>
       <p>Clicca il pulsante e il modulo arriva direttamente a WeBloom. Entro 24-48 ore ti contatto per confermare la ricezione e pianificare i prossimi passi.</p>
-      <button type="submit" class="btn-submit">Invia il modulo di avvio</button>
+      <button type="submit" class="btn-submit" id="btn-send">Invia il modulo di avvio</button>
+      <p id="form-success" style="display:none; color:#6B9E6E; font-weight:700; margin-top:20px; font-size:1rem;">Ricevuto. Ti contatto entro 24-48 ore.</p>
+      <p id="form-error" style="display:none; color:#ef4444; margin-top:16px; font-size:0.88rem;">Qualcosa non ha funzionato. Riprova o scrivimi su WhatsApp al 327 073 1397.</p>
       <p class="submit-note">Hai dubbi prima di inviare? Scrivimi su WhatsApp al <strong>327 073 1397</strong></p>
     </div>
 
@@ -854,5 +863,33 @@
   </div>
 
 </div>
+
+<script>
+  document.getElementById('onboarding-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var btn = document.getElementById('btn-send');
+    btn.textContent = 'Invio in corso...';
+    btn.disabled = true;
+    try {
+      var res = await fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        this.reset();
+        document.getElementById('form-success').style.display = 'block';
+        document.getElementById('form-error').style.display = 'none';
+        btn.style.display = 'none';
+      } else {
+        throw new Error();
+      }
+    } catch(err) {
+      document.getElementById('form-error').style.display = 'block';
+      btn.textContent = 'Invia il modulo di avvio';
+      btn.disabled = false;
+    }
+  });
+</script>
 </body>
 </html>
