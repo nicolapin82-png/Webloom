@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo di avvio - Samuela De Nardi · WeBloom</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #6B9E6E;
+      --accent-dark: #4A7C4E;
+      --accent-rgb: 107,158,110;
+      --header-bg: #0D1F0E;
+      --warm: #B5803C;
+      --light-bg: #f7f9f5;
+      --card-bg: #ffffff;
+      --text: #1f2937;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      color: var(--text);
+      line-height: 1.65;
+      background: var(--light-bg);
+    }
+
+    .wrapper {
+      max-width: 740px;
+      margin: 48px auto;
+      padding: 0 20px 80px;
+    }
+
+    /* HEADER */
+    .header {
+      background: var(--header-bg);
+      border-radius: 16px;
+      padding: 44px 40px;
+      margin-bottom: 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(107,158,110,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .header-brand img {
+      height: 30px;
+      width: auto;
+      display: block;
+    }
+    .header-brand span {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .header-tag {
+      display: inline-block;
+      background: rgba(107,158,110,0.18);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      border: 1px solid rgba(107,158,110,0.3);
+      margin-bottom: 16px;
+    }
+    .header h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #f9faf5;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .header h1 em {
+      color: var(--accent);
+      font-style: normal;
+    }
+    .header p {
+      font-size: 0.95rem;
+      color: #b0c4b1;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* INTRO BOX */
+    .intro-box {
+      background: #f0f7f0;
+      border-left: 4px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 18px 22px;
+      margin-bottom: 28px;
+      font-size: 0.93rem;
+      color: #2d5a2e;
+    }
+    .intro-box strong { color: #1a3d1b; }
+
+    /* NOTE BOX */
+    .note-box {
+      background: #fffbf0;
+      border-left: 4px solid var(--warm);
+      border-radius: 0 10px 10px 0;
+      padding: 14px 18px;
+      margin-top: 12px;
+      font-size: 0.88rem;
+      color: #7a5a1a;
+    }
+
+    /* SEZIONE CARD */
+    .section-card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 30px 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-icon {
+      background: rgba(107,158,110,0.12);
+      border: 1px solid rgba(107,158,110,0.25);
+      border-radius: 10px;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .section-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* CAMPO FORM */
+    .field {
+      margin-bottom: 20px;
+    }
+    .field:last-child { margin-bottom: 0; }
+
+    label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 7px;
+    }
+    label .req {
+      color: #ef4444;
+      margin-left: 3px;
+    }
+    label .opt {
+      font-weight: 400;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-left: 6px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="url"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 9px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: #fafafa;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      appearance: none;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.12);
+      background: #fff;
+    }
+    textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+    input::placeholder, textarea::placeholder { color: #c0c8c0; }
+
+    .input-hint {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
+
+    /* CHECKBOX E RADIO */
+    .check-group, .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .check-group.inline, .radio-group.inline {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .check-item, .radio-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #fafafa;
+      border: 1.5px solid var(--border);
+      border-radius: 9px;
+      padding: 10px 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+    .check-item:hover, .radio-item:hover {
+      border-color: var(--accent);
+      background: rgba(var(--accent-rgb), 0.05);
+    }
+    .check-item input, .radio-item input { width: 16px; height: 16px; cursor: pointer; accent-color: var(--accent); flex-shrink: 0; }
+
+    /* PALETTE VISIVA */
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .palette-option {
+      position: relative;
+    }
+    .palette-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .palette-label {
+      display: block;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .palette-option input:checked + .palette-label {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.18);
+    }
+    .palette-swatches {
+      display: flex;
+      height: 52px;
+    }
+    .swatch { flex: 1; }
+    .palette-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      padding: 8px 12px;
+      background: #fff;
+      border-top: 1px solid var(--border);
+    }
+    .palette-colors {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      padding: 0 12px 8px;
+      background: #fff;
+    }
+
+    /* GIORNI GRID */
+    .days-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+    .day-option {
+      position: relative;
+    }
+    .day-option input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .day-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 44px;
+      border: 1.5px solid var(--border);
+      border-radius: 9px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .day-option input:checked + .day-label {
+      border-color: var(--accent);
+      background: rgba(var(--accent-rgb), 0.1);
+      color: var(--accent-dark);
+    }
+    .day-label:hover { border-color: var(--accent); background: rgba(var(--accent-rgb), 0.06); }
+
+    /* SEPARATORE */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 20px 0;
+    }
+
+    /* SUBMIT */
+    .submit-card {
+      background: var(--header-bg);
+      border-radius: 16px;
+      padding: 36px 32px;
+      text-align: center;
+      margin-top: 8px;
+    }
+    .submit-card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #f7f9f5;
+      margin-bottom: 10px;
+    }
+    .submit-card > p {
+      font-size: 0.92rem;
+      color: #b0c4b1;
+      margin-bottom: 24px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-submit {
+      display: inline-block;
+      background: var(--accent);
+      color: #0D1F0E;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 14px 40px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .btn-submit:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(107,158,110,0.35);
+    }
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .submit-note {
+      font-size: 0.8rem;
+      color: #6b8f6c;
+      margin-top: 14px;
+    }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.83rem;
+      color: #9ca3af;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+    .footer img { height: 24px; width: auto; display: block; margin: 0 auto 10px; opacity: 0.55; }
+    .footer a { color: var(--accent); text-decoration: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .wrapper { margin: 24px auto; }
+      .header { padding: 32px 24px; }
+      .section-card { padding: 24px 20px; }
+      .days-grid { grid-template-columns: repeat(4, 1fr); }
+      .palette-grid { grid-template-columns: 1fr; }
+      .submit-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-brand">
+      <img src="https://assets.cdn.filesafe.space/3fFsxRcRvkat1FpJD7Yw/media/69905feb24813c67ab72773f.webp" alt="WeBloom">
+      <span>Samuela De Nardi</span>
+    </div>
+    <div class="header-tag">Pacchetto Personalizzato</div>
+    <h1>Modulo di avvio<br><em>Benvenuta nel sistema</em></h1>
+    <p>Queste informazioni ci permettono di configurare tutto in modo preciso, su misura per te. Compila con calma: ci vorranno circa 15 minuti.</p>
+  </div>
+
+  <div class="intro-box">
+    <strong>Come funziona.</strong> Una volta compilato questo modulo, WeBloom configura il tuo sistema di prenotazioni, la scheda Google, la pagina di acquisizione e tutto il resto. Entro ~15 giorni dalla firma il sistema è live e operativo. La sessione di formazione la pianifichiamo insieme nella settimana della consegna.
+    <div class="note-box" style="margin-top:12px;">
+      <strong>Email marketing dedicata.</strong> WeBloom creerà per te un indirizzo Gmail dedicato (es. <em>marketing.samuela@gmail.com</em>) usato per tutte le comunicazioni automatiche: conferme prenotazione, richieste recensioni, report mensili. Non devi fare nulla: te lo comunichiamo non appena è pronto.
+    </div>
+  </div>
+
+  <form action="https://formspree.io/f/PLACEHOLDER_ID" method="POST" id="onboarding-form">
+    <input type="hidden" name="_subject" value="Modulo di avvio - Samuela De Nardi">
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+    <!-- SEZIONE 1 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon">🌿</div>
+        <div>
+          <div class="section-title">La tua attività</div>
+          <div class="section-sub">Informazioni base per configurare tutti i sistemi</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Come ti chiami / come vuoi essere chiamata? <span class="req">*</span></label>
+        <input type="text" name="nome_preferito" placeholder="es. Samuela" required>
+        <p class="input-hint">Il nome che usiamo nelle comunicazioni con te e nei messaggi automatici ai tuoi clienti.</p>
+      </div>
+
+      <div class="field">
+        <label>Nome del brand / attività <span class="req">*</span></label>
+        <input type="text" name="brand" placeholder="es. Samuela De Nardi · Animal Communication" required>
+      </div>
+
+      <div class="field">
+        <label>Indirizzo / location dove si svolgono le attività <span class="req">*</span></label>
+        <input type="text" name="indirizzo" placeholder="es. Via Savassa Alta 21, 31029 Vittorio Veneto (TV)" required>
+      </div>
+
+      <div class="field">
+        <label>Numero di telefono <span class="req">*</span></label>
+        <input type="tel" name="telefono" placeholder="es. +39 347 1234567" required>
+      </div>
+
+      <div class="field">
+        <label>Email personale (quella che controlli ogni giorno) <span class="req">*</span></label>
+        <input type="email" name="email_personale" placeholder="es. samuela@email.com" required>
+        <p class="input-hint">Diversa dall'email marketing che creiamo noi, serve per le comunicazioni dirette con WeBloom.</p>
+      </div>
+
+      <div class="field">
+        <label>Username Instagram <span class="req">*</span></label>
+        <input type="text" name="instagram" placeholder="es. @samuela_denardi" required>
+      </div>
+
+      <div class="field">
+        <label>Sito web esistente <span class="opt">(opzionale)</span></label>
+        <input type="url" name="sito_web" placeholder="es. https://www.samuelaadenardi.it">
+      </div>
+    </div>
+
+    <!-- SEZIONE 2 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon">📅</div>
+        <div>
+          <div class="section-title">Servizi e prenotazioni</div>
+          <div class="section-sub">Per configurare il calendario online e il sistema di gestione clienti</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Elenca i tuoi servizi con durata e prezzo <span class="req">*</span></label>
+        <textarea name="servizi_lista" rows="6" placeholder="Scrivi uno per riga, es:&#10;Trekking con alpaca, 1h, €45 a persona (max 6)&#10;Sessione NaturalHealing, 1h, €70&#10;Sessione animal communication, 1h, €90&#10;Percorso con scuole / anziani, su preventivo" required></textarea>
+        <p class="input-hint">Includi tutti i servizi che vuoi rendere prenotabili online, anche quelli futuri.</p>
+      </div>
+
+      <div class="field">
+        <label>Giorni in cui sei disponibile per le prenotazioni <span class="req">*</span></label>
+        <div class="days-grid">
+          <div class="day-option"><input type="checkbox" name="giorni" value="lun" id="d1"><label class="day-label" for="d1">Lun</label></div>
+          <div class="day-option"><input type="checkbox" name="giorni" value="mar" id="d2"><label class="day-label" for="d2">Mar</label></div>
+          <div class="day-option"><input type="checkbox" name="giorni" value="mer" id="d3"><label class="day-label" for="d3">Mer</label></div>
+          <div class="day-option"><input type="checkbox" name="giorni" value="gio" id="d4"><label class="day-label" for="d4">Gio</label></div>
+          <div class="day-option"><input type="checkbox" name="giorni" value="ven" id="d5"><label class="day-label" for="d5">Ven</label></div>
+          <div class="day-option"><input type="checkbox" name="giorni" value="sab" id="d6"><label class="day-label" for="d6">Sab</label></div>
+          <div class="day-option"><input type="checkbox" name="giorni" value="dom" id="d7"><label class="day-label" for="d7">Dom</label></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Orari di disponibilità <span class="req">*</span></label>
+        <input type="text" name="orari" placeholder="es. 9:00 - 18:00" required>
+      </div>
+
+      <div class="field">
+        <label>Anticipo minimo per prenotare <span class="req">*</span></label>
+        <input type="text" name="anticipo_minimo" placeholder="es. almeno 24 ore prima / almeno 48 ore prima" required>
+        <p class="input-hint">Il sistema bloccherà automaticamente le prenotazioni troppo vicine alla data.</p>
+      </div>
+
+      <div class="field">
+        <label>Numero massimo di prenotazioni al giorno <span class="req">*</span></label>
+        <input type="text" name="max_prenotazioni_giorno" placeholder="es. 3 sessioni al giorno" required>
+      </div>
+
+      <div class="field">
+        <label>Pausa necessaria tra una sessione e l'altra <span class="opt">(opzionale)</span></label>
+        <input type="text" name="pausa_sessioni" placeholder="es. 30 minuti / 1 ora">
+      </div>
+
+      <div class="field">
+        <label>Quante persone possono partecipare per sessione? <span class="req">*</span></label>
+        <input type="text" name="max_persone" placeholder="es. Trekking: max 6 persone / Sessioni individuali: 1 persona" required>
+      </div>
+
+      <div class="field">
+        <label>Metodi di pagamento che accetti <span class="req">*</span></label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="pagamento" value="Bonifico"> Bonifico bancario</label>
+          <label class="check-item"><input type="checkbox" name="pagamento" value="Contanti"> Contanti</label>
+          <label class="check-item"><input type="checkbox" name="pagamento" value="Carta"> Carta di credito / debito</label>
+          <label class="check-item"><input type="checkbox" name="pagamento" value="Satispay"> Satispay</label>
+          <label class="check-item"><input type="checkbox" name="pagamento" value="PayPal"> PayPal</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Come preferisci che i clienti ti contattino prima/dopo la sessione? <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="contatto_clienti" value="WhatsApp"> WhatsApp (numero principale)</label>
+          <label class="radio-item"><input type="radio" name="contatto_clienti" value="Telefono"> Telefono</label>
+          <label class="radio-item"><input type="radio" name="contatto_clienti" value="Email"> Email</label>
+          <label class="radio-item"><input type="radio" name="contatto_clienti" value="Solo sistema"> Solo tramite il sistema di prenotazione (no contatti diretti)</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEZIONE 3 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon">📍</div>
+        <div>
+          <div class="section-title">Scheda Google Business Profile</div>
+          <div class="section-sub">Per renderti visibile nelle ricerche locali</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Hai già un profilo Google Business Profile (scheda Google)? <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="gbp_esistente" value="Sì"> Sì, ce l'ho già</label>
+          <label class="radio-item"><input type="radio" name="gbp_esistente" value="No"> No, non ce l'ho</label>
+          <label class="radio-item"><input type="radio" name="gbp_esistente" value="Non so"> Non so / non sono sicura</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Se ce l'hai già: email dell'account Google associato <span class="opt">(opzionale)</span></label>
+        <input type="email" name="gbp_email" placeholder="es. samuela@gmail.com">
+      </div>
+
+      <div class="field">
+        <label>Come vorresti descrivere la tua attività su Google? <span class="req">*</span></label>
+        <textarea name="gbp_descrizione" rows="4" placeholder="Scrivi con parole tue: ci pensiamo noi a ottimizzarla. Es.: 'Offro sessioni di animal communication, esperienze con alpaca e percorsi di NaturalHealing a Vittorio Veneto. Da oltre X anni lavoro con animali e persone per...'" required></textarea>
+        <p class="input-hint">2-3 frasi sono sufficienti. Non serve essere perfetta: è un punto di partenza.</p>
+      </div>
+
+      <div class="field">
+        <label>Categorie della tua attività (come definiresti quello che fai?) <span class="req">*</span></label>
+        <textarea name="gbp_categorie" rows="3" placeholder="es. Animal communication, NaturalHealing, Esperienze con alpaca, Attività di benessere, Attività outdoor Vittorio Veneto..." required></textarea>
+      </div>
+
+      <div class="field">
+        <label>Hai foto da caricare sulla scheda Google? <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="gbp_foto" value="Molte"> Sì, ho tante foto</label>
+          <label class="radio-item"><input type="radio" name="gbp_foto" value="Alcune"> Sì, qualcuna</label>
+          <label class="radio-item"><input type="radio" name="gbp_foto" value="Poche"> Ho poche foto, organizziamoci</label>
+        </div>
+        <p class="input-hint">Le foto le raccogliamo via WhatsApp o Google Drive: non caricare nulla qui.</p>
+      </div>
+    </div>
+
+    <!-- SEZIONE 4 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon">🖥️</div>
+        <div>
+          <div class="section-title">Pagina di acquisizione + Instagram</div>
+          <div class="section-sub">Per convertire i follower in prenotazioni reali</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Come vorresti raccontare la tua storia sulla pagina? <span class="req">*</span></label>
+        <textarea name="storia" rows="5" placeholder="Scrivi liberamente: chi sei, cosa fai, cosa ti ha portato qui. Anche bullet point vanno bene. Es.: 'Prima pilota donna Aprilia, poi la vita mi ha portato verso gli animali...' - useremo le tue parole come base." required></textarea>
+      </div>
+
+      <div class="field">
+        <label>Quali servizi vuoi mettere più in evidenza sulla pagina? <span class="req">*</span></label>
+        <textarea name="servizi_evidenza" rows="3" placeholder="es. Soprattutto il trekking con alpaca e le sessioni di animal communication. La NaturalHealing è più di nicchia ma voglio che sia visibile..." required></textarea>
+      </div>
+
+      <div class="field">
+        <label>Qual è la tua bio Instagram attuale? <span class="opt">(opzionale)</span></label>
+        <textarea name="bio_instagram_attuale" rows="3" placeholder="Copia qui il testo della tua bio attuale (quella che si vede nel profilo). Se non la trovi, lascia vuoto, andiamo a vederla noi."></textarea>
+        <p class="input-hint">Serve per capire il tuo tono di voce attuale e riscriverla migliorandola, non cancellandola.</p>
+      </div>
+
+      <div class="field">
+        <label>Hai un logo o un'immagine profilo ufficiale? <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="logo" value="Si, ho logo"> Sì, ce l'ho: te lo mando via WhatsApp</label>
+          <label class="radio-item"><input type="radio" name="logo" value="No, creare logo"> No, non ho ancora un logo: lo creiamo noi</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Hai foto di qualità (alpaca, sessioni, natura, te in azione)? <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="foto_pagina" value="Molte"> Sì, ho tante foto</label>
+          <label class="radio-item"><input type="radio" name="foto_pagina" value="Alcune"> Sì, qualcuna</label>
+          <label class="radio-item"><input type="radio" name="foto_pagina" value="Poche"> Ho poche foto, ne abbiamo bisogno</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>C'è qualcosa che vuoi assolutamente includere o evitare? <span class="opt">(opzionale)</span></label>
+        <textarea name="includere_evitare" rows="3" placeholder="es. 'Voglio che si veda che lavoro anche con scuole e anziani' / 'Preferisco non menzionare il motociclismo' / 'Il tono deve essere caldo, non formale'..."></textarea>
+      </div>
+    </div>
+
+    <!-- SEZIONE 5 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon">🎨</div>
+        <div>
+          <div class="section-title">Brand identity</div>
+          <div class="section-sub">Palette, font e stile visivo per tutti i materiali</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Hai già colori o una palette che usi sui tuoi materiali? <span class="req">*</span></label>
+        <div class="radio-group inline">
+          <label class="radio-item"><input type="radio" name="ha_palette" value="Sì"> Sì, ho i miei colori</label>
+          <label class="radio-item"><input type="radio" name="ha_palette" value="No"> No, partiamo da zero</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Se hai già dei colori, quali sono? <span class="opt">(opzionale)</span></label>
+        <input type="text" name="colori_esistenti" placeholder="es. verde oliva, beige, bianco / oppure i codici HEX se li conosci">
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="field">
+        <label>Se partiamo da zero: quale palette ti senti più vicina? <span class="req">*</span></label>
+        <p class="input-hint" style="margin-bottom:12px;">Scegli quella che evoca meglio il mondo che vuoi comunicare.</p>
+        <div class="palette-grid">
+
+          <div class="palette-option">
+            <input type="radio" name="palette_scelta" value="Naturale" id="pal-a">
+            <label class="palette-label" for="pal-a">
+              <div class="palette-swatches">
+                <div class="swatch" style="background:#4A7C4E;"></div>
+                <div class="swatch" style="background:#8AB88E;"></div>
+                <div class="swatch" style="background:#C4965A;"></div>
+                <div class="swatch" style="background:#F5F0E8;"></div>
+              </div>
+              <div class="palette-name">A - Naturale</div>
+              <div class="palette-colors">Verde foresta · Verde salvia · Ambra · Crema</div>
+            </label>
+          </div>
+
+          <div class="palette-option">
+            <input type="radio" name="palette_scelta" value="Caldo" id="pal-b">
+            <label class="palette-label" for="pal-b">
+              <div class="palette-swatches">
+                <div class="swatch" style="background:#8B6355;"></div>
+                <div class="swatch" style="background:#C49A7A;"></div>
+                <div class="swatch" style="background:#E8D5B7;"></div>
+                <div class="swatch" style="background:#FAF5EF;"></div>
+              </div>
+              <div class="palette-name">B - Caldo &amp; Rustico</div>
+              <div class="palette-colors">Terracotta · Sabbia · Avorio · Panna</div>
+            </label>
+          </div>
+
+          <div class="palette-option">
+            <input type="radio" name="palette_scelta" value="Soft" id="pal-c">
+            <label class="palette-label" for="pal-c">
+              <div class="palette-swatches">
+                <div class="swatch" style="background:#7B9E87;"></div>
+                <div class="swatch" style="background:#B5C9BB;"></div>
+                <div class="swatch" style="background:#D9C9B2;"></div>
+                <div class="swatch" style="background:#FAFAF8;"></div>
+              </div>
+              <div class="palette-name">C - Soft &amp; Minimal</div>
+              <div class="palette-colors">Salvia · Verde pastello · Beige · Off-white</div>
+            </label>
+          </div>
+
+          <div class="palette-option">
+            <input type="radio" name="palette_scelta" value="Premium" id="pal-d">
+            <label class="palette-label" for="pal-d">
+              <div class="palette-swatches">
+                <div class="swatch" style="background:#1A3A2A;"></div>
+                <div class="swatch" style="background:#2E6B4A;"></div>
+                <div class="swatch" style="background:#C9A84C;"></div>
+                <div class="swatch" style="background:#FFFFFF;"></div>
+              </div>
+              <div class="palette-name">D - Verde &amp; Oro</div>
+              <div class="palette-colors">Verde scuro · Verde · Oro · Bianco</div>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Ci sono profili Instagram o brand che ti ispirano visivamente? <span class="opt">(opzionale)</span></label>
+        <textarea name="ispirazione" rows="3" placeholder="Inserisci username (@nomeprofilo) o nomi di brand. Anche settori diversi vanno bene, es. 'Mi piace lo stile di @nomeprofilo per come usa le foto' o 'Il brand XY mi piace per i colori'"></textarea>
+      </div>
+    </div>
+
+    <!-- SEZIONE 6 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon">📱</div>
+        <div>
+          <div class="section-title">Piano editoriale Instagram</div>
+          <div class="section-sub">Template caroselli e calendario contenuti per i primi 3 mesi</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Su quali argomenti vorresti pubblicare? <span class="req">*</span></label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="argomenti" value="alpaca"> Gli alpaca e la vita con gli animali</label>
+          <label class="check-item"><input type="checkbox" name="argomenti" value="naturalhealing"> Sessioni NaturalHealing</label>
+          <label class="check-item"><input type="checkbox" name="argomenti" value="animal_comm"> Animal communication</label>
+          <label class="check-item"><input type="checkbox" name="argomenti" value="testimonianze"> Testimonianze e storie di clienti</label>
+          <label class="check-item"><input type="checkbox" name="argomenti" value="storia"> La mia storia e il mio percorso</label>
+          <label class="check-item"><input type="checkbox" name="argomenti" value="dietro_quinte"> Dietro le quinte / vita quotidiana con gli animali</label>
+          <label class="check-item"><input type="checkbox" name="argomenti" value="stagionalita"> Stagionalità e natura (primavera, estate, autunno, inverno)</label>
+          <label class="check-item"><input type="checkbox" name="argomenti" value="consigli"> Consigli pratici su benessere e comunicazione animale</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Quante volte a settimana vorresti pubblicare? <span class="req">*</span></label>
+        <div class="radio-group inline">
+          <label class="radio-item"><input type="radio" name="frequenza_post" value="1x"> 1x</label>
+          <label class="radio-item"><input type="radio" name="frequenza_post" value="2x"> 2x</label>
+          <label class="radio-item"><input type="radio" name="frequenza_post" value="3x"> 3x</label>
+          <label class="radio-item"><input type="radio" name="frequenza_post" value="4x+"> 4x o più</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Preferisci pubblicare in italiano, inglese o entrambi? <span class="req">*</span></label>
+        <div class="radio-group inline">
+          <label class="radio-item"><input type="radio" name="lingua" value="IT"> Solo italiano</label>
+          <label class="radio-item"><input type="radio" name="lingua" value="EN"> Solo inglese</label>
+          <label class="radio-item"><input type="radio" name="lingua" value="IT+EN"> Entrambi</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Hai un hashtag, una frase o un claim che usi spesso e vuoi mantenere? <span class="opt">(opzionale)</span></label>
+        <input type="text" name="hashtag_claim" placeholder="es. #animalkommunikation / 'Dal movimento al silenzio' / ...">
+      </div>
+    </div>
+
+    <!-- SEZIONE 7 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon">🔐</div>
+        <div>
+          <div class="section-title">Accessi e formazione</div>
+          <div class="section-sub">Ultima sezione: ci mettiamo d'accordo su come lavorare insieme</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Per ottimizzare il profilo Instagram, come preferisci procedere? <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="accesso_ig" value="Accesso temporaneo"> Vi do accesso temporaneo all'account: fate voi</label>
+          <label class="radio-item"><input type="radio" name="accesso_ig" value="Guida passo-passo"> Preferisco farlo da sola con una vostra guida passo-passo</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>La sessione di formazione (1h) ti insegna a usare il sistema di prenotazioni e gestione clienti che WeBloom configura per te. Come preferisci svolgerla? <span class="req">*</span></label>
+        <div class="radio-group inline">
+          <label class="radio-item"><input type="radio" name="formazione" value="Zoom"> Videocall Zoom</label>
+          <label class="radio-item"><input type="radio" name="formazione" value="Meet"> Google Meet</label>
+          <label class="radio-item"><input type="radio" name="formazione" value="Presenza"> In presenza</label>
+        </div>
+        <p class="input-hint">Cosa copre: sistema prenotazioni, scheda clienti, lettura report mensile, risposta recensioni.</p>
+      </div>
+
+      <div class="field">
+        <label>Hai altre informazioni, domande o cose da dirmi prima di iniziare? <span class="opt">(opzionale)</span></label>
+        <textarea name="note_finali" rows="4" placeholder="Scrivimi tutto quello che ritieni utile sapere: aspettative, dubbi, cose a cui tieni particolarmente, tempistiche che hai in mente..."></textarea>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-card">
+      <h2>Tutto pronto?</h2>
+      <p>Clicca il pulsante e il modulo arriva direttamente a WeBloom. Entro 24-48 ore ti contatto per confermare la ricezione e pianificare i prossimi passi.</p>
+      <button type="submit" class="btn-submit" id="btn-send">Invia il modulo di avvio</button>
+      <p id="form-success" style="display:none; color:#6B9E6E; font-weight:700; margin-top:20px; font-size:1rem;">Ricevuto. Ti contatto entro 24-48 ore.</p>
+      <p id="form-error" style="display:none; color:#ef4444; margin-top:16px; font-size:0.88rem;">Qualcosa non ha funzionato. Riprova o scrivimi su WhatsApp al 327 073 1397.</p>
+      <p class="submit-note">Hai dubbi prima di inviare? Scrivimi su WhatsApp al <strong>327 073 1397</strong></p>
+    </div>
+
+  </form>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <img src="https://assets.cdn.filesafe.space/3fFsxRcRvkat1FpJD7Yw/media/69905feb24813c67ab72773f.webp" alt="WeBloom">
+    Nicola Pin &middot; <a href="mailto:marketing.webloom1@gmail.com">marketing.webloom1@gmail.com</a> &middot; 327 073 1397<br>
+    Via Aquileia 5, 31029 Vittorio Veneto (TV) &middot; P.IVA 05558050265
+  </div>
+
+</div>
+
+<script>
+  document.getElementById('onboarding-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var btn = document.getElementById('btn-send');
+    btn.textContent = 'Invio in corso...';
+    btn.disabled = true;
+    try {
+      var res = await fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        this.reset();
+        document.getElementById('form-success').style.display = 'block';
+        document.getElementById('form-error').style.display = 'none';
+        btn.style.display = 'none';
+      } else {
+        throw new Error();
+      }
+    } catch(err) {
+      document.getElementById('form-error').style.display = 'block';
+      btn.textContent = 'Invia il modulo di avvio';
+      btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>

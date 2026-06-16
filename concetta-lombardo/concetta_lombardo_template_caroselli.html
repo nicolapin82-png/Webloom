@@ -135,8 +135,8 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
     </div>
     <div class="fmt-row" id="fmt-row-car1" style="margin-top:14px;">
       <span class="fmt-lbl">Formato:</span>
-      <button class="fmt-btn active" data-fmt="11" onclick="setFormat('car1','11')">1:1 Feed</button>
-      <button class="fmt-btn" data-fmt="45" onclick="setFormat('car1','45')">4:5 Verticale</button>
+      <button class="fmt-btn" data-fmt="11" onclick="setFormat('car1','11')">1:1 Feed</button>
+      <button class="fmt-btn active" data-fmt="45" onclick="setFormat('car1','45')">4:5 Verticale</button>
     </div>
   </div>
   <div class="carousel-wrap" id="wrap-car1">
@@ -186,8 +186,8 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
     </div>
     <div class="fmt-row" id="fmt-row-car2" style="margin-top:14px;">
       <span class="fmt-lbl">Formato:</span>
-      <button class="fmt-btn active" data-fmt="11" onclick="setFormat('car2','11')">1:1 Feed</button>
-      <button class="fmt-btn" data-fmt="45" onclick="setFormat('car2','45')">4:5 Verticale</button>
+      <button class="fmt-btn" data-fmt="11" onclick="setFormat('car2','11')">1:1 Feed</button>
+      <button class="fmt-btn active" data-fmt="45" onclick="setFormat('car2','45')">4:5 Verticale</button>
     </div>
   </div>
   <div class="carousel-wrap" id="wrap-car2">
@@ -233,8 +233,8 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
     </div>
     <div class="fmt-row" id="fmt-row-car3" style="margin-top:14px;">
       <span class="fmt-lbl">Formato:</span>
-      <button class="fmt-btn active" data-fmt="11" onclick="setFormat('car3','11')">1:1 Feed</button>
-      <button class="fmt-btn" data-fmt="45" onclick="setFormat('car3','45')">4:5 Verticale</button>
+      <button class="fmt-btn" data-fmt="11" onclick="setFormat('car3','11')">1:1 Feed</button>
+      <button class="fmt-btn active" data-fmt="45" onclick="setFormat('car3','45')">4:5 Verticale</button>
     </div>
   </div>
   <div class="carousel-wrap" id="wrap-car3">
@@ -293,7 +293,7 @@ const PHOTOS = [
 ];
 
 const currentPhotos = {car1:0, car2:0, car3:0};
-const currentFormats = {car1:'11', car2:'11', car3:'11'};
+const currentFormats = {car1:'45', car2:'45', car3:'45'};
 const SCALE = 3;
 
 function initThumbs(carId) {
@@ -489,51 +489,185 @@ reveals.forEach(el => io.observe(el));
 
 // Init
 window.addEventListener('load', () => {
-  ['car1','car2','car3'].forEach(id => { initThumbs(id); setCarPhoto(id, 0); });
+  ['car1','car2','car3'].forEach(id => { initThumbs(id); setCarPhoto(id, 0); setFormat(id, '45'); });
 });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
-// Override funzioni rotte da template literal PS
+/* Canvas renderer manuale (no html2canvas) - stesso approccio di laura_ruggieri */
 async function renderSlide(carId, slideIdx) {
-  const id = carId + "-s" + slideIdx;
-  const slide = document.getElementById(id);
-  if (!slide) return document.createElement("canvas");
-  const { w, h } = getSlideSize(carId);
-  const scale = w / slide.offsetWidth;
-  const cv = await html2canvas(slide, { scale: scale, useCORS: true, allowTaint: false, backgroundColor: null, logging: false, imageTimeout: 0 });
-  if (cv.width !== w || cv.height !== h) {
-    const f = document.createElement("canvas"); f.width = w; f.height = h;
-    f.getContext("2d").drawImage(cv, 0, 0, w, h); return f;
+  await document.fonts.ready;
+  var id = carId + '-s' + slideIdx;
+  var slide = document.getElementById(id);
+  if (!slide) return document.createElement('canvas');
+
+  var W = 1080;
+  var slideW = slide.offsetWidth;
+  var slideH = slide.offsetHeight;
+  var F = W / slideW;
+  var H = Math.round(slideH * F);
+
+  var canvas = document.createElement('canvas');
+  canvas.width = W; canvas.height = H;
+  var ctx = canvas.getContext('2d');
+
+  /* Sfondo */
+  ctx.fillStyle = '#160C00';
+  ctx.fillRect(0, 0, W, H);
+
+  /* Foto di sfondo */
+  var bgEl = slide.querySelector('.slide-bg-img');
+  if (bgEl && bgEl.src) {
+    await new Promise(function(resolve) {
+      var img = new Image();
+      img.onload = function() {
+        var sc = Math.max(W / img.naturalWidth, H / img.naturalHeight);
+        var iw = img.naturalWidth * sc, ih = img.naturalHeight * sc;
+        var ix = (W - iw) / 2, iy = (H - ih) * 0.20;
+        ctx.save();
+        ctx.filter = 'brightness(0.50) saturate(0.85)';
+        ctx.drawImage(img, ix, iy, iw, ih);
+        ctx.restore();
+        resolve();
+      };
+      img.onerror = resolve;
+      img.src = bgEl.src;
+    });
   }
-  return cv;
-}
-async function downloadPNG(carId, slideIdx) {
-  const btns = document.querySelectorAll(".dl-single,.dl-zip-btn");
-  btns.forEach(b => b.disabled = true);
-  try {
-    const canvas = await renderSlide(carId, slideIdx);
-    const link = document.createElement("a");
-    link.download = "concetta_" + carId + "_slide" + (slideIdx + 1) + ".png";
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-  } finally { btns.forEach(b => b.disabled = false); }
-}
-async function downloadZIP(carId, count, label) {
-  const btns = document.querySelectorAll(".dl-single,.dl-zip-btn");
-  btns.forEach(b => b.disabled = true);
-  try {
-    const zip = new JSZip();
-    for (let i = 0; i < count; i++) {
-      const cv = await renderSlide(carId, i);
-      const b64 = cv.toDataURL("image/png").split(",")[1];
-      zip.file("concetta_" + label + "_slide" + (i + 1) + ".png", b64, { base64: true });
+
+  /* Gradient overlay */
+  var grd = ctx.createLinearGradient(0, 0, 0, H);
+  grd.addColorStop(0.00, 'rgba(22,8,0,0.05)');
+  grd.addColorStop(0.25, 'rgba(22,8,0,0.15)');
+  grd.addColorStop(0.55, 'rgba(22,8,0,0.62)');
+  grd.addColorStop(1.00, 'rgba(22,8,0,0.94)');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0, 0, W, H);
+
+  var padL = Math.round(20 * F);
+  var padR = Math.round(20 * F);
+  var padB = Math.round(110 * F);
+  var textW = W - padL - padR;
+  var y = H - padB;
+
+  function wrapLines(text, maxW) {
+    var words = text.split(/\s+/).filter(Boolean);
+    var lines = [], line = '';
+    for (var i = 0; i < words.length; i++) {
+      var t = line ? line + ' ' + words[i] : words[i];
+      if (ctx.measureText(t).width > maxW && line) { lines.push(line); line = words[i]; }
+      else { line = t; }
     }
-    const blob = await zip.generateAsync({ type: "blob" });
-    saveAs(blob, "concetta_" + label + ".zip");
-  } finally { btns.forEach(b => b.disabled = false); }
+    if (line) lines.push(line);
+    return lines;
+  }
+
+  ctx.textBaseline = 'alphabetic';
+
+  /* Body */
+  var bodyEl = slide.querySelector('.s-body');
+  if (bodyEl && bodyEl.innerText.trim()) {
+    var sz = Math.round(14.5 * F), lh = sz * 1.55;
+    ctx.font = '400 ' + sz + 'px "Nunito",sans-serif';
+    ctx.fillStyle = 'rgba(255,255,255,0.80)';
+    ctx.shadowColor = 'rgba(0,0,0,0.4)'; ctx.shadowBlur = Math.round(4 * F);
+    var lines = wrapLines(bodyEl.innerText.trim(), textW);
+    for (var i = lines.length - 1; i >= 0; i--) { ctx.fillText(lines[i], padL, y); y -= lh; }
+    ctx.shadowBlur = 0;
+    y -= Math.round(6 * F);
+  }
+
+  /* Sottotitolo */
+  var subEl = slide.querySelector('.s-sub');
+  if (subEl && subEl.innerText.trim()) {
+    var sz = Math.round(17 * F), lh = sz * 1.5;
+    ctx.font = '700 ' + sz + 'px "Nunito",sans-serif';
+    ctx.fillStyle = '#E07830';
+    ctx.shadowColor = 'rgba(0,0,0,0.4)'; ctx.shadowBlur = Math.round(4 * F);
+    var lines = wrapLines(subEl.innerText.trim(), textW);
+    for (var i = lines.length - 1; i >= 0; i--) { ctx.fillText(lines[i], padL, y); y -= lh; }
+    ctx.shadowBlur = 0;
+    y -= Math.round(8 * F);
+  }
+
+  /* Titolo */
+  var titleEl = slide.querySelector('.s-title');
+  if (titleEl && titleEl.innerText.trim()) {
+    var sz = Math.round(38 * F), lh = sz * 1.1;
+    ctx.font = 'italic 600 ' + sz + 'px "Playfair Display",serif';
+    ctx.fillStyle = '#FFFFFF';
+    ctx.shadowColor = 'rgba(0,0,0,0.6)'; ctx.shadowBlur = Math.round(8 * F);
+    var lines = wrapLines(titleEl.innerText.trim(), textW);
+    for (var i = lines.length - 1; i >= 0; i--) { ctx.fillText(lines[i], padL, y); y -= lh; }
+    ctx.shadowBlur = 0;
+    y -= Math.round(8 * F);
+  }
+
+  /* Barra oro */
+  var barH = Math.round(2 * F), barW = Math.round(22 * F);
+  ctx.globalAlpha = 0.8;
+  ctx.fillStyle = '#E07830';
+  ctx.fillRect(padL, y - barH, barW, barH);
+  ctx.globalAlpha = 1;
+  y -= barH + Math.round(7 * F);
+
+  /* Handle */
+  var handleEl = slide.querySelector('.s-handle');
+  if (handleEl && handleEl.innerText.trim()) {
+    var sz = Math.round(11 * F);
+    ctx.font = '700 ' + sz + 'px "Nunito",sans-serif';
+    ctx.fillStyle = 'rgba(224,120,48,0.85)';
+    ctx.fillText(handleEl.innerText.trim(), padL, y);
+  }
+
+  /* Logo BlooMind */
+  var logoEl = slide.querySelector('.bm-mark img');
+  if (logoEl && logoEl.src) {
+    await new Promise(function(resolve) {
+      var logo = new Image();
+      logo.onload = function() {
+        var lh = Math.round(72 * F);
+        var lw = Math.round(logo.naturalWidth * (lh / logo.naturalHeight));
+        ctx.globalAlpha = 0.88;
+        ctx.drawImage(logo, Math.round((W - lw) / 2), H - Math.round(18 * F) - lh, lw, lh);
+        ctx.globalAlpha = 1;
+        resolve();
+      };
+      logo.onerror = resolve;
+      logo.src = logoEl.src;
+    });
+  }
+
+  return canvas;
+}
+
+async function downloadPNG(carId, slideIdx) {
+  var btns = document.querySelectorAll('.dl-single,.dl-zip-btn');
+  btns.forEach(function(b) { b.disabled = true; });
+  try {
+    var canvas = await renderSlide(carId, slideIdx);
+    var link = document.createElement('a');
+    link.download = 'concetta_' + carId + '_slide' + (slideIdx + 1) + '.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  } finally { btns.forEach(function(b) { b.disabled = false; }); }
+}
+
+async function downloadZIP(carId, count, label) {
+  var btns = document.querySelectorAll('.dl-single,.dl-zip-btn');
+  btns.forEach(function(b) { b.disabled = true; });
+  try {
+    var zip = new JSZip();
+    for (var i = 0; i < count; i++) {
+      var cv = await renderSlide(carId, i);
+      var b64 = cv.toDataURL('image/png').split(',')[1];
+      zip.file('concetta_' + label + '_slide' + (i + 1) + '.png', b64, { base64: true });
+    }
+    var blob = await zip.generateAsync({ type: 'blob' });
+    saveAs(blob, 'concetta_' + label + '.zip');
+  } finally { btns.forEach(function(b) { b.disabled = false; }); }
 }
 </script>
 </body>
