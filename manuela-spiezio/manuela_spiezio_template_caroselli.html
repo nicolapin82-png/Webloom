@@ -241,6 +241,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 24px;d
 @media(max-width:900px){.dl-strip{max-width:320px;}}
 .dl-btn{flex:1;min-width:120px;font-size:0.56rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:var(--gold);background:transparent;border:1px solid rgba(201,168,76,0.26);padding:7px 9px;border-radius:5px;cursor:pointer;transition:background .18s;display:flex;align-items:center;justify-content:center;gap:5px;white-space:nowrap;}
 .dl-btn:hover{background:rgba(201,168,76,0.07);}
+
+/* ─── Photo picker ─── */
+.photo-picker{margin-top:12px;max-width:380px;}
+@media(max-width:900px){.photo-picker{max-width:320px;}}
+.photo-picker .ps-label{font-size:0.52rem;letter-spacing:2px;text-transform:uppercase;color:rgba(112,136,200,0.45);display:block;margin-bottom:7px;}
+.ph-thumb-strip{display:flex;gap:5px;flex-wrap:wrap;}
+.ph-thumb{width:44px;height:44px;border-radius:5px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .16s,transform .16s;flex-shrink:0;}
+.ph-thumb:hover{transform:scale(1.08);}
+.ph-thumb.active{border-color:var(--indigo);box-shadow:0 0 0 2px rgba(112,136,200,0.25);}
+.ph-thumb img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
 .dl-btn:disabled{opacity:0.4;cursor:not-allowed;}
 .dl-btn.dl-all{color:var(--indigo);border-color:rgba(112,136,200,0.26);}
 .dl-btn.dl-all:hover{background:rgba(112,136,200,0.07);}
@@ -407,6 +417,19 @@ footer{padding:60px 48px;border-top:1px solid rgba(201,168,76,0.15);display:flex
         <button class="nav-btn" onclick="nextSlide('c1',6)">&#8594;</button>
       </div>
 
+      <div class="photo-picker">
+        <span class="ps-label">Foto carosello · clicca per cambiare</span>
+        <div class="ph-thumb-strip">
+          <div class="ph-thumb active" onclick="setCarPhoto('vp1','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt=""></div>
+          <div class="ph-thumb" onclick="setCarPhoto('vp1','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt=""></div>
+          <div class="ph-thumb" onclick="setCarPhoto('vp1','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt=""></div>
+          <div class="ph-thumb" onclick="setCarPhoto('vp1','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" alt=""></div>
+          <div class="ph-thumb" onclick="setCarPhoto('vp1','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" alt=""></div>
+          <div class="ph-thumb" onclick="setCarPhoto('vp1','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" alt=""></div>
+          <div class="ph-thumb" onclick="setCarPhoto('vp1','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" alt=""></div>
+        </div>
+      </div>
+
       <div class="dl-strip">
         <button class="dl-btn" id="dl-c1-cur" onclick="downloadSlide('c1',this)">&#8595; Scarica slide</button>
         <button class="dl-btn dl-all" id="dl-c1-all" onclick="downloadAllSlides('c1',6,this)">&#8595; Scarica tutte (6)</button>
@@ -531,6 +554,19 @@ footer{padding:60px 48px;border-top:1px solid rgba(201,168,76,0.15);display:flex
           <div class="slide-dot" onclick="goSlide('c2',6,6)"></div>
         </div>
         <button class="nav-btn" onclick="nextSlide('c2',6)">&#8594;</button>
+      </div>
+
+      <div class="photo-picker">
+        <span class="ps-label">Foto carosello · clicca per cambiare</span>
+        <div class="ph-thumb-strip">
+          <div class="ph-thumb" onclick="setCarPhoto('vp2','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt=""></div>
+          <div class="ph-thumb active" onclick="setCarPhoto('vp2','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt=""></div>
+          <div class="ph-thumb" onclick="setCarPhoto('vp2','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt=""></div>
+          <div class="ph-thumb" onclick="setCarPhoto('vp2','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" alt=""></div>
+          <div class="ph-thumb" onclick="setCarPhoto('vp2','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" alt=""></div>
+          <div class="ph-thumb" onclick="setCarPhoto('vp2','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" alt=""></div>
+          <div class="ph-thumb" onclick="setCarPhoto('vp2','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" alt=""></div>
+        </div>
       </div>
 
       <div class="dl-strip">
@@ -661,6 +697,19 @@ footer{padding:60px 48px;border-top:1px solid rgba(201,168,76,0.15);display:flex
         <button class="nav-btn" onclick="nextSlide('c3',6)">&#8594;</button>
       </div>
 
+      <div class="photo-picker">
+        <span class="ps-label">Foto carosello · clicca per cambiare</span>
+        <div class="ph-thumb-strip">
+          <div class="ph-thumb" onclick="setCarPhoto('vp3','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt=""></div>
+          <div class="ph-thumb" onclick="setCarPhoto('vp3','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt=""></div>
+          <div class="ph-thumb" onclick="setCarPhoto('vp3','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt=""></div>
+          <div class="ph-thumb" onclick="setCarPhoto('vp3','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" alt=""></div>
+          <div class="ph-thumb" onclick="setCarPhoto('vp3','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" alt=""></div>
+          <div class="ph-thumb" onclick="setCarPhoto('vp3','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" alt=""></div>
+          <div class="ph-thumb active" onclick="setCarPhoto('vp3','https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg',this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" alt=""></div>
+        </div>
+      </div>
+
       <div class="dl-strip">
         <button class="dl-btn" id="dl-c3-cur" onclick="downloadSlide('c3',this)">&#8595; Scarica slide</button>
         <button class="dl-btn dl-all" id="dl-c3-all" onclick="downloadAllSlides('c3',6,this)">&#8595; Scarica tutte (6)</button>
@@ -761,6 +810,13 @@ function goSlide(car, n, total) {
 }
 function nextSlide(car,total){const c=state[car].cur;goSlide(car,c>=total?1:c+1,total);}
 function prevSlide(car,total){const c=state[car].cur;goSlide(car,c<=1?total:c-1,total);}
+
+/* ─── Photo picker ─── */
+function setCarPhoto(vpId, src, thumbEl) {
+  document.querySelectorAll('#'+vpId+' img.slide-photo').forEach(img=>{ img.src=src; });
+  thumbEl.closest('.ph-thumb-strip').querySelectorAll('.ph-thumb').forEach(t=>t.classList.remove('active'));
+  thumbEl.classList.add('active');
+}
 
 /* ─── Copia testo ─── */
 function copySlideText(car, btn) {
