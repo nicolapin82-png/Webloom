@@ -826,20 +826,23 @@ function refreshPicker(car, n) {
   picker.style.display = (type==='body'||type==='cta') ? 'none' : 'block';
 }
 function setSlidePhoto(car, src, thumb) {
-  const n = state[car].cur;
-  const slide = document.getElementById(car+'s'+n);
-  if(slide){const img=slide.querySelector('.slide-photo');if(img)img.src=src;}
   state[car].lastPhoto = src;
   document.querySelectorAll('#picker-'+car+' .photo-thumb').forEach(t=>t.classList.toggle('selected',t.dataset.src===src));
+  document.querySelectorAll('[id^="'+car+'s"]').forEach(sl=>{
+    const img=sl.querySelector('.slide-photo');if(img)img.src=src;
+  });
 }
 function setAllSlidesPhoto(car, btn) {
-  const src = state[car].lastPhoto;
+  const sel = document.querySelector('#picker-'+car+' .photo-thumb.selected');
+  const src = sel ? sel.dataset.src : state[car].lastPhoto;
   if(!src) return;
-  const slides = document.querySelectorAll('[id^="'+car+'s"]');
-  slides.forEach(sl=>{const img=sl.querySelector('.slide-photo');if(img)img.src=src;});
+  state[car].lastPhoto = src;
+  document.querySelectorAll('[id^="'+car+'s"]').forEach(sl=>{
+    const img=sl.querySelector('.slide-photo');if(img)img.src=src;
+  });
   document.querySelectorAll('#picker-'+car+' .photo-thumb').forEach(t=>t.classList.toggle('selected',t.dataset.src===src));
-  const orig=btn.textContent; btn.textContent='Applicata!';
-  setTimeout(()=>{btn.textContent=orig;},1400);
+  const orig=btn.textContent; btn.textContent='Applicata!'; btn.disabled=true;
+  setTimeout(()=>{btn.textContent=orig; btn.disabled=false;},1200);
 }
 
 /* ─── Copia testo ─── */
