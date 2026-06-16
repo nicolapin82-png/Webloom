@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Template Caroselli - Manuela Spiezio / BlooMind</title>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <style>
 /* ─── TOKEN ─── */
 :root{
@@ -16,7 +16,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;overflow-x:hidden;}
-body{background:#0d1020;color:#F5F6FA;font-family:'Open Sans',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden;}
+body{background:#0d1020;color:#F5F6FA;font-family:'Raleway',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden;}
 ::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:#0d1020;}::-webkit-scrollbar-thumb{background:var(--indigo);}
 
 /* ─── NAV ─── */
@@ -32,7 +32,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 24px;d
 /* ─── HERO ─── */
 .hero{padding:104px 32px 32px;max-width:1100px;margin:0 auto;}
 .hero-label{font-size:9.5px;letter-spacing:3.5px;text-transform:uppercase;color:var(--indigo);margin-bottom:14px;}
-.hero-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(2.2rem,5.5vw,4.5rem);font-weight:600;line-height:1.06;margin-bottom:10px;}
+.hero-title{font-family:'Libre Baskerville',serif;font-style:italic;font-size:clamp(2.2rem,5.5vw,4.5rem);font-weight:600;line-height:1.06;margin-bottom:10px;}
 .hero-title span{background:linear-gradient(135deg,var(--gold-lt),var(--indigo),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero-sub{font-size:0.86rem;color:rgba(245,246,250,0.65);max-width:520px;line-height:1.85;}
 .style-note{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:8px 14px;background:rgba(112,136,200,0.08);border:1px solid rgba(112,136,200,0.18);border-radius:6px;font-size:0.7rem;color:rgba(112,136,200,0.65);}
@@ -97,7 +97,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 24px;d
 }
 .cover-tag::before{content:'';display:inline-block;width:18px;height:1px;background:var(--gold);}
 .cover-hook{
-  font-family:'Open Sans',sans-serif;
+  font-family:'Raleway',sans-serif;
   font-weight:800;
   font-size:38px;
   line-height:1.06;
@@ -114,8 +114,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 24px;d
 .slide.body-slide{background:var(--indigo);}
 .body-num-ghost{
   position:absolute;top:12px;left:18px;z-index:1;
-  font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:90px;font-weight:600;
+  font-family:'Raleway',sans-serif;font-style:normal;
+  font-size:90px;font-weight:100;
   color:rgba(255,255,255,0.10);line-height:1;pointer-events:none;
   user-select:none;
 }
@@ -131,7 +131,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 24px;d
   color:var(--gold);margin-bottom:7px;
 }
 .body-slide-title{
-  font-family:'Open Sans',sans-serif;font-weight:800;
+  font-family:'Raleway',sans-serif;font-weight:800;
   font-size:26px;line-height:1.1;
   color:var(--white);
 }
@@ -143,7 +143,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 24px;d
 /* ═══ TIPO 3 - SPLIT (pannello bianco + foto) ═══ ────────────────── */
 .slide.split-slide{background:var(--ivory);}
 .slide.split-slide .slide-photo{
-  position:absolute;top:0;right:0;bottom:0;
+  position:absolute;top:0;right:0;bottom:0;left:auto;
   width:44%;height:100%;object-fit:cover;object-position:center top;z-index:0;
 }
 .split-divider{
@@ -157,14 +157,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 24px;d
   background:var(--ivory);
 }
 .split-num{
-  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-family:'Libre Baskerville',serif;font-style:italic;
   font-size:10px;color:var(--gold);letter-spacing:2px;
   text-transform:uppercase;margin-bottom:8px;
   display:flex;align-items:center;gap:6px;
 }
 .split-num::before{content:'';width:14px;height:1px;background:var(--gold);display:inline-block;}
 .split-title{
-  font-family:'Open Sans',sans-serif;font-weight:800;
+  font-family:'Raleway',sans-serif;font-weight:800;
   font-size:22px;line-height:1.1;
   color:var(--navy);
 }
@@ -187,13 +187,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 24px;d
   padding:28px 26px;text-align:center;gap:0;
 }
 .cta-title{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
+  font-family:'Libre Baskerville',serif;font-style:italic;font-weight:700;
   font-size:33px;line-height:1.12;
   color:var(--white);margin-bottom:16px;
 }
 .cta-rule{width:40px;height:2px;background:var(--gold);margin:0 auto 16px;}
 .cta-keyword{
-  font-family:'Open Sans',sans-serif;font-weight:800;
+  font-family:'Raleway',sans-serif;font-weight:800;
   font-size:13px;letter-spacing:2px;text-transform:uppercase;
   color:var(--gold);margin-bottom:12px;
 }
@@ -209,7 +209,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 24px;d
 /* ─── Contatore ─── */
 .slide-counter{
   position:absolute;bottom:10px;right:13px;z-index:6;
-  font-family:'Open Sans',sans-serif;font-weight:700;
+  font-family:'Raleway',sans-serif;font-weight:700;
   font-size:8.5px;letter-spacing:1.5px;
   color:rgba(201,168,76,0.70);pointer-events:none;
 }
@@ -243,7 +243,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 24px;d
 .photo-thumb.selected{border-color:var(--indigo);box-shadow:0 0 0 2px rgba(112,136,200,0.25);}
 .photo-thumb img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
 .photo-thumb-num{position:absolute;bottom:2px;right:3px;font-size:7px;font-weight:700;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.9);pointer-events:none;}
-.photo-apply-all-btn{font-size:0.54rem;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;background:rgba(201,168,76,0.10);border:1px solid rgba(201,168,76,0.28);color:var(--gold);border-radius:4px;cursor:pointer;transition:background .18s;margin-left:auto;white-space:nowrap;font-family:'Open Sans',sans-serif;font-weight:600;}
+.photo-apply-all-btn{font-size:0.54rem;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;background:rgba(201,168,76,0.10);border:1px solid rgba(201,168,76,0.28);color:var(--gold);border-radius:4px;cursor:pointer;transition:background .18s;margin-left:auto;white-space:nowrap;font-family:'Raleway',sans-serif;font-weight:600;}
 .photo-apply-all-btn:hover{background:rgba(201,168,76,0.20);}
 
 /* ─── Download ─── */
