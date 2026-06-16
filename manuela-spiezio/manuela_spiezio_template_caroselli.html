@@ -95,7 +95,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 24px;d
   font-size:8.5px;font-weight:700;letter-spacing:2.8px;text-transform:uppercase;
   color:var(--gold);margin-bottom:10px;
 }
-.cover-tag::before{content:'';display:inline-block;width:18px;height:1px;background:var(--gold);}
+
 .cover-hook{
   font-family:'Raleway',sans-serif;
   font-weight:800;
@@ -162,7 +162,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 24px;d
   text-transform:uppercase;margin-bottom:8px;
   display:flex;align-items:center;gap:6px;
 }
-.split-num::before{content:'';width:14px;height:1px;background:var(--gold);display:inline-block;}
+
 .split-title{
   font-family:'Raleway',sans-serif;font-weight:800;
   font-size:22px;line-height:1.1;
@@ -233,16 +233,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 24px;d
 .slide-dot.active{background:var(--indigo);}
 
 /* ─── Photo picker ─── */
-.photo-picker{margin-top:12px;max-width:380px;}
-@media(max-width:900px){.photo-picker{max-width:320px;}}
-.photo-picker-label{font-size:0.52rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(112,136,200,0.45);margin-bottom:7px;display:flex;align-items:center;gap:8px;}
-.photo-picker-label::after{content:'';flex:1;height:1px;background:rgba(112,136,200,0.10);}
-.photo-thumb-strip{display:flex;gap:5px;flex-wrap:wrap;}
-.photo-thumb{width:44px;height:44px;border-radius:5px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .16s,transform .16s;flex-shrink:0;position:relative;}
-.photo-thumb:hover{transform:scale(1.08);}
-.photo-thumb.selected{border-color:var(--indigo);box-shadow:0 0 0 2px rgba(112,136,200,0.25);}
-.photo-thumb img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
-.photo-thumb-num{position:absolute;bottom:2px;right:3px;font-size:7px;font-weight:700;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.9);pointer-events:none;}
 .photo-apply-all-btn{font-size:0.54rem;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;background:rgba(201,168,76,0.10);border:1px solid rgba(201,168,76,0.28);color:var(--gold);border-radius:4px;cursor:pointer;transition:background .18s;margin-left:auto;white-space:nowrap;font-family:'Raleway',sans-serif;font-weight:600;}
 .photo-apply-all-btn:hover{background:rgba(201,168,76,0.20);}
 
@@ -417,19 +407,6 @@ footer{padding:60px 48px;border-top:1px solid rgba(201,168,76,0.15);display:flex
         <button class="nav-btn" onclick="nextSlide('c1',6)">&#8594;</button>
       </div>
 
-      <div class="photo-picker" id="picker-c1">
-        <div class="photo-picker-label">Foto cover<button class="photo-apply-all-btn" onclick="setAllSlidesPhoto('c1',this)">&#9889; Applica a tutte</button></div>
-        <div class="photo-thumb-strip">
-          <div class="photo-thumb selected" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" onclick="setSlidePhoto('c1',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt=""><span class="photo-thumb-num">1</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" onclick="setSlidePhoto('c1',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt=""><span class="photo-thumb-num">2</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" onclick="setSlidePhoto('c1',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt=""><span class="photo-thumb-num">3</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" onclick="setSlidePhoto('c1',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" alt=""><span class="photo-thumb-num">4</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" onclick="setSlidePhoto('c1',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" alt=""><span class="photo-thumb-num">5</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" onclick="setSlidePhoto('c1',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" alt=""><span class="photo-thumb-num">6</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" onclick="setSlidePhoto('c1',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" alt=""><span class="photo-thumb-num">7</span></div>
-        </div>
-      </div>
-
       <div class="dl-strip">
         <button class="dl-btn" id="dl-c1-cur" onclick="downloadSlide('c1',this)">&#8595; Scarica slide</button>
         <button class="dl-btn dl-all" id="dl-c1-all" onclick="downloadAllSlides('c1',6,this)">&#8595; Scarica tutte (6)</button>
@@ -556,19 +533,6 @@ footer{padding:60px 48px;border-top:1px solid rgba(201,168,76,0.15);display:flex
         <button class="nav-btn" onclick="nextSlide('c2',6)">&#8594;</button>
       </div>
 
-      <div class="photo-picker" id="picker-c2">
-        <div class="photo-picker-label">Foto cover<button class="photo-apply-all-btn" onclick="setAllSlidesPhoto('c2',this)">&#9889; Applica a tutte</button></div>
-        <div class="photo-thumb-strip">
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" onclick="setSlidePhoto('c2',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt=""><span class="photo-thumb-num">1</span></div>
-          <div class="photo-thumb selected" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" onclick="setSlidePhoto('c2',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt=""><span class="photo-thumb-num">2</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" onclick="setSlidePhoto('c2',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt=""><span class="photo-thumb-num">3</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" onclick="setSlidePhoto('c2',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" alt=""><span class="photo-thumb-num">4</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" onclick="setSlidePhoto('c2',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" alt=""><span class="photo-thumb-num">5</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" onclick="setSlidePhoto('c2',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" alt=""><span class="photo-thumb-num">6</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" onclick="setSlidePhoto('c2',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" alt=""><span class="photo-thumb-num">7</span></div>
-        </div>
-      </div>
-
       <div class="dl-strip">
         <button class="dl-btn" id="dl-c2-cur" onclick="downloadSlide('c2',this)">&#8595; Scarica slide</button>
         <button class="dl-btn dl-all" id="dl-c2-all" onclick="downloadAllSlides('c2',6,this)">&#8595; Scarica tutte (6)</button>
@@ -620,7 +584,7 @@ footer{padding:60px 48px;border-top:1px solid rgba(201,168,76,0.15);display:flex
 
         <!-- S2: SPLIT -->
         <div class="slide split-slide" id="c3s2">
-          <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt="">
+          <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" alt="">
           <div class="split-divider"></div>
           <div class="split-panel">
             <div class="split-num" contenteditable="true">Errore 01</div>
@@ -633,7 +597,7 @@ footer{padding:60px 48px;border-top:1px solid rgba(201,168,76,0.15);display:flex
 
         <!-- S3: SPLIT -->
         <div class="slide split-slide" id="c3s3">
-          <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt="">
+          <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" alt="">
           <div class="split-divider"></div>
           <div class="split-panel">
             <div class="split-num" contenteditable="true">Errore 02</div>
@@ -646,7 +610,7 @@ footer{padding:60px 48px;border-top:1px solid rgba(201,168,76,0.15);display:flex
 
         <!-- S4: SPLIT -->
         <div class="slide split-slide" id="c3s4">
-          <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt="">
+          <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" alt="">
           <div class="split-divider"></div>
           <div class="split-panel">
             <div class="split-num" contenteditable="true">Errore 03</div>
@@ -695,19 +659,6 @@ footer{padding:60px 48px;border-top:1px solid rgba(201,168,76,0.15);display:flex
           <div class="slide-dot" onclick="goSlide('c3',6,6)"></div>
         </div>
         <button class="nav-btn" onclick="nextSlide('c3',6)">&#8594;</button>
-      </div>
-
-      <div class="photo-picker" id="picker-c3">
-        <div class="photo-picker-label">Foto slide<button class="photo-apply-all-btn" onclick="setAllSlidesPhoto('c3',this)">&#9889; Applica a tutte</button></div>
-        <div class="photo-thumb-strip">
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" onclick="setSlidePhoto('c3',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt=""><span class="photo-thumb-num">1</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" onclick="setSlidePhoto('c3',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt=""><span class="photo-thumb-num">2</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" onclick="setSlidePhoto('c3',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt=""><span class="photo-thumb-num">3</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" onclick="setSlidePhoto('c3',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" alt=""><span class="photo-thumb-num">4</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" onclick="setSlidePhoto('c3',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" alt=""><span class="photo-thumb-num">5</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" onclick="setSlidePhoto('c3',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" alt=""><span class="photo-thumb-num">6</span></div>
-          <div class="photo-thumb selected" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" onclick="setSlidePhoto('c3',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" alt=""><span class="photo-thumb-num">7</span></div>
-        </div>
       </div>
 
       <div class="dl-strip">
@@ -776,18 +727,11 @@ const panelData = {
   ]
 };
 
-/* ─── Tipo slide (per mostrare/nascondere photo picker) ─── */
-const slideTypes = {
-  c1:['cover','body','body','body','body','cta'],
-  c2:['cover','body','body','body','body','cta'],
-  c3:['cover','split','split','split','body','cta']
-};
-
 /* ─── Stato corrente ─── */
 const state = {
-  c1:{cur:1,lastPhoto:'https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg'},
-  c2:{cur:1,lastPhoto:'https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg'},
-  c3:{cur:1,lastPhoto:'https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg'}
+  c1:{cur:1},
+  c2:{cur:1},
+  c3:{cur:1}
 };
 
 /* ─── Formato ─── */
@@ -814,34 +758,9 @@ function goSlide(car, n, total) {
   document.getElementById(car+'-ptitle').textContent = d.title;
   document.getElementById(car+'-pbody').textContent = d.body;
   state[car].cur = n;
-  refreshPicker(car, n);
 }
 function nextSlide(car,total){const c=state[car].cur;goSlide(car,c>=total?1:c+1,total);}
 function prevSlide(car,total){const c=state[car].cur;goSlide(car,c<=1?total:c-1,total);}
-
-/* ─── Photo picker ─── */
-function refreshPicker(car, n) {
-  const type = slideTypes[car][n-1];
-  const picker = document.getElementById('picker-'+car);
-  picker.style.display = (type==='body'||type==='cta') ? 'none' : 'block';
-}
-function setSlidePhoto(car, src, thumb) {
-  state[car].lastPhoto = src;
-  document.querySelectorAll('#picker-'+car+' .photo-thumb').forEach(t=>t.classList.toggle('selected',t.dataset.src===src));
-  const vpNum = car.replace('c','');
-  document.querySelectorAll('#vp'+vpNum+' img.slide-photo').forEach(img=>{ img.src=src; });
-}
-function setAllSlidesPhoto(car, btn) {
-  const sel = document.querySelector('#picker-'+car+' .photo-thumb.selected');
-  const src = sel ? sel.dataset.src : state[car].lastPhoto;
-  if(!src) return;
-  state[car].lastPhoto = src;
-  const vpNum = car.replace('c','');
-  document.querySelectorAll('#vp'+vpNum+' img.slide-photo').forEach(img=>{ img.src=src; });
-  document.querySelectorAll('#picker-'+car+' .photo-thumb').forEach(t=>t.classList.toggle('selected',t.dataset.src===src));
-  const orig=btn.textContent; btn.textContent='Applicata!'; btn.disabled=true;
-  setTimeout(()=>{ btn.textContent=orig; btn.disabled=false; },1200);
-}
 
 /* ─── Copia testo ─── */
 function copySlideText(car, btn) {
@@ -902,10 +821,7 @@ async function downloadAllSlides(car, total, btn) {
 /* ─── Init ─── */
 window.onload = function(){
   setFormat('4:5');
-  ['c1','c2','c3'].forEach(c=>{
-    state[c].cur=1;
-    refreshPicker(c,1);
-  });
+  ['c1','c2','c3'].forEach(c=>{ state[c].cur=1; });
   const io=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
   },{threshold:0.07});
