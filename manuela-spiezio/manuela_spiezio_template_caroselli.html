@@ -6,210 +6,285 @@
 <title>Template Caroselli - Manuela Spiezio / BlooMind</title>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
+/* ─── TOKEN ─── */
 :root{
-  --bg:#080B18;--warm:#7088C8;--warm-lt:#9AAED8;--gold:#C9A84C;--gold-lt:#DFBC70;
-  --ivory:#F5F6FA;--muted:rgba(245,246,250,0.75);
-  --border:rgba(112,136,200,0.25);--sep:rgba(201,168,76,0.18);
+  --navy:#080B18; --indigo:#7088C8; --indigo-lt:#9AAED8;
+  --gold:#C9A84C; --gold-lt:#DFBC70;
+  --white:#FFFFFF; --cream:#F8F5F0;
+  --muted:rgba(255,255,255,0.65);
+  --border:rgba(112,136,200,0.22);
 }
-*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;overflow-x:hidden;}
-body{background:var(--bg);color:var(--ivory);font-family:'Open Sans',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden;}
-::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--warm);border-radius:2px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{background:#0d1020;color:#F5F6FA;font-family:'Open Sans',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden;}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:#0d1020;}::-webkit-scrollbar-thumb{background:var(--indigo);}
 
-/* ═══ NAV ═══ */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;padding:0 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,8,20,0.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(112,136,200,0.18);}
-.nav-bloomind-img{height:180px;width:auto;display:block;}
-.nav-webloom-img{height:40px;width:auto;display:block;}
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,11,24,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.nav-bloomind-img{height:170px;width:auto;}
+.nav-webloom-img{height:36px;width:auto;}
 @media(max-width:768px){
-  .nav-logo{max-width:50%;overflow:hidden;}
-  .nav-logo img{height:110px!important;width:100%!important;object-fit:contain!important;object-position:center bottom!important;}
-  .nav-wbl img{height:26px!important;width:auto!important;}
+  .nav-logo{max-width:48%;overflow:hidden;}
+  .nav-logo img{height:100px!important;width:100%!important;object-fit:contain!important;object-position:center bottom!important;}
+  .nav-wbl img{height:24px!important;}
 }
 
-/* ═══ HERO ═══ */
-.hero{padding:110px 32px 36px;max-width:1100px;margin:0 auto;}
-.hero-label{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--warm);margin-bottom:16px;}
-.hero-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(2.4rem,6vw,5rem);font-weight:600;line-height:1.05;margin-bottom:10px;}
-.hero-title span{background:linear-gradient(135deg,var(--gold-lt),var(--warm),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-sub{font-size:0.88rem;color:var(--muted);max-width:560px;line-height:1.85;}
-.style-note{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:9px 16px;background:rgba(112,136,200,0.07);border:1px solid rgba(112,136,200,0.2);border-radius:6px;font-size:0.72rem;color:rgba(112,136,200,0.7);}
+/* ─── HERO ─── */
+.hero{padding:104px 32px 32px;max-width:1100px;margin:0 auto;}
+.hero-label{font-size:9.5px;letter-spacing:3.5px;text-transform:uppercase;color:var(--indigo);margin-bottom:14px;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(2.2rem,5.5vw,4.5rem);font-weight:600;line-height:1.06;margin-bottom:10px;}
+.hero-title span{background:linear-gradient(135deg,var(--gold-lt),var(--indigo),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:0.86rem;color:rgba(245,246,250,0.65);max-width:520px;line-height:1.85;}
+.style-note{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:8px 14px;background:rgba(112,136,200,0.08);border:1px solid rgba(112,136,200,0.18);border-radius:6px;font-size:0.7rem;color:rgba(112,136,200,0.65);}
 
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease;}
 .reveal.visible{opacity:1;transform:none;}
 
-/* ═══ FORMAT BAR (sticky) ═══ */
-.format-bar{
-  position:sticky;top:80px;z-index:50;
-  background:rgba(8,11,24,0.97);backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(112,136,200,0.14);
-  padding:10px 32px;
-}
-.format-bar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-.format-bar-label{font-size:0.58rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
-.fmt-group{display:flex;gap:6px;}
-.fmt-btn{
-  font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-align:center;
-  color:var(--muted);background:transparent;
-  border:1px solid rgba(112,136,200,0.20);
-  padding:5px 14px;border-radius:6px;cursor:pointer;line-height:1.5;
-  transition:all .2s;
-}
-.fmt-btn span{font-size:0.50rem;font-weight:400;display:block;opacity:0.75;}
-.fmt-btn:hover{border-color:rgba(112,136,200,0.45);color:var(--ivory);}
-.fmt-btn.active{border-color:var(--warm);color:var(--warm);background:rgba(112,136,200,0.10);}
-.format-hint{margin-left:auto;font-size:0.68rem;color:rgba(112,136,200,0.40);font-style:italic;}
-@media(max-width:768px){.format-hint{display:none;}.format-bar{padding:10px 18px;}}
+/* ─── FORMAT BAR ─── */
+.format-bar{position:sticky;top:72px;z-index:50;background:rgba(8,11,24,0.98);backdrop-filter:blur(12px);border-bottom:1px solid rgba(112,136,200,0.12);padding:9px 32px;}
+.format-bar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.format-bar-label{font-size:0.56rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(245,246,250,0.45);white-space:nowrap;}
+.fmt-group{display:flex;gap:5px;}
+.fmt-btn{font-size:0.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-align:center;color:rgba(245,246,250,0.55);background:transparent;border:1px solid rgba(112,136,200,0.18);padding:4px 12px;border-radius:5px;cursor:pointer;line-height:1.5;transition:all .18s;}
+.fmt-btn span{font-size:0.48rem;font-weight:400;display:block;opacity:0.7;}
+.fmt-btn:hover{border-color:rgba(112,136,200,0.4);color:#F5F6FA;}
+.fmt-btn.active{border-color:var(--indigo);color:var(--indigo);background:rgba(112,136,200,0.09);}
+.format-hint{margin-left:auto;font-size:0.65rem;color:rgba(112,136,200,0.35);font-style:italic;}
+@media(max-width:768px){.format-hint{display:none;}.format-bar{padding:9px 16px;}}
 
-/* ═══ CAROSELLO SECTION ═══ */
-.car-section{padding:72px 32px 0;max-width:1100px;margin:0 auto;}
-.car-section+.car-section{padding-top:36px;}
-.car-header{margin-bottom:28px;}
-.car-num{font-size:0.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
-.car-title{font-family:'Libre Baskerville',serif;font-size:1.5rem;color:var(--ivory);font-weight:500;margin-bottom:6px;}
-.car-desc{font-size:0.82rem;color:var(--muted);}
+/* ─── SECTION ─── */
+.car-section{padding:64px 32px 0;max-width:1100px;margin:0 auto;}
+.car-section+.car-section{padding-top:40px;}
+.car-header{margin-bottom:24px;}
+.car-num{font-size:0.56rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.car-title{font-family:'Libre Baskerville',serif;font-size:1.4rem;color:#F5F6FA;font-weight:500;margin-bottom:5px;}
+.car-desc{font-size:0.8rem;color:rgba(245,246,250,0.55);}
+.car-layout{display:grid;grid-template-columns:420px 1fr;gap:32px;align-items:start;}
+@media(max-width:900px){.car-layout{grid-template-columns:1fr;}}
 
-/* ═══ LAYOUT viewer sx + pannello dx ═══ */
-.car-layout{display:grid;grid-template-columns:400px 1fr;gap:32px;align-items:start;}
-@media(max-width:768px){.car-layout{grid-template-columns:1fr;}}
-
-/* ═══ SLIDE VIEWPORT ═══ */
+/* ─── SLIDE VIEWPORT ─── */
 .slide-viewport{
-  width:380px;height:380px;
-  border-radius:12px;overflow:hidden;
+  width:380px;height:475px; /* default 4:5 */
+  border-radius:10px;overflow:hidden;
   position:relative;
-  box-shadow:0 8px 40px rgba(0,0,0,0.55);
-  background:#0a0d1e;
-  transition:height .3s ease;
+  box-shadow:0 12px 48px rgba(0,0,0,0.65);
+  background:var(--navy);
+  transition:height .28s ease;
 }
-@media(max-width:768px){.slide-viewport{width:100%;max-width:300px;height:300px;}}
+@media(max-width:900px){.slide-viewport{width:100%;max-width:320px;height:400px;}}
 
-/* ═══ STILE E - STRATEGA MINIMALISTA ═══ */
 .slide{display:none;width:100%;height:100%;position:relative;overflow:hidden;}
 .slide.active{display:block;}
 
-/* Foto base */
+/* ═══ TIPO 1 - COVER ═══
+   Foto fullbleed + gradient solo bottom 45% + titolo ENORME ───────── */
+.slide.cover-slide{}
 .slide-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:0;}
-
-/* Overlay base (copertina) */
-.slide-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(8,11,24,0.88) 0%,rgba(8,11,24,0.46) 42%,rgba(8,11,24,0.02) 100%);}
-
-/* ── COPERTINA: zona testo bottom con linea gold ── */
-.slide-caption{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:18px 22px 22px;border-top:1px solid var(--gold);}
-.slide-caption-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:26px;line-height:1.12;color:var(--ivory);letter-spacing:0.01em;text-shadow:0 1px 10px rgba(0,0,0,0.65);}
-.slide-caption-sub{font-family:'Open Sans',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(245,246,250,0.50);margin-top:9px;}
-
-/* ── CORPO: foto top 58% + zona testo bottom ── */
-.slide.body-slide .slide-photo{height:58%;bottom:auto;}
-.slide.body-slide .slide-overlay{background:linear-gradient(to bottom,transparent 35%,rgba(8,11,24,0.55) 56%,rgba(8,11,24,0.88) 100%);}
-.slide-body-zone{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:12px 20px 18px;background:rgba(8,11,24,0.76);border-top:1px solid var(--gold);}
-.slide-body-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:var(--gold);display:block;margin-bottom:3px;}
-.slide-body-title{font-family:'Open Sans',sans-serif;font-size:13.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#fff;line-height:1.25;}
-.slide-body-text{font-size:11px;color:rgba(245,246,250,0.72);line-height:1.65;margin-top:5px;}
-
-/* ── SPLIT: pannello indigo sx + foto dx, divisore gold ── */
-.slide.split-slide .slide-photo{position:absolute;inset:0 0 0 auto;width:50%;height:100%;}
-.slide.split-slide .slide-overlay{background:linear-gradient(to left,rgba(8,11,24,0.10) 0%,rgba(8,11,24,0.88) 46%,transparent 100%);}
-.slide-split-panel{position:absolute;top:0;left:0;bottom:0;width:50%;z-index:3;padding:22px 16px 22px 22px;display:flex;flex-direction:column;justify-content:center;background:rgba(8,11,24,0.78);border-right:2px solid var(--gold);}
-.slide-split-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:var(--gold-lt);display:block;margin-bottom:7px;}
-.slide-split-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:19px;line-height:1.18;color:var(--ivory);}
-.slide-split-body{font-family:'Open Sans',sans-serif;font-size:10px;color:rgba(245,246,250,0.68);line-height:1.65;margin-top:9px;}
-
-/* ── CTA: nessuna foto, tutto centrato ── */
-.slide.cta-slide .slide-photo{display:none;}
-.slide.cta-slide .slide-overlay{background:radial-gradient(ellipse 65% 55% at 50% 50%,rgba(112,136,200,0.16) 0%,transparent 70%);}
-.slide-cta-zone{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px 28px;text-align:center;gap:10px;}
-.slide-cta-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:28px;line-height:1.14;color:var(--ivory);}
-.slide-cta-rule{width:48px;height:1px;background:var(--gold);flex-shrink:0;}
-.slide-cta-text{font-family:'Open Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-lt);}
-.slide-cta-sub{font-size:10.5px;color:rgba(245,246,250,0.60);line-height:1.65;max-width:260px;}
-
-/* ── Contatore slide ── */
-.slide-counter{position:absolute;bottom:auto;top:72px;right:12px;left:auto;z-index:6;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:9px;color:rgba(201,168,76,0.45);letter-spacing:1px;pointer-events:none;}
-
-/* ── BlooMind mark (obbligatorio) ── */
-.bm-mark{position:absolute;top:8px;left:50%;transform:translateX(-50%);z-index:10;}
-.bm-mark img{width:190px;height:auto;opacity:0.88;filter:drop-shadow(0 1px 6px rgba(0,0,0,0.55));margin-left:-10px;}
-
-/* ═══ CONTENTEDITABLE ═══ */
-[contenteditable]{outline:none;cursor:text;border-radius:3px;transition:background .15s;}
-[contenteditable]:hover{background:rgba(255,255,255,0.06);}
-[contenteditable]:focus{background:rgba(112,136,200,0.12);box-shadow:0 0 0 1px rgba(112,136,200,0.3);}
-
-/* ═══ CONTROLLI ═══ */
-.slide-controls{display:flex;align-items:center;justify-content:space-between;margin-top:12px;max-width:380px;}
-@media(max-width:768px){.slide-controls{max-width:300px;}}
-.nav-btn{background:rgba(112,136,200,0.12);border:1px solid rgba(112,136,200,0.28);color:var(--warm);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;transition:background .2s;}
-.nav-btn:hover{background:rgba(112,136,200,0.22);}
-.slide-dots{display:flex;gap:6px;}
-.slide-dot{width:6px;height:6px;border-radius:50%;background:rgba(112,136,200,0.25);cursor:pointer;transition:background .2s;}
-.slide-dot.active{background:var(--warm);}
-
-/* ═══ PHOTO PICKER ═══ */
-.photo-picker{margin-top:14px;max-width:380px;}
-@media(max-width:768px){.photo-picker{max-width:300px;}}
-.photo-picker-label{font-size:0.55rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(112,136,200,0.50);margin-bottom:8px;display:flex;align-items:center;gap:8px;}
-.photo-picker-label::after{content:'';flex:1;height:1px;background:rgba(112,136,200,0.12);}
-.photo-thumb-strip{display:flex;gap:5px;flex-wrap:wrap;}
-.photo-thumb{width:46px;height:46px;border-radius:6px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .18s,transform .18s;flex-shrink:0;position:relative;}
-.photo-thumb:hover{transform:scale(1.08);}
-.photo-thumb.selected{border-color:var(--warm);box-shadow:0 0 0 2px rgba(112,136,200,0.28);}
-.photo-thumb img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
-.photo-thumb-num{position:absolute;bottom:2px;right:3px;font-size:7.5px;font-weight:700;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.9);line-height:1;pointer-events:none;}
-.photo-apply-all-btn{font-size:0.57rem;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.30);color:var(--gold);border-radius:4px;cursor:pointer;transition:background .2s;margin-left:auto;white-space:nowrap;font-family:'Open Sans',sans-serif;font-weight:600;}
-.photo-apply-all-btn:hover{background:rgba(201,168,76,0.22);}
-
-/* ═══ DOWNLOAD STRIP ═══ */
-.dl-strip{display:flex;gap:8px;margin-top:10px;max-width:380px;flex-wrap:wrap;}
-@media(max-width:768px){.dl-strip{max-width:300px;}}
-.dl-btn{
-  flex:1;min-width:130px;
-  font-size:0.58rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;
-  color:var(--gold);background:transparent;
-  border:1px solid rgba(201,168,76,0.28);
-  padding:8px 10px;border-radius:6px;cursor:pointer;
-  transition:background .2s;display:flex;align-items:center;justify-content:center;gap:5px;
-  white-space:nowrap;
+.cover-overlay{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top,
+    rgba(8,11,24,0.94) 0%,
+    rgba(8,11,24,0.70) 32%,
+    rgba(8,11,24,0.20) 58%,
+    transparent 75%);}
+.cover-body{
+  position:absolute;bottom:0;left:0;right:0;z-index:3;
+  padding:0 22px 26px;
 }
-.dl-btn:hover{background:rgba(201,168,76,0.08);}
-.dl-btn:disabled{opacity:0.45;cursor:not-allowed;}
-.dl-btn.dl-all{color:var(--warm);border-color:rgba(112,136,200,0.28);}
-.dl-btn.dl-all:hover{background:rgba(112,136,200,0.08);}
+.cover-tag{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:8.5px;font-weight:700;letter-spacing:2.8px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:10px;
+}
+.cover-tag::before{content:'';display:inline-block;width:18px;height:1px;background:var(--gold);}
+.cover-hook{
+  font-family:'Open Sans',sans-serif;
+  font-weight:800;
+  font-size:38px;
+  line-height:1.06;
+  color:var(--white);
+  letter-spacing:-0.015em;
+  text-shadow:0 2px 16px rgba(0,0,0,0.5);
+}
+.cover-sub{
+  font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(255,255,255,0.52);margin-top:10px;
+}
 
-/* ═══ PANNELLO CONTENUTI ═══ */
+/* ═══ TIPO 2 - BODY (solo colore, ZERO foto) ═══ ─────────────────── */
+.slide.body-slide{background:var(--indigo);}
+.body-num-ghost{
+  position:absolute;top:12px;left:18px;z-index:1;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:90px;font-weight:600;
+  color:rgba(255,255,255,0.10);line-height:1;pointer-events:none;
+  user-select:none;
+}
+.body-content{
+  position:absolute;
+  bottom:0;left:0;right:0;z-index:3;
+  padding:18px 22px 26px 22px;
+  border-left:3px solid var(--gold);
+  margin:0 16px 32px 16px;
+}
+.body-slide-label{
+  font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:7px;
+}
+.body-slide-title{
+  font-family:'Open Sans',sans-serif;font-weight:800;
+  font-size:26px;line-height:1.1;
+  color:var(--white);
+}
+.body-slide-text{
+  font-size:13.5px;color:rgba(255,255,255,0.80);
+  line-height:1.60;margin-top:8px;
+}
+
+/* ═══ TIPO 3 - SPLIT (pannello bianco + foto) ═══ ────────────────── */
+.slide.split-slide{background:var(--ivory);}
+.slide.split-slide .slide-photo{
+  position:absolute;top:0;right:0;bottom:0;
+  width:44%;height:100%;object-fit:cover;object-position:center top;z-index:0;
+}
+.split-divider{
+  position:absolute;top:0;right:44%;bottom:0;width:3px;
+  background:var(--gold);z-index:2;
+}
+.split-panel{
+  position:absolute;top:0;left:0;bottom:0;width:56%;z-index:3;
+  padding:22px 16px 22px 20px;
+  display:flex;flex-direction:column;justify-content:center;
+  background:var(--ivory);
+}
+.split-num{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:10px;color:var(--gold);letter-spacing:2px;
+  text-transform:uppercase;margin-bottom:8px;
+  display:flex;align-items:center;gap:6px;
+}
+.split-num::before{content:'';width:14px;height:1px;background:var(--gold);display:inline-block;}
+.split-title{
+  font-family:'Open Sans',sans-serif;font-weight:800;
+  font-size:22px;line-height:1.1;
+  color:var(--navy);
+}
+.split-body{
+  font-size:12px;color:var(--navy);
+  line-height:1.65;margin-top:9px;
+}
+
+/* ═══ TIPO 4 - CTA ═══ ───────────────────────────────────────────── */
+.slide.cta-slide{background:var(--navy);}
+.cta-glow{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:260px;height:260px;border-radius:50%;
+  background:radial-gradient(circle,rgba(112,136,200,0.14) 0%,transparent 70%);
+  z-index:1;pointer-events:none;
+}
+.cta-zone{
+  position:absolute;inset:0;z-index:3;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:28px 26px;text-align:center;gap:0;
+}
+.cta-title{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
+  font-size:33px;line-height:1.12;
+  color:var(--white);margin-bottom:16px;
+}
+.cta-rule{width:40px;height:2px;background:var(--gold);margin:0 auto 16px;}
+.cta-keyword{
+  font-family:'Open Sans',sans-serif;font-weight:800;
+  font-size:13px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:12px;
+}
+.cta-sub{
+  font-size:11px;color:rgba(255,255,255,0.55);
+  line-height:1.7;max-width:270px;
+}
+
+/* ─── BlooMind mark (obbligatorio su tutte le slide) ─── */
+.bm-mark{position:absolute;top:10px;right:12px;z-index:10;}
+.bm-mark img{width:120px;height:auto;opacity:0.85;filter:drop-shadow(0 1px 5px rgba(0,0,0,0.5));}
+
+/* ─── Contatore ─── */
+.slide-counter{
+  position:absolute;bottom:10px;right:13px;z-index:6;
+  font-family:'Open Sans',sans-serif;font-weight:700;
+  font-size:8.5px;letter-spacing:1.5px;
+  color:rgba(201,168,76,0.70);pointer-events:none;
+}
+/* Su split il counter è scuro */
+.split-slide .slide-counter{color:rgba(201,168,76,0.85);}
+
+/* ─── Contenteditable ─── */
+[contenteditable]{outline:none;cursor:text;border-radius:3px;transition:background .14s;}
+[contenteditable]:hover{background:rgba(255,255,255,0.08);}
+[contenteditable]:focus{background:rgba(255,255,255,0.12);box-shadow:0 0 0 1px rgba(255,255,255,0.2);}
+.split-panel [contenteditable]:hover{background:rgba(112,136,200,0.08);}
+.split-panel [contenteditable]:focus{background:rgba(112,136,200,0.12);}
+
+/* ─── Controlli navigazione ─── */
+.slide-controls{display:flex;align-items:center;justify-content:space-between;margin-top:11px;max-width:380px;}
+@media(max-width:900px){.slide-controls{max-width:320px;}}
+.nav-btn{background:rgba(112,136,200,0.10);border:1px solid rgba(112,136,200,0.25);color:var(--indigo);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:0.95rem;transition:background .18s;}
+.nav-btn:hover{background:rgba(112,136,200,0.20);}
+.slide-dots{display:flex;gap:5px;}
+.slide-dot{width:5px;height:5px;border-radius:50%;background:rgba(112,136,200,0.22);cursor:pointer;transition:background .18s;}
+.slide-dot.active{background:var(--indigo);}
+
+/* ─── Photo picker ─── */
+.photo-picker{margin-top:12px;max-width:380px;}
+@media(max-width:900px){.photo-picker{max-width:320px;}}
+.photo-picker-label{font-size:0.52rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(112,136,200,0.45);margin-bottom:7px;display:flex;align-items:center;gap:8px;}
+.photo-picker-label::after{content:'';flex:1;height:1px;background:rgba(112,136,200,0.10);}
+.photo-thumb-strip{display:flex;gap:5px;flex-wrap:wrap;}
+.photo-thumb{width:44px;height:44px;border-radius:5px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .16s,transform .16s;flex-shrink:0;position:relative;}
+.photo-thumb:hover{transform:scale(1.08);}
+.photo-thumb.selected{border-color:var(--indigo);box-shadow:0 0 0 2px rgba(112,136,200,0.25);}
+.photo-thumb img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+.photo-thumb-num{position:absolute;bottom:2px;right:3px;font-size:7px;font-weight:700;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.9);pointer-events:none;}
+.photo-apply-all-btn{font-size:0.54rem;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;background:rgba(201,168,76,0.10);border:1px solid rgba(201,168,76,0.28);color:var(--gold);border-radius:4px;cursor:pointer;transition:background .18s;margin-left:auto;white-space:nowrap;font-family:'Open Sans',sans-serif;font-weight:600;}
+.photo-apply-all-btn:hover{background:rgba(201,168,76,0.20);}
+
+/* ─── Download ─── */
+.dl-strip{display:flex;gap:7px;margin-top:9px;max-width:380px;flex-wrap:wrap;}
+@media(max-width:900px){.dl-strip{max-width:320px;}}
+.dl-btn{flex:1;min-width:120px;font-size:0.56rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:var(--gold);background:transparent;border:1px solid rgba(201,168,76,0.26);padding:7px 9px;border-radius:5px;cursor:pointer;transition:background .18s;display:flex;align-items:center;justify-content:center;gap:5px;white-space:nowrap;}
+.dl-btn:hover{background:rgba(201,168,76,0.07);}
+.dl-btn:disabled{opacity:0.4;cursor:not-allowed;}
+.dl-btn.dl-all{color:var(--indigo);border-color:rgba(112,136,200,0.26);}
+.dl-btn.dl-all:hover{background:rgba(112,136,200,0.07);}
+
+/* ─── Pannello contenuti ─── */
 .car-panel{padding:0 4px;}
-.panel-slide-num{font-size:0.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
-.panel-slide-title{font-family:'Libre Baskerville',serif;font-size:1.15rem;color:var(--ivory);font-style:italic;margin-bottom:14px;line-height:1.4;}
-.panel-slide-body{font-size:0.84rem;color:var(--muted);line-height:1.85;white-space:pre-line;}
-.copy-strip{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;}
-.copy-btn{font-size:0.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--warm);background:transparent;border:1px solid rgba(112,136,200,0.28);padding:6px 14px;border-radius:100px;cursor:pointer;transition:background .2s;}
-.copy-btn:hover{background:rgba(112,136,200,0.10);}
-.panel-nav-list{margin-top:20px;display:flex;flex-direction:column;gap:6px;}
-.pnl-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;border:1px solid transparent;transition:all .2s;font-size:0.8rem;color:var(--muted);}
-.pnl-item:hover{background:rgba(112,136,200,0.07);border-color:var(--border);}
-.pnl-item.active{background:rgba(112,136,200,0.10);border-color:var(--border);color:var(--ivory);}
-.pnl-num{font-size:0.58rem;letter-spacing:1.5px;color:var(--gold);min-width:24px;}
+.panel-slide-num{font-size:0.55rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:9px;}
+.panel-slide-title{font-family:'Libre Baskerville',serif;font-size:1.1rem;color:#F5F6FA;font-style:italic;margin-bottom:12px;line-height:1.4;}
+.panel-slide-body{font-size:0.82rem;color:rgba(245,246,250,0.6);line-height:1.85;white-space:pre-line;}
+.copy-strip{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap;}
+.copy-btn{font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--indigo);background:transparent;border:1px solid rgba(112,136,200,0.25);padding:5px 12px;border-radius:100px;cursor:pointer;transition:background .18s;}
+.copy-btn:hover{background:rgba(112,136,200,0.09);}
+.panel-nav-list{margin-top:18px;display:flex;flex-direction:column;gap:5px;}
+.pnl-item{display:flex;align-items:center;gap:9px;padding:7px 11px;border-radius:5px;cursor:pointer;border:1px solid transparent;transition:all .18s;font-size:0.78rem;color:rgba(245,246,250,0.55);}
+.pnl-item:hover{background:rgba(112,136,200,0.06);border-color:var(--border);}
+.pnl-item.active{background:rgba(112,136,200,0.10);border-color:var(--border);color:#F5F6FA;}
+.pnl-num{font-size:0.55rem;letter-spacing:1.5px;color:var(--gold);min-width:22px;}
 
-footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-top:80px;}
-.footer-logo img{height:34px;}
-.footer-info{font-size:0.75rem;color:var(--muted);line-height:1.8;}
-.footer-info a{color:var(--warm);text-decoration:none;}
-@media(max-width:768px){.car-section{padding:48px 18px 0;}.hero{padding:110px 18px 36px;}footer{padding:40px 20px;flex-direction:column;align-items:flex-start;}}
+footer{padding:60px 48px;border-top:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:22px;margin-top:72px;}
+.footer-logo img{height:32px;}
+.footer-info{font-size:0.73rem;color:rgba(245,246,250,0.5);line-height:1.8;}
+.footer-info a{color:var(--indigo);text-decoration:none;}
+@media(max-width:768px){.car-section{padding:44px 16px 0;}.hero{padding:100px 16px 28px;}footer{padding:36px 16px;flex-direction:column;align-items:flex-start;}}
 @media(max-width:480px){
-  .hero{padding:100px 16px 24px;}
-  .car-section{padding:36px 16px 0;}
-  .format-bar{padding:10px 14px;}
-  .dl-btn{font-size:0.54rem;padding:7px 8px;}
-  footer{padding:28px 16px;}
-  .slide-split-title{font-size:16px;line-height:1.15;}
-  .slide-split-body{font-size:9px;}
-  .slide-split-panel{padding:18px 14px 18px 18px;}
-  .slide-caption-title{font-size:21px;}
-  .slide-caption-sub{font-size:8.5px;letter-spacing:2px;}
-  .slide-body-zone{padding:10px 16px 14px;}
-  .slide-body-title{font-size:12px;}
-  .slide-body-text{font-size:10px;}
-  .slide-cta-title{font-size:22px;}
-  .slide-cta-sub{font-size:9.5px;max-width:95%;}
-  .slide-counter{font-size:8px;top:62px;right:10px;}
+  .car-section{padding:32px 14px 0;}
+  .format-bar{padding:8px 12px;}
+  .cover-hook{font-size:30px;}
+  .body-slide-title{font-size:22px;}
+  .body-slide-text{font-size:12px;}
+  .split-title{font-size:18px;}
+  .split-body{font-size:10.5px;}
+  .cta-title{font-size:26px;}
+  .body-num-ghost{font-size:72px;}
+  footer{padding:24px 14px;}
 }
 </style>
 </head>
@@ -221,110 +296,114 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
 </nav>
 
 <div class="hero reveal">
-  <div class="hero-label">Template Caroselli - Stile E Stratega Minimalista</div>
+  <div class="hero-label">Template Caroselli - Bold &amp; Femminile</div>
   <h1 class="hero-title">Manuela <span>Spiezio</span></h1>
-  <p class="hero-sub">3 caroselli pronti per Instagram. Seleziona il formato, scegli le foto, modifica i testi direttamente sulla slide, poi scarica.</p>
-  <div class="style-note">&#187; Linea gold &nbsp;·&nbsp; Foto selezionabile &nbsp;·&nbsp; Testi modificabili &nbsp;·&nbsp; Download PNG</div>
+  <p class="hero-sub">3 caroselli pronti per Instagram. Cover con foto dominante, slide corpo su indigo solido, CTA in navy. Seleziona il formato, modifica i testi sulla slide, scarica.</p>
+  <div class="style-note">&#187; Foto selezionabile &nbsp;·&nbsp; Testi modificabili &nbsp;·&nbsp; Download PNG 1080px</div>
 </div>
 
-<!-- ═══ FORMAT BAR GLOBALE ═══ -->
+<!-- FORMAT BAR -->
 <div class="format-bar">
   <div class="format-bar-inner">
-    <span class="format-bar-label">Formato slide</span>
+    <span class="format-bar-label">Formato</span>
     <div class="fmt-group">
-      <button class="fmt-btn active" data-ratio="1:1" onclick="setFormat('1:1')">1:1<span>Feed quadrato</span></button>
-      <button class="fmt-btn" data-ratio="4:5" onclick="setFormat('4:5')">4:5<span>Feed verticale</span></button>
-      <button class="fmt-btn" data-ratio="9:16" onclick="setFormat('9:16')">9:16<span>Stories / Reels</span></button>
+      <button class="fmt-btn" data-ratio="1:1" onclick="setFormat('1:1')">1:1<span>Feed quadrato</span></button>
+      <button class="fmt-btn active" data-ratio="4:5" onclick="setFormat('4:5')">4:5<span>Feed verticale</span></button>
+      <button class="fmt-btn" data-ratio="9:16" onclick="setFormat('9:16')">9:16<span>Stories</span></button>
     </div>
-    <span class="format-hint">&#9998; Clicca sul testo della slide per modificarlo direttamente</span>
+    <span class="format-hint">&#9998; Clicca sul testo per modificarlo</span>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     CAROSELLO 01 - Pillar 03 Network come Metodo
-═══════════════════════════════════════ -->
+
+<!-- ═══════════════════════════════════
+     CAROSELLO 01 - Network come Metodo
+════════════════════════════════════ -->
 <div class="car-section reveal">
   <div class="car-header">
     <div class="car-num">Carosello 01 &nbsp;·&nbsp; Pillar 03 - Network come Metodo</div>
     <div class="car-title">"Il network non è atto di fede. È strategia."</div>
-    <div class="car-desc">6 slide + CTA - Recruiting qualificato. Intercetta le networker deluse dalla fuffa e le introduce al metodo reale.</div>
+    <div class="car-desc">6 slide - Recruiting qualificato. Intercetta le networker deluse dalla fuffa e introduce il metodo reale.</div>
   </div>
   <div class="car-layout">
     <div>
       <div class="slide-viewport" id="vp1">
 
-        <div class="slide active" id="c1s1">
+        <!-- S1: COVER -->
+        <div class="slide cover-slide active" id="c1s1">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt="">
-          <div class="slide-overlay"></div>
-          <div class="slide-caption">
-            <div class="slide-caption-title" contenteditable="true">Il network non è atto di fede.<br>È strategia.</div>
-            <div class="slide-caption-sub" contenteditable="true">Scorri per scoprire il metodo</div>
+          <div class="cover-overlay"></div>
+          <div class="cover-body">
+            <div class="cover-tag" contenteditable="true">Scorri per scoprire il metodo</div>
+            <div class="cover-hook" contenteditable="true">Il network non è atto di fede.<br>È strategia.</div>
           </div>
           <div class="slide-counter">01 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
+        <!-- S2: BODY -->
         <div class="slide body-slide" id="c1s2">
-          <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt="">
-          <div class="slide-overlay"></div>
-          <div class="slide-body-zone">
-            <span class="slide-body-num">02 ·</span>
-            <div class="slide-body-title" contenteditable="true">Se stai fallendo,<br>non è colpa tua.</div>
-            <div class="slide-body-text" contenteditable="true">Ti hanno dato un prodotto. Non un metodo. Ti hanno iscritto. Poi spariti. Non è il tuo fallimento: è il fallimento di un sistema.</div>
+          <div class="body-num-ghost">02</div>
+          <div class="body-content">
+            <div class="body-slide-label" contenteditable="true">Il problema</div>
+            <div class="body-slide-title" contenteditable="true">Se stai fallendo,<br>non è colpa tua.</div>
+            <div class="body-slide-text" contenteditable="true">Ti hanno dato un prodotto. Non un metodo. Ti hanno iscritto. Poi spariti. Non è il tuo fallimento: è il fallimento di un sistema.</div>
           </div>
           <div class="slide-counter">02 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
+        <!-- S3: BODY -->
         <div class="slide body-slide" id="c1s3">
-          <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt="">
-          <div class="slide-overlay"></div>
-          <div class="slide-body-zone">
-            <span class="slide-body-num">03 ·</span>
-            <div class="slide-body-title" contenteditable="true">Il metodo esiste.<br>È replicabile.</div>
-            <div class="slide-body-text" contenteditable="true">Ho insegnato questo metodo alle donne del mio team. Il risultato? 60.000 euro di fatturato insieme. Non fortuna. Tecnica replicabile.</div>
+          <div class="body-num-ghost">03</div>
+          <div class="body-content">
+            <div class="body-slide-label" contenteditable="true">La differenza</div>
+            <div class="body-slide-title" contenteditable="true">Il metodo esiste.<br>Ed è replicabile.</div>
+            <div class="body-slide-text" contenteditable="true">L'ho insegnato alle donne del mio team. Non sono geni, non sono fortunate. Seguono un sistema preciso, testato, che puoi imparare anche tu. Non è talento: è tecnica.</div>
           </div>
           <div class="slide-counter">03 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
+        <!-- S4: BODY -->
         <div class="slide body-slide" id="c1s4">
-          <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" alt="">
-          <div class="slide-overlay"></div>
-          <div class="slide-body-zone">
-            <span class="slide-body-num">04 ·</span>
-            <div class="slide-body-title" contenteditable="true">60.000 euro<br>di fatturato di team.</div>
-            <div class="slide-body-text" contenteditable="true">Non fortuna. Non magia. 8 anni di lavoro, metodo, ricostruzioni da zero. E una guida che ci ha creduto quando io non mi credevo ancora.</div>
+          <div class="body-num-ghost">04</div>
+          <div class="body-content">
+            <div class="body-slide-label" contenteditable="true">La mia storia</div>
+            <div class="body-slide-title" contenteditable="true">8 anni per costruire<br>un team che funziona.</div>
+            <div class="body-slide-text" contenteditable="true">Non ho avuto il manuale. Ho fatto errori, mi sono fermata, sono ripartita. Quello che do al mio team oggi è tutto quello che avrei voluto ricevere all'inizio. Non lo vendo: lo condivido.</div>
           </div>
           <div class="slide-counter">04 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
+        <!-- S5: BODY -->
         <div class="slide body-slide" id="c1s5">
-          <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" alt="">
-          <div class="slide-overlay"></div>
-          <div class="slide-body-zone">
-            <span class="slide-body-num">05 ·</span>
-            <div class="slide-body-title" contenteditable="true">Il supporto vero<br>non sparisce dopo la firma.</div>
-            <div class="slide-body-text" contenteditable="true">Nel mio team trovi: Instagram insegnato con metodo, challenge e contest strutturati, fiducia e libertà di espressione. Non un numero: una guida reale.</div>
+          <div class="body-num-ghost">05</div>
+          <div class="body-content">
+            <div class="body-slide-label" contenteditable="true">Il mio team</div>
+            <div class="body-slide-title" contenteditable="true">Il supporto vero<br>non sparisce dopo la firma.</div>
+            <div class="body-slide-text" contenteditable="true">Nel mio team trovi: Instagram insegnato con metodo, challenge e contest strutturati, fiducia e libertà di espressione. Non un numero: una guida reale.</div>
           </div>
           <div class="slide-counter">05 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
+        <!-- S6: CTA -->
         <div class="slide cta-slide" id="c1s6">
-          <div class="slide-overlay"></div>
-          <div class="slide-cta-zone">
-            <div class="slide-cta-title" contenteditable="true">Cerco donne con<br>motivazione d'acciaio.</div>
-            <div class="slide-cta-rule"></div>
-            <div class="slide-cta-text" contenteditable="true">DM: ACCIAIO</div>
-            <div class="slide-cta-sub" contenteditable="true">Non esperienza. Non perfezione. Solo determinazione e voglia di mettere in pratica. Se sei tu, scrivimi in DM la parola ACCIAIO.</div>
+          <div class="cta-glow"></div>
+          <div class="cta-zone">
+            <div class="cta-title" contenteditable="true">Cerco donne con<br>motivazione d'acciaio.</div>
+            <div class="cta-rule"></div>
+            <div class="cta-keyword" contenteditable="true">DM: ACCIAIO</div>
+            <div class="cta-sub" contenteditable="true">Non esperienza. Non perfezione. Solo determinazione e voglia di mettere in pratica. Se sei tu, scrivimi in DM la parola ACCIAIO.</div>
           </div>
           <div class="slide-counter">06 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
-      </div>
+      </div><!-- /vp1 -->
+
       <div class="slide-controls">
         <button class="nav-btn" onclick="prevSlide('c1',6)">&#8592;</button>
         <div class="slide-dots" id="dots-c1">
@@ -337,130 +416,133 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
         </div>
         <button class="nav-btn" onclick="nextSlide('c1',6)">&#8594;</button>
       </div>
+
       <div class="photo-picker" id="picker-c1">
-        <div class="photo-picker-label">Foto per questa slide<button class="photo-apply-all-btn" onclick="setAllSlidesPhoto('c1',6,this)">&#9889; Tutte le slide</button></div>
+        <div class="photo-picker-label">Foto cover<button class="photo-apply-all-btn" onclick="setAllSlidesPhoto('c1',this)">&#9889; Applica a tutte</button></div>
         <div class="photo-thumb-strip">
-          <div class="photo-thumb selected" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" onclick="setSlidePhoto('c1',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt=""><span class="photo-thumb-num">1</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" onclick="setSlidePhoto('c1',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt=""><span class="photo-thumb-num">2</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" onclick="setSlidePhoto('c1',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt=""><span class="photo-thumb-num">3</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" onclick="setSlidePhoto('c1',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" alt=""><span class="photo-thumb-num">4</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" onclick="setSlidePhoto('c1',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" alt=""><span class="photo-thumb-num">5</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" onclick="setSlidePhoto('c1',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" alt=""><span class="photo-thumb-num">6</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" onclick="setSlidePhoto('c1',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" alt=""><span class="photo-thumb-num">7</span></div>
+          <div class="photo-thumb selected" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" onclick="setSlidePhoto('c1',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt=""><span class="photo-thumb-num">1</span></div>
+          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" onclick="setSlidePhoto('c1',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt=""><span class="photo-thumb-num">2</span></div>
+          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" onclick="setSlidePhoto('c1',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt=""><span class="photo-thumb-num">3</span></div>
+          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" onclick="setSlidePhoto('c1',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" alt=""><span class="photo-thumb-num">4</span></div>
+          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" onclick="setSlidePhoto('c1',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" alt=""><span class="photo-thumb-num">5</span></div>
+          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" onclick="setSlidePhoto('c1',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" alt=""><span class="photo-thumb-num">6</span></div>
+          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" onclick="setSlidePhoto('c1',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" alt=""><span class="photo-thumb-num">7</span></div>
         </div>
       </div>
+
       <div class="dl-strip">
         <button class="dl-btn" id="dl-c1-cur" onclick="downloadSlide('c1',this)">&#8595; Scarica slide</button>
         <button class="dl-btn dl-all" id="dl-c1-all" onclick="downloadAllSlides('c1',6,this)">&#8595; Scarica tutte (6)</button>
       </div>
-    </div>
+    </div><!-- /left col -->
 
     <div class="car-panel">
       <div class="panel-slide-num" id="c1-pnum">Slide 1 di 6</div>
       <div class="panel-slide-title" id="c1-ptitle">"Il network non è atto di fede. È strategia."</div>
-      <div class="panel-slide-body" id="c1-pbody">Slide di copertina - titolo del carosello.
-
-Usa questa slide per catturare l'attenzione. Titolo in Cormorant Garamond italic con linea gold di separazione.</div>
-      <div class="copy-strip">
-        <button class="copy-btn" onclick="copySlideText('c1',this)">Copia testo slide</button>
-      </div>
+      <div class="panel-slide-body" id="c1-pbody">Cover - foto piena di Manuela con hook diretto. Il testo grande è in basso sulla foto.</div>
+      <div class="copy-strip"><button class="copy-btn" onclick="copySlideText('c1',this)">Copia testo</button></div>
       <div class="panel-nav-list" id="c1-pnav">
-        <div class="pnl-item active" onclick="goSlide('c1',1,6)"><span class="pnl-num">01</span> Cover - "Il network non è atto di fede"</div>
-        <div class="pnl-item" onclick="goSlide('c1',2,6)"><span class="pnl-num">02</span> "Se stai fallendo, non è colpa tua"</div>
-        <div class="pnl-item" onclick="goSlide('c1',3,6)"><span class="pnl-num">03</span> "Il metodo esiste. È replicabile."</div>
-        <div class="pnl-item" onclick="goSlide('c1',4,6)"><span class="pnl-num">04</span> "60.000 euro di fatturato di team"</div>
-        <div class="pnl-item" onclick="goSlide('c1',5,6)"><span class="pnl-num">05</span> "Il supporto vero non sparisce"</div>
-        <div class="pnl-item" onclick="goSlide('c1',6,6)"><span class="pnl-num">CTA</span> "Motivazione d'acciaio"</div>
+        <div class="pnl-item active" onclick="goSlide('c1',1,6)"><span class="pnl-num">01</span> Cover - Hook</div>
+        <div class="pnl-item" onclick="goSlide('c1',2,6)"><span class="pnl-num">02</span> "Se stai fallendo"</div>
+        <div class="pnl-item" onclick="goSlide('c1',3,6)"><span class="pnl-num">03</span> "Il metodo esiste"</div>
+        <div class="pnl-item" onclick="goSlide('c1',4,6)"><span class="pnl-num">04</span> "La mia storia"</div>
+        <div class="pnl-item" onclick="goSlide('c1',5,6)"><span class="pnl-num">05</span> "Supporto vero"</div>
+        <div class="pnl-item" onclick="goSlide('c1',6,6)"><span class="pnl-num">CTA</span> DM: ACCIAIO</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     CAROSELLO 02 - Pillar 02 Libertà Materna
-═══════════════════════════════════════ -->
+
+<!-- ═══════════════════════════════════
+     CAROSELLO 02 - Liberta Materna
+════════════════════════════════════ -->
 <div class="car-section reveal">
   <div class="car-header">
     <div class="car-num">Carosello 02 &nbsp;·&nbsp; Pillar 02 - Libertà Materna</div>
-    <div class="car-title">"NON CE LA FARAI MAI - Come ho smesso di crederci"</div>
-    <div class="car-desc">6 slide vulnerabilità strategica - Credenze limitanti e svolta personale. Il formato ad alto impatto già testato dalla community di Manuela.</div>
+    <div class="car-title">"NON C'È LA FARAI MAI - Come ho smesso di crederci"</div>
+    <div class="car-desc">6 slide vulnerabilità strategica - Credenze limitanti e svolta personale.</div>
   </div>
   <div class="car-layout">
     <div>
       <div class="slide-viewport" id="vp2">
 
-        <div class="slide active" id="c2s1">
+        <!-- S1: COVER -->
+        <div class="slide cover-slide active" id="c2s1">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt="">
-          <div class="slide-overlay"></div>
-          <div class="slide-caption">
-            <div class="slide-caption-title" contenteditable="true">NON CE LA FARAI MAI</div>
-            <div class="slide-caption-sub" contenteditable="true">Come ho smesso di crederci</div>
+          <div class="cover-overlay"></div>
+          <div class="cover-body">
+            <div class="cover-tag" contenteditable="true">La mia storia</div>
+            <div class="cover-hook" contenteditable="true">NON C'È LA FARAI MAI</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.55);margin-top:8px;letter-spacing:1.5px;font-weight:600;text-transform:uppercase;" contenteditable="true">Come ho smesso di crederci</div>
           </div>
           <div class="slide-counter">01 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
+        <!-- S2: BODY -->
         <div class="slide body-slide" id="c2s2">
-          <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt="">
-          <div class="slide-overlay"></div>
-          <div class="slide-body-zone">
-            <span class="slide-body-num">02 ·</span>
-            <div class="slide-body-title" contenteditable="true">La voce nella testa<br>che ti frena.</div>
-            <div class="slide-body-text" contenteditable="true">Le credenze limitanti arrivano dall'ambiente, dalla società, dalle esperienze passate. "Sei così e non puoi cambiare." "Non sei abbastanza qualificata." "Non è per te."</div>
+          <div class="body-num-ghost">02</div>
+          <div class="body-content">
+            <div class="body-slide-label" contenteditable="true">Il freno invisibile</div>
+            <div class="body-slide-title" contenteditable="true">La voce nella testa<br>che ti blocca.</div>
+            <div class="body-slide-text" contenteditable="true">Le credenze limitanti arrivano dall'ambiente, dalla società, dalle esperienze passate. "Sei così e non puoi cambiare." "Non sei abbastanza qualificata." "Non è per te."</div>
           </div>
           <div class="slide-counter">02 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
+        <!-- S3: BODY -->
         <div class="slide body-slide" id="c2s3">
-          <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" alt="">
-          <div class="slide-overlay"></div>
-          <div class="slide-body-zone">
-            <span class="slide-body-num">03 ·</span>
-            <div class="slide-body-title" contenteditable="true">Io ero la mamma<br>"comune" di 43 anni.</div>
-            <div class="slide-body-text" contenteditable="true">Ex dipendente. Senza laurea. Moglie e mamma. Se qualche anno fa mi avessero detto che sarei salita su un palco prestigioso, avrei risposto: "Ma sei folle? Io??? Ma vaaaaa!"</div>
+          <div class="body-num-ghost">03</div>
+          <div class="body-content">
+            <div class="body-slide-label" contenteditable="true">Ero come te</div>
+            <div class="body-slide-title" contenteditable="true">Io ero la mamma<br>"comune" di 43 anni.</div>
+            <div class="body-slide-text" contenteditable="true">Ex dipendente. Senza laurea. Moglie e mamma. Se qualche anno fa mi avessero detto che sarei salita su un palco prestigioso, avrei risposto: "Ma sei folle?"</div>
           </div>
           <div class="slide-counter">03 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
+        <!-- S4: BODY -->
         <div class="slide body-slide" id="c2s4">
-          <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" alt="">
-          <div class="slide-overlay"></div>
-          <div class="slide-body-zone">
-            <span class="slide-body-num">04 ·</span>
-            <div class="slide-body-title" contenteditable="true">La svolta non è<br>stata la sicurezza.</div>
-            <div class="slide-body-text" contenteditable="true">È stata decidere di farlo lo stesso, nonostante la paura. Nonostante la voce che diceva "non ce la farai". L'unica persona che può decidere chi diventare siamo noi stesse.</div>
+          <div class="body-num-ghost">04</div>
+          <div class="body-content">
+            <div class="body-slide-label" contenteditable="true">La svolta</div>
+            <div class="body-slide-title" contenteditable="true">La svolta non è stata<br>la sicurezza.</div>
+            <div class="body-slide-text" contenteditable="true">È stata decidere di farlo lo stesso, nonostante la paura. L'unica persona che può decidere chi diventare siamo noi stesse.</div>
           </div>
           <div class="slide-counter">04 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
+        <!-- S5: BODY -->
         <div class="slide body-slide" id="c2s5">
-          <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" alt="">
-          <div class="slide-overlay"></div>
-          <div class="slide-body-zone">
-            <span class="slide-body-num">05 ·</span>
-            <div class="slide-body-title" contenteditable="true">Abbassa il volume<br>delle voci limitanti.</div>
-            <div class="slide-body-text" contenteditable="true">Alza quello della crescita personale e della strategia. Non ti sto chiedendo di smettere di avere paura. Ti sto chiedendo di farlo lo stesso.</div>
+          <div class="body-num-ghost">05</div>
+          <div class="body-content">
+            <div class="body-slide-label" contenteditable="true">Il metodo</div>
+            <div class="body-slide-title" contenteditable="true">Abbassa il volume<br>delle voci limitanti.</div>
+            <div class="body-slide-text" contenteditable="true">Alza quello della crescita personale e della strategia. Non ti sto chiedendo di smettere di avere paura. Ti sto chiedendo di farlo lo stesso.</div>
           </div>
           <div class="slide-counter">05 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
+        <!-- S6: CTA -->
         <div class="slide cta-slide" id="c2s6">
-          <div class="slide-overlay"></div>
-          <div class="slide-cta-zone">
-            <div class="slide-cta-title" contenteditable="true">Hai una voce nella testa<br>che ti frena?</div>
-            <div class="slide-cta-rule"></div>
-            <div class="slide-cta-text" contenteditable="true">Commento o DM: LIBERTA</div>
-            <div class="slide-cta-sub" contenteditable="true">Scrivimi nei commenti la tua credenza limitante. Se invece vuoi capire come uscire da quella voce, scrivi LIBERTA in DM. Ti rispondo io.</div>
+          <div class="cta-glow"></div>
+          <div class="cta-zone">
+            <div class="cta-title" contenteditable="true">Hai una voce nella testa<br>che ti frena?</div>
+            <div class="cta-rule"></div>
+            <div class="cta-keyword" contenteditable="true">DM: LIBERTÀ</div>
+            <div class="cta-sub" contenteditable="true">Scrivimi nei commenti la tua credenza limitante. Se invece vuoi capire come uscire da quella voce, scrivi LIBERTÀ in DM. Ti rispondo io.</div>
           </div>
           <div class="slide-counter">06 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
-      </div>
+      </div><!-- /vp2 -->
+
       <div class="slide-controls">
         <button class="nav-btn" onclick="prevSlide('c2',6)">&#8592;</button>
         <div class="slide-dots" id="dots-c2">
@@ -473,18 +555,20 @@ Usa questa slide per catturare l'attenzione. Titolo in Cormorant Garamond italic
         </div>
         <button class="nav-btn" onclick="nextSlide('c2',6)">&#8594;</button>
       </div>
+
       <div class="photo-picker" id="picker-c2">
-        <div class="photo-picker-label">Foto per questa slide<button class="photo-apply-all-btn" onclick="setAllSlidesPhoto('c2',6,this)">&#9889; Tutte le slide</button></div>
+        <div class="photo-picker-label">Foto cover<button class="photo-apply-all-btn" onclick="setAllSlidesPhoto('c2',this)">&#9889; Applica a tutte</button></div>
         <div class="photo-thumb-strip">
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" onclick="setSlidePhoto('c2',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt=""><span class="photo-thumb-num">1</span></div>
-          <div class="photo-thumb selected" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" onclick="setSlidePhoto('c2',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt=""><span class="photo-thumb-num">2</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" onclick="setSlidePhoto('c2',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt=""><span class="photo-thumb-num">3</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" onclick="setSlidePhoto('c2',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" alt=""><span class="photo-thumb-num">4</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" onclick="setSlidePhoto('c2',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" alt=""><span class="photo-thumb-num">5</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" onclick="setSlidePhoto('c2',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" alt=""><span class="photo-thumb-num">6</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" onclick="setSlidePhoto('c2',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" alt=""><span class="photo-thumb-num">7</span></div>
+          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" onclick="setSlidePhoto('c2',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt=""><span class="photo-thumb-num">1</span></div>
+          <div class="photo-thumb selected" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" onclick="setSlidePhoto('c2',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt=""><span class="photo-thumb-num">2</span></div>
+          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" onclick="setSlidePhoto('c2',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt=""><span class="photo-thumb-num">3</span></div>
+          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" onclick="setSlidePhoto('c2',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" alt=""><span class="photo-thumb-num">4</span></div>
+          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" onclick="setSlidePhoto('c2',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" alt=""><span class="photo-thumb-num">5</span></div>
+          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" onclick="setSlidePhoto('c2',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" alt=""><span class="photo-thumb-num">6</span></div>
+          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" onclick="setSlidePhoto('c2',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" alt=""><span class="photo-thumb-num">7</span></div>
         </div>
       </div>
+
       <div class="dl-strip">
         <button class="dl-btn" id="dl-c2-cur" onclick="downloadSlide('c2',this)">&#8595; Scarica slide</button>
         <button class="dl-btn dl-all" id="dl-c2-all" onclick="downloadAllSlides('c2',6,this)">&#8595; Scarica tutte (6)</button>
@@ -493,108 +577,113 @@ Usa questa slide per catturare l'attenzione. Titolo in Cormorant Garamond italic
 
     <div class="car-panel">
       <div class="panel-slide-num" id="c2-pnum">Slide 1 di 6</div>
-      <div class="panel-slide-title" id="c2-ptitle">"NON CE LA FARAI MAI"</div>
-      <div class="panel-slide-body" id="c2-pbody">Slide di copertina - Hook forte, lettere cubitali. Questo è il formato già testato che ha generato il maggiore impatto nella community di Manuela.</div>
-      <div class="copy-strip">
-        <button class="copy-btn" onclick="copySlideText('c2',this)">Copia testo slide</button>
-      </div>
+      <div class="panel-slide-title" id="c2-ptitle">"NON C'È LA FARAI MAI"</div>
+      <div class="panel-slide-body" id="c2-pbody">Cover ad alto impatto. Hook in maiuscolo, foto di Manuela dominante.</div>
+      <div class="copy-strip"><button class="copy-btn" onclick="copySlideText('c2',this)">Copia testo</button></div>
       <div class="panel-nav-list" id="c2-pnav">
-        <div class="pnl-item active" onclick="goSlide('c2',1,6)"><span class="pnl-num">01</span> Cover - "NON CE LA FARAI MAI"</div>
-        <div class="pnl-item" onclick="goSlide('c2',2,6)"><span class="pnl-num">02</span> "La voce nella testa che ti frena"</div>
-        <div class="pnl-item" onclick="goSlide('c2',3,6)"><span class="pnl-num">03</span> "Io ero la mamma comune di 43 anni"</div>
+        <div class="pnl-item active" onclick="goSlide('c2',1,6)"><span class="pnl-num">01</span> Cover - "NON C'È LA FARAI MAI"</div>
+        <div class="pnl-item" onclick="goSlide('c2',2,6)"><span class="pnl-num">02</span> "La voce nella testa"</div>
+        <div class="pnl-item" onclick="goSlide('c2',3,6)"><span class="pnl-num">03</span> "Io ero la mamma comune"</div>
         <div class="pnl-item" onclick="goSlide('c2',4,6)"><span class="pnl-num">04</span> "La svolta non è stata la sicurezza"</div>
-        <div class="pnl-item" onclick="goSlide('c2',5,6)"><span class="pnl-num">05</span> "Abbassa il volume delle voci limitanti"</div>
-        <div class="pnl-item" onclick="goSlide('c2',6,6)"><span class="pnl-num">CTA</span> "Commento o DM: LIBERTA"</div>
+        <div class="pnl-item" onclick="goSlide('c2',5,6)"><span class="pnl-num">05</span> "Abbassa il volume"</div>
+        <div class="pnl-item" onclick="goSlide('c2',6,6)"><span class="pnl-num">CTA</span> DM: LIBERTÀ</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     CAROSELLO 03 - Pillar 01 Strategia Instagram
-═══════════════════════════════════════ -->
+
+<!-- ═══════════════════════════════════
+     CAROSELLO 03 - Strategia Instagram
+════════════════════════════════════ -->
 <div class="car-section reveal" style="padding-bottom:0;">
   <div class="car-header">
     <div class="car-num">Carosello 03 &nbsp;·&nbsp; Pillar 01 - Strategia Instagram</div>
-    <div class="car-title">"3 errori che distruggono il tuo profilo Instagram da networker"</div>
-    <div class="car-desc">6 slide contenuto tecnico - Posiziona Manuela come Strategist di Instagram. Altamente salvabile e condivisibile.</div>
+    <div class="car-title">"3 errori che distruggono il tuo profilo Instagram"</div>
+    <div class="car-desc">6 slide tecnico - Layout SPLIT per gli errori. Altamente salvabile e condivisibile.</div>
   </div>
   <div class="car-layout">
     <div>
       <div class="slide-viewport" id="vp3">
 
-        <div class="slide active" id="c3s1">
+        <!-- S1: COVER -->
+        <div class="slide cover-slide active" id="c3s1">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" alt="">
-          <div class="slide-overlay"></div>
-          <div class="slide-caption">
-            <div class="slide-caption-title" contenteditable="true">3 errori che distruggono<br>il tuo profilo Instagram.</div>
-            <div class="slide-caption-sub" contenteditable="true">E come evitarli. Salvalo - ti servirà</div>
+          <div class="cover-overlay"></div>
+          <div class="cover-body">
+            <div class="cover-tag" contenteditable="true">Salvalo - ti servirà</div>
+            <div class="cover-hook" contenteditable="true">3 errori che distruggono<br>il tuo profilo Instagram.</div>
           </div>
           <div class="slide-counter">01 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
+        <!-- S2: SPLIT -->
         <div class="slide split-slide" id="c3s2">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt="">
-          <div class="slide-overlay"></div>
-          <div class="slide-split-panel">
-            <span class="slide-split-num">Errore 01</span>
-            <div class="slide-split-title" contenteditable="true">Il profilo-vetrina di prodotti.</div>
-            <div class="slide-split-body" contenteditable="true">Instagram non è un catalogo. Se ogni post è una foto di prodotto, l'algoritmo ti ignora. Le persone seguono persone, non prodotti.</div>
+          <div class="split-divider"></div>
+          <div class="split-panel">
+            <div class="split-num" contenteditable="true">Errore 01</div>
+            <div class="split-title" contenteditable="true">Il profilo-vetrina<br>di prodotti.</div>
+            <div class="split-body" contenteditable="true">Instagram non è un catalogo. Se ogni post è una foto di prodotto, l'algoritmo ti ignora. Le persone seguono persone, non prodotti.</div>
           </div>
           <div class="slide-counter">02 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
+        <!-- S3: SPLIT -->
         <div class="slide split-slide" id="c3s3">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt="">
-          <div class="slide-overlay"></div>
-          <div class="slide-split-panel">
-            <span class="slide-split-num">Errore 02</span>
-            <div class="slide-split-title" contenteditable="true">Sparire dopo la pubblicazione.</div>
-            <div class="slide-split-body" contenteditable="true">Le prime 2 ore dopo aver pubblicato sono cruciali. Se non rispondi, l'algoritmo smette di spingere il tuo contenuto. Ogni post è sprecato.</div>
+          <div class="split-divider"></div>
+          <div class="split-panel">
+            <div class="split-num" contenteditable="true">Errore 02</div>
+            <div class="split-title" contenteditable="true">Sparire dopo<br>la pubblicazione.</div>
+            <div class="split-body" contenteditable="true">Le prime 2 ore dopo aver pubblicato sono cruciali. Se non rispondi, l'algoritmo smette di spingere il contenuto. Ogni post è sprecato.</div>
           </div>
           <div class="slide-counter">03 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
+        <!-- S4: SPLIT -->
         <div class="slide split-slide" id="c3s4">
           <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt="">
-          <div class="slide-overlay"></div>
-          <div class="slide-split-panel">
-            <span class="slide-split-num">Errore 03</span>
-            <div class="slide-split-title" contenteditable="true">Non dici mai cosa fare dopo.</div>
-            <div class="slide-split-body" contenteditable="true">Se non dici cosa fare dopo aver visto il tuo contenuto, non faranno niente. Ogni post deve avere un'azione chiara.</div>
+          <div class="split-divider"></div>
+          <div class="split-panel">
+            <div class="split-num" contenteditable="true">Errore 03</div>
+            <div class="split-title" contenteditable="true">Non dici mai<br>cosa fare dopo.</div>
+            <div class="split-body" contenteditable="true">Se non dici cosa fare dopo aver visto il tuo contenuto, non faranno niente. Ogni post deve avere un'azione chiara.</div>
           </div>
           <div class="slide-counter">04 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
+        <!-- S5: BODY -->
         <div class="slide body-slide" id="c3s5">
-          <img class="slide-photo" crossorigin="anonymous" src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" alt="">
-          <div class="slide-overlay"></div>
-          <div class="slide-body-zone">
-            <span class="slide-body-num">05 ·</span>
-            <div class="slide-body-title" contenteditable="true">La soluzione?<br>È più semplice di quanto pensi.</div>
-            <div class="slide-body-text" contenteditable="true">Condividi valore. Racconta la tua storia. Rispondi ai commenti. Chiedi qualcosa al tuo pubblico. Instagram non è difficile: manca il metodo, non la buona volontà.</div>
+          <div class="body-num-ghost">05</div>
+          <div class="body-content">
+            <div class="body-slide-label" contenteditable="true">La soluzione</div>
+            <div class="body-slide-title" contenteditable="true">È più semplice<br>di quanto pensi.</div>
+            <div class="body-slide-text" contenteditable="true">Condividi valore. Racconta la tua storia. Rispondi ai commenti. Chiedi qualcosa al tuo pubblico. Instagram non è difficile: manca il metodo, non la buona volontà.</div>
           </div>
           <div class="slide-counter">05 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
+        <!-- S6: CTA -->
         <div class="slide cta-slide" id="c3s6">
-          <div class="slide-overlay"></div>
-          <div class="slide-cta-zone">
-            <div class="slide-cta-title" contenteditable="true">Vuoi il metodo completo<br>per Instagram?</div>
-            <div class="slide-cta-rule"></div>
-            <div class="slide-cta-text" contenteditable="true">DM: STRATEGIA</div>
-            <div class="slide-cta-sub" contenteditable="true">Scrivi in DM la parola STRATEGIA. Ti racconto come lavoro e come insegno Instagram nel mio team - senza spam, senza pressione.</div>
+          <div class="cta-glow"></div>
+          <div class="cta-zone">
+            <div class="cta-title" contenteditable="true">Vuoi il metodo completo<br>per Instagram?</div>
+            <div class="cta-rule"></div>
+            <div class="cta-keyword" contenteditable="true">DM: STRATEGIA</div>
+            <div class="cta-sub" contenteditable="true">Scrivi in DM la parola STRATEGIA. Ti racconto come lavoro e come insegno Instagram nel mio team - senza spam, senza pressione.</div>
           </div>
           <div class="slide-counter">06 / 06</div>
           <div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div>
         </div>
 
-      </div>
+      </div><!-- /vp3 -->
+
       <div class="slide-controls">
         <button class="nav-btn" onclick="prevSlide('c3',6)">&#8592;</button>
         <div class="slide-dots" id="dots-c3">
@@ -607,18 +696,20 @@ Usa questa slide per catturare l'attenzione. Titolo in Cormorant Garamond italic
         </div>
         <button class="nav-btn" onclick="nextSlide('c3',6)">&#8594;</button>
       </div>
+
       <div class="photo-picker" id="picker-c3">
-        <div class="photo-picker-label">Foto per questa slide<button class="photo-apply-all-btn" onclick="setAllSlidesPhoto('c3',6,this)">&#9889; Tutte le slide</button></div>
+        <div class="photo-picker-label">Foto slide<button class="photo-apply-all-btn" onclick="setAllSlidesPhoto('c3',this)">&#9889; Applica a tutte</button></div>
         <div class="photo-thumb-strip">
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" onclick="setSlidePhoto('c3',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt=""><span class="photo-thumb-num">1</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" onclick="setSlidePhoto('c3',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt=""><span class="photo-thumb-num">2</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" onclick="setSlidePhoto('c3',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt=""><span class="photo-thumb-num">3</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" onclick="setSlidePhoto('c3',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" alt=""><span class="photo-thumb-num">4</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" onclick="setSlidePhoto('c3',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" alt=""><span class="photo-thumb-num">5</span></div>
-          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" onclick="setSlidePhoto('c3',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" alt=""><span class="photo-thumb-num">6</span></div>
-          <div class="photo-thumb selected" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" onclick="setSlidePhoto('c3',this.dataset.src)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" alt=""><span class="photo-thumb-num">7</span></div>
+          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" onclick="setSlidePhoto('c3',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg" alt=""><span class="photo-thumb-num">1</span></div>
+          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" onclick="setSlidePhoto('c3',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg" alt=""><span class="photo-thumb-num">2</span></div>
+          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" onclick="setSlidePhoto('c3',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_03.jpg" alt=""><span class="photo-thumb-num">3</span></div>
+          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" onclick="setSlidePhoto('c3',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_04.jpg" alt=""><span class="photo-thumb-num">4</span></div>
+          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" onclick="setSlidePhoto('c3',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_05.jpg" alt=""><span class="photo-thumb-num">5</span></div>
+          <div class="photo-thumb" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" onclick="setSlidePhoto('c3',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_06.jpg" alt=""><span class="photo-thumb-num">6</span></div>
+          <div class="photo-thumb selected" data-src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" onclick="setSlidePhoto('c3',this.dataset.src,this)"><img src="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg" alt=""><span class="photo-thumb-num">7</span></div>
         </div>
       </div>
+
       <div class="dl-strip">
         <button class="dl-btn" id="dl-c3-cur" onclick="downloadSlide('c3',this)">&#8595; Scarica slide</button>
         <button class="dl-btn dl-all" id="dl-c3-all" onclick="downloadAllSlides('c3',6,this)">&#8595; Scarica tutte (6)</button>
@@ -627,18 +718,16 @@ Usa questa slide per catturare l'attenzione. Titolo in Cormorant Garamond italic
 
     <div class="car-panel">
       <div class="panel-slide-num" id="c3-pnum">Slide 1 di 6</div>
-      <div class="panel-slide-title" id="c3-ptitle">"3 errori che distruggono il tuo profilo Instagram"</div>
-      <div class="panel-slide-body" id="c3-pbody">Slide di copertina - Hook tecnico, richiede il salvataggio. Questo tipo di contenuto è altamente condivisibile da chi lavora nel network marketing.</div>
-      <div class="copy-strip">
-        <button class="copy-btn" onclick="copySlideText('c3',this)">Copia testo slide</button>
-      </div>
+      <div class="panel-slide-title" id="c3-ptitle">"3 errori che distruggono il profilo"</div>
+      <div class="panel-slide-body" id="c3-pbody">Cover - hook con numero. Molto condivisibile. Le slide 2-4 usano il layout SPLIT: testo a sinistra su bianco, foto Manuela a destra.</div>
+      <div class="copy-strip"><button class="copy-btn" onclick="copySlideText('c3',this)">Copia testo</button></div>
       <div class="panel-nav-list" id="c3-pnav">
-        <div class="pnl-item active" onclick="goSlide('c3',1,6)"><span class="pnl-num">01</span> Cover - "3 errori che distruggono il profilo"</div>
-        <div class="pnl-item" onclick="goSlide('c3',2,6)"><span class="pnl-num">02</span> Errore 01 - Il profilo-vetrina</div>
-        <div class="pnl-item" onclick="goSlide('c3',3,6)"><span class="pnl-num">03</span> Errore 02 - Sparire dopo la pubblicazione</div>
-        <div class="pnl-item" onclick="goSlide('c3',4,6)"><span class="pnl-num">04</span> Errore 03 - Non dici mai cosa fare dopo</div>
-        <div class="pnl-item" onclick="goSlide('c3',5,6)"><span class="pnl-num">05</span> "La soluzione è più semplice"</div>
-        <div class="pnl-item" onclick="goSlide('c3',6,6)"><span class="pnl-num">CTA</span> "DM: STRATEGIA"</div>
+        <div class="pnl-item active" onclick="goSlide('c3',1,6)"><span class="pnl-num">01</span> Cover - "3 errori"</div>
+        <div class="pnl-item" onclick="goSlide('c3',2,6)"><span class="pnl-num">02</span> Errore 01 - Profilo-vetrina</div>
+        <div class="pnl-item" onclick="goSlide('c3',3,6)"><span class="pnl-num">03</span> Errore 02 - Sparire</div>
+        <div class="pnl-item" onclick="goSlide('c3',4,6)"><span class="pnl-num">04</span> Errore 03 - No CTA</div>
+        <div class="pnl-item" onclick="goSlide('c3',5,6)"><span class="pnl-num">05</span> "La soluzione"</div>
+        <div class="pnl-item" onclick="goSlide('c3',6,6)"><span class="pnl-num">CTA</span> DM: STRATEGIA</div>
       </div>
     </div>
   </div>
@@ -654,188 +743,172 @@ Usa questa slide per catturare l'attenzione. Titolo in Cormorant Garamond italic
     <a href="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/manuela_spiezio_piano_editoriale.html">Piano Editoriale</a>
     &nbsp;·&nbsp;
     <a href="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/manuela_spiezio_script_contenuti.html">Script &amp; Copy</a>
-    &nbsp;·&nbsp;
-    <a href="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/manuela_spiezio_template_caroselli.html">Template Caroselli</a>
   </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
-/* ─── Dati pannelli ─── */
+/* ─── Dati pannello ─── */
 const panelData = {
   c1:[
-    {num:'Slide 1 di 6',title:'"Il network non è atto di fede. È strategia."',body:'Slide di copertina.\nHook forte per networker stanche della fuffa.'},
-    {num:'Slide 2 di 6',title:'"Se stai fallendo, non è colpa tua."',body:'Deresponsabilizza e crea empatia. Introduce il problema sistema vs. metodo.'},
-    {num:'Slide 3 di 6',title:'"Il metodo esiste. È replicabile."',body:'Bridge narrativo: anticipa il dato 60.000€ per collegare la promessa (slide 2) alla prova concreta (slide 4).'},
-    {num:'Slide 4 di 6',title:'"60.000 euro di fatturato di team."',body:'Prova sociale concreta. 8 anni, non fortuna.'},
+    {num:'Slide 1 di 6',title:'"Il network non è atto di fede. È strategia."',body:'Cover - foto piena di Manuela con hook diretto. Il testo grande è in basso sulla foto.'},
+    {num:'Slide 2 di 6',title:'"Se stai fallendo, non è colpa tua."',body:'Slide corpo indigo. Deresponsabilizza e crea empatia immediata.'},
+    {num:'Slide 3 di 6',title:'"Il metodo esiste. Ed è replicabile."',body:'Bridge narrativo: collega il problema (slide 2) alla soluzione (slide 4).'},
+    {num:'Slide 4 di 6',title:'"8 anni per costruire un team che funziona."',body:'Storia personale autentica. Errori, fermate, ripartenze. Differenziale: condivide il metodo, non lo vende.'},
     {num:'Slide 5 di 6',title:'"Il supporto vero non sparisce dopo la firma."',body:'Differenziale rispetto alle esperienze negative del target.'},
-    {num:'Slide CTA',title:'"Motivazione d\'acciaio."',body:'CTA diretta. Keyword DM: ACCIAIO'}
+    {num:'Slide CTA',title:'"Motivazione d\'acciaio."',body:'CTA diretta su sfondo navy. Keyword DM: ACCIAIO'}
   ],
   c2:[
-    {num:'Slide 1 di 6',title:'"NON CE LA FARAI MAI"',body:'Formato ad alto impatto già testato. Cover con hook tutto maiuscolo - nessuna parentesi.'},
-    {num:'Slide 2 di 6',title:'"La voce nella testa che ti frena."',body:'Nomina le credenze limitanti. Crea riconoscimento immediato.'},
-    {num:'Slide 3 di 6',title:'"Io ero la mamma comune di 43 anni."',body:'Vulnerabilità strategica. Manuela si mostra come il target, non sopra di esso.'},
+    {num:'Slide 1 di 6',title:'"NON C\'È LA FARAI MAI"',body:'Cover ad alto impatto. Hook in maiuscolo sulla foto di Manuela.'},
+    {num:'Slide 2 di 6',title:'"La voce nella testa che ti blocca."',body:'Nomina le credenze limitanti. Crea riconoscimento immediato.'},
+    {num:'Slide 3 di 6',title:'"Io ero la mamma comune di 43 anni."',body:'Vulnerabilità strategica. Manuela si mostra come il target, non sopra.'},
     {num:'Slide 4 di 6',title:'"La svolta non è stata la sicurezza."',body:'Reframe potente: non aspettare di essere pronte, farlo comunque.'},
     {num:'Slide 5 di 6',title:'"Abbassa il volume delle voci limitanti."',body:'Chiusura narrativa. Da credenza limitante a strategia.'},
-    {num:'Slide CTA',title:'"Commento + DM: LIBERTA"',body:'Dual CTA: commento per la reach organica + keyword LIBERTA in DM per conversioni recruiting.'}
+    {num:'Slide CTA',title:'"DM: LIBERTÀ"',body:'Dual CTA: commento per reach + keyword LIBERTÀ in DM per conversioni.'}
   ],
   c3:[
-    {num:'Slide 1 di 6',title:'"3 errori che distruggono il profilo."',body:'Hook con numero. Chiede il salvataggio. Alta condivisibilità.'},
-    {num:'Slide 2 di 6',title:'Errore 01 - Il profilo-vetrina.',body:'Errore più comune. Rompe il pattern di chi posta solo prodotti.'},
+    {num:'Slide 1 di 6',title:'"3 errori che distruggono il profilo."',body:'Cover - hook con numero. Alta condivisibilita. Chiede il salvataggio.'},
+    {num:'Slide 2 di 6',title:'Errore 01 - Il profilo-vetrina.',body:'Layout SPLIT: testo bianco a sinistra + foto Manuela a destra.'},
     {num:'Slide 3 di 6',title:'Errore 02 - Sparire dopo la pubblicazione.',body:'Insight tecnico concreto sulle 2 ore post-pubblicazione.'},
-    {num:'Slide 4 di 6',title:'Errore 03 - Non dici mai cosa fare dopo.',body:'Chiude la triade di errori. Linguaggio target, non gergo marketing.'},
-    {num:'Slide 5 di 6',title:'"La soluzione è più semplice di quanto pensi."',body:'Bridging verso il metodo Manuela. Normalizza Instagram.'},
-    {num:'Slide CTA',title:'"DM: STRATEGIA"',body:'CTA diretta. Keyword DM: STRATEGIA'}
+    {num:'Slide 4 di 6',title:'Errore 03 - Non dici mai cosa fare dopo.',body:'Chiude la triade. Linguaggio target, non gergo marketing.'},
+    {num:'Slide 5 di 6',title:'"La soluzione è più semplice di quanto pensi."',body:'Slide corpo indigo. Bridging verso il metodo Manuela.'},
+    {num:'Slide CTA',title:'"DM: STRATEGIA"',body:'CTA diretta su navy. Keyword DM: STRATEGIA'}
   ]
 };
 
-/* ─── Foto assegnate per slide ─── */
-const BASE = 'https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/';
-const slidePhotoMap = {
-  c1:{1:BASE+'manuela_01.jpg',2:BASE+'manuela_02.jpg',3:BASE+'manuela_03.jpg',4:BASE+'manuela_04.jpg',5:BASE+'manuela_05.jpg'},
-  c2:{1:BASE+'manuela_02.jpg',2:BASE+'manuela_03.jpg',3:BASE+'manuela_04.jpg',4:BASE+'manuela_05.jpg',5:BASE+'manuela_06.jpg'},
-  c3:{1:BASE+'manuela_07.jpg',2:BASE+'manuela_01.jpg',3:BASE+'manuela_02.jpg',4:BASE+'manuela_03.jpg',5:BASE+'manuela_04.jpg'}
+/* ─── Tipo slide (per mostrare/nascondere photo picker) ─── */
+const slideTypes = {
+  c1:['cover','body','body','body','body','cta'],
+  c2:['cover','body','body','body','body','cta'],
+  c3:['cover','split','split','split','body','cta']
 };
 
-/* ─── Formato slide ─── */
-const formatRatios = {'1:1':1,'4:5':4/5,'9:16':9/16};
-function setFormat(ratio) {
+/* ─── Stato corrente ─── */
+const state = {
+  c1:{cur:1,lastPhoto:'https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_01.jpg'},
+  c2:{cur:1,lastPhoto:'https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_02.jpg'},
+  c3:{cur:1,lastPhoto:'https://nicolapin82-png.github.io/Webloom/manuela-spiezio/assets/manuela_07.jpg'}
+};
+
+/* ─── Formato ─── */
+const ratios = {'1:1':1,'4:5':4/5,'9:16':9/16};
+let currentRatio = '4:5';
+function setFormat(r) {
+  currentRatio = r;
   const w = 380;
-  const h = Math.round(w / formatRatios[ratio]);
-  document.querySelectorAll('.slide-viewport').forEach(vp => { vp.style.height = h+'px'; });
-  document.querySelectorAll('.fmt-btn').forEach(b => b.classList.toggle('active', b.dataset.ratio===ratio));
-  window._format = ratio;
-  ['c1','c2','c3'].forEach(c => refreshPickerForSlide(c, window['_'+c+'cur']||1));
+  const h = Math.round(w / ratios[r]);
+  document.querySelectorAll('.slide-viewport').forEach(vp => vp.style.height = h+'px');
+  document.querySelectorAll('.fmt-btn').forEach(b => b.classList.toggle('active', b.dataset.ratio===r));
 }
 
-/* ─── Navigazione carosello ─── */
+/* ─── Navigazione ─── */
 function goSlide(car, n, total) {
   for(let i=1;i<=total;i++){
     const sl=document.getElementById(car+'s'+i);
-    if(sl) sl.classList.toggle('active',i===n);
+    if(sl) sl.classList.toggle('active', i===n);
   }
   document.querySelectorAll('#dots-'+car+' .slide-dot').forEach((d,i)=>d.classList.toggle('active',i===n-1));
   document.querySelectorAll('#'+car+'-pnav .pnl-item').forEach((it,i)=>it.classList.toggle('active',i===n-1));
-  const d=panelData[car][n-1];
-  document.getElementById(car+'-pnum').textContent=d.num;
-  document.getElementById(car+'-ptitle').textContent=d.title;
-  document.getElementById(car+'-pbody').textContent=d.body;
-  window['_'+car+'cur']=n;
-  refreshPickerForSlide(car,n);
+  const d = panelData[car][n-1];
+  document.getElementById(car+'-pnum').textContent = d.num;
+  document.getElementById(car+'-ptitle').textContent = d.title;
+  document.getElementById(car+'-pbody').textContent = d.body;
+  state[car].cur = n;
+  refreshPicker(car, n);
 }
-function nextSlide(car,total){const c=window['_'+car+'cur']||1;goSlide(car,c>=total?1:c+1,total);}
-function prevSlide(car,total){const c=window['_'+car+'cur']||1;goSlide(car,c<=1?total:c-1,total);}
+function nextSlide(car,total){const c=state[car].cur;goSlide(car,c>=total?1:c+1,total);}
+function prevSlide(car,total){const c=state[car].cur;goSlide(car,c<=1?total:c-1,total);}
 
-/* ─── Copia testo dalla slide reale (include modifiche) ─── */
+/* ─── Photo picker ─── */
+function refreshPicker(car, n) {
+  const type = slideTypes[car][n-1];
+  const picker = document.getElementById('picker-'+car);
+  picker.style.display = (type==='body'||type==='cta') ? 'none' : 'block';
+}
+function setSlidePhoto(car, src, thumb) {
+  const n = state[car].cur;
+  const slide = document.getElementById(car+'s'+n);
+  if(slide){const img=slide.querySelector('.slide-photo');if(img)img.src=src;}
+  state[car].lastPhoto = src;
+  document.querySelectorAll('#picker-'+car+' .photo-thumb').forEach(t=>t.classList.toggle('selected',t.dataset.src===src));
+}
+function setAllSlidesPhoto(car, btn) {
+  const src = state[car].lastPhoto;
+  if(!src) return;
+  const slides = document.querySelectorAll('[id^="'+car+'s"]');
+  slides.forEach(sl=>{const img=sl.querySelector('.slide-photo');if(img)img.src=src;});
+  document.querySelectorAll('#picker-'+car+' .photo-thumb').forEach(t=>t.classList.toggle('selected',t.dataset.src===src));
+  const orig=btn.textContent; btn.textContent='Applicata!';
+  setTimeout(()=>{btn.textContent=orig;},1400);
+}
+
+/* ─── Copia testo ─── */
 function copySlideText(car, btn) {
-  const cur=window['_'+car+'cur']||1;
-  const slide=document.getElementById(car+'s'+cur);
+  const slide = document.getElementById(car+'s'+state[car].cur);
   const parts=[];
-  slide.querySelectorAll('[contenteditable]').forEach(el=>{
-    const t=el.innerText.trim();
-    if(t) parts.push(t);
-  });
+  slide.querySelectorAll('[contenteditable]').forEach(el=>{const t=el.innerText.trim();if(t)parts.push(t);});
   navigator.clipboard.writeText(parts.join('\n\n')).then(()=>{
-    if(btn){const orig=btn.textContent;btn.textContent='Copiato!';setTimeout(()=>{btn.textContent=orig;},1500);}
+    const orig=btn.textContent; btn.textContent='Copiato!';
+    setTimeout(()=>{btn.textContent=orig;},1500);
   }).catch(()=>{});
 }
 
-/* ─── Selettore foto ─── */
-function setSlidePhoto(car, photoSrc) {
-  const cur=window['_'+car+'cur']||1;
-  slidePhotoMap[car][cur]=photoSrc;
-  const slide=document.getElementById(car+'s'+cur);
-  if(slide){const img=slide.querySelector('.slide-photo');if(img) img.src=photoSrc;}
-  window['_'+car+'lastPhoto']=photoSrc;
-  refreshPickerActive(car,photoSrc);
-}
-function setAllSlidesPhoto(car, total, btn) {
-  const photoSrc=window['_'+car+'lastPhoto'];
-  if(!photoSrc){return;}
-  for(let i=1;i<=total-1;i++){
-    slidePhotoMap[car][i]=photoSrc;
-    const slide=document.getElementById(car+'s'+i);
-    if(slide){const img=slide.querySelector('.slide-photo');if(img) img.src=photoSrc;}
-  }
-  refreshPickerActive(car,photoSrc);
-  const orig=btn.textContent;
-  btn.textContent='Applicata!';
-  setTimeout(()=>{btn.textContent=orig;},1400);
-}
-function refreshPickerActive(car, activeSrc) {
-  document.querySelectorAll('#picker-'+car+' .photo-thumb').forEach(t=>{
-    t.classList.toggle('selected',t.dataset.src===activeSrc);
-  });
-}
-function refreshPickerForSlide(car, n) {
-  const picker=document.getElementById('picker-'+car);
-  const isCta=(n===6);
-  picker.style.display=isCta?'none':'block';
-  if(!isCta) refreshPickerActive(car,slidePhotoMap[car][n]||'');
-}
-
-/* ─── Download PNG con html2canvas ─── */
+/* ─── Download ─── */
 async function downloadSlide(car, btn) {
-  const cur=window['_'+car+'cur']||1;
-  const slide=document.getElementById(car+'s'+cur);
-  const orig=btn.textContent;
-  btn.textContent='Generando...';btn.disabled=true;
+  const n = state[car].cur;
+  const slide = document.getElementById(car+'s'+n);
+  const vp = document.getElementById('vp'+car.replace('c',''));
+  const orig=btn.textContent; btn.textContent='Generando...'; btn.disabled=true;
   try {
-    const vp=document.querySelector('#vp'+car.replace('c',''));
-    const canvas=await html2canvas(slide,{
-      useCORS:true,allowTaint:false,
-      scale:3,
-      logging:false,backgroundColor:'#080B18',
-      width:vp.offsetWidth,height:vp.offsetHeight
-    });
-    const link=document.createElement('a');
-    link.download='manuela_'+car+'_slide'+cur+'.png';
-    link.href=canvas.toDataURL('image/png');
-    link.click();
+    const vpW=vp.offsetWidth, vpH=vp.offsetHeight;
+    const scale=1080/vpW, exportH=Math.round(vpH*scale);
+    const cv = await html2canvas(slide,{useCORS:true,allowTaint:false,scale,logging:false,backgroundColor:'#080B18',width:vpW,height:vpH});
+    const out = (cv.width===1080&&cv.height===exportH) ? cv : (() => {
+      const f=document.createElement('canvas'); f.width=1080; f.height=exportH;
+      f.getContext('2d').drawImage(cv,0,0,cv.width,cv.height,0,0,1080,exportH); return f;
+    })();
+    const a=document.createElement('a');
+    a.download='manuela_'+car+'_s'+n+'.png';
+    a.href=out.toDataURL('image/png');
+    a.click();
   } catch(e){console.error(e);}
-  btn.textContent=orig;btn.disabled=false;
+  btn.textContent=orig; btn.disabled=false;
 }
 
 async function downloadAllSlides(car, total, btn) {
-  const orig=btn.textContent;
-  btn.disabled=true;
+  const orig=btn.textContent; btn.disabled=true;
+  const vp = document.getElementById('vp'+car.replace('c',''));
   for(let i=1;i<=total;i++){
     goSlide(car,i,total);
-    await new Promise(r=>setTimeout(r,350));
+    await new Promise(r=>setTimeout(r,380));
     btn.textContent=i+'/'+total+'...';
     const slide=document.getElementById(car+'s'+i);
-    const vp=document.querySelector('#vp'+car.replace('c',''));
     try {
-      const canvas=await html2canvas(slide,{
-        useCORS:true,allowTaint:false,
-        scale:3,
-        logging:false,backgroundColor:'#080B18',
-        width:vp.offsetWidth,height:vp.offsetHeight
-      });
-      const link=document.createElement('a');
-      link.download='manuela_'+car+'_slide'+i+'.png';
-      link.href=canvas.toDataURL('image/png');
-      link.click();
-      await new Promise(r=>setTimeout(r,250));
+      const vpW=vp.offsetWidth,vpH=vp.offsetHeight;
+      const scale=1080/vpW,exportH=Math.round(vpH*scale);
+      const cv=await html2canvas(slide,{useCORS:true,allowTaint:false,scale,logging:false,backgroundColor:'#080B18',width:vpW,height:vpH});
+      const out=(cv.width===1080&&cv.height===exportH)?cv:(()=>{const f=document.createElement('canvas');f.width=1080;f.height=exportH;f.getContext('2d').drawImage(cv,0,0,cv.width,cv.height,0,0,1080,exportH);return f;})();
+      const a=document.createElement('a');a.download='manuela_'+car+'_s'+i+'.png';a.href=out.toDataURL('image/png');a.click();
+      await new Promise(r=>setTimeout(r,280));
     } catch(e){console.error(e);}
   }
   goSlide(car,1,total);
-  btn.textContent='Ok - '+total+' slide scaricate';
-  await new Promise(r=>setTimeout(r,2200));
-  btn.textContent=orig;btn.disabled=false;
+  btn.textContent='Scaricate '+total+' slide';
+  await new Promise(r=>setTimeout(r,2000));
+  btn.textContent=orig; btn.disabled=false;
 }
 
 /* ─── Init ─── */
-window.onload=function(){
+window.onload = function(){
+  setFormat('4:5');
   ['c1','c2','c3'].forEach(c=>{
-    window['_'+c+'cur']=1;
-    window['_'+c+'lastPhoto']=slidePhotoMap[c][1];
-    refreshPickerForSlide(c,1);
+    state[c].cur=1;
+    refreshPicker(c,1);
   });
-  window._format='1:1';
-  const reveals=document.querySelectorAll('.reveal');
-  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
-  reveals.forEach(el=>io.observe(el));
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+  },{threshold:0.07});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 };
 </script>
 </body>
