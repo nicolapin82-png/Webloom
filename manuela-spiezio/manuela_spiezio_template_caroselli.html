@@ -116,7 +116,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 24px;d
   position:absolute;top:12px;left:18px;z-index:1;
   font-family:'Raleway',sans-serif;font-style:normal;
   font-size:90px;font-weight:100;
-  color:rgba(255,255,255,0.10);line-height:1;pointer-events:none;
+  color:rgba(245,246,250,0.25);line-height:1;pointer-events:none;
   user-select:none;
 }
 .body-content{
@@ -828,21 +828,19 @@ function refreshPicker(car, n) {
 function setSlidePhoto(car, src, thumb) {
   state[car].lastPhoto = src;
   document.querySelectorAll('#picker-'+car+' .photo-thumb').forEach(t=>t.classList.toggle('selected',t.dataset.src===src));
-  document.querySelectorAll('[id^="'+car+'s"]').forEach(sl=>{
-    const img=sl.querySelector('.slide-photo');if(img)img.src=src;
-  });
+  const vpNum = car.replace('c','');
+  document.querySelectorAll('#vp'+vpNum+' img.slide-photo').forEach(img=>{ img.src=src; });
 }
 function setAllSlidesPhoto(car, btn) {
   const sel = document.querySelector('#picker-'+car+' .photo-thumb.selected');
   const src = sel ? sel.dataset.src : state[car].lastPhoto;
   if(!src) return;
   state[car].lastPhoto = src;
-  document.querySelectorAll('[id^="'+car+'s"]').forEach(sl=>{
-    const img=sl.querySelector('.slide-photo');if(img)img.src=src;
-  });
+  const vpNum = car.replace('c','');
+  document.querySelectorAll('#vp'+vpNum+' img.slide-photo').forEach(img=>{ img.src=src; });
   document.querySelectorAll('#picker-'+car+' .photo-thumb').forEach(t=>t.classList.toggle('selected',t.dataset.src===src));
   const orig=btn.textContent; btn.textContent='Applicata!'; btn.disabled=true;
-  setTimeout(()=>{btn.textContent=orig; btn.disabled=false;},1200);
+  setTimeout(()=>{ btn.textContent=orig; btn.disabled=false; },1200);
 }
 
 /* ─── Copia testo ─── */
