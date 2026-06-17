@@ -422,12 +422,37 @@ document.addEventListener('DOMContentLoaded',function(){
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
-var _bmLogo=null;
-(function(){
-  var i=new Image();i.crossOrigin='anonymous';
-  i.onload=function(){try{var c=document.createElement('canvas');c.width=i.width;c.height=i.height;c.getContext('2d').drawImage(i,0,0);_bmLogo=c.toDataURL('image/png');}catch(e){}};
-  i.src='https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png';
-})();
+var _bmLogo=null,_bmLogoPromise=null;
+function ensureBmLogo(){
+  if(_bmLogo)return Promise.resolve(_bmLogo);
+  if(_bmLogoPromise)return _bmLogoPromise;
+  _bmLogoPromise=new Promise(function(resolve){
+    var i=new Image();i.crossOrigin='anonymous';
+    i.onload=function(){try{var c=document.createElement('canvas');c.width=i.width;c.height=i.height;c.getContext('2d').drawImage(i,0,0);_bmLogo=c.toDataURL('image/png');}catch(e){}resolve(_bmLogo);};
+    i.onerror=function(){resolve(null);};
+    i.src='https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png';
+  });
+  return _bmLogoPromise;
+}
+ensureBmLogo();
+function coverCropToDataURL(src,boxW,boxH,posXPercent,posYPercent){
+  return new Promise(function(resolve){
+    var img=new Image();img.crossOrigin='anonymous';
+    img.onload=function(){
+      try{
+        var scale=Math.max(boxW/img.naturalWidth,boxH/img.naturalHeight);
+        var cropW=boxW/scale,cropH=boxH/scale;
+        var cropX=(img.naturalWidth-cropW)*(posXPercent/100);
+        var cropY=(img.naturalHeight-cropH)*(posYPercent/100);
+        var c=document.createElement('canvas');c.width=boxW;c.height=boxH;
+        c.getContext('2d').drawImage(img,cropX,cropY,cropW,cropH,0,0,boxW,boxH);
+        resolve(c.toDataURL('image/png'));
+      }catch(e){resolve(src);}
+    };
+    img.onerror=function(){resolve(src);};
+    img.src=src;
+  });
+}
 function setFormat(carId,fmt){
   var btns=document.querySelectorAll('[onclick*="setFormat(\''+carId+'\'"]');
   btns.forEach(function(b){b.classList.toggle('active',b.getAttribute('onclick').includes("'"+fmt+"'"));});
@@ -440,10 +465,12 @@ async function renderSlide(carId,slideIdx){
   var scale=1080/slideW,exportH=Math.round(slideH*scale);
   var img=slide.querySelector('.slide-bg-img');
   var currentSrc=img?img.src:'';
-  var cv=await html2canvas(slide,{scale:scale,useCORS:true,allowTaint:false,backgroundColor:null,logging:false,imageTimeout:0,width:slideW,height:slideH,
+  var croppedSrc=await coverCropToDataURL(currentSrc,1080,exportH,50,18);
+  await ensureBmLogo();
+  var cv=await html2canvas(slide,{scale:scale,useCORS:true,allowTaint:false,backgroundColor:null,logging:false,imageTimeout:15000,width:slideW,height:slideH,
     onclone:function(clonedDoc,clonedEl){
       var cloneImg=clonedEl.querySelector('.slide-bg-img');
-      if(cloneImg&&currentSrc){cloneImg.src=currentSrc;cloneImg.style.objectFit='cover';cloneImg.style.objectPosition='center 18%';}
+      if(cloneImg&&croppedSrc){cloneImg.src=croppedSrc;cloneImg.style.objectFit='fill';cloneImg.style.objectPosition='center';}
       if(_bmLogo){clonedEl.querySelectorAll('.bm-mark img').forEach(function(img){img.src=_bmLogo;});}
     }
   });

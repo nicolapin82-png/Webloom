@@ -854,6 +854,46 @@ function copySlideText(car, btn) {
   }).catch(()=>{});
 }
 
+/* ─── Crop manuale (fix bug html2canvas che ignora object-fit) ─── */
+function coverCropToDataURL(src, boxW, boxH, posXPercent, posYPercent){
+  return new Promise(function(resolve){
+    var img=new Image();
+    img.crossOrigin='anonymous';
+    img.onload=function(){
+      try{
+        var scale=Math.max(boxW/img.naturalWidth, boxH/img.naturalHeight);
+        var cropW=boxW/scale, cropH=boxH/scale;
+        var cropX=(img.naturalWidth-cropW)*(posXPercent/100);
+        var cropY=(img.naturalHeight-cropH)*(posYPercent/100);
+        var c=document.createElement('canvas');
+        c.width=boxW; c.height=boxH;
+        c.getContext('2d').drawImage(img,cropX,cropY,cropW,cropH,0,0,boxW,boxH);
+        resolve(c.toDataURL('image/png'));
+      }catch(e){ resolve(src); }
+    };
+    img.onerror=function(){ resolve(src); };
+    img.src=src;
+  });
+}
+async function cropSlidePhotos(slide, scale){
+  var imgs = slide.querySelectorAll('.slide-photo');
+  var crops = [];
+  for(var i=0;i<imgs.length;i++){
+    var boxW = Math.round(imgs[i].offsetWidth*scale);
+    var boxH = Math.round(imgs[i].offsetHeight*scale);
+    crops.push(await coverCropToDataURL(imgs[i].src, boxW, boxH, 50, 0));
+  }
+  return crops;
+}
+function onclonePhotos(croppedSrcs){
+  return function(clonedDoc, clonedEl){
+    var cloneImgs = clonedEl.querySelectorAll('.slide-photo');
+    cloneImgs.forEach(function(img,i){
+      if(croppedSrcs[i]){ img.src=croppedSrcs[i]; img.style.objectFit='fill'; img.style.objectPosition='center'; }
+    });
+  };
+}
+
 /* ─── Download ─── */
 async function downloadSlide(car, btn) {
   const n = state[car].cur;
@@ -863,7 +903,8 @@ async function downloadSlide(car, btn) {
   try {
     const vpW=vp.offsetWidth, vpH=vp.offsetHeight;
     const scale=1080/vpW, exportH=Math.round(vpH*scale);
-    const cv = await html2canvas(slide,{useCORS:true,allowTaint:false,scale,logging:false,backgroundColor:'#080B18',width:vpW,height:vpH});
+    const croppedSrcs = await cropSlidePhotos(slide, scale);
+    const cv = await html2canvas(slide,{useCORS:true,allowTaint:false,scale,logging:false,backgroundColor:'#080B18',width:vpW,height:vpH,onclone:onclonePhotos(croppedSrcs)});
     const out = (cv.width===1080&&cv.height===exportH) ? cv : (() => {
       const f=document.createElement('canvas'); f.width=1080; f.height=exportH;
       f.getContext('2d').drawImage(cv,0,0,cv.width,cv.height,0,0,1080,exportH); return f;
@@ -887,7 +928,8 @@ async function downloadAllSlides(car, total, btn) {
     try {
       const vpW=vp.offsetWidth,vpH=vp.offsetHeight;
       const scale=1080/vpW,exportH=Math.round(vpH*scale);
-      const cv=await html2canvas(slide,{useCORS:true,allowTaint:false,scale,logging:false,backgroundColor:'#080B18',width:vpW,height:vpH});
+      const croppedSrcs = await cropSlidePhotos(slide, scale);
+      const cv=await html2canvas(slide,{useCORS:true,allowTaint:false,scale,logging:false,backgroundColor:'#080B18',width:vpW,height:vpH,onclone:onclonePhotos(croppedSrcs)});
       const out=(cv.width===1080&&cv.height===exportH)?cv:(()=>{const f=document.createElement('canvas');f.width=1080;f.height=exportH;f.getContext('2d').drawImage(cv,0,0,cv.width,cv.height,0,0,1080,exportH);return f;})();
       const a=document.createElement('a');a.download='manuela_'+car+'_s'+i+'.png';a.href=out.toDataURL('image/png');a.click();
       await new Promise(r=>setTimeout(r,280));
