@@ -855,33 +855,27 @@ function copySlideText(car, btn) {
 }
 
 /* ─── Crop manuale (fix bug html2canvas che ignora object-fit) ─── */
-function coverCropToDataURL(src, boxW, boxH, posXPercent, posYPercent){
-  return new Promise(function(resolve){
-    var img=new Image();
-    img.crossOrigin='anonymous';
-    img.onload=function(){
-      try{
-        var scale=Math.max(boxW/img.naturalWidth, boxH/img.naturalHeight);
-        var cropW=boxW/scale, cropH=boxH/scale;
-        var cropX=(img.naturalWidth-cropW)*(posXPercent/100);
-        var cropY=(img.naturalHeight-cropH)*(posYPercent/100);
-        var c=document.createElement('canvas');
-        c.width=boxW; c.height=boxH;
-        c.getContext('2d').drawImage(img,cropX,cropY,cropW,cropH,0,0,boxW,boxH);
-        resolve(c.toDataURL('image/png'));
-      }catch(e){ resolve(src); }
-    };
-    img.onerror=function(){ resolve(src); };
-    img.src=src;
-  });
+function coverCropToDataURL(imgEl, boxW, boxH, posXPercent, posYPercent){
+  try{
+    var natW=imgEl.naturalWidth, natH=imgEl.naturalHeight;
+    if(!natW||!natH) return imgEl.src;
+    var scale=Math.max(boxW/natW, boxH/natH);
+    var cropW=boxW/scale, cropH=boxH/scale;
+    var cropX=(natW-cropW)*(posXPercent/100);
+    var cropY=(natH-cropH)*(posYPercent/100);
+    var c=document.createElement('canvas');
+    c.width=boxW; c.height=boxH;
+    c.getContext('2d').drawImage(imgEl,cropX,cropY,cropW,cropH,0,0,boxW,boxH);
+    return c.toDataURL('image/png');
+  }catch(e){ return imgEl.src; }
 }
-async function cropSlidePhotos(slide, scale){
+function cropSlidePhotos(slide, scale){
   var imgs = slide.querySelectorAll('.slide-photo');
   var crops = [];
   for(var i=0;i<imgs.length;i++){
     var boxW = Math.round(imgs[i].offsetWidth*scale);
     var boxH = Math.round(imgs[i].offsetHeight*scale);
-    crops.push(await coverCropToDataURL(imgs[i].src, boxW, boxH, 50, 0));
+    crops.push(coverCropToDataURL(imgs[i], boxW, boxH, 50, 0));
   }
   return crops;
 }

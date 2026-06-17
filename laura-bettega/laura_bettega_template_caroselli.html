@@ -435,23 +435,18 @@ function ensureBmLogo(){
   return _bmLogoPromise;
 }
 ensureBmLogo();
-function coverCropToDataURL(src,boxW,boxH,posXPercent,posYPercent){
-  return new Promise(function(resolve){
-    var img=new Image();img.crossOrigin='anonymous';
-    img.onload=function(){
-      try{
-        var scale=Math.max(boxW/img.naturalWidth,boxH/img.naturalHeight);
-        var cropW=boxW/scale,cropH=boxH/scale;
-        var cropX=(img.naturalWidth-cropW)*(posXPercent/100);
-        var cropY=(img.naturalHeight-cropH)*(posYPercent/100);
-        var c=document.createElement('canvas');c.width=boxW;c.height=boxH;
-        c.getContext('2d').drawImage(img,cropX,cropY,cropW,cropH,0,0,boxW,boxH);
-        resolve(c.toDataURL('image/png'));
-      }catch(e){resolve(src);}
-    };
-    img.onerror=function(){resolve(src);};
-    img.src=src;
-  });
+function coverCropToDataURL(imgEl,boxW,boxH,posXPercent,posYPercent){
+  try{
+    var natW=imgEl.naturalWidth,natH=imgEl.naturalHeight;
+    if(!natW||!natH)return imgEl.src;
+    var scale=Math.max(boxW/natW,boxH/natH);
+    var cropW=boxW/scale,cropH=boxH/scale;
+    var cropX=(natW-cropW)*(posXPercent/100);
+    var cropY=(natH-cropH)*(posYPercent/100);
+    var c=document.createElement('canvas');c.width=boxW;c.height=boxH;
+    c.getContext('2d').drawImage(imgEl,cropX,cropY,cropW,cropH,0,0,boxW,boxH);
+    return c.toDataURL('image/png');
+  }catch(e){return imgEl.src;}
 }
 function setFormat(carId,fmt){
   var btns=document.querySelectorAll('[onclick*="setFormat(\''+carId+'\'"]');
@@ -464,8 +459,7 @@ async function renderSlide(carId,slideIdx){
   var slideW=slide.offsetWidth,slideH=slide.offsetHeight;
   var scale=1080/slideW,exportH=Math.round(slideH*scale);
   var img=slide.querySelector('.slide-bg-img');
-  var currentSrc=img?img.src:'';
-  var croppedSrc=await coverCropToDataURL(currentSrc,1080,exportH,50,18);
+  var croppedSrc=img?coverCropToDataURL(img,1080,exportH,50,18):'';
   await ensureBmLogo();
   var cv=await html2canvas(slide,{scale:scale,useCORS:true,allowTaint:false,backgroundColor:null,logging:false,imageTimeout:15000,width:slideW,height:slideH,
     onclone:function(clonedDoc,clonedEl){
