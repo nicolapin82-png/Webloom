@@ -854,38 +854,31 @@ function copySlideText(car, btn) {
   }).catch(()=>{});
 }
 
-/* ─── Crop manuale (fix bug html2canvas che ignora object-fit) ─── */
-function coverCropToDataURL(imgEl, boxW, boxH, posXPercent, posYPercent){
-  try{
-    var natW=imgEl.naturalWidth, natH=imgEl.naturalHeight;
-    if(!natW||!natH) return imgEl.src;
-    var scale=Math.max(boxW/natW, boxH/natH);
-    var cropW=boxW/scale, cropH=boxH/scale;
-    var cropX=(natW-cropW)*(posXPercent/100);
-    var cropY=(natH-cropH)*(posYPercent/100);
-    var c=document.createElement('canvas');
-    c.width=boxW; c.height=boxH;
-    c.getContext('2d').drawImage(imgEl,cropX,cropY,cropW,cropH,0,0,boxW,boxH);
-    return c.toDataURL('image/png');
-  }catch(e){ return imgEl.src; }
+/* ─── Composizione manuale foto (fix bug html2canvas/Safari: object-fit ignorato e src sostituita non caricata) ─── */
+function hidePhotosOnClone(clonedDoc, clonedEl){
+  clonedEl.style.background='transparent';
+  clonedEl.querySelectorAll('.slide-photo').forEach(function(img){ img.style.display='none'; });
 }
-function cropSlidePhotos(slide, scale){
-  var imgs = slide.querySelectorAll('.slide-photo');
-  var crops = [];
-  for(var i=0;i<imgs.length;i++){
-    var boxW = Math.round(imgs[i].offsetWidth*scale);
-    var boxH = Math.round(imgs[i].offsetHeight*scale);
-    crops.push(coverCropToDataURL(imgs[i], boxW, boxH, 50, 0));
-  }
-  return crops;
-}
-function onclonePhotos(croppedSrcs){
-  return function(clonedDoc, clonedEl){
-    var cloneImgs = clonedEl.querySelectorAll('.slide-photo');
-    cloneImgs.forEach(function(img,i){
-      if(croppedSrcs[i]){ img.src=croppedSrcs[i]; img.style.objectFit='fill'; img.style.objectPosition='center'; }
-    });
-  };
+function compositeSlidePhotos(slide, vp, scale, baseCanvas, outW, outH){
+  var out=document.createElement('canvas'); out.width=outW; out.height=outH;
+  var octx=out.getContext('2d');
+  var vpRect=vp.getBoundingClientRect();
+  slide.querySelectorAll('.slide-photo').forEach(function(img){
+    if(!img.naturalWidth||!img.naturalHeight)return;
+    var r=img.getBoundingClientRect();
+    var destX=Math.round((r.left-vpRect.left)*scale), destY=Math.round((r.top-vpRect.top)*scale);
+    var destW=Math.round(r.width*scale), destH=Math.round(r.height*scale);
+    var natW=img.naturalWidth, natH=img.naturalHeight;
+    var cscale=Math.max(destW/natW, destH/natH);
+    var cropW=destW/cscale, cropH=destH/cscale;
+    var cropX=(natW-cropW)*0.5, cropY=0; // object-position: center top
+    octx.save();
+    try{ octx.filter=getComputedStyle(img).filter; }catch(e){}
+    octx.drawImage(img,cropX,cropY,cropW,cropH,destX,destY,destW,destH);
+    octx.restore();
+  });
+  octx.drawImage(baseCanvas,0,0,baseCanvas.width,baseCanvas.height,0,0,outW,outH);
+  return out;
 }
 
 /* ─── Download ─── */
@@ -897,12 +890,10 @@ async function downloadSlide(car, btn) {
   try {
     const vpW=vp.offsetWidth, vpH=vp.offsetHeight;
     const scale=1080/vpW, exportH=Math.round(vpH*scale);
-    const croppedSrcs = await cropSlidePhotos(slide, scale);
-    const cv = await html2canvas(slide,{useCORS:true,allowTaint:false,scale,logging:false,backgroundColor:'#080B18',width:vpW,height:vpH,onclone:onclonePhotos(croppedSrcs)});
-    const out = (cv.width===1080&&cv.height===exportH) ? cv : (() => {
-      const f=document.createElement('canvas'); f.width=1080; f.height=exportH;
-      f.getContext('2d').drawImage(cv,0,0,cv.width,cv.height,0,0,1080,exportH); return f;
-    })();
+    const cv = await html2canvas(slide,{useCORS:true,allowTaint:false,scale,logging:false,backgroundColor:null,width:vpW,height:vpH,onclone:hidePhotosOnClone});
+    const outW=(cv.width===1080&&cv.height===exportH)?cv.width:1080;
+    const outH=(cv.width===1080&&cv.height===exportH)?cv.height:exportH;
+    const out = compositeSlidePhotos(slide, vp, scale, cv, outW, outH);
     const a=document.createElement('a');
     a.download='manuela_'+car+'_s'+n+'.png';
     a.href=out.toDataURL('image/png');
@@ -922,9 +913,10 @@ async function downloadAllSlides(car, total, btn) {
     try {
       const vpW=vp.offsetWidth,vpH=vp.offsetHeight;
       const scale=1080/vpW,exportH=Math.round(vpH*scale);
-      const croppedSrcs = await cropSlidePhotos(slide, scale);
-      const cv=await html2canvas(slide,{useCORS:true,allowTaint:false,scale,logging:false,backgroundColor:'#080B18',width:vpW,height:vpH,onclone:onclonePhotos(croppedSrcs)});
-      const out=(cv.width===1080&&cv.height===exportH)?cv:(()=>{const f=document.createElement('canvas');f.width=1080;f.height=exportH;f.getContext('2d').drawImage(cv,0,0,cv.width,cv.height,0,0,1080,exportH);return f;})();
+      const cv=await html2canvas(slide,{useCORS:true,allowTaint:false,scale,logging:false,backgroundColor:null,width:vpW,height:vpH,onclone:hidePhotosOnClone});
+      const outW=(cv.width===1080&&cv.height===exportH)?cv.width:1080;
+      const outH=(cv.width===1080&&cv.height===exportH)?cv.height:exportH;
+      const out = compositeSlidePhotos(slide, vp, scale, cv, outW, outH);
       const a=document.createElement('a');a.download='manuela_'+car+'_s'+i+'.png';a.href=out.toDataURL('image/png');a.click();
       await new Promise(r=>setTimeout(r,280));
     } catch(e){console.error(e);}
