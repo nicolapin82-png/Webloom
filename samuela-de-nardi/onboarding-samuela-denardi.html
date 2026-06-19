@@ -437,13 +437,11 @@
   <div class="intro-box">
     <strong>Come funziona.</strong> Una volta compilato questo modulo, WeBloom configura il tuo sistema di prenotazioni, la scheda Google, la pagina di acquisizione e tutto il resto. Entro ~15 giorni dalla firma il sistema è live e operativo. La sessione di formazione la pianifichiamo insieme nella settimana della consegna.
     <div class="note-box" style="margin-top:12px;">
-      <strong>Email marketing dedicata.</strong> WeBloom creerà per te un indirizzo Gmail dedicato (es. <em>marketing.samuela@gmail.com</em>) usato per tutte le comunicazioni automatiche: conferme prenotazione, richieste recensioni, report mensili. Non devi fare nulla: te lo comunichiamo non appena è pronto.
+      <strong>Email marketing dedicata.</strong> Ti chiediamo di creare un indirizzo Gmail dedicato (es. <em>marketing.ilmiosole@gmail.com</em>) da usare per tutte le comunicazioni automatiche: conferme prenotazione, richieste recensioni, report mensili. Ci vuole circa 5 minuti: ti mandiamo una guida passo-passo su WhatsApp non appena hai compilato questo modulo.
     </div>
   </div>
 
-  <form action="https://formspree.io/f/PLACEHOLDER_ID" method="POST" id="onboarding-form">
-    <input type="hidden" name="_subject" value="Modulo di avvio - Samuela De Nardi">
-    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+  <form id="onboarding-form" novalidate>
 
     <!-- SEZIONE 1 -->
     <div class="section-card">
@@ -463,7 +461,7 @@
 
       <div class="field">
         <label>Nome del brand / attività <span class="req">*</span></label>
-        <input type="text" name="brand" placeholder="es. Samuela De Nardi · Animal Communication" required>
+        <input type="text" name="brand" placeholder="es. Il mio sole" required>
       </div>
 
       <div class="field">
@@ -568,6 +566,12 @@
           <label class="radio-item"><input type="radio" name="contatto_clienti" value="Solo sistema"> Solo tramite il sistema di prenotazione (no contatti diretti)</label>
         </div>
       </div>
+
+      <div class="field">
+        <label>Politica di cancellazione: con quante ore di anticipo un cliente puo' cancellare? <span class="req">*</span></label>
+        <input type="text" name="policy_cancellazione" placeholder="es. almeno 24 ore prima / almeno 48 ore prima / non si puo' cancellare" required>
+        <p class="input-hint">Il sistema blocca automaticamente le cancellazioni fuori dalla finestra che indichi.</p>
+      </div>
     </div>
 
     <!-- SEZIONE 3 -->
@@ -576,7 +580,7 @@
         <div class="section-icon">📍</div>
         <div>
           <div class="section-title">Scheda Google Business Profile</div>
-          <div class="section-sub">Per renderti visibile nelle ricerche locali</div>
+          <div class="section-sub">Ce ne occupiamo noi — ci servono solo questi dati per partire</div>
         </div>
       </div>
 
@@ -595,17 +599,6 @@
       </div>
 
       <div class="field">
-        <label>Come vorresti descrivere la tua attività su Google? <span class="req">*</span></label>
-        <textarea name="gbp_descrizione" rows="4" placeholder="Scrivi con parole tue: ci pensiamo noi a ottimizzarla. Es.: 'Offro sessioni di animal communication, esperienze con alpaca e percorsi di NaturalHealing a Vittorio Veneto. Da oltre X anni lavoro con animali e persone per...'" required></textarea>
-        <p class="input-hint">2-3 frasi sono sufficienti. Non serve essere perfetta: è un punto di partenza.</p>
-      </div>
-
-      <div class="field">
-        <label>Categorie della tua attività (come definiresti quello che fai?) <span class="req">*</span></label>
-        <textarea name="gbp_categorie" rows="3" placeholder="es. Animal communication, NaturalHealing, Esperienze con alpaca, Attività di benessere, Attività outdoor Vittorio Veneto..." required></textarea>
-      </div>
-
-      <div class="field">
         <label>Hai foto da caricare sulla scheda Google? <span class="req">*</span></label>
         <div class="radio-group">
           <label class="radio-item"><input type="radio" name="gbp_foto" value="Molte"> Sì, ho tante foto</label>
@@ -614,54 +607,61 @@
         </div>
         <p class="input-hint">Le foto le raccogliamo via WhatsApp o Google Drive: non caricare nulla qui.</p>
       </div>
+
+      <div class="field">
+        <label>Come preferisci darci accesso alla scheda Google per ottimizzarla? <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="gbp_accesso" value="Invito gestore"> Aggiungetemi come gestore direttamente (vi mando l'email del mio account Google)</label>
+          <label class="radio-item"><input type="radio" name="gbp_accesso" value="Guida passo-passo"> Preferisco una guida passo-passo: faccio io con il vostro supporto</label>
+        </div>
+        <p class="input-hint">Se scegli l'invito, aggiungiamo marketing.webloom1@gmail.com come gestore: puoi rimuoverci in qualsiasi momento.</p>
+      </div>
     </div>
 
     <!-- SEZIONE 4 -->
     <div class="section-card">
       <div class="section-header">
-        <div class="section-icon">🖥️</div>
+        <div class="section-icon">🏁</div>
         <div>
-          <div class="section-title">Pagina di acquisizione + Instagram</div>
-          <div class="section-sub">Per convertire i follower in prenotazioni reali</div>
+          <div class="section-title">La tua storia</div>
+          <div class="section-sub">Hai una storia unica. Ci dai i fatti, ci pensiamo noi a raccontarla.</div>
         </div>
       </div>
 
       <div class="field">
-        <label>Come vorresti raccontare la tua storia sulla pagina? <span class="req">*</span></label>
-        <textarea name="storia" rows="5" placeholder="Scrivi liberamente: chi sei, cosa fai, cosa ti ha portato qui. Anche bullet point vanno bene. Es.: 'Prima pilota donna Aprilia, poi la vita mi ha portato verso gli animali...' - useremo le tue parole come base." required></textarea>
+        <label>In che anni hai corso come pilota professionista? <span class="req">*</span></label>
+        <input type="text" name="anni_pilota" placeholder="es. Dal 1998 al 2007" required>
       </div>
 
       <div class="field">
-        <label>Quali servizi vuoi mettere più in evidenza sulla pagina? <span class="req">*</span></label>
-        <textarea name="servizi_evidenza" rows="3" placeholder="es. Soprattutto il trekking con alpaca e le sessioni di animal communication. La NaturalHealing è più di nicchia ma voglio che sia visibile..." required></textarea>
+        <label>Qual e' stato il tuo risultato sportivo piu' importante? <span class="req">*</span></label>
+        <input type="text" name="risultato_pilota" placeholder="es. Prima donna non giapponese alle 8 Ore di Suzuka 2005, contratto ufficiale Aprilia" required>
       </div>
 
       <div class="field">
-        <label>Qual è la tua bio Instagram attuale? <span class="opt">(opzionale)</span></label>
-        <textarea name="bio_instagram_attuale" rows="3" placeholder="Copia qui il testo della tua bio attuale (quella che si vede nel profilo). Se non la trovi, lascia vuoto, andiamo a vederla noi."></textarea>
-        <p class="input-hint">Serve per capire il tuo tono di voce attuale e riscriverla migliorandola, non cancellandola.</p>
+        <label>Cosa ti ha portato a lasciare il motorsport per dedicarti agli animali? <span class="req">*</span></label>
+        <textarea name="motivazione_transizione" rows="4" placeholder="Raccontaci con parole tue: un evento, una scelta, un percorso graduale. Anche poche righe vanno bene. E' il cuore della tua storia e lo useremo per costruire tutta la comunicazione di Il mio sole." required></textarea>
+        <p class="input-hint">Non deve essere perfetto: sono i fatti che contano. Lo storytelling lo facciamo noi.</p>
       </div>
 
       <div class="field">
-        <label>Hai un logo o un'immagine profilo ufficiale? <span class="req">*</span></label>
-        <div class="radio-group">
-          <label class="radio-item"><input type="radio" name="logo" value="Si, ho logo"> Sì, ce l'ho: te lo mando via WhatsApp</label>
-          <label class="radio-item"><input type="radio" name="logo" value="No, creare logo"> No, non ho ancora un logo: lo creiamo noi</label>
-        </div>
+        <label>Da quanti anni lavori con la comunicazione animale e il NaturalHealing? <span class="req">*</span></label>
+        <input type="text" name="anni_animali" placeholder="es. Dal 2010, circa 15 anni" required>
       </div>
 
       <div class="field">
-        <label>Hai foto di qualità (alpaca, sessioni, natura, te in azione)? <span class="req">*</span></label>
-        <div class="radio-group">
-          <label class="radio-item"><input type="radio" name="foto_pagina" value="Molte"> Sì, ho tante foto</label>
-          <label class="radio-item"><input type="radio" name="foto_pagina" value="Alcune"> Sì, qualcuna</label>
-          <label class="radio-item"><input type="radio" name="foto_pagina" value="Poche"> Ho poche foto, ne abbiamo bisogno</label>
-        </div>
+        <label>Raccontaci chi sono gli animali della tua fattoria <span class="req">*</span></label>
+        <textarea name="animali_fattoria" rows="3" placeholder="es. 4 alpaca (Sole, Luna, Nuvola, Vento), 2 cavalli, alcune galline. Oppure solo gli alpaca con i loro nomi." required></textarea>
       </div>
 
       <div class="field">
-        <label>C'è qualcosa che vuoi assolutamente includere o evitare? <span class="opt">(opzionale)</span></label>
-        <textarea name="includere_evitare" rows="3" placeholder="es. 'Voglio che si veda che lavoro anche con scuole e anziani' / 'Preferisco non menzionare il motociclismo' / 'Il tono deve essere caldo, non formale'..."></textarea>
+        <label>Bio Instagram attuale <span class="opt">(opzionale — la riscriviamo noi, ma utile come riferimento)</span></label>
+        <textarea name="bio_instagram_attuale" rows="2" placeholder="Copia il testo della bio attuale se vuoi: la useremo come punto di partenza."></textarea>
+      </div>
+
+      <div class="field">
+        <label>C'e' qualcosa della tua storia o della tua vita che preferisci NON venga resa pubblica? <span class="opt">(opzionale)</span></label>
+        <textarea name="non_pubblico" rows="2" placeholder="es. Preferisco non citare determinati periodi / nomi / aspetti privati. Tutto quello che scrivi qui resta solo per noi."></textarea>
       </div>
     </div>
 
@@ -671,7 +671,7 @@
         <div class="section-icon">🎨</div>
         <div>
           <div class="section-title">Brand identity</div>
-          <div class="section-sub">Palette, font e stile visivo per tutti i materiali</div>
+          <div class="section-sub">Definiamo la tua identita' visiva — ci serve solo sapere da dove partiamo</div>
         </div>
       </div>
 
@@ -684,79 +684,128 @@
       </div>
 
       <div class="field">
-        <label>Se hai già dei colori, quali sono? <span class="opt">(opzionale)</span></label>
+        <label>Se hai gia' dei colori, quali sono? <span class="opt">(opzionale)</span></label>
         <input type="text" name="colori_esistenti" placeholder="es. verde oliva, beige, bianco / oppure i codici HEX se li conosci">
+        <p class="input-hint">Se non hai colori definiti non preoccuparti: la palette la costruiamo noi sulla base della tua storia e del tuo settore.</p>
       </div>
 
       <div class="divider"></div>
 
       <div class="field">
-        <label>Se partiamo da zero: quale palette ti senti più vicina? <span class="req">*</span></label>
-        <p class="input-hint" style="margin-bottom:12px;">Scegli quella che evoca meglio il mondo che vuoi comunicare.</p>
+        <label>Abbiamo studiato 4 direzioni di palette ispirate alla tua storia e al tuo settore. Quale senti piu' tua come punto di partenza? <span class="req">*</span></label>
+        <p class="input-hint" style="margin-bottom:12px;">Non e' una scelta definitiva: la palette finale la costruiamo noi sulla base di questa indicazione e dei tuoi materiali esistenti.</p>
         <div class="palette-grid">
 
           <div class="palette-option">
-            <input type="radio" name="palette_scelta" value="Naturale" id="pal-a">
+            <input type="radio" name="palette_scelta" value="Foresta Alpina" id="pal-a">
             <label class="palette-label" for="pal-a">
               <div class="palette-swatches">
-                <div class="swatch" style="background:#4A7C4E;"></div>
-                <div class="swatch" style="background:#8AB88E;"></div>
+                <div class="swatch" style="background:#3A5F3C;"></div>
+                <div class="swatch" style="background:#7FA87D;"></div>
                 <div class="swatch" style="background:#C4965A;"></div>
                 <div class="swatch" style="background:#F5F0E8;"></div>
               </div>
-              <div class="palette-name">A - Naturale</div>
-              <div class="palette-colors">Verde foresta · Verde salvia · Ambra · Crema</div>
+              <div class="palette-name">A - Foresta Alpina</div>
+              <div class="palette-colors">Verde bosco · Verde salvia · Ambra · Avorio</div>
             </label>
           </div>
 
           <div class="palette-option">
-            <input type="radio" name="palette_scelta" value="Caldo" id="pal-b">
+            <input type="radio" name="palette_scelta" value="Terra e Alpaca" id="pal-b">
             <label class="palette-label" for="pal-b">
               <div class="palette-swatches">
-                <div class="swatch" style="background:#8B6355;"></div>
+                <div class="swatch" style="background:#8B5E52;"></div>
                 <div class="swatch" style="background:#C49A7A;"></div>
                 <div class="swatch" style="background:#E8D5B7;"></div>
-                <div class="swatch" style="background:#FAF5EF;"></div>
+                <div class="swatch" style="background:#FAF7F2;"></div>
               </div>
-              <div class="palette-name">B - Caldo &amp; Rustico</div>
-              <div class="palette-colors">Terracotta · Sabbia · Avorio · Panna</div>
+              <div class="palette-name">B - Terra &amp; Alpaca</div>
+              <div class="palette-colors">Terracotta · Sabbia · Nocciola · Bianco naturale</div>
             </label>
           </div>
 
           <div class="palette-option">
-            <input type="radio" name="palette_scelta" value="Soft" id="pal-c">
+            <input type="radio" name="palette_scelta" value="NaturalHealing" id="pal-c">
             <label class="palette-label" for="pal-c">
               <div class="palette-swatches">
-                <div class="swatch" style="background:#7B9E87;"></div>
-                <div class="swatch" style="background:#B5C9BB;"></div>
+                <div class="swatch" style="background:#4A8FA8;"></div>
+                <div class="swatch" style="background:#8AB899;"></div>
                 <div class="swatch" style="background:#D9C9B2;"></div>
-                <div class="swatch" style="background:#FAFAF8;"></div>
+                <div class="swatch" style="background:#F8FAF8;"></div>
               </div>
-              <div class="palette-name">C - Soft &amp; Minimal</div>
-              <div class="palette-colors">Salvia · Verde pastello · Beige · Off-white</div>
+              <div class="palette-name">C - NaturalHealing</div>
+              <div class="palette-colors">Teal · Verde salvia · Beige · Off-white</div>
             </label>
           </div>
 
           <div class="palette-option">
-            <input type="radio" name="palette_scelta" value="Premium" id="pal-d">
+            <input type="radio" name="palette_scelta" value="Velocita e Natura" id="pal-d">
             <label class="palette-label" for="pal-d">
               <div class="palette-swatches">
-                <div class="swatch" style="background:#1A3A2A;"></div>
-                <div class="swatch" style="background:#2E6B4A;"></div>
-                <div class="swatch" style="background:#C9A84C;"></div>
+                <div class="swatch" style="background:#C0392B;"></div>
+                <div class="swatch" style="background:#2C5F2E;"></div>
                 <div class="swatch" style="background:#FFFFFF;"></div>
+                <div class="swatch" style="background:#2D3436;"></div>
               </div>
-              <div class="palette-name">D - Verde &amp; Oro</div>
-              <div class="palette-colors">Verde scuro · Verde · Oro · Bianco</div>
+              <div class="palette-name">D - Velocita' &amp; Natura</div>
+              <div class="palette-colors">Rosso racing · Verde bosco · Bianco · Antracite</div>
             </label>
           </div>
 
         </div>
       </div>
 
+      <div class="divider"></div>
+
+      <div class="field">
+        <label>Hai un logo attuale? <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="logo" value="Si, ho logo"> Si', ce l'ho: te lo mando via WhatsApp</label>
+          <label class="radio-item"><input type="radio" name="logo" value="No, creare logo"> No, non ho ancora un logo</label>
+        </div>
+        <p class="input-hint">Se non hai un logo, lo creiamo noi coerentemente con la brand identity che definiamo.</p>
+      </div>
+
+      <div class="field">
+        <label>Quante foto di qualita' hai disponibili? (alpaca, sessioni, natura, te in azione) <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="foto_disponibili" value="Molte"> Tante — ho un archivio ricco</label>
+          <label class="radio-item"><input type="radio" name="foto_disponibili" value="Alcune"> Qualcuna — una selezione buona</label>
+          <label class="radio-item"><input type="radio" name="foto_disponibili" value="Poche"> Poche — ne abbiamo bisogno</label>
+        </div>
+        <p class="input-hint">Le foto le raccogliamo via WhatsApp o Google Drive: non caricare nulla qui.</p>
+      </div>
+
       <div class="field">
         <label>Ci sono profili Instagram o brand che ti ispirano visivamente? <span class="opt">(opzionale)</span></label>
-        <textarea name="ispirazione" rows="3" placeholder="Inserisci username (@nomeprofilo) o nomi di brand. Anche settori diversi vanno bene, es. 'Mi piace lo stile di @nomeprofilo per come usa le foto' o 'Il brand XY mi piace per i colori'"></textarea>
+        <textarea name="ispirazione" rows="3" placeholder="Inserisci username (@nomeprofilo) o nomi di brand. Anche settori diversi vanno bene: 'Mi piace lo stile di @nomprofilo per come usa le foto' / 'Il brand XY mi piace per i colori'"></textarea>
+      </div>
+    </div>
+
+    <!-- SEZIONE 5.5 - AUTOMAZIONE RECENSIONI -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon">⭐</div>
+        <div>
+          <div class="section-title">Automazione recensioni Google</div>
+          <div class="section-sub">Il sistema invia email automatiche dopo ogni sessione per raccogliere recensioni</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Quante ore dopo la sessione vuoi che parta l'email automatica di richiesta recensione? <span class="req">*</span></label>
+        <div class="radio-group inline">
+          <label class="radio-item"><input type="radio" name="ore_email_recensione" value="2h"> 2 ore dopo</label>
+          <label class="radio-item"><input type="radio" name="ore_email_recensione" value="4h"> 4 ore dopo</label>
+          <label class="radio-item"><input type="radio" name="ore_email_recensione" value="24h"> Il giorno dopo (24h)</label>
+        </div>
+        <p class="input-hint">Consigliato: 2-4 ore dopo, quando l'esperienza e' ancora fresca. Per sessioni la sera, considera 24h.</p>
+      </div>
+
+      <div class="field">
+        <label>Su quale contatto vuoi ricevere l'avviso in caso di recensione negativa? <span class="req">*</span></label>
+        <input type="text" name="contatto_alert_negativo" placeholder="es. WhatsApp 347 1234567 / samuela@email.com" required>
+        <p class="input-hint">Ti avvisiamo entro pochi minuti cosi' puoi intervenire tempestivamente prima che diventi pubblica.</p>
       </div>
     </div>
 
@@ -766,45 +815,31 @@
         <div class="section-icon">📱</div>
         <div>
           <div class="section-title">Piano editoriale Instagram</div>
-          <div class="section-sub">Template caroselli e calendario contenuti per i primi 3 mesi</div>
+          <div class="section-sub">Creiamo noi il piano — ci serve capire i tuoi vincoli operativi</div>
         </div>
       </div>
 
       <div class="field">
-        <label>Su quali argomenti vorresti pubblicare? <span class="req">*</span></label>
-        <div class="check-group">
-          <label class="check-item"><input type="checkbox" name="argomenti" value="alpaca"> Gli alpaca e la vita con gli animali</label>
-          <label class="check-item"><input type="checkbox" name="argomenti" value="naturalhealing"> Sessioni NaturalHealing</label>
-          <label class="check-item"><input type="checkbox" name="argomenti" value="animal_comm"> Animal communication</label>
-          <label class="check-item"><input type="checkbox" name="argomenti" value="testimonianze"> Testimonianze e storie di clienti</label>
-          <label class="check-item"><input type="checkbox" name="argomenti" value="storia"> La mia storia e il mio percorso</label>
-          <label class="check-item"><input type="checkbox" name="argomenti" value="dietro_quinte"> Dietro le quinte / vita quotidiana con gli animali</label>
-          <label class="check-item"><input type="checkbox" name="argomenti" value="stagionalita"> Stagionalità e natura (primavera, estate, autunno, inverno)</label>
-          <label class="check-item"><input type="checkbox" name="argomenti" value="consigli"> Consigli pratici su benessere e comunicazione animale</label>
+        <label>Quanto tempo puoi dedicare alla settimana alla content creation? <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="tempo_content" value="Poco (30min)"> Poco — circa 30 minuti a settimana (scatto qualcosa veloce)</label>
+          <label class="radio-item"><input type="radio" name="tempo_content" value="Medio (1-2h)"> Medio — 1-2 ore a settimana (foto e brevi video)</label>
+          <label class="radio-item"><input type="radio" name="tempo_content" value="Molto (3h+)"> Molto — piu' di 3 ore, posso creare contenuti strutturati</label>
         </div>
+        <p class="input-hint">Questo ci serve per calibrare la frequenza e il formato dei contenuti sulla tua disponibilita' reale.</p>
       </div>
 
       <div class="field">
-        <label>Quante volte a settimana vorresti pubblicare? <span class="req">*</span></label>
-        <div class="radio-group inline">
-          <label class="radio-item"><input type="radio" name="frequenza_post" value="1x"> 1x</label>
-          <label class="radio-item"><input type="radio" name="frequenza_post" value="2x"> 2x</label>
-          <label class="radio-item"><input type="radio" name="frequenza_post" value="3x"> 3x</label>
-          <label class="radio-item"><input type="radio" name="frequenza_post" value="4x+"> 4x o più</label>
-        </div>
-      </div>
-
-      <div class="field">
-        <label>Preferisci pubblicare in italiano, inglese o entrambi? <span class="req">*</span></label>
+        <label>Lingua dei post Instagram <span class="req">*</span></label>
         <div class="radio-group inline">
           <label class="radio-item"><input type="radio" name="lingua" value="IT"> Solo italiano</label>
-          <label class="radio-item"><input type="radio" name="lingua" value="EN"> Solo inglese</label>
-          <label class="radio-item"><input type="radio" name="lingua" value="IT+EN"> Entrambi</label>
+          <label class="radio-item"><input type="radio" name="lingua" value="IT+EN"> Italiano + inglese</label>
         </div>
+        <p class="input-hint">Il tuo target principale e' locale (provincia Treviso-Belluno): il piano editoriale e' costruito su questo. L'inglese si aggiunge se vuoi raggiungere anche un pubblico straniero.</p>
       </div>
 
       <div class="field">
-        <label>Hai un hashtag, una frase o un claim che usi spesso e vuoi mantenere? <span class="opt">(opzionale)</span></label>
+        <label>Hai un hashtag, una frase o un claim che usi gia' e vuoi mantenere? <span class="opt">(opzionale)</span></label>
         <input type="text" name="hashtag_claim" placeholder="es. #animalkommunikation / 'Dal movimento al silenzio' / ...">
       </div>
     </div>
@@ -825,6 +860,12 @@
           <label class="radio-item"><input type="radio" name="accesso_ig" value="Accesso temporaneo"> Vi do accesso temporaneo all'account: fate voi</label>
           <label class="radio-item"><input type="radio" name="accesso_ig" value="Guida passo-passo"> Preferisco farlo da sola con una vostra guida passo-passo</label>
         </div>
+      </div>
+
+      <div class="field">
+        <label>Numero WhatsApp che usi per le comunicazioni di lavoro <span class="opt">(opzionale - se diverso dal numero clienti)</span></label>
+        <input type="tel" name="whatsapp_lavoro" placeholder="es. +39 347 1234567">
+        <p class="input-hint">Quello su cui WeBloom ti contatta per aggiornamenti, consegne e report mensili.</p>
       </div>
 
       <div class="field">
@@ -865,25 +906,53 @@
 </div>
 
 <script>
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyMPtGGNAeW5NBAtykjbOuwyEmrcUJGqTyVw8mwGFgYAaUeEVJwb_esJN4lKqSIYZuItQ/exec';
+
+  function serializeForm(form) {
+    var data = { data_invio: new Date().toLocaleString('it-IT') };
+    var elements = form.querySelectorAll('input, textarea, select');
+    elements.forEach(function(el) {
+      if (!el.name) return;
+      if (el.type === 'checkbox') {
+        if (!data[el.name]) data[el.name] = [];
+        if (el.checked) data[el.name].push(el.value);
+      } else if (el.type === 'radio') {
+        if (el.checked) data[el.name] = el.value;
+      } else {
+        data[el.name] = el.value;
+      }
+    });
+    Object.keys(data).forEach(function(k) {
+      if (Array.isArray(data[k])) data[k] = data[k].join(', ');
+    });
+    return data;
+  }
+
   document.getElementById('onboarding-form').addEventListener('submit', async function(e) {
     e.preventDefault();
     var btn = document.getElementById('btn-send');
+
+    var giorni = this.querySelectorAll('input[name="giorni"]:checked');
+    if (giorni.length === 0) {
+      alert('Seleziona almeno un giorno di disponibilita\'.');
+      return;
+    }
+
     btn.textContent = 'Invio in corso...';
     btn.disabled = true;
+
+    var payload = serializeForm(this);
+
     try {
-      var res = await fetch(this.action, {
+      await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
-        body: new FormData(this),
-        headers: { 'Accept': 'application/json' }
+        mode: 'no-cors',
+        body: JSON.stringify(payload)
       });
-      if (res.ok) {
-        this.reset();
-        document.getElementById('form-success').style.display = 'block';
-        document.getElementById('form-error').style.display = 'none';
-        btn.style.display = 'none';
-      } else {
-        throw new Error();
-      }
+      this.reset();
+      document.getElementById('form-success').style.display = 'block';
+      document.getElementById('form-error').style.display = 'none';
+      btn.style.display = 'none';
     } catch(err) {
       document.getElementById('form-error').style.display = 'block';
       btn.textContent = 'Invia il modulo di avvio';
