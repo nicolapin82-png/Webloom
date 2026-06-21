@@ -244,6 +244,7 @@ footer p{font-size:.62rem;color:rgba(255,255,255,.2);letter-spacing:.1em;}
   #prev-fb-post{width:100%;max-width:340px;height:auto;}
   #prev-gbp-cover{width:100%;max-width:340px;height:auto;}
   #prev-gbp-post{width:100%;max-width:220px;height:auto;}
+  #prev-story-gusto,#prev-story-lab{width:100%;max-width:140px;}
   #tab-social .reel-preview{width:100px;height:178px;}
   #tab-social .tpl-row{gap:20px;}
   #tab-social .action-note{max-width:100%;}
@@ -256,6 +257,9 @@ footer p{font-size:.62rem;color:rgba(255,255,255,.2);letter-spacing:.1em;}
   #tab-social .fb-preview{width:100%;max-width:360px;height:auto;}
   #tab-social .reel-preview{width:90px;height:160px;}
   #tab-social .tpl-actions{padding-top:0;}
+  #prev-story-gusto,#prev-story-lab{width:100%;max-width:130px;}
+  #prev-story-gusto .sync-sg-title{font-size:1rem;}
+  #prev-story-lab .sync-sl-quote{font-size:1rem;}
 }
 
 /* ── TAB: CAROSELLI (namespace #tab-caroselli, da 06_TemplateCaroselli_StoriaMichela.html) ── */
@@ -283,7 +287,7 @@ footer p{font-size:.62rem;color:rgba(255,255,255,.2);letter-spacing:.1em;}
 #tab-caroselli .platform-badges{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
 #tab-caroselli .platform-badge{font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;border-radius:12px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.65);}
 #tab-caroselli .day-card .post-caption{font-size:.86rem;color:rgba(255,255,255,.75);line-height:1.75;}
-#tab-caroselli .stories-tip{margin-top:12px;padding:11px 16px;background:rgba(201,169,110,.06);border-left:2px solid var(--oro);border-radius:0 6px 6px 0;font-size:.76rem;color:rgba(255,255,255,.55);line-height:1.6;}
+#tab-caroselli .stories-tip{margin-top:12px;padding:11px 16px;background:rgba(201,169,110,.06);border-left:2px solid var(--oro);border-radius:6px;font-size:.76rem;color:rgba(255,255,255,.55);line-height:1.6;}
 @media(max-width:768px){ #tab-caroselli .day-card{margin:20px 20px 0;padding:20px 18px;} }
 @media(max-width:480px){ #tab-caroselli .day-card{margin:16px 14px 0;padding:18px 16px;} #tab-caroselli .day-top{flex-direction:column;align-items:flex-start;gap:10px;} }
 @media(max-width:768px){
@@ -3243,7 +3247,7 @@ di Bronte</textarea>
 </header>
 
 <div class="note">
-  <strong>Come si usa:</strong> ogni post qui sotto mostra prima giorno, ora e testo pronto, poi subito le slide da scaricare ("Copertina" + "Contenuto"). Dopo aver scaricato, vai al tab <strong>Social</strong> e aggiungi come terza slide la chiusura standard (sezione "Post Quadrato · Slide Chiusura"), tranne per il Post 6 che ha una slide finale dedicata qui sotto.
+  <strong>Come si usa:</strong> ogni post qui sotto mostra prima giorno, ora e testo pronto, poi subito le tre slide da scaricare ("Copertina" + "Contenuto" + "Chiusura"), già pronte una dopo l'altra. Il Post 6 ha una slide finale dedicata invece della chiusura standard.
 </div>
 
 <div class="day-card" id="card-post-1" data-post="post-1">
@@ -3297,6 +3301,31 @@ per caso</textarea>
   </div>
 </div>
 
+<div class="tpl-section">
+  <h3>Post 1 — Chiusura</h3>
+  <div class="desc">1080×1350px · Slide finale, sfondo blu, logo + indirizzo (uguale per ogni post)</div>
+  <div class="tpl-row">
+    <div class="sq-preview">
+      <div id="prev-cta-1" style="width:240px;height:300px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
+        <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice">
+          <path d="M -10,240 Q 120,170 250,240" stroke="rgba(201,169,74,.1)" stroke-width="50" fill="none"/>
+        </svg>
+        <div class="logo-in" style="width:70px;height:70px;margin-bottom:12px;position:relative;z-index:1;">
+          <img src="logo/logo.png" alt="Logo">
+        </div>
+        <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1rem;color:var(--crema);margin-bottom:10px;position:relative;z-index:1;">Vieni a trovarci</p>
+        <p style="font-size:.52rem;color:rgba(255,255,255,.95);line-height:1.7;position:relative;z-index:1;">Piazza Giacomo Matteotti, 5<br>Jesolo Paese · VE</p>
+        <div style="width:22px;height:1px;background:var(--oro);margin:10px auto;opacity:.45;position:relative;z-index:1;"></div>
+        <p style="font-size:.44rem;color:var(--oro);letter-spacing:.12em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
+      </div>
+    </div>
+    <div class="tpl-actions">
+      <div class="action-note">Chiusura standard, uguale per tutti i post 1-5: logo + indirizzo.</div>
+      <button class="btn" onclick="dlEl('render-sq-cta','Post1_Chiusura_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
+    </div>
+  </div>
+</div>
+
 <div class="day-card" id="card-post-2" data-post="post-2">
   <div class="day-top">
     <span class="day-when">Martedì 23 giugno · ore 19:00</span>
@@ -3343,6 +3372,31 @@ nocciola</textarea>
       <label class="edit-label">Testo</label>
       <textarea class="edit-field" rows="5" oninput="syncText('sync-t32body-text',this.value)">Il giorno del compleanno della figlia del mio capo, mi hanno lasciato sola davanti alla macchina del gelato. Non l'avevo mai usata. Dieci minuti dopo è uscita la mia prima nocciola, fatta da sola. È stato amore a prima vista.</textarea>
       <button class="btn" onclick="dlEl('render-t3-2-body','Post2_Contenuto_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
+    </div>
+  </div>
+</div>
+
+<div class="tpl-section">
+  <h3>Post 2 — Chiusura</h3>
+  <div class="desc">1080×1350px · Slide finale, sfondo blu, logo + indirizzo (uguale per ogni post)</div>
+  <div class="tpl-row">
+    <div class="sq-preview">
+      <div id="prev-cta-2" style="width:240px;height:300px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
+        <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice">
+          <path d="M -10,240 Q 120,170 250,240" stroke="rgba(201,169,74,.1)" stroke-width="50" fill="none"/>
+        </svg>
+        <div class="logo-in" style="width:70px;height:70px;margin-bottom:12px;position:relative;z-index:1;">
+          <img src="logo/logo.png" alt="Logo">
+        </div>
+        <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1rem;color:var(--crema);margin-bottom:10px;position:relative;z-index:1;">Vieni a trovarci</p>
+        <p style="font-size:.52rem;color:rgba(255,255,255,.95);line-height:1.7;position:relative;z-index:1;">Piazza Giacomo Matteotti, 5<br>Jesolo Paese · VE</p>
+        <div style="width:22px;height:1px;background:var(--oro);margin:10px auto;opacity:.45;position:relative;z-index:1;"></div>
+        <p style="font-size:.44rem;color:var(--oro);letter-spacing:.12em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
+      </div>
+    </div>
+    <div class="tpl-actions">
+      <div class="action-note">Chiusura standard, uguale per tutti i post 1-5: logo + indirizzo.</div>
+      <button class="btn" onclick="dlEl('render-sq-cta','Post2_Chiusura_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
@@ -3398,6 +3452,31 @@ davvero</textarea>
   </div>
 </div>
 
+<div class="tpl-section">
+  <h3>Post 3 — Chiusura</h3>
+  <div class="desc">1080×1350px · Slide finale, sfondo blu, logo + indirizzo (uguale per ogni post)</div>
+  <div class="tpl-row">
+    <div class="sq-preview">
+      <div id="prev-cta-3" style="width:240px;height:300px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
+        <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice">
+          <path d="M -10,240 Q 120,170 250,240" stroke="rgba(201,169,74,.1)" stroke-width="50" fill="none"/>
+        </svg>
+        <div class="logo-in" style="width:70px;height:70px;margin-bottom:12px;position:relative;z-index:1;">
+          <img src="logo/logo.png" alt="Logo">
+        </div>
+        <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1rem;color:var(--crema);margin-bottom:10px;position:relative;z-index:1;">Vieni a trovarci</p>
+        <p style="font-size:.52rem;color:rgba(255,255,255,.95);line-height:1.7;position:relative;z-index:1;">Piazza Giacomo Matteotti, 5<br>Jesolo Paese · VE</p>
+        <div style="width:22px;height:1px;background:var(--oro);margin:10px auto;opacity:.45;position:relative;z-index:1;"></div>
+        <p style="font-size:.44rem;color:var(--oro);letter-spacing:.12em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
+      </div>
+    </div>
+    <div class="tpl-actions">
+      <div class="action-note">Chiusura standard, uguale per tutti i post 1-5: logo + indirizzo.</div>
+      <button class="btn" onclick="dlEl('render-sq-cta','Post3_Chiusura_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
+    </div>
+  </div>
+</div>
+
 <div class="day-card" id="card-post-4" data-post="post-4">
   <div class="day-top">
     <span class="day-when">Giovedì 25 giugno · ore 19:00</span>
@@ -3445,6 +3524,31 @@ Germania</textarea>
       <label class="edit-label">Testo</label>
       <textarea class="edit-field" rows="5" oninput="syncText('sync-t22body-text',this.value)">Da lì la curiosità mi ha portato lontano. A Londra, in una gelateria artigianale italiana, mi sono occupata anche dell'asporto per ristoranti ed eventi. In Germania, una gelateria nuova con 32 gusti: una vera prova di velocità e costanza.</textarea>
       <button class="btn" onclick="dlEl('render-t2-2-body','Post4_Contenuto_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
+    </div>
+  </div>
+</div>
+
+<div class="tpl-section">
+  <h3>Post 4 — Chiusura</h3>
+  <div class="desc">1080×1350px · Slide finale, sfondo blu, logo + indirizzo (uguale per ogni post)</div>
+  <div class="tpl-row">
+    <div class="sq-preview">
+      <div id="prev-cta-4" style="width:240px;height:300px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
+        <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice">
+          <path d="M -10,240 Q 120,170 250,240" stroke="rgba(201,169,74,.1)" stroke-width="50" fill="none"/>
+        </svg>
+        <div class="logo-in" style="width:70px;height:70px;margin-bottom:12px;position:relative;z-index:1;">
+          <img src="logo/logo.png" alt="Logo">
+        </div>
+        <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1rem;color:var(--crema);margin-bottom:10px;position:relative;z-index:1;">Vieni a trovarci</p>
+        <p style="font-size:.52rem;color:rgba(255,255,255,.95);line-height:1.7;position:relative;z-index:1;">Piazza Giacomo Matteotti, 5<br>Jesolo Paese · VE</p>
+        <div style="width:22px;height:1px;background:var(--oro);margin:10px auto;opacity:.45;position:relative;z-index:1;"></div>
+        <p style="font-size:.44rem;color:var(--oro);letter-spacing:.12em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
+      </div>
+    </div>
+    <div class="tpl-actions">
+      <div class="action-note">Chiusura standard, uguale per tutti i post 1-5: logo + indirizzo.</div>
+      <button class="btn" onclick="dlEl('render-sq-cta','Post4_Chiusura_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
@@ -3497,6 +3601,31 @@ accantonato</textarea>
       <label class="edit-label">Testo</label>
       <textarea class="edit-field" rows="6" oninput="syncText('sync-t11body-text',this.value)">Per quattro anni ho lavorato con chi costruisce le gelaterie da zero. Ho imparato dove posizionare ogni macchina, quali materiali scegliere. Poi è arrivato un periodo lontano da tutto questo. Ma a casa continuavo a fare gelato, lo portavo a cena per sentire un parere.</textarea>
       <button class="btn" onclick="dlEl('render-t1-1-body','Post5_Contenuto_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
+    </div>
+  </div>
+</div>
+
+<div class="tpl-section">
+  <h3>Post 5 — Chiusura</h3>
+  <div class="desc">1080×1350px · Slide finale, sfondo blu, logo + indirizzo (uguale per ogni post)</div>
+  <div class="tpl-row">
+    <div class="sq-preview">
+      <div id="prev-cta-5" style="width:240px;height:300px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
+        <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice">
+          <path d="M -10,240 Q 120,170 250,240" stroke="rgba(201,169,74,.1)" stroke-width="50" fill="none"/>
+        </svg>
+        <div class="logo-in" style="width:70px;height:70px;margin-bottom:12px;position:relative;z-index:1;">
+          <img src="logo/logo.png" alt="Logo">
+        </div>
+        <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1rem;color:var(--crema);margin-bottom:10px;position:relative;z-index:1;">Vieni a trovarci</p>
+        <p style="font-size:.52rem;color:rgba(255,255,255,.95);line-height:1.7;position:relative;z-index:1;">Piazza Giacomo Matteotti, 5<br>Jesolo Paese · VE</p>
+        <div style="width:22px;height:1px;background:var(--oro);margin:10px auto;opacity:.45;position:relative;z-index:1;"></div>
+        <p style="font-size:.44rem;color:var(--oro);letter-spacing:.12em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
+      </div>
+    </div>
+    <div class="tpl-actions">
+      <div class="action-note">Chiusura standard, uguale per tutti i post 1-5: logo + indirizzo.</div>
+      <button class="btn" onclick="dlEl('render-sq-cta','Post5_Chiusura_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
