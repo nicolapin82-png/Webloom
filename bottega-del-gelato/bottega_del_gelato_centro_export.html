@@ -196,6 +196,8 @@ footer p{font-size:.62rem;color:rgba(255,255,255,.2);letter-spacing:.1em;}
   #tab-packaging .fascetta-2d-sm{width:100%;max-width:260px;}
   #tab-packaging .cylinder-scene{transform:scale(.85);transform-origin:top left;}
   #tab-packaging .shopper-scene{transform:scale(.85);transform-origin:top left;}
+  #tab-packaging .vaschetta-scene{transform:scale(.85);transform-origin:top left;}
+  #tab-packaging .cup-scene{transform:scale(.85);transform-origin:top left;}
   #tab-packaging .mock-specs{min-width:0;}
   #tab-packaging .specs-table{font-size:.68rem;}
   #tab-packaging .specs-table th,#tab-packaging .specs-table td{padding:8px 10px;}
@@ -211,6 +213,8 @@ footer p{font-size:.62rem;color:rgba(255,255,255,.2);letter-spacing:.1em;}
   #tab-packaging .spec-row{font-size:.7rem;}
   #tab-packaging .cylinder-scene{transform:scale(.75);transform-origin:top left;}
   #tab-packaging .shopper-scene{transform:scale(.72);transform-origin:top left;}
+  #tab-packaging .vaschetta-scene{transform:scale(.7);transform-origin:top left;}
+  #tab-packaging .cup-scene{transform:scale(.65);transform-origin:top left;}
 }
 
 /* ── TAB: SOCIAL (namespace #tab-social, da 04_ExportSocial.html) ── */
@@ -743,6 +747,12 @@ footer{
   .sea-grid,.tono-grid,.season-grid,.brief-cols,.logo-display-grid{grid-template-columns:1fr;}
   .palette-grid{grid-template-columns:repeat(2,1fr);}
   .carousel-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .hero{padding:70px 24px 56px;}
+  .hero-logo-wrap{width:160px;height:160px;margin:0 auto 32px;}
+}
+@media(max-width:480px){
+  .hero{padding:56px 18px 44px;}
+  .hero-logo-wrap{width:130px;height:130px;margin:0 auto 26px;}
 }
 @media(max-width:500px){
 #tab-brand .logo-display-grid,
@@ -2764,6 +2774,7 @@ Dal nostro laboratorio</textarea>
         <p class="sync-sl-author" style="font-size:.52rem;color:rgba(255,255,255,.97);line-height:1.5;position:relative;z-index:1;">Michela Torcoletti<br>Jesolo</p>
         <div style="width:22px;height:1px;background:rgba(255,255,255,.92);margin:12px auto;position:relative;z-index:1;"></div>
         <p style="font-size:.4rem;color:rgba(255,255,255,.92);letter-spacing:.1em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
+        <div style="width:21px;height:21px;margin-top:8px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
       </div>
     </div>
     <div class="tpl-actions">
@@ -2784,10 +2795,10 @@ Jesolo</textarea>
 <!-- ════════════════════════════════════════ -->
 <div class="tpl-section">
   <h2>Post Quadrato — Copertina Carosello</h2>
-  <div class="desc">1080×1080px · Prima slide del carosello, sfondo blu con arco e logo</div>
+  <div class="desc">1080×1350px · Prima slide del carosello, sfondo blu con arco e logo</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-sq-cover" style="width:240px;height:240px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-sq-cover" style="width:240px;height:300px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
         <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice">
           <circle cx="20" cy="20" r="6" fill="#7A9E3B" opacity=".3"/>
           <circle cx="200" cy="18" r="5" fill="#C84B4B" opacity=".28"/>
@@ -2795,12 +2806,12 @@ Jesolo</textarea>
           <circle cx="18" cy="218" r="4" fill="#6B3FA0" opacity=".28"/>
           <path d="M -10,240 Q 120,170 250,240" stroke="rgba(201,169,74,.12)" stroke-width="45" fill="none"/>
         </svg>
-        <div class="logo-in" style="width:80px;height:80px;margin-bottom:14px;position:relative;z-index:1;">
+        <div class="logo-in" style="width:96px;height:96px;margin-bottom:19px;position:relative;z-index:1;">
           <img src="logo/logo.png" alt="Logo">
         </div>
-        <p class="sync-sc-eye" style="font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:10px;position:relative;z-index:1;">Gusto del Mese</p>
-        <p class="sync-sc-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.5rem;color:var(--crema);line-height:1.1;position:relative;z-index:1;">Pistacchio<br>di Bronte</p>
-        <div style="width:24px;height:1px;background:var(--oro);margin:10px auto;opacity:.5;position:relative;z-index:1;"></div>
+        <p class="sync-sc-eye" style="font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:13px;position:relative;z-index:1;">Gusto del Mese</p>
+        <p class="sync-sc-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.65rem;color:var(--crema);line-height:1.1;position:relative;z-index:1;">Pistacchio<br>di Bronte</p>
+        <div style="width:24px;height:1px;background:var(--oro);margin:16px auto;opacity:.5;position:relative;z-index:1;"></div>
         <p style="font-size:.48rem;color:rgba(255,255,255,.92);letter-spacing:.1em;position:relative;z-index:1;">LA BOTTEGA DEL GELATO</p>
       </div>
     </div>
@@ -2811,8 +2822,8 @@ Jesolo</textarea>
       <label class="edit-label">Nome gusto</label>
       <textarea class="edit-field" rows="2" oninput="syncText('sync-sc-title',this.value)">Pistacchio
 di Bronte</textarea>
-      <button class="btn" onclick="dlEl('render-sq-cover','Post_CopertinaCaosello_1080x1080.png',1080,1080)">↓ 1080×1080px (Post Instagram)</button>
-      <button class="btn outline" onclick="dlEl('render-sq-cover','Post_Copertina_800x800.png',800,800)">↓ 800×800px</button>
+      <button class="btn" onclick="dlEl('render-sq-cover','Post_CopertinaCaosello_1080x1350.png',1080,1350)">↓ 1080×1350px (Post Instagram)</button>
+      <button class="btn outline" onclick="dlEl('render-sq-cover','Post_Copertina_800x1000.png',800,1000)">↓ 800×1000px</button>
     </div>
   </div>
 </div>
@@ -2822,10 +2833,10 @@ di Bronte</textarea>
 <!-- ════════════════════════════════════════ -->
 <div class="tpl-section">
   <h2>Post Quadrato — Slide Chiusura / CTA</h2>
-  <div class="desc">1080×1080px · Ultima slide carosello, sfondo blu, logo + indirizzo</div>
+  <div class="desc">1080×1350px · Ultima slide carosello, sfondo blu, logo + indirizzo</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-sq-cta" style="width:240px;height:240px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-sq-cta" style="width:240px;height:300px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
         <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice">
           <path d="M -10,240 Q 120,170 250,240" stroke="rgba(201,169,74,.1)" stroke-width="50" fill="none"/>
         </svg>
@@ -2840,7 +2851,7 @@ di Bronte</textarea>
     </div>
     <div class="tpl-actions">
       <div class="action-note">Ultima slide del carosello. Sempre presente come chiusura con logo e indirizzo fisico.</div>
-      <button class="btn" onclick="dlEl('render-sq-cta','Post_SlideChiusura_1080x1080.png',1080,1080)">↓ 1080×1080px</button>
+      <button class="btn" onclick="dlEl('render-sq-cta','Post_SlideChiusura_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
@@ -2850,10 +2861,10 @@ di Bronte</textarea>
 <!-- ════════════════════════════════════════ -->
 <div class="tpl-section">
   <h2>Post Quadrato — Slide Contenuto</h2>
-  <div class="desc">1080×1080px · Slide centrale del carosello, sfondo crema con bordo oro</div>
+  <div class="desc">1080×1350px · Slide centrale del carosello, sfondo crema con bordo oro</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-sq-mid" style="width:240px;height:240px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-sq-mid" style="width:240px;height:300px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
         <p class="sync-sm-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.25rem;color:var(--blu);margin-bottom:10px;line-height:1.25;">Dalla Sicilia<br>al tuo cono</p>
         <div style="width:22px;height:1.5px;background:var(--oro);margin:0 auto 10px;"></div>
         <p class="sync-sm-body" style="font-size:.56rem;color:rgba(0,0,0,.82);line-height:1.7;max-width:160px;">Pistacchio DOP dalla Contrada Difesa di Bronte. Ogni giorno, dal nostro laboratorio di Jesolo.</p>
@@ -2867,7 +2878,7 @@ di Bronte</textarea>
 al tuo cono</textarea>
       <label class="edit-label">Testo corpo</label>
       <textarea class="edit-field" rows="3" oninput="syncText('sync-sm-body',this.value)">Pistacchio DOP dalla Contrada Difesa di Bronte. Ogni giorno, dal nostro laboratorio di Jesolo.</textarea>
-      <button class="btn" onclick="dlEl('render-sq-mid','Post_SlideContenuto_1080x1080.png',1080,1080)">↓ 1080×1080px</button>
+      <button class="btn" onclick="dlEl('render-sq-mid','Post_SlideContenuto_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
@@ -3088,10 +3099,11 @@ di Bronte</textarea>
     <p class="sync-sl-author" style="font-size:1rem;color:rgba(255,255,255,.97);line-height:1.6;position:relative;z-index:1;">Michela Torcoletti<br>Jesolo</p>
     <div style="width:44px;height:1px;background:rgba(255,255,255,.92);margin:28px auto;position:relative;z-index:1;"></div>
     <p style="font-size:.72rem;color:rgba(255,255,255,.92);letter-spacing:.12em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
+    <div style="width:48px;height:48px;margin-top:18px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
   </div>
 
   <!-- Quadrato Copertina -->
-  <div id="render-sq-cover" style="width:400px;height:400px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;position:relative;overflow:hidden;">
+  <div id="render-sq-cover" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;position:relative;overflow:hidden;">
     <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
       <circle cx="30" cy="30" r="10" fill="#7A9E3B" opacity=".3"/>
       <circle cx="340" cy="25" r="8" fill="#C84B4B" opacity=".28"/>
@@ -3099,15 +3111,15 @@ di Bronte</textarea>
       <circle cx="25"  cy="362" r="7" fill="#6B3FA0" opacity=".28"/>
       <path d="M -20,400 Q 200,290 420,400" stroke="rgba(201,169,74,.12)" stroke-width="75" fill="none"/>
     </svg>
-    <div style="width:125px;height:125px;overflow:hidden;margin:0 auto 22px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-    <p class="sync-sc-eye" style="font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:16px;position:relative;z-index:1;">Gusto del Mese</p>
-    <p class="sync-sc-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.6rem;color:var(--crema);line-height:1.1;position:relative;z-index:1;">Pistacchio<br>di Bronte</p>
-    <div style="width:36px;height:1.5px;background:var(--oro);margin:18px auto;opacity:.5;position:relative;z-index:1;"></div>
+    <div style="width:150px;height:150px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p class="sync-sc-eye" style="font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:20px;position:relative;z-index:1;">Gusto del Mese</p>
+    <p class="sync-sc-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.8rem;color:var(--crema);line-height:1.1;position:relative;z-index:1;">Pistacchio<br>di Bronte</p>
+    <div style="width:36px;height:1.5px;background:var(--oro);margin:26px auto;opacity:.5;position:relative;z-index:1;"></div>
     <p style="font-size:.68rem;color:rgba(255,255,255,.38);letter-spacing:.12em;position:relative;z-index:1;">LA BOTTEGA DEL GELATO</p>
   </div>
 
   <!-- Quadrato CTA chiusura -->
-  <div id="render-sq-cta" style="width:400px;height:400px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;position:relative;overflow:hidden;">
+  <div id="render-sq-cta" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;position:relative;overflow:hidden;">
     <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
       <path d="M -20,400 Q 200,290 420,400" stroke="rgba(201,169,74,.1)" stroke-width="80" fill="none"/>
     </svg>
@@ -3119,7 +3131,7 @@ di Bronte</textarea>
   </div>
 
   <!-- Quadrato slide mid crema -->
-  <div id="render-sq-mid" style="width:400px;height:400px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
+  <div id="render-sq-mid" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
     <p class="sync-sm-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.2rem;color:var(--blu);margin-bottom:18px;line-height:1.25;">Dalla Sicilia<br>al tuo cono</p>
     <div style="width:36px;height:1.5px;background:var(--oro);margin:0 auto 18px;"></div>
     <p class="sync-sm-body" style="font-size:.9rem;color:rgba(0,0,0,.82);line-height:1.7;max-width:280px;">Pistacchio DOP dalla Contrada Difesa di Bronte. Ogni giorno, dal nostro laboratorio di Jesolo.</p>
@@ -3231,17 +3243,6 @@ di Bronte</textarea>
   <strong>Come si usa:</strong> ogni post qui sotto mostra prima giorno, ora e testo pronto, poi subito le slide da scaricare ("Copertina" + "Contenuto"). Dopo aver scaricato, vai al tab <strong>Social</strong> e aggiungi come terza slide la chiusura standard (sezione "Post Quadrato · Slide Chiusura"), tranne per il Post 6 che ha una slide finale dedicata qui sotto.
 </div>
 
-<div class="day-card" id="card-post-0" data-post="post-0">
-  <div class="day-top">
-    <span class="day-when">Prima di iniziare</span>
-    <label class="check-wrap"><input type="checkbox" class="done-check" data-post="post-0"> Fatto</label>
-  </div>
-  <div class="post-title">Prepara il profilo Google Business</div>
-  <div class="platform-badges"><span class="platform-badge">Google Business Profile</span></div>
-  <div class="post-caption">Da fare con calma nei primi giorni, non legato a un'ora precisa: completa la scheda Google Business Profile con la nuova copertina e le informazioni di base (indirizzo, telefono, categoria "Gelateria artigianale"). È il profilo che intercetta chi cerca "gelateria vicino a me" su Google Maps e Ricerca, quindi conviene averlo pronto prima del 27 giugno.</div>
-  <div class="post-meta"><strong>Slide da scaricare:</strong> Centro Export → tab "Social" → "Google Business Profile - Copertina".</div>
-</div>
-
 <div class="day-card" id="card-post-1" data-post="post-1">
   <div class="day-top">
     <span class="day-when">Lunedì 22 giugno · ore 19:00</span>
@@ -3255,13 +3256,13 @@ di Bronte</textarea>
 
 <div class="tpl-section">
   <h3>Post 1 — Copertina</h3>
-  <div class="desc">1080×1080px · Slide di apertura del carosello</div>
+  <div class="desc">1080×1350px · Slide di apertura del carosello</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t3-1-cov" style="width:200px;height:200px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
-        <div class="logo-in" style="width:58px;height:58px;margin-bottom:10px;position:relative;z-index:1;"><img src="logo/logo.png" alt="Logo"></div>
-        <p style="font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:8px;position:relative;z-index:1;">Le Origini</p>
-        <p class="sync-t31cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.1rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Una stagione<br>per caso</p>
+      <div id="prev-t3-1-cov" style="width:200px;height:250px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+        <div class="logo-in" style="width:73px;height:73px;margin-bottom:16px;position:relative;z-index:1;"><img src="logo/logo.png" alt="Logo"></div>
+        <p style="font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:11px;position:relative;z-index:1;">Le Origini</p>
+        <p class="sync-t31cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.3rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Una stagione<br>per caso</p>
       </div>
     </div>
     <div class="tpl-actions">
@@ -3269,17 +3270,17 @@ di Bronte</textarea>
       <label class="edit-label">Titolo slide</label>
       <textarea class="edit-field" rows="2" oninput="syncText('sync-t31cov-title',this.value)">Una stagione
 per caso</textarea>
-      <button class="btn" onclick="dlEl('render-t3-1-cov','Post1_Copertina_1080x1080.png',1080,1080)">↓ 1080×1080px</button>
+      <button class="btn" onclick="dlEl('render-t3-1-cov','Post1_Copertina_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
 
 <div class="tpl-section">
   <h3>Post 1 — Contenuto</h3>
-  <div class="desc">1080×1080px · Testo della storia, sfondo crema con bordo oro</div>
+  <div class="desc">1080×1350px · Testo della storia, sfondo crema con bordo oro</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t3-1-body" style="width:200px;height:200px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t3-1-body" style="width:200px;height:250px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <p class="sync-t31body-text" style="font-size:.5rem;color:rgba(0,0,0,.8);line-height:1.7;">Tutto è cominciato per caso, una stagione a Tarquinia. Dovevo stare al bar, non al laboratorio. Poi un giorno mi hanno chiesto di tagliare la frutta, pesare gli ingredienti. Guardavo quelle preparazioni trasformarsi, e mi incuriosivo sempre di più.</p>
         <div style="position:absolute;top:10px;right:12px;font-size:.34rem;letter-spacing:.1em;color:rgba(0,0,0,.5);">2/3</div>
       </div>
@@ -3288,7 +3289,7 @@ per caso</textarea>
       <div class="action-note">Testo della storia, in prima persona di Michela.</div>
       <label class="edit-label">Testo</label>
       <textarea class="edit-field" rows="5" oninput="syncText('sync-t31body-text',this.value)">Tutto è cominciato per caso, una stagione a Tarquinia. Dovevo stare al bar, non al laboratorio. Poi un giorno mi hanno chiesto di tagliare la frutta, pesare gli ingredienti. Guardavo quelle preparazioni trasformarsi, e mi incuriosivo sempre di più.</textarea>
-      <button class="btn" onclick="dlEl('render-t3-1-body','Post1_Contenuto_1080x1080.png',1080,1080)">↓ 1080×1080px</button>
+      <button class="btn" onclick="dlEl('render-t3-1-body','Post1_Contenuto_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
@@ -3305,13 +3306,13 @@ per caso</textarea>
 
 <div class="tpl-section">
   <h3>Post 2 — Copertina</h3>
-  <div class="desc">1080×1080px</div>
+  <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t3-2-cov" style="width:200px;height:200px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
-        <div class="logo-in" style="width:58px;height:58px;margin-bottom:10px;position:relative;z-index:1;"><img src="logo/logo.png" alt="Logo"></div>
-        <p style="font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:8px;position:relative;z-index:1;">Le Origini</p>
-        <p class="sync-t32cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.1rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">La prima<br>nocciola</p>
+      <div id="prev-t3-2-cov" style="width:200px;height:250px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+        <div class="logo-in" style="width:73px;height:73px;margin-bottom:16px;position:relative;z-index:1;"><img src="logo/logo.png" alt="Logo"></div>
+        <p style="font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:11px;position:relative;z-index:1;">Le Origini</p>
+        <p class="sync-t32cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.3rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">La prima<br>nocciola</p>
       </div>
     </div>
     <div class="tpl-actions">
@@ -3319,17 +3320,17 @@ per caso</textarea>
       <label class="edit-label">Titolo slide</label>
       <textarea class="edit-field" rows="2" oninput="syncText('sync-t32cov-title',this.value)">La prima
 nocciola</textarea>
-      <button class="btn" onclick="dlEl('render-t3-2-cov','Post2_Copertina_1080x1080.png',1080,1080)">↓ 1080×1080px</button>
+      <button class="btn" onclick="dlEl('render-t3-2-cov','Post2_Copertina_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
 
 <div class="tpl-section">
   <h3>Post 2 — Contenuto</h3>
-  <div class="desc">1080×1080px</div>
+  <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t3-2-body" style="width:200px;height:200px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t3-2-body" style="width:200px;height:250px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <p class="sync-t32body-text" style="font-size:.5rem;color:rgba(0,0,0,.8);line-height:1.7;">Il giorno del compleanno della figlia del mio capo, mi hanno lasciato sola davanti alla macchina del gelato. Non l'avevo mai usata. Dieci minuti dopo è uscita la mia prima nocciola, fatta da sola. È stato amore a prima vista.</p>
         <div style="position:absolute;top:10px;right:12px;font-size:.34rem;letter-spacing:.1em;color:rgba(0,0,0,.5);">2/3</div>
       </div>
@@ -3338,7 +3339,7 @@ nocciola</textarea>
       <div class="action-note">Chiudere il carosello con la slide chiusura standard, oppure con la frase: "Da quella prima nocciola, oggi, un progetto tutto mio."</div>
       <label class="edit-label">Testo</label>
       <textarea class="edit-field" rows="5" oninput="syncText('sync-t32body-text',this.value)">Il giorno del compleanno della figlia del mio capo, mi hanno lasciato sola davanti alla macchina del gelato. Non l'avevo mai usata. Dieci minuti dopo è uscita la mia prima nocciola, fatta da sola. È stato amore a prima vista.</textarea>
-      <button class="btn" onclick="dlEl('render-t3-2-body','Post2_Contenuto_1080x1080.png',1080,1080)">↓ 1080×1080px</button>
+      <button class="btn" onclick="dlEl('render-t3-2-body','Post2_Contenuto_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
@@ -3356,13 +3357,13 @@ nocciola</textarea>
 
 <div class="tpl-section">
   <h3>Post 3 — Copertina</h3>
-  <div class="desc">1080×1080px</div>
+  <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t2-1-cov" style="width:200px;height:200px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
-        <div class="logo-in" style="width:58px;height:58px;margin-bottom:10px;position:relative;z-index:1;"><img src="logo/logo.png" alt="Logo"></div>
-        <p style="font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:8px;position:relative;z-index:1;">Il Percorso</p>
-        <p class="sync-t21cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.1rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Imparare<br>davvero</p>
+      <div id="prev-t2-1-cov" style="width:200px;height:250px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+        <div class="logo-in" style="width:73px;height:73px;margin-bottom:16px;position:relative;z-index:1;"><img src="logo/logo.png" alt="Logo"></div>
+        <p style="font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:11px;position:relative;z-index:1;">Il Percorso</p>
+        <p class="sync-t21cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.3rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Imparare<br>davvero</p>
       </div>
     </div>
     <div class="tpl-actions">
@@ -3370,17 +3371,17 @@ nocciola</textarea>
       <label class="edit-label">Titolo slide</label>
       <textarea class="edit-field" rows="2" oninput="syncText('sync-t21cov-title',this.value)">Imparare
 davvero</textarea>
-      <button class="btn" onclick="dlEl('render-t2-1-cov','Post3_Copertina_1080x1080.png',1080,1080)">↓ 1080×1080px</button>
+      <button class="btn" onclick="dlEl('render-t2-1-cov','Post3_Copertina_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
 
 <div class="tpl-section">
   <h3>Post 3 — Contenuto</h3>
-  <div class="desc">1080×1080px</div>
+  <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t2-1-body" style="width:200px;height:200px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t2-1-body" style="width:200px;height:250px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <p class="sync-t21body-text" style="font-size:.5rem;color:rgba(0,0,0,.8);line-height:1.7;">Non l'ho fatto per i soldi. Ho fatto due lavori per mettermi via i risparmi e sono partita per Bologna, alla Carpigiani: un mese, corso base, intermedio e avanzato. Volevo capire davvero il gelato, non solo farlo.</p>
         <div style="position:absolute;top:10px;right:12px;font-size:.34rem;letter-spacing:.1em;color:rgba(0,0,0,.5);">2/3</div>
       </div>
@@ -3389,7 +3390,7 @@ davvero</textarea>
       <div class="action-note">Testo della storia.</div>
       <label class="edit-label">Testo</label>
       <textarea class="edit-field" rows="5" oninput="syncText('sync-t21body-text',this.value)">Non l'ho fatto per i soldi. Ho fatto due lavori per mettermi via i risparmi e sono partita per Bologna, alla Carpigiani: un mese, corso base, intermedio e avanzato. Volevo capire davvero il gelato, non solo farlo.</textarea>
-      <button class="btn" onclick="dlEl('render-t2-1-body','Post3_Contenuto_1080x1080.png',1080,1080)">↓ 1080×1080px</button>
+      <button class="btn" onclick="dlEl('render-t2-1-body','Post3_Contenuto_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
@@ -3407,13 +3408,13 @@ davvero</textarea>
 
 <div class="tpl-section">
   <h3>Post 4 — Copertina</h3>
-  <div class="desc">1080×1080px</div>
+  <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t2-2-cov" style="width:200px;height:200px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
-        <div class="logo-in" style="width:58px;height:58px;margin-bottom:10px;position:relative;z-index:1;"><img src="logo/logo.png" alt="Logo"></div>
-        <p style="font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:8px;position:relative;z-index:1;">Il Percorso</p>
-        <p class="sync-t22cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.1rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Londra,<br>Germania</p>
+      <div id="prev-t2-2-cov" style="width:200px;height:250px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+        <div class="logo-in" style="width:73px;height:73px;margin-bottom:16px;position:relative;z-index:1;"><img src="logo/logo.png" alt="Logo"></div>
+        <p style="font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:11px;position:relative;z-index:1;">Il Percorso</p>
+        <p class="sync-t22cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.3rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Londra,<br>Germania</p>
       </div>
     </div>
     <div class="tpl-actions">
@@ -3421,17 +3422,17 @@ davvero</textarea>
       <label class="edit-label">Titolo slide</label>
       <textarea class="edit-field" rows="2" oninput="syncText('sync-t22cov-title',this.value)">Londra,
 Germania</textarea>
-      <button class="btn" onclick="dlEl('render-t2-2-cov','Post4_Copertina_1080x1080.png',1080,1080)">↓ 1080×1080px</button>
+      <button class="btn" onclick="dlEl('render-t2-2-cov','Post4_Copertina_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
 
 <div class="tpl-section">
   <h3>Post 4 — Contenuto</h3>
-  <div class="desc">1080×1080px</div>
+  <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t2-2-body" style="width:200px;height:200px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t2-2-body" style="width:200px;height:250px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <p class="sync-t22body-text" style="font-size:.48rem;color:rgba(0,0,0,.8);line-height:1.6;">Da lì la curiosità mi ha portato lontano. A Londra, in una gelateria artigianale italiana, mi sono occupata anche dell'asporto per ristoranti ed eventi. In Germania, una gelateria nuova con 32 gusti: una vera prova di velocità e costanza.</p>
         <div style="position:absolute;top:10px;right:12px;font-size:.34rem;letter-spacing:.1em;color:rgba(0,0,0,.5);">2/3</div>
       </div>
@@ -3440,7 +3441,7 @@ Germania</textarea>
       <div class="action-note">Chiudere con la chiusura standard oppure con il teaser: "Ogni esperienza è un gusto che porto con me a Jesolo." Nessun nome di gusto o prezzo.</div>
       <label class="edit-label">Testo</label>
       <textarea class="edit-field" rows="5" oninput="syncText('sync-t22body-text',this.value)">Da lì la curiosità mi ha portato lontano. A Londra, in una gelateria artigianale italiana, mi sono occupata anche dell'asporto per ristoranti ed eventi. In Germania, una gelateria nuova con 32 gusti: una vera prova di velocità e costanza.</textarea>
-      <button class="btn" onclick="dlEl('render-t2-2-body','Post4_Contenuto_1080x1080.png',1080,1080)">↓ 1080×1080px</button>
+      <button class="btn" onclick="dlEl('render-t2-2-body','Post4_Contenuto_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
@@ -3459,13 +3460,13 @@ Germania</textarea>
 
 <div class="tpl-section">
   <h3>Post 5 — Copertina</h3>
-  <div class="desc">1080×1080px</div>
+  <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t1-1-cov" style="width:200px;height:200px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
-        <div class="logo-in" style="width:58px;height:58px;margin-bottom:10px;position:relative;z-index:1;"><img src="logo/logo.png" alt="Logo"></div>
-        <p style="font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:8px;position:relative;z-index:1;">Il Sogno Che Si Realizza</p>
-        <p class="sync-t11cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.05rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Un sogno<br>accantonato</p>
+      <div id="prev-t1-1-cov" style="width:200px;height:250px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+        <div class="logo-in" style="width:73px;height:73px;margin-bottom:16px;position:relative;z-index:1;"><img src="logo/logo.png" alt="Logo"></div>
+        <p style="font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:11px;position:relative;z-index:1;">Il Sogno Che Si Realizza</p>
+        <p class="sync-t11cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.25rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Un sogno<br>accantonato</p>
       </div>
     </div>
     <div class="tpl-actions">
@@ -3473,17 +3474,17 @@ Germania</textarea>
       <label class="edit-label">Titolo slide</label>
       <textarea class="edit-field" rows="2" oninput="syncText('sync-t11cov-title',this.value)">Un sogno
 accantonato</textarea>
-      <button class="btn" onclick="dlEl('render-t1-1-cov','Post5_Copertina_1080x1080.png',1080,1080)">↓ 1080×1080px</button>
+      <button class="btn" onclick="dlEl('render-t1-1-cov','Post5_Copertina_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
 
 <div class="tpl-section">
   <h3>Post 5 — Contenuto</h3>
-  <div class="desc">1080×1080px</div>
+  <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t1-1-body" style="width:200px;height:200px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t1-1-body" style="width:200px;height:250px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <p class="sync-t11body-text" style="font-size:.46rem;color:rgba(0,0,0,.8);line-height:1.6;">Per quattro anni ho lavorato con chi costruisce le gelaterie da zero. Ho imparato dove posizionare ogni macchina, quali materiali scegliere. Poi è arrivato un periodo lontano da tutto questo. Ma a casa continuavo a fare gelato, lo portavo a cena per sentire un parere.</p>
         <div style="position:absolute;top:10px;right:12px;font-size:.34rem;letter-spacing:.1em;color:rgba(0,0,0,.5);">2/3</div>
       </div>
@@ -3492,7 +3493,7 @@ accantonato</textarea>
       <div class="action-note">Testo della storia.</div>
       <label class="edit-label">Testo</label>
       <textarea class="edit-field" rows="6" oninput="syncText('sync-t11body-text',this.value)">Per quattro anni ho lavorato con chi costruisce le gelaterie da zero. Ho imparato dove posizionare ogni macchina, quali materiali scegliere. Poi è arrivato un periodo lontano da tutto questo. Ma a casa continuavo a fare gelato, lo portavo a cena per sentire un parere.</textarea>
-      <button class="btn" onclick="dlEl('render-t1-1-body','Post5_Contenuto_1080x1080.png',1080,1080)">↓ 1080×1080px</button>
+      <button class="btn" onclick="dlEl('render-t1-1-body','Post5_Contenuto_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
@@ -3511,13 +3512,13 @@ accantonato</textarea>
 
 <div class="tpl-section">
   <h3>Post 6 — Copertina</h3>
-  <div class="desc">1080×1080px</div>
+  <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t1-2-cov" style="width:200px;height:200px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
-        <div class="logo-in" style="width:58px;height:58px;margin-bottom:10px;position:relative;z-index:1;"><img src="logo/logo.png" alt="Logo"></div>
-        <p style="font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:8px;position:relative;z-index:1;">Il Sogno Che Si Realizza</p>
-        <p class="sync-t12cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.05rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Piastrella<br>dopo piastrella</p>
+      <div id="prev-t1-2-cov" style="width:200px;height:250px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+        <div class="logo-in" style="width:73px;height:73px;margin-bottom:16px;position:relative;z-index:1;"><img src="logo/logo.png" alt="Logo"></div>
+        <p style="font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:11px;position:relative;z-index:1;">Il Sogno Che Si Realizza</p>
+        <p class="sync-t12cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.25rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Piastrella<br>dopo piastrella</p>
       </div>
     </div>
     <div class="tpl-actions">
@@ -3525,17 +3526,17 @@ accantonato</textarea>
       <label class="edit-label">Titolo slide</label>
       <textarea class="edit-field" rows="2" oninput="syncText('sync-t12cov-title',this.value)">Piastrella
 dopo piastrella</textarea>
-      <button class="btn" onclick="dlEl('render-t1-2-cov','Post6_Copertina_1080x1080.png',1080,1080)">↓ 1080×1080px</button>
+      <button class="btn" onclick="dlEl('render-t1-2-cov','Post6_Copertina_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
 
 <div class="tpl-section">
   <h3>Post 6 — Contenuto</h3>
-  <div class="desc">1080×1080px</div>
+  <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t1-2-body" style="width:200px;height:200px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t1-2-body" style="width:200px;height:250px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <p class="sync-t12body-text" style="font-size:.5rem;color:rgba(0,0,0,.8);line-height:1.7;">Oggi quella curiosità è diventata un negozio piccolo, ma giusto per me. Lo stiamo costruendo piastrella dopo piastrella, qui a Jesolo Paese. Ci siamo quasi.</p>
         <div style="position:absolute;top:10px;right:12px;font-size:.34rem;letter-spacing:.1em;color:rgba(0,0,0,.5);">2/3</div>
       </div>
@@ -3544,96 +3545,98 @@ dopo piastrella</textarea>
       <div class="action-note">Testo della storia.</div>
       <label class="edit-label">Testo</label>
       <textarea class="edit-field" rows="5" oninput="syncText('sync-t12body-text',this.value)">Oggi quella curiosità è diventata un negozio piccolo, ma giusto per me. Lo stiamo costruendo piastrella dopo piastrella, qui a Jesolo Paese. Ci siamo quasi.</textarea>
-      <button class="btn" onclick="dlEl('render-t1-2-body','Post6_Contenuto_1080x1080.png',1080,1080)">↓ 1080×1080px</button>
+      <button class="btn" onclick="dlEl('render-t1-2-body','Post6_Contenuto_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
 
 <div class="tpl-section" style="border-bottom:none;">
   <h3>Post 6 — Slide finale dedicata</h3>
-  <div class="desc">1080×1080px · Sostituisce la chiusura standard solo per questo post</div>
+  <div class="desc">1080×1350px · Sostituisce la chiusura standard solo per questo post</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t1-2-quote" style="width:200px;height:200px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t1-2-quote" style="width:200px;height:250px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <p class="sync-t12quote-text" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:.7rem;color:var(--crema);line-height:1.4;margin-bottom:10px;position:relative;z-index:1;">"Il gelato non è solo condivisione, è un'emozione che si dà agli altri. Per me, il gelato è vita."</p>
         <div style="width:20px;height:1px;background:var(--oro);margin:8px auto;opacity:.5;position:relative;z-index:1;"></div>
         <p style="font-size:.4rem;color:var(--oro);letter-spacing:.1em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
+        <div style="width:21px;height:21px;margin-top:7px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
       </div>
     </div>
     <div class="tpl-actions">
       <div class="action-note">Citazione finale di Michela. Chiude la fase hype e invita a seguire la pagina per essere tra i primi a sapere della data di apertura.</div>
       <label class="edit-label">Citazione</label>
       <textarea class="edit-field" rows="3" oninput="syncText('sync-t12quote-text',this.value)">"Il gelato non è solo condivisione, è un'emozione che si dà agli altri. Per me, il gelato è vita."</textarea>
-      <button class="btn" onclick="dlEl('render-t1-2-quote','Post6_SlideFinale_1080x1080.png',1080,1080)">↓ 1080×1080px</button>
+      <button class="btn" onclick="dlEl('render-t1-2-quote','Post6_SlideFinale_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
 
 <!-- ════ Render nascosti per html2canvas (versione 400×400 per export nitido) ════ -->
 <div class="renders">
-  <div id="render-t3-1-cov" style="width:400px;height:400px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
-    <div style="width:115px;height:115px;overflow:hidden;margin:0 auto 20px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-    <p style="font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:16px;position:relative;z-index:1;">Le Origini</p>
-    <p class="sync-t31cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.2rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Una stagione<br>per caso</p>
+  <div id="render-t3-1-cov" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
+    <div style="width:145px;height:145px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p style="font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:22px;position:relative;z-index:1;">Le Origini</p>
+    <p class="sync-t31cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.6rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Una stagione<br>per caso</p>
   </div>
-  <div id="render-t3-1-body" style="width:400px;height:400px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
+  <div id="render-t3-1-body" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
     <p class="sync-t31body-text" style="font-size:1rem;color:rgba(0,0,0,.8);line-height:1.7;">Tutto è cominciato per caso, una stagione a Tarquinia. Dovevo stare al bar, non al laboratorio. Poi un giorno mi hanno chiesto di tagliare la frutta, pesare gli ingredienti. Guardavo quelle preparazioni trasformarsi, e mi incuriosivo sempre di più.</p>
     <div style="position:absolute;top:16px;right:20px;font-size:.6rem;letter-spacing:.1em;color:rgba(0,0,0,.4);">2/3</div>
   </div>
 
-  <div id="render-t3-2-cov" style="width:400px;height:400px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
-    <div style="width:115px;height:115px;overflow:hidden;margin:0 auto 20px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-    <p style="font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:16px;position:relative;z-index:1;">Le Origini</p>
-    <p class="sync-t32cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.2rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">La prima<br>nocciola</p>
+  <div id="render-t3-2-cov" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
+    <div style="width:145px;height:145px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p style="font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:22px;position:relative;z-index:1;">Le Origini</p>
+    <p class="sync-t32cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.6rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">La prima<br>nocciola</p>
   </div>
-  <div id="render-t3-2-body" style="width:400px;height:400px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
+  <div id="render-t3-2-body" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
     <p class="sync-t32body-text" style="font-size:1rem;color:rgba(0,0,0,.8);line-height:1.7;">Il giorno del compleanno della figlia del mio capo, mi hanno lasciato sola davanti alla macchina del gelato. Non l'avevo mai usata. Dieci minuti dopo è uscita la mia prima nocciola, fatta da sola. È stato amore a prima vista.</p>
     <div style="position:absolute;top:16px;right:20px;font-size:.6rem;letter-spacing:.1em;color:rgba(0,0,0,.4);">2/3</div>
   </div>
 
-  <div id="render-t2-1-cov" style="width:400px;height:400px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
-    <div style="width:115px;height:115px;overflow:hidden;margin:0 auto 20px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-    <p style="font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:16px;position:relative;z-index:1;">Il Percorso</p>
-    <p class="sync-t21cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.2rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Imparare<br>davvero</p>
+  <div id="render-t2-1-cov" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
+    <div style="width:145px;height:145px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p style="font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:22px;position:relative;z-index:1;">Il Percorso</p>
+    <p class="sync-t21cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.6rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Imparare<br>davvero</p>
   </div>
-  <div id="render-t2-1-body" style="width:400px;height:400px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
+  <div id="render-t2-1-body" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
     <p class="sync-t21body-text" style="font-size:1rem;color:rgba(0,0,0,.8);line-height:1.7;">Non l'ho fatto per i soldi. Ho fatto due lavori per mettermi via i risparmi e sono partita per Bologna, alla Carpigiani: un mese, corso base, intermedio e avanzato. Volevo capire davvero il gelato, non solo farlo.</p>
     <div style="position:absolute;top:16px;right:20px;font-size:.6rem;letter-spacing:.1em;color:rgba(0,0,0,.4);">2/3</div>
   </div>
 
-  <div id="render-t2-2-cov" style="width:400px;height:400px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
-    <div style="width:115px;height:115px;overflow:hidden;margin:0 auto 20px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-    <p style="font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:16px;position:relative;z-index:1;">Il Percorso</p>
-    <p class="sync-t22cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.2rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Londra,<br>Germania</p>
+  <div id="render-t2-2-cov" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
+    <div style="width:145px;height:145px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p style="font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:22px;position:relative;z-index:1;">Il Percorso</p>
+    <p class="sync-t22cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.6rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Londra,<br>Germania</p>
   </div>
-  <div id="render-t2-2-body" style="width:400px;height:400px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
+  <div id="render-t2-2-body" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
     <p class="sync-t22body-text" style="font-size:.92rem;color:rgba(0,0,0,.8);line-height:1.65;">Da lì la curiosità mi ha portato lontano. A Londra, in una gelateria artigianale italiana, mi sono occupata anche dell'asporto per ristoranti ed eventi. In Germania, una gelateria nuova con 32 gusti: una vera prova di velocità e costanza.</p>
     <div style="position:absolute;top:16px;right:20px;font-size:.6rem;letter-spacing:.1em;color:rgba(0,0,0,.4);">2/3</div>
   </div>
 
-  <div id="render-t1-1-cov" style="width:400px;height:400px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
-    <div style="width:115px;height:115px;overflow:hidden;margin:0 auto 20px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-    <p style="font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:16px;position:relative;z-index:1;">Il Sogno Che Si Realizza</p>
-    <p class="sync-t11cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.1rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Un sogno<br>accantonato</p>
+  <div id="render-t1-1-cov" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
+    <div style="width:145px;height:145px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p style="font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:22px;position:relative;z-index:1;">Il Sogno Che Si Realizza</p>
+    <p class="sync-t11cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.5rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Un sogno<br>accantonato</p>
   </div>
-  <div id="render-t1-1-body" style="width:400px;height:400px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
+  <div id="render-t1-1-body" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
     <p class="sync-t11body-text" style="font-size:.9rem;color:rgba(0,0,0,.8);line-height:1.6;">Per quattro anni ho lavorato con chi costruisce le gelaterie da zero. Ho imparato dove posizionare ogni macchina, quali materiali scegliere. Poi è arrivato un periodo lontano da tutto questo. Ma a casa continuavo a fare gelato, lo portavo a cena per sentire un parere.</p>
     <div style="position:absolute;top:16px;right:20px;font-size:.6rem;letter-spacing:.1em;color:rgba(0,0,0,.4);">2/3</div>
   </div>
 
-  <div id="render-t1-2-cov" style="width:400px;height:400px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
-    <div style="width:115px;height:115px;overflow:hidden;margin:0 auto 20px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-    <p style="font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:16px;position:relative;z-index:1;">Il Sogno Che Si Realizza</p>
-    <p class="sync-t12cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.1rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Piastrella<br>dopo piastrella</p>
+  <div id="render-t1-2-cov" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
+    <div style="width:145px;height:145px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p style="font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:22px;position:relative;z-index:1;">Il Sogno Che Si Realizza</p>
+    <p class="sync-t12cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.5rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Piastrella<br>dopo piastrella</p>
   </div>
-  <div id="render-t1-2-body" style="width:400px;height:400px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
+  <div id="render-t1-2-body" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
     <p class="sync-t12body-text" style="font-size:1rem;color:rgba(0,0,0,.8);line-height:1.7;">Oggi quella curiosità è diventata un negozio piccolo, ma giusto per me. Lo stiamo costruendo piastrella dopo piastrella, qui a Jesolo Paese. Ci siamo quasi.</p>
     <div style="position:absolute;top:16px;right:20px;font-size:.6rem;letter-spacing:.1em;color:rgba(0,0,0,.4);">2/3</div>
   </div>
-  <div id="render-t1-2-quote" style="width:400px;height:400px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
+  <div id="render-t1-2-quote" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
     <p class="sync-t12quote-text" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.4rem;color:var(--crema);line-height:1.5;margin-bottom:20px;position:relative;z-index:1;">"Il gelato non è solo condivisione, è un'emozione che si dà agli altri. Per me, il gelato è vita."</p>
     <div style="width:36px;height:1px;background:var(--oro);margin:16px auto;opacity:.5;position:relative;z-index:1;"></div>
     <p style="font-size:.72rem;color:var(--oro);letter-spacing:.12em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
+    <div style="width:42px;height:42px;margin-top:14px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
   </div>
 </div>
 </div>
