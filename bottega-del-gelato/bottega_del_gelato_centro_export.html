@@ -3745,6 +3745,10 @@ const LOGO_DATA_URI = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAJYCAI
 
 (function(){
   document.querySelectorAll('img[src="logo/logo.png"]').forEach(function(img){ img.src = LOGO_DATA_URI; });
+  document.querySelectorAll('image[href="logo/logo.png"]').forEach(function(img){
+    img.setAttribute('href', LOGO_DATA_URI);
+    img.setAttribute('xlink:href', LOGO_DATA_URI);
+  });
 })();
 
 let _logoImg = null;
