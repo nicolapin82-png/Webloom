@@ -245,9 +245,9 @@ footer p{font-size:.62rem;color:rgba(255,255,255,.2);letter-spacing:.1em;}
   #prev-fb-post{width:100%;max-width:340px;height:auto;}
   #prev-gbp-cover{width:100%;max-width:340px;height:auto;}
   #prev-gbp-post{width:100%;max-width:220px;height:auto;}
-  #prev-story-gusto,#prev-story-lab{width:100%;max-width:140px;}
+  #prev-story-gusto,#prev-story-lab{width:100%;max-width:140px;height:auto;}
   #tab-social .reel-preview{width:100px;height:178px;}
-  #prev-reel-open,#prev-reel-close{width:100%;max-width:100px;}
+  #prev-reel-open,#prev-reel-close{width:100%;max-width:100px;height:auto;}
   #tab-social .tpl-row{gap:20px;}
   #tab-social .action-note{max-width:100%;}
 }
@@ -260,8 +260,8 @@ footer p{font-size:.62rem;color:rgba(255,255,255,.2);letter-spacing:.1em;}
   #prev-fb{width:100%;max-width:360px;height:auto;}
   #tab-social .reel-preview{width:90px;height:160px;}
   #tab-social .tpl-actions{padding-top:0;}
-  #prev-reel-open,#prev-reel-close{width:100%;max-width:90px;}
-  #prev-story-gusto,#prev-story-lab{width:100%;max-width:130px;}
+  #prev-reel-open,#prev-reel-close{width:100%;max-width:90px;height:auto;}
+  #prev-story-gusto,#prev-story-lab{width:100%;max-width:130px;height:auto;}
   #prev-story-gusto .sync-sg-title{font-size:1rem;}
   #prev-story-lab .sync-sl-quote{font-size:1rem;}
 }
@@ -274,7 +274,7 @@ footer p{font-size:.62rem;color:rgba(255,255,255,.2);letter-spacing:.1em;}
 #tab-caroselli .tpl-section h3{font-size:.85rem;font-style:italic;color:var(--crema);margin-bottom:3px;}
 #tab-caroselli .tpl-section .desc{font-size:.68rem;color:rgba(255,255,255,.26);margin-bottom:20px;}
 #tab-caroselli .tpl-row{display:flex;align-items:flex-start;gap:28px;flex-wrap:wrap;}
-#tab-caroselli .sq-preview{width:200px;height:200px;border-radius:10px;overflow:hidden;flex-shrink:0;box-shadow:0 6px 28px rgba(0,0,0,.55);}
+#tab-caroselli .sq-preview{width:200px;height:250px;border-radius:10px;overflow:hidden;flex-shrink:0;box-shadow:0 6px 28px rgba(0,0,0,.55);}
 #tab-caroselli .tpl-actions{display:flex;flex-direction:column;gap:8px;padding-top:4px;}
 #tab-caroselli .action-note{font-size:.68rem;color:rgba(255,255,255,.5);line-height:1.6;max-width:280px;margin-bottom:4px;}
 #tab-caroselli .edit-label{font-size:.6rem;color:rgba(255,255,255,.8);margin-bottom:2px;margin-top:6px;display:block;}
@@ -296,14 +296,14 @@ footer p{font-size:.62rem;color:rgba(255,255,255,.2);letter-spacing:.1em;}
 @media(max-width:480px){ #tab-caroselli .day-card{margin:16px 14px 0;padding:18px 16px;} #tab-caroselli .day-top{flex-direction:column;align-items:flex-start;gap:10px;} }
 @media(max-width:768px){
   #tab-caroselli .fase-block,#tab-caroselli .tpl-section{padding-left:20px;padding-right:20px;}
-  #tab-caroselli .sq-preview{width:170px;height:170px;}
+  #tab-caroselli .sq-preview{width:100%;max-width:170px;height:auto;aspect-ratio:4/5;}
   #tab-caroselli .tpl-row{gap:18px;}
   #tab-caroselli .action-note{max-width:100%;}
 }
 @media(max-width:480px){
   #tab-caroselli .fase-block,#tab-caroselli .tpl-section{padding-left:14px;padding-right:14px;}
   #tab-caroselli .tpl-row{flex-direction:column;align-items:flex-start;gap:14px;}
-  #tab-caroselli .sq-preview{width:100%;max-width:240px;height:auto;aspect-ratio:1;}
+  #tab-caroselli .sq-preview{width:100%;max-width:240px;height:auto;aspect-ratio:4/5;}
 }
 
 @media print{
@@ -2809,7 +2809,7 @@ Jesolo</textarea>
   <div class="desc">1080×1350px · Prima slide del carosello, sfondo blu con arco e logo</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-sq-cover" style="width:240px;height:300px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-sq-cover" style="width:100%;height:auto;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
         <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice">
           <circle cx="20" cy="20" r="6" fill="#7A9E3B" opacity=".3"/>
           <circle cx="200" cy="18" r="5" fill="#C84B4B" opacity=".28"/>
@@ -2847,7 +2847,7 @@ di Bronte</textarea>
   <div class="desc">1080×1350px · Ultima slide carosello, sfondo blu, logo + indirizzo</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-sq-cta" style="width:240px;height:300px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-sq-cta" style="width:100%;height:auto;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
         <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice">
           <path d="M -10,240 Q 120,170 250,240" stroke="rgba(201,169,74,.1)" stroke-width="50" fill="none"/>
         </svg>
@@ -2875,7 +2875,7 @@ di Bronte</textarea>
   <div class="desc">1080×1350px · Slide centrale del carosello, sfondo crema con bordo oro</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-sq-mid" style="width:240px;height:300px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-sq-mid" style="width:100%;height:auto;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
         <p class="sync-sm-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.25rem;color:var(--blu);margin-bottom:10px;line-height:1.25;">Dalla Sicilia<br>al tuo cono</p>
         <div style="width:22px;height:1.5px;background:var(--oro);margin:0 auto 10px;"></div>
         <p class="sync-sm-body" style="font-size:.56rem;color:rgba(0,0,0,.82);line-height:1.7;max-width:160px;">Pistacchio DOP dalla Contrada Difesa di Bronte. Ogni giorno, dal nostro laboratorio di Jesolo.</p>
@@ -3270,7 +3270,7 @@ di Bronte</textarea>
   <div class="desc">1080×1350px · Slide di apertura del carosello</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t3-1-cov" style="width:200px;height:250px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t3-1-cov" style="width:100%;height:auto;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <div class="logo-in" style="width:73px;height:73px;margin-bottom:16px;position:relative;z-index:1;"><img src="logo/logo.png" alt="Logo"></div>
         <p style="font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:11px;position:relative;z-index:1;">Le Origini</p>
         <p class="sync-t31cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.3rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Una stagione<br>per caso</p>
@@ -3291,7 +3291,7 @@ per caso</textarea>
   <div class="desc">1080×1350px · Testo della storia, sfondo crema con bordo oro</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t3-1-body" style="width:200px;height:250px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t3-1-body" style="width:100%;height:auto;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <p class="sync-t31body-text" style="font-size:.5rem;color:rgba(0,0,0,.8);line-height:1.7;">Tutto è cominciato per caso, una stagione a Tarquinia. Dovevo stare al bar, non al laboratorio. Poi un giorno mi hanno chiesto di tagliare la frutta, pesare gli ingredienti. Guardavo quelle preparazioni trasformarsi, e mi incuriosivo sempre di più.</p>
         <div style="position:absolute;top:10px;right:12px;font-size:.34rem;letter-spacing:.1em;color:rgba(0,0,0,.5);">2/3</div>
       </div>
@@ -3310,7 +3310,7 @@ per caso</textarea>
   <div class="desc">1080×1350px · Slide finale, sfondo blu, logo + indirizzo (uguale per ogni post)</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-cta-1" style="width:240px;height:300px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-cta-1" style="width:100%;height:auto;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
         <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice">
           <path d="M -10,240 Q 120,170 250,240" stroke="rgba(201,169,74,.1)" stroke-width="50" fill="none"/>
         </svg>
@@ -3345,7 +3345,7 @@ per caso</textarea>
   <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t3-2-cov" style="width:200px;height:250px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t3-2-cov" style="width:100%;height:auto;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <div class="logo-in" style="width:73px;height:73px;margin-bottom:16px;position:relative;z-index:1;"><img src="logo/logo.png" alt="Logo"></div>
         <p style="font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:11px;position:relative;z-index:1;">Le Origini</p>
         <p class="sync-t32cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.3rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">La prima<br>nocciola</p>
@@ -3366,7 +3366,7 @@ nocciola</textarea>
   <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t3-2-body" style="width:200px;height:250px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t3-2-body" style="width:100%;height:auto;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <p class="sync-t32body-text" style="font-size:.5rem;color:rgba(0,0,0,.8);line-height:1.7;">Il giorno del compleanno della figlia del mio capo, mi hanno lasciato sola davanti alla macchina del gelato. Non l'avevo mai usata. Dieci minuti dopo è uscita la mia prima nocciola, fatta da sola. È stato amore a prima vista.</p>
         <div style="position:absolute;top:10px;right:12px;font-size:.34rem;letter-spacing:.1em;color:rgba(0,0,0,.5);">2/3</div>
       </div>
@@ -3385,7 +3385,7 @@ nocciola</textarea>
   <div class="desc">1080×1350px · Slide finale, sfondo blu, logo + indirizzo (uguale per ogni post)</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-cta-2" style="width:240px;height:300px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-cta-2" style="width:100%;height:auto;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
         <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice">
           <path d="M -10,240 Q 120,170 250,240" stroke="rgba(201,169,74,.1)" stroke-width="50" fill="none"/>
         </svg>
@@ -3421,7 +3421,7 @@ nocciola</textarea>
   <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t2-1-cov" style="width:200px;height:250px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t2-1-cov" style="width:100%;height:auto;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <div class="logo-in" style="width:73px;height:73px;margin-bottom:16px;position:relative;z-index:1;"><img src="logo/logo.png" alt="Logo"></div>
         <p style="font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:11px;position:relative;z-index:1;">Il Percorso</p>
         <p class="sync-t21cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.3rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Imparare<br>davvero</p>
@@ -3442,7 +3442,7 @@ davvero</textarea>
   <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t2-1-body" style="width:200px;height:250px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t2-1-body" style="width:100%;height:auto;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <p class="sync-t21body-text" style="font-size:.5rem;color:rgba(0,0,0,.8);line-height:1.7;">Non l'ho fatto per i soldi. Ho fatto due lavori per mettermi via i risparmi e sono partita per Bologna, alla Carpigiani: un mese, corso base, intermedio e avanzato. Volevo capire davvero il gelato, non solo farlo.</p>
         <div style="position:absolute;top:10px;right:12px;font-size:.34rem;letter-spacing:.1em;color:rgba(0,0,0,.5);">2/3</div>
       </div>
@@ -3461,7 +3461,7 @@ davvero</textarea>
   <div class="desc">1080×1350px · Slide finale, sfondo blu, logo + indirizzo (uguale per ogni post)</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-cta-3" style="width:240px;height:300px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-cta-3" style="width:100%;height:auto;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
         <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice">
           <path d="M -10,240 Q 120,170 250,240" stroke="rgba(201,169,74,.1)" stroke-width="50" fill="none"/>
         </svg>
@@ -3497,7 +3497,7 @@ davvero</textarea>
   <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t2-2-cov" style="width:200px;height:250px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t2-2-cov" style="width:100%;height:auto;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <div class="logo-in" style="width:73px;height:73px;margin-bottom:16px;position:relative;z-index:1;"><img src="logo/logo.png" alt="Logo"></div>
         <p style="font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:11px;position:relative;z-index:1;">Il Percorso</p>
         <p class="sync-t22cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.3rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Londra,<br>Germania</p>
@@ -3518,7 +3518,7 @@ Germania</textarea>
   <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t2-2-body" style="width:200px;height:250px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t2-2-body" style="width:100%;height:auto;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <p class="sync-t22body-text" style="font-size:.48rem;color:rgba(0,0,0,.8);line-height:1.6;">Da lì la curiosità mi ha portato lontano. A Londra, in una gelateria artigianale italiana, mi sono occupata anche dell'asporto per ristoranti ed eventi. In Germania, una gelateria nuova con 32 gusti: una vera prova di velocità e costanza.</p>
         <div style="position:absolute;top:10px;right:12px;font-size:.34rem;letter-spacing:.1em;color:rgba(0,0,0,.5);">2/3</div>
       </div>
@@ -3537,7 +3537,7 @@ Germania</textarea>
   <div class="desc">1080×1350px · Slide finale, sfondo blu, logo + indirizzo (uguale per ogni post)</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-cta-4" style="width:240px;height:300px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-cta-4" style="width:100%;height:auto;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
         <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice">
           <path d="M -10,240 Q 120,170 250,240" stroke="rgba(201,169,74,.1)" stroke-width="50" fill="none"/>
         </svg>
@@ -3574,7 +3574,7 @@ Germania</textarea>
   <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t1-1-cov" style="width:200px;height:250px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t1-1-cov" style="width:100%;height:auto;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <div class="logo-in" style="width:73px;height:73px;margin-bottom:16px;position:relative;z-index:1;"><img src="logo/logo.png" alt="Logo"></div>
         <p style="font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:11px;position:relative;z-index:1;">Il Sogno Che Si Realizza</p>
         <p class="sync-t11cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.25rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Un sogno<br>accantonato</p>
@@ -3595,7 +3595,7 @@ accantonato</textarea>
   <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t1-1-body" style="width:200px;height:250px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t1-1-body" style="width:100%;height:auto;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <p class="sync-t11body-text" style="font-size:.46rem;color:rgba(0,0,0,.8);line-height:1.6;">Per quattro anni ho lavorato con chi costruisce le gelaterie da zero. Ho imparato dove posizionare ogni macchina, quali materiali scegliere. Poi è arrivato un periodo lontano da tutto questo. Ma a casa continuavo a fare gelato, lo portavo a cena per sentire un parere.</p>
         <div style="position:absolute;top:10px;right:12px;font-size:.34rem;letter-spacing:.1em;color:rgba(0,0,0,.5);">2/3</div>
       </div>
@@ -3614,7 +3614,7 @@ accantonato</textarea>
   <div class="desc">1080×1350px · Slide finale, sfondo blu, logo + indirizzo (uguale per ogni post)</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-cta-5" style="width:240px;height:300px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-cta-5" style="width:100%;height:auto;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
         <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice">
           <path d="M -10,240 Q 120,170 250,240" stroke="rgba(201,169,74,.1)" stroke-width="50" fill="none"/>
         </svg>
@@ -3651,7 +3651,7 @@ accantonato</textarea>
   <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t1-2-cov" style="width:200px;height:250px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t1-2-cov" style="width:100%;height:auto;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <div class="logo-in" style="width:73px;height:73px;margin-bottom:16px;position:relative;z-index:1;"><img src="logo/logo.png" alt="Logo"></div>
         <p style="font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:11px;position:relative;z-index:1;">Il Sogno Che Si Realizza</p>
         <p class="sync-t12cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.25rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Piastrella<br>dopo piastrella</p>
@@ -3672,7 +3672,7 @@ dopo piastrella</textarea>
   <div class="desc">1080×1350px</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t1-2-body" style="width:200px;height:250px;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t1-2-body" style="width:100%;height:auto;background:var(--crema);border:2px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <p class="sync-t12body-text" style="font-size:.5rem;color:rgba(0,0,0,.8);line-height:1.7;">Oggi quella curiosità è diventata un negozio piccolo, ma giusto per me. Lo stiamo costruendo piastrella dopo piastrella, qui a Jesolo Paese. Ci siamo quasi.</p>
         <div style="position:absolute;top:10px;right:12px;font-size:.34rem;letter-spacing:.1em;color:rgba(0,0,0,.5);">2/3</div>
       </div>
@@ -3691,7 +3691,7 @@ dopo piastrella</textarea>
   <div class="desc">1080×1350px · Sostituisce la chiusura standard solo per questo post</div>
   <div class="tpl-row">
     <div class="sq-preview">
-      <div id="prev-t1-2-quote" style="width:200px;height:250px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
+      <div id="prev-t1-2-quote" style="width:100%;height:auto;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center;position:relative;overflow:hidden;">
         <p class="sync-t12quote-text" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:.7rem;color:var(--crema);line-height:1.4;margin-bottom:10px;position:relative;z-index:1;">"Il gelato non è solo condivisione, è un'emozione che si dà agli altri. Per me, il gelato è vita."</p>
         <div style="width:20px;height:1px;background:var(--oro);margin:8px auto;opacity:.5;position:relative;z-index:1;"></div>
         <p style="font-size:.4rem;color:var(--oro);letter-spacing:.1em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
