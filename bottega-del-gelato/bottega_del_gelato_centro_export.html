@@ -830,6 +830,255 @@ footer{
 </style>
 </head>
 <body>
+<div class="renders">
+  <!-- Story Gusto -->
+  <div id="render-story-gusto" style="width:360px;height:640px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:50px 36px;text-align:center;position:relative;overflow:hidden;">
+    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
+      <circle cx="30" cy="55"  r="14" fill="#7A9E3B" opacity=".35"/>
+      <circle cx="310" cy="40" r="12" fill="#C84B4B" opacity=".3"/>
+      <circle cx="332" cy="578" r="13" fill="#E87830" opacity=".28"/>
+      <circle cx="25"  cy="590" r="10" fill="#6B3FA0" opacity=".3"/>
+      <path d="M -20,640 Q 180,510 380,640" stroke="rgba(201,169,74,.14)" stroke-width="90" fill="none"/>
+    </svg>
+    <div style="width:112px;height:112px;overflow:hidden;margin:0 auto 28px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p class="sync-sg-eye" style="font-size:1rem;letter-spacing:.28em;text-transform:uppercase;color:var(--oro);margin-bottom:28px;position:relative;z-index:1;">Gusto del Giorno</p>
+    <p class="sync-sg-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:3.2rem;color:var(--crema);line-height:1.1;margin-bottom:18px;position:relative;z-index:1;">Pistacchio<br>di Bronte</p>
+    <p class="sync-sg-sub" style="font-size:1.1rem;color:rgba(255,255,255,.95);line-height:1.6;position:relative;z-index:1;">DOP · Sicilia<br>Dal nostro laboratorio</p>
+    <p style="font-size:.75rem;color:var(--oro);margin-top:36px;letter-spacing:.14em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
+  </div>
+
+  <!-- Story Laboratorio -->
+  <div id="render-story-lab" style="width:360px;height:640px;background:var(--ocra);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:50px 36px;text-align:center;position:relative;overflow:hidden;">
+    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
+      <path d="M -20,640 Q 180,500 380,640" stroke="rgba(255,255,255,.08)" stroke-width="100" fill="none"/>
+    </svg>
+    <p style="font-size:.9rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.95);margin-bottom:44px;position:relative;z-index:1;">Dal Laboratorio</p>
+    <p class="sync-sl-quote" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.8rem;color:#fff;line-height:1.3;margin-bottom:28px;position:relative;z-index:1;">"Il gelato si vede prima di tutto nella cura"</p>
+    <p class="sync-sl-author" style="font-size:1rem;color:rgba(255,255,255,.97);line-height:1.6;position:relative;z-index:1;">Michela Torcoletti<br>Jesolo</p>
+    <div style="width:44px;height:1px;background:rgba(255,255,255,.92);margin:28px auto;position:relative;z-index:1;"></div>
+    <p style="font-size:.72rem;color:rgba(255,255,255,.92);letter-spacing:.12em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
+    <div style="width:48px;height:48px;margin-top:18px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+  </div>
+
+  <!-- Quadrato Copertina -->
+  <div id="render-sq-cover" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;position:relative;overflow:hidden;">
+    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+      <circle cx="30" cy="30" r="10" fill="#7A9E3B" opacity=".3"/>
+      <circle cx="340" cy="25" r="8" fill="#C84B4B" opacity=".28"/>
+      <circle cx="370" cy="356" r="9" fill="#E87830" opacity=".25"/>
+      <circle cx="25"  cy="362" r="7" fill="#6B3FA0" opacity=".28"/>
+      <path d="M -20,400 Q 200,290 420,400" stroke="rgba(201,169,74,.12)" stroke-width="75" fill="none"/>
+    </svg>
+    <div style="width:150px;height:150px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p class="sync-sc-eye" style="font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:20px;position:relative;z-index:1;">Gusto del Mese</p>
+    <p class="sync-sc-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.8rem;color:var(--crema);line-height:1.1;position:relative;z-index:1;">Pistacchio<br>di Bronte</p>
+    <div style="width:36px;height:1.5px;background:var(--oro);margin:26px auto;opacity:.5;position:relative;z-index:1;"></div>
+    <p style="font-size:.68rem;color:rgba(255,255,255,.38);letter-spacing:.12em;position:relative;z-index:1;">LA BOTTEGA DEL GELATO</p>
+  </div>
+
+  <!-- Quadrato CTA chiusura -->
+  <div id="render-sq-cta" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;position:relative;overflow:hidden;">
+    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+      <path d="M -20,400 Q 200,290 420,400" stroke="rgba(201,169,74,.1)" stroke-width="80" fill="none"/>
+    </svg>
+    <div style="width:112px;height:112px;overflow:hidden;margin:0 auto 18px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.8rem;color:var(--crema);margin-bottom:18px;position:relative;z-index:1;">Vieni a trovarci</p>
+    <p style="font-size:.85rem;color:rgba(255,255,255,.95);line-height:1.7;position:relative;z-index:1;">Piazza Giacomo Matteotti, 5<br>Jesolo Paese · VE</p>
+    <div style="width:36px;height:1px;background:var(--oro);margin:16px auto;opacity:.45;position:relative;z-index:1;"></div>
+    <p style="font-size:.7rem;color:var(--oro);letter-spacing:.14em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
+  </div>
+
+  <!-- Quadrato CTA chiusura dedicata — Post 2 -->
+  <div id="render-post2-cta" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;position:relative;overflow:hidden;">
+    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+      <path d="M -20,400 Q 200,290 420,400" stroke="rgba(201,169,74,.1)" stroke-width="80" fill="none"/>
+    </svg>
+    <div style="width:112px;height:112px;overflow:hidden;margin:0 auto 18px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.4rem;color:var(--crema);line-height:1.3;position:relative;z-index:1;">"Da quella prima nocciola, oggi, un progetto tutto mio."</p>
+    <div style="width:36px;height:1px;background:var(--oro);margin:16px auto;opacity:.45;position:relative;z-index:1;"></div>
+    <p style="font-size:.7rem;color:var(--oro);letter-spacing:.14em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
+  </div>
+
+  <!-- Quadrato CTA chiusura dedicata — Post 4 -->
+  <div id="render-post4-cta" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;position:relative;overflow:hidden;">
+    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+      <path d="M -20,400 Q 200,290 420,400" stroke="rgba(201,169,74,.1)" stroke-width="80" fill="none"/>
+    </svg>
+    <div style="width:112px;height:112px;overflow:hidden;margin:0 auto 18px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.4rem;color:var(--crema);line-height:1.3;position:relative;z-index:1;">"Ogni esperienza è un gusto che porto con me a Jesolo."</p>
+    <div style="width:36px;height:1px;background:var(--oro);margin:16px auto;opacity:.45;position:relative;z-index:1;"></div>
+    <p style="font-size:.7rem;color:var(--oro);letter-spacing:.14em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
+  </div>
+
+  <!-- Quadrato slide mid crema -->
+  <div id="render-sq-mid" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
+    <p class="sync-sm-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.2rem;color:var(--blu);margin-bottom:18px;line-height:1.25;">Dalla Sicilia<br>al tuo cono</p>
+    <div style="width:36px;height:1.5px;background:var(--oro);margin:0 auto 18px;"></div>
+    <p class="sync-sm-body" style="font-size:.9rem;color:rgba(0,0,0,.82);line-height:1.7;max-width:280px;">Pistacchio DOP dalla Contrada Difesa di Bronte. Ogni giorno, dal nostro laboratorio di Jesolo.</p>
+    <div style="position:absolute;top:16px;right:20px;font-size:.62rem;letter-spacing:.1em;color:rgba(0,0,0,.22);">2/3</div>
+  </div>
+
+  <!-- Facebook Cover -->
+  <div id="render-fb" style="width:820px;height:312px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:20px 60px;text-align:center;">
+    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 820 312" preserveAspectRatio="xMidYMid slice">
+      <circle cx="44"  cy="44"  r="14" fill="#7A9E3B" opacity=".25"/>
+      <circle cx="170" cy="20"  r="10" fill="#C84B4B" opacity=".2"/>
+      <circle cx="680" cy="30"  r="12" fill="#E87830" opacity=".22"/>
+      <circle cx="784" cy="60"  r="10" fill="#6B3FA0" opacity=".2"/>
+      <circle cx="36"  cy="270" r="11" fill="#E8C840" opacity=".18"/>
+      <circle cx="788" cy="276" r="14" fill="#C84B4B" opacity=".18"/>
+      <path d="M -20,312 Q 410,200 840,312" stroke="rgba(201,169,74,.1)" stroke-width="60" fill="none"/>
+    </svg>
+    <div style="width:115px;height:115px;overflow:hidden;margin:0 auto 8px;position:relative;z-index:1;">
+      <img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo">
+    </div>
+    <p style="font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--oro);margin-bottom:8px;position:relative;z-index:1;">Jesolo · Gelateria Artigianale</p>
+    <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:3.4rem;color:var(--oro);line-height:1.05;margin-bottom:8px;position:relative;z-index:1;">La Bottega del Gelato</p>
+    <p style="font-size:1rem;color:rgba(255,255,255,.95);font-style:italic;position:relative;z-index:1;">Dal cuore del laboratorio al gusto tradizionale</p>
+  </div>
+
+  <!-- Reel Apertura -->
+  <div id="render-reel-open" style="width:360px;height:640px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:50px 36px;text-align:center;position:relative;overflow:hidden;">
+    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
+      <path d="M -20,640 Q 180,510 380,640" stroke="rgba(201,169,74,.12)" stroke-width="80" fill="none"/>
+    </svg>
+    <div style="width:125px;height:125px;overflow:hidden;margin:0 auto 24px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p style="font-size:1rem;letter-spacing:.22em;text-transform:uppercase;color:var(--oro);margin-bottom:14px;position:relative;z-index:1;">Dal Laboratorio</p>
+    <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.4rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">La Bottega<br>del Gelato</p>
+    <p style="font-size:.85rem;color:rgba(255,255,255,.90);margin-top:20px;position:relative;z-index:1;">Jesolo · Artigianale</p>
+  </div>
+
+  <!-- Reel Chiusura -->
+  <div id="render-reel-close" style="width:360px;height:640px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:50px 36px;text-align:center;position:relative;overflow:hidden;">
+    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
+      <path d="M -20,640 Q 180,500 380,640" stroke="rgba(201,169,74,.1)" stroke-width="80" fill="none"/>
+    </svg>
+    <div style="width:112px;height:112px;overflow:hidden;margin:0 auto 20px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2rem;color:var(--crema);margin-bottom:16px;position:relative;z-index:1;">Vieni a trovarci</p>
+    <p style="font-size:.9rem;color:rgba(255,255,255,.92);line-height:1.7;position:relative;z-index:1;">Piazza Giacomo Matteotti, 5<br>Jesolo Paese · VE<br>+39 393 468 9155</p>
+    <div style="width:40px;height:1px;background:var(--oro);margin:20px auto;opacity:.45;position:relative;z-index:1;"></div>
+    <p style="font-size:.78rem;color:var(--oro);letter-spacing:.14em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
+  </div>
+
+  <!-- Facebook Post 1200×630 -->
+  <div id="render-fb-post" style="width:600px;height:315px;background:var(--blu);display:flex;align-items:center;position:relative;overflow:hidden;">
+    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 600 315" preserveAspectRatio="xMidYMid slice">
+      <circle cx="20" cy="20" r="8" fill="#7A9E3B" opacity=".28"/>
+      <circle cx="570" cy="26" r="7" fill="#C84B4B" opacity=".22"/>
+      <circle cx="580" cy="288" r="7" fill="#E87830" opacity=".2"/>
+      <circle cx="22" cy="290" r="6" fill="#6B3FA0" opacity=".22"/>
+      <path d="M -20,315 Q 300,215 620,315" stroke="rgba(201,169,74,.1)" stroke-width="48" fill="none"/>
+    </svg>
+    <div style="width:160px;height:160px;overflow:hidden;margin:0 44px;position:relative;z-index:1;flex-shrink:0;">
+      <img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo">
+    </div>
+    <div style="width:1px;height:140px;background:var(--oro);opacity:.5;flex-shrink:0;position:relative;z-index:1;"></div>
+    <div style="padding:0 40px;position:relative;z-index:1;">
+      <p class="sync-fp-eye" style="font-size:.9rem;letter-spacing:.22em;text-transform:uppercase;color:var(--oro);margin-bottom:12px;">Gusto del Giorno</p>
+      <p class="sync-fp-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.4rem;color:var(--crema);line-height:1.15;margin-bottom:12px;">Pistacchio<br>di Bronte</p>
+      <p class="sync-fp-sub" style="font-size:.85rem;color:rgba(255,255,255,.92);line-height:1.55;">DOP · Sicilia · Dal nostro laboratorio</p>
+      <p style="font-size:.68rem;color:var(--oro);margin-top:16px;letter-spacing:.1em;">@labottegadelgelato_jesolopaese</p>
+    </div>
+  </div>
+
+  <!-- GBP Copertina 1332×750 -->
+  <div id="render-gbp-cover" style="width:666px;height:375px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;position:relative;overflow:hidden;">
+    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 666 375" preserveAspectRatio="xMidYMid slice">
+      <path d="M -20,375 Q 333,260 686,375" stroke="rgba(201,169,74,.12)" stroke-width="65" fill="none"/>
+      <circle cx="30" cy="30" r="10" fill="#7A9E3B" opacity=".25"/>
+      <circle cx="630" cy="34" r="8" fill="#C84B4B" opacity=".2"/>
+      <circle cx="644" cy="336" r="9" fill="#E87830" opacity=".18"/>
+      <circle cx="24" cy="340" r="7" fill="#6B3FA0" opacity=".2"/>
+    </svg>
+    <div style="width:170px;height:170px;overflow:hidden;margin:0 auto 20px;position:relative;z-index:1;">
+      <img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo">
+    </div>
+    <p style="font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--oro);margin-bottom:10px;position:relative;z-index:1;">Gelateria Artigianale</p>
+    <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.8rem;color:var(--oro);line-height:1.05;margin-bottom:12px;position:relative;z-index:1;">La Bottega del Gelato</p>
+    <p style="font-size:.9rem;color:rgba(255,255,255,.92);line-height:1.6;position:relative;z-index:1;">Piazza Giacomo Matteotti, 5 · Jesolo VE</p>
+  </div>
+
+  <!-- GBP Post 1200×900 -->
+  <div id="render-gbp-post" style="width:400px;height:300px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
+    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+      <path d="M -20,300 Q 200,200 420,300" stroke="rgba(201,169,74,.12)" stroke-width="55" fill="none"/>
+    </svg>
+    <div style="width:125px;height:125px;overflow:hidden;margin:0 auto 18px;position:relative;z-index:1;">
+      <img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo">
+    </div>
+    <p class="sync-gp-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.8rem;color:var(--crema);margin-bottom:12px;position:relative;z-index:1;">Vieni a trovarci</p>
+    <p style="font-size:.82rem;color:rgba(255,255,255,.92);line-height:1.7;position:relative;z-index:1;">Piazza Giacomo Matteotti, 5 · Jesolo VE<br>+39 393 468 9155</p>
+    <div style="width:32px;height:1px;background:var(--oro);margin:14px auto;opacity:.45;position:relative;z-index:1;"></div>
+    <p style="font-size:.7rem;color:var(--oro);letter-spacing:.12em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
+  </div>
+</div>
+<div class="renders">
+  <div id="render-t3-1-cov" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
+    <div style="width:145px;height:145px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p style="font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:22px;position:relative;z-index:1;">Le Origini</p>
+    <p class="sync-t31cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.6rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Una stagione<br>per caso</p>
+  </div>
+  <div id="render-t3-1-body" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
+    <p class="sync-t31body-text" style="font-size:1rem;color:rgba(0,0,0,.8);line-height:1.7;">Tutto è cominciato per caso, una stagione a Tarquinia. Dovevo stare al bar, non al laboratorio. Poi un giorno mi hanno chiesto di tagliare la frutta, pesare gli ingredienti. Guardavo quelle preparazioni trasformarsi, e mi incuriosivo sempre di più.</p>
+    <div style="position:absolute;top:16px;right:20px;font-size:.6rem;letter-spacing:.1em;color:rgba(0,0,0,.4);">2/3</div>
+  </div>
+
+  <div id="render-t3-2-cov" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
+    <div style="width:145px;height:145px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p style="font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:22px;position:relative;z-index:1;">Le Origini</p>
+    <p class="sync-t32cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.6rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">La prima<br>nocciola</p>
+  </div>
+  <div id="render-t3-2-body" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
+    <p class="sync-t32body-text" style="font-size:1rem;color:rgba(0,0,0,.8);line-height:1.7;">Il giorno del compleanno della figlia del mio capo, mi hanno lasciato sola davanti alla macchina del gelato. Non l'avevo mai usata. Dieci minuti dopo è uscita la mia prima nocciola, fatta da sola. È stato amore a prima vista.</p>
+    <div style="position:absolute;top:16px;right:20px;font-size:.6rem;letter-spacing:.1em;color:rgba(0,0,0,.4);">2/3</div>
+  </div>
+
+  <div id="render-t2-1-cov" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
+    <div style="width:145px;height:145px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p style="font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:22px;position:relative;z-index:1;">Il Percorso</p>
+    <p class="sync-t21cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.6rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Imparare<br>davvero</p>
+  </div>
+  <div id="render-t2-1-body" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
+    <p class="sync-t21body-text" style="font-size:1rem;color:rgba(0,0,0,.8);line-height:1.7;">Non l'ho fatto per i soldi. Ho fatto due lavori per mettermi via i risparmi e sono partita per Bologna, alla Carpigiani: un mese, corso base, intermedio e avanzato. Volevo capire davvero il gelato, non solo farlo.</p>
+    <div style="position:absolute;top:16px;right:20px;font-size:.6rem;letter-spacing:.1em;color:rgba(0,0,0,.4);">2/3</div>
+  </div>
+
+  <div id="render-t2-2-cov" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
+    <div style="width:145px;height:145px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p style="font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:22px;position:relative;z-index:1;">Il Percorso</p>
+    <p class="sync-t22cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.6rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Londra,<br>Germania</p>
+  </div>
+  <div id="render-t2-2-body" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
+    <p class="sync-t22body-text" style="font-size:.92rem;color:rgba(0,0,0,.8);line-height:1.65;">Da lì la curiosità mi ha portato lontano. A Londra, in una gelateria artigianale italiana, mi sono occupata anche dell'asporto per ristoranti ed eventi. In Germania, una gelateria nuova con 32 gusti: una vera prova di velocità e costanza.</p>
+    <div style="position:absolute;top:16px;right:20px;font-size:.6rem;letter-spacing:.1em;color:rgba(0,0,0,.4);">2/3</div>
+  </div>
+
+  <div id="render-t1-1-cov" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
+    <div style="width:145px;height:145px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p style="font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:22px;position:relative;z-index:1;">Il Sogno Che Si Realizza</p>
+    <p class="sync-t11cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.5rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Un sogno<br>accantonato</p>
+  </div>
+  <div id="render-t1-1-body" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
+    <p class="sync-t11body-text" style="font-size:.9rem;color:rgba(0,0,0,.8);line-height:1.6;">Per quattro anni ho lavorato con chi costruisce le gelaterie da zero. Ho imparato dove posizionare ogni macchina, quali materiali scegliere. Poi è arrivato un periodo lontano da tutto questo. Ma a casa continuavo a fare gelato, lo portavo a cena per sentire un parere.</p>
+    <div style="position:absolute;top:16px;right:20px;font-size:.6rem;letter-spacing:.1em;color:rgba(0,0,0,.4);">2/3</div>
+  </div>
+
+  <div id="render-t1-2-cov" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
+    <div style="width:145px;height:145px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+    <p style="font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:22px;position:relative;z-index:1;">Il Sogno Che Si Realizza</p>
+    <p class="sync-t12cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.5rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Piastrella<br>dopo piastrella</p>
+  </div>
+  <div id="render-t1-2-body" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
+    <p class="sync-t12body-text" style="font-size:1rem;color:rgba(0,0,0,.8);line-height:1.7;">Oggi quella curiosità è diventata un negozio piccolo, ma giusto per me. Lo stiamo costruendo piastrella dopo piastrella, qui a Jesolo Paese. Ci siamo quasi.</p>
+    <div style="position:absolute;top:16px;right:20px;font-size:.6rem;letter-spacing:.1em;color:rgba(0,0,0,.4);">2/3</div>
+  </div>
+  <div id="render-t1-2-quote" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
+    <p class="sync-t12quote-text" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.4rem;color:var(--crema);line-height:1.5;margin-bottom:20px;position:relative;z-index:1;">"Il gelato non è solo condivisione, è un'emozione che si dà agli altri. Per me, il gelato è vita."</p>
+    <div style="width:36px;height:1px;background:var(--oro);margin:16px auto;opacity:.5;position:relative;z-index:1;"></div>
+    <p style="font-size:.72rem;color:var(--oro);letter-spacing:.12em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
+    <div style="width:42px;height:42px;margin-top:14px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
+  </div>
+</div>
 
 <div class="tab-bar">
   <button class="tab-btn active" data-tab="tab-brand" onclick="switchTab('tab-brand')">Brand Identity</button>
@@ -2912,17 +3161,17 @@ al tuo cono</textarea>
           <circle cx="395" cy="138" r="6" fill="#C84B4B" opacity=".18"/>
           <path d="M -10,156 Q 205,100 420,156" stroke="rgba(201,169,74,.1)" stroke-width="30" fill="none"/>
         </svg>
-        <div style="width:38px;height:38px;overflow:hidden;margin:0 auto 6px;position:relative;z-index:1;">
+        <div style="width:58px;height:58px;overflow:hidden;margin:0 auto 4px;position:relative;z-index:1;">
           <img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo">
         </div>
-        <p style="font-size:.42rem;letter-spacing:.22em;text-transform:uppercase;color:var(--oro);margin-bottom:5px;position:relative;z-index:1;">Jesolo · Gelateria Artigianale</p>
-        <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.6rem;color:var(--oro);line-height:1.1;margin-bottom:5px;position:relative;z-index:1;">La Bottega del Gelato</p>
+        <p style="font-size:.42rem;letter-spacing:.22em;text-transform:uppercase;color:var(--oro);margin-bottom:4px;position:relative;z-index:1;">Jesolo · Gelateria Artigianale</p>
+        <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.6rem;color:var(--oro);line-height:1.1;margin-bottom:4px;position:relative;z-index:1;">La Bottega del Gelato</p>
         <p style="font-size:.55rem;color:rgba(255,255,255,.95);font-style:italic;position:relative;z-index:1;">Dal cuore del laboratorio al gusto tradizionale</p>
       </div>
     </div>
     <div class="tpl-actions">
-      <div class="action-note">Copertina Facebook 820×312px. Proporzionata per la visualizzazione sia desktop che mobile.</div>
-      <button class="btn" onclick="dlEl('render-fb','Cover_Facebook_820x312.png',820,312)">↓ 820×312px (Facebook Cover)</button>
+      <div class="action-note">Copertina Facebook esportata a 1640×624px (doppia risoluzione): Facebook ricomprime sempre le immagini di copertina, caricarla a 2× evita che risulti sgranata una volta pubblicata (verrà mostrata a 820×312px).</div>
+      <button class="btn" onclick="dlEl('render-fb','Cover_Facebook_1640x624.png',1640,624)">↓ 1640×624px (Facebook Cover, alta risoluzione)</button>
     </div>
   </div>
 </div>
@@ -3045,8 +3294,8 @@ di Bronte</textarea>
       </div>
     </div>
     <div class="tpl-actions">
-      <div class="action-note">Copertina Google Business Profile. Apparirà su Google Maps e nei risultati di ricerca locale "gelateria vicino a me".</div>
-      <button class="btn" onclick="dlEl('render-gbp-cover','GBP_Copertina_1332x750.png',1332,750)">&#8595; 1332&#215;750px (GBP Copertina)</button>
+      <div class="action-note">Copertina Google Business Profile esportata a 2664×1500px (doppia risoluzione) per restare nitida dopo la ricompressione di Google. Apparirà su Google Maps e nei risultati di ricerca locale "gelateria vicino a me".</div>
+      <button class="btn" onclick="dlEl('render-gbp-cover','GBP_Copertina_2664x1500.png',2664,1500)">&#8595; 2664&#215;1500px (GBP Copertina, alta risoluzione)</button>
     </div>
   </div>
 </div>
@@ -3083,166 +3332,6 @@ di Bronte</textarea>
 </div>
 
 <!-- ════ Render nascosti per html2canvas ════ -->
-<div class="renders">
-  <!-- Story Gusto -->
-  <div id="render-story-gusto" style="width:360px;height:640px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:50px 36px;text-align:center;position:relative;overflow:hidden;">
-    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
-      <circle cx="30" cy="55"  r="14" fill="#7A9E3B" opacity=".35"/>
-      <circle cx="310" cy="40" r="12" fill="#C84B4B" opacity=".3"/>
-      <circle cx="332" cy="578" r="13" fill="#E87830" opacity=".28"/>
-      <circle cx="25"  cy="590" r="10" fill="#6B3FA0" opacity=".3"/>
-      <path d="M -20,640 Q 180,510 380,640" stroke="rgba(201,169,74,.14)" stroke-width="90" fill="none"/>
-    </svg>
-    <div style="width:112px;height:112px;overflow:hidden;margin:0 auto 28px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-    <p class="sync-sg-eye" style="font-size:1rem;letter-spacing:.28em;text-transform:uppercase;color:var(--oro);margin-bottom:28px;position:relative;z-index:1;">Gusto del Giorno</p>
-    <p class="sync-sg-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:3.2rem;color:var(--crema);line-height:1.1;margin-bottom:18px;position:relative;z-index:1;">Pistacchio<br>di Bronte</p>
-    <p class="sync-sg-sub" style="font-size:1.1rem;color:rgba(255,255,255,.95);line-height:1.6;position:relative;z-index:1;">DOP · Sicilia<br>Dal nostro laboratorio</p>
-    <p style="font-size:.75rem;color:var(--oro);margin-top:36px;letter-spacing:.14em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
-  </div>
-
-  <!-- Story Laboratorio -->
-  <div id="render-story-lab" style="width:360px;height:640px;background:var(--ocra);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:50px 36px;text-align:center;position:relative;overflow:hidden;">
-    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
-      <path d="M -20,640 Q 180,500 380,640" stroke="rgba(255,255,255,.08)" stroke-width="100" fill="none"/>
-    </svg>
-    <p style="font-size:.9rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.95);margin-bottom:44px;position:relative;z-index:1;">Dal Laboratorio</p>
-    <p class="sync-sl-quote" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.8rem;color:#fff;line-height:1.3;margin-bottom:28px;position:relative;z-index:1;">"Il gelato si vede prima di tutto nella cura"</p>
-    <p class="sync-sl-author" style="font-size:1rem;color:rgba(255,255,255,.97);line-height:1.6;position:relative;z-index:1;">Michela Torcoletti<br>Jesolo</p>
-    <div style="width:44px;height:1px;background:rgba(255,255,255,.92);margin:28px auto;position:relative;z-index:1;"></div>
-    <p style="font-size:.72rem;color:rgba(255,255,255,.92);letter-spacing:.12em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
-    <div style="width:48px;height:48px;margin-top:18px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-  </div>
-
-  <!-- Quadrato Copertina -->
-  <div id="render-sq-cover" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;position:relative;overflow:hidden;">
-    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
-      <circle cx="30" cy="30" r="10" fill="#7A9E3B" opacity=".3"/>
-      <circle cx="340" cy="25" r="8" fill="#C84B4B" opacity=".28"/>
-      <circle cx="370" cy="356" r="9" fill="#E87830" opacity=".25"/>
-      <circle cx="25"  cy="362" r="7" fill="#6B3FA0" opacity=".28"/>
-      <path d="M -20,400 Q 200,290 420,400" stroke="rgba(201,169,74,.12)" stroke-width="75" fill="none"/>
-    </svg>
-    <div style="width:150px;height:150px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-    <p class="sync-sc-eye" style="font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:20px;position:relative;z-index:1;">Gusto del Mese</p>
-    <p class="sync-sc-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.8rem;color:var(--crema);line-height:1.1;position:relative;z-index:1;">Pistacchio<br>di Bronte</p>
-    <div style="width:36px;height:1.5px;background:var(--oro);margin:26px auto;opacity:.5;position:relative;z-index:1;"></div>
-    <p style="font-size:.68rem;color:rgba(255,255,255,.38);letter-spacing:.12em;position:relative;z-index:1;">LA BOTTEGA DEL GELATO</p>
-  </div>
-
-  <!-- Quadrato CTA chiusura -->
-  <div id="render-sq-cta" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;position:relative;overflow:hidden;">
-    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
-      <path d="M -20,400 Q 200,290 420,400" stroke="rgba(201,169,74,.1)" stroke-width="80" fill="none"/>
-    </svg>
-    <div style="width:112px;height:112px;overflow:hidden;margin:0 auto 18px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-    <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.8rem;color:var(--crema);margin-bottom:18px;position:relative;z-index:1;">Vieni a trovarci</p>
-    <p style="font-size:.85rem;color:rgba(255,255,255,.95);line-height:1.7;position:relative;z-index:1;">Piazza Giacomo Matteotti, 5<br>Jesolo Paese · VE</p>
-    <div style="width:36px;height:1px;background:var(--oro);margin:16px auto;opacity:.45;position:relative;z-index:1;"></div>
-    <p style="font-size:.7rem;color:var(--oro);letter-spacing:.14em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
-  </div>
-
-  <!-- Quadrato slide mid crema -->
-  <div id="render-sq-mid" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
-    <p class="sync-sm-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.2rem;color:var(--blu);margin-bottom:18px;line-height:1.25;">Dalla Sicilia<br>al tuo cono</p>
-    <div style="width:36px;height:1.5px;background:var(--oro);margin:0 auto 18px;"></div>
-    <p class="sync-sm-body" style="font-size:.9rem;color:rgba(0,0,0,.82);line-height:1.7;max-width:280px;">Pistacchio DOP dalla Contrada Difesa di Bronte. Ogni giorno, dal nostro laboratorio di Jesolo.</p>
-    <div style="position:absolute;top:16px;right:20px;font-size:.62rem;letter-spacing:.1em;color:rgba(0,0,0,.22);">2/3</div>
-  </div>
-
-  <!-- Facebook Cover -->
-  <div id="render-fb" style="width:820px;height:312px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:20px 60px;text-align:center;">
-    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 820 312" preserveAspectRatio="xMidYMid slice">
-      <circle cx="44"  cy="44"  r="14" fill="#7A9E3B" opacity=".25"/>
-      <circle cx="170" cy="20"  r="10" fill="#C84B4B" opacity=".2"/>
-      <circle cx="680" cy="30"  r="12" fill="#E87830" opacity=".22"/>
-      <circle cx="784" cy="60"  r="10" fill="#6B3FA0" opacity=".2"/>
-      <circle cx="36"  cy="270" r="11" fill="#E8C840" opacity=".18"/>
-      <circle cx="788" cy="276" r="14" fill="#C84B4B" opacity=".18"/>
-      <path d="M -20,312 Q 410,200 840,312" stroke="rgba(201,169,74,.1)" stroke-width="60" fill="none"/>
-    </svg>
-    <div style="width:75px;height:75px;overflow:hidden;margin:0 auto 12px;position:relative;z-index:1;">
-      <img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo">
-    </div>
-    <p style="font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--oro);margin-bottom:10px;position:relative;z-index:1;">Jesolo · Gelateria Artigianale</p>
-    <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:3.4rem;color:var(--oro);line-height:1.05;margin-bottom:10px;position:relative;z-index:1;">La Bottega del Gelato</p>
-    <p style="font-size:1rem;color:rgba(255,255,255,.95);font-style:italic;position:relative;z-index:1;">Dal cuore del laboratorio al gusto tradizionale</p>
-  </div>
-
-  <!-- Reel Apertura -->
-  <div id="render-reel-open" style="width:360px;height:640px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:50px 36px;text-align:center;position:relative;overflow:hidden;">
-    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
-      <path d="M -20,640 Q 180,510 380,640" stroke="rgba(201,169,74,.12)" stroke-width="80" fill="none"/>
-    </svg>
-    <div style="width:125px;height:125px;overflow:hidden;margin:0 auto 24px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-    <p style="font-size:1rem;letter-spacing:.22em;text-transform:uppercase;color:var(--oro);margin-bottom:14px;position:relative;z-index:1;">Dal Laboratorio</p>
-    <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.4rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">La Bottega<br>del Gelato</p>
-    <p style="font-size:.85rem;color:rgba(255,255,255,.90);margin-top:20px;position:relative;z-index:1;">Jesolo · Artigianale</p>
-  </div>
-
-  <!-- Reel Chiusura -->
-  <div id="render-reel-close" style="width:360px;height:640px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:50px 36px;text-align:center;position:relative;overflow:hidden;">
-    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
-      <path d="M -20,640 Q 180,500 380,640" stroke="rgba(201,169,74,.1)" stroke-width="80" fill="none"/>
-    </svg>
-    <div style="width:112px;height:112px;overflow:hidden;margin:0 auto 20px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-    <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2rem;color:var(--crema);margin-bottom:16px;position:relative;z-index:1;">Vieni a trovarci</p>
-    <p style="font-size:.9rem;color:rgba(255,255,255,.92);line-height:1.7;position:relative;z-index:1;">Piazza Giacomo Matteotti, 5<br>Jesolo Paese · VE<br>+39 393 468 9155</p>
-    <div style="width:40px;height:1px;background:var(--oro);margin:20px auto;opacity:.45;position:relative;z-index:1;"></div>
-    <p style="font-size:.78rem;color:var(--oro);letter-spacing:.14em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
-  </div>
-
-  <!-- Facebook Post 1200×630 -->
-  <div id="render-fb-post" style="width:600px;height:315px;background:var(--blu);display:flex;align-items:center;position:relative;overflow:hidden;">
-    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 600 315" preserveAspectRatio="xMidYMid slice">
-      <circle cx="20" cy="20" r="8" fill="#7A9E3B" opacity=".28"/>
-      <circle cx="570" cy="26" r="7" fill="#C84B4B" opacity=".22"/>
-      <circle cx="580" cy="288" r="7" fill="#E87830" opacity=".2"/>
-      <circle cx="22" cy="290" r="6" fill="#6B3FA0" opacity=".22"/>
-      <path d="M -20,315 Q 300,215 620,315" stroke="rgba(201,169,74,.1)" stroke-width="48" fill="none"/>
-    </svg>
-    <div style="width:160px;height:160px;overflow:hidden;margin:0 44px;position:relative;z-index:1;flex-shrink:0;">
-      <img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo">
-    </div>
-    <div style="width:1px;height:140px;background:var(--oro);opacity:.5;flex-shrink:0;position:relative;z-index:1;"></div>
-    <div style="padding:0 40px;position:relative;z-index:1;">
-      <p class="sync-fp-eye" style="font-size:.9rem;letter-spacing:.22em;text-transform:uppercase;color:var(--oro);margin-bottom:12px;">Gusto del Giorno</p>
-      <p class="sync-fp-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.4rem;color:var(--crema);line-height:1.15;margin-bottom:12px;">Pistacchio<br>di Bronte</p>
-      <p class="sync-fp-sub" style="font-size:.85rem;color:rgba(255,255,255,.92);line-height:1.55;">DOP · Sicilia · Dal nostro laboratorio</p>
-      <p style="font-size:.68rem;color:var(--oro);margin-top:16px;letter-spacing:.1em;">@labottegadelgelato_jesolopaese</p>
-    </div>
-  </div>
-
-  <!-- GBP Copertina 1332×750 -->
-  <div id="render-gbp-cover" style="width:666px;height:375px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;position:relative;overflow:hidden;">
-    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 666 375" preserveAspectRatio="xMidYMid slice">
-      <path d="M -20,375 Q 333,260 686,375" stroke="rgba(201,169,74,.12)" stroke-width="65" fill="none"/>
-      <circle cx="30" cy="30" r="10" fill="#7A9E3B" opacity=".25"/>
-      <circle cx="630" cy="34" r="8" fill="#C84B4B" opacity=".2"/>
-      <circle cx="644" cy="336" r="9" fill="#E87830" opacity=".18"/>
-      <circle cx="24" cy="340" r="7" fill="#6B3FA0" opacity=".2"/>
-    </svg>
-    <div style="width:170px;height:170px;overflow:hidden;margin:0 auto 20px;position:relative;z-index:1;">
-      <img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo">
-    </div>
-    <p style="font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--oro);margin-bottom:10px;position:relative;z-index:1;">Gelateria Artigianale</p>
-    <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.8rem;color:var(--oro);line-height:1.05;margin-bottom:12px;position:relative;z-index:1;">La Bottega del Gelato</p>
-    <p style="font-size:.9rem;color:rgba(255,255,255,.92);line-height:1.6;position:relative;z-index:1;">Piazza Giacomo Matteotti, 5 · Jesolo VE</p>
-  </div>
-
-  <!-- GBP Post 1200×900 -->
-  <div id="render-gbp-post" style="width:400px;height:300px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
-    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
-      <path d="M -20,300 Q 200,200 420,300" stroke="rgba(201,169,74,.12)" stroke-width="55" fill="none"/>
-    </svg>
-    <div style="width:125px;height:125px;overflow:hidden;margin:0 auto 18px;position:relative;z-index:1;">
-      <img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo">
-    </div>
-    <p class="sync-gp-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.8rem;color:var(--crema);margin-bottom:12px;position:relative;z-index:1;">Vieni a trovarci</p>
-    <p style="font-size:.82rem;color:rgba(255,255,255,.92);line-height:1.7;position:relative;z-index:1;">Piazza Giacomo Matteotti, 5 · Jesolo VE<br>+39 393 468 9155</p>
-    <div style="width:32px;height:1px;background:var(--oro);margin:14px auto;opacity:.45;position:relative;z-index:1;"></div>
-    <p style="font-size:.7rem;color:var(--oro);letter-spacing:.12em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
-  </div>
-</div>
 </div>
 <div id="tab-caroselli" class="tab-panel">
 <header>
@@ -3382,7 +3471,7 @@ nocciola</textarea>
 
 <div class="tpl-section">
   <h3>Post 2 — Chiusura</h3>
-  <div class="desc">1080×1350px · Slide finale, sfondo blu, logo + indirizzo (uguale per ogni post)</div>
+  <div class="desc">1080×1350px · Slide finale dedicata, sfondo blu, logo + citazione</div>
   <div class="tpl-row">
     <div class="sq-preview">
       <div id="prev-cta-2" style="width:100%;height:auto;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
@@ -3392,15 +3481,14 @@ nocciola</textarea>
         <div class="logo-in" style="width:70px;height:70px;margin-bottom:12px;position:relative;z-index:1;">
           <img src="logo/logo.png" alt="Logo">
         </div>
-        <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1rem;color:var(--crema);margin-bottom:10px;position:relative;z-index:1;">Vieni a trovarci</p>
-        <p style="font-size:.52rem;color:rgba(255,255,255,.95);line-height:1.7;position:relative;z-index:1;">Piazza Giacomo Matteotti, 5<br>Jesolo Paese · VE</p>
+        <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:.78rem;color:var(--crema);line-height:1.3;position:relative;z-index:1;">"Da quella prima nocciola, oggi, un progetto tutto mio."</p>
         <div style="width:22px;height:1px;background:var(--oro);margin:10px auto;opacity:.45;position:relative;z-index:1;"></div>
         <p style="font-size:.44rem;color:var(--oro);letter-spacing:.12em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
       </div>
     </div>
     <div class="tpl-actions">
-      <div class="action-note">Chiusura standard, uguale per tutti i post 1-5: logo + indirizzo.</div>
-      <button class="btn" onclick="dlEl('render-sq-cta','Post2_Chiusura_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
+      <div class="action-note">Chiusura dedicata a Post 2, con richiamo al brand: "Da quella prima nocciola, oggi, un progetto tutto mio".</div>
+      <button class="btn" onclick="dlEl('render-post2-cta','Post2_Chiusura_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
@@ -3534,7 +3622,7 @@ Germania</textarea>
 
 <div class="tpl-section">
   <h3>Post 4 — Chiusura</h3>
-  <div class="desc">1080×1350px · Slide finale, sfondo blu, logo + indirizzo (uguale per ogni post)</div>
+  <div class="desc">1080×1350px · Slide finale dedicata, sfondo blu, logo + citazione</div>
   <div class="tpl-row">
     <div class="sq-preview">
       <div id="prev-cta-4" style="width:100%;height:auto;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;position:relative;overflow:hidden;">
@@ -3544,15 +3632,14 @@ Germania</textarea>
         <div class="logo-in" style="width:70px;height:70px;margin-bottom:12px;position:relative;z-index:1;">
           <img src="logo/logo.png" alt="Logo">
         </div>
-        <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1rem;color:var(--crema);margin-bottom:10px;position:relative;z-index:1;">Vieni a trovarci</p>
-        <p style="font-size:.52rem;color:rgba(255,255,255,.95);line-height:1.7;position:relative;z-index:1;">Piazza Giacomo Matteotti, 5<br>Jesolo Paese · VE</p>
+        <p style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:.78rem;color:var(--crema);line-height:1.3;position:relative;z-index:1;">"Ogni esperienza è un gusto che porto con me a Jesolo."</p>
         <div style="width:22px;height:1px;background:var(--oro);margin:10px auto;opacity:.45;position:relative;z-index:1;"></div>
         <p style="font-size:.44rem;color:var(--oro);letter-spacing:.12em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
       </div>
     </div>
     <div class="tpl-actions">
-      <div class="action-note">Chiusura standard, uguale per tutti i post 1-5: logo + indirizzo.</div>
-      <button class="btn" onclick="dlEl('render-sq-cta','Post4_Chiusura_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
+      <div class="action-note">Chiusura dedicata a Post 4, con teaser: "Ogni esperienza è un gusto che porto con me a Jesolo".</div>
+      <button class="btn" onclick="dlEl('render-post4-cta','Post4_Chiusura_1080x1350.png',1080,1350)">↓ 1080×1350px</button>
     </div>
   </div>
 </div>
@@ -3708,73 +3795,6 @@ dopo piastrella</textarea>
 </div>
 
 <!-- ════ Render nascosti per html2canvas (versione 400×400 per export nitido) ════ -->
-<div class="renders">
-  <div id="render-t3-1-cov" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
-    <div style="width:145px;height:145px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-    <p style="font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:22px;position:relative;z-index:1;">Le Origini</p>
-    <p class="sync-t31cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.6rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Una stagione<br>per caso</p>
-  </div>
-  <div id="render-t3-1-body" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
-    <p class="sync-t31body-text" style="font-size:1rem;color:rgba(0,0,0,.8);line-height:1.7;">Tutto è cominciato per caso, una stagione a Tarquinia. Dovevo stare al bar, non al laboratorio. Poi un giorno mi hanno chiesto di tagliare la frutta, pesare gli ingredienti. Guardavo quelle preparazioni trasformarsi, e mi incuriosivo sempre di più.</p>
-    <div style="position:absolute;top:16px;right:20px;font-size:.6rem;letter-spacing:.1em;color:rgba(0,0,0,.4);">2/3</div>
-  </div>
-
-  <div id="render-t3-2-cov" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
-    <div style="width:145px;height:145px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-    <p style="font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:22px;position:relative;z-index:1;">Le Origini</p>
-    <p class="sync-t32cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.6rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">La prima<br>nocciola</p>
-  </div>
-  <div id="render-t3-2-body" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
-    <p class="sync-t32body-text" style="font-size:1rem;color:rgba(0,0,0,.8);line-height:1.7;">Il giorno del compleanno della figlia del mio capo, mi hanno lasciato sola davanti alla macchina del gelato. Non l'avevo mai usata. Dieci minuti dopo è uscita la mia prima nocciola, fatta da sola. È stato amore a prima vista.</p>
-    <div style="position:absolute;top:16px;right:20px;font-size:.6rem;letter-spacing:.1em;color:rgba(0,0,0,.4);">2/3</div>
-  </div>
-
-  <div id="render-t2-1-cov" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
-    <div style="width:145px;height:145px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-    <p style="font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:22px;position:relative;z-index:1;">Il Percorso</p>
-    <p class="sync-t21cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.6rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Imparare<br>davvero</p>
-  </div>
-  <div id="render-t2-1-body" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
-    <p class="sync-t21body-text" style="font-size:1rem;color:rgba(0,0,0,.8);line-height:1.7;">Non l'ho fatto per i soldi. Ho fatto due lavori per mettermi via i risparmi e sono partita per Bologna, alla Carpigiani: un mese, corso base, intermedio e avanzato. Volevo capire davvero il gelato, non solo farlo.</p>
-    <div style="position:absolute;top:16px;right:20px;font-size:.6rem;letter-spacing:.1em;color:rgba(0,0,0,.4);">2/3</div>
-  </div>
-
-  <div id="render-t2-2-cov" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
-    <div style="width:145px;height:145px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-    <p style="font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:22px;position:relative;z-index:1;">Il Percorso</p>
-    <p class="sync-t22cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.6rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Londra,<br>Germania</p>
-  </div>
-  <div id="render-t2-2-body" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
-    <p class="sync-t22body-text" style="font-size:.92rem;color:rgba(0,0,0,.8);line-height:1.65;">Da lì la curiosità mi ha portato lontano. A Londra, in una gelateria artigianale italiana, mi sono occupata anche dell'asporto per ristoranti ed eventi. In Germania, una gelateria nuova con 32 gusti: una vera prova di velocità e costanza.</p>
-    <div style="position:absolute;top:16px;right:20px;font-size:.6rem;letter-spacing:.1em;color:rgba(0,0,0,.4);">2/3</div>
-  </div>
-
-  <div id="render-t1-1-cov" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
-    <div style="width:145px;height:145px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-    <p style="font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:22px;position:relative;z-index:1;">Il Sogno Che Si Realizza</p>
-    <p class="sync-t11cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.5rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Un sogno<br>accantonato</p>
-  </div>
-  <div id="render-t1-1-body" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
-    <p class="sync-t11body-text" style="font-size:.9rem;color:rgba(0,0,0,.8);line-height:1.6;">Per quattro anni ho lavorato con chi costruisce le gelaterie da zero. Ho imparato dove posizionare ogni macchina, quali materiali scegliere. Poi è arrivato un periodo lontano da tutto questo. Ma a casa continuavo a fare gelato, lo portavo a cena per sentire un parere.</p>
-    <div style="position:absolute;top:16px;right:20px;font-size:.6rem;letter-spacing:.1em;color:rgba(0,0,0,.4);">2/3</div>
-  </div>
-
-  <div id="render-t1-2-cov" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center;position:relative;overflow:hidden;">
-    <div style="width:145px;height:145px;overflow:hidden;margin:0 auto 32px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-    <p style="font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:22px;position:relative;z-index:1;">Il Sogno Che Si Realizza</p>
-    <p class="sync-t12cov-title" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.5rem;color:var(--crema);line-height:1.2;position:relative;z-index:1;">Piastrella<br>dopo piastrella</p>
-  </div>
-  <div id="render-t1-2-body" style="width:400px;height:500px;background:var(--crema);border:3px solid var(--oro);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
-    <p class="sync-t12body-text" style="font-size:1rem;color:rgba(0,0,0,.8);line-height:1.7;">Oggi quella curiosità è diventata un negozio piccolo, ma giusto per me. Lo stiamo costruendo piastrella dopo piastrella, qui a Jesolo Paese. Ci siamo quasi.</p>
-    <div style="position:absolute;top:16px;right:20px;font-size:.6rem;letter-spacing:.1em;color:rgba(0,0,0,.4);">2/3</div>
-  </div>
-  <div id="render-t1-2-quote" style="width:400px;height:500px;background:var(--blu);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;text-align:center;position:relative;overflow:hidden;">
-    <p class="sync-t12quote-text" style="font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.4rem;color:var(--crema);line-height:1.5;margin-bottom:20px;position:relative;z-index:1;">"Il gelato non è solo condivisione, è un'emozione che si dà agli altri. Per me, il gelato è vita."</p>
-    <div style="width:36px;height:1px;background:var(--oro);margin:16px auto;opacity:.5;position:relative;z-index:1;"></div>
-    <p style="font-size:.72rem;color:var(--oro);letter-spacing:.12em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
-    <div style="width:42px;height:42px;margin-top:14px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
-  </div>
-</div>
 </div>
 
 <footer>
@@ -3812,10 +3832,10 @@ function dlBrandLogo() {
   var image = new Image();
   image.onload = function(){
     var c = document.createElement('canvas');
-    c.width = 1200; c.height = 1200;
-    c.getContext('2d').drawImage(image, 0, 0, 1200, 1200);
+    c.width = image.naturalWidth; c.height = image.naturalHeight;
+    c.getContext('2d').drawImage(image, 0, 0, image.naturalWidth, image.naturalHeight);
     var a = document.createElement('a');
-    a.download = 'Logo_La_Bottega_del_Gelato_1200.png';
+    a.download = 'Logo_La_Bottega_del_Gelato_' + image.naturalWidth + '.png';
     a.href = c.toDataURL('image/png');
     a.click();
     btn.textContent = '✓ Scaricato';
@@ -3858,7 +3878,12 @@ async function dlEl(renderId, filename, targetW, targetH) {
     const fc = document.createElement('canvas');
     fc.width = targetW; fc.height = targetH;
     const ctx = fc.getContext('2d');
-    ctx.drawImage(canvas, 0, 0, targetW, targetH);
+    // crop centrato 1:1 dal canvas catturato (già alla risoluzione target grazie a "scale"),
+    // invece di stirarlo: evita sia la sfocatura sia la distorsione quando le proporzioni
+    // del render sorgente non coincidono esattamente con quelle del formato di destinazione
+    const sx = Math.max(0, (canvas.width - targetW) / 2);
+    const sy = Math.max(0, (canvas.height - targetH) / 2);
+    ctx.drawImage(canvas, sx, sy, targetW, targetH, 0, 0, targetW, targetH);
     const a = document.createElement('a');
     a.download = filename; a.href = fc.toDataURL('image/png'); a.click();
     btn.textContent = '✓ Scaricato';
