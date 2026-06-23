@@ -292,8 +292,35 @@ footer p{font-size:.62rem;color:rgba(255,255,255,.2);letter-spacing:.1em;}
 #tab-caroselli .platform-badge{font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;border-radius:12px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.65);}
 #tab-caroselli .day-card .post-caption{font-size:.86rem;color:rgba(255,255,255,.75);line-height:1.75;}
 #tab-caroselli .stories-tip{margin-top:12px;padding:11px 16px;background:rgba(201,169,110,.06);border-left:2px solid var(--oro);border-radius:6px;font-size:.76rem;color:rgba(255,255,255,.55);line-height:1.6;}
+#tab-caroselli .caption-copy-row{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+#tab-caroselli .caption-copy-row .post-caption{flex:1;min-width:200px;}
+#tab-caroselli .copy-caption-btn{flex-shrink:0;background:rgba(201,169,110,.15);color:var(--oro);border:1px solid var(--oro);border-radius:6px;padding:7px 14px;font-size:.68rem;font-family:system-ui,-apple-system,sans-serif;cursor:pointer;transition:background .2s;white-space:nowrap;}
+#tab-caroselli .copy-caption-btn:hover{background:var(--oro);color:var(--navy-dark);}
+#tab-caroselli .copy-caption-btn.copied{background:rgba(126,200,96,.2);border-color:#7EC860;color:#7EC860;}
 @media(max-width:768px){ #tab-caroselli .day-card{margin:20px 20px 0;padding:20px 18px;} }
-@media(max-width:480px){ #tab-caroselli .day-card{margin:16px 14px 0;padding:18px 16px;} #tab-caroselli .day-top{flex-direction:column;align-items:flex-start;gap:10px;} }
+@media(max-width:480px){
+  #tab-caroselli .day-card{margin:16px 14px 0;padding:18px 16px;}
+  #tab-caroselli .day-top{flex-direction:column;align-items:flex-start;gap:10px;}
+  #tab-caroselli .copy-caption-btn{width:100%;text-align:center;}
+}
+
+/* ── TAB CAROSELLI: blocco "Come si pubblica" ── */
+#tab-caroselli .howto-section{margin:8px 48px 32px;}
+#tab-caroselli .howto-title{font-style:italic;font-size:1.05rem;color:var(--crema);margin-bottom:16px;}
+#tab-caroselli .step-card{background:rgba(53,97,126,.32);border:1px solid var(--sep);border-radius:8px;padding:22px 24px;margin-bottom:14px;}
+#tab-caroselli .step-header{display:flex;align-items:center;gap:13px;margin-bottom:14px;}
+#tab-caroselli .step-num{width:32px;height:32px;background:rgba(201,169,110,.15);border:1px solid var(--oro);color:var(--oro);border-radius:50%;font-style:italic;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+#tab-caroselli .step-title{font-style:italic;font-size:.92rem;color:var(--crema);}
+#tab-caroselli .step-subtitle{font-size:.68rem;color:rgba(255,255,255,.35);margin-top:2px;}
+#tab-caroselli .instruction-item{display:flex;gap:9px;margin-bottom:9px;align-items:flex-start;}
+#tab-caroselli .instruction-item:last-child{margin-bottom:0;}
+#tab-caroselli .instruction-item .dot{width:18px;height:18px;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.35);color:var(--oro);border-radius:50%;font-size:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+#tab-caroselli .instruction-item .text{font-size:.8rem;line-height:1.65;color:rgba(255,255,255,.7);}
+#tab-caroselli .instruction-item .text strong{color:var(--crema);}
+#tab-caroselli .howto-tip{margin-top:4px;padding:13px 16px;background:rgba(201,169,110,.06);border-left:2px solid var(--oro);border-radius:0 6px 6px 0;font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.65;}
+#tab-caroselli .howto-tip strong{color:var(--crema);}
+@media(max-width:768px){ #tab-caroselli .howto-section{margin:8px 20px 28px;} }
+@media(max-width:480px){ #tab-caroselli .howto-section{margin:8px 14px 24px;} #tab-caroselli .step-card{padding:16px 16px;} }
 @media(max-width:768px){
   #tab-caroselli .fase-block,#tab-caroselli .tpl-section{padding-left:20px;padding-right:20px;}
   #tab-caroselli .sq-preview{width:100%;max-width:170px;height:auto;aspect-ratio:4/5;}
@@ -3343,6 +3370,67 @@ di Bronte</textarea>
   <strong>Come si usa:</strong> ogni post qui sotto mostra prima giorno, ora e testo pronto, poi subito le tre slide da scaricare ("Copertina" + "Contenuto" + "Chiusura"), già pronte una dopo l'altra. Il Post 6 ha una slide finale dedicata invece della chiusura standard.
 </div>
 
+<div class="howto-section">
+  <div class="howto-title">Come si pubblica un post (da telefono)</div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-title">Scarica le 3 immagini del post</div>
+        <div class="step-subtitle">Dal telefono, su questa stessa pagina</div>
+      </div>
+    </div>
+    <div class="instruction-item"><div class="dot">→</div><div class="text">Apri questo link dal browser del telefono (Chrome o Safari)</div></div>
+    <div class="instruction-item"><div class="dot">→</div><div class="text">Scorri fino al post che vuoi pubblicare oggi</div></div>
+    <div class="instruction-item"><div class="dot">→</div><div class="text">Tocca i 3 bottoni download nell'ordine in cui appaiono: <strong>Copertina</strong>, <strong>Contenuto</strong>, <strong>Chiusura</strong></div></div>
+    <div class="instruction-item"><div class="dot">→</div><div class="text">Le 3 immagini si salvano nella galleria del telefono, nello stesso ordine</div></div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-title">Copia il testo del post</div>
+        <div class="step-subtitle">Quello che leggi nella card del post qui sotto</div>
+      </div>
+    </div>
+    <div class="instruction-item"><div class="dot">→</div><div class="text">Sotto il testo di ogni post trovi il bottone <strong>"Copia testo"</strong></div></div>
+    <div class="instruction-item"><div class="dot">→</div><div class="text">Toccalo: il testo viene copiato automaticamente, pronto da incollare</div></div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-title">Apri Instagram e crea un nuovo post</div>
+        <div class="step-subtitle">Sullo stesso telefono dove hai scaricato le immagini</div>
+      </div>
+    </div>
+    <div class="instruction-item"><div class="dot">→</div><div class="text">Apri l'app Instagram e tocca <strong>"+"</strong> in alto o in basso</div></div>
+    <div class="instruction-item"><div class="dot">→</div><div class="text">Scegli <strong>"Post"</strong></div></div>
+    <div class="instruction-item"><div class="dot">→</div><div class="text">Seleziona dalla galleria le 3 immagini appena scaricate, <strong>nello stesso ordine</strong>: Copertina, Contenuto, Chiusura</div></div>
+    <div class="instruction-item"><div class="dot">→</div><div class="text">Tocca <strong>"Avanti"</strong> due volte (puoi saltare i filtri)</div></div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-title">Incolla la didascalia e pubblica</div>
+        <div class="step-subtitle">Ultimo passaggio</div>
+      </div>
+    </div>
+    <div class="instruction-item"><div class="dot">→</div><div class="text">Tocca il campo <strong>"Scrivi una didascalia..."</strong> e incolla il testo copiato al passaggio 2</div></div>
+    <div class="instruction-item"><div class="dot">→</div><div class="text">Attiva il tasto <strong>"Condividi anche su Facebook"</strong>, così il post esce su entrambi i social insieme</div></div>
+    <div class="instruction-item"><div class="dot">→</div><div class="text">Tocca <strong>"Condividi"</strong> — il post è pubblicato</div></div>
+  </div>
+
+  <div class="howto-tip">
+    <strong>Da ricordare:</strong> l'ordine in cui scegli le foto nel carosello è l'ordine in cui le vedranno scorrere chi guarda il post — segui sempre Copertina → Contenuto → Chiusura. Il Post 6 fa eccezione: al posto della Chiusura standard ha una slide finale dedicata, scaricala comunque per terza.
+  </div>
+</div>
+
 <div class="day-card" id="card-post-1" data-post="post-1">
   <div class="day-top">
     <span class="day-when">Lunedì 22 giugno · ore 19:00</span>
@@ -3350,7 +3438,10 @@ di Bronte</textarea>
   </div>
   <div class="post-title">Post 1 - Una stagione per caso</div>
   <div class="platform-badges"><span class="platform-badge">Instagram</span><span class="platform-badge">Facebook</span></div>
-  <div class="post-caption">"Tutto è cominciato per caso, una stagione a Tarquinia. Dovevo stare al bar, non al laboratorio. Poi un giorno mi hanno chiesto di tagliare la frutta, pesare gli ingredienti. Guardavo quelle preparazioni trasformarsi, e mi incuriosivo sempre di più."</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Tutto è cominciato per caso, una stagione a Tarquinia. Dovevo stare al bar, non al laboratorio. Poi un giorno mi hanno chiesto di tagliare la frutta, pesare gli ingredienti. Guardavo quelle preparazioni trasformarsi, e mi incuriosivo sempre di più."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
   <div class="stories-tip">Stories libere: nessun obbligo. Se vuoi, racconta a voce un dettaglio in più di questo episodio.</div>
 </div>
 
@@ -3426,7 +3517,10 @@ per caso</textarea>
   </div>
   <div class="post-title">Post 2 - La prima nocciola</div>
   <div class="platform-badges"><span class="platform-badge">Instagram</span><span class="platform-badge">Facebook</span></div>
-  <div class="post-caption">"Il giorno del compleanno della figlia del mio capo, mi hanno lasciato sola davanti alla macchina del gelato. Non l'avevo mai usata. Dieci minuti dopo è uscita la mia prima nocciola, fatta da sola. È stato amore a prima vista."</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Il giorno del compleanno della figlia del mio capo, mi hanno lasciato sola davanti alla macchina del gelato. Non l'avevo mai usata. Dieci minuti dopo è uscita la mia prima nocciola, fatta da sola. È stato amore a prima vista."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
 </div>
 
 <div class="tpl-section">
@@ -3501,7 +3595,10 @@ nocciola</textarea>
   </div>
   <div class="post-title">Post 3 - La scelta di studiare davvero</div>
   <div class="platform-badges"><span class="platform-badge">Instagram</span><span class="platform-badge">Facebook</span></div>
-  <div class="post-caption">"Non l'ho fatto per i soldi. Ho fatto due lavori per mettermi via i risparmi e sono partita per Bologna, alla Carpigiani: un mese, corso base, intermedio e avanzato. Volevo capire davvero il gelato, non solo farlo."</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Non l'ho fatto per i soldi. Ho fatto due lavori per mettermi via i risparmi e sono partita per Bologna, alla Carpigiani: un mese, corso base, intermedio e avanzato. Volevo capire davvero il gelato, non solo farlo."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
 </div>
 
 <div class="tpl-section">
@@ -3576,7 +3673,10 @@ davvero</textarea>
   </div>
   <div class="post-title">Post 4 - Londra e la Germania</div>
   <div class="platform-badges"><span class="platform-badge">Instagram</span><span class="platform-badge">Facebook</span></div>
-  <div class="post-caption">"Da lì la curiosità mi ha portato lontano. A Londra, in una gelateria artigianale italiana, mi sono occupata anche dell'asporto per ristoranti ed eventi. In Germania, una gelateria nuova con 32 gusti: una vera prova di velocità e costanza."</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Da lì la curiosità mi ha portato lontano. A Londra, in una gelateria artigianale italiana, mi sono occupata anche dell'asporto per ristoranti ed eventi. In Germania, una gelateria nuova con 32 gusti: una vera prova di velocità e costanza."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
   <div class="stories-tip">Stories libere: se hai scatti dei lavori in corso al locale (vetrina, insegna, ingresso), anche solo dal telefono, è il momento giusto per mostrarli.</div>
 </div>
 
@@ -3652,7 +3752,10 @@ Germania</textarea>
   </div>
   <div class="post-title">Post 5 - Il sogno accantonato</div>
   <div class="platform-badges"><span class="platform-badge">Instagram</span><span class="platform-badge">Facebook</span></div>
-  <div class="post-caption">"Per quattro anni ho lavorato con chi costruisce le gelaterie da zero. Ho imparato dove posizionare ogni macchina, quali materiali scegliere. Poi è arrivato un periodo lontano da tutto questo. Ma a casa continuavo a fare gelato, lo portavo a cena per sentire un parere."</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Per quattro anni ho lavorato con chi costruisce le gelaterie da zero. Ho imparato dove posizionare ogni macchina, quali materiali scegliere. Poi è arrivato un periodo lontano da tutto questo. Ma a casa continuavo a fare gelato, lo portavo a cena per sentire un parere."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
   <div class="stories-tip">Stories libere: dietro le quinte reale dei lavori quasi finiti, è l'ultimo giorno prima dell'apertura.</div>
 </div>
 
@@ -3728,7 +3831,10 @@ accantonato</textarea>
   </div>
   <div class="post-title">Post 6 - Piastrella dopo piastrella</div>
   <div class="platform-badges"><span class="platform-badge">Instagram</span><span class="platform-badge">Facebook</span><span class="platform-badge">Google Business Profile</span></div>
-  <div class="post-caption">"Quella curiosità di tanti anni fa oggi è diventata un negozio piccolo, ma giusto per me. L'abbiamo costruito piastrella dopo piastrella, qui a Jesolo Paese. E da oggi è aperto." Slide finale dedicata con la citazione: "Il gelato non è solo condivisione, è un'emozione che si dà agli altri. Per me, il gelato è vita." + indirizzo e invito a passare oggi stesso. Pubblicalo presto al mattino: è l'annuncio che oggi si apre.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption"><span class="caption-text">"Quella curiosità di tanti anni fa oggi è diventata un negozio piccolo, ma giusto per me. L'abbiamo costruito piastrella dopo piastrella, qui a Jesolo Paese. E da oggi è aperto."</span> Slide finale dedicata con la citazione: "Il gelato non è solo condivisione, è un'emozione che si dà agli altri. Per me, il gelato è vita." + indirizzo e invito a passare oggi stesso. Pubblicalo presto al mattino: è l'annuncio che oggi si apre.</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
   <div class="post-meta"><strong>In più oggi:</strong> pubblica anche il post "Vieni a trovarci" sul profilo Google Business (tab Social → "Google Business Profile - Post"), così chi cerca "gelateria vicino a me" su Google ti trova dal primo giorno.</div>
   <div class="stories-tip">Stories libere: oggi sì, in diretta dalla giornata - primi clienti, vetrina, insegna accesa.</div>
 </div>
@@ -3842,6 +3948,21 @@ function dlBrandLogo() {
     setTimeout(function(){ btn.textContent = orig; }, 2200);
   };
   image.src = srcImg.src;
+}
+
+function copyCaption(btn) {
+  var row = btn.closest('.caption-copy-row');
+  var captionEl = row.querySelector('.caption-text') || row.querySelector('.post-caption');
+  var text = captionEl.textContent.trim();
+  navigator.clipboard.writeText(text).then(function(){
+    var orig = btn.textContent;
+    btn.textContent = 'Copiato ✓';
+    btn.classList.add('copied');
+    setTimeout(function(){
+      btn.textContent = orig;
+      btn.classList.remove('copied');
+    }, 2000);
+  });
 }
 
 function switchTab(id) {
