@@ -7,20 +7,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#080B18;--bg2:#101525;--card:rgba(8,10,30,0.65);
-  --warm:#7088C8;--warm-lt:#9AAED8;--gold:#C9A84C;--gold-lt:#DFBC70;
+  --bg:#0A0907;--bg2:#120F0C;--card:rgba(10,9,7,0.65);
+  --warm:#D98A3A;--warm-lt:#F0B873;--gold:#C9A84C;--gold-lt:#DFBC70;
   --ivory:#F5F6FA;--muted:rgba(245,246,250,0.75);
-  --border:rgba(112,136,200,0.25);--sep:rgba(201,168,76,0.18);--radius:8px;
-  --p1:#7088C8;--p2:#C9A84C;--p3:#9AAED8;
+  --border:rgba(217,138,58,0.25);--sep:rgba(201,168,76,0.18);--radius:8px;
+  --p1:#D98A3A;--p2:#C9A84C;--p3:#F0B873;
 }
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;overflow-x:hidden;}
 body{background:var(--bg);color:var(--ivory);font-family:'Open Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
 ::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--warm);border-radius:2px;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;padding:0 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,8,20,0.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(112,136,200,0.18);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;padding:0 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,9,7,0.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(217,138,58,0.18);}
 .nav-bloomind-img{height:180px;width:auto;display:block;}.nav-webloom-img{height:40px;width:auto;opacity:1;display:block;}
 @media(max-width:768px){.nav-logo{max-width:50%;overflow:hidden;}.nav-logo img{height:110px !important;width:100% !important;object-fit:contain !important;object-position:center bottom !important;}.nav-wbl{flex-shrink:0;}.nav-wbl img{height:26px !important;width:auto !important;}}
 #hero{min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;position:relative;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 40%,rgba(112,136,200,0.09) 0%,transparent 65%);}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 40%,rgba(217,138,58,0.09) 0%,transparent 65%);}
 .hero-eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--warm);margin-bottom:20px;opacity:0;animation:fadeUp 0.8s ease forwards 0.3s;}
 .hero-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(2.2rem,6vw,5rem);font-weight:600;line-height:1.1;color:var(--ivory);opacity:0;animation:fadeUp 0.8s ease forwards 0.5s;}
 .hero-title span{background:linear-gradient(135deg,var(--gold-lt),var(--warm),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
@@ -62,9 +62,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .post-card{padding:24px 22px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);position:relative;}
 .post-day{font-size:0.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
 .post-pillar{display:inline-block;font-size:0.58rem;letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;border-radius:100px;margin-bottom:10px;}
-.post-card.p1 .post-pillar{background:rgba(112,136,200,0.15);color:var(--p1);border:1px solid rgba(112,136,200,0.3);}
+.post-card.p1 .post-pillar{background:rgba(217,138,58,0.15);color:var(--p1);border:1px solid rgba(217,138,58,0.3);}
 .post-card.p2 .post-pillar{background:rgba(201,168,76,0.12);color:var(--p2);border:1px solid rgba(201,168,76,0.25);}
-.post-card.p3 .post-pillar{background:rgba(154,174,216,0.12);color:var(--p3);border:1px solid rgba(154,174,216,0.25);}
+.post-card.p3 .post-pillar{background:rgba(240,184,115,0.12);color:var(--p3);border:1px solid rgba(240,184,115,0.25);}
+.post-card.backstory{border-style:dashed;}
+.post-card.backstory .post-pillar{background:rgba(245,246,250,0.08);color:var(--muted);border:1px solid rgba(245,246,250,0.18);}
 .post-hook{font-family:'Libre Baskerville',serif;font-size:0.95rem;color:var(--ivory);font-style:italic;line-height:1.5;margin-bottom:10px;}
 .post-type{font-size:0.7rem;color:var(--muted);margin-bottom:6px;}
 .post-obj{font-size:0.72rem;color:rgba(245,246,250,0.5);padding-top:8px;border-top:1px solid var(--border);margin-top:8px;line-height:1.6;}
@@ -107,26 +109,26 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
   <div class="reveal">
     <p class="section-label">Strategia</p>
     <h2 class="section-title">I 3 Pillar tematici</h2>
-    <p class="section-desc">Tre aree di contenuto che riflettono le competenze uniche di Manuela: tecnica Instagram, libertà materna e metodo nel network. Ogni settimana ruota attorno a questi tre pilastri in meno di 2 ore di lavoro settimanali.</p>
+    <p class="section-desc">Tre aree di contenuto pensate per parlare a networker già attive e capaci: comunicazione persuasiva, cura maniacale del team e metodo nel network. La storia personale di Manuela resta sullo sfondo, con un solo contenuto al mese. Ogni settimana ruota attorno ai tre pilastri principali in meno di 2 ore di lavoro settimanali.</p>
   </div>
   <div class="pillar-grid">
     <div class="pillar-card p1 reveal d1">
       <div class="pillar-num">Pillar 01</div>
-      <div class="pillar-name">Strategia Instagram</div>
-      <p class="pillar-desc">Come si usa Instagram in modo tecnico ed etico. Algoritmo, contenuti, community building, trasformare la vendita in condivisione di valore. La competenza che nessun'altra leader BlooMind può insegnare come lei.</p>
-      <div class="pillar-tags"><span class="ptag">Tecnica</span><span class="ptag">Algoritmo</span><span class="ptag">Crescita organica</span></div>
+      <div class="pillar-name">Comunicazione Persuasiva & Storytelling</div>
+      <p class="pillar-desc">Come si comunica in modo persuasivo sui social: hook, struttura delle caption, storytelling coerente, posizionamento di brand. La competenza che nessun'altra leader BlooMind può insegnare come lei.</p>
+      <div class="pillar-tags"><span class="ptag">Comunicazione</span><span class="ptag">Storytelling</span><span class="ptag">Posizionamento</span></div>
     </div>
     <div class="pillar-card p2 reveal d2">
       <div class="pillar-num">Pillar 02</div>
-      <div class="pillar-name">Libertà Materna</div>
-      <p class="pillar-desc">La storia personale di Manuela: la figlia al nido a 9 mesi, le dimissioni, la libertà conquistata. Il messaggio alle mamme dipendenti che vogliono uscire dalla gabbia del cartellino. Vulnerabilità strategica come differenziante.</p>
-      <div class="pillar-tags"><span class="ptag">Storia</span><span class="ptag">Emozione</span><span class="ptag">Trasformazione</span></div>
+      <div class="pillar-name">Cura del Team</div>
+      <p class="pillar-desc">Cosa significa essere seguite davvero: presenza quotidiana, dritte puntuali, nessuna sparizione dopo l'iscrizione. Il messaggio a chi è già nel settore ma non ha mai avuto una guida così presente.</p>
+      <div class="pillar-tags"><span class="ptag">Leadership</span><span class="ptag">Presenza</span><span class="ptag">Team</span></div>
     </div>
     <div class="pillar-card p3 reveal d3">
       <div class="pillar-num">Pillar 03</div>
       <div class="pillar-name">Network come Metodo</div>
-      <p class="pillar-desc">Il network non è un atto di fede: è strategia. Per mamme networker che si sentono sole, abbandonate dall'upline, senza metodo. Smontare la fuffa del settore e offrire un percorso reale e replicabile.</p>
-      <div class="pillar-tags"><span class="ptag">Metodo</span><span class="ptag">Recruiting</span><span class="ptag">Team</span></div>
+      <p class="pillar-desc">Il network non è un atto di fede: è strategia. Per networker già esperte, stanche di un sistema poco strategico o di un'upline assente. Smontare la fuffa del settore e offrire un percorso reale e replicabile.</p>
+      <div class="pillar-tags"><span class="ptag">Metodo</span><span class="ptag">Recruiting</span><span class="ptag">Sistema</span></div>
     </div>
   </div>
 
@@ -139,22 +141,22 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
       <div class="struttura-col">
         <div class="struttura-day">Lunedì</div>
         <div class="struttura-type">Post feed</div>
-        <div class="struttura-note">Pillar 01 - Strategia Instagram. Hook tecnico, valore concreto, tip replicabile.</div>
+        <div class="struttura-note">Pillar 01 - Comunicazione Persuasiva. Hook tecnico, dritta concreta, esempio replicabile.</div>
       </div>
       <div class="struttura-col">
         <div class="struttura-day">Mercoledì</div>
         <div class="struttura-type">Post feed</div>
-        <div class="struttura-note">Pillar 02 - Libertà Materna. Storia personale, vulnerabilità, emozione autentica.</div>
+        <div class="struttura-note">Pillar 02 - Cura del Team. Presenza reale, dietro le quinte del supporto quotidiano. Una volta al mese, sostituito da un contenuto Backstory.</div>
       </div>
       <div class="struttura-col">
         <div class="struttura-day">Venerdì</div>
         <div class="struttura-type">Post feed</div>
-        <div class="struttura-note">Pillar 03 - Network come Metodo. Recruiting, metodo, differenziante dalla fuffa.</div>
+        <div class="struttura-note">Pillar 03 - Network come Metodo. Recruiting qualificato, metodo, differenziante dalla fuffa.</div>
       </div>
       <div class="struttura-col">
         <div class="struttura-day">Daily</div>
         <div class="struttura-type">Stories</div>
-        <div class="struttura-note">Dietro le quinte, aggiornamenti team, tip veloci, sondaggi, momento personale.</div>
+        <div class="struttura-note">Dietro le quinte del team, tip veloci di comunicazione, sondaggi, aggiornamenti.</div>
       </div>
     </div>
   </div>
@@ -170,28 +172,28 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
   <div class="posts-grid">
     <div class="post-card p1 reveal d1">
       <div class="post-day">Lunedì 16 Giugno</div>
-      <div class="post-pillar">Pillar 01 - Strategia Instagram</div>
-      <div class="post-hook">"3 errori che vedo ogni giorno nei profili Instagram delle networker. E come evitarli."</div>
+      <div class="post-pillar">Pillar 01 - Comunicazione Persuasiva</div>
+      <div class="post-hook">"3 errori di comunicazione che vedo ogni giorno anche nei profili di networker con già risultati alle spalle. E come evitarli."</div>
       <div class="post-type">Formato: Reel parlato o carosello</div>
-      <div class="post-obj"><strong>Obiettivo:</strong> posizionarsi come esperta Instagram, intercettare le networker frustrate dai propri risultati social.</div>
+      <div class="post-obj"><strong>Obiettivo:</strong> posizionarsi come esperta di comunicazione persuasiva, intercettare networker già attive ma frustrate dai propri risultati social.</div>
     </div>
     <div class="post-card p2 reveal d2">
       <div class="post-day">Mercoledì 18 Giugno</div>
-      <div class="post-pillar">Pillar 02 - Libertà Materna</div>
-      <div class="post-hook">"La mattina che ho lasciato mia figlia al nido a 9 mesi. Ve la racconto perché è il motivo per cui faccio tutto quello che faccio."</div>
+      <div class="post-pillar">Pillar 02 - Cura del Team</div>
+      <div class="post-hook">"Cosa significa davvero seguire il proprio team. Te lo mostro con un esempio reale di questa settimana."</div>
       <div class="post-type">Formato: Reel parlato in prima persona</div>
-      <div class="post-obj"><strong>Obiettivo:</strong> creare connessione emotiva immediata, far sentire riconosciute le mamme dipendenti.</div>
+      <div class="post-obj"><strong>Obiettivo:</strong> mostrare concretamente la cura maniacale del team, far emergere il contrasto con upline assenti.</div>
     </div>
     <div class="post-card p3 reveal d3">
       <div class="post-day">Venerdì 20 Giugno</div>
       <div class="post-pillar">Pillar 03 - Network come Metodo</div>
-      <div class="post-hook">"Il network marketing non è un atto di fede. È strategia. Se stai fallendo, non è colpa tua."</div>
+      <div class="post-hook">"Il network marketing non è un atto di fede. È strategia. Se stai fallendo, non è colpa tua: ti manca un metodo e una guida presente."</div>
       <div class="post-type">Formato: Reel - dichiarazione di posizionamento</div>
-      <div class="post-obj"><strong>Obiettivo:</strong> intercettare le networker deluse, differenziarsi dalla fuffa del settore, primo contatto con il messaggio centrale.</div>
+      <div class="post-obj"><strong>Obiettivo:</strong> intercettare le networker già esperte ma deluse dal proprio sistema, differenziarsi dalla fuffa del settore, primo contatto con il messaggio centrale.</div>
     </div>
   </div>
   <div class="stories-note reveal">
-    <strong>Stories settimanali:</strong> Presentati alla community - chi sei, cosa hai imparato in 8 anni nel network, qual è la tua super-competenza. Sondaggio: "Usi Instagram per il tuo business?" - colleziona feedback. CTA finale: "Se vuoi il mio metodo Instagram, scrivi METODO in DM."
+    <strong>Stories settimanali:</strong> Presentati alla community - chi sei, cosa hai imparato in 8 anni nel network, qual è la tua super-competenza. Sondaggio: "Quanto sei seguita davvero dalla tua upline?" - colleziona feedback. CTA finale: "Se vuoi il mio metodo di comunicazione, scrivi METODO in DM."
   </div>
 </div>
 
@@ -199,34 +201,34 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
 <div class="week-section">
   <div class="week-header reveal">
     <div class="week-badge">Settimana 02 &nbsp;·&nbsp; 23-27 Giugno 2026</div>
-    <div class="week-title">La storia che cambia tutto</div>
-    <div class="week-theme">Approfondimento della storia personale e del metodo. Si costruisce la fiducia e si mostra il percorso reale.</div>
+    <div class="week-title">Metodo e presenza, con un tassello di storia</div>
+    <div class="week-theme">Si approfondiscono comunicazione e cura del team, con un solo accenno alla storia personale come credibilità di sfondo. Si costruisce la fiducia mostrando il metodo in azione.</div>
   </div>
   <div class="posts-grid">
     <div class="post-card p1 reveal d1">
       <div class="post-day">Lunedì 23 Giugno</div>
-      <div class="post-pillar">Pillar 01 - Strategia Instagram</div>
-      <div class="post-hook">"Cos'è davvero l'algoritmo di Instagram - spiegato senza fuffa in 60 secondi."</div>
+      <div class="post-pillar">Pillar 01 - Comunicazione Persuasiva</div>
+      <div class="post-hook">"Cos'è davvero uno storytelling che converte - spiegato senza fuffa in 60 secondi."</div>
       <div class="post-type">Formato: Reel tecnico - valore immediato</div>
-      <div class="post-obj"><strong>Obiettivo:</strong> far crescere la reputazione come strategist, aumentare salvataggi e condivisioni.</div>
+      <div class="post-obj"><strong>Obiettivo:</strong> far crescere la reputazione come strategist della comunicazione, aumentare salvataggi e condivisioni.</div>
     </div>
-    <div class="post-card p2 reveal d2">
+    <div class="post-card backstory reveal d2">
       <div class="post-day">Mercoledì 25 Giugno</div>
-      <div class="post-pillar">Pillar 02 - Libertà Materna</div>
-      <div class="post-hook">"NON CE LA FARAI MAI. Come ho smesso di crederci."</div>
+      <div class="post-pillar">Backstory (mensile)</div>
+      <div class="post-hook">"Da impiegata 12 ore al giorno a Strategist BlooMind. La storia breve di come sono arrivata fin qui."</div>
       <div class="post-type">Formato: Reel parlato (preferito) oppure Carosello se non video</div>
-      <div class="post-obj"><strong>Obiettivo:</strong> replicare il formato del post ad alto impatto già sperimentato. Smontare le credenze limitanti di chi si sente "troppo comune".</div>
+      <div class="post-obj"><strong>Obiettivo:</strong> dare credibilità di background senza farne il messaggio centrale - unico contenuto di backstory del mese.</div>
     </div>
     <div class="post-card p3 reveal d3">
       <div class="post-day">Venerdì 27 Giugno</div>
       <div class="post-pillar">Pillar 03 - Network come Metodo</div>
-      <div class="post-hook">"5 cose che una mamma networker merita e spesso non riceve dalla sua upline."</div>
+      <div class="post-hook">"5 cose che una networker con esperienza merita e spesso non riceve dalla sua upline."</div>
       <div class="post-type">Formato: Carosello - lista + CTA</div>
-      <div class="post-obj"><strong>Obiettivo:</strong> intercettare le networker abbandonate, posizionarsi come alternativa reale, primi DM in entrata.</div>
+      <div class="post-obj"><strong>Obiettivo:</strong> intercettare networker già capaci ma trascurate, posizionarsi come alternativa reale, primi DM in entrata.</div>
     </div>
   </div>
   <div class="stories-note reveal">
-    <strong>Stories settimanali:</strong> "Dietro le quinte" - mostrare come si lavora con il team, una challenge in corso, un risultato di una collaboratrice. Tip veloce su Instagram. Chiudi con: "Se vuoi sapere come funziona davvero il mio supporto, scrivi ACCIAIO in DM."
+    <strong>Stories settimanali:</strong> "Dietro le quinte" - mostrare come si lavora con il team, una challenge in corso, un risultato di una collaboratrice. Tip veloce di comunicazione persuasiva. Chiudi con: "Se vuoi sapere come funziona davvero il mio supporto, scrivi TEAM in DM."
   </div>
 </div>
 
@@ -235,33 +237,33 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
   <div class="week-header reveal">
     <div class="week-badge">Settimana 03 &nbsp;·&nbsp; 30 Giugno - 4 Luglio 2026</div>
     <div class="week-title">Il metodo in azione</div>
-    <div class="week-theme">Mostrare concretamente come funziona il supporto di Manuela, i risultati del team, il processo che porta alla libertà.</div>
+    <div class="week-theme">Mostrare concretamente come funziona il supporto di Manuela, i risultati del team, il processo che porta a risultati concreti.</div>
   </div>
   <div class="posts-grid">
     <div class="post-card p1 reveal d1">
       <div class="post-day">Lunedì 30 Giugno</div>
-      <div class="post-pillar">Pillar 01 - Strategia Instagram</div>
-      <div class="post-hook">"Stai perdendo follower per questo errore sul profilo."</div>
+      <div class="post-pillar">Pillar 01 - Comunicazione Persuasiva</div>
+      <div class="post-hook">"Stai perdendo conversioni per questo errore di comunicazione sul profilo."</div>
       <div class="post-type">Formato: Carosello step-by-step</div>
-      <div class="post-obj"><strong>Obiettivo:</strong> contenuto altamente salvabile e condivisibile, rafforza la reputazione tecnica.</div>
+      <div class="post-obj"><strong>Obiettivo:</strong> contenuto altamente salvabile e condivisibile, rafforza la reputazione come esperta di comunicazione.</div>
     </div>
     <div class="post-card p2 reveal d2">
       <div class="post-day">Mercoledì 2 Luglio</div>
-      <div class="post-pillar">Pillar 02 - Libertà Materna</div>
-      <div class="post-hook">"Il giorno che ho firmato le dimissioni. La paura, la gioia e quella libertà che non avevo mai provato."</div>
-      <div class="post-type">Formato: Reel parlato - storytelling personale</div>
-      <div class="post-obj"><strong>Obiettivo:</strong> rendere concreta la trasformazione possibile, motivare chi è ancora "dentro" la gabbia del lavoro dipendente. <strong>CTA in chiusura:</strong> "Scrivi LIBERTA in DM se vuoi capire come costruire la tua."</div>
+      <div class="post-pillar">Pillar 02 - Cura del Team</div>
+      <div class="post-hook">"Le ragazze del mio team non sono numeri. Ti racconto come funziona davvero il supporto quotidiano."</div>
+      <div class="post-type">Formato: Reel parlato - dietro le quinte del team</div>
+      <div class="post-obj"><strong>Obiettivo:</strong> rendere concreta la differenza di una guida sempre presente. <strong>CTA in chiusura:</strong> "Scrivi TEAM in DM se vuoi capire come funziona il mio supporto."</div>
     </div>
     <div class="post-card p3 reveal d3">
       <div class="post-day">Venerdì 4 Luglio</div>
       <div class="post-pillar">Pillar 03 - Network come Metodo</div>
-      <div class="post-hook">"60.000 euro di fatturato di team non sono fortuna. Ecco il metodo che ci ha portato lì."</div>
+      <div class="post-hook">"Il metodo che ho costruito in 10 anni non è teoria. Ecco i risultati concreti che produce davvero."</div>
       <div class="post-type">Formato: Reel - social proof + metodo</div>
-      <div class="post-obj"><strong>Obiettivo:</strong> costruire credibilità con dati reali, aprire conversazioni sul recruiting.</div>
+      <div class="post-obj"><strong>Obiettivo:</strong> costruire credibilità con dati reali, aprire conversazioni sul recruiting con networker già esperte.</div>
     </div>
   </div>
   <div class="stories-note reveal">
-    <strong>Stories settimanali:</strong> Celebrare un risultato del team (sempre con il "noi"). Sondaggio: "Qual è la tua paura principale nel network?" - raccogliere insight. CTA per chi risponde "non farcela": "Scrivi LIBERTA in DM - ti racconto come l'ho superata io."
+    <strong>Stories settimanali:</strong> Celebrare un risultato del team (sempre con il "noi"). Sondaggio: "Quanto ti senti seguita dalla tua attuale upline?" - raccogliere insight. CTA per chi risponde "poco": "Scrivi TEAM in DM - ti racconto come lavoro io."
   </div>
 </div>
 
@@ -275,28 +277,28 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
   <div class="posts-grid">
     <div class="post-card p1 reveal d1">
       <div class="post-day">Lunedì 7 Luglio</div>
-      <div class="post-pillar">Pillar 01 - Strategia Instagram</div>
-      <div class="post-hook">"I contenuti che ti fanno sembrare brava non convertono."</div>
+      <div class="post-pillar">Pillar 01 - Comunicazione Persuasiva</div>
+      <div class="post-hook">"I contenuti che ti fanno sembrare brava non convertono. Ecco cosa funziona davvero."</div>
       <div class="post-type">Formato: Reel o carosello - contenuto opinionated</div>
-      <div class="post-obj"><strong>Obiettivo:</strong> consolidare l'autorevolezza come strategist, stimolare engagement da chi lavora nel network.</div>
+      <div class="post-obj"><strong>Obiettivo:</strong> consolidare l'autorevolezza come strategist della comunicazione, stimolare engagement da chi lavora già nel network.</div>
     </div>
     <div class="post-card p2 reveal d2">
       <div class="post-day">Mercoledì 9 Luglio</div>
-      <div class="post-pillar">Pillar 02 - Libertà Materna</div>
-      <div class="post-hook">"A tutte le mamme che si alzano la mattina con quel peso al petto. Vi scrivo questa lettera."</div>
+      <div class="post-pillar">Pillar 02 - Cura del Team</div>
+      <div class="post-hook">"A tutte le networker che si sentono sole nel proprio team. Vi scrivo questa lettera."</div>
       <div class="post-type">Formato: Post caption lunga - tono lettera personale</div>
-      <div class="post-obj"><strong>Obiettivo:</strong> massima connessione emotiva, generare commenti e condivisioni private, DM in entrata.</div>
+      <div class="post-obj"><strong>Obiettivo:</strong> massima connessione con chi cerca una guida più presente, generare commenti e condivisioni private, DM in entrata.</div>
     </div>
     <div class="post-card p3 reveal d3">
       <div class="post-day">Venerdì 11 Luglio</div>
       <div class="post-pillar">Pillar 03 - Network come Metodo</div>
-      <div class="post-hook">"Non cerco chiunque. Cerco donne determinate, stanche della fuffa, pronte ad ascoltare e mettere in pratica."</div>
+      <div class="post-hook">"Non cerco chiunque. Cerco networker che sanno già fare la differenza e sono stanche di farlo da sole."</div>
       <div class="post-type">Formato: Reel - recruiting diretto e selettivo</div>
-      <div class="post-obj"><strong>Obiettivo:</strong> recruiting qualificato, attirare le donne giuste e filtrate, aprire conversazioni con il target ideale.</div>
+      <div class="post-obj"><strong>Obiettivo:</strong> recruiting qualificato, attirare networker già capaci e filtrate, aprire conversazioni con il target ideale.</div>
     </div>
   </div>
   <div class="stories-note reveal">
-    <strong>Stories settimanali:</strong> "Domande e risposte" sul team e sul metodo. Mostrare un momento autentico di sconforto - e come si supera. CTA finale: "Se senti che questo fa per te, scrivi ACCIAIO in DM. Ti rispondo entro 24 ore."
+    <strong>Stories settimanali:</strong> "Domande e risposte" sul team e sul metodo. Mostrare un momento autentico di confronto col team - e come si risolve. CTA finale: "Se senti che questo fa per te, scrivi TEAM in DM. Ti rispondo entro 24 ore."
   </div>
 </div>
 
@@ -312,7 +314,7 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
     <div class="sintesi-card reveal d3"><div class="sintesi-num">3</div><div class="sintesi-label">Pillar tematici</div></div>
     <div class="sintesi-card reveal d1"><div class="sintesi-num">&lt;2h</div><div class="sintesi-label">Ore/settimana dedicate</div></div>
     <div class="sintesi-card reveal d2"><div class="sintesi-num">4</div><div class="sintesi-label">Settimane strutturate</div></div>
-    <div class="sintesi-card reveal d3"><div class="sintesi-num">100%</div><div class="sintesi-label">Basato sulla storia reale</div></div>
+    <div class="sintesi-card reveal d3"><div class="sintesi-num">1/mese</div><div class="sintesi-label">Contenuto di backstory</div></div>
   </div>
 </section>
 
@@ -323,7 +325,7 @@ footer{padding:64px 48px;border-top:1px solid var(--sep);display:flex;align-item
     Prodotto da WeBloom &nbsp;·&nbsp; <a href="mailto:info@webloom.it">info@webloom.it</a> &nbsp;·&nbsp; Giugno 2026<br>
     <a href="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/manuela_spiezio_brand_identity.html">&larr; Brand Identity</a>
     &nbsp;·&nbsp;
-    <a href="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/manuela_spiezio_piano_editoriale.html">Piano Editoriale</a>
+    <span style="color:var(--ivory);opacity:0.5;">Piano Editoriale</span>
     &nbsp;·&nbsp;
     <a href="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/manuela_spiezio_script_contenuti.html">Script &amp; Copy &rarr;</a>
     &nbsp;·&nbsp;

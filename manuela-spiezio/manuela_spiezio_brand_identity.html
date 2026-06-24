@@ -7,17 +7,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:        #080B18;
-  --bg2:       #101525;
-  --card:      rgba(8,10,30,0.65);
-  --dark:      #181E35;
-  --warm:      #7088C8;
-  --warm-lt:   #9AAED8;
+  --bg:        #0A0907;
+  --bg2:       #120F0C;
+  --card:      rgba(10,9,7,0.65);
+  --warm:      #D98A3A;
+  --warm-lt:   #F0B873;
   --gold:      #C9A84C;
   --gold-lt:   #DFBC70;
   --ivory:     #F5F6FA;
   --muted:     rgba(245,246,250,0.75);
-  --border:    rgba(112,136,200,0.25);
+  --border:    rgba(217,138,58,0.25);
   --sep:       rgba(201,168,76,0.18);
   --radius:    8px;
 }
@@ -40,9 +39,9 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   height:80px;overflow:hidden;padding:0 24px;
   display:flex;align-items:center;justify-content:space-between;
-  background:rgba(8,8,20,0.94);
+  background:rgba(10,9,7,0.94);
   backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(112,136,200,0.18);
+  border-bottom:1px solid rgba(217,138,58,0.18);
 }
 .nav-bloomind-img{height:180px;width:auto;display:block;}
 .nav-webloom-img{height:40px;width:auto;display:block;}
@@ -63,11 +62,11 @@ nav{
 .hero-bg{
   position:absolute;inset:0;
   background:
-    radial-gradient(ellipse 70% 50% at 50% 35%,rgba(112,136,200,0.10) 0%,transparent 65%),
+    radial-gradient(ellipse 70% 50% at 50% 35%,rgba(217,138,58,0.10) 0%,transparent 65%),
     radial-gradient(ellipse 40% 40% at 75% 75%,rgba(201,168,76,0.06) 0%,transparent 60%);
 }
 .hero-orb{position:absolute;border-radius:50%;filter:blur(90px);animation:float 9s ease-in-out infinite;}
-.orb1{width:380px;height:380px;background:rgba(112,136,200,0.07);top:8%;left:8%;}
+.orb1{width:380px;height:380px;background:rgba(217,138,58,0.07);top:8%;left:8%;}
 .orb2{width:280px;height:280px;background:rgba(201,168,76,0.05);bottom:12%;right:12%;animation-delay:-5s;}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-28px)}}
 
@@ -192,7 +191,7 @@ nav{
 .value-card:hover::after{opacity:1;}
 .value-num{
   font-family:'Libre Baskerville',serif;
-  font-size:3rem;color:rgba(112,136,200,0.10);
+  font-size:3rem;color:rgba(217,138,58,0.10);
   position:absolute;top:20px;right:24px;line-height:1;
   font-weight:600;
 }
@@ -206,7 +205,7 @@ nav{
 .storia-box{
   margin-top:48px;
   padding:52px 56px;
-  background:linear-gradient(135deg,rgba(8,10,30,0.7),rgba(112,136,200,0.08));
+  background:linear-gradient(135deg,rgba(10,9,7,0.7),rgba(217,138,58,0.08));
   border:1px solid var(--border);
   border-radius:var(--radius);
   position:relative;overflow:hidden;
@@ -242,7 +241,7 @@ nav{
 .positioning-box{
   margin-top:48px;
   padding:52px 56px;
-  background:linear-gradient(135deg,rgba(8,10,30,0.6),rgba(112,136,200,0.12));
+  background:linear-gradient(135deg,rgba(10,9,7,0.6),rgba(217,138,58,0.12));
   border:1px solid var(--border);
   border-radius:var(--radius);
   position:relative;overflow:hidden;
@@ -278,7 +277,7 @@ nav{
   border:1px solid var(--border);
   border-radius:100px;
   font-size:0.85rem;color:var(--warm-lt);
-  background:rgba(112,136,200,0.08);
+  background:rgba(217,138,58,0.08);
 }
 .tov-list{list-style:none;display:flex;flex-direction:column;gap:12px;}
 .tov-list li{
@@ -366,7 +365,7 @@ nav{
   padding:64px 40px;
   border:1px solid var(--border);
   border-radius:var(--radius);
-  background:linear-gradient(135deg,rgba(8,10,30,0.5),rgba(112,136,200,0.10));
+  background:linear-gradient(135deg,rgba(10,9,7,0.5),rgba(217,138,58,0.10));
   position:relative;overflow:hidden;
 }
 .tagline-main::before{
@@ -404,7 +403,7 @@ nav{
 .mood-elements{display:flex;flex-direction:column;gap:14px;}
 .mood-el{
   padding:16px 20px;
-  background:rgba(8,10,30,0.4);border:1px solid var(--border);
+  background:rgba(10,9,7,0.4);border:1px solid var(--border);
   border-radius:6px;
   font-size:0.82rem;color:var(--muted);
 }
@@ -465,10 +464,10 @@ footer{
   <div class="hero-orb orb2"></div>
   <p class="hero-eyebrow">Brand Identity Document</p>
   <h1 class="hero-name">Manuela <span>Spiezio</span></h1>
-  <p class="hero-sub">Strategist BlooMind &nbsp;·&nbsp; @manuelaspiezio &nbsp;·&nbsp; Leader di metodo</p>
+  <p class="hero-sub">Strategist BlooMind &nbsp;·&nbsp; @manuelaspiezio &nbsp;·&nbsp; Mentor per networker che vogliono di più</p>
   <div class="hero-divider"></div>
   <p class="hero-claim">
-    Documento strategico di <strong>brand identity</strong> per il posizionamento digitale di Manuela Spiezio: valori, archetipo, storia e strategia di comunicazione all'interno dell'ecosistema <strong>BlooMind</strong>.
+    Documento strategico di <strong>brand identity</strong> per il posizionamento digitale di Manuela Spiezio: valori, archetipo e strategia di comunicazione pensati per attrarre <strong>networker già capaci</strong>, non principianti in cerca di un lavoro - all'interno dell'ecosistema <strong>BlooMind</strong>.
   </p>
   <div class="hero-scroll">
     <div class="scroll-line"></div>
@@ -481,29 +480,29 @@ footer{
   <div class="reveal">
     <p class="section-label">01 - Archetipo</p>
     <h2 class="section-title">Chi è Manuela Spiezio</h2>
-    <p class="section-desc">Dieci anni nel network marketing. Strategist di Instagram. Ex dipendente che si è licenziata perché il lavoro online le aveva restituito la libertà. Una storia fatta di sacrifici invisibili, cadute e ricostruzioni - e di una scelta finale che è costata tutto.</p>
+    <p class="section-desc">Dieci anni nel network marketing. Strategist della comunicazione. La leader a cui le networker già esperte si rivolgono quando hanno capito che il talento da solo non basta - e che il loro sistema attuale non le sta facendo crescere.</p>
   </div>
   <div class="archetype-wrap reveal d2">
     <div class="arch-card">
       <span class="arch-icon">✦</span>
       <div class="arch-name">La Strategist</div>
-      <p class="arch-desc">Manuela non è solo una networker: è la mente strategica del team. Idea contest, struttura challenge, programma i contenuti social con focus su Instagram. Sa come funziona l'algoritmo, sa come si costruisce una community organica, sa come trasformare la vendita in condivisione di valore. E usa tutta questa competenza tecnica al servizio delle persone del suo team - non per separarsi da loro, ma per trascinarle con sé. La sua parola chiave è metodo: non fortuna, non fede, non caso.</p>
+      <p class="arch-desc">Manuela non è solo una networker: è la mente strategica del team. Idea contest, struttura challenge, programma i contenuti social. Sa come si trasforma la vendita in condivisione di valore - e soprattutto sa insegnare a comunicare in modo persuasivo e autentico, con uno storytelling coerente che funziona davvero nel posizionamento social. Non parla di trucchi o crescita rapida: parla di comunicazione vera. E usa tutta questa competenza al servizio delle persone del suo team - non per separarsi da loro, ma per trascinarle con sé. La sua parola chiave è metodo: non fortuna, non fede, non caso.</p>
       <div class="arch-traits">
         <span class="trait-tag">Strategia</span>
-        <span class="trait-tag">Tecnica</span>
+        <span class="trait-tag">Comunicazione persuasiva</span>
         <span class="trait-tag">Metodo</span>
-        <span class="trait-tag">Instagram</span>
+        <span class="trait-tag">Storytelling</span>
       </div>
     </div>
     <div class="arch-card">
       <span class="arch-icon">♥</span>
-      <div class="arch-name">La Madre Coraggio</div>
-      <p class="arch-desc">Ha lasciato sua figlia al nido a 9 mesi perché la maternità era finita e doveva rientrare. Quella scena - uno dei ricordi più forti della sua vita - è il motivo per cui fa tutto quello che fa. Non per i numeri: per fare in modo che nessuna mamma debba più vivere quello strazio. Il suo messaggio più potente non è "guadagna": è "non devi più scegliere tra essere madre e avere una vita tua". A 43 anni, si è rimessa in gioco con la consapevolezza di chi sa davvero il peso di quella scelta.</p>
+      <div class="arch-name">La Mentor Presente</div>
+      <p class="arch-desc">Quello che distingue davvero Manuela non è il fatturato: è la cura quasi maniacale con cui segue ogni persona del suo team. Risponde, controlla, corregge, è presente prima e dopo l'iscrizione - non sparisce mai. Per le networker già esperte che hanno conosciuto upline assenti, è la prima volta che qualcuno le segue sul serio. Una credibilità che nasce anche dal suo stesso percorso: si è rimessa in gioco a 43 anni dopo essersi licenziata da un lavoro dipendente, e sa cosa significa ricominciare senza rete di sicurezza.</p>
       <div class="arch-traits">
-        <span class="trait-tag">Empatia</span>
+        <span class="trait-tag">Presenza</span>
+        <span class="trait-tag">Cura del team</span>
         <span class="trait-tag">Verità</span>
-        <span class="trait-tag">Protezione</span>
-        <span class="trait-tag">Libertà</span>
+        <span class="trait-tag">Guida reale</span>
       </div>
     </div>
   </div>
@@ -514,23 +513,23 @@ footer{
   <div class="reveal">
     <p class="section-label">02 - Valori Core</p>
     <h2 class="section-title">Le fondamenta di Manuela</h2>
-    <p class="section-desc">Cinque valori emersi dal suo percorso di vita reale. Non principi astratti: scelte vissute, spesso senza rete di sicurezza, che hanno dato forma a chi è oggi.</p>
+    <p class="section-desc">Cinque valori che definiscono come lavora con il suo team ogni giorno. Non principi astratti: pratiche concrete, verificabili, che fanno la differenza per chi nel network ha già esperienza ma non ha mai avuto una guida così presente.</p>
   </div>
   <div class="values-grid">
     <div class="value-card reveal d1">
       <span class="value-num">01</span>
-      <div class="value-name">Strategia etica</div>
-      <p class="value-desc">Il network non è un atto di fede: è strategia. Insegna a usare Instagram in modo tecnico ed etico - trasformando la vendita in condivisione di valore e soluzioni reali. Mai spam, mai pressione, mai inganni. La sua competenza tecnica è il differenziante che poche leader nel settore possono vantare.</p>
+      <div class="value-name">Strategia & comunicazione persuasiva</div>
+      <p class="value-desc">Il network non è un atto di fede: è strategia. Insegna a comunicare in modo autentico e persuasivo, a costruire uno storytelling coerente - trasformando la vendita in condivisione di valore. Mai spam, mai pressione, mai inganni. È la competenza che fa la differenza per chi sa vendere ma non sa ancora raccontarsi.</p>
     </div>
     <div class="value-card reveal d2">
       <span class="value-num">02</span>
-      <div class="value-name">Libertà materna</div>
-      <p class="value-desc">Sa cosa significa lasciare una figlia di 9 mesi al nido perché la maternità è finita. Sa cosa significa timbrare un cartellino mentre il cuore è altrove. Il suo obiettivo è che ogni mamma del suo team non debba mai più fare quella scelta. Non è uno slogan: è una ferita che si è trasformata in missione.</p>
+      <div class="value-name">Cura maniacale del team</div>
+      <p class="value-desc">Non si limita a iscrivere: segue ogni persona con una presenza quasi ossessiva, dà dritte puntuali, controlla, corregge, è raggiungibile. Per chi viene da upline che spariscono dopo la firma, questa è la vera differenza. Il suo team non è un elenco di nomi: è una squadra che cura uno per uno.</p>
     </div>
     <div class="value-card reveal d3">
       <span class="value-num">03</span>
       <div class="value-name">Resilienza</div>
-      <p class="value-desc">Ha ricostruito tutto da capo più volte in 8 anni. Ha cambiato due aziende, ha affrontato periodi di sconforto profondi, non si è mai arresa. "Questa è l'ultima opportunità di rinascita che mi sto dando" - lo dice senza dramma, con la determinazione di chi sa quanto costa ricominciare davvero.</p>
+      <p class="value-desc">Ha ricostruito tutto da capo più volte in 8 anni, cambiando aziende e affrontando periodi di sconforto profondi senza mai arrendersi. Questa determinazione è il motivo per cui non lascia indietro nessuna delle sue ragazze quando le cose si fanno difficili.</p>
     </div>
     <div class="value-card reveal d4">
       <span class="value-num">04</span>
@@ -540,64 +539,36 @@ footer{
     <div class="value-card reveal d5">
       <span class="value-num">05</span>
       <div class="value-name">Autorità dal basso</div>
-      <p class="value-desc">Non parla dall'alto di una scrivania comoda. A 43 anni, parla da ex dipendente che lavorava 12 ore al giorno, da mamma che ha timbrato il cartellino mentre il cuore era altrove, da donna senza laurea che è salita su un palco prestigioso. Questa credibilità non si compra - si guadagna vivendo quello che si racconta.</p>
+      <p class="value-desc">Non parla dall'alto di una scrivania comoda. Parla da chi ha 10 anni di gavetta vera nel settore, da chi a 43 anni si è rimessa in gioco da zero dopo essersi licenziata da un lavoro dipendente. Questa credibilità non si compra - si guadagna vivendo quello che si racconta, ed è quello che la rende credibile anche agli occhi di networker già esperte.</p>
     </div>
   </div>
 </section>
 
-<!-- 03 - LA STORIA -->
+<!-- 03 - POSITIONING STATEMENT -->
 <section class="section" style="padding-top:0;">
   <div class="reveal">
-    <p class="section-label">03 - La Storia</p>
-    <h2 class="section-title">Da dove viene Manuela</h2>
-    <p class="section-desc">Non una biografia. Una storia vera, raccontata senza filtri, con il peso e la luce che si porta dietro. Da comunicare in prima persona, esattamente così.</p>
-  </div>
-  <div class="storia-box reveal d2">
-    <div class="storia-text">
-      <p>Ero un'impiegata che lavorava 12 ore al giorno fuori casa, costantemente in corsa, con il cuore diviso a metà. Ricordo ancora lo strazio di quando sono stata costretta a rientrare dalla maternità e a lasciare la mia prima figlia al nido: aveva appena 9 mesi. Un pezzo di cuore che resta lì, mentre tu devi timbrare un cartellino.</p>
-      <p>Quando è nata la mia seconda figlia, ho capito che dovevo cambiare la mia storia. Non potevo continuare così. In quel momento avevamo problemi economici reali: un mutuo sulle spalle e mio marito in cassa integrazione. Non avevo tempo - ma avevo una motivazione d'acciaio. Così ho iniziato a lavorare nei miei ritagli di tempo: sacrificando la pausa pranzo e stringendo i denti la sera al computer, quando tutta la casa finalmente dormiva.</p>
-      <p>Dopo un anno e mezzo di sacrifici invisibili, è arrivato il giorno più bello: ho firmato le mie dimissioni. Mi sono licenziata perché il lavoro online mi aveva resa finalmente libera. Libera da un capo, libera dallo strazio di dover elemosinare un permesso ogni volta che le mie figlie stavano male, libera di poter viaggiare e respirare.</p>
-      <p>Da quel momento sono passati 8 anni. Un percorso in cui ho vissuto grandi successi, ma anche grandi sconfitte. Ho dovuto ricostruire tutto da capo più volte. Prima di arrivare in DuoLife abbiamo cambiato altre due aziende - e non lo nascondo: ci sono stati momenti in cui mi sono chiesta se il network marketing fosse ancora la soluzione giusta per me.</p>
-      <p>Il passaggio in DuoLife insieme a Laura è stato il catalizzatore di tutto. Sentire che qualcuno credeva in me in quel modo ha sbloccato la mia vera natura e ha fatto esplodere la mia anima da Strategist. Ho raggiunto 60.000 euro di fatturato di team. Non sono ancora soddisfatta dei miei risultati economici - e lo dico senza vergogna, perché la verità è il mio differenziante più potente. Questa è l'ultima carta che mi sto giocando - e la sto giocando al massimo.</p>
-    </div>
-    <div class="storia-milestones">
-      <span class="milestone">Dipendente 12h/giorno</span>
-      <span class="milestone">Figlia al nido a 9 mesi</span>
-      <span class="milestone">Mutuo + CIG marito</span>
-      <span class="milestone">Dimissioni - libertà</span>
-      <span class="milestone">8 anni NM</span>
-      <span class="milestone">3 aziende</span>
-      <span class="milestone">60K fatturato team</span>
-      <span class="milestone">Strategist BlooMind</span>
-    </div>
-  </div>
-</section>
-
-<!-- 04 - POSITIONING STATEMENT -->
-<section class="section" style="padding-top:0;">
-  <div class="reveal">
-    <p class="section-label">04 - Positioning Statement</p>
+    <p class="section-label">03 - Positioning Statement</p>
     <h2 class="section-title">Il suo spazio nel mondo</h2>
     <p class="section-desc">Il claim che definisce chi è Manuela, per chi esiste e quale trasformazione offre. La bussola di ogni contenuto e ogni conversazione.</p>
   </div>
   <div class="positioning-box reveal d2">
-    <p class="pos-quote">"Il network non è un atto di fede. È <span>strategia</span>. Se stai fallendo, non è colpa tua: ti manca un metodo."</p>
+    <p class="pos-quote">"Il network non è un atto di fede. È <span>strategia</span>. Se stai fallendo, non è colpa tua: ti manca un metodo e una guida presente."</p>
     <p class="pos-sub">Positioning Statement principale - Manuela Spiezio / BlooMind</p>
     <div class="pos-extended">
-      <p><strong>Per chi è (target 1 - la networker sola):</strong> Mamme networker che si sentono abbandonate dalla propria upline, usate come numeri, stanche di fare spam senza risultati e senza guida. Donne che credevano nel network marketing e si sono ritrovate a dubitare di sé, invece di dubitare del metodo che hanno usato finora.</p>
-      <p><strong>Per chi è (target 2 - la dipendente):</strong> Mamme lavoratrici che vivono lo strazio di perdere la crescita dei figli per un cartellino da timbrare. Donne che lavorano 12 ore al giorno, che hanno elemosinato un permesso quando i figli stavano male, che sognano di avere un lavoro che non detti i loro orari.</p>
-      <p><strong>Cosa risolve:</strong> La frustrazione di chi vuole fare le cose bene ma non ha nessuno che le insegni davvero. Il senso di abbandono di chi si è iscritta con un sogno e si è ritrovata sola. Il dubbio di chi si chiede se il network possa ancora avere senso dopo anni di delusioni.</p>
-      <p><strong>La differenza:</strong> Manuela porta <strong>competenza tecnica concreta</strong> - sa come si usa Instagram in modo etico, sa come si costruisce una community, sa come si trasforma la vendita in valore. Ma soprattutto porta la sua storia: non parla dall'alto, parla da dentro la stessa battaglia che stanno vivendo le donne che vuole aiutare. Ex dipendente, mamma, donna che ha ricominciato da zero più volte.</p>
+      <p><strong>Per chi è (target 1 - la networker trascurata):</strong> Networker già attive, con risultati ed esperienza nel settore, che si sentono trascurate dalla propria upline attuale - poca presenza, poco supporto reale, zero dritte concrete dopo l'iscrizione. Non principianti: persone in gamba che meritano una guida all'altezza.</p>
+      <p><strong>Per chi è (target 2 - la networker senza metodo):</strong> Networker capaci, con voglia di lavorare, ma frenate da un sistema poco strategico - senza un metodo di comunicazione e contenuti che funzioni davvero. Stanche dell'improvvisazione e della "fuffa" che gira nel settore, cercano un approccio tecnico e replicabile.</p>
+      <p><strong>Cosa risolve:</strong> La frustrazione di chi è già brava ma non ha mai avuto una guida davvero presente. Il limite di chi sa vendere ma non sa ancora comunicare il proprio brand in modo persuasivo e coerente sui social. Il dubbio di chi si chiede se esista un sistema migliore di quello in cui si trova oggi.</p>
+      <p><strong>La differenza:</strong> Manuela porta una <strong>cura del team quasi maniacale</strong> - non sparisce mai, segue ogni persona uno per uno - e una competenza concreta in <strong>comunicazione persuasiva e storytelling</strong> per il posizionamento social. La sua storia personale, da ex dipendente a strategist, resta sullo sfondo come prova di credibilità: non è il messaggio centrale, è la conferma che il metodo funziona davvero.</p>
     </div>
   </div>
 </section>
 
-<!-- 05 - TONE OF VOICE -->
+<!-- 04 - TONE OF VOICE -->
 <section class="section" style="padding-top:0;">
   <div class="reveal">
-    <p class="section-label">05 - Tone of Voice</p>
+    <p class="section-label">04 - Tone of Voice</p>
     <h2 class="section-title">Come parla Manuela</h2>
-    <p class="section-desc">La personalità sonora del brand. Come Manuela scrive, come parla nei reel, come risponde nei commenti. Coerente in ogni formato, in ogni contesto.</p>
+    <p class="section-desc">La personalità sonora del brand. Come Manuela scrive, come parla nei reel, come risponde nei commenti. Un tono da pari a pari con chi già lavora nel settore - non da chi deve convincere una principiante.</p>
   </div>
   <div class="tov-grid reveal d2">
     <div class="tov-col">
@@ -605,19 +576,19 @@ footer{
       <div class="adj-row">
         <span class="adj-tag">Resiliente</span>
         <span class="adj-tag">Strategica</span>
-        <span class="adj-tag">Empatica</span>
+        <span class="adj-tag">Presente</span>
       </div>
       <div class="tov-sep"></div>
       <h3>Come parla</h3>
       <ul class="tov-list">
-        <li>Parla con vulnerabilità autentica - non nasconde le difficoltà</li>
+        <li>Parla da pari a pari con chi già lavora nel settore, non dall'alto</li>
         <li>Usa la tecnica per dare valore concreto, non per impressionare</li>
-        <li>Mostra il "dietro le quinte" del suo percorso - cadute incluse</li>
-        <li>È diretta sugli errori del settore senza attaccare nessuno</li>
+        <li>Mostra il "dietro le quinte" della cura quotidiana del suo team</li>
+        <li>È diretta sui limiti di upline e sistemi poco strategici, senza attaccare nessuno</li>
         <li>Usa il "noi" quando parla del team - condivide la leadership</li>
         <li>Porta esempi pratici e verificabili, mai gonfiati</li>
         <li>Dà fiducia e libertà di espressione alle sue ragazze</li>
-        <li>Racconta la sua storia senza vergogna - anche i momenti di sconforto</li>
+        <li>Cita la propria storia solo come credibilità, senza farne il centro del discorso</li>
       </ul>
     </div>
     <div class="tov-col">
@@ -626,7 +597,7 @@ footer{
         <span class="adj-tag">Autorevole</span>
         <span class="adj-tag">Vera</span>
         <span class="adj-tag">Tecnica</span>
-        <span class="adj-tag">Umana</span>
+        <span class="adj-tag">Presente</span>
       </div>
       <div class="tov-sep"></div>
       <h3>Cosa non fa mai</h3>
@@ -635,7 +606,7 @@ footer{
         <li>Non si mette su un piedistallo rispetto alle sue ragazze</li>
         <li>Non usa tono giudicante o aggressivo</li>
         <li>Non fa spam o pressione - nemmeno implicita</li>
-        <li>Non nasconde la sua storia difficile per sembrare "arrivata"</li>
+        <li>Non si rivolge a chi non ha mai lavorato nel settore come target principale</li>
         <li>Non usa la parola DuoLife nel feed (solo Stories)</li>
         <li>Non mostra più di quello che ha realmente</li>
         <li>Non vuole apparire: vuole che si parli di lei per competenza e fatti</li>
@@ -645,8 +616,8 @@ footer{
       <h3>Come suona in pratica - esempi di voce</h3>
       <div class="tov-speech-grid">
         <div class="tov-speech-card">
-          <p class="tc-label">Post potente - credenze limitanti</p>
-          <p class="tc-text">"Se qualche anno fa mi avessero detto che io, un'ex dipendente senza laurea, moglie e mamma comune di 43 anni, sarei salita su un palco prestigioso, avrei risposto: Ma tu sei folle? Io??? Ma vaaaaa!"</p>
+          <p class="tc-label">Post potente - cura del team</p>
+          <p class="tc-text">"Ho ragazze nel mio team che mi scrivono alle 23 con una bozza di reel e io rispondo. Non perché devo. Perché se ti seguo, ti seguo davvero - non solo il giorno dell'iscrizione."</p>
         </div>
         <div class="tov-speech-card">
           <p class="tc-label">Reel - differenziante metodo</p>
@@ -654,13 +625,36 @@ footer{
         </div>
         <div class="tov-speech-card">
           <p class="tc-label">CTA recruiting - selezione</p>
-          <p class="tc-text">"Non cerco chi è già pronta. Cerco donne che, come facevo io, sono disposte a sfruttare la pausa pranzo o le ore della sera quando i figli dormono, perché spinte da una motivazione d'acciaio."</p>
+          <p class="tc-text">"Non cerco chi deve iniziare da zero. Cerco networker che sanno già fare la differenza ma sono stufe di farlo da sole, senza nessuno che le segua davvero."</p>
         </div>
         <div class="tov-speech-card">
-          <p class="tc-label">Stories - vulnerabilità strategica</p>
-          <p class="tc-text">"Ci sono giorni in cui mi sento frustrata. Ve lo dico perché la verità è il mio valore principale. E perché chi vi dice che va sempre tutto bene, vi sta mentendo."</p>
+          <p class="tc-label">Stories - dritta di comunicazione</p>
+          <p class="tc-text">"Tre cose che cambiano subito la tua caption se vuoi che converta: un hook nelle prime due righe, una storia vera al centro, una sola call to action. Provala oggi."</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 - BACKSTORY -->
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <p class="section-label">05 - Backstory</p>
+    <h2 class="section-title">Da dove viene Manuela</h2>
+    <p class="section-desc">Non il messaggio centrale del brand, ma la credibilità che sta dietro al metodo. Da usare con misura - un contenuto al mese, non una narrativa ricorrente.</p>
+  </div>
+  <div class="storia-box reveal d2">
+    <div class="storia-text">
+      <p>Ero un'impiegata che lavorava 12 ore al giorno fuori casa. Quando è nata la mia seconda figlia ho capito che dovevo cambiare strada: avevamo un mutuo sulle spalle e mio marito in cassa integrazione, ma ho trovato il tempo nei ritagli di giornata - pausa pranzo, sera tardi - per costruire qualcosa di mio.</p>
+      <p>Dopo un anno e mezzo di lavoro nell'ombra ho firmato le dimissioni. Da quel momento sono passati 8 anni, tra successi e ricostruzioni: ho cambiato due aziende prima di arrivare in DuoLife, e ho dovuto ripartire da capo più volte.</p>
+      <p>Il passaggio in DuoLife insieme a Laura è stato il catalizzatore: ho raggiunto 60.000 euro di fatturato di team e ho trovato la mia identità da Strategist. È da questo percorso - non da una formula magica - che nasce il metodo che insegno oggi.</p>
+    </div>
+    <div class="storia-milestones">
+      <span class="milestone">Ex dipendente</span>
+      <span class="milestone">Dimissioni - libertà</span>
+      <span class="milestone">8 anni NM</span>
+      <span class="milestone">60K fatturato team</span>
+      <span class="milestone">Strategist BlooMind</span>
     </div>
   </div>
 </section>
@@ -670,19 +664,19 @@ footer{
   <div class="reveal">
     <p class="section-label">06 - Palette Colori</p>
     <h2 class="section-title">Identità visiva</h2>
-    <p class="section-desc">Una palette elegante e minimale, costruita sul blu indigo e il gold. Professionale ma non fredda, tecnica ma non algida. Rispecchia il carattere di Manuela: precisione, profondità e calore umano.</p>
+    <p class="section-desc">Una palette costruita sul nero e sull'ambra/arancio caldo - i colori che Manuela usa davvero, non una scelta astratta. Essenziale, mai fredda, con un accento dorato che la rende riconoscibile.</p>
   </div>
   <div class="palette-row reveal d2">
-    <div class="swatch" style="background:rgba(112,136,200,0.12);">
-      <div class="sw-dot" style="background:#7088C8;"></div>
-      <span class="sw-name">Dusty Indigo</span>
-      <span class="sw-hex">#7088C8</span>
+    <div class="swatch" style="background:rgba(217,138,58,0.12);">
+      <div class="sw-dot" style="background:#D98A3A;"></div>
+      <span class="sw-name">Warm Amber</span>
+      <span class="sw-hex">#D98A3A</span>
       <span class="sw-role">Colore dominante</span>
     </div>
-    <div class="swatch" style="background:rgba(154,174,216,0.10);">
-      <div class="sw-dot" style="background:#9AAED8;"></div>
-      <span class="sw-name">Soft Periwinkle</span>
-      <span class="sw-hex">#9AAED8</span>
+    <div class="swatch" style="background:rgba(240,184,115,0.10);">
+      <div class="sw-dot" style="background:#F0B873;"></div>
+      <span class="sw-name">Soft Apricot</span>
+      <span class="sw-hex">#F0B873</span>
       <span class="sw-role">Accento chiaro</span>
     </div>
     <div class="swatch" style="background:rgba(201,168,76,0.10);">
@@ -699,19 +693,19 @@ footer{
     </div>
     <div class="swatch" style="background:rgba(245,246,250,0.06);">
       <div class="sw-dot" style="background:#F5F6FA;border-color:rgba(255,255,255,0.3);"></div>
-      <span class="sw-name">Cool Ivory</span>
+      <span class="sw-name">Warm Ivory</span>
       <span class="sw-hex">#F5F6FA</span>
       <span class="sw-role">Testo principale</span>
     </div>
     <div class="swatch" style="background:rgba(255,255,255,0.02);">
-      <div class="sw-dot" style="background:#080B18;border-color:rgba(112,136,200,0.3);"></div>
-      <span class="sw-name">Deep Navy</span>
-      <span class="sw-hex">#080B18</span>
+      <div class="sw-dot" style="background:#0A0907;border-color:rgba(217,138,58,0.3);"></div>
+      <span class="sw-name">Deep Black</span>
+      <span class="sw-hex">#0A0907</span>
       <span class="sw-role">Background base</span>
     </div>
   </div>
   <div class="palette-rule reveal d3">
-    <strong>Regola d'uso:</strong> Dusty Indigo è il colore guida - professionale, distinto, non banale. Warm Gold entra come accento premium nei label e nelle date. L'estetica complessiva è <strong>elegante e minimal</strong> - come ha descritto Manuela la sua comunicazione ideale. Niente di ridondante: ogni elemento visivo deve guadagnarsi il suo spazio.
+    <strong>Regola d'uso:</strong> Il nero è la base - lo stesso nero che Manuela usa già nei suoi contenuti. Warm Amber è il colore guida, Warm Gold entra come accento premium nei label e nelle date. L'estetica complessiva è <strong>essenziale e autentica</strong> - coerente con come Manuela si veste e si fotografa davvero. Niente di ridondante: ogni elemento visivo deve guadagnarsi il suo spazio.
   </div>
 </section>
 
@@ -749,7 +743,7 @@ footer{
   <div class="reveal">
     <p class="section-label">08 - Claim &amp; Tagline</p>
     <h2 class="section-title">Le parole che rimangono</h2>
-    <p class="section-desc">La tagline principale e le varianti per ogni contesto di comunicazione. Il filo conduttore: metodo, libertà, verità.</p>
+    <p class="section-desc">La tagline principale e le varianti per ogni contesto di comunicazione. Il filo conduttore: metodo, presenza, verità.</p>
   </div>
   <div class="tagline-main reveal d2">
     <p class="tagline-text">"Il network non è fortuna. È <span>metodo.</span>"</p>
@@ -757,27 +751,27 @@ footer{
   <div class="tagline-variants reveal d3">
     <div class="tv-card">
       <p class="tv-context">Bio Instagram</p>
-      <p class="tv-text">"Strategist BlooMind. Insegno Instagram in modo etico. Mamma che si è licenziata."</p>
+      <p class="tv-text">"Strategist BlooMind. Comunicazione persuasiva e cura del team per networker che vogliono di più."</p>
     </div>
     <div class="tv-card">
-      <p class="tv-context">Apertura Reel - storia</p>
-      <p class="tv-text">"Ti racconto come mi sono licenziata da un lavoro fisso con un mutuo sulle spalle. E perché rifarei la stessa cosa."</p>
+      <p class="tv-context">Apertura Reel - posizionamento</p>
+      <p class="tv-text">"Se sai vendere ma non sai ancora raccontarti sui social, il problema non sei tu: ti manca un metodo di comunicazione."</p>
     </div>
     <div class="tv-card">
       <p class="tv-context">CTA recruiting</p>
-      <p class="tv-text">"Cerco mamme con motivazione d'acciaio. Non esperienza: determinazione."</p>
+      <p class="tv-text">"Cerco networker che sanno già fare la differenza. Non esperienza: voglia di essere seguite davvero."</p>
     </div>
     <div class="tv-card">
       <p class="tv-context">Firma contenuti</p>
-      <p class="tv-text">"Resiliente. Strategica. Empatica."</p>
+      <p class="tv-text">"Resiliente. Strategica. Presente."</p>
     </div>
     <div class="tv-card">
       <p class="tv-context">Tema metodo</p>
       <p class="tv-text">"Se stai fallendo nel network, non è colpa tua. Ti manca un metodo. Eccolo."</p>
     </div>
     <div class="tv-card">
-      <p class="tv-context">Tema libertà</p>
-      <p class="tv-text">"Ho firmato le dimissioni il giorno più bello della mia vita professionale. Ti racconto perché."</p>
+      <p class="tv-context">Tema cura del team</p>
+      <p class="tv-text">"Non sparisco mai dopo l'iscrizione. Ti racconto cosa significa essere seguita davvero nel mio team."</p>
     </div>
   </div>
 </section>
@@ -792,14 +786,14 @@ footer{
   <div class="mood-wrap">
     <div class="mood-text reveal d1">
       <p><strong>L'atmosfera di Manuela:</strong> elegante e minimale. Sfondi puliti, composizioni ordinate, tono professionale ma mai freddo. La strategia si vede nell'estetica: ogni elemento ha il suo posto, niente è ridondante.</p>
-      <p>Non è una scena da lifestyle influencer. È una professionista che ha qualcosa di concreto da insegnare - e che lo fa con ordine e metodo. La sua forza comunicativa viene dalla vulnerabilità strategica: mostrare le cadute con la stessa chiarezza dei successi.</p>
-      <p><strong>Feed Instagram:</strong> mix tra contenuti tecnici su Instagram (come si usa, come si cresce, come si vende eticamente), momenti di vulnerabilità personale (la storia, le cadute, la ricostruzione) e risultati del team. Estetica minimal, colori freddi tendenti all'indigo. Il post [NON CE LA FARAI MAI] è il modello di riferimento: provocazione, vulnerabilità, svolta.</p>
+      <p>Non è una scena da lifestyle influencer. È una professionista che ha qualcosa di concreto da insegnare - e che lo fa con ordine e metodo. La sua forza comunicativa viene dalla presenza costante con il suo team e dalla capacità di dare dritte pratiche, subito applicabili.</p>
+      <p><strong>Feed Instagram:</strong> mix tra contenuti su comunicazione persuasiva e storytelling (come si scrive, come si posiziona un brand, come si costruisce community), dietro le quinte della cura del team, e risultati concreti. Estetica minimal, nero e ambra caldo. La backstory personale compare al massimo una volta al mese, mai come tema ricorrente.</p>
     </div>
     <div>
       <div class="mood-elements reveal d2">
-        <div class="mood-el"><strong>Contenuti tecnici su Instagram</strong> - come funziona l'algoritmo, come si costruisce una community organica, come si trasforma la vendita in valore condiviso. La sua competenza unica nel panorama BlooMind.</div>
-        <div class="mood-el"><strong>Vulnerabilità strategica</strong> - le cadute, le ricostruzioni, i momenti di sconforto raccontati senza dramma ma con chiarezza. Differenziante potente in un settore pieno di success stories costruite.</div>
-        <div class="mood-el"><strong>Dietro le quinte del team</strong> - come funziona il supporto reale, cosa succede nelle challenge, come le ragazze crescono insieme. Mostrare il metodo in azione, non solo i risultati.</div>
+        <div class="mood-el"><strong>Comunicazione persuasiva & storytelling</strong> - come si scrive un hook, come si struttura una caption che converte, come si costruisce un posizionamento coerente sui social. La sua competenza unica nel panorama BlooMind.</div>
+        <div class="mood-el"><strong>Cura del team in azione</strong> - risposte puntuali, correzioni, presenza quotidiana. Mostrare cosa significa essere seguite davvero, non solo iscritte. Differenziante potente rispetto a upline assenti.</div>
+        <div class="mood-el"><strong>Dietro le quinte del team</strong> - come funziona il supporto reale, cosa succede nelle challenge, come le networker crescono insieme. Mostrare il metodo in azione, non solo i risultati.</div>
         <div class="mood-el"><strong>Minimalismo visivo</strong> - sfondi neutri o scuri, testo pulito, composizioni ordinate. L'eleganza viene dalla sobrietà, non dall'ornamento. Ogni foto deve guadagnarsi il suo spazio.</div>
       </div>
       <div class="mood-never reveal d3">
@@ -810,7 +804,7 @@ footer{
           <li>Lifestyle aspirazionale non corrispondente alla realtà</li>
           <li>DuoLife nel feed - solo Stories per la routine personale</li>
           <li>Confronti negativi con il settore o con altre leader</li>
-          <li>La parola "facile" - perché non lo è mai stata</li>
+          <li>La storia personale come tema ricorrente o centrale</li>
         </ul>
       </div>
     </div>
@@ -824,7 +818,7 @@ footer{
   <div class="footer-info">
     Documento riservato - Brand Identity Manuela Spiezio / BlooMind<br>
     Prodotto da WeBloom &nbsp;·&nbsp; <a href="mailto:info@webloom.it">info@webloom.it</a> &nbsp;·&nbsp; Giugno 2026<br>
-    <a href="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/manuela_spiezio_brand_identity.html">Brand Identity</a>
+    <span style="color:var(--ivory);opacity:0.5;">Brand Identity</span>
     &nbsp;·&nbsp;
     <a href="https://nicolapin82-png.github.io/Webloom/manuela-spiezio/manuela_spiezio_piano_editoriale.html">Piano Editoriale &rarr;</a>
     &nbsp;·&nbsp;
