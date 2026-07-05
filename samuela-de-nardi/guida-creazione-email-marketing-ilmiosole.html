@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crea la tua email marketing - Il mio sole · WeBloom</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      color: #1f2937;
+      line-height: 1.65;
+      background: #f7f9f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .wrapper {
+      max-width: 720px;
+      margin: 48px auto;
+      padding: 0 20px 60px;
+    }
+
+    .header {
+      background: #0D1F0E;
+      border-radius: 14px;
+      padding: 40px 36px;
+      margin-bottom: 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(107,158,110,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .header .brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .header .brand img {
+      height: 30px;
+      width: auto;
+      display: block;
+    }
+    .header .brand span {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #6B9E6E;
+    }
+    .header h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #f9faf5;
+      margin: 0 0 12px;
+      line-height: 1.2;
+    }
+    .header h1 em {
+      color: #6B9E6E;
+      font-style: normal;
+    }
+    .header p {
+      font-size: 0.96rem;
+      color: #b0c4b1;
+      margin: 0;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .intro-box {
+      background: #f0f7f0;
+      border-left: 4px solid #6B9E6E;
+      border-radius: 0 10px 10px 0;
+      padding: 18px 22px;
+      margin-bottom: 32px;
+      font-size: 0.93rem;
+      color: #2d5a2e;
+    }
+    .intro-box strong { color: #1a3d1b; }
+
+    .step {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      padding: 24px 28px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .step-number {
+      background: #6B9E6E;
+      color: #0D1F0E;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .step-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #111827;
+    }
+    .step p {
+      margin: 0 0 8px;
+      color: #374151;
+      font-size: 0.95rem;
+    }
+    .step p:last-child { margin-bottom: 0; }
+
+    .email-tag {
+      display: inline-block;
+      background: #0D1F0E;
+      color: #6B9E6E;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 6px;
+      margin: 4px 0;
+      letter-spacing: 0.01em;
+    }
+
+    .tip {
+      background: #f0f7f0;
+      border-left: 4px solid #6B9E6E;
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: #2d5a2e;
+    }
+    .tip strong { color: #1a3d1b; }
+
+    .step-final {
+      background: #0D1F0E;
+      border: none;
+    }
+    .step-final .step-title { color: #f9faf5; }
+    .step-final p { color: #b0c4b1; }
+    .step-final a { color: #6B9E6E; }
+    .step-final .step-number {
+      background: #6B9E6E;
+      color: #0D1F0E;
+    }
+
+    .footer {
+      margin-top: 48px;
+      text-align: center;
+      font-size: 0.83rem;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 24px;
+    }
+    .footer img { height: 24px; width: auto; display: block; margin: 0 auto 10px; opacity: 0.55; }
+    .footer a { color: #6B9E6E; text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .wrapper { margin: 24px auto; }
+      .header { padding: 32px 20px; }
+      .step { padding: 20px 18px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <div class="brand">
+      <img src="https://assets.cdn.filesafe.space/3fFsxRcRvkat1FpJD7Yw/media/69905feb24813c67ab72773f.webp" alt="WeBloom">
+      <span>Il mio sole</span>
+    </div>
+    <h1>Crea la tua<br><em>email marketing</em></h1>
+    <p>Ci vogliono circa 5 minuti. Questa email sara' usata per la scheda Google, le prenotazioni e tutte le comunicazioni automatiche.</p>
+  </div>
+
+  <div class="intro-box">
+    <strong>Perche' serve un'email dedicata?</strong> Usare la tua email personale per la scheda Google e il sistema di prenotazioni crea confusione e rischi. Un indirizzo separato mantiene tutto ordinato e professionale, e ti permette di condividere l'accesso con WeBloom senza toccare la tua casella privata. La crei tu: noi non avremo mai la tua password.
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-number">1</div>
+      <div class="step-title">Apri Gmail dal browser</div>
+    </div>
+    <p>Vai su <strong>gmail.com</strong> da computer o smartphone. Se sei gia' loggata con un altro account, non importa: puoi creare un account aggiuntivo senza uscire.</p>
+    <p>Clicca sul tuo profilo in alto a destra, poi su <strong>"Aggiungi un altro account"</strong>. In alternativa, vai direttamente su <strong>accounts.google.com/signup</strong>.</p>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-number">2</div>
+      <div class="step-title">Inserisci nome e cognome</div>
+    </div>
+    <p>Nel campo <strong>Nome</strong> scrivi: <span class="email-tag">Marketing</span></p>
+    <p>Nel campo <strong>Cognome</strong> scrivi: <span class="email-tag">Il mio sole</span></p>
+    <div class="tip">Questo e' il nome che appare quando invii email. Puoi modificarlo in qualsiasi momento dalle impostazioni Google.</div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-number">3</div>
+      <div class="step-title">Scegli l'indirizzo email</div>
+    </div>
+    <p>Google ti proporra' alcuni indirizzi automatici. Ignorali e clicca su <strong>"Crea il tuo indirizzo Gmail"</strong>.</p>
+    <p>Digita esattamente questo indirizzo:</p>
+    <p><span class="email-tag">marketing.ilmiosole@gmail.com</span></p>
+    <p>Se risulta gia' occupato, prova: <span class="email-tag">ilmiosole.marketing@gmail.com</span> oppure <span class="email-tag">marketing.ilmiosole1@gmail.com</span> - e comunicami quale hai scelto su WhatsApp.</p>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-number">4</div>
+      <div class="step-title">Crea una password sicura</div>
+    </div>
+    <p>Usa una password di almeno 12 caratteri. Mescola lettere maiuscole, minuscole e numeri.</p>
+    <div class="tip"><strong>Importante:</strong> salva subito la password in un posto sicuro, anche su carta. Non devi condividerla con nessuno - neanche con WeBloom. Ti servirà ogni volta che accedi da un dispositivo nuovo.</div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-number">5</div>
+      <div class="step-title">Verifica con il tuo numero di telefono</div>
+    </div>
+    <p>Google ti chiede un numero per la verifica. Inserisci il tuo cellulare e riceverai un SMS con un codice a 6 cifre.</p>
+    <p>Inserisci il codice e prosegui. Questo numero serve anche per recuperare l'account in caso di problemi: e' una misura di sicurezza, non un dato pubblico.</p>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-number">6</div>
+      <div class="step-title">Completa il profilo</div>
+    </div>
+    <p>Google chiede data di nascita e sesso - obbligatorio per completare la creazione. Inserisci i dati reali (non sono pubblici).</p>
+    <p>Accetta i termini di servizio e clicca <strong>"Crea account"</strong>. L'account e' pronto.</p>
+  </div>
+
+  <!-- STEP 7 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-number">7</div>
+      <div class="step-title">Aggiungimi come gestore della scheda Google</div>
+    </div>
+    <p>Con la nuova email aperta, vai su <strong>business.google.com</strong> e accedi con <span class="email-tag">marketing.ilmiosole@gmail.com</span>.</p>
+    <p>Se hai gia' una scheda Google ("Il mio sole"), clicca su <strong>Utenti</strong> nel menu a sinistra, poi su <strong>"Aggiungi utenti"</strong> e inserisci:</p>
+    <p><span class="email-tag">nicolapin2024@gmail.com</span></p>
+    <p>Seleziona il ruolo <strong>Gestore</strong> e conferma. WeBloom riceve l'invito e puo' iniziare a lavorare sulla tua scheda immediatamente.</p>
+    <div class="tip">Se non hai ancora una scheda Google, non fare nulla: ci pensiamo noi a crearla e a verificarla per te.</div>
+  </div>
+
+  <!-- STEP 8 - finale -->
+  <div class="step step-final">
+    <div class="step-header">
+      <div class="step-number">8</div>
+      <div class="step-title">Scrivimi su WhatsApp</div>
+    </div>
+    <p>Appena l'account e' creato (e l'invito inviato se hai gia' la scheda), mandami su WhatsApp l'indirizzo email che hai scelto. Da quel momento partiamo con il setup.</p>
+    <p><strong>Nicola Pin - 327 073 1397</strong><br>
+    <a href="mailto:nicolapin2024@gmail.com">nicolapin2024@gmail.com</a></p>
+  </div>
+
+  <div class="footer">
+    <img src="https://assets.cdn.filesafe.space/3fFsxRcRvkat1FpJD7Yw/media/69905feb24813c67ab72773f.webp" alt="WeBloom">
+    Nicola Pin &middot; <a href="mailto:nicolapin2024@gmail.com">nicolapin2024@gmail.com</a> &middot; 327 073 1397<br>
+    Via Aquileia 5, 31029 Vittorio Veneto (TV) &middot; P.IVA 05558050265
+  </div>
+
+</div>
+</body>
+</html>

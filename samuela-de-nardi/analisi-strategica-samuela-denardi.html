@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Il Mio Sole — Analisi Strategica</title>
+<style>
+  :root{
+    --bg:#F6F2E7;
+    --surface:#FFFDF7;
+    --surface-2:#EFE9D8;
+    --text:#262119;
+    --muted:#736A57;
+    --border:rgba(38,33,25,0.14);
+    --pine:#3C5B45;
+    --pine-ink:#3C5B45;
+    --gold:#D89B3C;
+    --gold-ink:#93641C;
+    --clay:#B96B52;
+    --clay-ink:#8C4B37;
+    --good:#3C5B45;
+    --warn:#B0812C;
+    --crit:#A34936;
+    --shadow:0 1px 2px rgba(38,33,25,0.06), 0 8px 24px rgba(38,33,25,0.06);
+    --font-display:'Iowan Old Style','Palatino Linotype','URW Palladio L',Georgia,'Times New Roman',serif;
+    --font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    --font-mono:ui-monospace,'SF Mono','Cascadia Code',Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#161B14;
+      --surface:#1D2419;
+      --surface-2:#252D20;
+      --text:#EDE7D8;
+      --muted:#A79A82;
+      --border:rgba(237,231,216,0.14);
+      --pine:#7FB48C;
+      --pine-ink:#7FB48C;
+      --gold:#E8B65C;
+      --gold-ink:#E8B65C;
+      --clay:#DE8B70;
+      --clay-ink:#DE8B70;
+      --good:#7FB48C;
+      --warn:#E8B65C;
+      --crit:#DE8B70;
+      --shadow:0 1px 2px rgba(0,0,0,0.3), 0 8px 28px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#161B14; --surface:#1D2419; --surface-2:#252D20; --text:#EDE7D8; --muted:#A79A82;
+    --border:rgba(237,231,216,0.14); --pine:#7FB48C; --pine-ink:#7FB48C; --gold:#E8B65C; --gold-ink:#E8B65C;
+    --clay:#DE8B70; --clay-ink:#DE8B70; --good:#7FB48C; --warn:#E8B65C; --crit:#DE8B70;
+    --shadow:0 1px 2px rgba(0,0,0,0.3), 0 8px 28px rgba(0,0,0,0.35);
+  }
+  :root[data-theme="light"]{
+    --bg:#F6F2E7; --surface:#FFFDF7; --surface-2:#EFE9D8; --text:#262119; --muted:#736A57;
+    --border:rgba(38,33,25,0.14); --pine:#3C5B45; --pine-ink:#3C5B45; --gold:#D89B3C; --gold-ink:#93641C;
+    --clay:#B96B52; --clay-ink:#8C4B37; --good:#3C5B45; --warn:#B0812C; --crit:#A34936;
+    --shadow:0 1px 2px rgba(38,33,25,0.06), 0 8px 24px rgba(38,33,25,0.06);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation:none !important; transition:none !important;} }
+
+  body{
+    background:var(--bg); color:var(--text); font-family:var(--font-body);
+    line-height:1.65; font-size:16px; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{ font-family:var(--font-display); font-weight:600; text-wrap:balance; color:var(--text); margin:0; }
+  p{margin:0;}
+  .eyebrow{ font-family:var(--font-body); text-transform:uppercase; letter-spacing:0.11em; font-size:0.72rem; font-weight:700; color:var(--muted); }
+  .tabular{ font-variant-numeric:tabular-nums; font-family:var(--font-mono); }
+
+  .layout{ display:flex; align-items:flex-start; max-width:1180px; margin:0 auto; gap:2.5rem; padding:0 1.5rem 6rem; }
+  nav.toc{
+    position:sticky; top:1.5rem; width:220px; flex:0 0 220px; padding:1.25rem 0 1.25rem 0;
+    display:flex; flex-direction:column; gap:.15rem; max-height:calc(100vh - 3rem); overflow-y:auto;
+  }
+  nav.toc a{
+    display:block; padding:.42rem .7rem; border-radius:7px; color:var(--muted); text-decoration:none;
+    font-size:.83rem; border-left:2px solid transparent;
+  }
+  nav.toc a:hover{ color:var(--text); background:var(--surface-2); }
+  nav.toc a.active{ color:var(--pine-ink); border-left-color:var(--pine); background:var(--surface-2); font-weight:600; }
+  nav.toc .toc-title{ font-family:var(--font-display); font-size:1rem; padding:.3rem .7rem 1rem; color:var(--text); }
+
+  main{ flex:1 1 auto; min-width:0; padding-top:1.5rem; }
+
+  .cover{
+    border-radius:20px; background:linear-gradient(160deg, var(--surface-2), var(--surface));
+    border:1px solid var(--border); padding:3.2rem 3rem; margin-bottom:3.5rem; position:relative; overflow:hidden;
+  }
+  .cover .sun{ position:absolute; top:-70px; right:-70px; opacity:0.9; }
+  .cover .eyebrow{ margin-bottom:.9rem; }
+  .cover h1{ font-size:2.7rem; line-height:1.08; max-width:16ch; }
+  .cover .sub{ margin-top:1.1rem; max-width:52ch; color:var(--muted); font-size:1.05rem; }
+  .cover .meta{ display:flex; gap:2.4rem; margin-top:2.2rem; flex-wrap:wrap; }
+  .cover .meta div{ font-size:.85rem; }
+  .cover .meta .k{ color:var(--muted); text-transform:uppercase; letter-spacing:.08em; font-size:.68rem; font-weight:700; margin-bottom:.25rem; }
+  .cover .meta .v{ font-size:.98rem; }
+
+  section{ margin-bottom:4.5rem; scroll-margin-top:1.5rem; }
+  section > .eyebrow{ margin-bottom:.5rem; }
+  section > h2{ font-size:1.9rem; margin-bottom:.4rem; }
+  section > .lede{ color:var(--muted); max-width:62ch; margin-bottom:1.8rem; font-size:1rem; }
+
+  .card{ background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:1.4rem 1.5rem; box-shadow:var(--shadow); }
+  .grid{ display:grid; gap:1.1rem; }
+  .grid-2{ grid-template-columns:repeat(2,1fr); }
+  .grid-3{ grid-template-columns:repeat(3,1fr); }
+  .grid-4{ grid-template-columns:repeat(4,1fr); }
+  .grid-5{ grid-template-columns:repeat(5,1fr); }
+  @media (max-width:860px){ .grid-2,.grid-3,.grid-4,.grid-5{ grid-template-columns:1fr; } }
+
+  /* SWOT */
+  .swot{ grid-template-columns:1fr 1fr; }
+  .swot .quad{ border-radius:14px; padding:1.3rem 1.4rem; border:1px solid var(--border); }
+  .quad.s{ background:color-mix(in srgb, var(--pine) 10%, var(--surface)); }
+  .quad.w{ background:color-mix(in srgb, var(--muted) 12%, var(--surface)); }
+  .quad.o{ background:color-mix(in srgb, var(--gold) 14%, var(--surface)); }
+  .quad.t{ background:color-mix(in srgb, var(--clay) 14%, var(--surface)); }
+  .quad h3{ font-size:1.05rem; display:flex; align-items:center; gap:.5rem; margin-bottom:.9rem; }
+  .quad h3 .dot{ width:9px; height:9px; border-radius:50%; display:inline-block; }
+  .quad.s h3 .dot{ background:var(--pine); } .quad.w h3 .dot{ background:var(--muted); }
+  .quad.o h3 .dot{ background:var(--gold); } .quad.t h3 .dot{ background:var(--clay); }
+  .quad .item{ margin-bottom:.75rem; }
+  .quad .item:last-child{ margin-bottom:0; }
+  .quad .item b{ display:block; font-size:.92rem; }
+  .quad .item span{ display:block; color:var(--muted); font-size:.84rem; margin-top:.1rem; }
+
+  .assess{ border-left:3px solid var(--pine); padding:.2rem 0 .2rem 1.1rem; margin-top:1rem; color:var(--muted); font-size:.88rem; }
+  .assess b{ color:var(--text); }
+
+  details.more{ margin-top:.8rem; }
+  details.more summary{ cursor:pointer; font-size:.8rem; color:var(--pine-ink); font-weight:600; list-style:none; }
+  details.more summary::before{ content:"+ "; }
+  details.more[open] summary::before{ content:"– "; }
+  details.more p{ margin-top:.6rem; color:var(--muted); font-size:.88rem; }
+
+  .strategies{ counter-reset:strat; list-style:none; margin:0; padding:0; display:grid; gap:.85rem; }
+  .strategies li{ counter-increment:strat; display:flex; gap:.9rem; }
+  .strategies li::before{ content:counter(strat); font-family:var(--font-display); font-size:1.1rem; color:var(--gold-ink); flex:0 0 auto; width:1.6em; }
+  .strategies li span{ font-size:.92rem; color:var(--text); }
+
+  /* segmentation */
+  .seg-card h3{ font-size:1rem; margin-bottom:.6rem; }
+  .seg-card ul{ margin:0; padding:0; list-style:none; display:grid; gap:.45rem; }
+  .seg-card li{ font-size:.86rem; color:var(--muted); padding-left:.9rem; position:relative; }
+  .seg-card li::before{ content:"–"; position:absolute; left:0; color:var(--pine-ink); }
+
+  .trend-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; margin-top:1.6rem; }
+  @media (max-width:860px){ .trend-row{ grid-template-columns:1fr; } }
+  .trend-card .eyebrow{ color:var(--pine-ink); }
+  .trend-card h4{ font-size:1rem; margin:.3rem 0 .5rem; }
+  .trend-card p{ font-size:.85rem; color:var(--muted); }
+
+  /* forecast bars */
+  .forecast{ margin-top:1rem; display:grid; gap:1.15rem; }
+  .fbar-row{ display:grid; grid-template-columns:220px 1fr; gap:1rem; align-items:center; }
+  @media (max-width:700px){ .fbar-row{ grid-template-columns:1fr; } }
+  .fbar-label{ font-size:.86rem; }
+  .fbar-track{ position:relative; height:16px; background:var(--surface-2); border-radius:8px; }
+  .fbar-fill{ position:absolute; top:0; bottom:0; border-radius:8px; }
+  .fbar-fill.c1{ background:var(--pine); }
+  .fbar-fill.c2{ background:var(--gold); }
+  .fbar-fill.c3{ background:var(--clay); }
+  .fbar-scale{ display:flex; justify-content:space-between; font-size:.68rem; color:var(--muted); margin-top:.3rem; font-family:var(--font-mono); }
+  .fbar-value{ font-family:var(--font-mono); font-size:.78rem; color:var(--muted); }
+
+  /* personas */
+  .persona-card{ display:flex; flex-direction:column; gap:.5rem; }
+  .persona-card .avatar{ width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:1.1rem; color:var(--surface); flex:0 0 auto; }
+  .persona-top{ display:flex; align-items:center; gap:.8rem; }
+  .persona-card h4{ font-size:1.02rem; }
+  .persona-card .tag{ font-size:.76rem; color:var(--muted); }
+  .persona-card p.need{ font-size:.87rem; color:var(--text); margin-top:.3rem; }
+
+  .mix-grid{ grid-template-columns:repeat(3,1fr); }
+  @media (max-width:940px){ .mix-grid{ grid-template-columns:1fr; } }
+  .mix-card{ border:1px solid var(--border); background:var(--surface); border-radius:16px; padding:1.5rem; box-shadow:var(--shadow); position:relative; }
+  .mix-card .rank{ position:absolute; top:1.1rem; right:1.2rem; font-family:var(--font-mono); font-size:.7rem; color:var(--gold-ink); border:1px solid var(--gold); border-radius:999px; padding:.15rem .55rem; }
+  .mix-card h4{ font-size:1.2rem; margin:.2rem 0 .2rem; }
+  .mix-card .tag{ color:var(--muted); font-size:.85rem; margin-bottom:.8rem; display:block; }
+  .mix-card p{ font-size:.88rem; color:var(--muted); }
+
+  .persona-group summary{ cursor:pointer; padding:1rem 1.2rem; border:1px solid var(--border); border-radius:12px; background:var(--surface); font-family:var(--font-display); font-size:1.05rem; list-style:none; }
+  .persona-group summary::-webkit-details-marker{ display:none; }
+  .persona-group summary .arrow{ float:right; font-family:var(--font-body); color:var(--muted); font-size:.8rem; }
+  .persona-group[open] summary{ border-radius:12px 12px 0 0; }
+  .persona-group .body{ border:1px solid var(--border); border-top:none; border-radius:0 0 12px 12px; padding:1.2rem; background:var(--surface); }
+  .persona-group .note{ font-size:.87rem; color:var(--muted); margin-bottom:1rem; }
+  .persona-group + .persona-group{ margin-top:.9rem; }
+  .subpersona{ padding:.8rem 0; border-top:1px dashed var(--border); }
+  .subpersona:first-child{ border-top:none; padding-top:0; }
+  .subpersona h5{ font-family:var(--font-display); font-size:.98rem; margin-bottom:.3rem; }
+  .subpersona p{ font-size:.85rem; color:var(--muted); }
+
+  /* positioning */
+  .macro{ display:grid; grid-template-columns:1.1fr 1fr; gap:1.2rem; }
+  @media (max-width:860px){ .macro{ grid-template-columns:1fr; } }
+  .macro .card h4{ font-size:.92rem; color:var(--pine-ink); margin-bottom:.4rem; }
+  .macro .card p{ font-size:.9rem; }
+
+  .micro-grid{ grid-template-columns:repeat(3,1fr); margin-top:1.4rem; }
+  @media (max-width:940px){ .micro-grid{ grid-template-columns:1fr; } }
+  .micro-card{ border-top:4px solid var(--gold); }
+  .micro-card:nth-child(2){ border-top-color:var(--pine); }
+  .micro-card:nth-child(3){ border-top-color:var(--clay); }
+  .micro-card h4{ font-size:1.05rem; margin:.4rem 0 .6rem; }
+  .micro-card p{ font-size:.87rem; color:var(--muted); }
+  .micro-card .who{ margin-top:.9rem; padding-top:.9rem; border-top:1px dashed var(--border); font-size:.83rem; }
+  .micro-card .who b{ display:block; color:var(--text); font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; margin-bottom:.3rem; }
+
+  /* manifesto */
+  .manifesto{ background:var(--pine); color:#fff; border-radius:20px; padding:3rem; text-align:center; }
+  :root[data-theme="dark"] .manifesto, @media (prefers-color-scheme:dark){ .manifesto{ background:var(--surface-2); color:var(--text); border:1px solid var(--pine); } }
+  .manifesto .big{ font-family:var(--font-display); font-size:2.3rem; line-height:1.15; max-width:22ch; margin:0 auto 1rem; text-wrap:balance; }
+  .manifesto .promise{ opacity:.92; max-width:56ch; margin:0 auto; font-size:1.02rem; }
+  .manifesto .curiosity{ margin-top:1.6rem; font-style:italic; opacity:.85; font-size:.95rem; }
+
+  .brand-elements{ margin-top:1.6rem; }
+  .brand-elements .item{ padding:1rem 0; border-top:1px solid var(--border); }
+  .brand-elements .item:first-child{ border-top:none; }
+  .brand-elements h4{ font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; color:var(--gold-ink); margin-bottom:.35rem; }
+  .brand-elements p{ font-size:.92rem; }
+
+  /* objectives */
+  .obj-grid{ grid-template-columns:repeat(5,1fr); }
+  @media (max-width:1040px){ .obj-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .obj-grid{ grid-template-columns:1fr; } }
+  .obj-card{ display:flex; flex-direction:column; gap:.5rem; }
+  .obj-card .eyebrow{ color:var(--muted); }
+  .obj-card .num{ font-family:var(--font-display); font-size:1.7rem; color:var(--pine-ink); line-height:1.1; }
+  .obj-card .when{ font-size:.72rem; color:var(--gold-ink); font-weight:700; text-transform:uppercase; letter-spacing:.05em; }
+  .obj-card p{ font-size:.83rem; color:var(--muted); }
+
+  /* value ladder + funnel */
+  .vl-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start; }
+  @media (max-width:900px){ .vl-wrap{ grid-template-columns:1fr; } }
+  .ladder{ display:flex; flex-direction:column-reverse; gap:.5rem; }
+  .ladder .step{ border-radius:10px; padding:1rem 1.2rem; color:#fff; }
+  .ladder .step:nth-child(1){ background:var(--pine); width:100%; }
+  .ladder .step:nth-child(2){ background:var(--gold); width:78%; margin:0 auto; color:#2a1c05; }
+  .ladder .step:nth-child(3){ background:var(--clay); width:56%; margin:0 auto; }
+  .ladder .step .eyebrow{ color:inherit; opacity:.75; }
+  .ladder .step h4{ font-family:var(--font-body); font-weight:700; font-size:.92rem; margin-top:.2rem; }
+
+  .funnel{ display:flex; flex-direction:column; align-items:center; gap:.35rem; }
+  .funnel .seg{ color:#fff; text-align:center; padding:1rem; font-size:.82rem; }
+  .funnel .seg b{ display:block; font-family:var(--font-display); font-weight:600; font-size:1rem; margin-bottom:.3rem; }
+  .funnel .seg.tofu{ width:100%; clip-path:polygon(0 0,100% 0,88% 100%,12% 100%); background:var(--pine); padding-bottom:1.6rem; }
+  .funnel .seg.mofu{ width:78%; clip-path:polygon(0 0,100% 0,85% 100%,15% 100%); background:var(--gold); color:#2a1c05; padding-bottom:1.6rem; margin-top:-.6rem; }
+  .funnel .seg.bofu{ width:56%; clip-path:polygon(0 0,100% 0,80% 100%,20% 100%); background:var(--clay); margin-top:-.6rem; }
+  .channels{ margin-top:1.2rem; display:flex; flex-wrap:wrap; gap:.5rem; }
+  .chip{ border:1px solid var(--border); border-radius:999px; padding:.35rem .85rem; font-size:.78rem; color:var(--muted); background:var(--surface); }
+
+  /* offer */
+  .offer-hero{ display:flex; justify-content:space-between; align-items:flex-end; gap:1.5rem; flex-wrap:wrap; margin-bottom:1.4rem; }
+  .offer-hero h3{ font-size:1.4rem; }
+  .offer-hero .target{ font-size:.85rem; color:var(--muted); max-width:46ch; }
+  .includes{ list-style:none; margin:0; padding:0; display:grid; gap:.6rem; }
+  .includes li{ display:flex; gap:.7rem; font-size:.9rem; align-items:flex-start; }
+  .includes li::before{ content:"✓"; color:var(--pine-ink); font-weight:700; }
+  .offer-grid{ grid-template-columns:repeat(3,1fr); margin-top:1.4rem; }
+  @media (max-width:860px){ .offer-grid{ grid-template-columns:1fr; } }
+  .offer-grid .card h4{ font-size:.78rem; text-transform:uppercase; letter-spacing:.07em; color:var(--gold-ink); margin-bottom:.4rem; }
+  .offer-grid .card p{ font-size:.88rem; }
+  .cta-row{ display:flex; gap:1rem; margin-top:1.4rem; flex-wrap:wrap; }
+  .cta{ border-radius:10px; padding:.9rem 1.3rem; font-size:.88rem; }
+  .cta.primary{ background:var(--pine); color:#fff; }
+  .cta.secondary{ background:var(--surface-2); color:var(--text); border:1px solid var(--border); }
+
+  .lm-grid{ grid-template-columns:repeat(3,1fr); }
+  @media (max-width:900px){ .lm-grid{ grid-template-columns:1fr; } }
+  .lm-card .eyebrow{ color:var(--clay-ink); }
+  .lm-card h4{ font-size:1rem; margin:.4rem 0 .5rem; }
+  .lm-card p{ font-size:.86rem; color:var(--muted); }
+
+  footer{ max-width:1180px; margin:0 auto; padding:2rem 1.5rem 4rem; color:var(--muted); font-size:.8rem; border-top:1px solid var(--border); }
+
+  @media (max-width:900px){
+    .layout{ flex-direction:column; padding:0 1.2rem 4rem; }
+    nav.toc{ position:sticky; top:0; width:100%; flex-direction:row; overflow-x:auto; background:var(--bg); z-index:5; border-bottom:1px solid var(--border); padding:.8rem 0; max-height:none; }
+    nav.toc .toc-title{ display:none; }
+    nav.toc a{ white-space:nowrap; }
+    .cover{ padding:2.2rem 1.6rem; }
+    .cover h1{ font-size:2.1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+  <nav class="toc" id="toc">
+    <div class="toc-title">Il Mio Sole</div>
+    <a href="#mercato">1 · Analisi di mercato</a>
+    <a href="#segmentazione">2 · Segmentazione &amp; trend</a>
+    <a href="#personas">3 · Chi è il cliente</a>
+    <a href="#positioning">4 · Positioning</a>
+    <a href="#credibilita">5 · Il capitale di credibilità</a>
+    <a href="#brand">6 · Big idea &amp; brand</a>
+    <a href="#obiettivi">7 · Obiettivi SMART</a>
+    <a href="#funnel">8 · Value ladder &amp; funnel</a>
+    <a href="#offerta">9 · Offerta perfetta</a>
+    <a href="#leadmagnet">10 · Lead magnet</a>
+  </nav>
+
+  <main>
+    <div class="cover">
+      <svg class="sun" width="220" height="220" viewBox="0 0 220 220" fill="none">
+        <circle cx="110" cy="110" r="34" fill="var(--gold)" opacity="0.85"/>
+        <g stroke="var(--gold)" stroke-width="6" stroke-linecap="round" opacity="0.55">
+          <line x1="110" y1="30" x2="110" y2="55"/>
+          <line x1="110" y1="165" x2="110" y2="190"/>
+          <line x1="30" y1="110" x2="55" y2="110"/>
+          <line x1="165" y1="110" x2="190" y2="110"/>
+          <line x1="53" y1="53" x2="70" y2="70"/>
+          <line x1="150" y1="150" x2="167" y2="167"/>
+          <line x1="167" y1="53" x2="150" y2="70"/>
+          <line x1="70" y1="150" x2="53" y2="167"/>
+        </g>
+      </svg>
+      <div class="eyebrow">Report strategico · Funnel Analysis</div>
+      <h1>Il Mio Sole</h1>
+      <p class="sub">Comunicazione animale, natural healing e passeggiate di consapevolezza con gli alpaca. Un'analisi completa di mercato, posizionamento e funnel per portare il progetto di Samuela De Nardi da esperienza personale a marchio strutturato.</p>
+      <div class="meta">
+        <div><div class="k">Cliente</div><div class="v">Samuela De Nardi — Il Mio Sole</div></div>
+        <div><div class="k">Territorio</div><div class="v">Vittorio Veneto (TV)</div></div>
+        <div><div class="k">Settore</div><div class="v">Comunicazione animale &amp; Natural Healing</div></div>
+        <div><div class="k">Audience attuale</div><div class="v">36,8K su Instagram (@samueladenardi)</div></div>
+      </div>
+    </div>
+
+    <section id="mercato">
+      <div class="eyebrow">01 — Analisi di mercato</div>
+      <h2>Cosa fanno bene (e male) i concorrenti</h2>
+      <p class="lede">Analisi SWOT costruita su 9 concorrenti diretti (siti e video) attivi nella comunicazione animale, guarigione olistica e veterinaria non-duale.</p>
+
+      <div class="grid swot">
+        <div class="quad s">
+          <h3><span class="dot"></span>Punti di forza</h3>
+          <div class="item"><b>Presenza su Instagram con comunità attiva</b><span>Molti concorrenti hanno costruito community nel tempo con contenuti coerenti e un marchio personale riconoscibile.</span></div>
+          <div class="item"><b>Forte storytelling emotivo</b><span>Narrazioni legate al lutto, alla malattia e alla connessione spirituale con gli animali.</span></div>
+          <div class="item"><b>Posizionamento di nicchia chiaro</b><span>Ogni operatore presidia un angolo specifico, rendendo il messaggio distintivo.</span></div>
+          <div class="item"><b>Autorità percepita</b><span>Credenziali (veterinari, operatori olistici, channeler) che rafforzano la fiducia.</span></div>
+          <div class="item"><b>Comunità leale</b><span>Pubblico molto legato all'operatore individuale, alti livelli di fiducia e ritorno.</span></div>
+          <div class="assess"><b>Lettura:</b> punti di forza basati su carisma personale, non su metodo strutturato — un benchmark da eguagliare e un'opportunità di differenziarsi con professionalità.</div>
+        </div>
+
+        <div class="quad w">
+          <h3><span class="dot"></span>Debolezze</h3>
+          <div class="item"><b>Dipendenza da Instagram</b><span>Poca presenza su sito, blog, YouTube, email — vulnerabilità agli algoritmi.</span></div>
+          <div class="item"><b>Mancanza di validazione scientifica</b><span>Credibilità legata solo alla percezione soggettiva.</span></div>
+          <div class="item"><b>Comunicazione commerciale debole</b><span>Nessun funnel di vendita chiaro, prezzi poco trasparenti.</span></div>
+          <div class="item"><b>Scarsa differenziazione</b><span>Offerte molto simili tra loro, rischio di commoditizzazione.</span></div>
+          <div class="item"><b>Dipendenza dalla figura personale</b><span>Il marchio coincide con la persona: difficile da scalare.</span></div>
+          <div class="item"><b>Assenza di social proof strutturato</b><span>Poche recensioni verificabili o case study.</span></div>
+          <div class="assess"><b>Lettura:</b> un'offerta multi-canale, strutturata e professionale può catturare quota di mercato da concorrenti meno organizzati.</div>
+        </div>
+
+        <div class="quad o">
+          <h3><span class="dot"></span>Opportunità</h3>
+          <div class="item"><b>Posizionamento professionale e strutturato</b><span>Spazio per differenziarsi da un mercato spesso generico.</span></div>
+          <div class="item"><b>Espansione multi-canale</b><span>YouTube, blog SEO, email, podcast: canali ancora sottoutilizzati nella nicchia.</span></div>
+          <div class="item"><b>Metodo proprietario riconoscibile</b><span>Un framework unico crea un vantaggio competitivo difendibile.</span></div>
+          <div class="item"><b>Target sottodimensionato: lutto e malattia animale</b><span>Bisogno emotivo forte, ancora poco coperto da operatori strutturati.</span></div>
+          <div class="item"><b>Prodotti scalabili</b><span>Corsi, comunità, percorsi oltre la sola consulenza 1‑to‑1.</span></div>
+          <div class="item"><b>Autorità sportiva verificabile</b><span>A differenza dei concorrenti, la cui credibilità resta soggettiva, Samuela ha un palmarès sportivo pubblico e documentato (ex pilota ufficiale Aprilia) — vedi sezione dedicata.</span></div>
+          <div class="assess"><b>Lettura:</b> la domanda per il lutto animale è sottodimensionata da operatori credibili — la finestra di ingresso è ora, e Samuela può aprirla con una credibilità che nessun concorrente ha.</div>
+        </div>
+
+        <div class="quad t">
+          <h3><span class="dot"></span>Minacce</h3>
+          <div class="item"><b>Alta saturazione del mercato di nicchia</b><span>Molti operatori simili, rischio "già visto".</span></div>
+          <div class="item"><b>Scetticismo verso pratiche olistiche</b><span>Rischio reputazionale se non gestito professionalmente.</span></div>
+          <div class="item"><b>Dipendenza dagli algoritmi social</b><span>Cambi di policy Instagram riducono la portata organica.</span></div>
+          <div class="item"><b>Rischio di rapida imitazione</b><span>Basse barriere all'ingresso: un posizionamento vincente si copia in fretta.</span></div>
+          <div class="item"><b>Domanda ciclica</b><span>Legata a eventi emotivi (lutto, malattia) — instabile senza offerte ricorrenti.</span></div>
+          <div class="assess"><b>Lettura:</b> la minaccia maggiore è l'imitazione rapida — servono IP difendibile (metodo, community, brand) e non solo contenuti.</div>
+        </div>
+      </div>
+
+      <details class="more">
+        <summary>Leggi l'interpretazione completa dei risultati</summary>
+        <p>L'analisi competitiva rivela un mercato con significative opportunità per un operatore posizionato professionalmente e fondato metodologicamente. I punti di forza dei concorrenti (storytelling emotivo, lealtà della comunità) sono compensati da sostanziali debolezze (dipendenza dalla piattaforma, mancanza di differenziazione, scarsa struttura commerciale, assenza di scalabilità). Il mercato mostra una chiara domanda di servizi che affrontano il lutto animale, la malattia e la connessione uomo-animale, ma questa domanda è sottodimensionata da operatori credibili e strutturati. Per Samuela De Nardi, l'analisi suggerisce un forte potenziale di crescita se posizionata come un marchio strutturato, trasparente e orientato alla comunità piuttosto che come fornitore di servizi personali.</p>
+      </details>
+
+      <h3 style="font-size:1.05rem; margin:2.4rem 0 1rem;">5 strategie efficaci</h3>
+      <ol class="strategies">
+        <li><span>Sviluppare un metodo proprietario riconoscibile che unisce comunicazione animale, elaborazione del lutto e crescita personale — proprietà intellettuale difendibile.</span></li>
+        <li><span>Costruire presenza multi-canale (YouTube, blog SEO, email, podcast) per ridurre la dipendenza da Instagram.</span></li>
+        <li><span>Costruire l'identità del marchio attorno a "Il Mio Sole" come metodologia e comunità, non solo la figura personale.</span></li>
+        <li><span>Creare offerte scalabili (corsi online, percorsi di gruppo, community a pagamento) accanto alla consulenza 1‑to‑1.</span></li>
+        <li><span>Integrare trasparenza e contenuti educativi per affrontare lo scetticismo verso le pratiche olistiche.</span></li>
+      </ol>
+    </section>
+
+    <section id="segmentazione">
+      <div class="eyebrow">02 — Segmentazione &amp; trend</div>
+      <h2>A chi parliamo, e perché ora</h2>
+      <p class="lede">Il mercato potenziale segmentato su quattro assi, più i tre trend di settore che stanno spingendo la domanda nel 2025.</p>
+
+      <div class="grid grid-4">
+        <div class="card seg-card">
+          <h3>Demografia</h3>
+          <ul>
+            <li>Età 25–65 anni</li>
+            <li>Prevalentemente donne (60–80%)</li>
+            <li>Reddito medio-basso — medio-alto (€1.300–4.500/mese)</li>
+            <li>Da diploma a laurea</li>
+          </ul>
+        </div>
+        <div class="card seg-card">
+          <h3>Geografia</h3>
+          <ul>
+            <li>Primaria: Vittorio Veneto e provincia di Treviso (15–40 km)</li>
+            <li>Secondaria: Veneto, Friuli-VG, Nord Italia</li>
+            <li>Preferenza stagioni miti (primavera–autunno)</li>
+          </ul>
+        </div>
+        <div class="card seg-card">
+          <h3>Psicografia</h3>
+          <ul>
+            <li>Forte legame emotivo con gli animali</li>
+            <li>Apertura a pratiche spirituali/energetiche</li>
+            <li>Valori: empatia, autenticità, crescita personale</li>
+          </ul>
+        </div>
+        <div class="card seg-card">
+          <h3>Comportamento</h3>
+          <ul>
+            <li>Ricerca attiva online nei momenti emotivi acuti</li>
+            <li>Bassa sensibilità al prezzo se percepisce autenticità</li>
+            <li>Guidati da recensioni e passaparola</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="font-size:1.05rem; margin:2.4rem 0 0;">Trend di settore 2025</h3>
+      <div class="trend-row">
+        <div class="card trend-card">
+          <div class="eyebrow">Trend 1</div>
+          <h4>Turismo esperienziale e slow travel</h4>
+          <p>Crescente domanda di esperienze in natura, passeggiate consapevoli, soggiorni in fattorie didattiche.</p>
+        </div>
+        <div class="card trend-card">
+          <div class="eyebrow">Trend 2</div>
+          <h4>Benessere olistico e pratiche energetiche</h4>
+          <p>Meditazione, Reiki, guarigione energetica e bagni di foresta, anche in versione "soft" per il pubblico generale.</p>
+        </div>
+        <div class="card trend-card">
+          <div class="eyebrow">Trend 3</div>
+          <h4>Relazione uomo-animale</h4>
+          <p>Aumento degli animali da compagnia e interesse per etologia, pet therapy e comunicazione intuitiva.</p>
+        </div>
+      </div>
+
+      <h3 style="font-size:1.05rem; margin:2.4rem 0 .3rem;">Previsione di crescita per servizio (12–24 mesi)</h3>
+      <p class="lede" style="margin-bottom:1rem;">Stima basata su domanda di settore, se supportata da presenza digitale e partnership locali.</p>
+      <div class="card">
+        <div class="forecast">
+          <div class="fbar-row">
+            <div class="fbar-label">Guarigione naturale nel bosco</div>
+            <div>
+              <div class="fbar-track"><div class="fbar-fill c3" style="left:15%; right:calc(100% - 30%);"></div></div>
+              <div class="fbar-scale"><span>0%</span><span class="fbar-value">+15% → +30%</span><span>35%</span></div>
+            </div>
+          </div>
+          <div class="fbar-row">
+            <div class="fbar-label">Passeggiate con gli alpaca</div>
+            <div>
+              <div class="fbar-track"><div class="fbar-fill c1" style="left:10%; right:calc(100% - 25%);"></div></div>
+              <div class="fbar-scale"><span>0%</span><span class="fbar-value">+10% → +25%</span><span>35%</span></div>
+            </div>
+          </div>
+          <div class="fbar-row">
+            <div class="fbar-label">Sessioni individuali comunicazione animale</div>
+            <div>
+              <div class="fbar-track"><div class="fbar-fill c2" style="left:5%; right:calc(100% - 15%);"></div></div>
+              <div class="fbar-scale"><span>0%</span><span class="fbar-value">+5% → +15%</span><span>35%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <details class="more">
+        <summary>Cosa limita la crescita</summary>
+        <p>Saturazione del mercato nella comunicazione animale generica, scetticismo verso le pratiche non scientifiche, dipendenza dall'algoritmo delle piattaforme social e domanda ciclica legata a eventi emotivi (lutto, malattia). Il successo dipenderà dalla differenziazione tramite metodologia proprietaria, presenza multi-canale, credibilità professionale e offerte scalabili oltre la consulenza 1‑to‑1.</p>
+      </details>
+    </section>
+
+    <section id="personas">
+      <div class="eyebrow">03 — Chi è il cliente</div>
+      <h2>Tre persone da convincere per prime</h2>
+      <p class="lede">Sintesi finale: le tre buyer persona a più alta probabilità di conversione, ottenute incrociando geografia, urgenza emotiva e disponibilità economica.</p>
+
+      <div class="grid mix-grid">
+        <div class="mix-card">
+          <span class="rank">Priorità 1</span>
+          <div class="eyebrow">Elena, 48 anni · Conegliano</div>
+          <h4>La donna in lutto del territorio</h4>
+          <span class="tag">Impiegata/freelance · reddito medio-alto · nessun figlio</span>
+          <p>Ha appena perso il suo cane e cerca online risposte immediate. Alta capacità di spesa quando percepisce autenticità, decisioni rapide, forte passaparola locale. Massima prossimità geografica + urgenza emotiva acuta = più alta probabilità di conversione rapida.</p>
+        </div>
+        <div class="mix-card">
+          <span class="rank">Priorità 2</span>
+          <div class="eyebrow">Giulia, 34 anni · Treviso</div>
+          <h4>La professionista in cerca di riconnessione</h4>
+          <span class="tag">Freelance creativa · pratica yoga e meditazione</span>
+          <p>Cerca esperienze autentiche che uniscono natura, animali e introspezione. Scettica verso la spiritualità commercializzata, ma con alto valore nel tempo e forte potenziale da ambasciatrice su Instagram.</p>
+        </div>
+        <div class="mix-card">
+          <span class="rank">Priorità 3</span>
+          <div class="eyebrow">Anna, 55 anni · Vittorio Veneto</div>
+          <h4>La caregiver devota locale</h4>
+          <span class="tag">Reddito medio familiare · figli adulti lontani</span>
+          <p>Il suo animale anziano è il centro della sua giornata. Cerca continuità, non un servizio una tantum. Massima prossimità geografica e forte coerenza con la storia personale di Samuela e Gas durante la malattia.</p>
+        </div>
+      </div>
+
+      <details class="persona-group" style="margin-top:2rem;">
+        <summary>Segmento "Lutto &amp; malattia" — 3 persona di dettaglio <span class="arrow">mostra/nascondi</span></summary>
+        <div class="body">
+          <p class="note">Lutto acuto per la perdita di un animale: emotivamente vulnerabili, alto valore emotivo, potenziale economico medio-alto, decisioni rapide guidate dall'urgenza.</p>
+          <div class="subpersona"><h5>La Professionista Devastata — Elena, 52 anni</h5><p>Manager, il suo cane Argo è stato il suo compagno per 14 anni. Cerca chiusura emotiva attraverso un contatto spirituale autentico e rassicurazione sulla credibilità di Samuela prima di impegnarsi.</p></div>
+          <div class="subpersona"><h5>Il Padre che Piange in Silenzio — Marco, 41 anni</h5><p>Ha perso il gatto di famiglia Pallino. Vive un lutto che non può condividere apertamente; ha bisogno di strumenti pratici per spiegare la morte ai figli e di un linguaggio semplice, non esoterico.</p></div>
+          <div class="subpersona"><h5>La Vedova Sola — Anna, 63 anni</h5><p>Il suo cane Birillo era il suo unico compagno quotidiano. Ha bisogno che il suo lutto sia preso sul serio, non minimizzato; sensibile al prezzo, cerca accompagnamento compassionevole.</p></div>
+        </div>
+      </details>
+
+      <details class="persona-group">
+        <summary>Segmento "Difficoltà comportamentali" — 3 persona di dettaglio <span class="arrow">mostra/nascondi</span></summary>
+        <div class="body">
+          <p class="note">Proprietari che affrontano problemi comportamentali/di salute nei loro animali vivi, mentalità pratica e concreta, clientela locale entro 20–30 km.</p>
+          <div class="subpersona"><h5>La Genitrice di Animali Preoccupata — Federica, 34 anni</h5><p>Il suo cane mostra ansia e reattività dopo l'arrivo del bambino. Cerca cause emotive/relazionali, non solo soluzioni tecniche; vuole esempi di casi e metodologia chiara.</p></div>
+          <div class="subpersona"><h5>L'Equestre Pragmatico — Roberto, 47 anni</h5><p>Il suo cavallo ha problemi comportamentali dopo un cambio di scuderia. Scettico ma pragmatico; vuole risultati concreti, comunicazione diretta, senza romanticismo.</p></div>
+          <div class="subpersona"><h5>La Proprietaria Ansiosa per la Prima Volta — Sara, 29 anni</h5><p>Primo gatto, si sente insicura nel suo ruolo. Cerca rassicurazione e contenuti gratuiti che dimostrino competenza prima di pagare; scopre i servizi su Instagram/TikTok.</p></div>
+        </div>
+      </details>
+
+      <details class="persona-group">
+        <summary>Segmento "Crescita personale" — 3 persona di dettaglio <span class="arrow">mostra/nascondi</span></summary>
+        <div class="body">
+          <p class="note">Persone impegnate in percorsi di crescita e sviluppo spirituale, alto potenziale economico ricorrente, disposte a viaggiare per esperienze trasformative.</p>
+          <div class="subpersona"><h5>La Freelancer Creativa che Cerca Radicamento — Giulia, 33 anni</h5><p>Pratica già yoga e meditazione, ma cerca esperienze che riconnettano corpo e natura. Attratta dalla storia personale di Samuela come prova di autenticità.</p></div>
+          <div class="subpersona"><h5>Il Manager Stressato che Cerca Equilibrio — Davide, 42 anni</h5><p>Alto stress professionale, aperto a pratiche con impatto tangibile ma non si definisce spirituale. Vuole prenotazione efficiente: il tempo è la sua risorsa più preziosa.</p></div>
+          <div class="subpersona"><h5>L'Insegnante che si Ricostruisce — Chiara, 38 anni</h5><p>In transizione dopo una separazione, riscopre meditazione e natura. Interessata a percorsi multi-sessione più che a un'esperienza isolata.</p></div>
+        </div>
+      </details>
+
+      <details class="persona-group">
+        <summary>Prima esplorazione — 5 buyer persona iniziali <span class="arrow">mostra/nascondi</span></summary>
+        <div class="body">
+          <p class="note">Le prime 5 persona identificate nella fase di ideal customer profiling, poi raffinate nei segmenti sopra.</p>
+          <div class="grid grid-3" style="margin-top:.3rem;">
+            <div class="persona-card"><h4>Elena, il Cuore in Lutto</h4><p class="need">Ha bisogno di sapere se il suo animale ha sofferto, e di conforto spirituale più che clinico.</p></div>
+            <div class="persona-card"><h4>Marco, il Guardiano Premuroso</h4><p class="need">Vuole spiegazioni pratiche sul comportamento del suo animale, scettico verso l'esoterico.</p></div>
+            <div class="persona-card"><h4>Giulia, l'Anima in Viaggio</h4><p class="need">Cerca un percorso di crescita personale autentico attraverso gli animali e la natura.</p></div>
+            <div class="persona-card"><h4>Anna, Ansiosa per Fido</h4><p class="need">Accompagnamento nella fase finale della vita del suo animale, meno sola nel dolore.</p></div>
+            <div class="persona-card"><h4>Chiara, la Curiosa Scettica-Convertita</h4><p class="need">Vuole prove di credibilità prima di investire; più interessata al lato psicologico che spirituale.</p></div>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section id="positioning">
+      <div class="eyebrow">04 — Positioning</div>
+      <h2>Il posizionamento, e i 3 angoli di attacco</h2>
+      <p class="lede">Il macro-posizionamento definisce chi è "Il Mio Sole"; i tre micro-posizionamenti sono le porte d'ingresso per i tre segmenti prioritari.</p>
+
+      <div class="macro">
+        <div class="card">
+          <h4>Vision &amp; Mission</h4>
+          <p>Essere il punto di riferimento emotivo e spirituale per chi cerca una connessione autentica con gli animali. Accompagnare le persone nei momenti critici della relazione con i loro animali — lutto, malattia, difficoltà comportamentali — radicando ogni servizio in un'esperienza personale reale e vissuta.</p>
+        </div>
+        <div class="card">
+          <h4>Value Proposition unica</h4>
+          <p>Comunicazione animale e accompagnamento energetico radicati in un'esperienza autentica (il percorso di Samuela con Gas), combinati con la fattoria come ambiente reale e gli alpaca come facilitatori di consapevolezza. Non promette magia: promette ascolto energetico genuino e serietà professionale.</p>
+        </div>
+      </div>
+
+      <div class="grid micro-grid">
+        <div class="card micro-card">
+          <div class="eyebrow">Micro 1</div>
+          <h4>Comunicazione animale nel lutto e nella malattia</h4>
+          <p>Sessioni dedicate al contatto con animali defunti o in fase terminale, condotte da chi ha vissuto un'esperienza analoga in prima persona.</p>
+          <div class="who"><b>Parla a</b>Elena — un primo passo per chiudere in pace un capitolo doloroso.</div>
+        </div>
+        <div class="card micro-card">
+          <div class="eyebrow">Micro 2</div>
+          <h4>Passeggiate di consapevolezza con gli alpaca</h4>
+          <p>Esperienza immersiva nel bosco: movimento lento, natura e presenza calma degli alpaca come facilitatori naturali della consapevolezza.</p>
+          <div class="who"><b>Parla a</b>Giulia — un rituale di riconnessione autentica, alternativo al wellness standardizzato.</div>
+        </div>
+        <div class="card micro-card">
+          <div class="eyebrow">Micro 3</div>
+          <h4>Percorso di riconnessione per difficoltà comportamentali</h4>
+          <p>Comunicazione animale e guarigione energetica insieme, per affrontare le cause profonde dei comportamenti problematici.</p>
+          <div class="who"><b>Parla a</b>Anna — un percorso continuativo che accompagna il declino dell'animale, non un intervento isolato.</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:1.4rem;">
+        <h4 style="font-size:.92rem; color:var(--pine-ink); margin-bottom:.5rem;">Brand identity</h4>
+        <p style="font-size:.9rem;">Un brand radicato nell'autenticità, nella prossimità umana e nella credibilità dimostrata attraverso l'esperienza personale reale di Samuela. Rifiuta la commercializzazione della spiritualità, privilegia la relazione di fiducia nel tempo, e posiziona la fattoria come spazio di accoglienza naturale — non come centro benessere patinato. <strong>Due storie vere, non una sola:</strong> il legame con Gas per l'autenticità emotiva, il passato da campionessa europea di motociclismo per l'autorità concreta — vedi <a href="#credibilita" style="color:var(--pine-ink);">Il capitale di credibilità</a>.</p>
+      </div>
+    </section>
+
+    <section id="credibilita">
+      <div class="eyebrow">05 — Il capitale di credibilità</div>
+      <h2>Da campionessa europea di motociclismo a comunicatrice con gli animali</h2>
+      <p class="lede">Un dato pubblico e verificabile, non ancora usato nel posizionamento: prima di "Il Mio Sole", Samuela De Nardi è stata per un decennio pilota professionista ai vertici dello sport motociclistico europeo.</p>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4 style="font-size:.85rem; text-transform:uppercase; letter-spacing:.06em; color:var(--pine-ink); margin-bottom:.9rem;">La carriera, in breve</h4>
+          <ul class="includes" style="gap:.6rem;">
+            <li><b>2002</b> — vince l'Alpe Adria Cup: prima donna nella storia a conquistare il titolo</li>
+            <li><b>2005</b> — pilota ufficiale Aprilia nel Campionato Europeo, in gara alla 8 Ore di Suzuka (Giappone)</li>
+            <li><b>2006</b> — passa alla Formula Drive italiana, record in pista a Grobnik</li>
+            <li><b>2007–2010</b> — wild card CIV Superbike a Mugello, poi Triumph European Series</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4 style="font-size:.85rem; text-transform:uppercase; letter-spacing:.06em; color:var(--gold-ink); margin-bottom:.9rem;">Perché conta per il posizionamento</h4>
+          <p style="font-size:.88rem; margin-bottom:.7rem;">Nella SWOT, la debolezza più diffusa tra i concorrenti è la <b>mancanza di validazione istituzionale</b>: la loro credibilità resta soggettiva, basata sulla percezione. Un palmarès sportivo europeo, documentato su Wikipedia e sulla stampa, è invece un fatto verificabile — qualcosa che nessun altro operatore della nicchia può offrire.</p>
+          <p style="font-size:.88rem;">Parla in particolare alle persona più scettiche e pragmatiche — <b>Chiara</b>, <b>Roberto</b> e <b>Marco</b> — che chiedono esplicitamente "prove concrete" e diffidano del linguaggio esoterico.</p>
+        </div>
+      </div>
+
+      <div class="assess" style="margin-top:1.2rem;">
+        <b>Segnale già presente sul territorio:</b> la stampa locale ha già collegato i due mondi — un articolo della Tribuna di Treviso la definisce "la campionessa che sussurra ai cani". Il posizionamento non deve inventare l'angolo, deve solo raccoglierlo.
+      </div>
+
+      <details class="more">
+        <summary>Nota metodologica e fonti</summary>
+        <p>Dato non presente nel foglio "Report" originale: emerso da una verifica pubblica (Wikipedia + rassegna stampa) del 2026-07-04, in seguito a una domanda diretta sul suo passato in moto. Prima di dare grande visibilità a questo angolo in comunicazioni pubbliche, andrebbe confermato con Samuela quanto vuole valorizzare il passato sportivo rispetto alla nuova identità: dopo un cambiamento di vita così radicale, un'enfasi eccessiva sul "chi ero prima" può risultare stridente invece che rafforzante per alcune persone. Fonti: <a href="https://it.wikipedia.org/wiki/Samuela_De_Nardi" style="color:inherit;">Wikipedia</a>, <a href="https://www.tribunatreviso.it/sport/la-campionessa-che-sussurra-ai-cani-feodpev6" style="color:inherit;">Tribuna di Treviso</a>.</p>
+      </details>
+    </section>
+
+    <section id="brand">
+      <div class="eyebrow">06 — Big idea &amp; brand</div>
+      <h2>Il cuore creativo del marchio</h2>
+      <p class="lede">Value proposition, brand statement e big idea condensati in un unico messaggio guida.</p>
+
+      <div class="manifesto">
+        <div class="eyebrow" style="color:rgba(255,255,255,0.75);">Big idea</div>
+        <div class="big">"Il Sole che resta" — quando il legame con il tuo animale sembra interrompersi, scopri che non finisce mai davvero.</div>
+        <p class="promise">Ritrova la connessione con il tuo animale — anche quando le parole non bastano più — e ritrova te stesso nel processo.</p>
+        <p class="curiosity">Cosa può insegnarti un alpaca che nessun umano ti ha mai insegnato?</p>
+      </div>
+
+      <div class="brand-elements">
+        <div class="item">
+          <h4>Brand statement</h4>
+          <p>Il Mio Sole è la fattoria didattica che unisce comunicazione animale, natural healing e crescita personale attraverso l'incontro reale con gli alpaca e la natura. Rispetto ai percorsi generici o percepiti come commerciali, offriamo un'esperienza autentica, nata da un vissuto personale reale — la nostra fattoria.</p>
+        </div>
+        <div class="item">
+          <h4>Meccanismo unico</h4>
+          <p>Il metodo nasce da un'esperienza vissuta in prima persona — non da una tecnica appresa sui libri — e unisce tre elementi che raramente coesistono nello stesso operatore: pratica energetico-spirituale, contatto diretto con animali reali, e un vissuto personale autentico.</p>
+        </div>
+        <div class="item">
+          <h4>Trasformazione tangibile</h4>
+          <p>Una sessione che restituisce serenità, una camminata nel bosco che rallenta il respiro, un lutto che non si deve più affrontare da soli. Su tre piani: emotivo, fisico-sensoriale, relazionale.</p>
+        </div>
+        <div class="item">
+          <h4>Differenziazione</h4>
+          <p>L'unico percorso in Veneto che unisce comunicazione animale, natural healing e contatto diretto con gli alpaca in un luogo fisico reale — non un operatore online e distante. La storia di Samuela con Gas è una prova di autenticità non replicabile dalla concorrenza. A questo si aggiunge un'autorità concreta e verificabile che nessun concorrente possiede: un passato da campionessa europea di motociclismo (dettagli in <a href="#credibilita" style="color:inherit;">Il capitale di credibilità</a>).</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="obiettivi">
+      <div class="eyebrow">07 — Obiettivi SMART</div>
+      <h2>Cosa vuol dire "funzionare" nei prossimi 12 mesi</h2>
+      <p class="lede">Cinque obiettivi misurabili che guidano le priorità di comunicazione e prodotto. <strong>Corretto:</strong> l'obiettivo originale sui follower era tarato su un lancio da zero, ma l'audience social esiste già ed è ampia (36,8K su Instagram) — l'obiettivo 1 è stato quindi spostato dai follower (vanity metric già superata) alla costruzione di un CRM proprietario, che invece parte davvero da zero.</p>
+
+      <div class="grid obj-grid">
+        <div class="card obj-card">
+          <div class="eyebrow">Obiettivo 1</div>
+          <div class="num tabular">200</div>
+          <div class="when">entro 12 mesi</div>
+          <p>Contatti in un CRM/newsletter proprietario, partendo da zero — non più follower social (già oltre 36,8K su Instagram), ma un database che l'agenzia può attivare direttamente.</p>
+        </div>
+        <div class="card obj-card">
+          <div class="eyebrow">Obiettivo 2</div>
+          <div class="num">Top 3</div>
+          <div class="when">entro 12 mesi</div>
+          <p>Posizione organica su Google per "comunicazione animale + area geografica", via SEO e blog.</p>
+        </div>
+        <div class="card obj-card">
+          <div class="eyebrow">Obiettivo 3</div>
+          <div class="num tabular">30</div>
+          <div class="when">al mese, entro 6 mesi</div>
+          <p>Richieste di contatto qualificate (form, DM, telefono) tramite campagne organiche e/o a pagamento. <em>Da validare: non abbiamo ancora il dato reale delle richieste attuali — questa cifra resta una stima del foglio originale.</em></p>
+        </div>
+        <div class="card obj-card">
+          <div class="eyebrow">Obiettivo 4</div>
+          <div class="num tabular">50</div>
+          <div class="when">nei primi 12 mesi</div>
+          <p>Nuovi clienti acquisiti, distribuiti tra i tre segmenti prioritari (Elena, Giulia, Anna). <em>Da validare: stessa riserva dell'obiettivo 3, con un'audience di 36,8K potrebbe essere una stima al ribasso.</em></p>
+        </div>
+        <div class="card obj-card">
+          <div class="eyebrow">Obiettivo 5</div>
+          <div class="num tabular">+30%</div>
+          <div class="when">entro 12 mesi</div>
+          <p>Aumento delle sessioni/esperienze vendute rispetto al periodo pre-lancio.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="funnel">
+      <div class="eyebrow">08 — Value ladder &amp; funnel</div>
+      <h2>Dal primo contatto gratuito al percorso premium</h2>
+      <p class="lede">Tre livelli di offerta e un funnel a tre fasi che li collega.</p>
+
+      <div class="vl-wrap">
+        <div>
+          <h3 style="font-size:1rem; margin-bottom:1rem;">Value ladder</h3>
+          <div class="ladder">
+            <div class="step"><div class="eyebrow">Livello 1</div><h4>Gratuito / basso costo — Entra nel Sole</h4></div>
+            <div class="step"><div class="eyebrow">Livello 2</div><h4>Prezzo medio — Vivi il Sole</h4></div>
+            <div class="step"><div class="eyebrow">Livello 3</div><h4>Alta gamma — Diventa il Sole</h4></div>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-size:1rem; margin-bottom:1rem;">Sales funnel</h3>
+          <div class="funnel">
+            <div class="seg tofu"><b>TOFU</b>Storytelling social, guida gratuita, SEO locale, live Q&amp;A</div>
+            <div class="seg mofu"><b>MOFU</b>Newsletter, retargeting, visite conoscitive in fattoria</div>
+            <div class="seg bofu"><b>BOFU</b>Sessione singola → percorso multi-sessione → ritiri/immersioni</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="font-size:1rem; margin:2rem 0 .6rem;">Canali di marketing</h3>
+      <div class="channels">
+        <span class="chip">Instagram / Facebook</span>
+        <span class="chip">Email marketing</span>
+        <span class="chip">SEO locale</span>
+        <span class="chip">Google Business Profile</span>
+        <span class="chip">Passaparola / referral</span>
+      </div>
+    </section>
+
+    <section id="offerta">
+      <div class="eyebrow">09 — Offerta perfetta</div>
+      <h2>Il pacchetto "Il Sole che Resta"</h2>
+      <div class="offer-hero">
+        <h3>6 incontri per ritrovare un legame che pensavi interrotto</h3>
+        <p class="target">Per chi sente che il legame con il proprio animale — vivente o scomparso — ha ancora qualcosa da dire. Non per chi cerca una diagnosi veterinaria o risultati garantiti scientificamente.</p>
+      </div>
+
+      <div class="card">
+        <h4 style="font-size:.85rem; text-transform:uppercase; letter-spacing:.06em; color:var(--pine-ink); margin-bottom:.8rem;">Cosa riceve il cliente</h4>
+        <ul class="includes">
+          <li>3 sessioni di comunicazione animale (animale vivente e/o defunto)</li>
+          <li>2 passeggiate di consapevolezza con gli alpaca nel bosco di via Savassa Alta</li>
+          <li>1 sessione di meditazione / guarigione energetica dedicata alla persona</li>
+          <li>Follow-up scritto dopo ogni incontro</li>
+          <li>Canale diretto (WhatsApp/email) tra una sessione e l'altra</li>
+          <li>Guida digitale "Segnali che il tuo animale ti sta mandando"</li>
+        </ul>
+      </div>
+
+      <div class="grid offer-grid">
+        <div class="card"><h4>Price reframing</h4><p>Il percorso completo equivale a meno del costo di una singola visita specialistica privata — ma accompagna per settimane, non un'ora.</p></div>
+        <div class="card"><h4>Termini di pagamento</h4><p>Pagamento unico con sconto (-10%) per chi salda in anticipo, oppure 3 rate mensili senza interessi.</p></div>
+        <div class="card"><h4>Bonus</h4><p>Meditazione audio guidata da riascoltare a casa; una passeggiata di gruppo extra per chi completa il percorso; -15% su una sessione futura.</p></div>
+        <div class="card"><h4>Eliminazione del rischio</h4><p>Se dopo il primo incontro il percorso non sembra giusto, si può interrompere senza vincoli, pagando solo la sessione svolta.</p></div>
+        <div class="card"><h4>Urgenza &amp; scarsità</h4><p>I percorsi sono limitati a un numero ristretto di persone al mese, per garantire qualità e presenza.</p></div>
+        <div class="card"><h4>Call to action</h4><p>"Prenota il tuo primo incontro e scopri cosa il tuo Sole ha ancora da dirti."</p></div>
+      </div>
+    </section>
+
+    <section id="leadmagnet">
+      <div class="eyebrow">10 — Lead magnet</div>
+      <h2>Le porte d'ingresso gratuite</h2>
+      <p class="lede">Target: 200 iscritti entro 12 mesi. Si lancia prima il magnete principale, poi si aggiungono i complementari nei mesi successivi.</p>
+
+      <div class="grid lm-grid">
+        <div class="card lm-card">
+          <div class="eyebrow">PDF gratuito</div>
+          <h4>"5 Segnali che il Tuo Animale ti sta Mandando"</h4>
+          <p>Guida di 4-6 pagine con introduzione di Samuela sulla storia con Gas, 5 segnali comportamentali interpretati, e CTA verso la sessione di comunicazione animale.</p>
+        </div>
+        <div class="card lm-card">
+          <div class="eyebrow">Audio gratuito</div>
+          <h4>"5 Minuti di Respiro nel Bosco"</h4>
+          <p>Meditazione guidata di 5 minuti ambientata in fattoria, per chi cerca riconnessione personale senza impegno immediato.</p>
+        </div>
+        <div class="card lm-card">
+          <div class="eyebrow">Video gratuito</div>
+          <h4>"Un Giorno a Il Mio Sole"</h4>
+          <p>Mini-video di 2-3 minuti che mostra una vera passeggiata con gli alpaca, per un pubblico curioso ma scettico che cerca prove concrete.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  Report generato dall'analisi "Funnel Analysis for Samuela De Nardi (Il Mio Sole)" — foglio Report del Google Sheet condiviso. Documento di lavoro interno, da rivedere prima dell'invio alla cliente.
+</footer>
+
+<script>
+  (function(){
+    var links = Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
+    var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+    if(!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var id = '#' + entry.target.id;
+        var link = links.find(function(a){ return a.getAttribute('href') === id; });
+        if(!link) return;
+        if(entry.isIntersecting){
+          links.forEach(function(a){ a.classList.remove('active'); });
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+    sections.forEach(function(s){ io.observe(s); });
+  })();
+</script>
+
+</body>
+</html>
