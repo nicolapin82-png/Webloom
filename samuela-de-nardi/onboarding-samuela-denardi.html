@@ -13,12 +13,30 @@
       --accent-rgb: 107,158,110;
       --header-bg: #0D1F0E;
       --warm: #B5803C;
+      --warm-rgb: 181,128,60;
       --light-bg: #f7f9f5;
       --card-bg: #ffffff;
       --text: #1f2937;
       --text-muted: #6b7280;
       --border: #e5e7eb;
     }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --accent: #8FC492;
+        --accent-dark: #6BAE70;
+        --accent-rgb: 143,196,146;
+        --header-bg: #0A150B;
+        --warm: #D9A85C;
+        --warm-rgb: 217,168,92;
+        --light-bg: #14160F;
+        --card-bg: #1D2019;
+        --text: #E8E6DE;
+        --text-muted: #9C9A8E;
+        --border: #33362C;
+      }
+    }
+    html { color-scheme: light dark; }
 
     html { scroll-behavior: smooth; }
 
@@ -105,25 +123,25 @@
 
     /* INTRO BOX */
     .intro-box {
-      background: #f0f7f0;
+      background: rgba(var(--accent-rgb), 0.1);
       border-left: 4px solid var(--accent);
       border-radius: 0 10px 10px 0;
       padding: 18px 22px;
       margin-bottom: 28px;
       font-size: 0.93rem;
-      color: #2d5a2e;
+      color: var(--text);
     }
-    .intro-box strong { color: #1a3d1b; }
+    .intro-box strong { color: var(--text); }
 
     /* NOTE BOX */
     .note-box {
-      background: #fffbf0;
+      background: rgba(var(--warm-rgb), 0.12);
       border-left: 4px solid var(--warm);
       border-radius: 0 10px 10px 0;
       padding: 14px 18px;
       margin-top: 12px;
       font-size: 0.88rem;
-      color: #7a5a1a;
+      color: var(--text);
     }
 
     /* SEZIONE CARD */
@@ -176,7 +194,7 @@
       display: block;
       font-size: 0.88rem;
       font-weight: 600;
-      color: #374151;
+      color: var(--text);
       margin-bottom: 7px;
     }
     label .req {
@@ -204,7 +222,7 @@
       font-family: inherit;
       font-size: 0.95rem;
       color: var(--text);
-      background: #fafafa;
+      background: var(--light-bg);
       transition: border-color 0.2s, box-shadow 0.2s;
       outline: none;
       appearance: none;
@@ -212,10 +230,10 @@
     input:focus, textarea:focus, select:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.12);
-      background: #fff;
+      background: var(--card-bg);
     }
     textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
-    input::placeholder, textarea::placeholder { color: #c0c8c0; }
+    input::placeholder, textarea::placeholder { color: var(--text-muted); }
 
     .input-hint {
       font-size: 0.8rem;
@@ -239,7 +257,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      background: #fafafa;
+      background: var(--light-bg);
       border: 1.5px solid var(--border);
       border-radius: 9px;
       padding: 10px 14px;
@@ -292,14 +310,14 @@
       font-weight: 600;
       color: var(--text);
       padding: 8px 12px;
-      background: #fff;
+      background: var(--card-bg);
       border-top: 1px solid var(--border);
     }
     .palette-colors {
       font-size: 0.74rem;
       color: var(--text-muted);
       padding: 0 12px 8px;
-      background: #fff;
+      background: var(--card-bg);
     }
 
     /* GIORNI GRID */
@@ -402,7 +420,7 @@
       margin-top: 40px;
       text-align: center;
       font-size: 0.83rem;
-      color: #9ca3af;
+      color: var(--text-muted);
       border-top: 1px solid var(--border);
       padding-top: 24px;
     }
@@ -417,6 +435,22 @@
       .days-grid { grid-template-columns: repeat(4, 1fr); }
       .palette-grid { grid-template-columns: 1fr; }
       .submit-card { padding: 28px 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .wrapper { margin: 16px auto; padding: 0 14px 60px; }
+      .header { padding: 26px 18px; border-radius: 14px; }
+      .header h1 { font-size: 1.5rem; }
+      .header p { font-size: 0.88rem; }
+      .section-card { padding: 20px 16px; }
+      .section-header { gap: 10px; }
+      .section-icon { width: 36px; height: 36px; font-size: 18px; }
+      .days-grid { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+      .day-label { font-size: 0.74rem; height: 40px; }
+      .check-group.inline, .radio-group.inline { flex-direction: column; }
+      .palette-swatches { height: 40px; }
+      .submit-card { padding: 22px 16px; }
+      .btn-submit { width: 100%; padding: 14px 20px; }
     }
   </style>
 </head>
@@ -889,12 +923,25 @@
       <h2>Tutto pronto?</h2>
       <p>Clicca il pulsante e il modulo arriva direttamente a WeBloom. Entro 24-48 ore ti contatto per confermare la ricezione e pianificare i prossimi passi.</p>
       <button type="submit" class="btn-submit" id="btn-send">Invia il modulo di avvio</button>
-      <p id="form-success" style="display:none; color:#6B9E6E; font-weight:700; margin-top:20px; font-size:1rem;">Ricevuto. Ti contatto entro 24-48 ore.</p>
+      <p id="form-success" style="display:none; color:var(--accent); font-weight:700; margin-top:20px; font-size:1rem;">Ricevuto. Ti contatto entro 24-48 ore.</p>
       <p id="form-error" style="display:none; color:#ef4444; margin-top:16px; font-size:0.88rem;">Qualcosa non ha funzionato. Riprova o scrivimi su WhatsApp al 327 073 1397.</p>
       <p class="submit-note">Hai dubbi prima di inviare? Scrivimi su WhatsApp al <strong>327 073 1397</strong></p>
     </div>
 
   </form>
+
+  <!-- DOC LINKS -->
+  <div class="doc-links" style="max-width:740px; margin:40px auto 0; padding:0 20px;">
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Tutti i documenti</p>
+    <div style="display:flex; flex-wrap:wrap; gap:10px;">
+      <a href="analisi-posizionamento-samuela-denardi.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border); background:var(--card-bg); color:var(--text); text-decoration:none; font-size:13px;">Analisi di posizionamento</a>
+      <a href="proposta-samuela-denardi.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border); background:var(--card-bg); color:var(--text); text-decoration:none; font-size:13px;">Proposta WeBloom</a>
+      <a href="analisi-strategica-samuela-denardi.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border); background:var(--card-bg); color:var(--text); text-decoration:none; font-size:13px;">Analisi strategica</a>
+      <a href="il-tuo-percorso-esperienze-il-mio-sole.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border); background:var(--card-bg); color:var(--text); text-decoration:none; font-size:13px;">Il tuo percorso di esperienze</a>
+      <a href="prossimi-passi-samuela-denardi.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border); background:var(--card-bg); color:var(--text); text-decoration:none; font-size:13px;">I prossimi passi</a>
+      <a href="guida-creazione-email-marketing-ilmiosole.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border); background:var(--card-bg); color:var(--text); text-decoration:none; font-size:13px;">Guida: crea la tua email marketing</a>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <div class="footer">

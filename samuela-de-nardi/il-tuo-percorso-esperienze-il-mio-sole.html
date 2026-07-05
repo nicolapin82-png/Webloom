@@ -9,27 +9,43 @@
   :root {
     --bg: #080A06;
     --bg2: #0C0F09;
-    --card: rgba(255,255,255,0.035);
-    --card-hover: rgba(255,255,255,0.065);
+    --card: rgba(var(--fg-rgb),0.035);
+    --card-hover: rgba(var(--fg-rgb),0.065);
     --gold: #C8A96E;
     --green: #6B9B52;
     --cream: #FFF8EE;
     --white: #FFFFFF;
-    --muted: rgba(255,255,255,0.78);
+    --muted: rgba(var(--fg-rgb),0.78);
     --border: rgba(200,169,110,0.22);
-    --border-soft: rgba(255,255,255,0.07);
+    --border-soft: rgba(var(--fg-rgb),0.07);
     --grad: linear-gradient(135deg, #C8A96E 0%, #6B9B52 100%);
     --grad-text: linear-gradient(135deg, #C8A96E, #E5D4A8, #8CB369);
     --radius: 16px;
+    --fg-rgb: 255,255,255;
+    --bg-rgb: 8,10,6;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #FBF8F2;
+      --bg2: #F4EFE3;
+      --card: rgba(10,10,6,0.035);
+      --card-hover: rgba(10,10,6,0.06);
+      --white: #1C1A14;
+      --muted: rgba(20,18,12,0.68);
+      --border: rgba(150,110,40,0.28);
+      --border-soft: rgba(10,10,6,0.08);
+      --fg-rgb: 20,18,12;
+      --bg-rgb: 251,248,242;
+    }
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
+  html { scroll-behavior:smooth; color-scheme: dark light; }
   body { background: var(--bg); color: var(--white); font-family:'Inter',sans-serif; font-size:17px; line-height:1.8; }
   ::-webkit-scrollbar { width:4px; }
   ::-webkit-scrollbar-track { background:var(--bg); }
   ::-webkit-scrollbar-thumb { background:var(--gold); border-radius:2px; }
 
-  nav { position:sticky; top:0; z-index:100; padding:20px 32px; display:flex; align-items:center; justify-content:space-between; background:rgba(8,10,6,0.9); backdrop-filter:blur(16px); border-bottom:1px solid var(--border-soft); }
+  nav { position:sticky; top:0; z-index:100; padding:20px 32px; display:flex; align-items:center; justify-content:space-between; background:rgba(var(--bg-rgb),0.9); backdrop-filter:blur(16px); border-bottom:1px solid var(--border-soft); }
   .nav-title { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:var(--gold); }
 
   main { max-width:880px; margin:0 auto; padding:0 24px 100px; }
@@ -47,11 +63,11 @@
   .section-lead { color:var(--muted); font-size:16.5px; margin-bottom:32px; }
 
   .intro-box { background:linear-gradient(135deg, rgba(200,169,110,0.07), rgba(107,155,82,0.04)); border:1px solid var(--border); border-radius:var(--radius); padding:36px 40px; }
-  .intro-box p { font-size:16.5px; color:rgba(255,255,255,0.9); }
+  .intro-box p { font-size:16.5px; color:rgba(var(--fg-rgb),0.9); }
   .intro-box p + p { margin-top:16px; }
   .intro-box strong { color:var(--gold); }
 
-  /* CAMMINO — 4 tappe, visual semplice */
+  /* CAMMINO: 4 tappe, visual semplice */
   .cammino { display:flex; justify-content:space-between; align-items:flex-start; margin:40px 0 8px; gap:8px; }
   .tappa-dot { display:flex; flex-direction:column; align-items:center; flex:1; text-align:center; }
   .tappa-circle { width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:20px; font-weight:700; margin-bottom:10px; border:2px solid; }
@@ -59,8 +75,8 @@
   .tappa-2 .tappa-circle { color:#E07070; border-color:#E07070; background:rgba(224,112,112,0.1); }
   .tappa-3 .tappa-circle { color:#8CB369; border-color:#8CB369; background:rgba(140,179,105,0.1); }
   .tappa-4 .tappa-circle { color:var(--gold); border-color:var(--gold); background:rgba(200,169,110,0.12); }
-  .tappa-label { font-size:12.5px; color:rgba(255,255,255,0.7); max-width:120px; }
-  .cammino-line { position:relative; height:2px; background:rgba(255,255,255,0.1); margin:0 20px 48px; }
+  .tappa-label { font-size:12.5px; color:rgba(var(--fg-rgb),0.7); max-width:120px; }
+  .cammino-line { position:relative; height:2px; background:rgba(var(--fg-rgb),0.1); margin:0 20px 48px; }
   .cammino-line::before { content:''; position:absolute; inset:0; background:var(--grad); width:100%; }
   @media (max-width:600px) { .tappa-label { font-size:11px; } .tappa-circle { width:42px; height:42px; font-size:16px; } }
 
@@ -78,30 +94,44 @@
   .c4 .tappa-card-title { color:var(--gold); }
   .tappa-card-sub { font-size:14px; color:var(--muted); margin-bottom:22px; }
 
-  .voce { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:14px 18px; background:rgba(255,255,255,0.02); border-radius:10px; margin-bottom:10px; flex-wrap:wrap; }
+  .voce { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:14px 18px; background:rgba(var(--fg-rgb),0.02); border-radius:10px; margin-bottom:10px; flex-wrap:wrap; }
   .voce:last-child { margin-bottom:0; }
   .voce-nome { font-weight:600; font-size:15px; flex:1; min-width:200px; }
   .voce-prezzi { display:flex; align-items:center; gap:8px; white-space:nowrap; }
-  .voce-old { color:rgba(255,255,255,0.35); text-decoration:line-through; font-size:14px; }
+  .voce-old { color:rgba(var(--fg-rgb),0.35); text-decoration:line-through; font-size:14px; }
   .voce-arrow { color:var(--muted); font-size:13px; }
   .voce-new { color:var(--gold); font-weight:700; font-size:16px; }
-  .voce-invariato { color:rgba(255,255,255,0.55); font-weight:600; font-size:16px; }
-  .voce-perche { width:100%; font-size:13.5px; color:rgba(255,255,255,0.65); margin-top:6px; line-height:1.6; }
+  .voce-invariato { color:rgba(var(--fg-rgb),0.55); font-weight:600; font-size:16px; }
+  .voce-perche { width:100%; font-size:13.5px; color:rgba(var(--fg-rgb),0.65); margin-top:6px; line-height:1.6; }
 
-  .gia-bene { margin-top:20px; padding:18px 22px; background:rgba(140,179,105,0.06); border:1px solid rgba(140,179,105,0.25); border-radius:12px; font-size:14.5px; color:rgba(255,255,255,0.88); }
+  .gia-bene { margin-top:20px; padding:18px 22px; background:rgba(140,179,105,0.06); border:1px solid rgba(140,179,105,0.25); border-radius:12px; font-size:14.5px; color:rgba(var(--fg-rgb),0.88); }
   .gia-bene strong { color:#8CB369; }
 
   /* ESEMPIO CONCRETO */
   .esempio-box { background:linear-gradient(135deg, rgba(200,169,110,0.09), rgba(107,155,82,0.06)); border:1px solid rgba(200,169,110,0.3); border-radius:var(--radius); padding:36px 40px; }
   .esempio-box h3 { font-family:'Playfair Display',serif; font-size:20px; color:var(--gold); margin-bottom:18px; }
-  .esempio-riga { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:15px; }
+  .esempio-riga { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(var(--fg-rgb),0.08); font-size:15px; }
   .esempio-riga:last-of-type { border-bottom:none; }
   .esempio-riga span:last-child { color:var(--gold); font-weight:600; }
   .esempio-totale { margin-top:16px; padding-top:16px; border-top:2px solid rgba(200,169,110,0.3); display:flex; justify-content:space-between; font-family:'Playfair Display',serif; font-size:22px; font-weight:700; }
   .esempio-totale span:last-child { color:var(--gold); }
-  .esempio-nota { margin-top:18px; font-size:14px; color:rgba(255,255,255,0.7); font-style:italic; }
+  .esempio-nota { margin-top:18px; font-size:14px; color:rgba(var(--fg-rgb),0.7); font-style:italic; }
 
-  footer { border-top:1px solid var(--border-soft); padding:40px 24px; text-align:center; font-size:13px; color:rgba(255,255,255,0.4); }
+  footer { border-top:1px solid var(--border-soft); padding:40px 24px; text-align:center; font-size:13px; color:rgba(var(--fg-rgb),0.4); }
+
+  @media (max-width:480px) {
+    nav { padding:16px 20px; }
+    main { padding:0 16px 100px; }
+    #hero { padding:64px 0 44px; }
+    .intro-box, .esempio-box { padding:24px 22px; }
+    .tappa-card { padding:24px 20px; }
+    .voce { padding:12px 14px; }
+    .voce-nome { min-width:0; width:100%; }
+    .esempio-riga { font-size:14px; }
+  }
+
+  .doc-links a { transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease; }
+  .doc-links a:hover { color:var(--gold); border-color:var(--gold); background:var(--card-hover); }
 </style>
 </head>
 <body>
@@ -115,12 +145,12 @@
   <section id="hero">
     <p class="hero-eyebrow">Samuela De Nardi · Il mio sole</p>
     <h1>Le tue esperienze, raccontate <em>come un percorso</em></h1>
-    <p class="hero-lead">Oggi hai 13 modi diversi per far vivere un'esperienza a chi ti segue — dalla serata di meditazione di gruppo alla sessione individuale con gli alpaca. Ognuno merita il suo posto e il suo prezzo giusto. Ecco come li abbiamo organizzati, e perché.</p>
+    <p class="hero-lead">Oggi hai 13 modi diversi per far vivere un'esperienza a chi ti segue, dalla serata di meditazione di gruppo alla sessione individuale con gli alpaca. Ognuno merita il suo posto e il suo prezzo giusto. Ecco come li abbiamo organizzati, e perché.</p>
   </section>
 
   <section>
     <div class="intro-box">
-      <p>Oggi, chi ti scrive su WhatsApp trova tutto allo stesso modo: stesso tono, stessa modalità di richiesta, prezzi che non raccontano quanto sia diversa un'esperienza dall'altra. Una serata di meditazione di gruppo e una sessione individuale con gli alpaca sono due mondi diversi — ma oggi arrivano nello stesso identico modo.</p>
+      <p>Oggi, chi ti scrive su WhatsApp trova tutto allo stesso modo: stesso tono, stessa modalità di richiesta, prezzi che non raccontano quanto sia diversa un'esperienza dall'altra. Una serata di meditazione di gruppo e una sessione individuale con gli alpaca sono due mondi diversi, ma oggi arrivano nello stesso identico modo.</p>
       <p>L'idea è semplice: <strong>organizzare quello che già fai in un percorso con 4 tappe</strong>, dal primo assaggio gratuito o quasi fino all'esperienza più profonda e personale. Ogni tappa ha il suo prezzo, pensato per quello che dà davvero.</p>
     </div>
   </section>
@@ -143,7 +173,7 @@
       <div class="tappa-card-title">1 · Il primo assaggio</div>
       <p class="tappa-card-sub">Un modo semplice, quasi gratuito, per far conoscere la tua energia a chi ti segue su Instagram ma non ha ancora il coraggio di scriverti in privato.</p>
       <div class="voce">
-        <span class="voce-nome">"Prima Connessione" — nuovo, da creare</span>
+        <span class="voce-nome">"Prima Connessione", nuovo, da creare</span>
         <span class="voce-prezzi"><span class="voce-new">€12</span></span>
         <span class="voce-perche">Un piccolo evento di gruppo (20-30 minuti) di presenza con gli alpaca, una volta al mese. La prima edizione può essere gratuita per farla conoscere. Serve a far entrare piano piano nel tuo mondo chi oggi ti segue solo su Instagram.</span>
       </div>
@@ -156,7 +186,7 @@
       <div class="voce">
         <span class="voce-nome">Serata di meditazione di gruppo</span>
         <span class="voce-prezzi"><span class="voce-old">€12</span><span class="voce-arrow">→</span><span class="voce-new">€15</span></span>
-        <span class="voce-perche">Resta un prezzo leggero e accessibile a tutti — ma oggi è quasi regalato rispetto a quello che dai in un'ora.</span>
+        <span class="voce-perche">Resta un prezzo leggero e accessibile a tutti, ma oggi è quasi regalato rispetto a quello che dai in un'ora.</span>
       </div>
       <div class="voce">
         <span class="voce-nome">Serata di meditazione + guarigione di gruppo</span>
@@ -168,7 +198,7 @@
     <!-- TAPPA 3 -->
     <div class="tappa-card c3">
       <div class="tappa-card-title">3 · Le esperienze con gli alpaca e la natura</div>
-      <p class="tappa-card-sub">Il cuore di quello che fai ogni settimana — le esperienze che la maggior parte delle persone sceglie per prima.</p>
+      <p class="tappa-card-sub">Il cuore di quello che fai ogni settimana: le esperienze che la maggior parte delle persone sceglie per prima.</p>
       <div class="voce">
         <span class="voce-nome">Passeggiata con gli alpaca</span>
         <span class="voce-prezzi"><span class="voce-old">€35</span><span class="voce-arrow">→</span><span class="voce-new">€38</span></span>
@@ -182,7 +212,7 @@
       <div class="voce">
         <span class="voce-nome">Meditazione e guarigione con il tuo animale, in presenza</span>
         <span class="voce-prezzi"><span class="voce-old">€55</span><span class="voce-arrow">→</span><span class="voce-new">€59</span></span>
-        <span class="voce-perche">Un pubblico specifico e fedele — piccolo aggiustamento.</span>
+        <span class="voce-perche">Un pubblico specifico e fedele, piccolo aggiustamento.</span>
       </div>
       <div class="voce">
         <span class="voce-nome">Sessione per rimuovere blocchi / "ri-fiorire"</span>
@@ -209,11 +239,11 @@
     <!-- TAPPA 4 -->
     <div class="tappa-card c4">
       <div class="tappa-card-title">4 · Le esperienze uniche, solo con te</div>
-      <p class="tappa-card-sub">Le esperienze più profonde e personali — quelle che nessun altro nella tua zona può offrire.</p>
+      <p class="tappa-card-sub">Le esperienze più profonde e personali: quelle che nessun altro nella tua zona può offrire.</p>
       <div class="voce">
-        <span class="voce-nome">Sessione con gli alpaca — "il percorso"</span>
+        <span class="voce-nome">Sessione con gli alpaca, "il percorso"</span>
         <span class="voce-prezzi"><span class="voce-old">€85</span><span class="voce-arrow">→</span><span class="voce-new">€100</span></span>
-        <span class="voce-perche">Quella che tu stessa racconti come il percorso per ritrovare il proprio vero potere. Oggi costa quanto una passeggiata famiglia più un caffè — ma è un'esperienza unica, individuale, che nessun altro offre. Vale di più.</span>
+        <span class="voce-perche">Quella che tu stessa racconti come il percorso per ritrovare il proprio vero potere. Oggi costa quanto una passeggiata famiglia più un caffè, ma è un'esperienza unica, individuale, che nessun altro offre. Vale di più.</span>
       </div>
       <div class="voce">
         <span class="voce-nome">Meditazione e guarigione con gli alpaca, in due</span>
@@ -228,11 +258,11 @@
       <div class="voce">
         <span class="voce-nome">Comunicazione animale: consulenza completa + guarigione</span>
         <span class="voce-prezzi"><span class="voce-invariato">€150</span></span>
-        <span class="voce-perche">Il tuo servizio più completo — già al posto giusto.</span>
+        <span class="voce-perche">Il tuo servizio più completo, già al posto giusto.</span>
       </div>
 
       <div class="gia-bene">
-        <strong>Un dettaglio che ci ha colpito:</strong> le tue 4 formule di comunicazione animale (da €65 a €150) sono già organizzate perfettamente, dalla più semplice alla più profonda. È esattamente il modello che vorremmo replicare sugli altri servizi — qui hai già fatto tutto da sola.
+        <strong>Un dettaglio che ci ha colpito:</strong> le tue 4 formule di comunicazione animale (da €65 a €150) sono già organizzate perfettamente, dalla più semplice alla più profonda. È esattamente il modello che vorremmo replicare sugli altri servizi: qui hai già fatto tutto da sola.
       </div>
     </div>
   </section>
@@ -240,17 +270,17 @@
   <section>
     <p class="section-label">Un'idea in più</p>
     <h2 class="section-title">Le foto dell'esperienza, pronte per Instagram</h2>
-    <p class="section-lead">Un piccolo extra da proporre a fine esperienza — senza aggiungere lavoro a te.</p>
+    <p class="section-lead">Un piccolo extra da proporre a fine esperienza, senza aggiungere lavoro a te.</p>
     <div class="intro-box">
-      <p>A fine passeggiata, sessione con gli alpaca o evento di gruppo, puoi proporre: <strong>"Vuoi le foto di oggi, già pronte per Instagram? Sono €20 in più."</strong> Non serve farle tu: puoi coinvolgere un ragazzo o una persona che conosci e che sa scattare foto, che viene alle esperienze e se ne occupa lui. L'accordo più semplice è dividere i €20 a metà — €10 a te, €10 a lui: tu non aggiungi lavoro, e lui guadagna qualcosa per il suo tempo.</p>
-      <p>Oltre al piccolo guadagno extra, ogni volta che una persona pubblica le foto taggandoti, è pubblicità gratuita per te — dalle persone giuste, quelle che hanno già vissuto l'esperienza.</p>
+      <p>A fine passeggiata, sessione con gli alpaca o evento di gruppo, puoi proporre: <strong>"Vuoi le foto di oggi, già pronte per Instagram? Sono €20 in più."</strong> Non serve farle tu: puoi coinvolgere un ragazzo o una persona che conosci e che sa scattare foto, che viene alle esperienze e se ne occupa lui. L'accordo più semplice è dividere i €20 a metà: €10 a te, €10 a lui, tu non aggiungi lavoro e lui guadagna qualcosa per il suo tempo.</p>
+      <p>Oltre al piccolo guadagno extra, ogni volta che una persona pubblica le foto taggandoti, è pubblicità gratuita per te, dalle persone giuste, quelle che hanno già vissuto l'esperienza.</p>
     </div>
   </section>
 
   <section>
     <p class="section-label">In pratica</p>
     <h2 class="section-title">Cosa cambia in un mese normale</h2>
-    <p class="section-lead">Un esempio concreto, senza cambiare il tuo modo di lavorare — solo i numeri sul listino.</p>
+    <p class="section-lead">Un esempio concreto, senza cambiare il tuo modo di lavorare: solo i numeri sul listino.</p>
 
     <div class="esempio-box">
       <h3>Un mese come tanti altri</h3>
@@ -265,14 +295,26 @@
 
   <section>
     <div class="intro-box" style="text-align:center;">
-      <p style="font-size:17px;">Questo documento raccoglie i prezzi proposti e le idee per organizzare le tue esperienze in un percorso chiaro — pensato per accompagnare l'analisi di mercato che hai ricevuto separatamente. Nel documento <a href="prossimi-passi-samuela-denardi.html" style="color:var(--gold);">I prossimi passi</a> trovi le azioni concrete, in ordine, per far partire il piano.</p>
+      <p style="font-size:17px;">Questo documento raccoglie i prezzi proposti e le idee per organizzare le tue esperienze in un percorso chiaro, pensato per accompagnare l'analisi di mercato che hai ricevuto separatamente. Nel documento <a href="prossimi-passi-samuela-denardi.html" style="color:var(--gold);">I prossimi passi</a> trovi le azioni concrete, in ordine, per far partire il piano.</p>
     </div>
   </section>
 
 </main>
 
+<div class="doc-links" style="max-width:880px; margin:60px auto 0; padding:0 24px;">
+  <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:14px;">Tutti i documenti</p>
+  <div style="display:flex; flex-wrap:wrap; gap:10px;">
+    <a href="analisi-posizionamento-samuela-denardi.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border-soft); background:var(--card); color:var(--white); text-decoration:none; font-size:13px;">Analisi di posizionamento</a>
+    <a href="proposta-samuela-denardi.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border-soft); background:var(--card); color:var(--white); text-decoration:none; font-size:13px;">Proposta WeBloom</a>
+    <a href="analisi-strategica-samuela-denardi.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border-soft); background:var(--card); color:var(--white); text-decoration:none; font-size:13px;">Analisi strategica</a>
+    <a href="prossimi-passi-samuela-denardi.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border-soft); background:var(--card); color:var(--white); text-decoration:none; font-size:13px;">I prossimi passi</a>
+    <a href="guida-creazione-email-marketing-ilmiosole.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border-soft); background:var(--card); color:var(--white); text-decoration:none; font-size:13px;">Guida: crea la tua email marketing</a>
+    <a href="onboarding-samuela-denardi.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border-soft); background:var(--card); color:var(--white); text-decoration:none; font-size:13px;">Modulo di avvio</a>
+  </div>
+</div>
+
 <footer>
-  Il mio sole · Samuela De Nardi — pensato con WeBloom
+  Il mio sole · Samuela De Nardi, pensato con WeBloom
 </footer>
 
 </body>

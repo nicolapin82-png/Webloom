@@ -9,26 +9,42 @@
   :root {
     --bg: #080A06;
     --bg2: #0C0F09;
-    --card: rgba(255,255,255,0.035);
-    --card-hover: rgba(255,255,255,0.065);
+    --card: rgba(var(--fg-rgb),0.035);
+    --card-hover: rgba(var(--fg-rgb),0.065);
     --gold: #C8A96E;
     --green: #6B9B52;
     --cream: #FFF8EE;
     --white: #FFFFFF;
-    --muted: rgba(255,255,255,0.78);
+    --muted: rgba(var(--fg-rgb),0.78);
     --border: rgba(200,169,110,0.22);
-    --border-soft: rgba(255,255,255,0.07);
+    --border-soft: rgba(var(--fg-rgb),0.07);
     --grad: linear-gradient(135deg, #C8A96E 0%, #6B9B52 100%);
     --radius: 16px;
+    --fg-rgb: 255,255,255;
+    --bg-rgb: 8,10,6;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #FBF8F2;
+      --bg2: #F4EFE3;
+      --card: rgba(10,10,6,0.035);
+      --card-hover: rgba(10,10,6,0.06);
+      --white: #1C1A14;
+      --muted: rgba(20,18,12,0.68);
+      --border: rgba(150,110,40,0.28);
+      --border-soft: rgba(10,10,6,0.08);
+      --fg-rgb: 20,18,12;
+      --bg-rgb: 251,248,242;
+    }
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
+  html { scroll-behavior:smooth; color-scheme: dark light; }
   body { background: var(--bg); color: var(--white); font-family:'Inter',sans-serif; font-size:17px; line-height:1.8; }
   ::-webkit-scrollbar { width:4px; }
   ::-webkit-scrollbar-track { background:var(--bg); }
   ::-webkit-scrollbar-thumb { background:var(--gold); border-radius:2px; }
 
-  nav { position:sticky; top:0; z-index:100; padding:20px 32px; display:flex; align-items:center; justify-content:space-between; background:rgba(8,10,6,0.9); backdrop-filter:blur(16px); border-bottom:1px solid var(--border-soft); }
+  nav { position:sticky; top:0; z-index:100; padding:20px 32px; display:flex; align-items:center; justify-content:space-between; background:rgba(var(--bg-rgb),0.9); backdrop-filter:blur(16px); border-bottom:1px solid var(--border-soft); }
   .nav-title { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:var(--gold); }
 
   main { max-width:880px; margin:0 auto; padding:0 24px 100px; }
@@ -46,7 +62,7 @@
   .section-lead { color:var(--muted); font-size:16.5px; margin-bottom:32px; }
 
   .intro-box { background:linear-gradient(135deg, rgba(200,169,110,0.07), rgba(107,155,82,0.04)); border:1px solid var(--border); border-radius:var(--radius); padding:36px 40px; }
-  .intro-box p { font-size:16.5px; color:rgba(255,255,255,0.9); }
+  .intro-box p { font-size:16.5px; color:rgba(var(--fg-rgb),0.9); }
   .intro-box p + p { margin-top:16px; }
   .intro-box strong { color:var(--gold); }
 
@@ -56,17 +72,31 @@
   .step-num { flex-shrink:0; width:44px; height:44px; border-radius:50%; border:2px solid var(--gold); color:var(--gold); font-family:'Playfair Display',serif; font-size:18px; font-weight:700; display:flex; align-items:center; justify-content:center; }
   .step-body { flex:1; }
   .step-title { font-family:'Playfair Display',serif; font-size:19px; font-weight:700; color:var(--gold); margin-bottom:8px; }
-  .step-desc { font-size:15px; color:rgba(255,255,255,0.82); }
+  .step-desc { font-size:15px; color:rgba(var(--fg-rgb),0.82); }
   .step-tag { display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; padding:4px 12px; border-radius:100px; margin-top:12px; }
   .tag-subito { background:rgba(224,112,112,0.15); color:#E07070; }
   .tag-a-breve { background:rgba(200,169,110,0.18); color:var(--gold); }
   .tag-continuo { background:rgba(140,179,105,0.18); color:#8CB369; }
 
   .note-list { display:flex; flex-direction:column; gap:10px; }
-  .note-item { display:flex; gap:10px; padding:14px 18px; background:rgba(255,255,255,0.02); border:1px solid var(--border-soft); border-left:3px solid var(--gold); border-radius:0 10px 10px 0; font-size:13.5px; color:rgba(255,255,255,0.82); }
+  .note-item { display:flex; gap:10px; padding:14px 18px; background:rgba(var(--fg-rgb),0.02); border:1px solid var(--border-soft); border-left:3px solid var(--gold); border-radius:0 10px 10px 0; font-size:13.5px; color:rgba(var(--fg-rgb),0.82); }
 
-  footer { border-top:1px solid var(--border-soft); padding:40px 24px; text-align:center; font-size:13px; color:rgba(255,255,255,0.4); }
+  footer { border-top:1px solid var(--border-soft); padding:40px 24px; text-align:center; font-size:13px; color:rgba(var(--fg-rgb),0.4); }
   footer a { color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 480px) {
+    body { overflow-x:hidden; font-size:16px; }
+    nav { padding:16px 20px; }
+    main { padding:0 16px 80px; }
+    #hero { padding:70px 0 40px; }
+    .hero-lead { font-size:16.5px; }
+    section { margin:56px 0; }
+    .intro-box { padding:24px 22px; }
+    .step-card { padding:22px 18px; gap:14px; }
+    .step-num { width:36px; height:36px; font-size:15px; }
+    .step-title { font-size:17px; }
+    .step-desc { font-size:14px; }
+  }
 </style>
 </head>
 <body>
@@ -98,7 +128,7 @@
       <div class="step-num">1</div>
       <div class="step-body">
         <div class="step-title">Creare la nuova email di marketing dedicata</div>
-        <p class="step-desc">Oltre alla segreteria (<strong>segreteria.ilmiosole@gmail.com</strong>, gia' attiva e utile per le comunicazioni generali), serve una casella separata dedicata solo al sistema di marketing: <strong>marketing.ilmiosole@gmail.com</strong>. Cosi' tutto cio' che riguarda scheda Google Business, prenotazioni online e automazioni arriva in un posto suo, riconoscibile, senza mischiarsi con la segreteria — ed e' la stessa email a cui colleghiamo poi tutti gli accessi alle piattaforme necessarie. Guida passo-passo gia' pronta: <a href="guida-creazione-email-marketing-ilmiosole.html" style="color:var(--gold);">Crea la tua email marketing</a>.</p>
+        <p class="step-desc">Oltre alla segreteria (<strong>segreteria.ilmiosole@gmail.com</strong>, gia' attiva e utile per le comunicazioni generali), serve una casella separata dedicata solo al sistema di marketing: <strong>marketing.ilmiosole@gmail.com</strong>. Cosi' tutto cio' che riguarda scheda Google Business, prenotazioni online e automazioni arriva in un posto suo, riconoscibile, senza mischiarsi con la segreteria, ed e' la stessa email a cui colleghiamo poi tutti gli accessi alle piattaforme necessarie. Guida passo-passo gia' pronta: <a href="guida-creazione-email-marketing-ilmiosole.html" style="color:var(--gold);">Crea la tua email marketing</a>.</p>
         <span class="step-tag tag-subito">Subito</span>
       </div>
     </div>
@@ -106,8 +136,8 @@
     <div class="step-card">
       <div class="step-num">2</div>
       <div class="step-body">
-        <div class="step-title">Condividere con Samuela i nuovi prezzi</div>
-        <p class="step-desc">Le voci e i prezzi del repricing sono gia' stati validati con i dati corretti: il prossimo passo e' presentarli a Samuela, voce per voce, cosi' che ogni prezzo le sembri giusto prima di comunicarlo al pubblico.</p>
+        <div class="step-title">Condividere insieme i nuovi prezzi</div>
+        <p class="step-desc">Le voci e i prezzi del repricing sono gia' stati validati con i dati corretti: il prossimo passo e' che te li mostro voce per voce, cosi' che ogni prezzo ti sembri giusto prima di comunicarlo al pubblico.</p>
         <span class="step-tag tag-subito">Subito</span>
       </div>
     </div>
@@ -143,7 +173,7 @@
       <div class="step-num">6</div>
       <div class="step-body">
         <div class="step-title">Tenere d'occhio insieme la crescita del fatturato</div>
-        <p class="step-desc">Con il nuovo listino e i nuovi passaggi attivi, guardiamo insieme come cresce il fatturato mese per mese. Non e' un controllo per limitarti: e' per essere pronti, con calma e per tempo, ad affrontare insieme il passaggio a partita IVA nel momento giusto — quello che tu stessa hai gia' detto di voler fare se l'attivita' decolla davvero.</p>
+        <p class="step-desc">Con il nuovo listino e i nuovi passaggi attivi, guardiamo insieme come cresce il fatturato mese per mese. Non e' un controllo per limitarti: e' per essere pronti, con calma e per tempo, ad affrontare insieme il passaggio a partita IVA nel momento giusto, quello che tu stessa hai gia' detto di voler fare se l'attivita' decolla davvero.</p>
         <span class="step-tag tag-continuo">Attenzione continua</span>
       </div>
     </div>
@@ -160,8 +190,20 @@
 
 </main>
 
+<div class="doc-links" style="max-width:880px; margin:60px auto 0; padding:0 24px;">
+  <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:14px;">Tutti i documenti</p>
+  <div style="display:flex; flex-wrap:wrap; gap:10px;">
+    <a href="analisi-posizionamento-samuela-denardi.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border-soft); background:var(--card); color:var(--white); text-decoration:none; font-size:13px;">Analisi di posizionamento</a>
+    <a href="proposta-samuela-denardi.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border-soft); background:var(--card); color:var(--white); text-decoration:none; font-size:13px;">Proposta WeBloom</a>
+    <a href="analisi-strategica-samuela-denardi.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border-soft); background:var(--card); color:var(--white); text-decoration:none; font-size:13px;">Analisi strategica</a>
+    <a href="il-tuo-percorso-esperienze-il-mio-sole.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border-soft); background:var(--card); color:var(--white); text-decoration:none; font-size:13px;">Il tuo percorso di esperienze</a>
+    <a href="guida-creazione-email-marketing-ilmiosole.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border-soft); background:var(--card); color:var(--white); text-decoration:none; font-size:13px;">Guida: crea la tua email marketing</a>
+    <a href="onboarding-samuela-denardi.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border-soft); background:var(--card); color:var(--white); text-decoration:none; font-size:13px;">Modulo di avvio</a>
+  </div>
+</div>
+
 <footer>
-  Il mio sole · Samuela De Nardi — pensato con WeBloom
+  Il mio sole · Samuela De Nardi, pensato con WeBloom
 </footer>
 
 </body>

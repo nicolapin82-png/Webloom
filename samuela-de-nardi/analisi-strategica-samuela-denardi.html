@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Il Mio Sole — Analisi Strategica</title>
+<title>Il Mio Sole: Analisi Strategica</title>
 <style>
   :root{
     --bg:#F6F2E7;
@@ -214,7 +214,8 @@
 
   /* manifesto */
   .manifesto{ background:var(--pine); color:#fff; border-radius:20px; padding:3rem; text-align:center; }
-  :root[data-theme="dark"] .manifesto, @media (prefers-color-scheme:dark){ .manifesto{ background:var(--surface-2); color:var(--text); border:1px solid var(--pine); } }
+  :root[data-theme="dark"] .manifesto{ background:var(--surface-2); color:var(--text); border:1px solid var(--pine); }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .manifesto{ background:var(--surface-2); color:var(--text); border:1px solid var(--pine); } }
   .manifesto .big{ font-family:var(--font-display); font-size:2.3rem; line-height:1.15; max-width:22ch; margin:0 auto 1rem; text-wrap:balance; }
   .manifesto .promise{ opacity:.92; max-width:56ch; margin:0 auto; font-size:1.02rem; }
   .manifesto .curiosity{ margin-top:1.6rem; font-style:italic; opacity:.85; font-size:.95rem; }
@@ -278,12 +279,25 @@
   .lm-card p{ font-size:.86rem; color:var(--muted); }
 
   footer{ max-width:1180px; margin:0 auto; padding:2rem 1.5rem 4rem; color:var(--muted); font-size:.8rem; border-top:1px solid var(--border); }
+  .doc-links{ max-width:1180px; margin:0 auto; padding:2.4rem 1.5rem 0; }
+  .doc-links .eyebrow{ margin-bottom:.9rem; }
+  .doc-links-grid{ display:flex; flex-wrap:wrap; gap:.6rem .8rem; }
+  .doc-links-grid a{
+    display:inline-block; padding:.5rem .9rem; border-radius:9px; border:1px solid var(--border);
+    background:var(--surface); color:var(--text); text-decoration:none; font-size:.82rem;
+  }
+  .doc-links-grid a:hover{ background:var(--surface-2); color:var(--pine-ink); }
 
   @media (max-width:900px){
     .layout{ flex-direction:column; padding:0 1.2rem 4rem; }
-    nav.toc{ position:sticky; top:0; width:100%; flex-direction:row; overflow-x:auto; background:var(--bg); z-index:5; border-bottom:1px solid var(--border); padding:.8rem 0; max-height:none; }
+    nav.toc{
+      position:static; width:100%; flex-direction:row; overflow-x:auto; background:var(--bg);
+      border-bottom:1px solid var(--border); padding:.4rem 0; max-height:none; gap:.1rem;
+      -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    }
+    nav.toc::-webkit-scrollbar{ display:none; }
     nav.toc .toc-title{ display:none; }
-    nav.toc a{ white-space:nowrap; }
+    nav.toc a{ white-space:nowrap; padding:.3rem .55rem; font-size:.72rem; }
     .cover{ padding:2.2rem 1.6rem; }
     .cover h1{ font-size:2.1rem; }
   }
@@ -324,7 +338,7 @@
       <h1>Il Mio Sole</h1>
       <p class="sub">Comunicazione animale, natural healing e passeggiate di consapevolezza con gli alpaca. Un'analisi completa di mercato, posizionamento e funnel per portare il progetto di Samuela De Nardi da esperienza personale a marchio strutturato.</p>
       <div class="meta">
-        <div><div class="k">Cliente</div><div class="v">Samuela De Nardi — Il Mio Sole</div></div>
+        <div><div class="k">Cliente</div><div class="v">Samuela De Nardi, Il Mio Sole</div></div>
         <div><div class="k">Territorio</div><div class="v">Vittorio Veneto (TV)</div></div>
         <div><div class="k">Settore</div><div class="v">Comunicazione animale &amp; Natural Healing</div></div>
         <div><div class="k">Audience attuale</div><div class="v">36,8K su Instagram (@samueladenardi)</div></div>
@@ -332,7 +346,7 @@
     </div>
 
     <section id="mercato">
-      <div class="eyebrow">01 — Analisi di mercato</div>
+      <div class="eyebrow">01 · Analisi di mercato</div>
       <h2>Cosa fanno bene (e male) i concorrenti</h2>
       <p class="lede">Analisi SWOT costruita su 9 concorrenti diretti (siti e video) attivi nella comunicazione animale, guarigione olistica e veterinaria non-duale.</p>
 
@@ -344,12 +358,12 @@
           <div class="item"><b>Posizionamento di nicchia chiaro</b><span>Ogni operatore presidia un angolo specifico, rendendo il messaggio distintivo.</span></div>
           <div class="item"><b>Autorità percepita</b><span>Credenziali (veterinari, operatori olistici, channeler) che rafforzano la fiducia.</span></div>
           <div class="item"><b>Comunità leale</b><span>Pubblico molto legato all'operatore individuale, alti livelli di fiducia e ritorno.</span></div>
-          <div class="assess"><b>Lettura:</b> punti di forza basati su carisma personale, non su metodo strutturato — un benchmark da eguagliare e un'opportunità di differenziarsi con professionalità.</div>
+          <div class="assess"><b>Lettura:</b> punti di forza basati su carisma personale, non su metodo strutturato: un benchmark da eguagliare e un'opportunità di differenziarsi con professionalità.</div>
         </div>
 
         <div class="quad w">
           <h3><span class="dot"></span>Debolezze</h3>
-          <div class="item"><b>Dipendenza da Instagram</b><span>Poca presenza su sito, blog, YouTube, email — vulnerabilità agli algoritmi.</span></div>
+          <div class="item"><b>Dipendenza da Instagram</b><span>Poca presenza su sito, blog, YouTube, email, quindi vulnerabilità agli algoritmi.</span></div>
           <div class="item"><b>Mancanza di validazione scientifica</b><span>Credibilità legata solo alla percezione soggettiva.</span></div>
           <div class="item"><b>Comunicazione commerciale debole</b><span>Nessun funnel di vendita chiaro, prezzi poco trasparenti.</span></div>
           <div class="item"><b>Scarsa differenziazione</b><span>Offerte molto simili tra loro, rischio di commoditizzazione.</span></div>
@@ -365,8 +379,8 @@
           <div class="item"><b>Metodo proprietario riconoscibile</b><span>Un framework unico crea un vantaggio competitivo difendibile.</span></div>
           <div class="item"><b>Target sottodimensionato: lutto e malattia animale</b><span>Bisogno emotivo forte, ancora poco coperto da operatori strutturati.</span></div>
           <div class="item"><b>Prodotti scalabili</b><span>Corsi, comunità, percorsi oltre la sola consulenza 1‑to‑1.</span></div>
-          <div class="item"><b>Autorità sportiva verificabile</b><span>A differenza dei concorrenti, la cui credibilità resta soggettiva, Samuela ha un palmarès sportivo pubblico e documentato (ex pilota ufficiale Aprilia) — vedi sezione dedicata.</span></div>
-          <div class="assess"><b>Lettura:</b> la domanda per il lutto animale è sottodimensionata da operatori credibili — la finestra di ingresso è ora, e Samuela può aprirla con una credibilità che nessun concorrente ha.</div>
+          <div class="item"><b>Autorità sportiva verificabile</b><span>A differenza dei concorrenti, la cui credibilità resta soggettiva, Samuela ha un palmarès sportivo pubblico e documentato (ex pilota ufficiale Aprilia), vedi sezione dedicata.</span></div>
+          <div class="assess"><b>Lettura:</b> la domanda per il lutto animale è sottodimensionata da operatori credibili. La finestra di ingresso è ora, e Samuela può aprirla con una credibilità che nessun concorrente ha.</div>
         </div>
 
         <div class="quad t">
@@ -375,8 +389,8 @@
           <div class="item"><b>Scetticismo verso pratiche olistiche</b><span>Rischio reputazionale se non gestito professionalmente.</span></div>
           <div class="item"><b>Dipendenza dagli algoritmi social</b><span>Cambi di policy Instagram riducono la portata organica.</span></div>
           <div class="item"><b>Rischio di rapida imitazione</b><span>Basse barriere all'ingresso: un posizionamento vincente si copia in fretta.</span></div>
-          <div class="item"><b>Domanda ciclica</b><span>Legata a eventi emotivi (lutto, malattia) — instabile senza offerte ricorrenti.</span></div>
-          <div class="assess"><b>Lettura:</b> la minaccia maggiore è l'imitazione rapida — servono IP difendibile (metodo, community, brand) e non solo contenuti.</div>
+          <div class="item"><b>Domanda ciclica</b><span>Legata a eventi emotivi (lutto, malattia), quindi instabile senza offerte ricorrenti.</span></div>
+          <div class="assess"><b>Lettura:</b> la minaccia maggiore è l'imitazione rapida: servono IP difendibile (metodo, community, brand) e non solo contenuti.</div>
         </div>
       </div>
 
@@ -387,7 +401,7 @@
 
       <h3 style="font-size:1.05rem; margin:2.4rem 0 1rem;">5 strategie efficaci</h3>
       <ol class="strategies">
-        <li><span>Sviluppare un metodo proprietario riconoscibile che unisce comunicazione animale, elaborazione del lutto e crescita personale — proprietà intellettuale difendibile.</span></li>
+        <li><span>Sviluppare un metodo proprietario riconoscibile che unisce comunicazione animale, elaborazione del lutto e crescita personale, proprietà intellettuale difendibile.</span></li>
         <li><span>Costruire presenza multi-canale (YouTube, blog SEO, email, podcast) per ridurre la dipendenza da Instagram.</span></li>
         <li><span>Costruire l'identità del marchio attorno a "Il Mio Sole" come metodologia e comunità, non solo la figura personale.</span></li>
         <li><span>Creare offerte scalabili (corsi online, percorsi di gruppo, community a pagamento) accanto alla consulenza 1‑to‑1.</span></li>
@@ -396,7 +410,7 @@
     </section>
 
     <section id="segmentazione">
-      <div class="eyebrow">02 — Segmentazione &amp; trend</div>
+      <div class="eyebrow">02 · Segmentazione &amp; trend</div>
       <h2>A chi parliamo, e perché ora</h2>
       <p class="lede">Il mercato potenziale segmentato su quattro assi, più i tre trend di settore che stanno spingendo la domanda nel 2025.</p>
 
@@ -406,7 +420,7 @@
           <ul>
             <li>Età 25–65 anni</li>
             <li>Prevalentemente donne (60–80%)</li>
-            <li>Reddito medio-basso — medio-alto (€1.300–4.500/mese)</li>
+            <li>Reddito da medio-basso a medio-alto (€1.300–4.500/mese)</li>
             <li>Da diploma a laurea</li>
           </ul>
         </div>
@@ -489,7 +503,7 @@
     </section>
 
     <section id="personas">
-      <div class="eyebrow">03 — Chi è il cliente</div>
+      <div class="eyebrow">03 · Chi è il cliente</div>
       <h2>Tre persone da convincere per prime</h2>
       <p class="lede">Sintesi finale: le tre buyer persona a più alta probabilità di conversione, ottenute incrociando geografia, urgenza emotiva e disponibilità economica.</p>
 
@@ -518,37 +532,37 @@
       </div>
 
       <details class="persona-group" style="margin-top:2rem;">
-        <summary>Segmento "Lutto &amp; malattia" — 3 persona di dettaglio <span class="arrow">mostra/nascondi</span></summary>
+        <summary>Segmento "Lutto &amp; malattia": 3 persona di dettaglio <span class="arrow">mostra/nascondi</span></summary>
         <div class="body">
           <p class="note">Lutto acuto per la perdita di un animale: emotivamente vulnerabili, alto valore emotivo, potenziale economico medio-alto, decisioni rapide guidate dall'urgenza.</p>
-          <div class="subpersona"><h5>La Professionista Devastata — Elena, 52 anni</h5><p>Manager, il suo cane Argo è stato il suo compagno per 14 anni. Cerca chiusura emotiva attraverso un contatto spirituale autentico e rassicurazione sulla credibilità di Samuela prima di impegnarsi.</p></div>
-          <div class="subpersona"><h5>Il Padre che Piange in Silenzio — Marco, 41 anni</h5><p>Ha perso il gatto di famiglia Pallino. Vive un lutto che non può condividere apertamente; ha bisogno di strumenti pratici per spiegare la morte ai figli e di un linguaggio semplice, non esoterico.</p></div>
-          <div class="subpersona"><h5>La Vedova Sola — Anna, 63 anni</h5><p>Il suo cane Birillo era il suo unico compagno quotidiano. Ha bisogno che il suo lutto sia preso sul serio, non minimizzato; sensibile al prezzo, cerca accompagnamento compassionevole.</p></div>
+          <div class="subpersona"><h5>La Professionista Devastata: Elena, 52 anni</h5><p>Manager, il suo cane Argo è stato il suo compagno per 14 anni. Cerca chiusura emotiva attraverso un contatto spirituale autentico e rassicurazione sulla credibilità di Samuela prima di impegnarsi.</p></div>
+          <div class="subpersona"><h5>Il Padre che Piange in Silenzio: Marco, 41 anni</h5><p>Ha perso il gatto di famiglia Pallino. Vive un lutto che non può condividere apertamente; ha bisogno di strumenti pratici per spiegare la morte ai figli e di un linguaggio semplice, non esoterico.</p></div>
+          <div class="subpersona"><h5>La Vedova Sola: Anna, 63 anni</h5><p>Il suo cane Birillo era il suo unico compagno quotidiano. Ha bisogno che il suo lutto sia preso sul serio, non minimizzato; sensibile al prezzo, cerca accompagnamento compassionevole.</p></div>
         </div>
       </details>
 
       <details class="persona-group">
-        <summary>Segmento "Difficoltà comportamentali" — 3 persona di dettaglio <span class="arrow">mostra/nascondi</span></summary>
+        <summary>Segmento "Difficoltà comportamentali": 3 persona di dettaglio <span class="arrow">mostra/nascondi</span></summary>
         <div class="body">
           <p class="note">Proprietari che affrontano problemi comportamentali/di salute nei loro animali vivi, mentalità pratica e concreta, clientela locale entro 20–30 km.</p>
-          <div class="subpersona"><h5>La Genitrice di Animali Preoccupata — Federica, 34 anni</h5><p>Il suo cane mostra ansia e reattività dopo l'arrivo del bambino. Cerca cause emotive/relazionali, non solo soluzioni tecniche; vuole esempi di casi e metodologia chiara.</p></div>
-          <div class="subpersona"><h5>L'Equestre Pragmatico — Roberto, 47 anni</h5><p>Il suo cavallo ha problemi comportamentali dopo un cambio di scuderia. Scettico ma pragmatico; vuole risultati concreti, comunicazione diretta, senza romanticismo.</p></div>
-          <div class="subpersona"><h5>La Proprietaria Ansiosa per la Prima Volta — Sara, 29 anni</h5><p>Primo gatto, si sente insicura nel suo ruolo. Cerca rassicurazione e contenuti gratuiti che dimostrino competenza prima di pagare; scopre i servizi su Instagram/TikTok.</p></div>
+          <div class="subpersona"><h5>La Genitrice di Animali Preoccupata: Federica, 34 anni</h5><p>Il suo cane mostra ansia e reattività dopo l'arrivo del bambino. Cerca cause emotive/relazionali, non solo soluzioni tecniche; vuole esempi di casi e metodologia chiara.</p></div>
+          <div class="subpersona"><h5>L'Equestre Pragmatico: Roberto, 47 anni</h5><p>Il suo cavallo ha problemi comportamentali dopo un cambio di scuderia. Scettico ma pragmatico; vuole risultati concreti, comunicazione diretta, senza romanticismo.</p></div>
+          <div class="subpersona"><h5>La Proprietaria Ansiosa per la Prima Volta: Sara, 29 anni</h5><p>Primo gatto, si sente insicura nel suo ruolo. Cerca rassicurazione e contenuti gratuiti che dimostrino competenza prima di pagare; scopre i servizi su Instagram/TikTok.</p></div>
         </div>
       </details>
 
       <details class="persona-group">
-        <summary>Segmento "Crescita personale" — 3 persona di dettaglio <span class="arrow">mostra/nascondi</span></summary>
+        <summary>Segmento "Crescita personale": 3 persona di dettaglio <span class="arrow">mostra/nascondi</span></summary>
         <div class="body">
           <p class="note">Persone impegnate in percorsi di crescita e sviluppo spirituale, alto potenziale economico ricorrente, disposte a viaggiare per esperienze trasformative.</p>
-          <div class="subpersona"><h5>La Freelancer Creativa che Cerca Radicamento — Giulia, 33 anni</h5><p>Pratica già yoga e meditazione, ma cerca esperienze che riconnettano corpo e natura. Attratta dalla storia personale di Samuela come prova di autenticità.</p></div>
-          <div class="subpersona"><h5>Il Manager Stressato che Cerca Equilibrio — Davide, 42 anni</h5><p>Alto stress professionale, aperto a pratiche con impatto tangibile ma non si definisce spirituale. Vuole prenotazione efficiente: il tempo è la sua risorsa più preziosa.</p></div>
-          <div class="subpersona"><h5>L'Insegnante che si Ricostruisce — Chiara, 38 anni</h5><p>In transizione dopo una separazione, riscopre meditazione e natura. Interessata a percorsi multi-sessione più che a un'esperienza isolata.</p></div>
+          <div class="subpersona"><h5>La Freelancer Creativa che Cerca Radicamento: Giulia, 33 anni</h5><p>Pratica già yoga e meditazione, ma cerca esperienze che riconnettano corpo e natura. Attratta dalla storia personale di Samuela come prova di autenticità.</p></div>
+          <div class="subpersona"><h5>Il Manager Stressato che Cerca Equilibrio: Davide, 42 anni</h5><p>Alto stress professionale, aperto a pratiche con impatto tangibile ma non si definisce spirituale. Vuole prenotazione efficiente: il tempo è la sua risorsa più preziosa.</p></div>
+          <div class="subpersona"><h5>L'Insegnante che si Ricostruisce: Chiara, 38 anni</h5><p>In transizione dopo una separazione, riscopre meditazione e natura. Interessata a percorsi multi-sessione più che a un'esperienza isolata.</p></div>
         </div>
       </details>
 
       <details class="persona-group">
-        <summary>Prima esplorazione — 5 buyer persona iniziali <span class="arrow">mostra/nascondi</span></summary>
+        <summary>Prima esplorazione: 5 buyer persona iniziali <span class="arrow">mostra/nascondi</span></summary>
         <div class="body">
           <p class="note">Le prime 5 persona identificate nella fase di ideal customer profiling, poi raffinate nei segmenti sopra.</p>
           <div class="grid grid-3" style="margin-top:.3rem;">
@@ -563,14 +577,14 @@
     </section>
 
     <section id="positioning">
-      <div class="eyebrow">04 — Positioning</div>
+      <div class="eyebrow">04 · Positioning</div>
       <h2>Il posizionamento, e i 3 angoli di attacco</h2>
       <p class="lede">Il macro-posizionamento definisce chi è "Il Mio Sole"; i tre micro-posizionamenti sono le porte d'ingresso per i tre segmenti prioritari.</p>
 
       <div class="macro">
         <div class="card">
           <h4>Vision &amp; Mission</h4>
-          <p>Essere il punto di riferimento emotivo e spirituale per chi cerca una connessione autentica con gli animali. Accompagnare le persone nei momenti critici della relazione con i loro animali — lutto, malattia, difficoltà comportamentali — radicando ogni servizio in un'esperienza personale reale e vissuta.</p>
+          <p>Essere il punto di riferimento emotivo e spirituale per chi cerca una connessione autentica con gli animali. Accompagnare le persone nei momenti critici della relazione con i loro animali: lutto, malattia, difficoltà comportamentali, radicando ogni servizio in un'esperienza personale reale e vissuta.</p>
         </div>
         <div class="card">
           <h4>Value Proposition unica</h4>
@@ -583,30 +597,30 @@
           <div class="eyebrow">Micro 1</div>
           <h4>Comunicazione animale nel lutto e nella malattia</h4>
           <p>Sessioni dedicate al contatto con animali defunti o in fase terminale, condotte da chi ha vissuto un'esperienza analoga in prima persona.</p>
-          <div class="who"><b>Parla a</b>Elena — un primo passo per chiudere in pace un capitolo doloroso.</div>
+          <div class="who"><b>Parla a</b>Elena, un primo passo per chiudere in pace un capitolo doloroso.</div>
         </div>
         <div class="card micro-card">
           <div class="eyebrow">Micro 2</div>
           <h4>Passeggiate di consapevolezza con gli alpaca</h4>
           <p>Esperienza immersiva nel bosco: movimento lento, natura e presenza calma degli alpaca come facilitatori naturali della consapevolezza.</p>
-          <div class="who"><b>Parla a</b>Giulia — un rituale di riconnessione autentica, alternativo al wellness standardizzato.</div>
+          <div class="who"><b>Parla a</b>Giulia, un rituale di riconnessione autentica, alternativo al wellness standardizzato.</div>
         </div>
         <div class="card micro-card">
           <div class="eyebrow">Micro 3</div>
           <h4>Percorso di riconnessione per difficoltà comportamentali</h4>
           <p>Comunicazione animale e guarigione energetica insieme, per affrontare le cause profonde dei comportamenti problematici.</p>
-          <div class="who"><b>Parla a</b>Anna — un percorso continuativo che accompagna il declino dell'animale, non un intervento isolato.</div>
+          <div class="who"><b>Parla a</b>Anna, un percorso continuativo che accompagna il declino dell'animale, non un intervento isolato.</div>
         </div>
       </div>
 
       <div class="card" style="margin-top:1.4rem;">
         <h4 style="font-size:.92rem; color:var(--pine-ink); margin-bottom:.5rem;">Brand identity</h4>
-        <p style="font-size:.9rem;">Un brand radicato nell'autenticità, nella prossimità umana e nella credibilità dimostrata attraverso l'esperienza personale reale di Samuela. Rifiuta la commercializzazione della spiritualità, privilegia la relazione di fiducia nel tempo, e posiziona la fattoria come spazio di accoglienza naturale — non come centro benessere patinato. <strong>Due storie vere, non una sola:</strong> il legame con Gas per l'autenticità emotiva, il passato da campionessa europea di motociclismo per l'autorità concreta — vedi <a href="#credibilita" style="color:var(--pine-ink);">Il capitale di credibilità</a>.</p>
+        <p style="font-size:.9rem;">Un brand radicato nell'autenticità, nella prossimità umana e nella credibilità dimostrata attraverso l'esperienza personale reale di Samuela. Rifiuta la commercializzazione della spiritualità, privilegia la relazione di fiducia nel tempo, e posiziona la fattoria come spazio di accoglienza naturale, non come centro benessere patinato. <strong>Due storie vere, non una sola:</strong> il legame con Gas per l'autenticità emotiva, il passato da campionessa europea di motociclismo per l'autorità concreta: vedi <a href="#credibilita" style="color:var(--pine-ink);">Il capitale di credibilità</a>.</p>
       </div>
     </section>
 
     <section id="credibilita">
-      <div class="eyebrow">05 — Il capitale di credibilità</div>
+      <div class="eyebrow">05 · Il capitale di credibilità</div>
       <h2>Da campionessa europea di motociclismo a comunicatrice con gli animali</h2>
       <p class="lede">Un dato pubblico e verificabile, non ancora usato nel posizionamento: prima di "Il Mio Sole", Samuela De Nardi è stata per un decennio pilota professionista ai vertici dello sport motociclistico europeo.</p>
 
@@ -614,21 +628,21 @@
         <div class="card">
           <h4 style="font-size:.85rem; text-transform:uppercase; letter-spacing:.06em; color:var(--pine-ink); margin-bottom:.9rem;">La carriera, in breve</h4>
           <ul class="includes" style="gap:.6rem;">
-            <li><b>2002</b> — vince l'Alpe Adria Cup: prima donna nella storia a conquistare il titolo</li>
-            <li><b>2005</b> — pilota ufficiale Aprilia nel Campionato Europeo, in gara alla 8 Ore di Suzuka (Giappone)</li>
-            <li><b>2006</b> — passa alla Formula Drive italiana, record in pista a Grobnik</li>
-            <li><b>2007–2010</b> — wild card CIV Superbike a Mugello, poi Triumph European Series</li>
+            <li><b>2002</b>: vince l'Alpe Adria Cup: prima donna nella storia a conquistare il titolo</li>
+            <li><b>2005</b>: pilota ufficiale Aprilia nel Campionato Europeo, in gara alla 8 Ore di Suzuka (Giappone)</li>
+            <li><b>2006</b>: passa alla Formula Drive italiana, record in pista a Grobnik</li>
+            <li><b>2007–2010</b>: wild card CIV Superbike a Mugello, poi Triumph European Series</li>
           </ul>
         </div>
         <div class="card">
           <h4 style="font-size:.85rem; text-transform:uppercase; letter-spacing:.06em; color:var(--gold-ink); margin-bottom:.9rem;">Perché conta per il posizionamento</h4>
-          <p style="font-size:.88rem; margin-bottom:.7rem;">Nella SWOT, la debolezza più diffusa tra i concorrenti è la <b>mancanza di validazione istituzionale</b>: la loro credibilità resta soggettiva, basata sulla percezione. Un palmarès sportivo europeo, documentato su Wikipedia e sulla stampa, è invece un fatto verificabile — qualcosa che nessun altro operatore della nicchia può offrire.</p>
-          <p style="font-size:.88rem;">Parla in particolare alle persona più scettiche e pragmatiche — <b>Chiara</b>, <b>Roberto</b> e <b>Marco</b> — che chiedono esplicitamente "prove concrete" e diffidano del linguaggio esoterico.</p>
+          <p style="font-size:.88rem; margin-bottom:.7rem;">Nella SWOT, la debolezza più diffusa tra i concorrenti è la <b>mancanza di validazione istituzionale</b>: la loro credibilità resta soggettiva, basata sulla percezione. Un palmarès sportivo europeo, documentato su Wikipedia e sulla stampa, è invece un fatto verificabile: qualcosa che nessun altro operatore della nicchia può offrire.</p>
+          <p style="font-size:.88rem;">Parla in particolare alle persona più scettiche e pragmatiche, <b>Chiara</b>, <b>Roberto</b> e <b>Marco</b>, che chiedono esplicitamente "prove concrete" e diffidano del linguaggio esoterico.</p>
         </div>
       </div>
 
       <div class="assess" style="margin-top:1.2rem;">
-        <b>Segnale già presente sul territorio:</b> la stampa locale ha già collegato i due mondi — un articolo della Tribuna di Treviso la definisce "la campionessa che sussurra ai cani". Il posizionamento non deve inventare l'angolo, deve solo raccoglierlo.
+        <b>Segnale già presente sul territorio:</b> la stampa locale ha già collegato i due mondi: un articolo della Tribuna di Treviso la definisce "la campionessa che sussurra ai cani". Il posizionamento non deve inventare l'angolo, deve solo raccoglierlo.
       </div>
 
       <details class="more">
@@ -638,25 +652,25 @@
     </section>
 
     <section id="brand">
-      <div class="eyebrow">06 — Big idea &amp; brand</div>
+      <div class="eyebrow">06 · Big idea &amp; brand</div>
       <h2>Il cuore creativo del marchio</h2>
       <p class="lede">Value proposition, brand statement e big idea condensati in un unico messaggio guida.</p>
 
       <div class="manifesto">
         <div class="eyebrow" style="color:rgba(255,255,255,0.75);">Big idea</div>
-        <div class="big">"Il Sole che resta" — quando il legame con il tuo animale sembra interrompersi, scopri che non finisce mai davvero.</div>
-        <p class="promise">Ritrova la connessione con il tuo animale — anche quando le parole non bastano più — e ritrova te stesso nel processo.</p>
+        <div class="big">"Il Sole che resta": quando il legame con il tuo animale sembra interrompersi, scopri che non finisce mai davvero.</div>
+        <p class="promise">Ritrova la connessione con il tuo animale, anche quando le parole non bastano più, e ritrova te stesso nel processo.</p>
         <p class="curiosity">Cosa può insegnarti un alpaca che nessun umano ti ha mai insegnato?</p>
       </div>
 
       <div class="brand-elements">
         <div class="item">
           <h4>Brand statement</h4>
-          <p>Il Mio Sole è la fattoria didattica che unisce comunicazione animale, natural healing e crescita personale attraverso l'incontro reale con gli alpaca e la natura. Rispetto ai percorsi generici o percepiti come commerciali, offriamo un'esperienza autentica, nata da un vissuto personale reale — la nostra fattoria.</p>
+          <p>Il Mio Sole è la fattoria didattica che unisce comunicazione animale, natural healing e crescita personale attraverso l'incontro reale con gli alpaca e la natura. Rispetto ai percorsi generici o percepiti come commerciali, offriamo un'esperienza autentica, nata da un vissuto personale reale: la nostra fattoria.</p>
         </div>
         <div class="item">
           <h4>Meccanismo unico</h4>
-          <p>Il metodo nasce da un'esperienza vissuta in prima persona — non da una tecnica appresa sui libri — e unisce tre elementi che raramente coesistono nello stesso operatore: pratica energetico-spirituale, contatto diretto con animali reali, e un vissuto personale autentico.</p>
+          <p>Il metodo nasce da un'esperienza vissuta in prima persona, non da una tecnica appresa sui libri, e unisce tre elementi che raramente coesistono nello stesso operatore: pratica energetico-spirituale, contatto diretto con animali reali, e un vissuto personale autentico.</p>
         </div>
         <div class="item">
           <h4>Trasformazione tangibile</h4>
@@ -664,22 +678,22 @@
         </div>
         <div class="item">
           <h4>Differenziazione</h4>
-          <p>L'unico percorso in Veneto che unisce comunicazione animale, natural healing e contatto diretto con gli alpaca in un luogo fisico reale — non un operatore online e distante. La storia di Samuela con Gas è una prova di autenticità non replicabile dalla concorrenza. A questo si aggiunge un'autorità concreta e verificabile che nessun concorrente possiede: un passato da campionessa europea di motociclismo (dettagli in <a href="#credibilita" style="color:inherit;">Il capitale di credibilità</a>).</p>
+          <p>L'unico percorso in Veneto che unisce comunicazione animale, natural healing e contatto diretto con gli alpaca in un luogo fisico reale, non un operatore online e distante. La storia di Samuela con Gas è una prova di autenticità non replicabile dalla concorrenza. A questo si aggiunge un'autorità concreta e verificabile che nessun concorrente possiede: un passato da campionessa europea di motociclismo (dettagli in <a href="#credibilita" style="color:inherit;">Il capitale di credibilità</a>).</p>
         </div>
       </div>
     </section>
 
     <section id="obiettivi">
-      <div class="eyebrow">07 — Obiettivi SMART</div>
+      <div class="eyebrow">07 · Obiettivi SMART</div>
       <h2>Cosa vuol dire "funzionare" nei prossimi 12 mesi</h2>
-      <p class="lede">Cinque obiettivi misurabili che guidano le priorità di comunicazione e prodotto. <strong>Corretto:</strong> l'obiettivo originale sui follower era tarato su un lancio da zero, ma l'audience social esiste già ed è ampia (36,8K su Instagram) — l'obiettivo 1 è stato quindi spostato dai follower (vanity metric già superata) alla costruzione di un CRM proprietario, che invece parte davvero da zero.</p>
+      <p class="lede">Cinque obiettivi misurabili che guidano le priorità di comunicazione e prodotto. <strong>Corretto:</strong> l'obiettivo originale sui follower era tarato su un lancio da zero, ma l'audience social esiste già ed è ampia (36,8K su Instagram): l'obiettivo 1 è stato quindi spostato dai follower (vanity metric già superata) alla costruzione di un CRM proprietario, che invece parte davvero da zero.</p>
 
       <div class="grid obj-grid">
         <div class="card obj-card">
           <div class="eyebrow">Obiettivo 1</div>
           <div class="num tabular">200</div>
           <div class="when">entro 12 mesi</div>
-          <p>Contatti in un CRM/newsletter proprietario, partendo da zero — non più follower social (già oltre 36,8K su Instagram), ma un database che l'agenzia può attivare direttamente.</p>
+          <p>Contatti in un CRM/newsletter proprietario, partendo da zero, non più follower social (già oltre 36,8K su Instagram), ma un database che l'agenzia può attivare direttamente.</p>
         </div>
         <div class="card obj-card">
           <div class="eyebrow">Obiettivo 2</div>
@@ -691,7 +705,7 @@
           <div class="eyebrow">Obiettivo 3</div>
           <div class="num tabular">30</div>
           <div class="when">al mese, entro 6 mesi</div>
-          <p>Richieste di contatto qualificate (form, DM, telefono) tramite campagne organiche e/o a pagamento. <em>Da validare: non abbiamo ancora il dato reale delle richieste attuali — questa cifra resta una stima del foglio originale.</em></p>
+          <p>Richieste di contatto qualificate (form, DM, telefono) tramite campagne organiche e/o a pagamento. <em>Da validare: non abbiamo ancora il dato reale delle richieste attuali. Questa cifra resta una stima del foglio originale.</em></p>
         </div>
         <div class="card obj-card">
           <div class="eyebrow">Obiettivo 4</div>
@@ -709,7 +723,7 @@
     </section>
 
     <section id="funnel">
-      <div class="eyebrow">08 — Value ladder &amp; funnel</div>
+      <div class="eyebrow">08 · Value ladder &amp; funnel</div>
       <h2>Dal primo contatto gratuito al percorso premium</h2>
       <p class="lede">Tre livelli di offerta e un funnel a tre fasi che li collega.</p>
 
@@ -717,9 +731,9 @@
         <div>
           <h3 style="font-size:1rem; margin-bottom:1rem;">Value ladder</h3>
           <div class="ladder">
-            <div class="step"><div class="eyebrow">Livello 1</div><h4>Gratuito / basso costo — Entra nel Sole</h4></div>
-            <div class="step"><div class="eyebrow">Livello 2</div><h4>Prezzo medio — Vivi il Sole</h4></div>
-            <div class="step"><div class="eyebrow">Livello 3</div><h4>Alta gamma — Diventa il Sole</h4></div>
+            <div class="step"><div class="eyebrow">Livello 1</div><h4>Gratuito / basso costo: Entra nel Sole</h4></div>
+            <div class="step"><div class="eyebrow">Livello 2</div><h4>Prezzo medio: Vivi il Sole</h4></div>
+            <div class="step"><div class="eyebrow">Livello 3</div><h4>Alta gamma: Diventa il Sole</h4></div>
           </div>
         </div>
         <div>
@@ -743,11 +757,11 @@
     </section>
 
     <section id="offerta">
-      <div class="eyebrow">09 — Offerta perfetta</div>
+      <div class="eyebrow">09 · Offerta perfetta</div>
       <h2>Il pacchetto "Il Sole che Resta"</h2>
       <div class="offer-hero">
         <h3>6 incontri per ritrovare un legame che pensavi interrotto</h3>
-        <p class="target">Per chi sente che il legame con il proprio animale — vivente o scomparso — ha ancora qualcosa da dire. Non per chi cerca una diagnosi veterinaria o risultati garantiti scientificamente.</p>
+        <p class="target">Per chi sente che il legame con il proprio animale, vivente o scomparso, ha ancora qualcosa da dire. Non per chi cerca una diagnosi veterinaria o risultati garantiti scientificamente.</p>
       </div>
 
       <div class="card">
@@ -763,7 +777,7 @@
       </div>
 
       <div class="grid offer-grid">
-        <div class="card"><h4>Price reframing</h4><p>Il percorso completo equivale a meno del costo di una singola visita specialistica privata — ma accompagna per settimane, non un'ora.</p></div>
+        <div class="card"><h4>Price reframing</h4><p>Il percorso completo equivale a meno del costo di una singola visita specialistica privata, ma accompagna per settimane, non un'ora.</p></div>
         <div class="card"><h4>Termini di pagamento</h4><p>Pagamento unico con sconto (-10%) per chi salda in anticipo, oppure 3 rate mensili senza interessi.</p></div>
         <div class="card"><h4>Bonus</h4><p>Meditazione audio guidata da riascoltare a casa; una passeggiata di gruppo extra per chi completa il percorso; -15% su una sessione futura.</p></div>
         <div class="card"><h4>Eliminazione del rischio</h4><p>Se dopo il primo incontro il percorso non sembra giusto, si può interrompere senza vincoli, pagando solo la sessione svolta.</p></div>
@@ -773,7 +787,7 @@
     </section>
 
     <section id="leadmagnet">
-      <div class="eyebrow">10 — Lead magnet</div>
+      <div class="eyebrow">10 · Lead magnet</div>
       <h2>Le porte d'ingresso gratuite</h2>
       <p class="lede">Target: 200 iscritti entro 12 mesi. Si lancia prima il magnete principale, poi si aggiungono i complementari nei mesi successivi.</p>
 
@@ -798,8 +812,20 @@
   </main>
 </div>
 
+<div class="doc-links">
+  <p class="eyebrow">Tutti i documenti</p>
+  <div class="doc-links-grid">
+    <a href="analisi-posizionamento-samuela-denardi.html">Analisi di posizionamento</a>
+    <a href="proposta-samuela-denardi.html">Proposta WeBloom</a>
+    <a href="il-tuo-percorso-esperienze-il-mio-sole.html">Il tuo percorso di esperienze</a>
+    <a href="prossimi-passi-samuela-denardi.html">I prossimi passi</a>
+    <a href="guida-creazione-email-marketing-ilmiosole.html">Guida: crea la tua email marketing</a>
+    <a href="onboarding-samuela-denardi.html">Modulo di avvio</a>
+  </div>
+</div>
+
 <footer>
-  Report generato dall'analisi "Funnel Analysis for Samuela De Nardi (Il Mio Sole)" — foglio Report del Google Sheet condiviso. Documento di lavoro interno, da rivedere prima dell'invio alla cliente.
+  Report generato dall'analisi "Funnel Analysis for Samuela De Nardi (Il Mio Sole)": foglio Report del Google Sheet condiviso. Documento di lavoro interno, da rivedere prima dell'invio alla cliente.
 </footer>
 
 <script>
