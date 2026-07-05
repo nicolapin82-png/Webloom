@@ -273,6 +273,14 @@
     .gap-grid { grid-template-columns: 1fr; }
     .opp-grid { grid-template-columns: 1fr; }
   }
+  .doc-links-universal{ max-width:880px; margin:60px auto 0; padding:0 24px 40px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; }
+  .doc-links-universal .dlu-label{ font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#C8A96E; margin-bottom:14px; }
+  .doc-links-universal .dlu-grid{ display:flex; flex-wrap:wrap; gap:10px; }
+  .doc-links-universal .dlu-grid a{ padding:8px 14px; border-radius:100px; border:1px solid rgba(200,169,110,0.4); background:rgba(200,169,110,0.1); color:#3a2f1a; text-decoration:none; font-size:13px; transition:background .15s; }
+  .doc-links-universal .dlu-grid a:hover{ background:rgba(200,169,110,0.22); }
+  @media (prefers-color-scheme: dark){
+    .doc-links-universal .dlu-grid a{ background:rgba(200,169,110,0.14); color:#FFF8EE; border-color:rgba(200,169,110,0.45); }
+  }
 </style>
 </head>
 <body>
@@ -778,15 +786,15 @@
 </div>
 
 <!-- DOC LINKS -->
-<div class="doc-links" style="max-width:880px; margin:60px auto 0; padding:0 24px;">
-  <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:14px;">Tutti i documenti</p>
-  <div style="display:flex; flex-wrap:wrap; gap:10px;">
-    <a href="proposta-samuela-denardi.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border-soft); background:var(--card); color:var(--white); text-decoration:none; font-size:13px;">Proposta WeBloom</a>
-    <a href="analisi-strategica-samuela-denardi.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border-soft); background:var(--card); color:var(--white); text-decoration:none; font-size:13px;">Analisi strategica</a>
-    <a href="il-tuo-percorso-esperienze-il-mio-sole.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border-soft); background:var(--card); color:var(--white); text-decoration:none; font-size:13px;">Il tuo percorso di esperienze</a>
-    <a href="prossimi-passi-samuela-denardi.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border-soft); background:var(--card); color:var(--white); text-decoration:none; font-size:13px;">I prossimi passi</a>
-    <a href="guida-creazione-email-marketing-ilmiosole.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border-soft); background:var(--card); color:var(--white); text-decoration:none; font-size:13px;">Guida: crea la tua email marketing</a>
-    <a href="onboarding-samuela-denardi.html" style="padding:8px 14px; border-radius:100px; border:1px solid var(--border-soft); background:var(--card); color:var(--white); text-decoration:none; font-size:13px;">Modulo di avvio</a>
+<div class="doc-links-universal">
+  <p class="dlu-label">Tutti i documenti</p>
+  <div class="dlu-grid">
+    <a href="proposta-samuela-denardi.html">Proposta WeBloom</a>
+    <a href="analisi-strategica-samuela-denardi.html">Analisi strategica</a>
+    <a href="il-tuo-percorso-esperienze-il-mio-sole.html">Il tuo percorso di esperienze</a>
+    <a href="prossimi-passi-samuela-denardi.html">I prossimi passi</a>
+    <a href="guida-creazione-email-marketing-ilmiosole.html">Guida: crea la tua email marketing</a>
+    <a href="onboarding-samuela-denardi.html">Modulo di avvio</a>
   </div>
 </div>
 
