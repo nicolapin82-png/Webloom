@@ -14,6 +14,10 @@
 html{scroll-behavior:smooth;}
 body{font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;background:var(--page-bg);color:#fff;line-height:1.6;}
 
+/* Barre orizzontali (tab-bar e sotto-nav interne): scorrono ancora se serve, ma senza barra di scorrimento visibile */
+.tab-bar,#tab-brand nav,#tab-packaging nav,#tab-editoriale nav{scrollbar-width:none;-ms-overflow-style:none;}
+.tab-bar::-webkit-scrollbar,#tab-brand nav::-webkit-scrollbar,#tab-packaging nav::-webkit-scrollbar,#tab-editoriale nav::-webkit-scrollbar{display:none;height:0;}
+
 /* ── TAB BAR (nuovo, sostituisce la navigazione tra i 4 file separati) ── */
 .tab-bar{position:sticky;top:0;z-index:200;background:var(--navy-dark);display:flex;border-bottom:1px solid var(--sep);overflow-x:auto;}
 .tab-btn{background:none;border:none;color:rgba(255,255,255,.5);font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:.85rem;padding:16px 30px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;}
@@ -26,8 +30,8 @@ body{font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;backg
 /* ── ELEMENTI CONDIVISI TRA TUTTI I TAB ── */
 header{background:var(--navy-dark);padding:26px 48px;border-bottom:1px solid var(--sep);position:relative;overflow:hidden;}
 header::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--oro),transparent);}
-header h1{font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.7rem;color:var(--oro);}
-header p{font-size:.74rem;color:rgba(255,255,255,.38);margin-top:4px;}
+header h1{font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.45rem;color:var(--oro);}
+header p{font-size:.78rem;color:rgba(255,255,255,.52);margin-top:4px;}
 
 .note{margin:20px 48px;padding:12px 18px;background:rgba(201,169,74,.07);border:1px solid rgba(201,169,74,.18);border-radius:8px;font-size:.74rem;color:rgba(255,255,255,.48);line-height:1.7;}
 .note strong{color:var(--oro);}
@@ -61,7 +65,7 @@ footer p{font-size:.62rem;color:rgba(255,255,255,.2);letter-spacing:.1em;}
 /* ── TAB: LOGO (namespace #tab-logo, da 03_ExportLogo.html) ── */
 #tab-logo .logo-section{padding:40px 48px;border-bottom:1px solid rgba(255,255,255,.06);}
 #tab-logo .logo-section h2{font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:3px;}
-#tab-logo .logo-section .desc{font-size:.7rem;color:rgba(255,255,255,.28);margin-bottom:26px;}
+#tab-logo .logo-section .desc{font-size:.74rem;color:rgba(255,255,255,.48);margin-bottom:26px;}
 #tab-logo .logo-row{display:flex;align-items:flex-start;gap:36px;flex-wrap:wrap;}
 #tab-logo .logo-render{overflow:hidden;flex-shrink:0;border-radius:10px;box-shadow:0 6px 32px rgba(0,0,0,.55);}
 #tab-logo .logo-render img{display:block;width:100%;height:100%;object-fit:contain;}
@@ -76,7 +80,7 @@ footer p{font-size:.62rem;color:rgba(255,255,255,.2);letter-spacing:.1em;}
 #tab-logo .ctx-blu{background:var(--blu);}
 #tab-logo .ctx-dark{background:var(--navy-dark);}
 #tab-logo .logo-actions{display:flex;flex-direction:column;gap:11px;padding-top:6px;}
-#tab-logo .action-note{font-size:.72rem;color:rgba(255,255,255,.32);line-height:1.65;max-width:280px;}
+#tab-logo .action-note{font-size:.76rem;color:rgba(255,255,255,.5);line-height:1.65;max-width:280px;}
 #tab-logo .sizes-grid{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px;}
 #tab-logo .size-btn{padding:6px 13px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:6px;font-size:.68rem;color:rgba(255,255,255,.55);cursor:pointer;transition:all .2s;font-family:system-ui,-apple-system,sans-serif;}
 #tab-logo .size-btn:hover{background:rgba(201,169,74,.1);border-color:var(--oro);color:var(--oro);}
@@ -107,19 +111,19 @@ footer p{font-size:.62rem;color:rgba(255,255,255,.2);letter-spacing:.1em;}
 #tab-packaging .page-header{background:var(--navy-dark);padding:60px 48px 50px;border-bottom:1px solid var(--sep);position:relative;overflow:hidden;}
 #tab-packaging .page-header::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--oro),transparent);}
 #tab-packaging .page-header h1{font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:2.4rem;color:var(--oro);margin-bottom:8px;}
-#tab-packaging .page-header p{font-size:.8rem;color:rgba(255,255,255,.38);max-width:540px;line-height:1.7;}
+#tab-packaging .page-header p{font-size:.8rem;color:rgba(255,255,255,.52);max-width:540px;line-height:1.7;}
 #tab-packaging .pack-section{padding:64px 48px;border-bottom:1px solid rgba(255,255,255,.06);}
 #tab-packaging .section-eyebrow{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--oro);margin-bottom:6px;}
 #tab-packaging .section-title{font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.8rem;color:var(--crema);margin-bottom:4px;}
-#tab-packaging .section-desc{font-size:.78rem;color:rgba(255,255,255,.38);margin-bottom:36px;max-width:560px;line-height:1.7;}
+#tab-packaging .section-desc{font-size:.78rem;color:rgba(255,255,255,.52);margin-bottom:36px;max-width:560px;line-height:1.7;}
 #tab-packaging .gold-line{width:32px;height:1.5px;background:var(--oro);margin:12px 0 28px;}
 #tab-packaging .mock-row{display:flex;align-items:flex-start;gap:48px;flex-wrap:wrap;}
 #tab-packaging .mock-preview{flex-shrink:0;}
 #tab-packaging .mock-specs{flex:1;min-width:240px;}
-#tab-packaging .mock-specs h4{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:14px;}
+#tab-packaging .mock-specs h4{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.48);margin-bottom:14px;}
 #tab-packaging .spec-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
 #tab-packaging .spec-row{display:flex;gap:10px;font-size:.76rem;}
-#tab-packaging .spec-label{color:rgba(255,255,255,.35);width:90px;flex-shrink:0;}
+#tab-packaging .spec-label{color:rgba(255,255,255,.5);width:90px;flex-shrink:0;}
 #tab-packaging .spec-val{color:rgba(255,255,255,.7);}
 #tab-packaging .fascetta-2d{background:var(--blu);width:360px;height:84px;border-radius:6px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:0 6px 30px rgba(0,0,0,.5);}
 #tab-packaging .fascetta-2d::before,#tab-packaging .fascetta-2d::after{content:'';position:absolute;top:0;bottom:0;width:1px;background:rgba(201,169,74,.3);}
@@ -220,7 +224,7 @@ footer p{font-size:.62rem;color:rgba(255,255,255,.2);letter-spacing:.1em;}
 /* ── TAB: SOCIAL (namespace #tab-social, da 04_ExportSocial.html) ── */
 #tab-social .tpl-section{padding:36px 48px;border-bottom:1px solid rgba(255,255,255,.05);}
 #tab-social .tpl-section h2{font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:3px;}
-#tab-social .tpl-section .desc{font-size:.7rem;color:rgba(255,255,255,.28);margin-bottom:24px;}
+#tab-social .tpl-section .desc{font-size:.74rem;color:rgba(255,255,255,.48);margin-bottom:24px;}
 #tab-social .tpl-row{display:flex;align-items:flex-start;gap:32px;flex-wrap:wrap;}
 #tab-social .tpl-actions{display:flex;flex-direction:column;gap:10px;padding-top:6px;}
 #tab-social .action-note{font-size:.7rem;color:rgba(255,255,255,.88);line-height:1.65;max-width:230px;}
@@ -267,12 +271,16 @@ footer p{font-size:.62rem;color:rgba(255,255,255,.2);letter-spacing:.1em;}
 }
 
 /* ── TAB: CAROSELLI (namespace #tab-caroselli, da 06_TemplateCaroselli_StoriaMichela.html) ── */
+#tab-caroselli .archive-banner{margin:20px 48px;padding:16px 20px;background:rgba(200,150,42,.12);border:1px solid rgba(200,150,42,.4);border-radius:8px;font-size:.8rem;color:rgba(255,255,255,.7);line-height:1.7;}
+#tab-caroselli .archive-banner strong{color:var(--ocra);}
+@media(max-width:768px){ #tab-caroselli .archive-banner{margin:16px 20px;} }
+@media(max-width:480px){ #tab-caroselli .archive-banner{margin:14px 14px;font-size:.76rem;} }
 #tab-caroselli .fase-block{padding:8px 48px 0;}
 #tab-caroselli .fase-block h2{font-size:.62rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--oro);margin:32px 0 4px;}
 #tab-caroselli .fase-block .fase-desc{font-size:.7rem;color:rgba(255,255,255,.3);margin-bottom:18px;}
 #tab-caroselli .tpl-section{padding:24px 48px;border-bottom:1px solid rgba(255,255,255,.05);}
 #tab-caroselli .tpl-section h3{font-size:.85rem;font-style:italic;color:var(--crema);margin-bottom:3px;}
-#tab-caroselli .tpl-section .desc{font-size:.68rem;color:rgba(255,255,255,.26);margin-bottom:20px;}
+#tab-caroselli .tpl-section .desc{font-size:.72rem;color:rgba(255,255,255,.46);margin-bottom:20px;}
 #tab-caroselli .tpl-row{display:flex;align-items:flex-start;gap:28px;flex-wrap:wrap;}
 #tab-caroselli .sq-preview{width:200px;height:250px;border-radius:10px;overflow:hidden;flex-shrink:0;box-shadow:0 6px 28px rgba(0,0,0,.55);}
 #tab-caroselli .tpl-actions{display:flex;flex-direction:column;gap:8px;padding-top:4px;}
@@ -285,8 +293,8 @@ footer p{font-size:.62rem;color:rgba(255,255,255,.2);letter-spacing:.1em;}
 #tab-caroselli .day-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap;}
 #tab-caroselli .day-when{display:inline-block;background:rgba(201,169,110,0.13);color:var(--oro);font-size:.78rem;letter-spacing:.06em;padding:6px 14px;border-radius:20px;text-transform:uppercase;font-weight:600;}
 #tab-caroselli .day-when.open{background:rgba(122,158,59,0.18);color:#a8d070;}
-#tab-caroselli .check-wrap{display:flex;align-items:center;gap:7px;font-size:.7rem;color:rgba(255,255,255,.5);cursor:pointer;user-select:none;flex-shrink:0;}
-#tab-caroselli .check-wrap input{width:17px;height:17px;accent-color:var(--oro);cursor:pointer;}
+#tab-caroselli .check-wrap{display:flex;align-items:center;gap:8px;font-size:.72rem;color:rgba(255,255,255,.55);cursor:pointer;user-select:none;flex-shrink:0;padding:10px 6px;margin:-10px -6px;min-height:44px;}
+#tab-caroselli .check-wrap input{width:19px;height:19px;accent-color:var(--oro);cursor:pointer;}
 #tab-caroselli .day-card .post-title{font-style:italic;font-size:1.05rem;color:var(--crema);margin-bottom:10px;}
 #tab-caroselli .platform-badges{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
 #tab-caroselli .platform-badge{font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;border-radius:12px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.65);}
@@ -311,7 +319,7 @@ footer p{font-size:.62rem;color:rgba(255,255,255,.2);letter-spacing:.1em;}
 #tab-caroselli .step-header{display:flex;align-items:center;gap:13px;margin-bottom:14px;}
 #tab-caroselli .step-num{width:32px;height:32px;background:rgba(201,169,110,.15);border:1px solid var(--oro);color:var(--oro);border-radius:50%;font-style:italic;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 #tab-caroselli .step-title{font-style:italic;font-size:.92rem;color:var(--crema);}
-#tab-caroselli .step-subtitle{font-size:.68rem;color:rgba(255,255,255,.35);margin-top:2px;}
+#tab-caroselli .step-subtitle{font-size:.7rem;color:rgba(255,255,255,.5);margin-top:2px;}
 #tab-caroselli .instruction-item{display:flex;gap:9px;margin-bottom:9px;align-items:flex-start;}
 #tab-caroselli .instruction-item:last-child{margin-bottom:0;}
 #tab-caroselli .instruction-item .dot{width:18px;height:18px;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.35);color:var(--oro);border-radius:50%;font-size:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
@@ -854,6 +862,121 @@ footer{
 #tab-brand .fb-cta-btns{margin-left:0;margin-top:8px;}
 #tab-brand .gbp-wrap{max-width:100%;}
 }
+
+/* ── TAB: PIANO EDITORIALE (namespace #tab-editoriale) ── */
+#tab-editoriale nav{position:sticky;top:53px;z-index:100;background:var(--navy-dark);padding:10px 48px;display:flex;align-items:center;flex-wrap:wrap;gap:8px 18px;border-bottom:1px solid var(--sep);min-height:54px;}
+#tab-editoriale .nav-brand{font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:.9rem;color:var(--oro);margin-right:auto;white-space:nowrap;flex-shrink:0;}
+#tab-editoriale nav a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.62rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:color .2s;}
+#tab-editoriale nav a:hover{color:var(--oro);}
+#tab-editoriale .ed-section{padding:8px 48px 0;}
+#tab-editoriale .ed-eyebrow{font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--oro);margin:36px 0 4px;}
+#tab-editoriale .ed-title{font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.2rem;color:var(--crema);margin-bottom:4px;}
+#tab-editoriale .ed-sub{font-size:.78rem;color:rgba(255,255,255,.52);margin-bottom:22px;max-width:640px;line-height:1.7;}
+#tab-editoriale .insight-box{background:#35617E;border:1px solid var(--sep);border-radius:8px;padding:24px 28px;margin:20px 48px 8px;}
+#tab-editoriale .insight-title{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--oro);margin-bottom:14px;}
+#tab-editoriale .insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+#tab-editoriale .insight-item{font-size:.8rem;color:rgba(255,255,255,.65);line-height:1.65;padding-left:16px;position:relative;}
+#tab-editoriale .insight-item::before{content:'·';position:absolute;left:0;color:var(--oro);}
+#tab-editoriale .insight-item strong{color:var(--crema);}
+#tab-editoriale .recap{background:#35617E;border:1px solid var(--sep);border-radius:8px;padding:22px 26px;margin:8px 48px 8px;}
+#tab-editoriale .recap-title{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--oro);margin-bottom:14px;}
+#tab-editoriale table.rubriche{width:100%;border-collapse:collapse;font-size:.78rem;}
+#tab-editoriale table.rubriche th{text-align:left;color:var(--oro);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;padding:8px 10px;border-bottom:1px solid var(--sep);}
+#tab-editoriale table.rubriche td{padding:10px 10px;color:rgba(255,255,255,.68);border-bottom:1px solid rgba(201,169,110,.08);vertical-align:top;}
+#tab-editoriale table.rubriche tr:last-child td{border-bottom:none;}
+#tab-editoriale table.rubriche .rname{color:var(--crema);font-style:italic;}
+#tab-editoriale .week-label{display:flex;align-items:baseline;gap:12px;margin:8px 48px 14px;flex-wrap:wrap;}
+#tab-editoriale .week-label .wnum{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);background:rgba(201,169,110,.1);padding:5px 12px;border-radius:16px;border:1px solid rgba(201,169,110,.3);white-space:nowrap;}
+#tab-editoriale .week-label .wtheme{font-style:italic;font-size:1.02rem;color:var(--crema);}
+#tab-editoriale .week-label .wdates{font-size:.7rem;color:rgba(255,255,255,.5);margin-left:auto;}
+#tab-editoriale .day-card{background:#35617E;border:1px solid var(--sep);border-radius:10px;padding:24px 26px;margin:0 48px 16px;transition:opacity .25s;}
+#tab-editoriale .day-card.done{opacity:.45;}
+#tab-editoriale .day-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:12px;flex-wrap:wrap;}
+#tab-editoriale .day-when{display:inline-block;background:rgba(201,169,110,0.13);color:var(--oro);font-size:.74rem;letter-spacing:.04em;padding:6px 14px;border-radius:20px;text-transform:uppercase;font-weight:600;}
+#tab-editoriale .check-wrap{display:flex;align-items:center;gap:8px;font-size:.72rem;color:rgba(255,255,255,.5);cursor:pointer;user-select:none;flex-shrink:0;margin-left:auto;padding:10px 6px;margin-right:-6px;min-height:44px;}
+#tab-editoriale .check-wrap input{width:19px;height:19px;accent-color:var(--oro);cursor:pointer;}
+#tab-editoriale .format-tag{display:inline-block;font-size:.64rem;letter-spacing:.05em;text-transform:uppercase;padding:5px 12px;border-radius:20px;border:1px solid var(--sep);color:rgba(255,255,255,.5);}
+#tab-editoriale .format-tag.reel{border-color:rgba(200,150,42,.5);color:#e0b45a;}
+#tab-editoriale .format-tag.carosello{border-color:rgba(143,184,220,.55);color:#8FB8DC;}
+#tab-editoriale .format-tag.foto{border-color:rgba(122,158,59,.5);color:#a8d070;}
+#tab-editoriale .post-title{font-style:italic;font-size:1.02rem;color:var(--crema);margin-bottom:10px;}
+#tab-editoriale .post-note{font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.65;margin-bottom:12px;}
+#tab-editoriale .post-note strong{color:rgba(255,255,255,.75);}
+#tab-editoriale .caption-copy-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;background:rgba(0,0,0,.16);border:1px solid rgba(201,169,110,.2);border-radius:8px;padding:12px 14px;margin-bottom:12px;}
+#tab-editoriale .caption-copy-row .post-caption{flex:1;min-width:200px;margin-bottom:0;}
+#tab-editoriale .post-caption{font-size:.84rem;color:rgba(255,255,255,.85);line-height:1.75;font-style:italic;}
+#tab-editoriale .copy-caption-btn{flex-shrink:0;background:rgba(201,169,110,.15);color:var(--oro);border:1px solid var(--oro);border-radius:6px;padding:8px 14px;font-size:.7rem;font-family:system-ui,-apple-system,sans-serif;font-style:normal;cursor:pointer;transition:background .2s;white-space:nowrap;min-height:36px;}
+#tab-editoriale .copy-caption-btn:hover{background:var(--oro);color:var(--navy-dark);}
+#tab-editoriale .copy-caption-btn.copied{background:rgba(126,200,96,.2);border-color:#7EC860;color:#7EC860;}
+#tab-editoriale .post-meta{font-size:.76rem;color:rgba(255,255,255,.5);line-height:1.7;border-top:1px solid var(--sep);padding-top:11px;}
+#tab-editoriale .post-meta strong{color:rgba(255,255,255,.68);}
+#tab-editoriale .shotlist{margin-top:12px;padding:12px 16px;background:rgba(201,169,110,.06);border-left:2px solid var(--oro);border-radius:0 6px 6px 0;font-size:.74rem;color:rgba(255,255,255,.55);line-height:1.7;}
+#tab-editoriale .shotlist strong{color:var(--oro);}
+@media(max-width:480px){ #tab-editoriale .copy-caption-btn{width:100%;text-align:center;} }
+#tab-editoriale .stories-card{background:#35617E;border:1px dashed var(--sep);border-radius:10px;padding:16px 20px;margin:0 48px 30px;font-size:.78rem;color:rgba(255,255,255,.68);line-height:1.7;}
+#tab-editoriale .stories-card strong{color:var(--oro);}
+#tab-editoriale .video-step{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid rgba(201,169,110,.1);}
+#tab-editoriale .video-step:last-child{border-bottom:none;}
+#tab-editoriale .video-step .vnum{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.35);color:var(--oro);display:flex;align-items:center;justify-content:center;font-size:.82rem;font-style:italic;}
+#tab-editoriale .video-step .vtext h4{font-size:.86rem;color:var(--crema);margin-bottom:4px;font-weight:600;}
+#tab-editoriale .video-step .vtext p{font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.7;}
+#tab-editoriale .shot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 48px 8px;}
+#tab-editoriale .shot-card{background:#35617E;border:1px solid var(--sep);border-radius:8px;padding:16px;text-align:center;}
+#tab-editoriale .shot-card .sc-num{font-size:.58rem;letter-spacing:.08em;color:var(--oro);text-transform:uppercase;margin-bottom:8px;}
+#tab-editoriale .shot-card .sc-title{font-style:italic;font-size:.82rem;color:var(--crema);margin-bottom:6px;}
+#tab-editoriale .shot-card .sc-desc{font-size:.7rem;color:rgba(255,255,255,.5);line-height:1.6;}
+#tab-editoriale .acc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:20px 48px 8px;}
+#tab-editoriale .acc-card{background:#35617E;border:1px solid var(--sep);border-radius:8px;padding:20px 22px;position:relative;}
+#tab-editoriale .acc-card.must{border-left:3px solid var(--oro);}
+#tab-editoriale .acc-priority{position:absolute;top:16px;right:16px;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:12px;background:rgba(201,169,110,.15);color:var(--oro);}
+#tab-editoriale .acc-priority.opz{background:rgba(255,255,255,.06);color:rgba(255,255,255,.45);}
+#tab-editoriale .acc-name{font-style:italic;font-size:.95rem;color:var(--crema);margin:2px 60px 6px 0;}
+#tab-editoriale .acc-price{font-size:.9rem;color:var(--oro);font-weight:600;margin-bottom:10px;}
+#tab-editoriale .acc-why{font-size:.76rem;color:rgba(255,255,255,.55);line-height:1.65;}
+#tab-editoriale .acc-total{margin:8px 48px 8px;padding:16px 20px;background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.25);border-radius:8px;font-size:.82rem;color:var(--crema);text-align:center;}
+#tab-editoriale .acc-total strong{color:var(--oro);}
+#tab-editoriale .rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 48px 40px;}
+#tab-editoriale .rule-box{background:#35617E;border:1px solid var(--sep);border-radius:8px;padding:18px 20px;}
+#tab-editoriale .rule-box.do{border-left:3px solid #7A9E3B;}
+#tab-editoriale .rule-box.dont{border-left:3px solid #C84B4B;}
+#tab-editoriale .rule-box h4{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--oro);margin-bottom:10px;}
+#tab-editoriale .rule-box ul{list-style:none;font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.85;}
+#tab-editoriale .rule-box li{padding-left:14px;position:relative;}
+#tab-editoriale .rule-box li::before{content:'·';position:absolute;left:0;color:var(--oro);}
+@media(max-width:768px){
+  #tab-editoriale nav,#tab-editoriale .ed-section,#tab-editoriale .day-card,#tab-editoriale .stories-card{padding-left:20px;padding-right:20px;}
+  #tab-editoriale .insight-box,#tab-editoriale .recap,#tab-editoriale .week-label,#tab-editoriale .day-card,#tab-editoriale .stories-card,#tab-editoriale .shot-grid,#tab-editoriale .acc-grid,#tab-editoriale .acc-total,#tab-editoriale .rules-grid{margin-left:20px;margin-right:20px;}
+}
+@media(max-width:480px){
+  #tab-editoriale .insight-grid,#tab-editoriale .shot-grid,#tab-editoriale .rules-grid{grid-template-columns:1fr;}
+  #tab-editoriale .day-top{flex-direction:column;align-items:flex-start;gap:8px;}
+  #tab-editoriale .check-wrap{margin-left:0;}
+  #tab-editoriale .insight-box,#tab-editoriale .recap,#tab-editoriale .week-label,#tab-editoriale .day-card,#tab-editoriale .stories-card,#tab-editoriale .shot-grid,#tab-editoriale .acc-grid,#tab-editoriale .acc-total,#tab-editoriale .rules-grid{margin-left:14px;margin-right:14px;}
+}
+
+/* ── TAB: FARSI CONOSCERE (namespace #tab-influencer) ── */
+#tab-influencer .ed-section{padding:8px 48px 0;}
+#tab-influencer .ed-eyebrow{font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--oro);margin:36px 0 4px;}
+#tab-influencer .ed-title{font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.2rem;color:var(--crema);margin-bottom:4px;}
+#tab-influencer .ed-sub{font-size:.78rem;color:rgba(255,255,255,.52);margin-bottom:22px;max-width:640px;line-height:1.7;}
+#tab-influencer .day-card{background:#35617E;border:1px solid var(--sep);border-radius:10px;padding:24px 26px;margin:0 48px 16px;}
+#tab-influencer .post-title{font-style:italic;font-size:1.02rem;color:var(--crema);margin-bottom:10px;}
+#tab-influencer .post-note{font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:0;}
+#tab-influencer .post-note strong{color:rgba(255,255,255,.85);}
+#tab-influencer .video-step{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid rgba(201,169,110,.1);}
+#tab-influencer .video-step:last-child{border-bottom:none;}
+#tab-influencer .video-step .vnum{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.35);color:var(--oro);display:flex;align-items:center;justify-content:center;font-size:.82rem;font-style:italic;}
+#tab-influencer .video-step .vtext h4{font-size:.86rem;color:var(--crema);margin-bottom:4px;font-weight:600;}
+#tab-influencer .video-step .vtext p{font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.7;}
+#tab-influencer .stories-card{background:#35617E;border:1px dashed var(--sep);border-radius:10px;padding:16px 20px;margin:0 48px 30px;font-size:.78rem;color:rgba(255,255,255,.68);line-height:1.7;}
+#tab-influencer .stories-card strong{color:var(--oro);}
+@media(max-width:768px){
+  #tab-influencer .ed-section,#tab-influencer .day-card,#tab-influencer .stories-card{padding-left:20px;padding-right:20px;}
+  #tab-influencer .day-card,#tab-influencer .stories-card{margin-left:20px;margin-right:20px;}
+}
+@media(max-width:480px){
+  #tab-influencer .day-card,#tab-influencer .stories-card{margin-left:14px;margin-right:14px;}
+}
 </style>
 </head>
 <body>
@@ -884,7 +1007,6 @@ footer{
     <p class="sync-sl-author" style="font-size:1rem;color:rgba(255,255,255,.97);line-height:1.6;position:relative;z-index:1;">Michela Torcoletti<br>Jesolo</p>
     <div style="width:44px;height:1px;background:rgba(255,255,255,.92);margin:28px auto;position:relative;z-index:1;"></div>
     <p style="font-size:.72rem;color:rgba(255,255,255,.92);letter-spacing:.12em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
-    <div style="width:48px;height:48px;margin-top:18px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
   </div>
 
   <!-- Quadrato Copertina -->
@@ -1113,6 +1235,8 @@ footer{
   <button class="tab-btn" data-tab="tab-packaging" onclick="switchTab('tab-packaging')">Packaging</button>
   <button class="tab-btn" data-tab="tab-social" onclick="switchTab('tab-social')">Social</button>
   <button class="tab-btn" data-tab="tab-caroselli" onclick="switchTab('tab-caroselli')">Guida Pubblicazioni</button>
+  <button class="tab-btn" data-tab="tab-editoriale" onclick="switchTab('tab-editoriale')">Piano Editoriale Luglio</button>
+  <button class="tab-btn" data-tab="tab-influencer" onclick="switchTab('tab-influencer')">Farsi Conoscere</button>
 </div>
 
 <div id="tab-brand" class="tab-panel active">
@@ -3061,7 +3185,6 @@ Dal nostro laboratorio</textarea>
         <p class="sync-sl-author" style="font-size:.52rem;color:rgba(255,255,255,.97);line-height:1.5;position:relative;z-index:1;">Michela Torcoletti<br>Jesolo</p>
         <div style="width:22px;height:1px;background:rgba(255,255,255,.92);margin:12px auto;position:relative;z-index:1;"></div>
         <p style="font-size:.4rem;color:rgba(255,255,255,.92);letter-spacing:.1em;position:relative;z-index:1;">@labottegadelgelato_jesolopaese</p>
-        <div style="width:21px;height:21px;margin-top:8px;position:relative;z-index:1;"><img src="logo/logo.png" style="width:100%;height:100%;object-fit:contain;display:block;" alt="Logo"></div>
       </div>
     </div>
     <div class="tpl-actions">
@@ -3365,6 +3488,10 @@ di Bronte</textarea>
   <h1>La Bottega del Gelato - Guida Pubblicazioni</h1>
   <p>Cosa pubblicare, giorno per giorno, su Instagram, Facebook e Google Business Profile · slide pronte da scaricare subito sotto ogni post · Apri in Chrome o Edge</p>
 </header>
+
+<div class="archive-banner">
+  <strong>Questi post sono quelli dell'apertura (22-27 giugno 2026)</strong> — probabilmente li hai già pubblicati tutti. Restano qui solo come esempio, non c'è niente di nuovo da fare in questa pagina. Per luglio guarda invece il tab "Piano Editoriale Luglio". La guida "Come si pubblica un post" qui sotto resta comunque valida, tienila a mente.
+</div>
 
 <div class="note">
   <strong>Come si usa:</strong> ogni post qui sotto mostra prima giorno, ora e testo pronto, poi subito le tre slide da scaricare ("Copertina" + "Contenuto" + "Chiusura"), già pronte una dopo l'altra. Il Post 6 ha una slide finale dedicata invece della chiusura standard.
@@ -3901,6 +4028,476 @@ dopo piastrella</textarea>
 </div>
 
 <!-- ════ Render nascosti per html2canvas (versione 400×400 per export nitido) ════ -->
+</div>
+
+<div id="tab-editoriale" class="tab-panel">
+<header>
+  <h1>La Bottega del Gelato - Piano Editoriale Luglio 2026</h1>
+  <p>Cosa pubblicare ogni settimana, spiegato passo per passo: come girare un video anche se non l'hai mai fatto, cosa scaricare e come mettere online tutto da sola, dal telefono</p>
+</header>
+
+<nav>
+  <span class="nav-brand">Indice</span>
+  <a href="#ed-framework">1 · Cosa pubblico</a>
+  <a href="#ed-calendario">2 · Calendario</a>
+  <a href="#ed-video">3 · Come giro un video</a>
+  <a href="#ed-accessori">4 · Cosa comprare</a>
+  <a href="#ed-pubblicare">5 · Come pubblico</a>
+  <a href="#ed-regole">6 · Da ricordare</a>
+</nav>
+
+<div class="note">
+  <strong>Come usare questa pagina:</strong> leggi i punti 1→6 nell'ordine. Ogni post del calendario ha un quadratino "Fatto" da spuntare quando lo hai pubblicato — resta segnato anche se chiudi e riapri la pagina. Non serve leggere tutto insieme: il giorno in cui devi pubblicare qualcosa, apri questa pagina e guarda solo la card di quel giorno.
+</div>
+
+<div class="insight-box">
+  <div class="insight-title">Piccolo dizionario, in parole semplici</div>
+  <div class="insight-grid">
+    <div class="insight-item"><strong>Reel:</strong> un video breve (10-15 secondi), senza bisogno di parlare.</div>
+    <div class="insight-item"><strong>Story (Storia):</strong> una foto o un video che i tuoi follower vedono per 24 ore, poi sparisce da solo.</div>
+    <div class="insight-item"><strong>Carosello:</strong> un post con più immagini, che si scorrono da sinistra a destra con un dito.</div>
+    <div class="insight-item"><strong>Didascalia:</strong> il testo scritto sotto a un post o un Reel — nel calendario qui sotto è già pronto, basta copiarlo.</div>
+    <div class="insight-item"><strong>Posizione (o "Geotag"):</strong> far comparire sulla mappa "La Bottega del Gelato, Jesolo Paese" sotto al post, così chi lo vede sa dove sei.</div>
+    <div class="insight-item"><strong>Pubblicare:</strong> il momento in cui, dopo aver preparato tutto, tocchi il tasto finale e il post diventa visibile a tutti.</div>
+  </div>
+</div>
+
+<div class="ed-section" id="ed-framework">
+  <div class="ed-eyebrow">1 · Cosa pubblico ogni settimana</div>
+  <div class="ed-title">Quattro cose fisse, sempre uguali</div>
+  <div class="ed-sub">Non devi inventare niente di nuovo ogni settimana: basta ripetere sempre questi quattro tipi di post. Il negozio è chiuso il mercoledì — quel giorno non c'è nulla da pubblicare.</div>
+</div>
+
+<div class="recap">
+  <div class="recap-title">Le 4 cose da pubblicare ogni settimana</div>
+  <table class="rubriche">
+    <tr><th>Nome</th><th>Cos'è</th><th>Quando</th><th>Cosa fai vedere</th></tr>
+    <tr><td class="rname">Gusto del Giorno</td><td>Una Storia (foto)</td><td>Ogni giorno che sei aperta, verso le 10:45</td><td>Il gusto che c'è oggi in vetrina, con il nome</td></tr>
+    <tr><td class="rname">Reel Laboratorio</td><td>Un video di 10-15 secondi</td><td>2 volte a settimana (martedì e sabato)</td><td>Le tue mani mentre lavori: mantechi, stendi, guarnisci</td></tr>
+    <tr><td class="rname">Il Gusto Racconta</td><td>Un Carosello (più immagini)</td><td>1 volta a settimana (giovedì)</td><td>Da dove viene un ingrediente, raccontato in poche righe</td></tr>
+    <tr><td class="rname">Jesolo Lifestyle</td><td>Una foto singola</td><td>1 volta a settimana (venerdì)</td><td>La piazza, la vetrina, il paese intorno al negozio</td></tr>
+  </table>
+</div>
+
+<div class="insight-box">
+  <div class="insight-title">Quale immagine scaricare dal tab "Social" per ogni tipo di post</div>
+  <div class="insight-grid">
+    <div class="insight-item"><strong>Gusto del Giorno →</strong> scarica "Story Instagram — Gusto del Giorno".</div>
+    <div class="insight-item"><strong>Il Gusto Racconta →</strong> scarica insieme "Post Quadrato — Copertina Carosello", "Post Quadrato — Slide Contenuto" e "Post Quadrato — Slide Chiusura / CTA".</div>
+    <div class="insight-item"><strong>Reel Laboratorio →</strong> nessuna immagine da scaricare, solo il video che giri tu (vedi punto 3). Se vuoi, aggiungi i frame "Reel Frame — Apertura e Chiusura".</div>
+    <div class="insight-item"><strong>Jesolo Lifestyle →</strong> nessun template, è una foto libera fatta con il telefono.</div>
+  </div>
+</div>
+
+<div class="insight-box">
+  <div class="insight-title">Gli hashtag da usare, in base a cosa pubblichi (tocca "Copia" e incollali alla fine del testo)</div>
+  <div class="post-note"><strong>Gusto del Giorno</strong> (Storia)</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">#jesolo #jesolopaese #gelateriaartigianale #gelato</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia</button>
+  </div>
+  <div class="post-note"><strong>Reel Laboratorio</strong> (video)</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">#gelato #gelatoartigianale #gelatoitaliano #jesolo #jesololido #foodie #instafood #italianfood</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia</button>
+  </div>
+  <div class="post-note"><strong>Il Gusto Racconta</strong> (Carosello)</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">#gelateriaartigianale #gelatoartigianale #jesolopaese #veneto #dessert #foodblogger</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia</button>
+  </div>
+  <div class="post-note"><strong>Jesolo Lifestyle</strong> (Foto)</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">#jesolo #jesololido #visitjesolo #veneto #estate #summer #mare #travel</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia</button>
+  </div>
+  <div class="post-note" style="margin-bottom:0;">Non serve usarli tutti insieme: 5-8 per post bastano. Mettili sempre alla fine del testo, dopo il punto finale.</div>
+</div>
+
+<div class="ed-section" id="ed-calendario">
+  <div class="ed-eyebrow">2 · Calendario giorno per giorno</div>
+  <div class="ed-title">Cosa pubblicare, settimana per settimana</div>
+  <div class="ed-sub">Ogni card ha già il testo pronto: basta abbinarlo alla slide o al video giusto e spuntare "Fatto" una volta pubblicato.</div>
+</div>
+
+<div class="week-label"><span class="wnum">Settimana 1</span><span class="wtheme">Il debutto dell'estate</span><span class="wdates">1 - 5 luglio</span></div>
+
+<div class="day-card" id="card-ed-w1-1">
+  <div class="day-top"><span class="day-when">Giovedì 2 luglio · 18:30</span><span class="format-tag carosello">Carosello</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w1-1"> Fatto</label></div>
+  <div class="post-title">Il Gusto Racconta — Apre la stagione</div>
+  <div class="post-note"><strong>Come impaginare:</strong> nella prima slide scrivi il nome della rubrica "Il Gusto Racconta". Nelle 2-3 slide dopo, racconta il gusto scelto e un dettaglio sull'ingrediente. Nell'ultima slide metti la chiusura standard.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Da qualche giorno siamo aperti tutti i giorni, tranne il mercoledì. Il banco è pieno, l'estate a Jesolo è già iniziata. Da qui in poi, ogni settimana, vi racconto un gusto."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+  <div class="post-meta"><strong>Cosa scaricare:</strong> dal tab "Social", scarica "Post Quadrato — Copertina Carosello" più volte, una per ogni slide, cambiando il testo ogni volta.</div>
+</div>
+
+<div class="day-card" id="card-ed-w1-2">
+  <div class="day-top"><span class="day-when">Venerdì 3 luglio · 19:00</span><span class="format-tag foto">Foto</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w1-2"> Fatto</label></div>
+  <div class="post-title">Jesolo Lifestyle — La vetrina si accende</div>
+  <div class="post-note"><strong>Cosa fotografare:</strong> la vetrina o l'insegna, magari con le prime luci della sera.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Piazza Matteotti, ogni sera un po' più piena. Vi aspettiamo."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+  <div class="post-meta"><strong>Come scattare:</strong> telefono in verticale, luce naturale della sera, nessun filtro forzato.</div>
+</div>
+
+<div class="day-card" id="card-ed-w1-3">
+  <div class="day-top"><span class="day-when">Sabato 4 luglio · 11:00</span><span class="format-tag reel">Reel</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w1-3"> Fatto</label></div>
+  <div class="post-title">Reel Laboratorio — Si parte</div>
+  <div class="post-note"><strong>Cosa filmare:</strong> le mani che stendono il gelato in vaschetta. Nessuna parola, solo gesto e musica — segui la guida video al punto 3 qui sopra.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Si comincia. Un gesto alla volta, come ogni giorno qui alla Bottega."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+  <div class="shotlist"><strong>Shot list:</strong> 1) mano che prende la spatola · 2) gesto di stesura/guarnizione da vicino · 3) la vaschetta pronta in banco.</div>
+</div>
+
+<div class="stories-card"><strong>Stories Gusto del Giorno:</strong> gio 2, ven 3, sab 4, dom 5 — un gusto al giorno con il template story blu, verso le 10:45.</div>
+
+<div class="week-label"><span class="wnum">Settimana 2</span><span class="wtheme">Frutta di stagione</span><span class="wdates">6 - 12 luglio</span></div>
+
+<div class="day-card" id="card-ed-w2-1">
+  <div class="day-top"><span class="day-when">Martedì 7 luglio · 11:00</span><span class="format-tag reel">Reel</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w2-1"> Fatto</label></div>
+  <div class="post-title">Reel Laboratorio — La frutta che arriva</div>
+  <div class="post-note"><strong>Cosa filmare:</strong> le mani che lavorano pesche o albicocche fresche prima di entrare nel gelato. Se possibile, anche uno scatto della frutta intera prima di essere lavorata.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"La frutta che arriva oggi, lavorata a mano, un frutto alla volta."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+  <div class="shotlist"><strong>Shot list:</strong> 1) frutta fresca sul banco, dall'alto · 2) mani che la lavorano · 3) il gusto finito in vetrina.</div>
+</div>
+
+<div class="day-card" id="card-ed-w2-2">
+  <div class="day-top"><span class="day-when">Giovedì 9 luglio · 18:30</span><span class="format-tag carosello">Carosello</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w2-2"> Fatto</label></div>
+  <div class="post-title">Il Gusto Racconta — La pesca di luglio</div>
+  <div class="post-note"><strong>Come impaginare:</strong> nelle slide 2-3 racconta da dove viene la frutta usata e perché la stagionalità conta. Nell'ultima slide metti la chiusura standard.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Luglio è il mese della frutta migliore. Quando arriva pronta e profumata, il gusto si fa quasi da solo."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+  <div class="post-meta"><strong>Cosa scaricare:</strong> lo stesso template della settimana 1 ("Post Quadrato — Copertina Carosello"), solo con il testo cambiato.</div>
+</div>
+
+<div class="day-card" id="card-ed-w2-3">
+  <div class="day-top"><span class="day-when">Venerdì 10 luglio · 19:00</span><span class="format-tag foto">Foto</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w2-3"> Fatto</label></div>
+  <div class="post-title">Jesolo Lifestyle — Passeggio della sera</div>
+  <div class="post-note"><strong>Cosa fotografare:</strong> chi passeggia in piazza con la coppetta in mano (con permesso, o di spalle).</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Jesolo Paese, ore 19. Il momento giusto per una pausa dolce."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+</div>
+
+<div class="day-card" id="card-ed-w2-4">
+  <div class="day-top"><span class="day-when">Sabato 11 luglio · 11:00</span><span class="format-tag reel">Reel</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w2-4"> Fatto</label></div>
+  <div class="post-title">Reel Laboratorio — Il gesto della guarnizione</div>
+  <div class="post-note"><strong>Cosa filmare:</strong> il momento della guarnizione finale (frutta fresca, granella, un tocco decorativo). È il gesto più "instagrammabile": riprendilo da molto vicino.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"L'ultimo tocco è quello che si vede di più."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+  <div class="shotlist"><strong>Shot list:</strong> 1) coppetta vuota pronta · 2) gesto di guarnizione al rallentatore · 3) coppetta finita, leggero movimento di camera.</div>
+</div>
+
+<div class="stories-card"><strong>Stories Gusto del Giorno:</strong> lun 6, mar 7, gio 9, ven 10, sab 11, dom 12 — un gusto al giorno, verso le 10:45.</div>
+
+<div class="week-label"><span class="wnum">Settimana 3</span><span class="wtheme">Jesolo che vivi</span><span class="wdates">13 - 19 luglio</span></div>
+
+<div class="day-card" id="card-ed-w3-1">
+  <div class="day-top"><span class="day-when">Martedì 14 luglio · 11:00</span><span class="format-tag reel">Reel</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w3-1"> Fatto</label></div>
+  <div class="post-title">Reel Laboratorio — Il banco al mattino</div>
+  <div class="post-note"><strong>Cosa filmare:</strong> le mani che sistemano il banco prima dell'apertura, vaschetta dopo vaschetta. Mostra la cura quotidiana, senza dover inventare nulla di nuovo.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Ogni mattina si ricomincia, vaschetta dopo vaschetta."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+  <div class="shotlist"><strong>Shot list:</strong> 1) banco vuoto o a metà · 2) mani che sistemano una vaschetta · 3) banco pronto, luci accese.</div>
+</div>
+
+<div class="day-card" id="card-ed-w3-2">
+  <div class="day-top"><span class="day-when">Giovedì 16 luglio · 18:30</span><span class="format-tag carosello">Carosello</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w3-2"> Fatto</label></div>
+  <div class="post-title">Il Gusto Racconta — Un ingrediente, un luogo</div>
+  <div class="post-note"><strong>Come impaginare:</strong> racconta in 3 slide da dove viene un ingrediente chiave (es. pistacchio, nocciola), senza mai citare il prezzo. Nell'ultima slide metti la chiusura standard.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"C'è sempre un posto dietro un buon ingrediente."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+</div>
+
+<div class="day-card" id="card-ed-w3-3">
+  <div class="day-top"><span class="day-when">Venerdì 17 luglio · 19:00</span><span class="format-tag foto">Foto</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w3-3"> Fatto</label></div>
+  <div class="post-title">Jesolo Lifestyle — Famiglie in vacanza</div>
+  <div class="post-note"><strong>Cosa fotografare:</strong> il locale con qualche cliente (con permesso) o la fila davanti al banco in un momento vivace.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Luglio a Jesolo si riconosce così: file allegre e coppette che si sciolgono più veloci del previsto."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+</div>
+
+<div class="day-card" id="card-ed-w3-4">
+  <div class="day-top"><span class="day-when">Sabato 18 luglio · 11:00</span><span class="format-tag reel">Reel</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w3-4"> Fatto</label></div>
+  <div class="post-title">Reel Laboratorio — La mantecazione</div>
+  <div class="post-note"><strong>Cosa filmare:</strong> il gesto più tecnico e riconoscibile del mestiere, la mantecatrice in azione, la crema che si trasforma. Il reel più "da gelatiera vera" del mese.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"La crema che si trasforma sotto i tuoi occhi. Questo è il nostro mestiere."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+  <div class="shotlist"><strong>Shot list:</strong> 1) macchina in funzione, da vicino · 2) mano che controlla la consistenza · 3) il gelato appena mantecato che esce.</div>
+</div>
+
+<div class="stories-card"><strong>Stories Gusto del Giorno:</strong> lun 13, mar 14, gio 16, ven 17, sab 18, dom 19 — un gusto al giorno, verso le 10:45.</div>
+
+<div class="week-label"><span class="wnum">Settimana 4</span><span class="wtheme">Le sere d'estate</span><span class="wdates">20 - 26 luglio</span></div>
+
+<div class="day-card" id="card-ed-w4-1">
+  <div class="day-top"><span class="day-when">Martedì 21 luglio · 11:00</span><span class="format-tag reel">Reel</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w4-1"> Fatto</label></div>
+  <div class="post-title">Reel Laboratorio — Un gusto nuovo (se c'è)</div>
+  <div class="post-note"><strong>Cosa filmare:</strong> se esce un gusto nuovo o una variazione stagionale, mostralo dal primo gesto. Altrimenti ripeti un gesto già fatto: la costanza conta più della novità.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Un gesto nuovo, o uno di sempre: il banco è pronto lo stesso."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+  <div class="shotlist"><strong>Shot list:</strong> 1) ingredienti pronti sul banco · 2) gesto di preparazione · 3) primo assaggio/prova con il cucchiaino.</div>
+</div>
+
+<div class="day-card" id="card-ed-w4-2">
+  <div class="day-top"><span class="day-when">Giovedì 23 luglio · 18:30</span><span class="format-tag carosello">Carosello</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w4-2"> Fatto</label></div>
+  <div class="post-title">Il Gusto Racconta — Il gusto delle coppie</div>
+  <div class="post-note"><strong>Come impaginare:</strong> nella slide 2-3 racconta due gusti che stanno bene insieme e perché, senza mai citare il prezzo, solo l'idea di condivisione. Nell'ultima slide metti la chiusura standard.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Un gusto è buono. Due, condivisi, sono ancora meglio."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+</div>
+
+<div class="day-card" id="card-ed-w4-3">
+  <div class="day-top"><span class="day-when">Venerdì 24 luglio · 19:30</span><span class="format-tag foto">Foto</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w4-3"> Fatto</label></div>
+  <div class="post-title">Jesolo Lifestyle — L'aperitivo dolce</div>
+  <div class="post-note"><strong>Cosa fotografare:</strong> la piazza o il locale, mettendo in evidenza che siamo aperti fino alle 20:00.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Le sere di luglio a Jesolo Paese si allungano, e noi restiamo aperti fino alle 20."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+</div>
+
+<div class="day-card" id="card-ed-w4-4">
+  <div class="day-top"><span class="day-when">Sabato 25 luglio · 11:00</span><span class="format-tag reel">Reel</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w4-4"> Fatto</label></div>
+  <div class="post-title">Reel Laboratorio — Il sabato pieno</div>
+  <div class="post-note"><strong>Cosa filmare:</strong> il ritmo del sabato, vaschette che si svuotano e si riempiono, un gesto dopo l'altro. Va bene anche un montaggio di 2-3 gesti diversi, sempre mani, mai volto.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Il ritmo del sabato: un gesto dopo l'altro, senza fermarsi."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+  <div class="shotlist"><strong>Shot list:</strong> 1) vaschetta quasi vuota · 2) gesto di rabbocco/sistemazione · 3) banco pieno e ordinato.</div>
+</div>
+
+<div class="stories-card"><strong>Stories Gusto del Giorno:</strong> lun 20, mar 21, gio 23, ven 24, sab 25, dom 26 — un gusto al giorno, verso le 10:45.</div>
+
+<div class="week-label"><span class="wnum">Settimana 5</span><span class="wtheme">Un mese di Bottega</span><span class="wdates">27 - 31 luglio</span></div>
+
+<div class="day-card" id="card-ed-w5-1">
+  <div class="day-top"><span class="day-when">Lunedì 27 luglio · 18:30</span><span class="format-tag carosello">Carosello</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w5-1"> Fatto</label></div>
+  <div class="post-title">Un mese di Bottega — piccolo bilancio</div>
+  <div class="post-note"><strong>Come impaginare:</strong> nella slide 2 metti uno scatto del giorno dell'apertura affiancato a uno scatto di oggi. Come slide finale usa la citazione di Michela con l'indirizzo.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Un mese fa aprivamo le porte per la prima volta. Oggi, guardando indietro, dico solo grazie: a chi è entrato una volta e a chi ormai passa ogni settimana."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+  <div class="post-meta"><strong>Cosa scaricare:</strong> "Post Quadrato — Copertina Carosello" per le prime slide, poi come slide finale usa "Post Quadrato — Slide Chiusura / CTA" (la stessa usata per l'ultimo post dell'apertura).</div>
+</div>
+
+<div class="day-card" id="card-ed-w5-2">
+  <div class="day-top"><span class="day-when">Martedì 28 luglio · 11:00</span><span class="format-tag reel">Reel</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w5-2"> Fatto</label></div>
+  <div class="post-title">Reel Laboratorio — Le mani di sempre</div>
+  <div class="post-note"><strong>Cosa filmare:</strong> un reel semplice, lo stesso spirito del primo giorno: mani, gesto, musica. Nessuna occasione speciale necessaria.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Le mani di sempre, lo stesso spirito del primo giorno."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+  <div class="shotlist"><strong>Shot list:</strong> 1) gesto a scelta libera · 2) primo piano del risultato · 3) banco generale.</div>
+</div>
+
+<div class="day-card" id="card-ed-w5-3">
+  <div class="day-top"><span class="day-when">Giovedì 30 luglio · 18:30</span><span class="format-tag carosello">Carosello</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w5-3"> Fatto</label></div>
+  <div class="post-title">Il Gusto Racconta — Verso agosto</div>
+  <div class="post-note"><strong>Come impaginare:</strong> un piccolo teaser verso agosto, senza promettere nulla di non confermato. Nell'ultima slide metti la chiusura standard.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Luglio se ne va, agosto arriva pieno di gente. Il banco sarà pronto."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+</div>
+
+<div class="day-card" id="card-ed-w5-4">
+  <div class="day-top"><span class="day-when">Venerdì 31 luglio · 19:00</span><span class="format-tag foto">Foto</span><label class="check-wrap"><input type="checkbox" class="done-check" data-post="ed-w5-4"> Fatto</label></div>
+  <div class="post-title">Jesolo Lifestyle — Chiusura del mese</div>
+  <div class="post-note"><strong>Cosa fotografare:</strong> il locale a fine giornata, con luci calde e un'atmosfera serena.</div>
+  <div class="caption-copy-row">
+    <div class="post-caption">"Fine luglio, primo vero mese della Bottega. Ad agosto continuiamo così."</div>
+    <button class="copy-caption-btn" onclick="copyCaption(this)">Copia testo</button>
+  </div>
+</div>
+
+<div class="stories-card"><strong>Stories Gusto del Giorno:</strong> lun 27, mar 28, gio 30, ven 31 — un gusto al giorno, verso le 10:45.</div>
+
+<div class="ed-section" id="ed-video">
+  <div class="ed-eyebrow">3 · Come giro un video</div>
+  <div class="ed-title">Il Reel Laboratorio, spiegato passo per passo</div>
+  <div class="ed-sub">Non serve saper girare video. Non serve nessun attrezzo speciale. Basta il tuo telefono normale. Segui questi passaggi ogni volta, dopo un paio di volte ti verranno naturali.</div>
+</div>
+
+<div class="day-card">
+  <div class="video-step"><div class="vnum">1</div><div class="vtext"><h4>Tieni il telefono in verticale</h4><p>Come quando scrivi un messaggio, non girato di lato. È il formato giusto per Reel e Storie.</p></div></div>
+  <div class="video-step"><div class="vnum">2</div><div class="vtext"><h4>Mettiti vicino alla luce del giorno</h4><p>Vicino alla vetrina o alla porta, con la luce che ti arriva davanti o di lato. Se la luce è dietro di te il video viene scuro: evitalo.</p></div></div>
+  <div class="video-step"><div class="vnum">3</div><div class="vtext"><h4>Se puoi, appoggia il telefono invece di tenerlo in mano</h4><p>Mettilo fermo contro qualcosa (una mensola, un barattolo) puntato sul banco. Se lo tieni in mano, tieni i gomiti vicino al corpo: il video trema molto meno.</p></div></div>
+  <div class="video-step"><div class="vnum">4</div><div class="vtext"><h4>Inquadra le mani, non la faccia</h4><p>Il video deve mostrare le tue mani mentre lavori. Non serve mai far vedere il viso o parlare.</p></div></div>
+  <div class="video-step"><div class="vnum">5</div><div class="vtext"><h4>Bastano 10-15 secondi</h4><p>Riprendi 3 momenti brevi, uno via l'altro (guarda le "Scene" qui sotto): l'inizio del gesto, il gesto da vicino, il risultato finito.</p></div></div>
+  <div class="video-step"><div class="vnum">6</div><div class="vtext"><h4>Non serve parlare</h4><p>Il video funziona anche senza la tua voce. Quando pubblichi, aggiungi una musica di sottofondo direttamente nell'app (vedi il passaggio 3 del punto 5 qui sotto).</p></div></div>
+  <div class="video-step"><div class="vnum">7</div><div class="vtext"><h4>Tagliare il video lo fai dentro Instagram</h4><p>Non serve installare altre app. Quando crei il Reel, dentro Instagram puoi tagliare i pezzi che non ti piacciono e aggiungere la musica, tutto con pochi tocchi.</p></div></div>
+  <div class="video-step"><div class="vnum">8</div><div class="vtext"><h4>Un tocco in più, se vuoi (non obbligatorio)</h4><p>Scarica dal tab "Social" le due immagini "Reel Frame — Apertura e Chiusura" e mettile all'inizio e alla fine del video, per un risultato più curato.</p></div></div>
+</div>
+
+<div class="shot-grid">
+  <div class="shot-card"><div class="sc-num">Scena 1</div><div class="sc-title">L'inizio</div><div class="sc-desc">La mano che prende lo strumento che stai per usare (spatola, sac à poche, cucchiaio)</div></div>
+  <div class="shot-card"><div class="sc-num">Scena 2</div><div class="sc-title">Il gesto da vicino</div><div class="sc-desc">Il momento centrale: stendere, guarnire o mantecare, ripreso molto da vicino</div></div>
+  <div class="shot-card"><div class="sc-num">Scena 3</div><div class="sc-title">Il risultato finito</div><div class="sc-desc">La vaschetta o la coppetta pronta, ferma un secondo davanti alla camera</div></div>
+</div>
+
+<div class="ed-section" id="ed-accessori">
+  <div class="ed-eyebrow">4 · Cosa comprare (facoltativo)</div>
+  <div class="ed-title">Un piccolo kit, spesa contenuta, qualità in più</div>
+  <div class="ed-sub">Nessuno di questi accessori è obbligatorio: il telefono da solo basta già per seguire la guida video. Ma con una spesa contenuta, i video vengono più stabili, più luminosi e più nitidi. In "Indispensabile" ciò che conviene prendere subito; in "Facoltativo" ciò che si aggiunge in un secondo momento.</div>
+</div>
+
+<div class="acc-grid">
+  <div class="acc-card must">
+    <span class="acc-priority">Indispensabile</span>
+    <div class="acc-name">Mini treppiede flessibile con pinza per telefono</div>
+    <div class="acc-price">10 - 15 €</div>
+    <div class="acc-why">Appoggia il telefono da solo, inquadratura ferma senza tremolii. È l'oggetto che risolve il problema più comune: il video mosso.</div>
+  </div>
+  <div class="acc-card must">
+    <span class="acc-priority">Indispensabile</span>
+    <div class="acc-name">Lampada LED da tavolo o clip, luce bianca calda</div>
+    <div class="acc-price">15 - 20 €</div>
+    <div class="acc-why">Nelle giornate nuvolose o di sera, quando la luce naturale non basta, questa lampada evita video scuri o giallastri.</div>
+  </div>
+  <div class="acc-card">
+    <span class="acc-priority opz">Facoltativo</span>
+    <div class="acc-name">Lente macro/grandangolare clip-on per smartphone</div>
+    <div class="acc-price">10 - 15 €</div>
+    <div class="acc-why">Per riprese molto ravvicinate (granella, guarnizione, dettaglio del gesto) con più nitidezza rispetto alla fotocamera normale.</div>
+  </div>
+  <div class="acc-card">
+    <span class="acc-priority opz">Facoltativo</span>
+    <div class="acc-name">Tovaglietta o tagliere in legno chiaro come sfondo</div>
+    <div class="acc-price">10 - 15 €</div>
+    <div class="acc-why">Uniforma lo sfondo delle foto prodotto, coerente con la palette crema/oro del brand, senza dover "sistemare" ogni volta il banco.</div>
+  </div>
+  <div class="acc-card">
+    <span class="acc-priority opz">Facoltativo</span>
+    <div class="acc-name">Powerbank tascabile</div>
+    <div class="acc-price">15 - 20 €</div>
+    <div class="acc-why">Il telefono usato tutto il giorno tra cassa, Instagram e Reel si scarica in fretta: una batteria di riserva evita di restare senza durante il servizio.</div>
+  </div>
+</div>
+
+<div class="acc-total">Kit completo (tutti e 5 gli accessori): circa <strong>60 - 85 €</strong>, spesa una tantum. Con solo i due "Indispensabile" bastano <strong>25 - 35 €</strong> per vedere già una differenza netta nei video.</div>
+
+<div class="ed-section" id="ed-pubblicare">
+  <div class="ed-eyebrow">5 · Come metto online un post</div>
+  <div class="ed-title">Da sola, dal telefono, passo per passo</div>
+  <div class="ed-sub">Pubblichi sempre tu, dal tuo telefono, con l'app Instagram. Ci sono 3 modi diversi a seconda di cosa hai preparato: guarda sotto quello giusto per te.</div>
+</div>
+
+<div class="day-card">
+  <div class="post-title">Ho girato un Reel (video)</div>
+  <div class="video-step"><div class="vnum">1</div><div class="vtext"><h4>Apri Instagram e tocca il simbolo "+"</h4><p>Si trova in alto o in basso nella schermata principale. Poi tocca "Reel".</p></div></div>
+  <div class="video-step"><div class="vnum">2</div><div class="vtext"><h4>Scegli il video dalla galleria del telefono</h4><p>Quello che hai girato seguendo i passaggi del punto 3 qui sopra.</p></div></div>
+  <div class="video-step"><div class="vnum">3</div><div class="vtext"><h4>Se vuoi, aggiungi una musica</h4><p>Tocca l'icona della nota musicale in alto e scegline una. Non è obbligatorio, il video funziona bene anche senza.</p></div></div>
+  <div class="video-step"><div class="vnum">4</div><div class="vtext"><h4>Tocca "Avanti" e incolla il testo</h4><p>Nella schermata successiva c'è uno spazio per scrivere. Incolla lì il testo già pronto che trovi nella card del post, nel calendario qui sopra.</p></div></div>
+  <div class="video-step"><div class="vnum">5</div><div class="vtext"><h4>Aggiungi dove ti trovi e pubblica</h4><p>Tocca "Aggiungi posizione", scrivi "La Bottega del Gelato, Jesolo Paese" e selezionala. Poi tocca "Condividi": il Reel è pubblicato.</p></div></div>
+</div>
+
+<div class="day-card">
+  <div class="post-title">Ho scaricato più immagini (Il Gusto Racconta / Jesolo Lifestyle a più foto)</div>
+  <div class="video-step"><div class="vnum">1</div><div class="vtext"><h4>Scarica le immagini dal tab "Social"</h4><p>Nell'ordine in cui le vedi: prima la Copertina, poi le slide di contenuto, poi la Chiusura. Si salvano in galleria nello stesso ordine in cui le scarichi.</p></div></div>
+  <div class="video-step"><div class="vnum">2</div><div class="vtext"><h4>Copia il testo del post</h4><p>Lo trovi nella card del post, nel calendario qui sopra. Se c'è un pulsante "Copia testo", basta toccarlo.</p></div></div>
+  <div class="video-step"><div class="vnum">3</div><div class="vtext"><h4>Apri Instagram, tocca "+" e scegli "Post"</h4><p>Poi scegli dalla galleria le immagini appena scaricate, una dopo l'altra, nello stesso ordine in cui le hai scaricate.</p></div></div>
+  <div class="video-step"><div class="vnum">4</div><div class="vtext"><h4>Incolla il testo, aggiungi dove ti trovi, pubblica</h4><p>Tocca "Scrivi didascalia" e incolla il testo copiato al punto 2. Poi tocca "Aggiungi posizione" e scrivi "La Bottega del Gelato, Jesolo Paese". Infine tocca "Condividi".</p></div></div>
+</div>
+
+<div class="day-card">
+  <div class="post-title">Ho una Storia da pubblicare (Gusto del Giorno o foto libera)</div>
+  <div class="video-step"><div class="vnum">1</div><div class="vtext"><h4>Scarica l'immagine giusta dal tab "Social"</h4><p>Per il Gusto del Giorno scarica "Story Instagram — Gusto del Giorno" (sfondo blu). Per una foto libera, usa direttamente lo scatto fatto con il telefono.</p></div></div>
+  <div class="video-step"><div class="vnum">2</div><div class="vtext"><h4>Apri Instagram e scorri verso destra</h4><p>Dalla schermata principale, con un dito scorri lo schermo verso destra. Oppure tocca "+" e scegli "Storia".</p></div></div>
+  <div class="video-step"><div class="vnum">3</div><div class="vtext"><h4>Scegli la foto dalla galleria</h4><p>Quella appena scaricata o appena scattata.</p></div></div>
+  <div class="video-step"><div class="vnum">4</div><div class="vtext"><h4>Aggiungi dove ti trovi</h4><p>Tocca l'icona degli adesivi in alto (sembra una piccola etichetta), cerca "Luogo" e scrivi "La Bottega del Gelato, Jesolo Paese".</p></div></div>
+  <div class="video-step"><div class="vnum">5</div><div class="vtext"><h4>Tocca "La tua storia" in basso a sinistra</h4><p>Fatto: la Storia è pubblicata e resterà visibile per 24 ore.</p></div></div>
+</div>
+
+<div class="stories-card"><strong>Se ti blocchi in un punto qualsiasi:</strong> scrivici su WhatsApp con uno screenshot di dove sei ferma — ti rispondiamo entro la giornata e ti spieghiamo il passaggio. Sei sempre tu a pubblicare: noi ti aiutiamo solo a capire come fare.</div>
+
+<div class="ed-section" id="ed-regole">
+  <div class="ed-eyebrow">6 · Da ricordare</div>
+  <div class="ed-title">Poche regole semplici</div>
+</div>
+
+<div class="rules-grid">
+  <div class="rule-box do">
+    <h4>Da fare sempre</h4>
+    <ul>
+      <li>Scrivi dove ti trovi ("La Bottega del Gelato, Jesolo Paese") su ogni post e ogni Storia</li>
+      <li>Un gusto solo per ogni foto, sfondo pulito, luce del giorno</li>
+      <li>Nei Reel fai vedere le mani, mai il viso</li>
+      <li>Ogni settimana ripeti le stesse 4 cose (vedi punto 1), sempre con lo stesso nome</li>
+    </ul>
+  </div>
+  <div class="rule-box dont">
+    <h4>Da evitare</h4>
+    <ul>
+      <li>Non scrivere i prezzi nei post (vanno bene solo se te li chiedono in privato, o sul menu in negozio)</li>
+      <li>Non fare sondaggi o giochi per avere più "mi piace"</li>
+      <li>Non parlare di eventi in paese se non sei sicura al 100% che ci siano davvero</li>
+      <li>Se un video o una foto non ti sembra perfetta, pubblicala lo stesso — meglio un post semplice oggi che uno perfetto rimandato a domani</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div id="tab-influencer" class="tab-panel">
+<header>
+  <h1>La Bottega del Gelato - Farsi Conoscere in Zona</h1>
+  <p>La strategia per portare più persone a conoscere la Bottega: collaborazioni semplici con chi ha già un pubblico su Instagram a Jesolo e dintorni</p>
+</header>
+
+<div class="note">
+  <strong>Come si usa questa pagina:</strong> qui trovi il ragionamento e i passaggi pratici. La lista dei contatti, i messaggi già scritti e gli hashtag sono nel <a href="https://docs.google.com/spreadsheets/d/1NqATBPtq9jVMzA9f4oKfSlo8rCcfCRJsdc10PgWJsf0/edit" target="_blank" style="color:var(--oro);">foglio Google dedicato</a> (scheda "METODO" per i dettagli, "Tracker" per i contatti, "MESSAGGI" per i testi pronti).
+</div>
+
+<div class="ed-section">
+  <div class="ed-eyebrow">La strategia</div>
+  <div class="ed-title">Farsi conoscere da più persone possibile, gratis</div>
+  <div class="ed-sub">Un modo semplice e senza spese per far conoscere la Bottega a Jesolo e dintorni.</div>
+</div>
+
+<div class="day-card">
+  <div class="post-title">L'idea, in parole semplici</div>
+  <div class="post-note">In giro per Jesolo e dintorni ci sono persone che su Instagram hanno già qualche migliaio di persone che li seguono, e vivono davvero in zona (non turisti di passaggio). A loro proponiamo uno scambio semplice, senza soldi di mezzo: <strong>una vaschetta da asporto + un assaggio gratis in negozio</strong>, in cambio di <strong>una sola storia</strong> con la posizione attivata e il tuo profilo taggato. Niente contratti, niente formati obbligati — solo quello che sentono di raccontare davvero. Chi li segue vede il tuo gelato e la tua vetrina: è un passaparola, ma visto insieme da molte più persone.</div>
+</div>
+
+<div class="day-card">
+  <div class="post-title">Come funziona, passo dopo passo</div>
+  <div class="video-step"><div class="vnum">1</div><div class="vtext"><h4>Cerchiamo e contattiamo noi i profili giusti</h4><p>Persone che vivono davvero a Jesolo, con un seguito non troppo piccolo né troppo grande (di solito tra 1.000 e 5.000 persone — sopra questa soglia spesso chiedono di essere pagati). Il messaggio è già scritto, senza impegno per loro.</p></div></div>
+  <div class="video-step"><div class="vnum">2</div><div class="vtext"><h4>Se accettano, fissano un giorno per venire</h4><p>Nessuna data obbligata: vengono quando vogliono, si segnano nel foglio.</p></div></div>
+  <div class="video-step"><div class="vnum">3</div><div class="vtext"><h4>Quando arrivano, offri la vaschetta + l'assaggio</h4><p>Come faresti con un cliente qualsiasi che viene a trovarti, senza fare la cosa strana o formale.</p></div></div>
+  <div class="video-step"><div class="vnum">4</div><div class="vtext"><h4>Chiedi la storia mentre sono ancora lì</h4><p>Questo è il passaggio più importante: chiedi gentilmente che pubblichino la storia (con posizione e tag) <strong>prima di andarsene</strong>, non "dopo, a casa". Se lo lasci a un "poi lo faccio", il più delle volte non succede.</p></div></div>
+  <div class="video-step"><div class="vnum">5</div><div class="vtext"><h4>Se fanno di più, puoi premiarli ancora</h4><p>Se pubblicano più di una storia, tornano più volte, o girano addirittura un reel, puoi offrire un secondo piccolo omaggio. Non è obbligatorio, ma li invoglia a restare clienti veri.</p></div></div>
+</div>
+
+<div class="stories-card"><strong>Non è pubblicità a pagamento:</strong> non paghiamo nessuno e non ci sono contratti — è solo uno scambio semplice con chi vive in zona. La lista completa dei contatti, i messaggi già pronti, gli hashtag e tutto il ragionamento dietro al metodo sono raccolti in <a href="https://docs.google.com/spreadsheets/d/1NqATBPtq9jVMzA9f4oKfSlo8rCcfCRJsdc10PgWJsf0/edit" target="_blank" style="color:var(--oro);">questo foglio</a> (scheda "METODO"), che aggiorniamo mano a mano che si va avanti.</div>
 </div>
 
 <footer>
