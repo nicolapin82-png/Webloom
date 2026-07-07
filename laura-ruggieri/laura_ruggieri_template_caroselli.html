@@ -29,14 +29,15 @@ body{background:var(--bg);color:var(--white);font-family:'Montserrat',sans-serif
 ::-webkit-scrollbar-thumb{background:var(--gold-faint);}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 44px;display:flex;align-items:center;gap:20px;background:rgba(10,9,8,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
-.nav-logo img{height:28px;width:auto;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;padding:0 24px;display:flex;align-items:center;gap:20px;background:rgba(10,9,8,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo img{height:180px;width:auto;}
 .nav-tag{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);}
-.nav-badge{margin-left:auto;background:linear-gradient(135deg,#1a1200,#2a2000);border:1px solid var(--gold-faint);color:var(--gold);font-size:10px;font-weight:600;letter-spacing:1.5px;padding:4px 14px;border-radius:100px;text-transform:uppercase;}
+.nav-wbl{margin-left:auto;}
+.nav-wbl img{height:40px;width:auto;opacity:1;display:block;}
 @media(max-width:768px){nav{padding:14px 18px;}.nav-tag{display:none;}}
 
 /* HERO */
-.hero{padding:130px 44px 56px;max-width:980px;margin:0 auto;}
+.hero{padding:100px 44px 56px;max-width:980px;margin:0 auto;}
 .hero-label{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
 .hero-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(2.2rem,5vw,4rem);color:var(--white);line-height:1.0;letter-spacing:-0.5px;margin-bottom:14px;text-transform:uppercase;}
 .hero-title span{color:var(--gold);}
@@ -210,7 +211,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 44px;display:fl
 
 /* FOOTER */
 footer{padding:60px 44px;border-top:1px solid var(--sep);max-width:980px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
-.footer-logo img{height:30px;opacity:0.7;}
+.footer-logo img{height:30px;opacity:1;}
 .footer-info{font-size:0.73rem;color:var(--muted);line-height:1.85;}
 .footer-info a{color:var(--gold);text-decoration:none;}
 @media(max-width:768px){footer{padding:40px 18px;flex-direction:column;align-items:flex-start;}}
@@ -265,10 +266,12 @@ footer{padding:60px 44px;border-top:1px solid var(--sep);max-width:980px;margin:
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind" style="height:180px;width:auto;">
   </div>
-  <span class="nav-tag">Template Caroselli</span>
-  <span class="nav-badge">BlooMind · 2026</span>
+
+  <div class="nav-wbl">
+    <img src="https://nicolapin82-png.github.io/Webloom/assets/webloom-logo-white.png" alt="WeBloom" style="height:40px;width:auto;opacity:1;">
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -693,6 +696,258 @@ footer{padding:60px 44px;border-top:1px solid var(--sep);max-width:980px;margin:
   <div class="c-actions reveal">
     <div class="swipe-hint"><span class="swipe-arr">→</span> Scorri · Clicca per modificare</div>
     <button class="zip-btn" onclick="dlZip(3,this)">⬇ Scarica ZIP carosello 3</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+  CAROSELLO 4 · 15 LUGLIO  -  PIANO POST-POLONIA, SETTIMANA 2
+  Pillar: Vicinanza ai Fondatori
+════════════════════════════════════════ -->
+<div class="section" id="c4">
+  <div class="reveal">
+    <span class="section-label">Carosello 4 · 15 Luglio</span>
+    <h2 class="section-title">Cosa succede quando un fondatore si siede al tuo tavolo.</h2>
+    <p class="section-desc">Pillar: Vicinanza ai Fondatori · 5 slide · Chiusura soft, nessuna richiesta diretta</p>
+  </div>
+
+  <div class="photo-sel-wrap reveal d2">
+    <span class="ps-label">Foto per questo carosello  -  clicca per cambiare</span>
+    <div class="ph-thumbs" id="ps4">
+      <div class="ph-thumb active" style="background-image:url('../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.22.jpeg')" onclick="setPhoto(4,'../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.22.jpeg',this)" title="Laura 1"></div>
+      <div class="ph-thumb" style="background-image:url('../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.22%20%281%29.jpeg')" onclick="setPhoto(4,'../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.22%20%281%29.jpeg',this)" title="Laura 2"></div>
+      <div class="ph-thumb" style="background-image:url('../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.51.jpeg')" onclick="setPhoto(4,'../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.51.jpeg',this)" title="Laura 3"></div>
+      <div class="ph-thumb" style="background-image:url('../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.49.46.jpeg')" onclick="setPhoto(4,'../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.49.46.jpeg',this)" title="Laura 4"></div>
+      <div class="ph-thumb" style="background-image:url('../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.50.07.jpeg')" onclick="setPhoto(4,'../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.50.07.jpeg',this)" title="Laura 5"></div>
+    </div>
+    <p class="ps-scroll-hint">← scorri per vedere tutte le foto · tocca per selezionare</p>
+  </div>
+
+  <div class="fmt-row reveal d3" data-fc="4">
+    <span class="fmt-lbl">Formato:</span>
+    <button class="fmt-btn active" onclick="setFormat(4,'11',this)">Feed 1:1 <span class="fmt-dims">1080×1080</span></button>
+    <button class="fmt-btn" onclick="setFormat(4,'45',this)">Feed 4:5 <span class="fmt-dims">1080×1350</span></button>
+  </div>
+
+  <div class="carousel-wrap reveal d4">
+    <div class="carousel-track" id="track4">
+
+      <!-- SLIDE 1 - COVER -->
+      <div class="slide-wrap">
+        <div class="slide c4-slide is-cover" id="c4-s1">
+          <img class="slide-bg-img" src="../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.22.jpeg">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · VICINANZA AI FONDATORI</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">NON UNA CALL SU ZOOM. NON UN VIDEO REGISTRATO.</div>
+            <div class="s-sub" contenteditable spellcheck="false">Un tavolo vero, in Polonia, con chi ha fondato l'azienda.</div>
+          </div>
+          <div class="s-num">1 / 5</div>
+          <div class="bm-mark"><img src="../04%20-%20Assets/Logo/Artboard%202%40300x-8.png"></div>
+        </div>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="slide-wrap">
+        <div class="slide c4-slide" id="c4-s2">
+          <img class="slide-bg-img" src="../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.22.jpeg">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · VICINANZA AI FONDATORI</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">"PIÙ SALI, MENO VIENI ASCOLTATA." SI DICE COSÌ IN QUESTO SETTORE.</div>
+            <div class="s-sub" contenteditable spellcheck="false">In Polonia ho visto l'esatto contrario.</div>
+          </div>
+          <div class="s-num">2 / 5</div>
+          <div class="bm-mark"><img src="../04%20-%20Assets/Logo/Artboard%202%40300x-8.png"></div>
+        </div>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="slide-wrap">
+        <div class="slide c4-slide" id="c4-s3">
+          <img class="slide-bg-img" src="../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.22.jpeg">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · VICINANZA AI FONDATORI</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">I FONDATORI SONO SCESI IN CAMPO CON NOI. DIRETTAMENTE.</div>
+            <div class="s-sub" contenteditable spellcheck="false">Per la prima volta, non attraverso un intermediario.</div>
+          </div>
+          <div class="s-num">3 / 5</div>
+          <div class="bm-mark"><img src="../04%20-%20Assets/Logo/Artboard%202%40300x-8.png"></div>
+        </div>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
+      </div>
+
+      <!-- SLIDE 4 -->
+      <div class="slide-wrap">
+        <div class="slide c4-slide" id="c4-s4">
+          <img class="slide-bg-img" src="../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.22.jpeg">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · VICINANZA AI FONDATORI</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">PRIMA I RISULTATI, POI L'ESPOSIZIONE. PRIMA LA PERSONA, POI I NUMERI.</div>
+            <div class="s-sub" contenteditable spellcheck="false">È così che lavoriamo, dentro BlooMind.</div>
+          </div>
+          <div class="s-num">4 / 5</div>
+          <div class="bm-mark"><img src="../04%20-%20Assets/Logo/Artboard%202%40300x-8.png"></div>
+        </div>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
+      </div>
+
+      <!-- SLIDE 5 - CTA SOFT -->
+      <div class="slide-wrap">
+        <div class="slide c4-slide is-cta" id="c4-s5">
+          <img class="slide-bg-img" src="../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.22.jpeg">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · VICINANZA AI FONDATORI</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">NON È PER TUTTI. E SE TI RISUONA, LO SENTI.</div>
+            <div class="s-sub" contenteditable spellcheck="false">Continua a seguirmi: c'è ancora molto da raccontare.</div>
+          </div>
+          <div class="s-num">5 / 5</div>
+          <div class="bm-mark"><img src="../04%20-%20Assets/Logo/Artboard%202%40300x-8.png"></div>
+        </div>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
+      </div>
+
+    </div><!-- /carousel-track -->
+  </div><!-- /carousel-wrap -->
+
+  <div class="c-actions reveal">
+    <div class="swipe-hint"><span class="swipe-arr">→</span> Scorri · Clicca per modificare</div>
+    <button class="zip-btn" onclick="dlZip(4,this)">⬇ Scarica ZIP carosello 4</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+  CAROSELLO 5 · 29 LUGLIO  -  PIANO POST-POLONIA, SETTIMANA 4
+  Pillar: Il Metodo (spoiler IA)
+════════════════════════════════════════ -->
+<div class="section" id="c5">
+  <div class="reveal">
+    <span class="section-label">Carosello 5 · 29 Luglio</span>
+    <h2 class="section-title">Un metodo, non un'improvvisazione.</h2>
+    <p class="section-desc">Pillar: Il Metodo · 5 slide · Primo spoiler del sistema di lavoro, senza nominare l'evento di settembre</p>
+  </div>
+
+  <div class="photo-sel-wrap reveal d2">
+    <span class="ps-label">Foto per questo carosello  -  clicca per cambiare</span>
+    <div class="ph-thumbs" id="ps5">
+      <div class="ph-thumb active" style="background-image:url('../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.22.jpeg')" onclick="setPhoto(5,'../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.22.jpeg',this)" title="Laura 1"></div>
+      <div class="ph-thumb" style="background-image:url('../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.51.jpeg')" onclick="setPhoto(5,'../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.51.jpeg',this)" title="Laura 2"></div>
+      <div class="ph-thumb" style="background-image:url('../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.49.46.jpeg')" onclick="setPhoto(5,'../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.49.46.jpeg',this)" title="Laura 3"></div>
+      <div class="ph-thumb" style="background-image:url('../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.50.07.jpeg')" onclick="setPhoto(5,'../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.50.07.jpeg',this)" title="Laura 4"></div>
+      <div class="ph-thumb" style="background-image:url('../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.22%20%282%29.jpeg')" onclick="setPhoto(5,'../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.22%20%282%29.jpeg',this)" title="Laura 5"></div>
+    </div>
+    <p class="ps-scroll-hint">← scorri per vedere tutte le foto · tocca per selezionare</p>
+  </div>
+
+  <div class="fmt-row reveal d3" data-fc="5">
+    <span class="fmt-lbl">Formato:</span>
+    <button class="fmt-btn active" onclick="setFormat(5,'11',this)">Feed 1:1 <span class="fmt-dims">1080×1080</span></button>
+    <button class="fmt-btn" onclick="setFormat(5,'45',this)">Feed 4:5 <span class="fmt-dims">1080×1350</span></button>
+  </div>
+
+  <div class="carousel-wrap reveal d4">
+    <div class="carousel-track" id="track5">
+
+      <!-- SLIDE 1 - COVER -->
+      <div class="slide-wrap">
+        <div class="slide c5-slide is-cover" id="c5-s1">
+          <img class="slide-bg-img" src="../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.22.jpeg">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · IL METODO</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">IL METODO RESTA LA BASE DI TUTTO.</div>
+            <div class="s-sub" contenteditable spellcheck="false">Un sistema solido è ciò che ti permette di muoverti con chiarezza.</div>
+          </div>
+          <div class="s-num">1 / 5</div>
+          <div class="bm-mark"><img src="../04%20-%20Assets/Logo/Artboard%202%40300x-8.png"></div>
+        </div>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="slide-wrap">
+        <div class="slide c5-slide" id="c5-s2">
+          <img class="slide-bg-img" src="../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.22.jpeg">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · IL METODO</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">PERSONA. METODO. STRUMENTI.</div>
+            <div class="s-sub" contenteditable spellcheck="false">In questo ordine. Mai il contrario.</div>
+          </div>
+          <div class="s-num">2 / 5</div>
+          <div class="bm-mark"><img src="../04%20-%20Assets/Logo/Artboard%202%40300x-8.png"></div>
+        </div>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="slide-wrap">
+        <div class="slide c5-slide" id="c5-s3">
+          <img class="slide-bg-img" src="../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.22.jpeg">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · IL METODO</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">C'È UNA COSA CHE IL MIO TEAM USA OGNI GIORNO.</div>
+            <div class="s-sub" contenteditable spellcheck="false">E che quasi nessuno in questo settore ha.</div>
+          </div>
+          <div class="s-num">3 / 5</div>
+          <div class="bm-mark"><img src="../04%20-%20Assets/Logo/Artboard%202%40300x-8.png"></div>
+        </div>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
+      </div>
+
+      <!-- SLIDE 4 -->
+      <div class="slide-wrap">
+        <div class="slide c5-slide" id="c5-s4">
+          <img class="slide-bg-img" src="../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.22.jpeg">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · IL METODO</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">NE PARLO POCHISSIMO. VOGLIO PRIMA FARVELO VEDERE FUNZIONARE.</div>
+            <div class="s-sub" contenteditable spellcheck="false">Non solo raccontarlo.</div>
+          </div>
+          <div class="s-num">4 / 5</div>
+          <div class="bm-mark"><img src="../04%20-%20Assets/Logo/Artboard%202%40300x-8.png"></div>
+        </div>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
+      </div>
+
+      <!-- SLIDE 5 - CTA SOFT -->
+      <div class="slide-wrap">
+        <div class="slide c5-slide is-cta" id="c5-s5">
+          <img class="slide-bg-img" src="../04%20-%20Assets/Foto/WhatsApp%20Image%202026-05-31%20at%2011.48.22.jpeg">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="s-category" contenteditable spellcheck="false">BLOOMIND · IL METODO</div>
+            <div class="s-gold-bar"></div>
+            <div class="s-title" contenteditable spellcheck="false">VEDRETE QUALCOSA CHE SI DISTINGUE.</div>
+            <div class="s-sub" contenteditable spellcheck="false">Restate connessi: il pezzo dopo arriva presto.</div>
+          </div>
+          <div class="s-num">5 / 5</div>
+          <div class="bm-mark"><img src="../04%20-%20Assets/Logo/Artboard%202%40300x-8.png"></div>
+        </div>
+        <button class="slide-dl-btn" onclick="dlSlide(this)">↓ PNG</button>
+      </div>
+
+    </div><!-- /carousel-track -->
+  </div><!-- /carousel-wrap -->
+
+  <div class="c-actions reveal">
+    <div class="swipe-hint"><span class="swipe-arr">→</span> Scorri · Clicca per modificare</div>
+    <button class="zip-btn" onclick="dlZip(5,this)">⬇ Scarica ZIP carosello 5</button>
   </div>
 </div>
 
