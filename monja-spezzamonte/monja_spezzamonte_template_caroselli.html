@@ -603,7 +603,8 @@ async function renderSlide(carId,slideIdx){
   if(!slide)return document.createElement('canvas');
   var isF45=slide.classList.contains('fmt-45');
   var W=1080,H=isF45?1350:1080;
-  var F=W/slide.offsetWidth;
+  var SLIDE_DESIGN_WIDTH=340; // larghezza di riferimento fissa di .slide (css riga 91): le media query la riducono solo per l'anteprima responsive, l'export deve restare indipendente dal viewport
+  var F=W/SLIDE_DESIGN_WIDTH;
   var canvas=document.createElement('canvas');canvas.width=W;canvas.height=H;
   var ctx=canvas.getContext('2d');
   var col=CAR_COLORS[carId]||CAR_COLORS.car1;
@@ -672,7 +673,8 @@ async function renderSlide(carId,slideIdx){
             words.push({text:w,font:fnt,color:col2,sz:sz});
           });
         });
-        wrapRichWords(ctx,words,Math.round(280*F)).forEach(function(lineWords){allLines.push(lineWords);});
+        var bodyMaxW=Math.min(Math.round(280*F),W-Math.round(52*F));
+        wrapRichWords(ctx,words,bodyMaxW).forEach(function(lineWords){allLines.push(lineWords);});
       });
       var lineData=allLines.map(function(items){
         var maxSz=Math.round(baseSizePx);
