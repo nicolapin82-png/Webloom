@@ -38,7 +38,7 @@
     position:fixed;top:0;left:0;right:0;z-index:100;
     height:64px;padding:0 28px;
     display:flex;align-items:center;justify-content:space-between;
-    mix-blend-mode:difference;
+    background:linear-gradient(rgba(10,9,8,0.65), transparent);
   }
   .nav-word{
     font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px;
@@ -59,18 +59,13 @@
   .hero-media img{
     width:100%; height:100%; object-fit:cover; object-position:50% 22%;
     filter:grayscale(1) contrast(1.15) brightness(0.72);
-    transform:scale(1);
-    animation:kenburns 26s ease-in-out infinite alternate;
   }
-  @keyframes kenburns{ from{ transform:scale(1); } to{ transform:scale(1.09); } }
-  @media (prefers-reduced-motion: reduce){ .hero-media img{ animation:none; } }
   .hero-media::after{
     content:'';
     position:absolute; inset:0;
     background:
-      linear-gradient(180deg, rgba(10,9,8,0.15) 0%, rgba(10,9,8,0.35) 55%, rgba(10,9,8,0.96) 100%),
-      linear-gradient(100deg, rgba(90,110,70,0.35), rgba(201,168,76,0.22));
-    mix-blend-mode:multiply;
+      linear-gradient(180deg, rgba(10,9,8,0.25) 0%, rgba(10,9,8,0.4) 55%, rgba(10,9,8,0.97) 100%),
+      linear-gradient(100deg, rgba(90,110,70,0.28), rgba(201,168,76,0.16));
   }
   .hero-content{
     position:absolute; left:0; right:0; bottom:0; z-index:2;
@@ -179,9 +174,8 @@
   .spread::after{
     content:''; position:absolute; inset:0;
     background:
-      linear-gradient(0deg, rgba(10,9,8,0.97) 0%, rgba(10,9,8,0.2) 45%, rgba(10,9,8,0.55) 100%),
-      linear-gradient(100deg, rgba(144,186,150,0.28), rgba(201,168,76,0.18));
-    mix-blend-mode:multiply;
+      linear-gradient(0deg, rgba(10,9,8,0.97) 0%, rgba(10,9,8,0.3) 45%, rgba(10,9,8,0.6) 100%),
+      linear-gradient(100deg, rgba(144,186,150,0.22), rgba(201,168,76,0.14));
   }
   .spread-quote{
     position:absolute; left:0; right:0; bottom:64px; z-index:2; padding:0 24px;
