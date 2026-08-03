@@ -6,323 +6,247 @@
 <title>BlooMind — Non è per tutte</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:      #0A0908;
+    --bg:      #14120F;
+    --card:    #1D1A16;
     --ivory:   #F8F5EF;
-    --muted:   rgba(248,245,239,0.58);
-    --muted-lo:rgba(248,245,239,0.34);
+    --muted:   rgba(248,245,239,0.68);
     --gold:    #C9A84C;
-    --gold-lt: #E4CB84;
+    --gold-dk: #A88832;
     --sage:    #90BA96;
-    --rule:    rgba(248,245,239,0.14);
+    --rule:    rgba(248,245,239,0.12);
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:auto;}
   body{
     background:var(--bg);
     color:var(--ivory);
     font-family:'Montserrat',sans-serif;
-    font-weight:300;
+    font-weight:400;
     line-height:1.7;
     font-size:16px;
     overflow-x:hidden;
   }
   a{color:inherit;}
   img{max-width:100%;display:block;}
-  ::selection{ background:var(--gold); color:#0A0908; }
+  h1,h2,h3{ font-family:'Cormorant Garamond',serif; font-weight:600; }
+
+  /* ── BUTTON: piccolo, ripetuto, standard ── */
+  .btn{
+    display:inline-block; background:var(--gold); color:#191510;
+    font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px;
+    letter-spacing:0.04em; text-transform:uppercase; text-decoration:none;
+    padding:13px 30px; border-radius:3px;
+    transition:background 0.2s ease, transform 0.15s ease;
+  }
+  .btn:hover{ background:var(--gold-dk); }
+  .btn:active{ transform:scale(0.97); }
+  .btn-outline{
+    background:transparent; color:var(--ivory); border:1.5px solid var(--gold);
+  }
+  .btn-outline:hover{ background:rgba(201,168,76,0.1); }
+
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 24px; }
 
   /* ── NAV ── */
   nav{
-    position:fixed;top:0;left:0;right:0;z-index:100;
-    height:64px;padding:0 28px;
-    display:flex;align-items:center;justify-content:space-between;
-    background:linear-gradient(rgba(10,9,8,0.65), transparent);
+    position:sticky; top:0; z-index:100; height:68px; padding:0 24px;
+    display:flex; align-items:center; justify-content:space-between;
+    background:rgba(20,18,15,0.92); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--rule);
   }
-  .nav-word{
-    font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px;
-    letter-spacing:0.3em; text-transform:uppercase; color:var(--ivory);
-  }
-  .nav-scroll-label{
-    font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--ivory);
-  }
+  .nav-word{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:20px; letter-spacing:0.02em; }
+  .nav-cta{ font-size:11.5px; padding:9px 20px; }
+  @media(max-width:560px){ .nav-cta{ display:none; } }
 
-  /* ── HERO: full-bleed photo, asymmetric type ── */
-  .hero{
-    position:relative; width:100%; height:100svh; min-height:560px;
-    overflow:hidden;
-  }
-  .hero-media{
-    position:absolute; inset:0;
-  }
-  .hero-media img{
-    width:100%; height:100%; object-fit:cover; object-position:50% 22%;
-    filter:grayscale(1) contrast(1.15) brightness(0.72);
-  }
+  /* ── HERO ── */
+  .hero{ position:relative; overflow:hidden; }
+  .hero-media{ position:absolute; inset:0; }
+  .hero-media img{ width:100%; height:100%; object-fit:cover; object-position:50% 22%; }
   .hero-media::after{
-    content:'';
-    position:absolute; inset:0;
-    background:
-      linear-gradient(180deg, rgba(10,9,8,0.25) 0%, rgba(10,9,8,0.4) 55%, rgba(10,9,8,0.97) 100%),
-      linear-gradient(100deg, rgba(90,110,70,0.28), rgba(201,168,76,0.16));
-  }
-  .hero-content{
-    position:absolute; left:0; right:0; bottom:0; z-index:2;
-    padding:0 24px 56px;
-  }
-  .hero-eyebrow{
-    max-width:1180px;margin:0 auto; padding-bottom:18px;
-    font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-lt);
-    opacity:0; animation:riseIn 0.9s cubic-bezier(.22,.9,.32,1) forwards 0.15s;
-  }
-  .hero-h1{
-    max-width:1180px;margin:0 auto;
-    font-family:'Cormorant Garamond',serif; font-weight:600;
-    font-size:clamp(3rem, 11vw, 8.5rem);
-    line-height:0.95; letter-spacing:-0.01em;
-    opacity:0; animation:riseIn 1s cubic-bezier(.22,.9,.32,1) forwards 0.3s;
-  }
-  .hero-h1 .line2{
-    display:block; font-style:italic; font-weight:500;
-    font-size:0.56em; margin-top:10px;
-    color:var(--sage);
-  }
-  @keyframes riseIn{ from{opacity:0; transform:translateY(28px);} to{opacity:1; transform:translateY(0);} }
-  @media (prefers-reduced-motion: reduce){ .hero-eyebrow,.hero-h1{ animation:none !important; opacity:1 !important; } }
-
-  .hero-scrollcue{
-    position:absolute; right:24px; bottom:26px; z-index:2;
-    writing-mode:vertical-rl; font-size:10px; letter-spacing:0.25em; text-transform:uppercase;
-    color:var(--muted);
-  }
-  @media(max-width:640px){ .hero-scrollcue{ display:none; } }
-
-  /* ── LAYOUT PRIMITIVES ── */
-  .wrap{ max-width:1180px; margin:0 auto; padding:0 24px; }
-  .rule{ border-top:1px solid var(--rule); }
-  .reveal{ opacity:0; transform:translateY(28px); transition:opacity 0.8s ease, transform 0.8s ease; }
-  .reveal.in{ opacity:1; transform:translateY(0); }
-  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1 !important; transform:none !important; } }
-
-  /* ── MANIFESTO (editorial asymmetric grid + drop cap + pull quote) ── */
-  .manifesto{ padding:120px 0 100px; }
-  .manifesto-grid{
-    display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:start;
-  }
-  .manifesto-label{
-    font-size:11px; font-weight:600; letter-spacing:0.28em; text-transform:uppercase;
-    color:var(--gold); margin-bottom:22px;
-  }
-  .manifesto p{ font-size:17px; color:rgba(248,245,239,0.82); line-height:1.9; }
-  .manifesto p::first-letter{
-    font-family:'Cormorant Garamond',serif; font-size:4.4em; font-weight:600; line-height:0.75;
-    float:left; margin:0.04em 0.09em 0 0; color:var(--gold-lt);
-  }
-  .pull-quote{
-    font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:500;
-    font-size:clamp(1.6rem,3.2vw,2.5rem); line-height:1.3; color:var(--ivory);
-    border-left:2px solid var(--gold); padding-left:32px;
-  }
-  .pull-quote span{ color:var(--sage); }
-  @media(max-width:820px){
-    .manifesto-grid{ grid-template-columns:1fr; gap:40px; }
-    .pull-quote{ border-left:none; border-top:2px solid var(--gold); padding-left:0; padding-top:24px; }
-  }
-
-  /* ── SELETTIVITÀ: numbered manifesto list, no boxed cards ── */
-  .fit{ padding:20px 0 110px; }
-  .fit-head{ margin-bottom:56px; max-width:640px; }
-  .fit-head .manifesto-label{ margin-bottom:18px; }
-  .fit-head h2{
-    font-family:'Cormorant Garamond',serif; font-weight:600;
-    font-size:clamp(2rem,4.6vw,3.2rem); line-height:1.15;
-  }
-  .fit-cols{
-    display:grid; grid-template-columns:1fr 1fr; gap:0;
-  }
-  .fit-col{ padding:0 40px; }
-  .fit-col:first-child{ border-right:1px solid var(--rule); }
-  .fit-col-label{
-    font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase;
-    margin-bottom:28px; padding-bottom:16px; border-bottom:1px solid var(--rule);
-  }
-  .fit-col.yes .fit-col-label{ color:var(--sage); }
-  .fit-col.no .fit-col-label{ color:var(--muted); }
-  .fit-item{
-    display:flex; gap:18px; padding:20px 0; border-bottom:1px solid var(--rule);
-  }
-  .fit-item:last-child{ border-bottom:none; }
-  .fit-num{
-    font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:500;
-    color:var(--muted-lo); line-height:1.3; min-width:34px;
-  }
-  .fit-col.yes .fit-item p{ color:rgba(248,245,239,0.88); font-size:15px; }
-  .fit-col.no .fit-item p{ color:var(--muted); font-size:15px; }
-  @media(max-width:720px){
-    .fit-cols{ grid-template-columns:1fr; gap:48px; }
-    .fit-col{ padding:0; }
-    .fit-col:first-child{ border-right:none; border-bottom:1px solid var(--rule); padding-bottom:36px; }
-  }
-
-  /* ── FULL-BLEED QUOTE PHOTO ── */
-  .spread{ position:relative; width:100%; min-height:82vh; overflow:hidden; }
-  .spread img{
-    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 15%;
-    filter:grayscale(1) contrast(1.1) brightness(0.65);
-  }
-  .spread::after{
     content:''; position:absolute; inset:0;
-    background:
-      linear-gradient(0deg, rgba(10,9,8,0.97) 0%, rgba(10,9,8,0.3) 45%, rgba(10,9,8,0.6) 100%),
-      linear-gradient(100deg, rgba(144,186,150,0.22), rgba(201,168,76,0.14));
+    background:linear-gradient(180deg, rgba(20,18,15,0.55) 0%, rgba(20,18,15,0.72) 60%, rgba(20,18,15,0.95) 100%);
   }
-  .spread-quote{
-    position:absolute; left:0; right:0; bottom:64px; z-index:2; padding:0 24px;
+  .hero-inner{ position:relative; z-index:1; padding:88px 24px 68px; text-align:center; }
+  .hero-eyebrow{
+    font-size:12px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:18px;
   }
-  .spread-quote .wrap{ max-width:1180px; }
-  .spread-quote p{
-    font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600;
-    font-size:clamp(2.2rem,7vw,5.2rem); line-height:1; letter-spacing:-0.01em;
-    max-width:820px;
+  .hero h1{
+    font-size:clamp(32px,5.5vw,50px); line-height:1.12; margin-bottom:18px;
+    max-width:760px; margin-left:auto; margin-right:auto;
   }
-  .spread-quote .who{
-    margin-top:22px; font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold-lt);
+  .hero h1 em{ font-style:italic; color:var(--sage); }
+  .hero-sub{
+    font-size:17px; color:rgba(248,245,239,0.85); max-width:540px; margin:0 auto 14px;
   }
-  @media(max-width:640px){ .spread{ min-height:70vh; } .spread-quote{ bottom:36px; } }
+  .hero p.hero-p{ font-size:15px; color:var(--muted); max-width:480px; margin:0 auto 32px; }
 
-  /* ── CTA: signature / invitation, not a button-card ── */
-  .cta{ padding:130px 0 70px; text-align:center; }
-  .cta-eyebrow{
-    font-size:11px; font-weight:600; letter-spacing:0.28em; text-transform:uppercase;
-    color:var(--gold); margin-bottom:26px;
+  /* ── SECTIONS ── */
+  .section{ padding:76px 0; }
+  .section-label{
+    font-size:12px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:14px; display:block;
   }
-  .cta h2{
-    font-family:'Cormorant Garamond',serif; font-weight:500; font-style:italic;
-    font-size:clamp(1.8rem,4.4vw,3rem); line-height:1.3; max-width:680px; margin:0 auto 44px;
-    color:rgba(248,245,239,0.92);
-  }
-  .cta-link{
-    position:relative; display:inline-block;
-    font-family:'Montserrat',sans-serif; font-weight:600; font-size:clamp(20px,3.4vw,30px);
-    letter-spacing:0.01em; text-decoration:none; color:var(--ivory);
-    padding-bottom:10px;
-  }
-  .cta-link::after{
-    content:''; position:absolute; left:0; bottom:0; height:2px; width:100%;
-    background:var(--gold);
-    transform-origin:left; transform:scaleX(0.32);
-    transition:transform 0.4s cubic-bezier(.22,.9,.32,1);
-  }
-  .cta-link:hover::after, .cta-link:focus-visible::after{ transform:scaleX(1); }
-  .cta-note{ margin-top:26px; font-size:12.5px; color:var(--muted-lo); }
 
-  footer{ text-align:center; padding:30px 24px 44px; }
-  footer p{ font-size:11px; color:var(--muted-lo); letter-spacing:0.08em; }
-
-  @media(max-width:640px){
-    .manifesto{ padding:88px 0 72px; }
-    .fit{ padding:8px 0 80px; }
-    .cta{ padding:96px 0 56px; }
+  .split{
+    display:grid; grid-template-columns:1fr 1fr; gap:52px; align-items:center;
   }
+  .split img{ border-radius:6px; width:100%; aspect-ratio:1/1; object-fit:cover; object-position:50% 20%; }
+  .split h2{ font-size:clamp(26px,3.6vw,34px); line-height:1.2; margin-bottom:16px; }
+  .split p{ font-size:15.5px; color:var(--muted); margin-bottom:26px; }
+  @media(max-width:760px){
+    .split{ grid-template-columns:1fr; gap:28px; }
+    .split.reverse .split-media{ order:-1; }
+  }
+
+  .quote-block{
+    background:var(--card); border-left:3px solid var(--gold); border-radius:4px;
+    padding:34px 32px; margin-top:8px;
+  }
+  .quote-block p{ font-size:16px; color:rgba(248,245,239,0.9); line-height:1.85; }
+  .quote-block p + p{ margin-top:14px; }
+  .quote-block strong{ color:var(--gold); font-weight:600; }
+
+  /* ── SELETTIVITÀ (testo semplice, non card in vetro) ── */
+  .fit-head{ text-align:center; max-width:640px; margin:0 auto 48px; }
+  .fit-head h2{ font-size:clamp(24px,3.6vw,32px); line-height:1.25; }
+  .fit-cols{ display:grid; grid-template-columns:1fr 1fr; gap:48px; }
+  .fit-col h3{
+    font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.1em;
+    text-transform:uppercase; margin-bottom:18px; padding-bottom:12px; border-bottom:1px solid var(--rule);
+  }
+  .fit-col.yes h3{ color:var(--sage); }
+  .fit-col.no h3{ color:var(--muted); }
+  .fit-col ul{ list-style:none; }
+  .fit-col li{ font-size:15px; color:rgba(248,245,239,0.85); padding:9px 0 9px 24px; position:relative; }
+  .fit-col li::before{ position:absolute; left:0; font-weight:700; }
+  .fit-col.yes li::before{ content:'✓'; color:var(--sage); }
+  .fit-col.no li::before{ content:'–'; color:var(--muted); }
+  @media(max-width:640px){ .fit-cols{ grid-template-columns:1fr; gap:32px; } }
+
+  /* ── CREDIBILITÀ / PROVA TANGIBILE ── */
+  .credib{ background:var(--card); }
+  .credib-grid{
+    display:grid; grid-template-columns:0.9fr 1.4fr auto; gap:40px; align-items:center;
+  }
+  .credib-grid img{ border-radius:6px; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:50% 15%; }
+  .credib h3{ font-size:clamp(20px,2.6vw,26px); line-height:1.3; margin-bottom:12px; }
+  .credib p{ font-size:14.5px; color:var(--muted); }
+  @media(max-width:820px){
+    .credib-grid{ grid-template-columns:1fr; text-align:center; }
+    .credib-grid img{ max-width:220px; margin:0 auto; aspect-ratio:1/1; }
+  }
+
+  /* ── CTA FINALE ── */
+  .cta{ text-align:center; padding:80px 0 90px; }
+  .cta h2{ font-size:clamp(24px,3.8vw,34px); line-height:1.3; max-width:640px; margin:0 auto 14px; }
+  .cta p{ font-size:15px; color:var(--muted); margin-bottom:30px; }
+
+  footer{ border-top:1px solid var(--rule); padding:32px 24px; text-align:center; }
+  footer p{ font-size:12px; color:rgba(248,245,239,0.4); }
 </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-word">BlooMind</div>
-  <div class="nav-scroll-label">Scorri</div>
+  <a class="btn nav-cta" href="https://ig.me/m/laura_ruggieri27">Scrivimi in DM</a>
 </nav>
 
 <section class="hero">
   <div class="hero-media">
-    <img src="laura-stage.jpg" alt="Laura Ruggieri sul palco, mentre parla al suo team" loading="eager">
+    <img src="laura-stage.jpg" alt="Laura Ruggieri mentre parla al suo team" loading="eager">
   </div>
-  <div class="hero-content">
+  <div class="hero-inner">
     <div class="hero-eyebrow">BlooMind — Non è per tutte</div>
-    <h1 class="hero-h1">Se ti risuona,<span class="line2">lo senti già.</span></h1>
+    <h1>Il network marketing merita <em>più rispetto</em><br>di quello che vedi oggi sui social.</h1>
+    <p class="hero-sub">Ciao, sono Laura Ruggieri. Networker da anni, oggi co-fondatrice di BlooMind — un ecosistema pensato per chi vuole fare questo lavoro con metodo, non con improvvisazione.</p>
+    <p class="hero-p">Prima i risultati, poi l'esposizione. Prima la persona, poi i numeri.</p>
+    <a class="btn" href="https://ig.me/m/laura_ruggieri27">Scrivimi in DM</a>
   </div>
-  <div class="hero-scrollcue">Scorri ↓</div>
 </section>
 
-<section class="manifesto reveal">
+<section class="section">
   <div class="wrap">
-    <div class="manifesto-grid">
-      <div>
-        <div class="manifesto-label">Il manifesto</div>
-        <p>Se credi che il network marketing meriti più rispetto e più professionalità di quello che vedi oggi sui social, fermati. BlooMind nasce per chi vuole prima i risultati, poi l'esposizione — prima la persona, poi i numeri, prima la qualità, poi la quantità.</p>
+    <div class="split">
+      <div class="split-media">
+        <img src="laura-duomo.jpg" alt="Laura Ruggieri a Milano" loading="lazy">
       </div>
-      <div class="pull-quote">
-        Con un'azienda internazionale il cui <span>corporate scende in campo direttamente</span> con noi. La crescita personale non è un optional — è uno dei pilastri fondamentali.
+      <div>
+        <span class="section-label">Il nuovo progetto</span>
+        <h2>Ho iniziato qualcosa di nuovo:<br>BlooMind.</h2>
+        <p>Un ecosistema affiancato da un'azienda internazionale il cui corporate scende in campo direttamente con noi. La crescita personale non è un optional — è uno dei pilastri fondamentali su cui è costruito.</p>
+        <a class="btn" href="https://ig.me/m/laura_ruggieri27">Scoprilo in DM</a>
       </div>
     </div>
   </div>
 </section>
 
-<div class="wrap"><div class="rule"></div></div>
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="quote-block">
+      <p>Se credi che il network marketing meriti più professionalità di quello che vedi oggi sui social, fermati un attimo.</p>
+      <p>BlooMind nasce per chi vuole <strong>prima i risultati, poi l'esposizione</strong> — prima la qualità, poi la quantità. È il momento dell'Italia. È ora.</p>
+    </div>
+  </div>
+</section>
 
-<section class="fit reveal">
+<section class="section">
   <div class="wrap">
     <div class="fit-head">
-      <div class="manifesto-label">Selettività, non arroganza</div>
+      <span class="section-label">Selettività, non arroganza</span>
       <h2>Per chi è questo progetto — e per chi non lo è.</h2>
     </div>
     <div class="fit-cols">
       <div class="fit-col yes">
-        <div class="fit-col-label">È per te se</div>
-        <div class="fit-item"><span class="fit-num">01</span><p>Vuoi crescere, non solo guadagnare</p></div>
-        <div class="fit-item"><span class="fit-num">02</span><p>Preferisci costruire qualcosa di solido</p></div>
-        <div class="fit-item"><span class="fit-num">03</span><p>Cerchi un sistema, non un palcoscenico</p></div>
-        <div class="fit-item"><span class="fit-num">04</span><p>Rispetti il settore e vuoi farlo con metodo</p></div>
+        <h3>È per te se</h3>
+        <ul>
+          <li>Vuoi crescere, non solo guadagnare</li>
+          <li>Preferisci costruire qualcosa di solido</li>
+          <li>Cerchi un sistema, non un palcoscenico</li>
+          <li>Rispetti il settore e vuoi farlo con metodo</li>
+        </ul>
       </div>
       <div class="fit-col no">
-        <div class="fit-col-label">Probabilmente non fa per te se</div>
-        <div class="fit-item"><span class="fit-num">01</span><p>Cerchi risultati senza metodo</p></div>
-        <div class="fit-item"><span class="fit-num">02</span><p>Vuoi esposizione prima dei risultati</p></div>
-        <div class="fit-item"><span class="fit-num">03</span><p>Hai fretta e non vuoi formarti</p></div>
-        <div class="fit-item"><span class="fit-num">04</span><p>Cerchi la scorciatoia, non il percorso</p></div>
+        <h3>Probabilmente non fa per te se</h3>
+        <ul>
+          <li>Cerchi risultati senza metodo</li>
+          <li>Vuoi esposizione prima dei risultati</li>
+          <li>Hai fretta e non vuoi formarti</li>
+          <li>Cerchi la scorciatoia, non il percorso</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<div class="spread reveal">
-  <img src="laura-duomo.jpg" alt="Laura Ruggieri a Milano, davanti al Duomo" loading="lazy">
-  <div class="spread-quote">
-    <div class="wrap">
-      <p>È il momento<br>dell'Italia. È ora.</p>
-      <div class="who">Laura Ruggieri — BlooMind</div>
+<section class="section credib">
+  <div class="wrap">
+    <div class="credib-grid">
+      <img src="laura-stage.jpg" alt="Laura Ruggieri sul palco" loading="lazy">
+      <div class="credib">
+        <span class="section-label">Un metodo, non promesse</span>
+        <h3>Anni di esperienza sul campo, non teoria da corso.</h3>
+        <p>Networker da anni, con un percorso costruito passo dopo passo — non un metodo improvvisato, ma un sistema affiancato da un'azienda internazionale con rating riconosciuti nel settore.</p>
+      </div>
+      <a class="btn btn-outline" href="https://ig.me/m/laura_ruggieri27">Parliamone</a>
     </div>
   </div>
-</div>
+</section>
 
-<section class="cta reveal">
+<section class="cta">
   <div class="wrap">
-    <div class="cta-eyebrow">Non stiamo cercando chiunque</div>
-    <h2>"Stiamo cercando le persone giuste. Se sei una di queste, voglio conoscerti."</h2>
-    <a class="cta-link" href="https://ig.me/m/laura_ruggieri27">Scrivimi in DM →</a>
-    <div class="cta-note">Ti risponderà direttamente Laura.</div>
+    <h2>Non stiamo cercando chiunque.<br>Stiamo cercando le persone giuste.</h2>
+    <p>Se ti sei riconosciuta in quello che hai letto, scrivimi — ti risponderà direttamente Laura.</p>
+    <a class="btn" href="https://ig.me/m/laura_ruggieri27">Scrivimi in DM</a>
   </div>
 </section>
 
 <footer>
   <p>BlooMind — Agosto 2026</p>
 </footer>
-
-<script>
-(function(){
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var revealEls = document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window && !reduced){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, {threshold:0.12});
-    revealEls.forEach(function(el){ io.observe(el); });
-  } else {
-    revealEls.forEach(function(el){ el.classList.add('in'); });
-  }
-})();
-</script>
 
 </body>
 </html>
