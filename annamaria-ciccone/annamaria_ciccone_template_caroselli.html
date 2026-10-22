@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v3 - 2026-10-22 - PNG: scala fissa, righe come a schermo, incolla solo testo, salva sul telefono -->
+<!-- v4 - 2026-10-22 - PNG copia della slide: stessi colori (filtro foto), posizioni, spaziature e ombre; slide uguale su ogni schermo -->
 <html lang="it">
 <head>
 <meta charset="UTF-8">
@@ -223,25 +223,15 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
 .footer-info{font-size:0.74rem;color:var(--muted);line-height:1.9;}
 .footer-info a{color:var(--warm);text-decoration:none;}
 @media(max-width:768px){footer{padding:40px 18px;flex-direction:column;align-items:flex-start;}}
+/* Da telefono la slide è quella del computer (340 px) rimpicciolita con zoom: stesse righe e stesse proporzioni
+   su ogni schermo, quindi anche nel PNG, che copia la slide. */
 @media(max-width:768px){
-  .slide{width:300px;height:300px;}
-  .slide.fmt-45{height:375px;}
-  .s-cover-title{font-size:28px;}
-  .s-cover-title em{font-size:17px;}
-  .s-body-text{font-size:16px;}
-  .s-cta-main{font-size:23px;}
-  .s-cta-main em{font-size:16px;}
-  .s-cta-sub{font-size:10px;}
+  .slide{zoom:0.8824;}
   .ph-thumb{width:44px;height:58px;}
   .ph-thumbs{gap:7px;}
 }
 @media(max-width:480px){
-  .slide{width:270px;height:270px;}
-  .slide.fmt-45{height:338px;}
-  .s-cover-title{font-size:24px;}
-  .s-cover-title em{font-size:15px;}
-  .s-body-text{font-size:14px;}
-  .s-cta-main{font-size:20px;}
+  .slide{zoom:0.7941;}
 }
 
 [contenteditable]{cursor:text;outline:none;}
@@ -484,14 +474,16 @@ function setFormat(carId,fmt){
 // mai sulla larghezza a schermo (da telefono la slide è più stretta e il testo usciva più grande e tagliato).
 var SLIDE_DESIGN_WIDTH=340;
 var SERIF='"Cormorant Garamond",serif',SANS='"Open Sans",sans-serif';
+// Sfumature della .slide-overlay (uguali al CSS, angolo 170 gradi)
 var CAR_COLORS={
-  car1:{overlay:[[0,'rgba(46,144,144,0.12)'],[0.30,'rgba(0,0,0,0.04)'],[0.60,'rgba(0,0,0,0.55)'],[1,'rgba(0,0,0,0.93)']],photoTint:'rgba(40,150,150,0.16)',em:'rgba(96,186,186,0.95)',idx:'#60BABA'},
-  car2:{overlay:[[0,'rgba(201,168,76,0.10)'],[0.30,'rgba(0,0,0,0.04)'],[0.60,'rgba(0,0,0,0.55)'],[1,'rgba(0,0,0,0.93)']],photoTint:'rgba(180,150,80,0.16)',em:'rgba(223,188,112,0.95)',idx:'#60BABA'},
-  car3:{overlay:[[0,'rgba(0,0,0,0.08)'],[0.30,'rgba(0,0,0,0.20)'],[0.58,'rgba(0,0,0,0.62)'],[1,'rgba(0,0,0,0.95)']],photoTint:'rgba(20,20,20,0.16)',em:'rgba(201,168,76,0.95)',idx:'#60BABA'}
+  car1:{overlay:[[0,'rgba(46,144,144,0.12)'],[0.30,'rgba(0,0,0,0.04)'],[0.60,'rgba(0,0,0,0.55)'],[1,'rgba(0,0,0,0.93)']]},
+  car2:{overlay:[[0,'rgba(201,168,76,0.10)'],[0.30,'rgba(0,0,0,0.04)'],[0.60,'rgba(0,0,0,0.55)'],[1,'rgba(0,0,0,0.93)']]},
+  car3:{overlay:[[0,'rgba(0,0,0,0.08)'],[0.30,'rgba(0,0,0,0.20)'],[0.58,'rgba(0,0,0,0.62)'],[1,'rgba(0,0,0,0.95)']]}
 };
-/* Righe del testo come si vedono a schermo. Gli a capo fatti con Invio (che telefoni e Chrome scrivono come <div>),
-   quelli con Maiusc+Invio e quelli automatici si leggono dalla posizione di ogni carattere: così nel PNG
-   le parole non si attaccano e le righe lunghe vanno a capo come nella slide. */
+var OVERLAY_DEG=170;
+/* Righe del testo come si vedono a schermo, con la loro posizione. Gli a capo fatti con Invio (che telefoni e Chrome
+   scrivono come <div>), quelli con Maiusc+Invio e quelli automatici si leggono dalla posizione di ogni carattere:
+   così nel PNG le parole non si attaccano e ogni riga sta dove sta nella slide. */
 function screenLines(el){
   if(!el)return[];
   var lines=[],cur=null,lastTop=null,range=document.createRange(),node;
@@ -510,43 +502,128 @@ function screenLines(el){
       if(!r){if(cur&&!sp)cur.text+=ch;continue;}
       if(cur===null||r.top>lastTop+r.height*0.5){
         if(sp)continue;
-        cur={text:'',italic:italic};lines.push(cur);
+        cur={text:'',italic:italic,el:node.parentElement,l:r.left,r:r.right,t:r.top,b:r.bottom};lines.push(cur);
       }
       cur.text+=ch;lastTop=r.top;
+      if(!sp){cur.l=Math.min(cur.l,r.left);cur.r=Math.max(cur.r,r.right);cur.t=Math.min(cur.t,r.top);cur.b=Math.max(cur.b,r.bottom);}
     }
   }
-  lines=lines.map(function(l){return{text:l.text.replace(/\s+/g,' ').trim(),italic:l.italic};}).filter(function(l){return l.text.length>0;});
+  lines=lines.map(function(l){l.text=l.text.replace(/\s+/g,' ').trim();return l;}).filter(function(l){return l.text.length>0;});
   if(!lines.length&&el.textContent.trim()){
-    lines=el.innerText.split('\n').map(function(x){return{text:x.replace(/\s+/g,' ').trim(),italic:false};}).filter(function(l){return l.text.length>0;});
+    lines=el.innerText.split('\n').map(function(x){return{text:x.replace(/\s+/g,' ').trim(),italic:false,el:el};}).filter(function(l){return l.text.length>0;});
   }
   return lines;
 }
-// Una riga da disegnare: dimensione e interlinea in px del disegno (slide larga 340), moltiplicate dalla scala al momento di disegnare
-function mk(text,weight,size,lh,color,family){return{text:text,weight:weight,size:size,lh:lh,color:color,family:family};}
-function fontOf(it,s){return it.weight+' '+Math.round(it.size*s)+'px '+it.family;}
-function lineH(it,s){return Math.round(it.size*s*it.lh);}
-function blockHeight(items,s){return items.reduce(function(t,it){return t+lineH(it,s);},0);}
-// Quanto rimpicciolire il blocco (1 = niente) perché ogni riga stia nella larghezza e il blocco nell'altezza
-function fitScale(ctx,items,F,maxW,maxH){
-  var k=1;
-  items.forEach(function(it){
-    if(!it.text)return;
-    ctx.font=fontOf(it,F);
-    var w=ctx.measureText(it.text).width;
-    if(w>maxW)k=Math.min(k,maxW/w);
-  });
-  var h=blockHeight(items,F);
-  if(h*k>maxH)k=Math.min(k,maxH/h);
-  return k<1?k*0.98:1;
+// Stile di una riga letto dalla pagina: grandezza, peso, corsivo, colore, spaziatura delle lettere, ombra, maiuscolo
+function lineStyle(el){
+  var cs=getComputedStyle(el);
+  return{size:parseFloat(cs.fontSize),weight:cs.fontWeight,italic:cs.fontStyle==='italic',family:cs.fontFamily,color:cs.color,
+    ls:parseFloat(cs.letterSpacing)||0,shadow:cs.textShadow,upper:cs.textTransform==='uppercase',lh:parseFloat(cs.lineHeight)};
 }
-function drawBlock(ctx,items,s,x,startY,align){
-  ctx.textBaseline='middle';ctx.textAlign=align;
-  var y=startY;
-  items.forEach(function(it){
-    var h=lineH(it,s);
-    if(it.text){ctx.font=fontOf(it,s);ctx.fillStyle=it.color;ctx.fillText(it.text,x,y+h/2);}
-    y+=h;
+function fontStr(st,px){return(st.italic?'italic ':'')+st.weight+' '+px+'px '+st.family;}
+// Ombra del testo come il CSS (text-shadow), con le misure moltiplicate per la scala del PNG
+function setShadow(ctx,sh,s){
+  ctx.shadowColor='rgba(0,0,0,0)';ctx.shadowBlur=0;ctx.shadowOffsetX=0;ctx.shadowOffsetY=0;
+  if(!sh||sh==='none')return;
+  var col=sh.match(/rgba?\([^)]*\)|#[0-9a-fA-F]{3,8}/),n=sh.replace(/rgba?\([^)]*\)|#[0-9a-fA-F]{3,8}/,'').match(/-?[\d.]+px/g)||[];
+  if(col)ctx.shadowColor=col[0];
+  ctx.shadowOffsetX=(parseFloat(n[0])||0)*s;ctx.shadowOffsetY=(parseFloat(n[1])||0)*s;ctx.shadowBlur=(parseFloat(n[2])||0)*s;
+}
+// Spaziatura delle lettere come il CSS: letterSpacing del canvas dove c'è, altrimenti una lettera alla volta
+function spacedWidth(ctx,text,ls){
+  if(!ls)return ctx.measureText(text).width;
+  if('letterSpacing' in ctx){ctx.letterSpacing=ls+'px';var w=ctx.measureText(text).width;ctx.letterSpacing='0px';return w;}
+  return Array.from(text).reduce(function(w,ch){return w+ctx.measureText(ch).width+ls;},0);
+}
+function fillSpaced(ctx,text,x,y,ls){
+  if(!ls){ctx.fillText(text,x,y);return;}
+  if('letterSpacing' in ctx){ctx.letterSpacing=ls+'px';ctx.fillText(text,x,y);ctx.letterSpacing='0px';return;}
+  Array.from(text).forEach(function(ch){ctx.fillText(ch,x,y);x+=ctx.measureText(ch).width+ls;});
+}
+// Disegna le righe nello stesso punto in cui stanno a schermo (k = pixel del PNG per ogni pixel dello schermo)
+function drawScreenLines(ctx,lines,sr,k,F){
+  ctx.textAlign='left';ctx.textBaseline='alphabetic';
+  lines.forEach(function(ln){
+    var st=lineStyle(ln.el),txt=st.upper?ln.text.toUpperCase():ln.text;
+    ctx.font=fontStr(st,st.size*F);
+    var asc=ctx.measureText(txt).fontBoundingBoxAscent;
+    var y=(ln.t-sr.top)*k+(asc>0?asc:(ln.b-ln.t)*k*0.78);
+    ctx.fillStyle=st.color;setShadow(ctx,st.shadow,F);
+    fillSpaced(ctx,txt,(ln.l-sr.left)*k,y,st.ls*F);
   });
+  setShadow(ctx,'none',F);
+}
+// Impaginazione calcolata, solo se a schermo il testo esce dalla slide: stesse righe e stesso stile,
+// rimpicciolite finché stanno nello spazio (titolo in basso a sinistra, corpo e chiusura al centro)
+function drawComputed(ctx,slide,blocco,W,H,F){
+  var sels=blocco==='cover'?['.s-cover-title']:blocco==='body'?['.s-body-text']:['.s-cta-main','.s-cta-sub'],items=[];
+  sels.forEach(function(sel,n){
+    var ls=screenLines(slide.querySelector(sel));
+    if(n===1&&ls.length)items.push({gap:10});
+    ls.forEach(function(l){var st=lineStyle(l.el);items.push({text:st.upper?l.text.toUpperCase():l.text,st:st,lh:st.lh>0?st.lh/st.size:1.25});});
+  });
+  function itH(it,s){return it.gap?it.gap*s:it.st.size*it.lh*s;}
+  var maxW=(blocco==='cover'?296:blocco==='body'?280:288)*F,maxH=H-(blocco==='cover'?152:158)*F,k=1,h=0;
+  items.forEach(function(it){
+    h+=itH(it,F);if(it.gap)return;
+    ctx.font=fontStr(it.st,it.st.size*F);var w=spacedWidth(ctx,it.text,it.st.ls*F);if(w>maxW)k=Math.min(k,maxW/w);
+  });
+  if(h*k>maxH)k=Math.min(k,maxH/h);
+  if(k<1)k*=0.98;
+  var s=F*k,y=blocco==='cover'?H-108*F-h*k:H/2-35*F-h*k/2;
+  ctx.textBaseline='middle';ctx.textAlign='left';
+  items.forEach(function(it){
+    var hh=itH(it,s);
+    if(!it.gap){
+      ctx.font=fontStr(it.st,it.st.size*s);
+      var w=spacedWidth(ctx,it.text,it.st.ls*s),x=blocco==='cover'?22*F:(W-w)/2;
+      ctx.fillStyle=it.st.color;setShadow(ctx,it.st.shadow,s);fillSpaced(ctx,it.text,x,y+hh/2,it.st.ls*s);
+    }
+    y+=hh;
+  });
+  setShadow(ctx,'none',F);
+}
+/* Il filtro della foto a schermo (CSS filter: luminosità, saturazione, tonalità, seppia, contrasto) rifatto
+   pixel per pixel con le formule delle Filter Effects del W3C, uguale su tutti i browser (ctx.filter non c'è
+   su Safari). Senza, il PNG usciva a colori invece che quasi in bianco e nero, con un velo di un altro colore. */
+function cssFilterMatrices(f){
+  var out=[],re=/([a-z-]+)\(([^)]*)\)/g,m;
+  while((m=re.exec(f||''))){
+    var v=parseFloat(m[2]);if(/%/.test(m[2]))v/=100;
+    var n=m[1],c,s;
+    if(n==='brightness')out.push([v,0,0,0,v,0,0,0,v,0,0,0]);
+    else if(n==='contrast')out.push([v,0,0,0,v,0,0,0,v,0.5-0.5*v,0.5-0.5*v,0.5-0.5*v]);
+    else if(n==='saturate')out.push([0.213+0.787*v,0.715-0.715*v,0.072-0.072*v,0.213-0.213*v,0.715+0.285*v,0.072-0.072*v,0.213-0.213*v,0.715-0.715*v,0.072+0.928*v,0,0,0]);
+    else if(n==='grayscale'){v=1-Math.min(1,v);out.push([0.2126+0.7874*v,0.7152-0.7152*v,0.0722-0.0722*v,0.2126-0.2126*v,0.7152+0.2848*v,0.0722-0.0722*v,0.2126-0.2126*v,0.7152-0.7152*v,0.0722+0.9278*v,0,0,0]);}
+    else if(n==='sepia'){v=1-Math.min(1,v);out.push([0.393+0.607*v,0.769-0.769*v,0.189-0.189*v,0.349-0.349*v,0.686+0.314*v,0.168-0.168*v,0.272-0.272*v,0.534-0.534*v,0.131+0.869*v,0,0,0]);}
+    else if(n==='hue-rotate'){
+      var a=parseFloat(m[2])*(/rad/.test(m[2])?1:/turn/.test(m[2])?2*Math.PI:Math.PI/180);c=Math.cos(a);s=Math.sin(a);
+      out.push([0.213+c*0.787-s*0.213,0.715-c*0.715-s*0.715,0.072-c*0.072+s*0.928,
+                0.213-c*0.213+s*0.143,0.715+c*0.285+s*0.140,0.072-c*0.072-s*0.283,
+                0.213-c*0.213-s*0.787,0.715-c*0.715+s*0.715,0.072+c*0.928+s*0.072,0,0,0]);
+    }
+  }
+  return out;
+}
+function filterPixels(ctx,W,H,f){
+  var M=cssFilterMatrices(f);if(!M.length)return;
+  var img=ctx.getImageData(0,0,W,H),d=img.data;
+  for(var i=0;i<d.length;i+=4){
+    var r=d[i]/255,g=d[i+1]/255,b=d[i+2]/255;
+    for(var k=0;k<M.length;k++){
+      var q=M[k],r2=q[0]*r+q[1]*g+q[2]*b+q[9],g2=q[3]*r+q[4]*g+q[5]*b+q[10],b2=q[6]*r+q[7]*g+q[8]*b+q[11];
+      r=r2<0?0:r2>1?1:r2;g=g2<0?0:g2>1?1:g2;b=b2<0?0:b2>1?1:b2;
+    }
+    d[i]=r*255+0.5|0;d[i+1]=g*255+0.5|0;d[i+2]=b*255+0.5|0;
+  }
+  ctx.putImageData(img,0,0);
+}
+// Sfumatura lineare come il CSS: linear-gradient(deg) su tutta la slide
+function cssGradient(ctx,W,H,deg,stops){
+  var a=deg*Math.PI/180,dx=Math.sin(a),dy=-Math.cos(a),len=Math.abs(W*dx)+Math.abs(H*dy);
+  var g=ctx.createLinearGradient(W/2-dx*len/2,H/2-dy*len/2,W/2+dx*len/2,H/2+dy*len/2);
+  stops.forEach(function(s){g.addColorStop(s[0],s[1]);});
+  return g;
 }
 async function renderSlide(carId,slideIdx){
   await document.fonts.ready;
@@ -561,6 +638,7 @@ async function renderSlide(carId,slideIdx){
 
   ctx.fillStyle='#060F0F';ctx.fillRect(0,0,W,H);
 
+  // foto: stessa inquadratura (object-fit cover, object-position center 18%) e stesso filtro della slide
   var bgImg=slide.querySelector('.slide-bg-img');
   if(bgImg&&bgImg.naturalWidth&&bgImg.naturalHeight){
     var natW=bgImg.naturalWidth,natH=bgImg.naturalHeight;
@@ -568,59 +646,30 @@ async function renderSlide(carId,slideIdx){
     var iw=natW*sc,ih=natH*sc;
     var ix=(W-iw)/2,iy=(H-ih)*0.18;
     ctx.drawImage(bgImg,ix,iy,iw,ih);
-    ctx.fillStyle='rgba(10,14,14,0.40)';ctx.fillRect(0,0,W,H);
-    if(col.photoTint){ctx.fillStyle=col.photoTint;ctx.fillRect(0,0,W,H);}
+    try{filterPixels(ctx,W,H,getComputedStyle(bgImg).filter);}catch(e){console.error(e);}
   }
 
-  var grd=ctx.createLinearGradient(0,0,0,H);
-  col.overlay.forEach(function(s){grd.addColorStop(s[0],s[1]);});
-  ctx.fillStyle=grd;ctx.fillRect(0,0,W,H);
+  ctx.fillStyle=cssGradient(ctx,W,H,OVERLAY_DEG,col.overlay);ctx.fillRect(0,0,W,H);
 
-  var handleEl=slide.querySelector('.s-handle'),idxEl=slide.querySelector('.s-idx');
-  var topPad=Math.round(13*F),sidePad=Math.round(16*F);
-  ctx.textBaseline='top';
-  if(handleEl){
-    ctx.font=Math.round(7.5*F)+'px "Open Sans",sans-serif';
-    ctx.fillStyle='rgba(255,255,255,0.45)';ctx.textAlign='left';
-    ctx.fillText(handleEl.textContent.trim().toUpperCase(),sidePad,topPad);
-  }
-  if(idxEl){
-    ctx.font='700 '+Math.round(8*F)+'px "Open Sans",sans-serif';
-    ctx.fillStyle=col.idx;ctx.textAlign='right';
-    ctx.fillText(idxEl.textContent.replace(/ /g,' ').trim(),W-sidePad,topPad);
-  }
+  // testi copiati dallo schermo: nome e numero in alto, poi il testo della slide; se a schermo esce
+  // dalla slide (testo molto lungo) si impagina e si rimpicciolisce perché nel PNG stia tutto
+  var sr=slide.getBoundingClientRect(),k=W/sr.width;
+  var logoEl=slide.querySelector('.bm-mark img'),lr=logoEl?logoEl.getBoundingClientRect():null;
+  var fondo=lr&&lr.height?lr.top:sr.bottom-sr.width*84/SLIDE_DESIGN_WIDTH;
+  drawScreenLines(ctx,screenLines(slide.querySelector('.s-handle')).concat(screenLines(slide.querySelector('.s-idx'))),sr,k,F);
+  var blocco=slide.querySelector('.slide-cover')?'cover':slide.querySelector('.slide-body')?'body':'cta';
+  var lines=blocco==='cover'?screenLines(slide.querySelector('.s-cover-title')):blocco==='body'?screenLines(slide.querySelector('.s-body-text')):
+    screenLines(slide.querySelector('.s-cta-main')).concat(screenLines(slide.querySelector('.s-cta-sub')));
+  var dentro=lines.every(function(l){return l.t!=null&&l.l>=sr.left+sr.width*0.02&&l.r<=sr.right-sr.width*0.02&&l.t>=sr.top+sr.width*30/SLIDE_DESIGN_WIDTH&&l.b<=fondo-1;});
+  if(dentro)drawScreenLines(ctx,lines,sr,k,F);
+  else drawComputed(ctx,slide,blocco,W,H,F);
 
-  // Testi: le righe sono quelle a schermo; il blocco si rimpicciolisce solo se non sta nello spazio della slide
-  if(slide.querySelector('.slide-cover')){
-    var items=screenLines(slide.querySelector('.s-cover-title')).map(function(l){
-      return l.italic?mk(l.text,'italic 400',18,1.5,col.em,SERIF):mk(l.text.toUpperCase(),'600',30,1.25,'#fff',SERIF);
-    });
-    var k=fitScale(ctx,items,F,296*F,H-(44+108)*F);
-    drawBlock(ctx,items,F*k,Math.round(22*F),H-Math.round(108*F)-blockHeight(items,F*k),'left');
-  }else if(slide.querySelector('.slide-body')){
-    var items=screenLines(slide.querySelector('.s-body-text')).map(function(l){
-      return mk(l.text,'italic 500',17,1.6,'rgba(255,255,255,0.92)',SERIF);
-    });
-    var k=fitScale(ctx,items,F,280*F,H-(44+114)*F);
-    drawBlock(ctx,items,F*k,W/2,H/2-Math.round(35*F)-blockHeight(items,F*k)/2,'center');
-  }else if(slide.querySelector('.slide-cta')){
-    var items=screenLines(slide.querySelector('.s-cta-main')).map(function(l){
-      return l.italic?mk(l.text,'italic 400',17,1.5,col.em,SERIF):mk(l.text.toUpperCase(),'600',26,1.25,'#fff',SERIF);
-    });
-    var sub=screenLines(slide.querySelector('.s-cta-sub'));
-    if(sub.length){
-      items.push(mk(null,'',10,1,null,null));
-      sub.forEach(function(l){items.push(mk(l.text.toUpperCase(),'600',10,1.4,'rgba(255,255,255,0.50)',SANS));});
-    }
-    var k=fitScale(ctx,items,F,288*F,H-(44+114)*F);
-    drawBlock(ctx,items,F*k,W/2,H/2-Math.round(35*F)-blockHeight(items,F*k)/2,'center');
-  }
-
+  // logo: stessa posizione, misura e trasparenza della slide
   var logoImg=await ensureBmLogoImg();
   if(logoImg&&logoImg.naturalWidth&&logoImg.naturalHeight){
-    var lh2=Math.round(68*F),lw2=Math.round(logoImg.naturalWidth*(lh2/logoImg.naturalHeight));
-    ctx.globalAlpha=0.86;
-    ctx.drawImage(logoImg,Math.round((W-lw2)/2),H-Math.round(16*F)-lh2,lw2,lh2);
+    ctx.globalAlpha=logoEl?(parseFloat(getComputedStyle(logoEl).opacity)||0.86):0.86;
+    if(lr&&lr.width&&lr.height)ctx.drawImage(logoImg,(lr.left-sr.left)*k,(lr.top-sr.top)*k,lr.width*k,lr.height*k);
+    else{var lh2=Math.round(68*F),lw2=Math.round(logoImg.naturalWidth*(lh2/logoImg.naturalHeight));ctx.drawImage(logoImg,Math.round((W-lw2)/2),H-Math.round(16*F)-lh2,lw2,lh2);}
     ctx.globalAlpha=1;
   }
 
