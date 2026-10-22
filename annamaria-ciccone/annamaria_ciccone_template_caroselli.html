@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v2 - 2026-06-17 - fix foto sparita/stirata -->
+<!-- v3 - 2026-10-22 - PNG: scala fissa, righe come a schermo, incolla solo testo, salva sul telefono -->
 <html lang="it">
 <head>
 <meta charset="UTF-8">
@@ -63,6 +63,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:80px;overflow:hidden;
 .dl-zip-btn{padding:12px 28px;font-size:0.76rem;font-family:'Open Sans',sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--ivory);background:rgba(46,144,144,0.15);border:1px solid var(--warm);border-radius:8px;cursor:pointer;transition:background .2s;}
 .dl-zip-btn:hover{background:rgba(46,144,144,0.28);}
 .dl-zip-btn:disabled{opacity:0.35;cursor:wait;}
+.dl-zip-row{flex-wrap:wrap;gap:10px;align-items:center;}
+.dl-share-btn{display:none;}
+.condivisione .dl-share-btn{display:inline-block;}
+.dl-stato{flex-basis:100%;font-size:0.74rem;color:var(--muted);}
+.dl-stato:empty{display:none;}
 
 /* CAROSELLO WRAP */
 .carousel-wrap{overflow-x:auto;padding-bottom:14px;cursor:grab;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--warm-faint) transparent;}
@@ -295,7 +300,7 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
         <div class="slide c1-slide" id="car1-s4"><img class="slide-bg-img" src=""" alt=""><div class="slide-overlay"></div><div class="slide-top"><span class="s-handle">@annamariaciccone1</span><span class="s-idx">05&thinsp;/&thinsp;05</span></div><div class="slide-content slide-cta"><p class="s-cta-main" contenteditable="true">Hai la mentalità<br><em>dell'atleta.</em></p><p class="s-cta-sub" contenteditable="true">Scrivimi in DM.</p></div><div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div></div>
         <button class="dl-single" onclick="downloadPNGFromWrap(this)">&#8595; PNG</button>
       </div></div></div>
-  <div class="dl-zip-row"><button class="dl-zip-btn" onclick="downloadZIP('car1',5,'carosello-1',this)">&#8595; Scarica ZIP - Carosello completo</button></div>
+  <div class="dl-zip-row"><button class="dl-zip-btn" onclick="downloadZIP('car1',5,'carosello-1',this)">&#8595; Scarica ZIP - Carosello completo</button><button class="dl-zip-btn dl-share-btn" onclick="saveToPhone('car1',5,this)">Salva sul telefono</button><span class="dl-stato" aria-live="polite"></span></div>
 </div>
 <hr class="sep-line">
 
@@ -336,7 +341,7 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
         <div class="slide c2-slide" id="car2-s4"><img class="slide-bg-img" src=""" alt=""><div class="slide-overlay"></div><div class="slide-top"><span class="s-handle">@annamariaciccone1</span><span class="s-idx">05&thinsp;/&thinsp;05</span></div><div class="slide-content slide-cta"><p class="s-cta-main" contenteditable="true">Cerco donne<br><em>che credono in questo.</em></p><p class="s-cta-sub" contenteditable="true">Scrivimi in DM.</p></div><div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div></div>
         <button class="dl-single" onclick="downloadPNGFromWrap(this)">&#8595; PNG</button>
       </div></div></div>
-  <div class="dl-zip-row"><button class="dl-zip-btn" onclick="downloadZIP('car2',5,'carosello-2',this)">&#8595; Scarica ZIP - Carosello completo</button></div>
+  <div class="dl-zip-row"><button class="dl-zip-btn" onclick="downloadZIP('car2',5,'carosello-2',this)">&#8595; Scarica ZIP - Carosello completo</button><button class="dl-zip-btn dl-share-btn" onclick="saveToPhone('car2',5,this)">Salva sul telefono</button><span class="dl-stato" aria-live="polite"></span></div>
 </div>
 <hr class="sep-line">
 
@@ -377,7 +382,7 @@ footer{padding:56px 48px;border-top:1px solid var(--sep);display:flex;align-item
         <div class="slide c3-slide" id="car3-s4"><img class="slide-bg-img" src=""" alt=""><div class="slide-overlay"></div><div class="slide-top"><span class="s-handle">@annamariaciccone1</span><span class="s-idx">05&thinsp;/&thinsp;05</span></div><div class="slide-content slide-cta"><p class="s-cta-main" contenteditable="true">Cerco donne ambiziose<br><em>che costruiscono con eleganza.</em></p><p class="s-cta-sub" contenteditable="true">Scrivimi in DM.</p></div><div class="bm-mark"><img src="https://nicolapin82-png.github.io/Webloom/assets/bloomind-logo.png" alt="BlooMind"></div></div>
         <button class="dl-single" onclick="downloadPNGFromWrap(this)">&#8595; PNG</button>
       </div></div></div>
-  <div class="dl-zip-row"><button class="dl-zip-btn" onclick="downloadZIP('car3',5,'carosello-3',this)">&#8595; Scarica ZIP - Carosello completo</button></div>
+  <div class="dl-zip-row"><button class="dl-zip-btn" onclick="downloadZIP('car3',5,'carosello-3',this)">&#8595; Scarica ZIP - Carosello completo</button><button class="dl-zip-btn dl-share-btn" onclick="saveToPhone('car3',5,this)">Salva sul telefono</button><span class="dl-stato" aria-live="polite"></span></div>
 </div>
 
 <footer>
@@ -444,6 +449,7 @@ function setCarPhoto(carId,idx){
   var wrap=document.getElementById('ph-thumbs-'+carId);
   if(wrap)wrap.querySelectorAll('.ph-thumb').forEach(function(t,i){t.classList.toggle('active',i===idx);});
   document.querySelectorAll('#'+carId+' .slide-bg-img').forEach(function(img){img.src=PHOTOS[idx];});
+  if(window._invalida)_invalida(carId);
 }
 
 document.addEventListener('DOMContentLoaded',function(){
@@ -470,43 +476,76 @@ function setFormat(carId,fmt){
   var btns=document.querySelectorAll('[onclick*="setFormat(\''+carId+'\'"]');
   btns.forEach(function(b){b.classList.toggle('active',b.getAttribute('onclick').includes("'"+fmt+"'"));});
   document.querySelectorAll('#'+carId+' .slide').forEach(function(s){s.classList.toggle('fmt-45',fmt==='45');});
+  _invalida(carId);
 }
 
 /* ── CANVAS RENDERER (no html2canvas, no taint - pattern Laura Ruggieri, affidabile su Safari) ── */
+// Misure del disegno: la slide da computer è larga 340 px. La scala del PNG si calcola su questa costante,
+// mai sulla larghezza a schermo (da telefono la slide è più stretta e il testo usciva più grande e tagliato).
+var SLIDE_DESIGN_WIDTH=340;
+var SERIF='"Cormorant Garamond",serif',SANS='"Open Sans",sans-serif';
 var CAR_COLORS={
   car1:{overlay:[[0,'rgba(46,144,144,0.12)'],[0.30,'rgba(0,0,0,0.04)'],[0.60,'rgba(0,0,0,0.55)'],[1,'rgba(0,0,0,0.93)']],photoTint:'rgba(40,150,150,0.16)',em:'rgba(96,186,186,0.95)',idx:'#60BABA'},
   car2:{overlay:[[0,'rgba(201,168,76,0.10)'],[0.30,'rgba(0,0,0,0.04)'],[0.60,'rgba(0,0,0,0.55)'],[1,'rgba(0,0,0,0.93)']],photoTint:'rgba(180,150,80,0.16)',em:'rgba(223,188,112,0.95)',idx:'#60BABA'},
   car3:{overlay:[[0,'rgba(0,0,0,0.08)'],[0.30,'rgba(0,0,0,0.20)'],[0.58,'rgba(0,0,0,0.62)'],[1,'rgba(0,0,0,0.95)']],photoTint:'rgba(20,20,20,0.16)',em:'rgba(201,168,76,0.95)',idx:'#60BABA'}
 };
-function parseStyledLines(el){
+/* Righe del testo come si vedono a schermo. Gli a capo fatti con Invio (che telefoni e Chrome scrivono come <div>),
+   quelli con Maiusc+Invio e quelli automatici si leggono dalla posizione di ogni carattere: così nel PNG
+   le parole non si attaccano e le righe lunghe vanno a capo come nella slide. */
+function screenLines(el){
   if(!el)return[];
-  var parts=el.innerHTML.split(/<br\s*\/?>/i);
-  return parts.map(function(p){
-    var d=document.createElement('div');d.innerHTML=p;
-    return{text:d.textContent.trim(),italic:!!d.querySelector('em')};
-  }).filter(function(l){return l.text.length>0;});
-}
-function wrapPlain(ctx,text,maxW){
-  var words=text.split(/\s+/).filter(Boolean);
-  var lines=[],line='';
-  for(var i=0;i<words.length;i++){
-    var t=line?line+' '+words[i]:words[i];
-    if(ctx.measureText(t).width>maxW&&line){lines.push(line);line=words[i];}
-    else line=t;
+  var lines=[],cur=null,lastTop=null,range=document.createRange(),node;
+  var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+  while((node=walker.nextNode())){
+    var em=node.parentElement&&node.parentElement.closest('em,i');
+    var italic=!!(em&&el.contains(em));
+    var s=node.nodeValue;
+    for(var i=0;i<s.length;i++){
+      var c=s.charCodeAt(i),n=(c>=0xD800&&c<=0xDBFF)?2:1;
+      var ch=s.substr(i,n),sp=/\s/.test(ch);
+      range.setStart(node,i);range.setEnd(node,Math.min(i+n,s.length));
+      i+=n-1;
+      var rs=range.getClientRects(),r=null;
+      for(var j=0;j<rs.length;j++){if(rs[j].height>0){r=rs[j];break;}}
+      if(!r){if(cur&&!sp)cur.text+=ch;continue;}
+      if(cur===null||r.top>lastTop+r.height*0.5){
+        if(sp)continue;
+        cur={text:'',italic:italic};lines.push(cur);
+      }
+      cur.text+=ch;lastTop=r.top;
+    }
   }
-  if(line)lines.push(line);
+  lines=lines.map(function(l){return{text:l.text.replace(/\s+/g,' ').trim(),italic:l.italic};}).filter(function(l){return l.text.length>0;});
+  if(!lines.length&&el.textContent.trim()){
+    lines=el.innerText.split('\n').map(function(x){return{text:x.replace(/\s+/g,' ').trim(),italic:false};}).filter(function(l){return l.text.length>0;});
+  }
   return lines;
 }
-function blockHeight(items){return items.reduce(function(s,it){return s+it.h;},0);}
-function drawBlock(ctx,items,x,startY,align){
-  ctx.textBaseline='middle';
+// Una riga da disegnare: dimensione e interlinea in px del disegno (slide larga 340), moltiplicate dalla scala al momento di disegnare
+function mk(text,weight,size,lh,color,family){return{text:text,weight:weight,size:size,lh:lh,color:color,family:family};}
+function fontOf(it,s){return it.weight+' '+Math.round(it.size*s)+'px '+it.family;}
+function lineH(it,s){return Math.round(it.size*s*it.lh);}
+function blockHeight(items,s){return items.reduce(function(t,it){return t+lineH(it,s);},0);}
+// Quanto rimpicciolire il blocco (1 = niente) perché ogni riga stia nella larghezza e il blocco nell'altezza
+function fitScale(ctx,items,F,maxW,maxH){
+  var k=1;
+  items.forEach(function(it){
+    if(!it.text)return;
+    ctx.font=fontOf(it,F);
+    var w=ctx.measureText(it.text).width;
+    if(w>maxW)k=Math.min(k,maxW/w);
+  });
+  var h=blockHeight(items,F);
+  if(h*k>maxH)k=Math.min(k,maxH/h);
+  return k<1?k*0.98:1;
+}
+function drawBlock(ctx,items,s,x,startY,align){
+  ctx.textBaseline='middle';ctx.textAlign=align;
   var y=startY;
   items.forEach(function(it){
-    if(it.text){
-      ctx.font=it.font;ctx.fillStyle=it.color;ctx.textAlign=align;
-      ctx.fillText(it.text,x,y+it.h/2);
-    }
-    y+=it.h;
+    var h=lineH(it,s);
+    if(it.text){ctx.font=fontOf(it,s);ctx.fillStyle=it.color;ctx.fillText(it.text,x,y+h/2);}
+    y+=h;
   });
 }
 async function renderSlide(carId,slideIdx){
@@ -515,7 +554,7 @@ async function renderSlide(carId,slideIdx){
   if(!slide)return document.createElement('canvas');
   var isF45=slide.classList.contains('fmt-45');
   var W=1080,H=isF45?1350:1080;
-  var F=W/slide.offsetWidth;
+  var F=W/SLIDE_DESIGN_WIDTH;
   var canvas=document.createElement('canvas');canvas.width=W;canvas.height=H;
   var ctx=canvas.getContext('2d');
   var col=CAR_COLORS[carId]||CAR_COLORS.car1;
@@ -551,39 +590,30 @@ async function renderSlide(carId,slideIdx){
     ctx.fillText(idxEl.textContent.replace(/ /g,' ').trim(),W-sidePad,topPad);
   }
 
+  // Testi: le righe sono quelle a schermo; il blocco si rimpicciolisce solo se non sta nello spazio della slide
   if(slide.querySelector('.slide-cover')){
-    var titleEl=slide.querySelector('.s-cover-title');
-    var lines=parseStyledLines(titleEl).map(function(l){
-      return l.italic
-        ?{text:l.text,font:'italic 400 '+Math.round(18*F)+'px "Cormorant Garamond",serif',color:col.em,h:Math.round(18*F*1.5)}
-        :{text:l.text.toUpperCase(),font:'600 '+Math.round(30*F)+'px "Cormorant Garamond",serif',color:'#fff',h:Math.round(30*F*1.25)};
+    var items=screenLines(slide.querySelector('.s-cover-title')).map(function(l){
+      return l.italic?mk(l.text,'italic 400',18,1.5,col.em,SERIF):mk(l.text.toUpperCase(),'600',30,1.25,'#fff',SERIF);
     });
-    var bottomY=H-Math.round(108*F);
-    drawBlock(ctx,lines,Math.round(22*F),bottomY-blockHeight(lines),'left');
+    var k=fitScale(ctx,items,F,296*F,H-(44+108)*F);
+    drawBlock(ctx,items,F*k,Math.round(22*F),H-Math.round(108*F)-blockHeight(items,F*k),'left');
   }else if(slide.querySelector('.slide-body')){
-    var bodyEl=slide.querySelector('.s-body-text');
-    if(bodyEl){
-      var sz=Math.round(17*F),lh=Math.round(sz*1.60);
-      var font='italic 500 '+sz+'px "Cormorant Garamond",serif';
-      ctx.font=font;
-      var wrapped=wrapPlain(ctx,bodyEl.textContent.trim(),Math.round(280*F));
-      var lines=wrapped.map(function(t){return{text:t,font:font,color:'rgba(255,255,255,0.92)',h:lh};});
-      var centerY=H/2-Math.round(35*F);
-      drawBlock(ctx,lines,W/2,centerY-blockHeight(lines)/2,'center');
-    }
-  }else if(slide.querySelector('.slide-cta')){
-    var mainEl=slide.querySelector('.s-cta-main'),subEl=slide.querySelector('.s-cta-sub');
-    var items=parseStyledLines(mainEl).map(function(l){
-      return l.italic
-        ?{text:l.text,font:'italic 400 '+Math.round(17*F)+'px "Cormorant Garamond",serif',color:col.em,h:Math.round(17*F*1.5)}
-        :{text:l.text.toUpperCase(),font:'600 '+Math.round(26*F)+'px "Cormorant Garamond",serif',color:'#fff',h:Math.round(26*F*1.25)};
+    var items=screenLines(slide.querySelector('.s-body-text')).map(function(l){
+      return mk(l.text,'italic 500',17,1.6,'rgba(255,255,255,0.92)',SERIF);
     });
-    if(subEl&&subEl.textContent.trim()){
-      items.push({text:null,h:Math.round(10*F)});
-      items.push({text:subEl.textContent.trim().toUpperCase(),font:'600 '+Math.round(10*F)+'px "Open Sans",sans-serif',color:'rgba(255,255,255,0.50)',h:Math.round(10*F*1.4)});
+    var k=fitScale(ctx,items,F,280*F,H-(44+114)*F);
+    drawBlock(ctx,items,F*k,W/2,H/2-Math.round(35*F)-blockHeight(items,F*k)/2,'center');
+  }else if(slide.querySelector('.slide-cta')){
+    var items=screenLines(slide.querySelector('.s-cta-main')).map(function(l){
+      return l.italic?mk(l.text,'italic 400',17,1.5,col.em,SERIF):mk(l.text.toUpperCase(),'600',26,1.25,'#fff',SERIF);
+    });
+    var sub=screenLines(slide.querySelector('.s-cta-sub'));
+    if(sub.length){
+      items.push(mk(null,'',10,1,null,null));
+      sub.forEach(function(l){items.push(mk(l.text.toUpperCase(),'600',10,1.4,'rgba(255,255,255,0.50)',SANS));});
     }
-    var centerY=H/2-Math.round(35*F);
-    drawBlock(ctx,items,W/2,centerY-blockHeight(items)/2,'center');
+    var k=fitScale(ctx,items,F,288*F,H-(44+114)*F);
+    drawBlock(ctx,items,F*k,W/2,H/2-Math.round(35*F)-blockHeight(items,F*k)/2,'center');
   }
 
   var logoImg=await ensureBmLogoImg();
@@ -597,7 +627,7 @@ async function renderSlide(carId,slideIdx){
   return canvas;
 }
 async function downloadPNGFromWrap(btn){
-  btn.disabled=true;btn.textContent='Rendering...';
+  btn.disabled=true;btn.textContent='Preparo...';
   var wrap=btn.closest('.slide-wrap');
   var slide=wrap.querySelector('.slide');
   var carId=slide.id.replace(/-s\d+$/,'');
@@ -617,6 +647,54 @@ async function downloadZIP(carId,count,label,btn){
   saveAs(zipBlob,label+'-annamaria-ciccone.zip');
   btn.disabled=false;btn.textContent='\u2193 Scarica ZIP - Carosello completo';
 }
+/* Salva sul telefono: il primo tocco prepara le 5 immagini, il secondo apre il menu di condivisione
+   (Salva immagini, Instagram...). Servono due tocchi perché il telefono apre il menu solo subito dopo un tocco. */
+var _pronte={};
+function _invalida(carId){
+  if(!_pronte[carId])return;
+  delete _pronte[carId];
+  var sec=document.getElementById(carId);sec=sec&&sec.closest('.car-section');
+  var b=sec&&sec.querySelector('.dl-share-btn');if(b)b.textContent='Salva sul telefono';
+  var st=sec&&sec.querySelector('.dl-stato');if(st)st.textContent='';
+}
+async function saveToPhone(carId,count,btn){
+  var stato=btn.parentElement.querySelector('.dl-stato');
+  if(_pronte[carId]){
+    var files=_pronte[carId];delete _pronte[carId];btn.textContent='Salva sul telefono';
+    navigator.share({files:files}).then(function(){stato.textContent='Fatto.';},function(){stato.textContent='Salvataggio annullato.';});
+    return;
+  }
+  btn.disabled=true;
+  try{
+    var files=[];
+    for(var i=0;i<count;i++){
+      stato.textContent='Preparo la slide '+(i+1)+' di '+count+'...';
+      var cv=await renderSlide(carId,i);
+      var blob=await new Promise(function(r){cv.toBlob(r,'image/png');});
+      files.push(new File([blob],carId+'-slide'+(i+1)+'.png',{type:'image/png'}));
+    }
+    _pronte[carId]=files;
+    btn.textContent='Pronte: tocca per salvare';
+    stato.textContent='Le immagini sono pronte: tocca di nuovo il pulsante e scegli «Salva immagini» oppure Instagram.';
+  }catch(e){console.error(e);stato.textContent='Non sono riuscito a preparare le immagini: riprova tra un momento.';}
+  btn.disabled=false;
+}
+try{
+  var _prova=new File([''],'p.png',{type:'image/png'});
+  if(navigator.canShare&&navigator.canShare({files:[_prova]})&&window.matchMedia('(pointer:coarse)').matches)document.body.classList.add('condivisione');
+}catch(e){}
+document.addEventListener('input',function(ev){
+  var tr=ev.target.closest&&ev.target.closest('.carousel-track');
+  if(tr)_invalida(tr.id);
+});
+/* Incolla solo il testo: la formattazione copiata da WhatsApp, Note o Word non entra nella slide */
+document.addEventListener('paste',function(ev){
+  var el=ev.target&&(ev.target.nodeType===3?ev.target.parentElement:ev.target);
+  if(!el||!el.closest||!el.closest('[contenteditable]'))return;
+  ev.preventDefault();
+  var txt=(ev.clipboardData||window.clipboardData).getData('text/plain');
+  document.execCommand('insertText',false,txt);
+});
 const reveals=document.querySelectorAll('.reveal');
 const io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
 reveals.forEach(function(el){io.observe(el);});
