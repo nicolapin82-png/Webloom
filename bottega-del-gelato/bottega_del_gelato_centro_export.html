@@ -4504,23 +4504,25 @@ dopo piastrella</textarea>
 </div>
 <!-- INVERNO-2026-TAB -->
 <div id="tab-inverno" class="tab-panel active">
-<!-- Scheda "Inverno 2026" del Centro Export. Si inserisce con aggiorna_centro_export.py, che sostituisce
-     i segnaposto del peso dei file, incorpora la presentazione nel riquadro apposito e aggiunge in
-     fondo alla pagina i file scaricabili e lo script. Ordine di lettura: file pronti, presentazione, messaggi da copiare.
-     Stile: stesse variabili del Centro Export (--oro, --crema, --navy-dark, --sep), tutto scopato su #tab-inverno. -->
+<!-- Scheda "Inverno 2026" del Centro Export, versione del 28/10/2026, rifatta dopo i vocali di Michela del 20 e del 27/10.
+     Si inserisce con aggiorna_centro_export.py. Ordine: cosa facciamo, le date, le domande (le risposte partono su WhatsApp),
+     file e messaggi ancora validi, e in fondo l'archivio chiuso con il piano di ottobre (file, presentazione, messaggi).
+     Stile: stesse variabili del Centro Export (--oro, --crema, --navy-dark, --sep), tutto scopato su #tab-inverno.
+     Numero di Nicola per le risposte: variabile NUMERO_NICOLA nello script in fondo (vuota = WhatsApp chiede a chi mandarle). -->
 <style>
+#tab-inverno [hidden]{display:none!important}
 #tab-inverno .inv-sec{padding:8px 48px 0}
 #tab-inverno .inv-eyebrow{font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--oro);margin:36px 0 4px}
 #tab-inverno .inv-title{font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.2rem;color:var(--crema);margin-bottom:4px}
-#tab-inverno .inv-sub{font-size:.78rem;color:rgba(255,255,255,.52);margin-bottom:20px;max-width:640px;line-height:1.7}
+#tab-inverno .inv-sub{font-size:.8rem;color:rgba(255,255,255,.62);margin-bottom:20px;max-width:680px;line-height:1.7}
 #tab-inverno .files{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:0 48px 16px}
 #tab-inverno .file{background:#35617E;border:1px solid var(--sep);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:8px}
 #tab-inverno .file h3{font-style:italic;font-size:.98rem;color:var(--crema);font-weight:400}
 #tab-inverno .file p{font-size:.76rem;color:rgba(255,255,255,.68);line-height:1.6;flex:1}
 #tab-inverno .file .btn{width:100%;justify-content:center;font-size:.72rem}
-#tab-inverno .avviso{margin:0 48px 16px;padding:12px 16px;border-left:3px solid var(--oro);background:rgba(201,169,110,.08);border-radius:0 8px 8px 0;font-size:.76rem;color:rgba(255,255,255,.72);line-height:1.6}
+#tab-inverno .avviso{margin:0 48px 16px;padding:12px 16px;border-left:3px solid var(--oro);background:rgba(201,169,110,.08);border-radius:0 8px 8px 0;font-size:.78rem;color:rgba(255,255,255,.76);line-height:1.6}
 #tab-inverno .avviso strong{color:var(--oro)}
-#tab-inverno .pres-wrap{margin:0 48px 16px;border:1px solid var(--sep);border-radius:12px;overflow:hidden;background:#14242F}
+#tab-inverno .pres-wrap{margin:0 0 16px;border:1px solid var(--sep);border-radius:12px;overflow:hidden;background:#14242F}
 #tab-inverno .pres-wrap iframe{display:block;width:100%;border:0;height:900px;overflow:hidden}
 #tab-inverno .card{background:#35617E;border:1px solid var(--sep);border-radius:10px;padding:22px 26px;margin:0 48px 16px}
 #tab-inverno .card h3{font-style:italic;font-size:1.02rem;color:var(--crema);margin-bottom:8px;font-weight:400}
@@ -4529,82 +4531,331 @@ dopo piastrella</textarea>
 #tab-inverno .msg .quando{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);margin-bottom:4px;display:block}
 #tab-inverno .msg .testo{flex:1;min-width:200px;font-size:.8rem;line-height:1.65;color:rgba(255,255,255,.82);white-space:pre-line}
 #tab-inverno .msg .btn{flex:0 0 auto;align-self:center}
+
+/* Il piano: quattro blocchi */
+#tab-inverno .piano{display:grid;grid-template-columns:1fr;gap:14px;margin:0 48px 8px}
+#tab-inverno .blocco{background:#35617E;border:1px solid var(--sep);border-radius:10px;padding:20px 24px;border-top:4px solid var(--oro)}
+#tab-inverno .blocco.dopo{border-top-color:#8FC1E3}
+#tab-inverno .blocco.pausa{border-top-color:#B9B2A6;background:#2E5068}
+#tab-inverno .blocco.tolto{border-top-color:#C97B6E;background:#2E5068}
+#tab-inverno .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+#tab-inverno .b-tag{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:10px}
+#tab-inverno .blocco.dopo .b-tag{color:#8FC1E3}
+#tab-inverno .blocco.pausa .b-tag{color:#D8D2C6}
+#tab-inverno .blocco.tolto .b-tag{color:#E7A598}
+#tab-inverno .voci{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px}
+#tab-inverno .voci li{font-size:.84rem;line-height:1.65;color:rgba(255,255,255,.84)}
+#tab-inverno .voci li b{color:var(--crema)}
+#tab-inverno .voci .nota{display:block;font-size:.72rem;color:var(--oro);margin-top:2px}
+
+/* Le date */
+#tab-inverno .date{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+#tab-inverno .data{background:rgba(0,0,0,.16);border-radius:8px;padding:10px 12px}
+#tab-inverno .data b{display:block;color:var(--oro);font-size:.8rem;margin-bottom:2px}
+#tab-inverno .data span{font-size:.78rem;color:rgba(255,255,255,.8);line-height:1.5}
+
+/* Le domande */
+#tab-inverno #domande{scroll-margin-top:72px}
+#tab-inverno .voci a{color:var(--oro)}
+#tab-inverno .domande fieldset{border:0;margin:0 0 6px;padding:16px 0;border-bottom:1px solid var(--sep);min-width:0}
+#tab-inverno .domande fieldset:last-of-type{border-bottom:0}
+#tab-inverno .domande legend{font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-style:italic;font-size:1.02rem;color:var(--crema);padding:0;margin-bottom:10px}
+#tab-inverno .domande .q{font-size:.82rem;color:rgba(255,255,255,.84);margin:10px 0 6px;line-height:1.5}
+#tab-inverno .domande .aiuto{font-size:.72rem;color:rgba(255,255,255,.55);margin-top:4px}
+#tab-inverno .scelte{display:flex;flex-wrap:wrap;gap:8px}
+#tab-inverno .pill{position:relative;cursor:pointer}
+#tab-inverno .pill input{position:absolute;opacity:0;width:1px;height:1px}
+#tab-inverno .pill span{display:inline-block;padding:9px 14px;border:1px solid rgba(201,169,110,.55);border-radius:999px;font-size:.8rem;color:var(--crema);background:rgba(0,0,0,.12);min-height:40px;line-height:1.4}
+#tab-inverno .pill input:checked + span{background:var(--oro);color:#14242F;border-color:var(--oro);font-weight:600}
+#tab-inverno .pill input:focus-visible + span{outline:2px solid #fff;outline-offset:2px}
+#tab-inverno .campo{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:.82rem;color:rgba(255,255,255,.84);margin:8px 0}
+#tab-inverno .domande input[type=text],#tab-inverno .domande textarea{font:inherit;font-size:16px;color:#14242F;background:var(--crema);border:1px solid var(--oro);border-radius:8px;padding:8px 10px;max-width:100%}
+#tab-inverno .domande input.euro{width:84px}
+#tab-inverno .domande input.lungo,#tab-inverno .domande textarea{width:100%}
+#tab-inverno .domande textarea{min-height:70px;resize:vertical}
+#tab-inverno .invio{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+#tab-inverno .invio .btn{min-height:48px;padding:12px 20px;font-size:.86rem;display:inline-flex;align-items:center}
+#tab-inverno .nw{white-space:nowrap}
+#tab-inverno .btn.verde{background:#25D366;color:#0B2B17;border-color:#25D366;font-weight:700;text-decoration:none}
+#tab-inverno .anteprima{margin-top:14px;white-space:pre-wrap;font-size:.76rem;line-height:1.55;color:rgba(255,255,255,.8);background:rgba(0,0,0,.2);border-radius:8px;padding:12px 14px}
+#tab-inverno .anteprima-t{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);margin-top:14px}
+
+/* Archivio */
+#tab-inverno details.archivio{margin:28px 48px 16px;border:1px solid var(--sep);border-radius:10px;background:rgba(0,0,0,.14)}
+#tab-inverno details.archivio > summary{cursor:pointer;padding:16px 20px;font-size:.84rem;color:var(--crema);list-style:none}
+#tab-inverno details.archivio > summary::-webkit-details-marker{display:none}
+#tab-inverno details.archivio > summary b{color:var(--oro)}
+#tab-inverno .arch-in{padding:0 0 12px}
+#tab-inverno .arch-in .files,#tab-inverno .arch-in .avviso,#tab-inverno .arch-in .card,#tab-inverno .arch-in .inv-sec{margin-left:16px;margin-right:16px}
+#tab-inverno .arch-in .inv-sec{padding-left:0;padding-right:0}
+#tab-inverno .arch-in .pres-wrap{margin:0 16px 16px}
+
 @media(max-width:768px){
   #tab-inverno .inv-sec{padding:8px 20px 0}
-  #tab-inverno .files,#tab-inverno .avviso,#tab-inverno .pres-wrap,#tab-inverno .card{margin-left:20px;margin-right:20px}
+  #tab-inverno .files,#tab-inverno .avviso,#tab-inverno .card,#tab-inverno .piano{margin-left:20px;margin-right:20px}
+  #tab-inverno details.archivio{margin-left:20px;margin-right:20px}
+  #tab-inverno .duo{grid-template-columns:1fr}
 }
 @media(max-width:480px){
   #tab-inverno .inv-sec{padding:8px 14px 0}
-  #tab-inverno .files,#tab-inverno .avviso,#tab-inverno .card{margin-left:14px;margin-right:14px}
-  #tab-inverno .pres-wrap{margin:0 0 16px;border-radius:0;border-left:0;border-right:0}
-  #tab-inverno .card{padding:18px 16px}
+  #tab-inverno .files,#tab-inverno .avviso,#tab-inverno .card,#tab-inverno .piano{margin-left:14px;margin-right:14px}
+  #tab-inverno details.archivio{margin-left:14px;margin-right:14px}
+  #tab-inverno .card,#tab-inverno .blocco{padding:18px 16px}
+  #tab-inverno .arch-in .files,#tab-inverno .arch-in .avviso,#tab-inverno .arch-in .card,#tab-inverno .arch-in .inv-sec{margin-left:8px;margin-right:8px}
+  #tab-inverno .arch-in .pres-wrap{margin:0 0 16px;border-radius:0;border-left:0;border-right:0}
   #tab-inverno .msg .btn{width:100%}
+  #tab-inverno .invio .btn{width:100%;justify-content:center;text-align:center}
 }
 </style>
 
 <header>
   <h1>La Bottega del Gelato - Inverno 2026</h1>
-  <p>Il piano da qui a Natale. Sopra i file da stampare, sotto la presentazione completa, in fondo i messaggi WhatsApp da copiare. Aggiornato al 15 ottobre 2026: quando cambiamo qualcosa, cambia qui.</p>
+  <p>Il piano rimesso in ordine dopo i tuoi vocali, aggiornato al 28 ottobre 2026. In alto cosa facciamo, poi le date, poi 7 domande per te: rispondi con qualche tocco e le risposte arrivano a Nicola su WhatsApp.</p>
 </header>
 
 <div class="inv-sec">
-  <div class="inv-eyebrow">Da scaricare</div>
-  <div class="inv-title">I file pronti</div>
-  <div class="inv-sub">Tocca il pulsante e il file si salva sul telefono o sul computer. Le stampe grandi vanno in copisteria, le altre si fanno a casa su cartoncino.</div>
+  <div class="inv-eyebrow">Da qui a Natale</div>
+  <div class="inv-title">Poche cose, quelle che portano cassa</div>
+  <div class="inv-sub">L'ultima settimana siamo stati sui 175 € al giorno, e d'inverno tende a scendere. Per questo non facciamo tutto quello che avevamo pensato a ottobre: teniamo le cose che portano incasso e che riesci a fare anche da sola.</div>
 </div>
 
+<div class="piano">
+  <div class="blocco ora">
+    <div class="b-tag">Facciamo, da novembre</div>
+    <ol class="voci">
+      <li><b>Il Natale da prenotare, da sabato 7 novembre.</b> Gelato da servire col panettone, zabaione o mascarpone (12 € mezzo chilo, 23 € il chilo), torta gelato più piccola (28 € al chilo), box di 12 tra mini coni e mini stecchi (15 €) e la tua idea: la scatolina con il mini panettone e il gelato. Al banco fai assaggiare un cucchiaino con un pezzetto di panettone. Chi prenota entro il 29 novembre riceve 4 mini coni in regalo al ritiro.<span class="nota">I prezzi li confermi tu, <a href="#domande">nelle domande qui sotto</a>.</span></li>
+      <li><b>La vaschetta del fine settimana.</b> Già adesso chi entra porta via le vaschette: chi vuole ti scrive su WhatsApp e passa a ritirarla pronta.</li>
+      <li><b>Merenda calda e apertura a mezzogiorno.</b> Dalle 12 alle 20, venerdì e sabato fino alle 20:30. Per due settimane segna quanto incassi tra le 12 e le 14:30, così vediamo se quelle ore rendono. Cinnamon roll caldo con la pallina e pezzetto di torta nella coppetta, appena hai l'ok per l'HACCP.</li>
+      <li><b>La cioccolata calda della gelateria.</b> Con il tuo cioccolato, quello dei gelati, non quella in busta del bar. Panna e topping a parte, 50 centesimi l'uno, e anche con una pallina di gelato. Per la macchina basta una da 3 litri che mescoli da sola, per esempio la H.Koenig di MediaWorld a circa 150 €. Nei giorni feriali riempila a metà, e mettila nell'aggiornamento dell'HACCP.</li>
+      <li><b>Torte più piccole.</b> Come dicevi tu: stesso prezzo al chilo, peso più piccolo, così costano meno in tutto.</li>
+      <li><b>Tessera a timbri.</b> Niente da pagare prima: a ogni merenda un timbro, l'undicesima è in regalo. Così tornano più spesso. La prepariamo noi da stampare.</li>
+      <li><b>Pubblicità su Facebook e Instagram, dal 7 al 29 novembre.</b> La paga Nicola. Servono 2 o 3 foto o un video corto fatto col telefono (la vaschetta che riempi, la torta, la cioccolata) e una risposta in giornata a chi ti scrive.</li>
+      <li><b>WhatsApp Business sul tuo telefono.</b> Serve per le prenotazioni e la pubblicità. Ci vogliono 15 minuti e lo facciamo insieme: dimmi quando sei libera <a href="#domande">nelle domande qui sotto</a>. Chi ti scrive per prenotare lo salvi con un'etichetta.</li>
+    </ol>
+  </div>
+  <div class="blocco dopo">
+    <div class="b-tag">Più avanti</div>
+    <ul class="voci">
+      <li><b>Da metà novembre:</b> scuola (attraverso i genitori), oratorio e basket, per le feste di Natale. I messaggi te li prepariamo noi.</li>
+      <li><b>Dicembre:</b> il 5 dicembre apre il presepe di ghiaccio, a 120 metri da te. Lì servono un cartello che porti la gente in Bottega (il permesso del Comune si chiede a novembre) e la cioccolata calda. Poi i buoni regalo, da vendere come regalo di Natale. Pinel, se dice sì: scambio di cartellini e mini panettoni per la scatolina.</li>
+      <li><b>Gennaio:</b> la lista WhatsApp con il QR in cassa. Adesso hai le prenotazioni da seguire; la lista serve di più nei mesi vuoti, e parte già con chi ti ha scritto a novembre e dicembre.</li>
+    </ul>
+  </div>
+  <div class="duo">
+    <div class="blocco pausa">
+      <div class="b-tag">In pausa</div>
+      <ul class="voci">
+        <li>Il gusto del giovedì: a novembre in vetrina bastano zabaione e mascarpone, da far assaggiare per Natale.</li>
+        <li>Il gusto della nonna: si può rifare in primavera, con la lista.</li>
+        <li>I creator.</li>
+        <li>I ristoranti, fino a febbraio, come volevi tu.</li>
+      </ul>
+    </div>
+    <div class="blocco tolto">
+      <div class="b-tag">Non lo facciamo più</div>
+      <ul class="voci">
+        <li>Il gusto al panettone di Pinel: costa troppo per un solo giovedì, avevi ragione.</li>
+        <li>La tessera da 40 € pagata prima: diventa a timbri.</li>
+        <li>Il venerdì mattina al mercato: quelle ore ti servono in laboratorio.</li>
+        <li>La coppetta di mini waffle.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="inv-sec">
+  <div class="inv-eyebrow">Le date</div>
+  <div class="inv-title">Il calendario fino a gennaio</div>
+</div>
+<div class="card date">
+  <div class="data"><b>Entro venerdì 6 novembre</b><span>WhatsApp Business, prezzi confermati, 2 o 3 foto</span></div>
+  <div class="data"><b>Sabato 7 novembre</b><span>Si aprono le prenotazioni di Natale e parte la pubblicità</span></div>
+  <div class="data"><b>Da metà novembre</b><span>Scuola, oratorio e basket</span></div>
+  <div class="data"><b>Domenica 29 novembre</b><span>Ultimo giorno per i 4 mini coni in regalo</span></div>
+  <div class="data"><b>Sabato 5 dicembre</b><span>Apre il presepe di ghiaccio</span></div>
+  <div class="data"><b>Domenica 20 dicembre</b><span>Ultime prenotazioni</span></div>
+  <div class="data"><b>24 e 31 dicembre</b><span>Ritiri</span></div>
+  <div class="data"><b>Gennaio</b><span>Lista WhatsApp con il QR in cassa; buoni regalo validi dal 2 gennaio</span></div>
+</div>
+
+<div class="inv-sec" id="domande">
+  <div class="inv-eyebrow">Per te</div>
+  <div class="inv-title">7 domande veloci</div>
+  <div class="inv-sub">Rispondi con qualche tocco, anche solo a una parte: quello che lasci vuoto lo vediamo dopo. Alla fine il pulsante verde apre WhatsApp con le risposte già scritte, e tu premi invio. Finché non le mandi restano salvate su questo telefono.</div>
+</div>
+
+<form class="card domande" id="form-risposte" onsubmit="return false" autocomplete="off">
+  <fieldset>
+    <legend>1. La domenica che orario fai?</legend>
+    <input type="text" class="lungo" name="domenica" placeholder="per esempio 10:30-13 e 14:30-19:30, oppure chiuso">
+    <p class="aiuto">Poi gli orari su Google li aggiorna Nicola.</p>
+  </fieldset>
+
+  <fieldset>
+    <legend>2. Merenda calda e cioccolata</legend>
+    <p class="q">Il cinnamon roll l'hai provato?</p>
+    <div class="scelte">
+      <label class="pill"><input type="radio" name="cinnamon" value="sì, provato"><span>Sì</span></label>
+      <label class="pill"><input type="radio" name="cinnamon" value="non ancora"><span>Non ancora</span></label>
+    </div>
+    <p class="q">L'HACCP è aggiornato?</p>
+    <div class="scelte">
+      <label class="pill"><input type="radio" name="haccp" value="sì"><span>Sì</span></label>
+      <label class="pill"><input type="radio" name="haccp" value="non ancora"><span>Non ancora</span></label>
+    </div>
+    <div class="campo">Un cinnamon roll ti costa <span class="nw"><input type="text" class="euro" name="cinnamon_costo" inputmode="decimal" aria-label="costo di un cinnamon roll in euro"> €</span> e lo venderesti a <span class="nw"><input type="text" class="euro" name="cinnamon_prezzo" inputmode="decimal" aria-label="prezzo del cinnamon roll in euro"> €</span></div>
+    <div class="campo">Una tazza di cioccolata con il tuo cioccolato ti costa circa <span class="nw"><input type="text" class="euro" name="cioccolata_costo" inputmode="decimal" aria-label="costo di una tazza di cioccolata in euro"> €</span></div>
+    <p class="q">La cioccolatiera H.Koenig da 3 litri, circa 150 € da MediaWorld:</p>
+    <div class="scelte">
+      <label class="pill"><input type="radio" name="cioccolatiera" value="va bene"><span>Va bene</span></label>
+      <label class="pill"><input type="radio" name="cioccolatiera" value="ne ho vista un'altra"><span>Ne ho vista un'altra</span></label>
+      <label class="pill"><input type="radio" name="cioccolatiera" value="ne parliamo"><span>Ne parliamo</span></label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>3. Le torte</legend>
+    <p class="q">Le due torte in vetrina come sono andate?</p>
+    <div class="scelte">
+      <label class="pill"><input type="radio" name="torte_vetrina" value="vendute tutte e due"><span>Vendute tutte e due</span></label>
+      <label class="pill"><input type="radio" name="torte_vetrina" value="vendute una"><span>Una</span></label>
+      <label class="pill"><input type="radio" name="torte_vetrina" value="nessuna"><span>Nessuna</span></label>
+      <label class="pill"><input type="radio" name="torte_vetrina" value="non le ho ancora messe"><span>Non ancora messe</span></label>
+    </div>
+    <div class="campo">La torta piccola: peso <span class="nw"><input type="text" class="euro" name="torta_peso" inputmode="decimal" aria-label="peso della torta piccola in grammi"> grammi</span>, prezzo <span class="nw"><input type="text" class="euro" name="torta_prezzo" inputmode="decimal" aria-label="prezzo della torta piccola in euro"> €</span></div>
+    <p class="q">Le torte di Bordon a 10 € al chilo che torte sono?</p>
+    <input type="text" class="lungo" name="bordon" placeholder="se ci passi, manda a Nicola una foto del cartellino">
+  </fieldset>
+
+  <fieldset>
+    <legend>4. I prezzi di Natale</legend>
+    <p class="q">Gelato da servire col panettone 12 € mezzo chilo e 23 € il chilo, torta 28 € al chilo, box di 12 tra mini coni e mini stecchi 15 €:</p>
+    <div class="scelte">
+      <label class="pill"><input type="radio" name="prezzi_natale" value="confermo"><span>Confermo</span></label>
+      <label class="pill"><input type="radio" name="prezzi_natale" value="cambio qualcosa"><span>Cambio qualcosa</span></label>
+    </div>
+    <input type="text" class="lungo" name="prezzi_cambi" placeholder="se cambi qualcosa, scrivi cosa" style="margin-top:8px">
+    <div class="campo">Torte che riesci a fare per il 24: <input type="text" class="euro" name="torte_24" inputmode="numeric" aria-label="torte per il 24 dicembre"> e per il 31: <input type="text" class="euro" name="torte_31" inputmode="numeric" aria-label="torte per il 31 dicembre"></div>
+  </fieldset>
+
+  <fieldset>
+    <legend>5. Pinel</legend>
+    <div class="scelte">
+      <label class="pill"><input type="radio" name="pinel" value="ci ho parlato"><span>Ci ho parlato</span></label>
+      <label class="pill"><input type="radio" name="pinel" value="non ancora"><span>Non ancora</span></label>
+      <label class="pill"><input type="radio" name="pinel" value="lasciamo stare"><span>Lasciamo stare</span></label>
+    </div>
+    <input type="text" class="lungo" name="pinel_note" placeholder="cosa ti hanno detto" style="margin-top:8px">
+    <div class="campo">Un mini panettone per la scatolina, da Pinel o da chi vuoi tu, costa circa <span class="nw"><input type="text" class="euro" name="mini_panettone" inputmode="decimal" aria-label="prezzo di un mini panettone in euro"> €</span></div>
+  </fieldset>
+
+  <fieldset>
+    <legend>6. WhatsApp Business, 15 minuti insieme</legend>
+    <p class="q">Quando sei libera questa settimana?</p>
+    <input type="text" class="lungo" name="whatsapp" placeholder="per esempio giovedì alle 11">
+  </fieldset>
+
+  <fieldset>
+    <legend>7. Le vaschette del fine settimana</legend>
+    <div class="campo">Lo scorso fine settimana (24 e 25 ottobre) ne hai vendute da mezzo chilo <input type="text" class="euro" name="vaschette_mezzo" inputmode="numeric" aria-label="vaschette da mezzo chilo"> e da un chilo <input type="text" class="euro" name="vaschette_chilo" inputmode="numeric" aria-label="vaschette da un chilo"></div>
+    <p class="aiuto">Va bene anche più o meno: serve per capire quante prenotazioni di Natale possiamo puntare.</p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Vuoi dire altro a Nicola?</legend>
+    <textarea name="altro" placeholder="facoltativo"></textarea>
+  </fieldset>
+
+  <div class="invio">
+    <a class="btn verde" id="invia-risposte" href="https://wa.me/" target="_blank" rel="noopener">Manda le risposte su WhatsApp</a>
+    <button type="button" class="btn outline" id="copia-risposte">Copia le risposte</button>
+  </div>
+  <p class="aiuto">Se preferisci, rispondi a Nicola con un vocale: va benissimo lo stesso.</p>
+  <div class="anteprima-t">Ecco cosa parte</div>
+  <div class="anteprima" id="anteprima-risposte"></div>
+</form>
+
+<div class="inv-sec">
+  <div class="inv-eyebrow">Da scaricare</div>
+  <div class="inv-title">Il file per dicembre</div>
+  <div class="inv-sub">Il cartoncino delle prenotazioni e la tessera a timbri li prepariamo appena confermi i prezzi: li trovi qui.</div>
+</div>
 <div class="files">
   <div class="file">
-    <h3>La presentazione</h3>
-    <p>Tutte le schermate qui sotto, in PDF da leggere sul telefono o da stampare.</p>
-    <button class="btn" onclick="scaricaFile('presentazione', this)">↓ PDF · 1,0 MB</button>
-  </div>
-  <div class="file">
-    <h3>Cartello "Il gusto del giovedì" (A2)</h3>
-    <p>In vetrina dal 22 ottobre. In copisteria su carta pesante, A2 o A3. I nove gusti sono esempi: se li cambi, lo rifacciamo.</p>
-    <button class="btn" onclick="scaricaFile('cartello-giovedi', this)">↓ PDF A2 · 211 KB</button>
-  </div>
-  <div class="file">
-    <h3>Cartello "La lista della Bottega" (A4)</h3>
-    <p>In cassa, in un espositore da banco, da venerdì 16 ottobre. Si stampa a casa; va bene anche in A5.</p>
-    <button class="btn" onclick="scaricaFile('cartello-lista', this)">↓ PDF A4 · 206 KB</button>
-  </div>
-  <div class="file">
-    <h3>Tessere della Bottega, N. 001-054</h3>
-    <p>Nove fogli A4, sei tessere numerate per foglio con la matrice da staccare. Cartoncino colorato, poi si taglia lungo il tratteggio.</p>
-    <button class="btn" onclick="scaricaFile('tessere', this)">↓ PDF 9 fogli · 1,3 MB</button>
-  </div>
-  <div class="file">
     <h3>Buoni regalo, N. 001-009</h3>
-    <p>Tre tipi, tre fogli A4 ciascuno: mezzo chilo di gelato, un chilo, torta gelato per 6 persone. Il prezzo (12, 23 o 28 €) lo scrivi sulla matrice a sinistra, che stacchi e tieni. Cartoncino, poi si taglia lungo il tratteggio.</p>
+    <p>Da vendere a dicembre come regalo di Natale. Tre tipi, tre fogli A4 ciascuno: mezzo chilo di gelato, un chilo, torta gelato per 6 persone. Il prezzo lo scrivi sulla matrice a sinistra, che stacchi e tieni. Cartoncino, poi si taglia lungo il tratteggio.</p>
     <button class="btn" onclick="scaricaFile('buoni', this)">↓ PDF 9 fogli · 1,0 MB</button>
   </div>
-  <div class="file">
-    <h3>QR della lista WhatsApp</h3>
-    <p>Lo stesso QR dei cartelli, da solo: per una storia, un post o uno schermo.</p>
-    <button class="btn" onclick="scaricaFile('qr', this)">↓ PNG · 2 KB</button>
-  </div>
-  <div class="file">
-    <h3>Proposta per Pinel (A4)</h3>
-    <p>La pagina da lasciare in pasticceria: il gusto al panettone con il loro panettone, cosa chiediamo e cosa diamo. Basta la carta normale.</p>
-    <button class="btn" onclick="scaricaFile('pinel', this)">↓ PDF A4 · 290 KB</button>
-  </div>
-  <div class="file">
-    <h3>Cartellini per lo scambio con Pinel</h3>
-    <p>Solo se Pinel dice sì. Foglio 1: due cartellini per il tuo banco e due per il loro. Foglio 2: otto bigliettini con il QR da lasciare da loro. Chi prenota dal QR scrive "da Pinel": mettigli l'etichetta Da Pinel.</p>
-    <button class="btn" onclick="scaricaFile('cartellini-pinel', this)">↓ PDF 2 fogli · 558 KB</button>
-  </div>
 </div>
-
 <div class="avviso"><strong>Se il file non si scarica:</strong> su iPhone si apre in una finestra, poi tocca il simbolo di condivisione e "Salva su File". Su Android finisce nella cartella Download.</div>
 
 <div class="inv-sec">
-  <div class="inv-eyebrow">Il piano</div>
-  <div class="inv-title">La presentazione, da leggere qui</div>
-  <div class="inv-sub">Le stesse schermate della call, una sotto l'altra: l'idea, i numeri, cosa vendere, Pinel, la lista WhatsApp, gli orari, le date, i prezzi, chi fa cosa e le domande che aspettano te.</div>
+  <div class="inv-eyebrow">Strumenti</div>
+  <div class="inv-title">Messaggi WhatsApp pronti da copiare</div>
+  <div class="inv-sub">Tocca "Copia" e incolla in WhatsApp. Cambia solo quello tra parentesi quadre. Quelli per le prenotazioni di Natale arrivano appena confermi i prezzi.</div>
+</div>
+<div class="card">
+  <div class="msg"><div class="testo"><span class="quando">A chi chiede una vaschetta per il fine settimana</span>Ciao! Te la preparo io: dimmi i gusti e a che ora passi. Mezzo chilo [prezzo] €, un chilo [prezzo] €. A presto in Bottega!</div><button class="btn outline" onclick="copiaTesto(this)">Copia</button></div>
+
+  <div class="msg"><div class="testo"><span class="quando">Un giorno di pioggia</span>Oggi piove? Da noi la cioccolata è calda e il waffle col gelato è appena fatto. Ti aspettiamo fino alle [ora].</div><button class="btn outline" onclick="copiaTesto(this)">Copia</button></div>
+
+  <div class="msg"><div class="testo"><span class="quando">22 dicembre · il promemoria del ritiro</span>Ciao [nome], la tua torta è pronta: ritiro il 24 dicembre dalle [ora] alle [ora], in Piazza Matteotti. A presto!</div><button class="btn outline" onclick="copiaTesto(this)">Copia</button></div>
 </div>
 
-<div class="pres-wrap"><iframe id="pres-frame" title="La presentazione: L'inverno della Bottega" srcdoc="&lt;!doctype html&gt;
+<div class="avviso"><strong>Per qualunque dubbio scrivi a Nicola.</strong> I prezzi valgono quando li confermi tu: appena li confermi aggiorniamo questa pagina.</div>
+
+<details class="archivio">
+  <summary><b>Archivio:</b> il piano di ottobre, com'era. Tocca per aprirlo.</summary>
+  <div class="arch-in">
+    <div class="avviso"><strong>Qui sotto c'è il piano del 15 ottobre.</strong> Dove è diverso da quello in alto, vale quello in alto: per esempio niente tessera da 40 €, niente gusto al panettone, prenotazioni dal 7 novembre e non dal 31 ottobre, lista WhatsApp a gennaio.</div>
+
+    <div class="inv-sec">
+      <div class="inv-eyebrow">File di ottobre</div>
+      <div class="inv-title">Da non stampare adesso</div>
+    </div>
+    <div class="files">
+      <div class="file">
+        <h3>La presentazione di ottobre</h3>
+        <p>Le schermate della call, in PDF.</p>
+        <button class="btn outline" onclick="scaricaFile('presentazione', this)">↓ PDF · 1,0 MB</button>
+      </div>
+      <div class="file">
+        <h3>Cartello "Il gusto del giovedì" (A2)</h3>
+        <p>In pausa con il gusto del giovedì.</p>
+        <button class="btn outline" onclick="scaricaFile('cartello-giovedi', this)">↓ PDF A2 · 211 KB</button>
+      </div>
+      <div class="file">
+        <h3>Cartello "La lista della Bottega" (A4)</h3>
+        <p>Per gennaio, quando parte la lista.</p>
+        <button class="btn outline" onclick="scaricaFile('cartello-lista', this)">↓ PDF A4 · 206 KB</button>
+      </div>
+      <div class="file">
+        <h3>QR della lista WhatsApp</h3>
+        <p>Per gennaio, come il cartello.</p>
+        <button class="btn outline" onclick="scaricaFile('qr', this)">↓ PNG · 2 KB</button>
+      </div>
+      <div class="file">
+        <h3>Tessere N. 001-054 (pagate prima)</h3>
+        <p>Superate: al loro posto arriva la tessera a timbri.</p>
+        <button class="btn outline" onclick="scaricaFile('tessere', this)">↓ PDF · 1,3 MB</button>
+      </div>
+      <div class="file">
+        <h3>Proposta per Pinel (A4)</h3>
+        <p>Superata: parlava del gusto al panettone. Se Pinel ti interessa ancora, la rifacciamo solo con lo scambio di cartellini e i mini panettoni.</p>
+        <button class="btn outline" onclick="scaricaFile('pinel', this)">↓ PDF A4 · 290 KB</button>
+      </div>
+      <div class="file">
+        <h3>Cartellini per lo scambio con Pinel</h3>
+        <p>Da rifare senza il gusto al panettone, solo se Pinel dice sì.</p>
+        <button class="btn outline" onclick="scaricaFile('cartellini-pinel', this)">↓ PDF 2 fogli · 558 KB</button>
+      </div>
+    </div>
+
+    <div class="inv-sec">
+      <div class="inv-eyebrow">Presentazione di ottobre</div>
+      <div class="inv-title">Le schermate della call</div>
+    </div>
+    <div class="pres-wrap"><iframe id="pres-frame" title="La presentazione: L'inverno della Bottega" srcdoc="&lt;!doctype html&gt;
 &lt;html lang=&quot;it&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -5520,42 +5771,118 @@ body{background:#07111E !important; overflow-x:hidden}
 &lt;/html&gt;
 " scrolling="no" loading="eager"></iframe></div>
 
-<div class="inv-sec">
-  <div class="inv-eyebrow">Strumenti</div>
-  <div class="inv-title">I messaggi WhatsApp, pronti da copiare</div>
-  <div class="inv-sub">Tocca "Copia" e incolla in WhatsApp. Cambia solo quello tra parentesi quadre.</div>
-</div>
+    <div class="inv-sec">
+      <div class="inv-eyebrow">Messaggi di ottobre</div>
+      <div class="inv-title">Da non usare adesso</div>
+    </div>
+    <div class="card">
+      <div class="msg"><div class="testo"><span class="quando">Benvenuto della lista · per gennaio</span>Grazie per averci scritto! Se arrivi dal QR, sei nella lista: ogni giovedì il gusto nuovo, e il 31 ottobre il Natale da prenotare per primo. Salva questo numero in rubrica, o i messaggi non ti arrivano. Il tuo numero resta alla Bottega, non lo diamo a nessuno. Per uscire scrivi STOP.</div><button class="btn outline" onclick="copiaTesto(this)">Copia</button></div>
+      <div class="msg"><div class="testo"><span class="quando">Gusto del giovedì · in pausa</span>Giovedì in Bottega: oggi esce [gusto], [una riga su cosa c'è dentro]. In vetrina fino a domenica, o finché c'è. Ti aspettiamo in Piazza Matteotti.</div><button class="btn outline" onclick="copiaTesto(this)">Copia</button></div>
+      <div class="msg"><div class="testo"><span class="quando">Gusto della nonna · in pausa</span>Qual è il dolce che ti preparava tua nonna? Raccontacelo qui, anche con una foto della ricetta, entro domenica 1 novembre. Ne scegliamo uno e giovedì 12 novembre diventa il gusto del giovedì, con il nome di chi ce l'ha proposto.</div><button class="btn outline" onclick="copiaTesto(this)">Copia</button></div>
+      <div class="msg"><div class="testo"><span class="quando">A Pinel · superato</span>Ciao [nome], sono Michela della Bottega del Gelato. Per Natale vorrei fare il gelato al panettone con il vostro panettone, e farci pubblicità a vicenda: il vostro panettone al mio banco, il nostro gelato al vostro. Ti porto una pagina con l'idea: quando hai dieci minuti questa settimana?</div><button class="btn outline" onclick="copiaTesto(this)">Copia</button></div>
+      <div class="msg"><div class="testo"><span class="quando">31 ottobre · superato (le prenotazioni partono il 7 novembre)</span>Come promesso, sei tra i primi. Da oggi si prenota il gelato da servire col panettone: zabaione al marsala o mascarpone, anche metà e metà, a 12 € il mezzo chilo e 23 € il chilo. E la torta gelato delle feste, a 28 € al kg. Vuoi assaggiarli prima? Passa in Bottega: l'assaggio con un pezzetto di panettone te lo offriamo noi. Chi prenota entro il 29 novembre riceve 4 mini coni per i bambini. Rispondi a questo messaggio per prenotare. Torte disponibili: [numero] per il 24 e [numero] per il 31.</div><button class="btn outline" onclick="copiaTesto(this)">Copia</button></div>
+    </div>
+  </div>
+</details>
 
-<div class="card">
-  <div class="msg"><div class="testo"><span class="quando">Benvenuto automatico · da impostare in WhatsApp Business</span>Grazie per averci scritto! Se arrivi dal QR, sei nella lista: ogni giovedì il gusto nuovo, e il 31 ottobre il Natale da prenotare per primo. Salva questo numero in rubrica, o i messaggi non ti arrivano. Il tuo numero resta alla Bottega, non lo diamo a nessuno. Per uscire scrivi STOP.</div><button class="btn outline" onclick="copiaTesto(this)">Copia</button></div>
+<script>
+(function(){
+  /* Numero WhatsApp di Nicola, solo cifre con il 39 davanti. Vuoto: WhatsApp chiede a Michela a chi mandare le risposte. */
+  var NUMERO_NICOLA = '393270731397';
+  var CHIAVE = 'bottega-inverno-risposte-2026-10-28';
+  var form = document.getElementById('form-risposte');
+  if(!form){ return; }
+  var link = document.getElementById('invia-risposte');
+  var anteprima = document.getElementById('anteprima-risposte');
 
-  <div class="msg"><div class="testo"><span class="quando">Ogni giovedì · il gusto della settimana</span>Giovedì in Bottega: oggi esce [gusto], [una riga su cosa c'è dentro]. In vetrina fino a domenica, o finché c'è. Ti aspettiamo in Piazza Matteotti.</div><button class="btn outline" onclick="copiaTesto(this)">Copia</button></div>
+  function v(nome){ var el = form.elements[nome]; return el ? String(el.value || '').trim() : ''; }
+  function euro(x){ return x ? x + ' €' : ''; }
+  function unisci(parti){ var p = parti.filter(function(x){ return x; }); return p.length ? p.join('; ') : 'da dire'; }
 
-  <div class="msg"><div class="testo"><span class="quando">22 ottobre · l'anticipazione del Natale</span>Il Natale della Bottega sta arrivando. Quest'anno il gelato si prenota: la torta delle feste e il gelato da servire col panettone. Sabato 31 ottobre lo scopri prima di tutti, qui.</div><button class="btn outline" onclick="copiaTesto(this)">Copia</button></div>
+  function testo(){
+    var r = ['Risposte di Michela (Centro Export, Inverno 2026)'];
+    r.push('1. Domenica: ' + (v('domenica') || 'da dire'));
+    r.push('2. Merenda calda: ' + unisci([
+      v('cinnamon') ? 'cinnamon roll ' + v('cinnamon') : '',
+      v('haccp') ? 'HACCP ' + v('haccp') : '',
+      v('cinnamon_costo') ? 'costo cinnamon roll ' + euro(v('cinnamon_costo')) : '',
+      v('cinnamon_prezzo') ? 'prezzo ' + euro(v('cinnamon_prezzo')) : '',
+      v('cioccolata_costo') ? 'cioccolata a tazza ' + euro(v('cioccolata_costo')) : '',
+      v('cioccolatiera') ? 'cioccolatiera H.Koenig: ' + v('cioccolatiera') : ''
+    ]));
+    r.push('3. Torte: ' + unisci([
+      v('torte_vetrina') ? 'in vetrina ' + v('torte_vetrina') : '',
+      v('torta_peso') ? 'torta piccola ' + v('torta_peso') + ' g' : '',
+      v('torta_prezzo') ? 'a ' + euro(v('torta_prezzo')) : '',
+      v('bordon') ? 'Bordon: ' + v('bordon') : ''
+    ]));
+    r.push('4. Prezzi di Natale: ' + unisci([
+      v('prezzi_natale'),
+      v('prezzi_cambi'),
+      v('torte_24') ? 'torte per il 24: ' + v('torte_24') : '',
+      v('torte_31') ? 'per il 31: ' + v('torte_31') : ''
+    ]));
+    r.push('5. Pinel: ' + unisci([
+      v('pinel'),
+      v('pinel_note'),
+      v('mini_panettone') ? 'mini panettone ' + euro(v('mini_panettone')) : ''
+    ]));
+    r.push('6. WhatsApp Business insieme: ' + (v('whatsapp') || 'da dire'));
+    r.push('7. Vaschette del fine settimana: ' + unisci([
+      v('vaschette_mezzo') ? v('vaschette_mezzo') + ' da mezzo chilo' : '',
+      v('vaschette_chilo') ? v('vaschette_chilo') + ' da un chilo' : ''
+    ]));
+    if(v('altro')){ r.push('Altro: ' + v('altro')); }
+    return r.join('\n');
+  }
 
-  <div class="msg"><div class="testo"><span class="quando">22 ottobre · l'invito del gusto della nonna</span>Qual è il dolce che ti preparava tua nonna? Raccontacelo qui, anche con una foto della ricetta, entro domenica 1 novembre. Ne scegliamo uno e giovedì 12 novembre diventa il gusto del giovedì, con il nome di chi ce l'ha proposto.</div><button class="btn outline" onclick="copiaTesto(this)">Copia</button></div>
+  function salva(){
+    try{
+      var dati = {};
+      Array.prototype.forEach.call(form.elements, function(el){
+        if(!el.name){ return; }
+        if(el.type === 'radio'){ if(el.checked){ dati[el.name] = el.value; } }
+        else{ dati[el.name] = el.value; }
+      });
+      localStorage.setItem(CHIAVE, JSON.stringify(dati));
+    }catch(e){}
+  }
+  function ripristina(){
+    try{
+      var dati = JSON.parse(localStorage.getItem(CHIAVE) || '{}');
+      Array.prototype.forEach.call(form.elements, function(el){
+        if(!el.name || !(el.name in dati)){ return; }
+        if(el.type === 'radio'){ el.checked = (el.value === dati[el.name]); }
+        else{ el.value = dati[el.name]; }
+      });
+    }catch(e){}
+  }
+  function aggiorna(){
+    var t = testo();
+    anteprima.textContent = t;
+    link.href = 'https://wa.me/' + NUMERO_NICOLA + '?text=' + encodeURIComponent(t);
+    salva();
+  }
 
-  <div class="msg"><div class="testo"><span class="quando">A chi manda una ricetta</span>Che bella storia, grazie! La leggiamo con calma. Il 5 novembre ti diciamo quale abbiamo scelto.</div><button class="btn outline" onclick="copiaTesto(this)">Copia</button></div>
-
-  <div class="msg"><div class="testo"><span class="quando">Entro il 29 ottobre · a Pinel, per fissare dieci minuti</span>Ciao [nome], sono Michela della Bottega del Gelato. Per Natale vorrei fare il gelato al panettone con il vostro panettone, e farci pubblicità a vicenda: il vostro panettone al mio banco, il nostro gelato al vostro. Ti porto una pagina con l'idea: quando hai dieci minuti questa settimana?</div><button class="btn outline" onclick="copiaTesto(this)">Copia</button></div>
-
-  <div class="msg"><div class="testo"><span class="quando">31 ottobre · la lista prenota per prima</span>Come promesso, sei tra i primi. Da oggi si prenota il gelato da servire col panettone: zabaione al marsala o mascarpone, anche metà e metà, a 12 € il mezzo chilo e 23 € il chilo. E la torta gelato delle feste, a 28 € al kg. Vuoi assaggiarli prima? Passa in Bottega: l'assaggio con un pezzetto di panettone te lo offriamo noi. Chi prenota entro il 29 novembre riceve 4 mini coni per i bambini. Rispondi a questo messaggio per prenotare. Torte disponibili: [numero] per il 24 e [numero] per il 31.</div><button class="btn outline" onclick="copiaTesto(this)">Copia</button></div>
-
-  <div class="msg"><div class="testo"><span class="quando">5 novembre · l'annuncio del gusto della nonna</span>Abbiamo scelto: giovedì 12 novembre arriva [nome del dolce] di nonna [nome], raccontato da [nome]. Grazie a tutti quelli che ci hanno scritto: ci avete fatto venire voglia di farle tutte.</div><button class="btn outline" onclick="copiaTesto(this)">Copia</button></div>
-
-  <div class="msg"><div class="testo"><span class="quando">Un giorno di pioggia</span>Oggi piove? Da noi la cioccolata è calda e il waffle col gelato è appena fatto. Ti aspettiamo fino alle [ora].</div><button class="btn outline" onclick="copiaTesto(this)">Copia</button></div>
-
-  <div class="msg"><div class="testo"><span class="quando">22 dicembre · il promemoria del ritiro</span>Ciao [nome], la tua torta è pronta: ritiro il 24 dicembre dalle [ora] alle [ora], in Piazza Matteotti. A presto!</div><button class="btn outline" onclick="copiaTesto(this)">Copia</button></div>
-</div>
-
-<div class="avviso"><strong>Per qualunque dubbio scrivi a Nicola.</strong> I prezzi segnati come proposta valgono solo quando li confermi tu: appena li confermi aggiorniamo questa pagina.</div>
+  ripristina();
+  aggiorna();
+  form.addEventListener('input', aggiorna);
+  form.addEventListener('change', aggiorna);
+  document.getElementById('copia-risposte').addEventListener('click', function(){
+    var btn = this, t = testo();
+    function fatto(){ var o = btn.textContent; btn.textContent = 'Copiate ✓'; setTimeout(function(){ btn.textContent = o; }, 2000); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(fatto, function(){}); }
+    else{ var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); fatto(); }catch(e){} ta.remove(); }
+  });
+})();
+</script>
 
 </div>
 <!-- /INVERNO-2026-TAB -->
 
 <footer>
   <p class="fl">La Bottega del Gelato</p>
-  <p>Centro Export · Brand Identity WeBloom · Giugno 2026 · scheda Inverno aggiornata al 15 ottobre 2026</p>
+  <p>Centro Export · Brand Identity WeBloom · Giugno 2026 · scheda Inverno aggiornata al 28 ottobre 2026</p>
   <p>Piazza Giacomo Matteotti, 5 · 30016 Jesolo VE · +39 393 468 9155</p>
 </footer>
 <script>
@@ -5789,6 +6116,8 @@ function copiaTesto(btn){
   window.addEventListener('resize', alza);
   var b = document.querySelector('.tab-btn[data-tab="tab-inverno"]');
   if(b){ b.addEventListener('click', function(){ setTimeout(alza, 50); }); }
+  var det = document.querySelector('#tab-inverno details.archivio');
+  if(det){ det.addEventListener('toggle', function(){ setTimeout(alza, 50); setTimeout(alza, 600); }); }
   setTimeout(alza, 1200);
 })();
 </script>
