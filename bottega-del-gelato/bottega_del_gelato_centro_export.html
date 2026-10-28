@@ -4590,6 +4590,20 @@ dopo piastrella</textarea>
 #tab-inverno .arch-in .inv-sec{padding-left:0;padding-right:0}
 #tab-inverno .arch-in .pres-wrap{margin:0 16px 16px}
 
+/* Caratteri grandi per la lettura (Nicola, 28/10): testo a 22 px, titoli ed etichette in proporzione */
+#tab-inverno header h1{font-size:32px;line-height:1.25}
+#tab-inverno header p{font-size:22px;line-height:1.55}
+#tab-inverno .inv-eyebrow,#tab-inverno .b-tag,#tab-inverno .msg .quando,#tab-inverno .anteprima-t{font-size:15px}
+#tab-inverno .inv-title{font-size:28px}
+#tab-inverno .domande legend{font-size:26px}
+#tab-inverno .file h3,#tab-inverno .card h3{font-size:24px}
+#tab-inverno .inv-sub,#tab-inverno .voci li,#tab-inverno .domande .q,#tab-inverno .campo,#tab-inverno .data span,#tab-inverno .msg .testo,#tab-inverno .file p,#tab-inverno .avviso,#tab-inverno .card p,#tab-inverno .pill span,#tab-inverno .anteprima,#tab-inverno details.archivio > summary{font-size:22px;line-height:1.55}
+#tab-inverno .data b{font-size:20px}
+#tab-inverno .domande .aiuto,#tab-inverno .voci .nota{font-size:19px}
+#tab-inverno .domande input[type=text],#tab-inverno .domande textarea{font-size:22px}
+#tab-inverno .domande input.euro{width:110px}
+#tab-inverno .btn,#tab-inverno .file .btn,#tab-inverno .invio .btn{font-size:20px}
+
 @media(max-width:768px){
   #tab-inverno .inv-sec{padding:8px 20px 0}
   #tab-inverno .files,#tab-inverno .avviso,#tab-inverno .card,#tab-inverno .piano{margin-left:20px;margin-right:20px}
@@ -4722,7 +4736,7 @@ dopo piastrella</textarea>
       <label class="pill"><input type="radio" name="torte_vetrina" value="nessuna"><span>Nessuna</span></label>
       <label class="pill"><input type="radio" name="torte_vetrina" value="non le ho ancora messe"><span>Non ancora messe</span></label>
     </div>
-    <div class="campo">La torta piccola: peso <span class="nw"><input type="text" class="euro" name="torta_peso" inputmode="decimal" aria-label="peso della torta piccola in grammi"> grammi</span>, prezzo <span class="nw"><input type="text" class="euro" name="torta_prezzo" inputmode="decimal" aria-label="prezzo della torta piccola in euro"> €</span></div>
+    <div class="campo">La torta piccola: peso <span class="nw"><input type="text" class="euro" name="torta_peso" inputmode="decimal" aria-label="peso della torta piccola in grammi"> grammi,</span> prezzo <span class="nw"><input type="text" class="euro" name="torta_prezzo" inputmode="decimal" aria-label="prezzo della torta piccola in euro"> €</span></div>
     <p class="q">Le torte di Bordon a 10 € al chilo che torte sono?</p>
     <input type="text" class="lungo" name="bordon" placeholder="se ci passi, manda a Nicola una foto del cartellino">
   </fieldset>
